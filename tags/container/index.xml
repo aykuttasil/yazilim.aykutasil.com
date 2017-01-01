@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aykut Asil</title>
+    <link>http://yazilim.aykutasil.com/tags/container/index.xml</link>
+    <description>Recent content on Aykut Asil</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker Container Install nano</title>
+      <link>http://yazilim.aykutasil.com/2016/12/docker-container-install-nano/</link>
+      <pubDate>Sun, 25 Dec 2016 03:51:49 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2016/12/docker-container-install-nano/</guid>
+      <description>&lt;p&gt;Docker ile ayağa kaldırmış olduğunuz bir container olduğunu varsayalım ve bu docker container a erişerek komut satırı çalıştırmanız gerekiyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/exec/&#34;&gt;https://docs.docker.com/engine/reference/commandline/exec/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıdaki linki takip ederek nasıl komut çalıştıracağınızı öğrenebilirsiniz.
+Ya da &lt;em&gt;Kitematic&lt;/em&gt; gibi bir uygulama yüklü ise bu uygulamayı açarak ve çalışan image e tıklayarak exe butonuna basmamız yeterli olucaktır.&lt;/p&gt;
+
+&lt;p&gt;Bu sayfada anlatmak istediğim şey tüm bunları yaptınız ve container ın içindeyken bir dosya oluşturdunuz.
+Ve bu dosyanın içeriğini düzenlemeniz gerekmekte.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nasıl yaparız ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Container ın içerisinde olduğumuzdan bir görsel arayüz yok. &lt;code&gt;open .&lt;/code&gt; fln diyerek dosya yoluna erişim yapamayız.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;nano&lt;/code&gt; gibi birşeye ihtiyacımız var ki bash penceresi üzerinden değişiklik yapabilelim.&lt;/p&gt;
+
+&lt;p&gt;Öncelikle&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# apt-get update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutunu çalıştırarak linux paketlerini güncelliyoruz.&lt;/p&gt;
+
+&lt;p&gt;Daha sonra&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# export TERM=xterm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutunu çalıştırıyoruz ve ardından&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# apt-get install nano
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutu ile nano yu container ımıza yüklüyoruz.&lt;/p&gt;
+
+&lt;p&gt;Artık istediğimiz dosyanın path ine ulaşarak ve&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# nano dosya_adi.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;diyerek command penceresi üzerindeyken düzenleme yapabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Kolay gelsin gençler..&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
