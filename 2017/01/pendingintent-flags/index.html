@@ -1,34 +1,48 @@
 
 
+  
+    
+  
+
 
   
 
 
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="tr-tr">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.17">
-    <title>Posts</title>
+    <title>PendingIntent Flags</title>
     <meta name="author" content="Aykut Asil">
     <meta name="keywords" content="">
 
     <link rel="icon" href="http://yazilim.aykutasil.com/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="http://yazilim.aykutasil.com/post/index.xml">
-    
 
     
-    <meta name="description" content="Yazilim - Software">
-    <meta property="og:description" content="Yazilim - Software">
+    <meta name="description" content="PendingIntent resultPendingIntent = PendingIntent.getActivity( getApplicationContext(), 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);  PendingIntent ler Android uygulama geliştirilmesi sırasında birçok yerde karşımıza çıkabilir.
+Özetle PendingIntent kullanılarak asenkron işlem başlatılımı yapılır.
+En genel kullanım alanlarından bir tanesi de Notification lar iledir.
+Kullanıcı, hazırlamış olduğumuz notification a tıkladığında alacak olduğu tepki nasıl olmalı? sorusuna cevap vermek için PendingIntent imizin flag parametresini uygun şekilde düzenlemeliyiz.
+Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif için farklı requestCode verirsek her biri farklı notif gibi davranır.">
+    <meta property="og:description" content="PendingIntent resultPendingIntent = PendingIntent.getActivity( getApplicationContext(), 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);  PendingIntent ler Android uygulama geliştirilmesi sırasında birçok yerde karşımıza çıkabilir.
+Özetle PendingIntent kullanılarak asenkron işlem başlatılımı yapılır.
+En genel kullanım alanlarından bir tanesi de Notification lar iledir.
+Kullanıcı, hazırlamış olduğumuz notification a tıkladığında alacak olduğu tepki nasıl olmalı? sorusuna cevap vermek için PendingIntent imizin flag parametresini uygun şekilde düzenlemeliyiz.
+Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif için farklı requestCode verirsek her biri farklı notif gibi davranır.">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Posts">
-    <meta property="og:url" content="/post/">
+    <meta property="og:title" content="PendingIntent Flags">
+    <meta property="og:url" content="/2017/01/pendingintent-flags/">
     <meta property="og:site_name" content="Software">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Software">
-    <meta name="twitter:description" content="Yazilim - Software">
+    <meta name="twitter:description" content="PendingIntent resultPendingIntent = PendingIntent.getActivity( getApplicationContext(), 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);  PendingIntent ler Android uygulama geliştirilmesi sırasında birçok yerde karşımıza çıkabilir.
+Özetle PendingIntent kullanılarak asenkron işlem başlatılımı yapılır.
+En genel kullanım alanlarından bir tanesi de Notification lar iledir.
+Kullanıcı, hazırlamış olduğumuz notification a tıkladığında alacak olduğu tepki nasıl olmalı? sorusuna cevap vermek için PendingIntent imizin flag parametresini uygun şekilde düzenlemeliyiz.
+Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif için farklı requestCode verirsek her biri farklı notif gibi davranır.">
     
       <meta name="twitter:creator" content="@aykuttasil">
     
@@ -102,7 +116,7 @@
     
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
-      <span class="sidebar-button-desc">Categories</span>
+      <span class="sidebar-button-desc">Kategoriler</span>
     </a>
   </li>
 
@@ -112,7 +126,7 @@
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
-      <span class="sidebar-button-desc">Tags</span>
+      <span class="sidebar-button-desc">Etiketler</span>
     </a>
   </li>
 
@@ -122,7 +136,7 @@
     
       <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
-      <span class="sidebar-button-desc">Archives</span>
+      <span class="sidebar-button-desc">Arşiv</span>
     </a>
   </li>
 
@@ -132,7 +146,7 @@
     
       <i class="sidebar-button-icon fa fa-lg fa-question"></i>
       
-      <span class="sidebar-button-desc">About</span>
+      <span class="sidebar-button-desc">Hakkımda</span>
     </a>
   </li>
 
@@ -182,92 +196,240 @@
         class="
                hasCoverMetaIn
                ">
-        <section class="postShorten-group main-content-wrap">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
           
           
-            
+            <div class="post-header main-content-wrap text-left">
   
-    
+    <h1 class="post-title" itemprop="headline">
+      PendingIntent Flags
+    </h1>
   
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-left" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
+  <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-01-02T14:35:49&#43;03:00">
     
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://yazilim.aykutasil.com/2015/03/highlighted-code-showcase/">
-          highlighted code showcase
-        </a>
-      </h1>
-      <div class="post-meta">
-  <time itemprop="datePublished" datetime="2015-03-23T00:00:00Z">
-    
-   23, 2015
+  Ocak 2, 2017
 
   </time>
   
-  
-  
-    <span></span>
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/tranquilpeak">tranquilpeak</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/features">features</a>
-    
-  
-
 
 </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>
-        Tranquilpeak Hugo theme have its own theme to highlight source code. It&rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <pre><code class="language-java">                        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                                getApplicationContext(),
+                                100,
+                                intent,
+                                PendingIntent.FLAG_CANCEL_CURRENT);
+</code></pre>
 
-        <br>
-        <a href="http://yazilim.aykutasil.com/2015/03/highlighted-code-showcase/" class="postShorten-excerpt_link link"></a>
+<p>PendingIntent ler Android uygulama geliştirilmesi sırasında birçok yerde karşımıza çıkabilir.</p>
+
+<p>Özetle PendingIntent kullanılarak asenkron işlem başlatılımı yapılır.</p>
+
+<p>En genel kullanım alanlarından bir tanesi de Notification lar iledir.</p>
+
+<p>Kullanıcı, hazırlamış olduğumuz notification a tıkladığında alacak olduğu tepki nasıl olmalı? sorusuna cevap vermek için PendingIntent imizin flag parametresini uygun şekilde düzenlemeliyiz.</p>
+
+<hr />
+
+<p><strong>Not:</strong> PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif için farklı requestCode verirsek her biri farklı notif gibi davranır. Yani verdiğimiz flag in bir değeri kalmaz.
+Uygulamanın akışına göre kimi zaman da requestCode u farklı vermemiz gerekebilir.</p>
+
+<p>Hangi amaçla kullanacağınız tabi ki size ve uygulamanıza kalmış. ;)</p>
+
+<hr />
+
+<p><strong>PendingIntent.FLAG_CANCEL_CURRENT</strong></p>
+
+<p><strong>FLAG_CANCEL_CURRENT</strong> ile şunu söylüyoruz.
+Arka arkaya birden fazla notification gelirse eğer, sen en son geleni dikkate al sadece. Diğerlerinin artık hiç bir önemi yok.
+En son hariç diğer notificationlardan birine tıklandığında herhangi bir işlem yapma diyoruz.</p>
+
+<hr />
+
+<p><strong>PendingIntent.FLAG_ONE_SHOT</strong></p>
+
+<p><strong>FLAG_ONE_SHOT</strong> ile şunu söylüyoruz.
+Arka arkaya birden fazla notification gelirse eğer, sen sadece ilk geleni dikkate al. Diğer gelenlerin bi önemi yok.
+İlk gelen notif hariç diğerlerinden birine tıklanırsa herhangi bir işlem yapma diyoruz.</p>
+
+<hr />
+
+<p><strong>PendingIntent.FLAG_UPDATE_CURRENT</strong></p>
+
+<p><strong>FLAG_UPDATE_CURRENT</strong> ile şunu söylüyoruz.
+Arka arkaya birden fazla notification gelirse eğer, sen en son geleni dikkate al sadece. Diğerleri önemli değil.
+En son hariç diğer notification a tıkladığımızda en son gelen parametrelere göre işlem yap diyoruz.</p>
+
+<hr />
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+            <div class="post-actions-wrap">
+  <nav>
+    <ul class="post-actions post-action-nav">
+      <li class="post-action">
         
-      </p>
-    </div>
-  </div>
-  
-    <a href="http://yazilim.aykutasil.com/2015/03/highlighted-code-showcase/">
-      <div class="postShorten-thumbnailimg">
-        <img alt="" itemprop="image" src="//d1u9biwaxjngwg.cloudfront.net/highlighted-code-showcase/peak-140.jpg"/>
-      </div>
-    </a>
-  
-</article>
-
-          
-          
-  <div class="pagination-bar">
-    <ul class="pagination">
-      
-        <li class="pagination-prev">
-          <a class="btn btn--default btn--small" href="http://yazilim.aykutasil.com/post/">
-            <i class="fa fa-angle-left text-base icon-mr"></i>
-            <span></span>
-          </a>
-        </li>
-      
-      
-      <li class="pagination-number"> </li>
+          <a class="post-action-btn btn btn--disabled">
+        
+          <i class="fa fa-angle-left"></i>
+          <span class="hide-xs hide-sm text-small icon-ml">ÖNCEKİ</span>
+        </a>
+      </li>
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/2016/12/docker/" data-tooltip="Docker">
+        
+          <span class="hide-xs hide-sm text-small icon-mr">SONRAKİ</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
     </ul>
-  </div>
+  </nav>
+  <ul class="post-actions post-action-share">
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+        <i class="fa fa-share-alt"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-google-plus"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-facebook-official"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    
+      <li class="post-action">
+        <a class="post-action-btn btn btn--default" href="#disqus_thread">
+          <i class="fa fa-comment-o"></i>
+        </a>
+      </li>
+    
+    <li class="post-action">
+      
+        <a class="post-action-btn btn btn--default" href="#">
+      
+        <i class="fa fa-list"></i>
+      </a>
+    </li>
+  </ul>
+</div>
 
 
-        </section>
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2017 <a href="https://github.com/aykuttasil">aykuttasil</a>. 
+    &copy; 2017 <a href="https://github.com/aykuttasil">aykuttasil</a>. Tüm Hakları Saklıdır
   </span>
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="6">
+        <div class="post-actions-wrap">
+  <nav>
+    <ul class="post-actions post-action-nav">
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--disabled">
+        
+          <i class="fa fa-angle-left"></i>
+          <span class="hide-xs hide-sm text-small icon-ml">ÖNCEKİ</span>
+        </a>
+      </li>
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/2016/12/docker/" data-tooltip="Docker">
+        
+          <span class="hide-xs hide-sm text-small icon-mr">SONRAKİ</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <ul class="post-actions post-action-share">
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+        <i class="fa fa-share-alt"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-google-plus"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-facebook-official"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    
+      <li class="post-action">
+        <a class="post-action-btn btn btn--default" href="#disqus_thread">
+          <i class="fa fa-comment-o"></i>
+        </a>
+      </li>
+    
+    <li class="post-action">
+      
+        <a class="post-action-btn btn btn--default" href="#">
+      
+        <i class="fa fa-list"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="6">
+  <ul class="share-options">
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+      </a>
+    </li>
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+      </a>
+    </li>
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fpendingintent-flags%2f">
+        <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     <div id="about">
   <div id="about-card">
@@ -307,13 +469,34 @@
       <i class="search-icon fa fa-search"></i>
       <form id="algolia-search-form">
         <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="" />
+          class="form-control input--large search-input" placeholder="Arama Yap" />
       </form>
     </div>
     <div class="modal-body">
-      <div class="no-result text-color-light text-center"></div>
+      <div class="no-result text-color-light text-center">içerik bulunamadı</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/pendingintent-flags/">
+                <h3 class="media-heading">PendingIntent Flags</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">PendingIntent resultPendingIntent = PendingIntent.getActivity( getApplicationContext(), 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);  PendingIntent ler Android uygulama geliştirilmesi sırasında birçok yerde karşımıza çıkabilir.
+Özetle PendingIntent kullanılarak asenkron işlem başlatılımı yapılır.
+En genel kullanım alanlarından bir tanesi de Notification lar iledir.
+Kullanıcı, hazırlamış olduğumuz notification a tıkladığında alacak olduğu tepki nasıl olmalı? sorusuna cevap vermek için PendingIntent imizin flag parametresini uygun şekilde düzenlemeliyiz.
+Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif için farklı requestCode verirsek her biri farklı notif gibi davranır.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -492,10 +675,10 @@ OneoffTask oneoff = new OneoffTask.Builder() // Uygulamanızı kapatsanız bile 
     </div>
     <div class="modal-footer">
       <p class="results-count text-medium"
-         data-message-zero=""
-         data-message-one=""
-         data-message-other="">
-         8 posts found
+         data-message-zero="içerik bulunamadı"
+         data-message-one="1 içerik bulundu"
+         data-message-other="{n} içerik bulundu">
+         9 posts found
       </p>
     </div>
   </div>
@@ -534,6 +717,32 @@ $(document).ready(function() {
   });
 });
 </script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/yazilim.aykutasil.com\/2017\/01\/pendingintent-flags\/';
+          
+            this.page.identifier = '\/2017\/01\/pendingintent-flags\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'yazilimaykutasil';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
   </body>

@@ -5,7 +5,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="tr-tr">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,13 +106,34 @@
       <i class="search-icon fa fa-search"></i>
       <form id="algolia-search-form">
         <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="" />
+          class="form-control input--large search-input" placeholder="Arama Yap" />
       </form>
     </div>
     <div class="modal-body">
-      <div class="no-result text-color-light text-center"></div>
+      <div class="no-result text-color-light text-center">içerik bulunamadı</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/pendingintent-flags/">
+                <h3 class="media-heading">PendingIntent Flags</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">PendingIntent resultPendingIntent = PendingIntent.getActivity( getApplicationContext(), 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);  PendingIntent ler Android uygulama geliştirilmesi sırasında birçok yerde karşımıza çıkabilir.
+Özetle PendingIntent kullanılarak asenkron işlem başlatılımı yapılır.
+En genel kullanım alanlarından bir tanesi de Notification lar iledir.
+Kullanıcı, hazırlamış olduğumuz notification a tıkladığında alacak olduğu tepki nasıl olmalı? sorusuna cevap vermek için PendingIntent imizin flag parametresini uygun şekilde düzenlemeliyiz.
+Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif için farklı requestCode verirsek her biri farklı notif gibi davranır.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -291,10 +312,10 @@ OneoffTask oneoff = new OneoffTask.Builder() // Uygulamanızı kapatsanız bile 
     </div>
     <div class="modal-footer">
       <p class="results-count text-medium"
-         data-message-zero=""
-         data-message-one=""
-         data-message-other="">
-         8 posts found
+         data-message-zero="içerik bulunamadı"
+         data-message-one="1 içerik bulundu"
+         data-message-other="{n} içerik bulundu">
+         9 posts found
       </p>
     </div>
   </div>

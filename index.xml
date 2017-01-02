@@ -5,9 +5,65 @@
     <link>http://yazilim.aykutasil.com/index.xml</link>
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 25 Dec 2016 23:09:01 +0300</lastBuildDate>
+    <language>tr-tr</language>
+    <lastBuildDate>Mon, 02 Jan 2017 14:35:49 +0300</lastBuildDate>
     <atom:link href="http://yazilim.aykutasil.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>PendingIntent Flags</title>
+      <link>http://yazilim.aykutasil.com/2017/01/pendingintent-flags/</link>
+      <pubDate>Mon, 02 Jan 2017 14:35:49 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/pendingintent-flags/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;                        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                                getApplicationContext(),
+                                100,
+                                intent,
+                                PendingIntent.FLAG_CANCEL_CURRENT);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;PendingIntent ler Android uygulama geliştirilmesi sırasında birçok yerde karşımıza çıkabilir.&lt;/p&gt;
+
+&lt;p&gt;Özetle PendingIntent kullanılarak asenkron işlem başlatılımı yapılır.&lt;/p&gt;
+
+&lt;p&gt;En genel kullanım alanlarından bir tanesi de Notification lar iledir.&lt;/p&gt;
+
+&lt;p&gt;Kullanıcı, hazırlamış olduğumuz notification a tıkladığında alacak olduğu tepki nasıl olmalı? sorusuna cevap vermek için PendingIntent imizin flag parametresini uygun şekilde düzenlemeliyiz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Not:&lt;/strong&gt; PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif için farklı requestCode verirsek her biri farklı notif gibi davranır. Yani verdiğimiz flag in bir değeri kalmaz.
+Uygulamanın akışına göre kimi zaman da requestCode u farklı vermemiz gerekebilir.&lt;/p&gt;
+
+&lt;p&gt;Hangi amaçla kullanacağınız tabi ki size ve uygulamanıza kalmış. ;)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;PendingIntent.FLAG_CANCEL_CURRENT&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FLAG_CANCEL_CURRENT&lt;/strong&gt; ile şunu söylüyoruz.
+Arka arkaya birden fazla notification gelirse eğer, sen en son geleni dikkate al sadece. Diğerlerinin artık hiç bir önemi yok.
+En son hariç diğer notificationlardan birine tıklandığında herhangi bir işlem yapma diyoruz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;PendingIntent.FLAG_ONE_SHOT&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FLAG_ONE_SHOT&lt;/strong&gt; ile şunu söylüyoruz.
+Arka arkaya birden fazla notification gelirse eğer, sen sadece ilk geleni dikkate al. Diğer gelenlerin bi önemi yok.
+İlk gelen notif hariç diğerlerinden birine tıklanırsa herhangi bir işlem yapma diyoruz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;PendingIntent.FLAG_UPDATE_CURRENT&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FLAG_UPDATE_CURRENT&lt;/strong&gt; ile şunu söylüyoruz.
+Arka arkaya birden fazla notification gelirse eğer, sen en son geleni dikkate al sadece. Diğerleri önemli değil.
+En son hariç diğer notification a tıkladığımızda en son gelen parametrelere göre işlem yap diyoruz.&lt;/p&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
     
     <item>
       <title>Docker</title>
