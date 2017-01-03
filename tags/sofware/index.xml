@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/sofware/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/sofware/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker</title>
+      <link>http://yazilim.aykutasil.com/2016/12/docker/</link>
+      <pubDate>Sun, 25 Dec 2016 23:09:01 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2016/12/docker/</guid>
+      <description>
+
+&lt;h2 id=&#34;docker&#34;&gt;DOCKER&lt;/h2&gt;
+
+&lt;p&gt;Docker aldı başını gidiyor. Yeni bir devrim açıyor.&lt;/p&gt;
+
+&lt;p&gt;E haliyle yazılım dünyası buna sessiz kalmamakla beraber bir çok Docker nedir? örnekleri vs. hazırlanıyor.&lt;/p&gt;
+
+&lt;p&gt;Bu nedenle biz Docker nedir?  tanımlamasından daha çok hızlı ilerlemeler şeklinde ufak uygulamalar geliştiricez. Bende bu yazı serisiyle paralel şekilde öğrenimimi sağlayacağımı belirtmek isterim ! 🙂&lt;/p&gt;
+
+&lt;p&gt;Başlıyoruz..&lt;/p&gt;
+
+&lt;p&gt;İlk olarak makinemize Docker ı kuralım.&lt;/p&gt;
+
+&lt;p&gt;Mac: &lt;a href=&#34;https://docs.docker.com/docker-for-mac/&#34;&gt;https://docs.docker.com/docker-for-mac/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Windows : &lt;a href=&#34;https://docs.docker.com/docker-for-windows/&#34;&gt;https://docs.docker.com/docker-for-windows/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;İndirip kurulumu sağladıktan sonra terminali açarak&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;&amp;gt; docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutunu çalıştırıyoruz ve Docker a merhaba diyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki mesajı alanlar için;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker-machine start # start virtual machine for docker
+$ docker-machine env  # it&#39;s helps to get environment variables
+$ eval &amp;quot;$(docker-machine env default)&amp;quot; #set environment variables
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Komutlarını çalıştırarak Docker ın sistemimize tanıtıyoruz ve sonrasında tekrar &lt;strong&gt;docker run Hello-World&lt;/strong&gt; komutunu çalıştırıyoruz.&lt;/p&gt;
+
+&lt;p&gt;ekran-resmi-2016-11-21-18-07-52&lt;/p&gt;
+
+&lt;p&gt;Hadi bakalım hayırlı olsun.. 😉&lt;/p&gt;
+
+&lt;p&gt;Ek Kaynak için : &lt;a href=&#34;http://www.enterprisecoding.com/post/yeni-baslayanlar-icin-docker&#34;&gt;http://www.enterprisecoding.com/post/yeni-baslayanlar-icin-docker&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Docker Komutları</title>
+      <link>http://yazilim.aykutasil.com/2016/12/docker-komutlar%C4%B1/</link>
+      <pubDate>Sun, 25 Dec 2016 22:49:17 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2016/12/docker-komutlar%C4%B1/</guid>
+      <description>
+
+&lt;h2 id=&#34;docker-komutları-ve-açıklamaları&#34;&gt;Docker Komutları ve Açıklamaları&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker images
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Docker hostuna yüklü olan image leri gösterir.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker ps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Docker hostunda yüklü olan imagelerle inşa edilmiş olan container ları listeler.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;İlk olarak Local de (bilgisayarımızda) hello-world isminde bir image var mı kontrol eder. Eğer varsa direkt olarak çalıştırır.&lt;/p&gt;
+
+&lt;p&gt;Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local e indirir ve ardından çalıştırır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker pull hello-world
+&amp;gt; docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutlarının birleşimidir.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker run -p 8080:80 nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nginx image local de arar, eğer bulamazsa indirir ve local imize kurar.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;-p&lt;/strong&gt; parametresi kendisinden sonra verilen parametredeki portlar arasında port forwarding yani port yönlendirme yapar.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;-p&lt;/strong&gt; = host umuzdaki 8080 portunu container ımızda ki 80 portuna yönlendirme işlemini sağlıyoruz&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker exec -it &amp;lt;container_id&amp;gt; /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutu ile Container’a bir Bash Shell açabiliriz. -i interaktif terminali -t ise terminalin attach olmasını istediğimizi belirtir. &lt;strong&gt;docker exec -it /bin/bash&lt;/strong&gt; komutunu çalıştırın (Container ID’nin sadece baştan birkaç harfini vermemizin yettiğine -çakışma olmadığı müddetçe- dikkat edin).&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz container ın içine girerek komutları çalıştırmamıza olanak sağlar.&lt;/p&gt;
+
+&lt;p&gt;Container ın içindeyken;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; ps -ef
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutu ile container ın çalıştırmış olduğu tüm process leri listeleyebiliriz.&lt;/p&gt;
+
+&lt;h2 id=&#34;komutlar&#34;&gt;Komutlar&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;docker images&lt;/code&gt; Lokal registery’de mevcut bulunan Image’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker ps&lt;/code&gt; Halihazırda çalışmakta olan Container’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker ps -a&lt;/code&gt;  Docker Daemon üzerindeki bütün Container’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker ps -aq&lt;/code&gt; Docker Daemon üzerindeki bütün Container’ların ID’lerini listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker pull &amp;lt;repository_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;image_tag&amp;gt;&lt;/code&gt;    Belirtilen Image’ı lokal registry’ye indirir. Örnek: docker pull gsengun/jmeter3.0:1.7&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker top &amp;lt;container_id&amp;gt;&lt;/code&gt; İlgili Container’da top komutunu çalıştırarak çıktısını gösterir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker run -it &amp;lt;image_id|image_name&amp;gt;&lt;/code&gt; CMD  Verilen Image’dan terminal’i attach ederek bir Container oluşturur&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker pause &amp;lt;container_id&amp;gt;&lt;/code&gt;   İlgili Container’ı duraklatır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker unpause &amp;lt;container_id&amp;gt;&lt;/code&gt; İlgili Container pause ile duraklatılmış ise çalışmasına devam ettirilir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker stop &amp;lt;container_id&amp;gt;&lt;/code&gt;    İlgili Container’ı durdurur&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker start &amp;lt;container_id&amp;gt;&lt;/code&gt;   İlgili Container’ı durdurulmuşsa tekrar başlatır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rm &amp;lt;container_id&amp;gt;&lt;/code&gt;  İlgili Container’ı kaldırır fakat ilişkili Volume’lara dokunmaz&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rm -v &amp;lt;container_id&amp;gt;&lt;/code&gt;   İlgili Container’ı ilişkili Volume’lar ile birlikte kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rm -f &amp;lt;container_id&amp;gt;&lt;/code&gt;   İlgili Container’ı zorlayarak kaldırır. Çalışan bir Container ancak -f ile kaldırılabilir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi &amp;lt;image_id|image_name&amp;gt;&lt;/code&gt;  İlgili Image’ı siler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi -f &amp;lt;image_id|image_name&amp;gt;&lt;/code&gt;   İlgili Image’ı zorlayarak kaldırır, başka isimlerle Tag’lenmiş Image’lar -f ile kaldırılabilir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker info&lt;/code&gt;   Docker Daemon’la ilgili özet bilgiler verir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker inspect &amp;lt;container_id&amp;gt;&lt;/code&gt; İlgili Container’la ilgili detaylı bilgiler verir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker inspect &amp;lt;image_id|image_name&amp;gt;&lt;/code&gt;  İlgili Image’la ilgili detaylı bilgiler verir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rm $(docker ps -aq)&lt;/code&gt;    Bütün Container’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker stop $(docker ps -aq)&lt;/code&gt;  Çalışan bütün Container’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi $(docker images -aq)&lt;/code&gt;   Bütün Image’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker images -q -f dangling=true&lt;/code&gt; Dangling (taglenmemiş ve bir Container ile ilişkilendirilmemiş) Image’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi $(docker images -q -f dangling=true)&lt;/code&gt;   Dangling Image’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker volume ls -f dangling=true&lt;/code&gt; Dangling Volume’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker volume rm $(docker volume ls -f dangling=true -q)&lt;/code&gt;  Danling Volume’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker logs &amp;lt;container_id&amp;gt;&lt;/code&gt;    İlgili Container’ın terminalinde o ana kadar oluşan çıktıyı gösterir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker logs -f &amp;lt;container_id&amp;gt;&lt;/code&gt; İlgili Container’ın terminalinde o ana kadar oluşan çıktıyı gösterir ve -f follow parametresi ile o andan sonra oluşan logları da göstermeye devam eder&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker exec &amp;lt;container_id&amp;gt; &amp;lt;command&amp;gt;&lt;/code&gt;  Çalışan bir Container içinde bir komut koşturmak için kullanılır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker exec -it &amp;lt;container_id&amp;gt; /bin/bash&lt;/code&gt;  Çalışan bir Container içinde terminal açmak için kullanılır. İlgili Image’da /bin/bash bulunduğu varsayımı ile&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker attach &amp;lt;container_id&amp;gt;&lt;/code&gt;  Önceden detached modda -d başlatılan bir Container’a attach olmak için kullanılır&lt;/p&gt;
+
+&lt;p&gt;Ek Kaynak : &lt;a href=&#34;http://www.gokhansengun.com/docker-nedir-nasil-calisir-nerede-kullanilir/&#34;&gt;http://www.gokhansengun.com/docker-nedir-nasil-calisir-nerede-kullanilir/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>wordpresstohugo</title>
+      <link>http://yazilim.aykutasil.com/2016/12/japanese-test/</link>
+      <pubDate>Sun, 25 Dec 2016 03:48:51 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2016/12/japanese-test/</guid>
+      <description>&lt;p&gt;Wordpress&amp;rsquo;den Hugo ya geçiş yapmayı düşünüyorsanız birkaç adımda bunu oldukça kolay hale getirebilirsiniz.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

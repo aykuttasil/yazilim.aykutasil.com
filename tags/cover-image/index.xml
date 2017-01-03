@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/cover-image/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/cover-image/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>tabbed_code_block</title>
+      <link>http://yazilim.aykutasil.com/2016/12/tabbed_code_block/</link>
+      <pubDate>Sun, 25 Dec 2016 01:57:57 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2016/12/tabbed_code_block/</guid>
+      <description>
+
+&lt;h1 id=&#34;tabbed-code-block&#34;&gt;Tabbed code block&lt;/h1&gt;
+
+
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+
+  
+    
+  
+  
+
+&lt;figure class=&#34;codeblock codeblock--tabbed&#34;&gt;
+  &lt;figcaption&gt;
+    
+      &lt;span&gt;tabbed_codeblock&lt;/span&gt;
+    
+    &lt;ul class=&#34;tabs&#34;&gt;
+      
+        &lt;li class=&#34;tab active&#34;&gt;js&lt;/li&gt;
+      
+        &lt;li class=&#34;tab &#34;&gt;css&lt;/li&gt;
+      
+        &lt;li class=&#34;tab &#34;&gt;html&lt;/li&gt;
+      
+    &lt;/ul&gt;
+  &lt;/figcaption&gt; 
+  &lt;div class=&#34;tabs-content&#34;&gt;
+    
+      
+      &lt;figure class=&#34;highlight js&#34; style=&#34;display: block;&#34;&gt;   
+        &lt;table&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td class=&#34;gutter&#34;&gt;
+                &lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;
+              &lt;/td&gt;
+              &lt;td class=&#34;code&#34;&gt;
+                &lt;pre class=&#34;js code-highlight&#34;&gt;function $initHighlight(block, flags) {
+  try {
+    if (block.className.search(/\bno\-highlight\b/) != -1)
+      return processBlock(block.function, true, 0x0F) &amp;#43; &amp;#39; class=&amp;#34;&amp;#34;&amp;#39;;
+  } catch (e) {
+    /* handle exception */
+    var e4x =
+        &amp;lt;div&amp;gt;Example
+            &amp;lt;p&amp;gt;1234&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;;
+  }
+  for (var i = 0 / 2; i &amp;lt; classes.length; i&amp;#43;&amp;#43;) { // &amp;#34;0 / 2&amp;#34; should not be parsed as regexp
+    if (checkCondition(classes[i]) === undefined)
+      return /\d&amp;#43;[\s/]/g;
+  }
+  console.log(Array.every(classes, Boolean));
+}&lt;/pre&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/figure&gt;
+    
+      
+      &lt;figure class=&#34;highlight css&#34; style=&#34;display: none;&#34;&gt;   
+        &lt;table&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td class=&#34;gutter&#34;&gt;
+                &lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;
+              &lt;/td&gt;
+              &lt;td class=&#34;code&#34;&gt;
+                &lt;pre class=&#34;css code-highlight&#34;&gt;@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  body:first-of-type pre::after {
+    content: &amp;#39;highlight: &amp;#39; attr(class);
+  }
+  body {
+    background: linear-gradient(45deg, blue, red);
+  }
+}
+
+@import url(&amp;#39;print.css&amp;#39;);
+@page:right {
+ margin: 1cm 2cm 1.3cm 4cm;
+}
+
+@font-face {
+  font-family: Chunkfive; src: url(&amp;#39;Chunkfive.otf&amp;#39;);
+}
+
+div.text,
+#content,
+li[lang=ru] {
+  font: Tahoma, Chunkfive, sans-serif;
+  background: url(&amp;#39;hatch.png&amp;#39;) /* wtf? */;  color: #F0F0F0 !important;
+  width: 100%;
+}&lt;/pre&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/figure&gt;
+    
+      
+      &lt;figure class=&#34;highlight html&#34; style=&#34;display: none;&#34;&gt;   
+        &lt;table&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td class=&#34;gutter&#34;&gt;
+                &lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;
+              &lt;/td&gt;
+              &lt;td class=&#34;code&#34;&gt;
+                &lt;pre class=&#34;html code-highlight&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34;?&amp;gt;
+&amp;lt;response value=&amp;#34;ok&amp;#34; xml:lang=&amp;#34;en&amp;#34;&amp;gt;
+  &amp;lt;text&amp;gt;Ok&amp;lt;/text&amp;gt;
+  &amp;lt;comment html_allowed=&amp;#34;true&amp;#34;/&amp;gt;
+  &amp;lt;ns1:description&amp;gt;&amp;lt;![CDATA[
+  CDATA is &amp;lt;not&amp;gt; magical.
+  ]]&amp;gt;&amp;lt;/ns1:description&amp;gt;
+  &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a/&amp;gt;
+&amp;lt;/response&amp;gt;
+
+
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;title&amp;gt;Title&amp;lt;/title&amp;gt;
+
+&amp;lt;style&amp;gt;body {width: 500px;}&amp;lt;/style&amp;gt;
+
+&amp;lt;script type=&amp;#34;application/javascript&amp;#34;&amp;gt;
+  function $init() {return true;}
+&amp;lt;/script&amp;gt;
+
+&amp;lt;body&amp;gt;
+  &amp;lt;p checked class=&amp;#34;title&amp;#34; id=&amp;#39;title&amp;#39;&amp;gt;Title&amp;lt;/p&amp;gt;
+  &amp;lt;!-- here goes the rest of the page --&amp;gt;
+&amp;lt;/body&amp;gt;&lt;/pre&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/figure&gt;
+    
+  &lt;/div&gt;
+&lt;/figure&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
