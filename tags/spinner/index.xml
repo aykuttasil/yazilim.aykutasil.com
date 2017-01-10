@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/spinner/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/spinner/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Android Spinner Text Güncelleme</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-spinner-text-g%C3%BCncelleme/</link>
+      <pubDate>Tue, 10 Jan 2017 23:00:03 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-spinner-text-g%C3%BCncelleme/</guid>
+      <description>
+
+&lt;h2 id=&#34;dinamik-olarak-spinner-text-güncelleme&#34;&gt;Dinamik Olarak Spinner Text Güncelleme&lt;/h2&gt;
+
+&lt;p&gt;Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.&lt;/p&gt;
+
+&lt;p&gt;Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;String.xml&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;string name=&amp;quot;pazartesi&amp;quot;&amp;gt;Pazartesi&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;sali&amp;quot;&amp;gt;Salı&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;carsamba&amp;quot;&amp;gt;Çarşamba&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;persembe&amp;quot;&amp;gt;Perşembe&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;cuma&amp;quot;&amp;gt;Cuma&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;cumartesi&amp;quot;&amp;gt;Cumartesi&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;pazar&amp;quot;&amp;gt;Pazar&amp;lt;/string&amp;gt;
+
+
+&amp;lt;string-array name=&amp;quot;array_gonderi_list_haftalik&amp;quot;&amp;gt;
+    &amp;lt;item&amp;gt;@string/pazartesi&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/sali&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/carsamba&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/persembe&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/cuma&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/cumartesi&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/pazar&amp;lt;/item&amp;gt;
+&amp;lt;/string-array&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;SpinnerHelper.java&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static String[] getChangedSpinnerItemText(Context context) {
+    String[] originalList = context.getResources().getStringArray(R.array.array_gonderi_list_haftalik);
+
+    Resources resources = context.getResources();
+    for (int a = 0; a &amp;lt; originalList.length; a++) {
+        int count = 0;
+        if (originalList[a].equals(resources.getString(R.string.pazartesi))) {
+            count = 2;
+            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
+        } else if (originalList[a].equals(resources.getString(R.string.sali))) {
+            count = 4;
+            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
+        } else if (originalList[a].equals(resources.getString(R.string.carsamba))) {
+            count = 7;
+            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
+        } else {
+            count = 8
+            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
+        }
+    }
+    return originalList;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Daha sonra spinnerımızı tanımladığımız yere giderek spinnerımızı yapılandırıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FragmentX.java&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void setSpinnerNavToolbar() {
+
+ // Guncelledikten sonra spinner görünümü örneği
+ // Pazartesi ( 2 )
+ // Salı ( 4 )
+ // ... 
+ 
+ // Spinner itemlarının güncellenmiş halini barındıran listeyi getiriyoruz.
+ String[] changedList = getChangedSpinnerItemText(context);
+
+ // Spinner adapterımıza eklemeler yapılmış String Arrayi veriyoruz.
+ ArrayAdapter&amp;lt;CharSequence&amp;gt; adapter = new ArrayAdapter&amp;lt;CharSequence&amp;gt;(mContext, R.layout.spinner_nav_item_layout,changedList);
+ Spinner spinner = (Spinner) findViewById(R.id.spinner_nav);
+ spiner.setAdapter(adapter);
+ spinner.setVisibility(NavigationView.VISIBLE);
+ spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+ @Override
+ public void onItemSelected(AdapterView&amp;lt;?&amp;gt; parent, View view, int position, long id) {
+
+ // Original Liste elemanlarımızı getiriyoruz 
+ String[] originalList = context.getResources().getStringArray(R.array.array_gonderi_list_haftalik);
+ 
+ // Original Liste elemanını baz alarak işlem yapmak 
+ // Bu sayede Pazartesi , Salı gibi değerleri alıyoruz. Değiştirilmiş (güncellenmiş) değerleri sadece görünüm için kullanıyoruz.
+ String secilendeger = originalList[position];
+
+
+ // Pazartesi seçildiğinde yapmak istediğimiz işlemleri burada belirtebiliriz.
+ if (secilendeger.equals(getResources().getString(R.string.pazartesi))) {
+
+ } 
+ // Salı seçildiğinde yapmak istediğimiz işlemleri burada belirtebiliriz.
+ else if(secilendeger.equals(getResources().getString(R.string.pazartesi)))
+ {
+
+ }
+ }
+
+ @DebugLog
+ @Override
+ public void onNothingSelected(AdapterView&amp;lt;?&amp;gt; parent) {
+
+ }
+ });
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

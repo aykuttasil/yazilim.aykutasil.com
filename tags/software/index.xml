@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/software/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Local IIS Site Kurulumu</title>
+      <link>http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/</link>
+      <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/</guid>
+      <description>
+
+&lt;h1 id=&#34;local-iis-site-kurulumu&#34;&gt;Local IIS Site Kurulumu&lt;/h1&gt;
+
+&lt;p&gt;Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.&lt;/p&gt;
+
+&lt;p&gt;İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak  &lt;strong&gt;“Windows özellikleriniz Aç veya Kapat”&lt;/strong&gt; yazıp arama yapıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/d5obWDA&#34;&gt;&lt;img src=&#34;http://i.imgur.com/d5obWDA.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.&lt;/p&gt;
+
+&lt;h4 id=&#34;visual-studio-net-uygulamamızı-iis-e-tanıtma&#34;&gt;Visual Studio .Net Uygulamamızı IIS e Tanıtma&lt;/h4&gt;
+
+&lt;p&gt;Visual Studio da uygulamızın ayarlar kısmına girerek yukarıdaki gibi yapılandırıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Servers ın alt kısmında görmüş olduğunuz Local IIS i seçmeyi unutmayalım. Bu seçenek Local imize IIS kurduktan sonra geldi.&lt;/p&gt;
+
+&lt;p&gt;Şimdi sıra IIS yapılandırmasında.&lt;/p&gt;
+
+&lt;p&gt;Bunun için yine başlat tuşuna basarak iis yazalım ve Internet Information Services (IIS) Yöneticisi ne girelim.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/e2lPp4E&#34;&gt;&lt;img src=&#34;http://i.imgur.com/e2lPp4E.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Siteler e sağ tıklayarak Web Sitesi Ekle diyelim.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/UuDqEXb&#34;&gt;&lt;img src=&#34;http://i.imgur.com/UuDqEXb.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki gibi gerekli yerleri dolduralım.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Site adı :&lt;/strong&gt; Herhangi bir isim girebiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fiziksel Yol :&lt;/strong&gt;  uygulamamızın kodlarının bulunduğu klasörü göstermeliyiz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Not&lt;/strong&gt; : Web.Config dosyasının bulunduğu klasörün adresi gösterilmelidir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ana bilgisayar adı :&lt;/strong&gt; Visual Studio da girdiğimiz adresin aynısını girmeliyiz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/SQwIO0c&#34;&gt;&lt;img src=&#34;http://i.imgur.com/SQwIO0c.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;host-dosyası-yapılandırması&#34;&gt;Host dosyası yapılandırması&lt;/h4&gt;
+
+&lt;p&gt;IIS e kaydetmiş olduğumuz domain adresini Windows a söylemeliyiz.&lt;/p&gt;
+
+&lt;p&gt;Bunun için &lt;strong&gt;Windows/System32/drivers/etc&lt;/strong&gt; klasörünün içinde bulunan Host dosyasını  açarak adresimizi eklemeliyiz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Host dosyasını masaüstünüze kopyalayın. Gerekli düzenlemeleri yaptıktan sonra dosyayı kopyalayıp tekrar etc klasörünün içine yapıştırın.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/ABzsBY9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/ABzsBY9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki resimdeki gibi adresimizi ekleyip kaydediyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/BGUmzda&#34;&gt;&lt;img src=&#34;http://i.imgur.com/BGUmzda.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Artık Visual Studio muzda uygulamızı derleyebilir ve belirlediğimiz domainden erişim sağlayabiliriz.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>TSQL NULLIF Fonksiyonu Nedir ve Nasil Kullanilir</title>
+      <link>http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/</link>
+      <pubDate>Tue, 10 Jan 2017 23:08:34 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/</guid>
+      <description>
+
+&lt;h2 id=&#34;tsql-nullif-fonksiyonu&#34;&gt;TSQL NULLIF fonksiyonu&lt;/h2&gt;
+
+&lt;p&gt;NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.&lt;/p&gt;
+
+&lt;p&gt;Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.&lt;/p&gt;
+
+&lt;p&gt;Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;CREATE TABLE #Urun (
+UrunID TINYINT,
+ListeFiyati DECIMAL NULL); 
+
+GO
+
+INSERT #Urun VALUES(1,100);
+INSERT #Urun VALUES(2,NULL);
+INSERT #Urun VALUES(3,0);
+INSERT #Urun VALUES(7,250);
+INSERT #Urun VALUES(9,458);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ListeFiyati kolonuna göre count yaparsak sonuç olarak 4 dönecegini görürsünüz, çünkü UrunID’si 2 olan ürünün liste fiyati girilmemistir. Count fonksiyonu null degerleri saymayacagi için 5 degil 4 degerini döndürür. Count(*) veya count(UrunID) yazarsaniz ID kolonu hiç null olmadigi için 5 degerini görürsünüz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select count(*) from #Urun
+--sonuç : 5
+
+select count(UrunID) from #Urun
+--sonuç : 5
+
+select count(ListeFiyati) from #Urun
+--sonuç 4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Simdi gelelim NULLIF fonksiyonuna. Liste fiyati 0 olarak girilen ürünlerin sayiya dahil etmek istemiyorsak, Liste fiyati 0 olanlari NULL ‘a çevirerek count islemini yapabiliriz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select NULLIF(ListeFiyati,0) from #Urun
+/*
+Liste Fiyati 0 olanlari NULL yap.
+Sonuç:
+100
+NULL
+NULL
+250
+458
+*/
+
+--Liste Fiyati 0 olanlar hariç sayiyi bulmak istiyorsak. (count fonksiyonunun NULL degerleri saymadigini unutmayalim)
+select count(NULLIF(ListeFiyati,0)) from #Urun
+--sonuç : 3.
+--Çünkü bir ürüne ait liste fiyati 0 di. Onu NULL’ a degistirdik ve ----sayisini getirdik.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.yazilimmutfagi.com/10170/veritabani/sql-server/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir.aspx&#34;&gt;Kaynak&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Spinner Text Güncelleme</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-spinner-text-g%C3%BCncelleme/</link>
+      <pubDate>Tue, 10 Jan 2017 23:00:03 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-spinner-text-g%C3%BCncelleme/</guid>
+      <description>
+
+&lt;h2 id=&#34;dinamik-olarak-spinner-text-güncelleme&#34;&gt;Dinamik Olarak Spinner Text Güncelleme&lt;/h2&gt;
+
+&lt;p&gt;Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.&lt;/p&gt;
+
+&lt;p&gt;Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;String.xml&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;string name=&amp;quot;pazartesi&amp;quot;&amp;gt;Pazartesi&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;sali&amp;quot;&amp;gt;Salı&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;carsamba&amp;quot;&amp;gt;Çarşamba&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;persembe&amp;quot;&amp;gt;Perşembe&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;cuma&amp;quot;&amp;gt;Cuma&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;cumartesi&amp;quot;&amp;gt;Cumartesi&amp;lt;/string&amp;gt;
+&amp;lt;string name=&amp;quot;pazar&amp;quot;&amp;gt;Pazar&amp;lt;/string&amp;gt;
+
+
+&amp;lt;string-array name=&amp;quot;array_gonderi_list_haftalik&amp;quot;&amp;gt;
+    &amp;lt;item&amp;gt;@string/pazartesi&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/sali&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/carsamba&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/persembe&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/cuma&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/cumartesi&amp;lt;/item&amp;gt;
+    &amp;lt;item&amp;gt;@string/pazar&amp;lt;/item&amp;gt;
+&amp;lt;/string-array&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;SpinnerHelper.java&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static String[] getChangedSpinnerItemText(Context context) {
+    String[] originalList = context.getResources().getStringArray(R.array.array_gonderi_list_haftalik);
+
+    Resources resources = context.getResources();
+    for (int a = 0; a &amp;lt; originalList.length; a++) {
+        int count = 0;
+        if (originalList[a].equals(resources.getString(R.string.pazartesi))) {
+            count = 2;
+            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
+        } else if (originalList[a].equals(resources.getString(R.string.sali))) {
+            count = 4;
+            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
+        } else if (originalList[a].equals(resources.getString(R.string.carsamba))) {
+            count = 7;
+            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
+        } else {
+            count = 8
+            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
+        }
+    }
+    return originalList;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Daha sonra spinnerımızı tanımladığımız yere giderek spinnerımızı yapılandırıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FragmentX.java&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void setSpinnerNavToolbar() {
+
+ // Guncelledikten sonra spinner görünümü örneği
+ // Pazartesi ( 2 )
+ // Salı ( 4 )
+ // ... 
+ 
+ // Spinner itemlarının güncellenmiş halini barındıran listeyi getiriyoruz.
+ String[] changedList = getChangedSpinnerItemText(context);
+
+ // Spinner adapterımıza eklemeler yapılmış String Arrayi veriyoruz.
+ ArrayAdapter&amp;lt;CharSequence&amp;gt; adapter = new ArrayAdapter&amp;lt;CharSequence&amp;gt;(mContext, R.layout.spinner_nav_item_layout,changedList);
+ Spinner spinner = (Spinner) findViewById(R.id.spinner_nav);
+ spiner.setAdapter(adapter);
+ spinner.setVisibility(NavigationView.VISIBLE);
+ spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+ @Override
+ public void onItemSelected(AdapterView&amp;lt;?&amp;gt; parent, View view, int position, long id) {
+
+ // Original Liste elemanlarımızı getiriyoruz 
+ String[] originalList = context.getResources().getStringArray(R.array.array_gonderi_list_haftalik);
+ 
+ // Original Liste elemanını baz alarak işlem yapmak 
+ // Bu sayede Pazartesi , Salı gibi değerleri alıyoruz. Değiştirilmiş (güncellenmiş) değerleri sadece görünüm için kullanıyoruz.
+ String secilendeger = originalList[position];
+
+
+ // Pazartesi seçildiğinde yapmak istediğimiz işlemleri burada belirtebiliriz.
+ if (secilendeger.equals(getResources().getString(R.string.pazartesi))) {
+
+ } 
+ // Salı seçildiğinde yapmak istediğimiz işlemleri burada belirtebiliriz.
+ else if(secilendeger.equals(getResources().getString(R.string.pazartesi)))
+ {
+
+ }
+ }
+
+ @DebugLog
+ @Override
+ public void onNothingSelected(AdapterView&amp;lt;?&amp;gt; parent) {
+
+ }
+ });
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Runnable() &amp; Callable()</title>
+      <link>http://yazilim.aykutasil.com/2017/01/runnable--callable/</link>
+      <pubDate>Tue, 10 Jan 2017 22:44:52 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/runnable--callable/</guid>
+      <description>
+
+&lt;h1 id=&#34;runnable-callable&#34;&gt;Runnable() &amp;amp; Callable()&lt;/h1&gt;
+
+&lt;p&gt;Ayrıntılı açıklama için &lt;a href=&#34;http://www.java67.com/2013/01/difference-between-callable-and-runnable-java.html&#34;&gt;bu siteyi&lt;/a&gt; kullanabilirsiniz.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

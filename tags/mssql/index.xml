@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/mssql/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>TSQL NULLIF Fonksiyonu Nedir ve Nasil Kullanilir</title>
+      <link>http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/</link>
+      <pubDate>Tue, 10 Jan 2017 23:08:34 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/</guid>
+      <description>
+
+&lt;h2 id=&#34;tsql-nullif-fonksiyonu&#34;&gt;TSQL NULLIF fonksiyonu&lt;/h2&gt;
+
+&lt;p&gt;NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.&lt;/p&gt;
+
+&lt;p&gt;Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.&lt;/p&gt;
+
+&lt;p&gt;Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;CREATE TABLE #Urun (
+UrunID TINYINT,
+ListeFiyati DECIMAL NULL); 
+
+GO
+
+INSERT #Urun VALUES(1,100);
+INSERT #Urun VALUES(2,NULL);
+INSERT #Urun VALUES(3,0);
+INSERT #Urun VALUES(7,250);
+INSERT #Urun VALUES(9,458);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ListeFiyati kolonuna göre count yaparsak sonuç olarak 4 dönecegini görürsünüz, çünkü UrunID’si 2 olan ürünün liste fiyati girilmemistir. Count fonksiyonu null degerleri saymayacagi için 5 degil 4 degerini döndürür. Count(*) veya count(UrunID) yazarsaniz ID kolonu hiç null olmadigi için 5 degerini görürsünüz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select count(*) from #Urun
+--sonuç : 5
+
+select count(UrunID) from #Urun
+--sonuç : 5
+
+select count(ListeFiyati) from #Urun
+--sonuç 4
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Simdi gelelim NULLIF fonksiyonuna. Liste fiyati 0 olarak girilen ürünlerin sayiya dahil etmek istemiyorsak, Liste fiyati 0 olanlari NULL ‘a çevirerek count islemini yapabiliriz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select NULLIF(ListeFiyati,0) from #Urun
+/*
+Liste Fiyati 0 olanlari NULL yap.
+Sonuç:
+100
+NULL
+NULL
+250
+458
+*/
+
+--Liste Fiyati 0 olanlar hariç sayiyi bulmak istiyorsak. (count fonksiyonunun NULL degerleri saymadigini unutmayalim)
+select count(NULLIF(ListeFiyati,0)) from #Urun
+--sonuç : 3.
+--Çünkü bir ürüne ait liste fiyati 0 di. Onu NULL’ a degistirdik ve ----sayisini getirdik.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.yazilimmutfagi.com/10170/veritabani/sql-server/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir.aspx&#34;&gt;Kaynak&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

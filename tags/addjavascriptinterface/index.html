@@ -306,6 +306,85 @@ Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/">
+                <h3 class="media-heading">Local IIS Site Kurulumu</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Local IIS Site Kurulumu Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
+İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
+
+Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/">
+                <h3 class="media-heading">TSQL NULLIF Fonksiyonu Nedir ve Nasil Kullanilir</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">TSQL NULLIF fonksiyonu NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.
+Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.
+Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.
+CREATE TABLE #Urun ( UrunID TINYINT, ListeFiyati DECIMAL NULL); GO INSERT #Urun VALUES(1,100); INSERT #Urun VALUES(2,NULL); INSERT #Urun VALUES(3,0); INSERT #Urun VALUES(7,250); INSERT #Urun VALUES(9,458);  ListeFiyati kolonuna göre count yaparsak sonuç olarak 4 dönecegini görürsünüz, çünkü UrunID’si 2 olan ürünün liste fiyati girilmemistir.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-spinner-text-g%C3%BCncelleme/">
+                <h3 class="media-heading">Android Spinner Text Güncelleme</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
+Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
+Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.
+Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
+String.xml
+&lt;string name=&quot;pazartesi&quot;&gt;Pazartesi&lt;/string&gt; &lt;string name=&quot;sali&quot;&gt;Salı&lt;/string&gt; &lt;string name=&quot;carsamba&quot;&gt;Çarşamba&lt;/string&gt; &lt;string name=&quot;persembe&quot;&gt;Perşembe&lt;/string&gt; &lt;string name=&quot;cuma&quot;&gt;Cuma&lt;/string&gt; &lt;string name=&quot;cumartesi&quot;&gt;Cumartesi&lt;/string&gt; &lt;string name=&quot;pazar&quot;&gt;Pazar&lt;/string&gt; &lt;string-array name=&quot;array_gonderi_list_haftalik&quot;&gt; &lt;item&gt;@string/pazartesi&lt;/item&gt; &lt;item&gt;@string/sali&lt;/item&gt; &lt;item&gt;@string/carsamba&lt;/item&gt; &lt;item&gt;@string/persembe&lt;/item&gt; &lt;item&gt;@string/cuma&lt;/item&gt; &lt;item&gt;@string/cumartesi&lt;/item&gt; &lt;item&gt;@string/pazar&lt;/item&gt; &lt;/string-array&gt;  SpinnerHelper.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/runnable--callable/">
+                <h3 class="media-heading">Runnable() &amp; Callable()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Runnable() &amp; Callable() Ayrıntılı açıklama için bu siteyi kullanabilirsiniz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/pendingintent-flags/">
                 <h3 class="media-heading">PendingIntent Flags</h3>
               </a>
@@ -436,7 +515,7 @@ OneoffTask oneoff = new OneoffTask.Builder() // Uygulamanızı kapatsanız bile 
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         6 posts found
+         10 posts found
       </p>
     </div>
   </div>
