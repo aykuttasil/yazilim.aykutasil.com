@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/categories/azure/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/categories/azure/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Azure Mobile Services ve Notification Hubs Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/azure-mobile-services-ve-notification-hubs-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 00:21:36 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/azure-mobile-services-ve-notification-hubs-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Azure Mobile Services çok hızlı ve kolay bir şekilde uygulama geliştirmeniz için önceden veya uygulama yazımı sırasında yapılması gereken işlemleri minimize eden bir servistir.&lt;/p&gt;
+
+&lt;p&gt;Kullanımı oldukça kolay olmakla beraber ilk bir kaç adımı gerçekleştirmek bazen can sıkıcı olabilmekte.&lt;/p&gt;
+
+&lt;p&gt;Bunun için ufak bir örnekle bu ilk birkaç adımı beraber atıcaz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://azure.microsoft.com/tr-tr/&#34;&gt;https://azure.microsoft.com/tr-tr/&lt;/a&gt; adresinden portal a girdiniz.Ve mobile services tab ından new diyerek yeni bir mobile services oluşturdunuz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/AzIDXWf&#34;&gt;&lt;img src=&#34;http://i.imgur.com/AzIDXWf.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oluşturduğunuz Mobile Service tıkladınız ve çıkan ekranda Push tabına girdiniz.Bu taba tıkladıktan sonra notification gönderebilieceğiniz platformları göreceksiniz.&lt;/p&gt;
+
+&lt;p&gt;Biz bu örneğimizde Android Platformu için push gönderimini anlatıcaz ve bunun için GCM API kısmına &lt;a href=&#34;https://console.developers.google.com/&#34;&gt;https://console.developers.google.com/&lt;/a&gt; linkinden oluşturduğumuz yeni proje nin API KEY ini yazıyoruz.Bu API KEY i bulmak için yeni proje oluşturduğunuzda Credentials sekmesinden &amp;gt; Add Credentials &amp;gt; API Key ve Server Key tıklıyoruz ve buradaki API KEY i kullanıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOT :&lt;/strong&gt; &lt;strong&gt;APIS&lt;/strong&gt; sekmesinden &lt;strong&gt;Cloud Messaging for Android&lt;/strong&gt; API sini aktif etmeyi unutmayın.&lt;/p&gt;
+
+&lt;p&gt;Azure tarafında yapmanız gerekenler bunlar.&lt;/p&gt;
+
+&lt;p&gt;Client tarafında ki kodlar için ise her platforma özel kodlar bulunmaktadır.&lt;/p&gt;
+
+&lt;p&gt;Android Client ı için örnek kodlara &lt;a href=&#34;https://github.com/aykuttasil/AzureMobileService&#34;&gt;https://github.com/aykuttasil/AzureMobileService&lt;/a&gt; linkinden erişebilirsiniz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Azure tarafında bir çok farklı işlem gerçekleştirebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Örneğin herhangi bir client da (android , ios , http vs.) mobile service altyapısını kullanarak veritabanına veri eklediniz.Ve her veri girişi yapıldığda uygulamanın yüklü olduğu tüm cihazlara bildirim göndermek istiyorsunuz.&lt;/p&gt;
+
+&lt;p&gt;Bu ve buna benzer işlemlerinizi Azure Server tarafında halledebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki resimde her Item tablosuna veri eklendiğin de bildirim gönderen kod bloğunu görebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/VSKzp0b&#34;&gt;&lt;img src=&#34;http://i.imgur.com/VSKzp0b.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

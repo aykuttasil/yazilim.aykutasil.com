@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/sqlite/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/sqlite/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Android ActiveAndroid Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.&lt;/p&gt;
+
+&lt;p&gt;Kütüphaneyi &lt;a href=&#34;https://github.com/pardom/ActiveAndroid&#34;&gt;buradan&lt;/a&gt; indirebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Kullanımı oldukça basittir. Sadece birkaç noktaya özellikle dikkat edilmesi gerekiyor. Bunlardan biri oluşturmuş olduğunuz tabloya yeni alanlar eklediğiniz de tablonuzu güncellemek. Veya herhangi bir sebeple tabloda çeşitli işlemler yapmak.&lt;/p&gt;
+
+&lt;p&gt;Aşağıda kısaca Tablo oluşturmaktan ve gerektiğinde Tablo yu nasıl güncelleyeceğimizden bahsedicem.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Table(name = &amp;quot;Items&amp;quot;)
+public class ModelSampleItem extends Model {
+
+    @Column(name = &amp;quot;Name&amp;quot;)
+    public String name;
+
+    @Column(name = &amp;quot;Surname&amp;quot;)
+    public String surname;
+
+    @Column(name = &amp;quot;Phone&amp;quot;)
+    public String phoneNumber;
+
+    @Column(name = &amp;quot;Xyz&amp;quot;)
+    public String xyz;
+
+    @Column(name = &amp;quot;EMail&amp;quot;)
+    public String email;
+
+    @Column(name = &amp;quot;TryColumn&amp;quot;)
+    public String tryColumn;
+
+
+    @Column(name = &amp;quot;Column3&amp;quot;)
+    public String column3;
+
+    
+
+    public ModelSampleItem() {
+        super();
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki yapıyı kullanarak istediğiniz Tablo yu oluşturmanız mümkün.&lt;/p&gt;
+
+&lt;p&gt;Tabi bundan önce yapmamız gereken birkaç ayar var.&lt;/p&gt;
+
+&lt;p&gt;Android uygulamamızın Manifest dosyasına custom Application Name tanımlıyoruz ve bu isimde bir Class oluşturuyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;application
+    android:name=&amp;quot;.app.AppController&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ve Application dan türeyen sınıfımız&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class AppController extends com.activeandroid.app.Application {
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;com.activeandroid.app.Application&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki sınıftan türetmek  aslında &lt;strong&gt;onCreate()&lt;/strong&gt; içerisinde &lt;strong&gt;ActiveAndroid.initializ(this)&lt;/strong&gt; ile aynı anlama gelmektedir.Ama yukarıda ki gibi yaparsak daha güzel bir görünüm olacaktır.&lt;/p&gt;
+
+&lt;p&gt;Ve aşağıdaki meta-taglarını &lt;code&gt;&amp;lt;application&amp;gt;&lt;/code&gt; tagları arasıne ekliyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;meta-data
+    android:name=&amp;quot;AA_DB_NAME&amp;quot;
+    android:value=&amp;quot;newiztop1.db&amp;quot; /&amp;gt;
+&amp;lt;meta-data
+    android:name=&amp;quot;AA_DB_VERSION&amp;quot;
+    android:value=&amp;quot;1&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yapılandırma ayarlarımız bu kadar. Artık &lt;strong&gt;Items&lt;/strong&gt; benzeri tablolarınızı yukarıda ki gibi yazmanız ve uygulamanızı çalıştırmanız yeterli olacaktır.&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki tabloya sonradan bir alan eklememiz gerekti. Uygulamamız büyüdükçe nelere ihtiyacı olacağını kestirmek imkansıza yakındır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Column(name = &amp;quot;Column4&amp;quot;)
+    public String column4;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alanımızı Items sınıfımıza ekliyoruz. Ama çalıştırdığımız da uygulamamız hata verecektir.&lt;/p&gt;
+
+&lt;p&gt;Uygulamamıza yeni alan eklediğimizi bildirmek için biraz kıvranmamız gerekmekte.&lt;/p&gt;
+
+&lt;p&gt;Öncelikle &lt;strong&gt;assets&lt;/strong&gt; klasörünün içine migrations isilmli bir klasör oluşturuyoruz. Bu ismi vermek zorunludur. assets/migrations&lt;/p&gt;
+
+&lt;p&gt;Ve oluşturduğumuz migrations klasörüne &lt;strong&gt;2.sql&lt;/strong&gt; isimli bir dosya oluşturuyoruz.Niye 2 peki?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;meta-data
+    android:name=&amp;quot;AA_DB_NAME&amp;quot;
+    android:value=&amp;quot;newiztop1.db&amp;quot; /&amp;gt;
+
+&amp;lt;meta-data
+    android:name=&amp;quot;AA_DB_VERSION&amp;quot;
+    android:value=&amp;quot;1&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Android Manifest dosyasına yapılandırırken &lt;strong&gt;DB_VERSION&lt;/strong&gt; olarak 1 verdik. Bura da belirttiğimiz sayının bir fazlası olması gerekiyor *.sql dosyamızın ismi.&lt;/p&gt;
+
+&lt;p&gt;Ve &lt;strong&gt;2.sql&lt;/strong&gt; dosyamızın içine&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;BEGIN TRANSACTION;
+ALTER TABLE Items ADD COLUMN Column4 TEXT;
+COMMIT;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ekliyoruz.&lt;/p&gt;
+
+&lt;p&gt;Ve çalıştırdığımız da &lt;strong&gt;Items&lt;/strong&gt; tablomuza &lt;strong&gt;Column4&lt;/strong&gt; isimli bir alan eklenmiş olacaktır.Artık bu alanımızı da gönül rahatlığıyla kullanabiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Items Tablomuza herhangi bir satır eklemek istersek :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ModelSampleItem msi = new ModelSampleItem();
+msi.name = &amp;quot;Aykut&amp;quot;;
+msi.surname = &amp;quot;Asil&amp;quot;;
+msi.phoneNumber = &amp;quot;535&amp;quot;;
+msi.email = &amp;quot;huuuu@gmail.com&amp;quot;;
+msi.xyz = &amp;quot;xy&amp;lt;&amp;quot;;
+msi.Column4 = &amp;quot;merhaba&amp;quot;;
+msi.save();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dememiz yeterli olacaktır.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Kaydedilmiş bir veriyi okumak istersek :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ModelSampleItem myModel = Model.load(ModelSampleItem.class, 6); // id si 6 olan veriyi getirir
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;veya&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;List&amp;lt;ModelSampleItem&amp;gt; listMOdel = new Select().from(ModelSampleItem.class).execute(); // Tüm verileri List şeklinde getirir.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;İhityacınıza yönelik sorgulamalar yapabilirsiniz. Tek yapmanız gereken biraz kurcalamak.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

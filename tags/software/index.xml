@@ -9,6 +9,690 @@
     <atom:link href="http://yazilim.aykutasil.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Postman ile API Test Yazımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/postman-ile-api-test-yaz%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 01:09:39 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/postman-ile-api-test-yaz%C4%B1m%C4%B1/</guid>
+      <description>
+
+&lt;h1 id=&#34;postman&#34;&gt;POSTMAN&lt;/h1&gt;
+
+&lt;p&gt;Postman HTTP Request lerinizi istediğiniz şekilde düzenleyip çalıştırabileceğiniz ve test edebileceğiniz bir Chrome eklentisidir.&lt;/p&gt;
+
+&lt;p&gt;Bu &lt;a href=&#34;https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop&#34;&gt;linkten&lt;/a&gt; Chrome a ekleyebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Postman kullanarak API lerinizi test edebilirsiniz..&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tek bir butona tıklayarak istediğiniz kadar Request i çalıştırabilir ve bu Requst lerden gelen değerleri başka bir Requestinize parametre olarak gönderebilrsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/uNpJFK4&#34;&gt;&lt;img src=&#34;http://i.imgur.com/uNpJFK4.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıdaki ekran Postman i yüklediğinizde açılan ilk ekrandır.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Enter request URL here&lt;/strong&gt; yazan kutucuğa End Point yani istek yapacağımız adres yazılır.&lt;/p&gt;
+
+&lt;p&gt;Şuan &lt;strong&gt;GET&lt;/strong&gt; olarak gözüken yerden yapılacak olan istediğin cinsi seçilir.&lt;strong&gt;(POST , GET ,PUT ,DELETE vs.)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Authorization&lt;/strong&gt; tabından Request gönderilecek adreste bir kimlik doğrulama var ise burdan gerekli parametreler girilebilir.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Headers&lt;/strong&gt; tabından yapılacak olan istekte bulunması gereken Header bilgileri girilir.(Content-Type gibi)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Body&lt;/strong&gt; tabından End Point i belirtilmiş adrese gönderilecek veriler girilir.Bu veriiler form-data , urlencoded , raw , binary şeklinde olabilir.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Pre-request&lt;/strong&gt; script tabını  kullanarak istek yapmadan hemen önce otomatik olarak yapılacak işlemleri belirleyebiliriz.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Tests&lt;/strong&gt; tabından yapılan isteklere ait çeşitli testler yazabiliriz.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ve &lt;strong&gt;SEND&lt;/strong&gt; butouna tıklayarak istek gönderilir.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;No Environment&lt;/strong&gt; yazan kısma tıklayarak farklı projeler için Environment tanımlayabilriz.Ve her proje kendine ait Environment  Variable ları kullanır.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Environment variable&lt;/strong&gt; lar &lt;strong&gt;Global&lt;/strong&gt; olarak ta tanımlanabilir.Bu şekilde tanımlanmış variable lar tüm oluşturulmuş olan Environment lar içinden erişilebilir.&lt;/p&gt;
+
+&lt;p&gt;Sabit environment lar oluşturmak için No Environment tabına tıklanarak bir Environment oluşturulur ve &lt;strong&gt;Manage Environment&lt;/strong&gt; diyerek sabit değişkenler oluşturulabilir.&lt;/p&gt;
+
+&lt;p&gt;Dinamik olarak oluşturmak için Tests tabı kullanılır.&lt;/p&gt;
+
+&lt;p&gt;Ve kullanım şekli :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;postman.setEnvironmentVariable(&amp;quot;key&amp;quot;,&amp;quot;value&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Global variable oluşturmak için:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;postman.setGlobalEnvironmentVariable(&amp;quot;key&amp;quot;,&amp;quot;value&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/xZwuAHQ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/xZwuAHQ.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıda görüldüğü gibi Requestimize ait sabit değerleri bu şekilde environment variable olarak kaydedebiliriz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/LuJbfDN&#34;&gt;&lt;img src=&#34;http://i.imgur.com/LuJbfDN.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıda görüldüğü gibi oluşturmuş olduğumuz environment variable ı adres çubuğunda kullandık.Ve url nin devamını kendimiz el ile yazdık.Response olarak dönen değeride yukarıda ki  gibi görebiliyoruz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/jqkOC9D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/jqkOC9D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Yaptığımız istek sonucu dönen Responsumuzu test etmeye geldi sıra.&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki resimde gördüğünüz gibi gelen response değerinde status diye bir property bulunuyor  mu ? ve responce code değeri 200 mü ? diye basit bir test yazıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SEND&lt;/strong&gt; dediğimizde yazdığımız testlerde çalışacak ve Response sonucunu gördüğümüz ekranın üstünde bulunan Tests(&lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;) tabına tıklayarak test sonçlarını görebilicez.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Şimdi bir Blog yazısı kayıt etmeye çalışalım.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/iOr6a5D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/iOr6a5D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bu şekilde yazıp  &lt;strong&gt;SEND&lt;/strong&gt; e bastığımız da Response olarak Invalid hatası vericektir.Çünkü Authorization bilgilerini girmemizi istemektedir.Bunu yapabilmemiz aşağıdaki gibi bir token oluşturuyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/PIMTrVC&#34;&gt;&lt;img src=&#34;http://i.imgur.com/PIMTrVC.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/optSB3D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/optSB3D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ve oluşturduğumuz token bilgileriniz Blog post ederken kullanabilmek için &lt;strong&gt;Environment Variable&lt;/strong&gt; olarak atıyoruz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Ve aşağıdaki gibi Blog Post değerlerimizi güncelliyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/XWxEZRv&#34;&gt;&lt;img src=&#34;http://i.imgur.com/XWxEZRv.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/5hcJ3kJ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/5hcJ3kJ.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Bir Blog mesajı yazarken&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+ &amp;quot;post&amp;quot; : &amp;quot;Merhaba&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;bu şekilde oluşturabileceğiniz gibi&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
+ &amp;quot;post&amp;quot; : &amp;quot;{{token}}&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;bu şekilde de kaydetmiş olduğunuz Environment Variable ları değer olarak atayabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Bu şekil de zincirleme reaksiyonlar oluşturabilir ve bir istek sonucu dönen değeri diğer isteğinize parametre olarak gönderebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/3qNG7qq&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3qNG7qq.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/LPrqyEn&#34;&gt;&lt;img src=&#34;http://i.imgur.com/LPrqyEn.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıda görüldüğü gibi environment variable değerinizi Url nize parametre olarak yerleştirebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Postman de test yazarken kullanabileceğiniz ve çok yararlı olabilecek console.log u aktif etmek için bir kaç ayar yapmanız gerekmekte.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chromu u açın ve adres satırına chrome://flags  yazın.&lt;/li&gt;
+&lt;li&gt;Çıkan pencerece “package” diye arama yapın (CTRL + F)&lt;/li&gt;
+&lt;li&gt;Ve  #debug-packed-apps  enable yapın.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/hMi6dle&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hMi6dle.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Şimdi Postman ekranına gelin ve herhangi bir yere sağ tıklayarak öğeyi denetle diyin ve Console tabını açın.&lt;/p&gt;
+
+&lt;p&gt;Bu ekran da postman de test yazarken kullanmış olduğunuz &lt;code&gt;console.log(“xyz”)&lt;/code&gt; komutunun sonucunu görebilirsiniz.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android ActiveAndroid Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.&lt;/p&gt;
+
+&lt;p&gt;Kütüphaneyi &lt;a href=&#34;https://github.com/pardom/ActiveAndroid&#34;&gt;buradan&lt;/a&gt; indirebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Kullanımı oldukça basittir. Sadece birkaç noktaya özellikle dikkat edilmesi gerekiyor. Bunlardan biri oluşturmuş olduğunuz tabloya yeni alanlar eklediğiniz de tablonuzu güncellemek. Veya herhangi bir sebeple tabloda çeşitli işlemler yapmak.&lt;/p&gt;
+
+&lt;p&gt;Aşağıda kısaca Tablo oluşturmaktan ve gerektiğinde Tablo yu nasıl güncelleyeceğimizden bahsedicem.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Table(name = &amp;quot;Items&amp;quot;)
+public class ModelSampleItem extends Model {
+
+    @Column(name = &amp;quot;Name&amp;quot;)
+    public String name;
+
+    @Column(name = &amp;quot;Surname&amp;quot;)
+    public String surname;
+
+    @Column(name = &amp;quot;Phone&amp;quot;)
+    public String phoneNumber;
+
+    @Column(name = &amp;quot;Xyz&amp;quot;)
+    public String xyz;
+
+    @Column(name = &amp;quot;EMail&amp;quot;)
+    public String email;
+
+    @Column(name = &amp;quot;TryColumn&amp;quot;)
+    public String tryColumn;
+
+
+    @Column(name = &amp;quot;Column3&amp;quot;)
+    public String column3;
+
+    
+
+    public ModelSampleItem() {
+        super();
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki yapıyı kullanarak istediğiniz Tablo yu oluşturmanız mümkün.&lt;/p&gt;
+
+&lt;p&gt;Tabi bundan önce yapmamız gereken birkaç ayar var.&lt;/p&gt;
+
+&lt;p&gt;Android uygulamamızın Manifest dosyasına custom Application Name tanımlıyoruz ve bu isimde bir Class oluşturuyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;application
+    android:name=&amp;quot;.app.AppController&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ve Application dan türeyen sınıfımız&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class AppController extends com.activeandroid.app.Application {
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;com.activeandroid.app.Application&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki sınıftan türetmek  aslında &lt;strong&gt;onCreate()&lt;/strong&gt; içerisinde &lt;strong&gt;ActiveAndroid.initializ(this)&lt;/strong&gt; ile aynı anlama gelmektedir.Ama yukarıda ki gibi yaparsak daha güzel bir görünüm olacaktır.&lt;/p&gt;
+
+&lt;p&gt;Ve aşağıdaki meta-taglarını &lt;code&gt;&amp;lt;application&amp;gt;&lt;/code&gt; tagları arasıne ekliyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;meta-data
+    android:name=&amp;quot;AA_DB_NAME&amp;quot;
+    android:value=&amp;quot;newiztop1.db&amp;quot; /&amp;gt;
+&amp;lt;meta-data
+    android:name=&amp;quot;AA_DB_VERSION&amp;quot;
+    android:value=&amp;quot;1&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yapılandırma ayarlarımız bu kadar. Artık &lt;strong&gt;Items&lt;/strong&gt; benzeri tablolarınızı yukarıda ki gibi yazmanız ve uygulamanızı çalıştırmanız yeterli olacaktır.&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki tabloya sonradan bir alan eklememiz gerekti. Uygulamamız büyüdükçe nelere ihtiyacı olacağını kestirmek imkansıza yakındır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Column(name = &amp;quot;Column4&amp;quot;)
+    public String column4;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alanımızı Items sınıfımıza ekliyoruz. Ama çalıştırdığımız da uygulamamız hata verecektir.&lt;/p&gt;
+
+&lt;p&gt;Uygulamamıza yeni alan eklediğimizi bildirmek için biraz kıvranmamız gerekmekte.&lt;/p&gt;
+
+&lt;p&gt;Öncelikle &lt;strong&gt;assets&lt;/strong&gt; klasörünün içine migrations isilmli bir klasör oluşturuyoruz. Bu ismi vermek zorunludur. assets/migrations&lt;/p&gt;
+
+&lt;p&gt;Ve oluşturduğumuz migrations klasörüne &lt;strong&gt;2.sql&lt;/strong&gt; isimli bir dosya oluşturuyoruz.Niye 2 peki?&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;meta-data
+    android:name=&amp;quot;AA_DB_NAME&amp;quot;
+    android:value=&amp;quot;newiztop1.db&amp;quot; /&amp;gt;
+
+&amp;lt;meta-data
+    android:name=&amp;quot;AA_DB_VERSION&amp;quot;
+    android:value=&amp;quot;1&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Android Manifest dosyasına yapılandırırken &lt;strong&gt;DB_VERSION&lt;/strong&gt; olarak 1 verdik. Bura da belirttiğimiz sayının bir fazlası olması gerekiyor *.sql dosyamızın ismi.&lt;/p&gt;
+
+&lt;p&gt;Ve &lt;strong&gt;2.sql&lt;/strong&gt; dosyamızın içine&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;BEGIN TRANSACTION;
+ALTER TABLE Items ADD COLUMN Column4 TEXT;
+COMMIT;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ekliyoruz.&lt;/p&gt;
+
+&lt;p&gt;Ve çalıştırdığımız da &lt;strong&gt;Items&lt;/strong&gt; tablomuza &lt;strong&gt;Column4&lt;/strong&gt; isimli bir alan eklenmiş olacaktır.Artık bu alanımızı da gönül rahatlığıyla kullanabiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Items Tablomuza herhangi bir satır eklemek istersek :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ModelSampleItem msi = new ModelSampleItem();
+msi.name = &amp;quot;Aykut&amp;quot;;
+msi.surname = &amp;quot;Asil&amp;quot;;
+msi.phoneNumber = &amp;quot;535&amp;quot;;
+msi.email = &amp;quot;huuuu@gmail.com&amp;quot;;
+msi.xyz = &amp;quot;xy&amp;lt;&amp;quot;;
+msi.Column4 = &amp;quot;merhaba&amp;quot;;
+msi.save();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dememiz yeterli olacaktır.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Kaydedilmiş bir veriyi okumak istersek :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ModelSampleItem myModel = Model.load(ModelSampleItem.class, 6); // id si 6 olan veriyi getirir
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;veya&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;List&amp;lt;ModelSampleItem&amp;gt; listMOdel = new Select().from(ModelSampleItem.class).execute(); // Tüm verileri List şeklinde getirir.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;İhityacınıza yönelik sorgulamalar yapabilirsiniz. Tek yapmanız gereken biraz kurcalamak.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Robolectric ile UnitTest Yazımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/robolectric-ile-unittest-yaz%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 00:31:52 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/robolectric-ile-unittest-yaz%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.&lt;/p&gt;
+
+&lt;p&gt;Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.&lt;/p&gt;
+
+&lt;p&gt;Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Android Studio da Robolectric kullanarak Unit Test Yazımı&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.(Ben gerektiğinden uzun bi zaman harcadım, siz harcamayın !)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;build.gradle&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-gradle&#34;&gt;apply plugin: &#39;com.android.application&#39;
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion &amp;quot;23.0.0&amp;quot;
+
+    defaultConfig {
+        applicationId &amp;quot;com.a.aykut.tryrobolectric1&amp;quot;
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1
+        versionName &amp;quot;1.0&amp;quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+    compile &#39;com.android.support:appcompat-v7:22.2.1&#39;
+    compile &#39;com.jakewharton:butterknife:7.0.1&#39;
+
+    testCompile &#39;junit:junit:4.12&#39;
+    testCompile &#39;com.squareup.assertj:assertj-android:1.1.0&#39;
+    testCompile &#39;org.robolectric:robolectric:3.0&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;MainActivity&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Bind(R.id.button)
+Button button;
+
+@Bind(R.id.textView)
+TextView textView;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  ButterKnife.bind(this);
+}
+
+@OnClick(R.id.button)
+public void buttonClick(View vi) {
+  textView.setText(&amp;quot;tiklandi&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;AndroidManifest.xml  dosyasında herhangi bir değişiklik yapmanıza gerek yok.&lt;/p&gt;
+
+&lt;p&gt;Test sınıfımızı yazmaya başlayalım.&lt;/p&gt;
+
+&lt;p&gt;İlk olarak Android Studio nun sol tarafında yer alan &lt;strong&gt;Build Variant&lt;/strong&gt; tabından &lt;strong&gt;Test Artifact&lt;/strong&gt; kısmını &lt;strong&gt;Unit Tests&lt;/strong&gt; olarak değiştirin.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/rEPljpe&#34;&gt;&lt;img src=&#34;http://i.imgur.com/rEPljpe.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Unit Test yazmak için &lt;strong&gt;src&lt;/strong&gt; klasörüne test isminde bir klasör ve test klasörünün içine de &lt;strong&gt;java&lt;/strong&gt; isimli bir klasör oluşturmanız gerekmektedir.&lt;/p&gt;
+
+&lt;p&gt;yani &lt;strong&gt;src/test&lt;/strong&gt; ve &lt;strong&gt;src/test/java&lt;/strong&gt; klasörlerini oluşturmalısınız.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/gztY5gr&#34;&gt;&lt;img src=&#34;http://i.imgur.com/gztY5gr.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğunuz java klasörüne sağ tıklayarak new &amp;gt; Package diyin ve normal Package isminizle aynı isimde bir Package oluşturun.Burda biz com.a.aykut.tryrobolectric1 ismini kullandık.&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğunuz Package sağ tıklayarak new &amp;gt; Java Class diyin ve test sınıfını oluşturun. Anlaşılabilirlik açısından Test*(Test Edilecek Sınıf ismi) olarak isimlendirebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;TestMainActivity&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import android.app.Activity;
+
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class,sdk = 21)
+public class TestMainActivity {
+
+  Activity activity;
+  TextView textView;
+  Button button;
+
+  @Before
+  public void setUp() {
+    activity = Robolectric.setupActivity(MainActivity.class);
+    textView = (TextView) activity.findViewById(R.id.textView);
+    button = (Button) activity.findViewById(R.id.button);
+  }
+
+  @Test
+  public void shouldMainActivityNotBeNull() throws Exception {
+    Robolectric.buildActivity(MainActivity.class).create().pause().resume().get();
+    assertTrue(Robolectric.buildActivity(MainActivity.class).create().get() != null);
+    String hello = new MainActivity().getResources().getString(R.string.hello_world);
+    assertEquals(hello, &amp;quot;Hello world!&amp;quot;);
+
+
+  }
+
+  @Test
+  public void buttonClickChangeTextView() throws Exception {
+    String text = textView.getText().toString();
+    assertEquals(text, &amp;quot;Hello world!&amp;quot;);
+    button.performClick();
+    text = textView.getText().toString();
+    assertEquals(text, &amp;quot;tiklandi&amp;quot;);
+
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Evet.Test sınıfımızı da yazdık.Artık çalıştırabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Testimizi çalıştırmak için yazmış olduğumuz Test Sınıfına sağ tıklayarak Run diyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/7STeLHy&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7STeLHy.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Run dediğiniz de Test çalışacaktır. Fakat aşağıdaki hataya benzer bir hata alırsanız endişelenmeyin.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;java.lang.RuntimeException: build\intermediates\bundles\debug\AndroidManifest.xml not found or not a file; it should point to your project&#39;s AndroidManifest.xml
+
+at org.robolectric.manifest.AndroidManifest.validate(AndroidManifest.java:121)
+
+at org.robolectric.manifest.AndroidManifest.getResourcePath(AndroidManifest.java:469)
+
+at org.robolectric.manifest.AndroidManifest.getIncludedResourcePaths(AndroidManifest.java:475)
+
+at org.robolectric.RobolectricTestRunner.createAppResourceLoader(RobolectricTestRunner.java:491)
+
+at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+.
+
+.
+
+.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/1TpiUpG&#34;&gt;&lt;img src=&#34;http://i.imgur.com/1TpiUpG.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Resim de görüldüğü gibi &lt;strong&gt;Edit Configurations&lt;/strong&gt; a tıklayın.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/pFGTznR&#34;&gt;&lt;img src=&#34;http://i.imgur.com/pFGTznR.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Resim deki gibi &lt;strong&gt;Working directory&lt;/strong&gt; yolunun sonuna &lt;strong&gt;\app&lt;/strong&gt; ekleyin.&lt;/p&gt;
+
+&lt;p&gt;Ve şimdi tekrar Test Sınıfına sağ tıklayarak Run diyin.&lt;/p&gt;
+
+&lt;p&gt;Ve sonuç aşağıdaki gibi olmalıdır.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/zIgjUDT&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zIgjUDT.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Kaynak kodlarını aşağıdkai linkten indirebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/aykuttasil/RobolectricUnitTest&#34;&gt;https://github.com/aykuttasil/RobolectricUnitTest&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Unit Test Nedir ? Niçin ve Nasıl Yapılır ?</title>
+      <link>http://yazilim.aykutasil.com/2017/01/unit-test-nedir--ni%C3%A7in-ve-nas%C4%B1l-yap%C4%B1l%C4%B1r-/</link>
+      <pubDate>Wed, 11 Jan 2017 00:27:54 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/unit-test-nedir--ni%C3%A7in-ve-nas%C4%B1l-yap%C4%B1l%C4%B1r-/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Unit Test Nedir ? Niçin ve Nasıl Yapılır ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Yıl olmuş 2014 hala birim test makalesi mi yazıyorsun diye düşünüyor olabilirsiniz. Ancak, birim testi uzun zamandır kullanılan bir yöntem olmasına rağmen tam olarak ne işe yaradığı, neden yapıldığı ve nasıl yapılması gerektiği konusunda açıklayıcı bir Türkçe yazı bulmak malesef zor. Bu yüzden, yazılım mühendisi adaylarına ve kariyerine yeni başlayan arkadaşlara faydalı olabilmek adına bu yazıyı yazmak uygun olur diye düşündüm.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Birim Testi Nedir?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Birim testi adından anlaşıldığı üzere yazılım birimlerinin test edilmesidir. Burada yazılım birimi dediğimiz şey ise test edilebilen en küçük yazılım bileşenidir. Nesneye yönelik programlama yaklaşımını ele alacak olursak, yazılım birimleri sınıflardır diyebiliriz. Yapılan şey basit olarak sınıf davranışlarının (metodlar) belirli girdiler sağlandığı zaman doğru bir şekilde çalışıp, istediğimiz sonucu üretip üretmediğini kontrol etmektir. Bu şekilde yazılımın küçük birimleri test edildiği zaman, bütünü oluşturan parçaların en azından kendi içlerinde çalıştığından emin olmuş oluruz. Buraya kadar söylediklerimiz birim testinin genel tanımıdır, ama yazılım geliştiren kişiler olarak asıl anlamamız gereken şey birim testini niçin yaptığımızdır.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Birim Test Niçin Yapılır?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bu soruyu eminim ki birçok yazılımcı kendi kendine sormuştur. Bir kısmımız tam olarak neye hizmet ettiğini anlamasak da, faydalı olduğunu düşündüğümüz için ve kendimizi daha güvende hissetmek adına birim test yazarız. Bazılarımız ise birim test yazmanın faydalı olduğunu bilmemize rağmen çeşitli bahaneler üreterek birim test yazmaktan kaçarız. Bunun arkasındaki asıl sebep ise birim testlerin ve test odaklı yazılım geliştirme tekniğinin (test-driven development) asıl amacını kavrayamamış olmamızdır. Her şeyden önce şunu söylemek gerekir: Birim testleri yazılımları test etmek için yazılmaz. İsmi “birim test” olan bir yöntem için “asıl amacı yazılımları test etmek değildir” demek ilk başta çok mantıklı gelmeyebilir ama yazıyı okudukça bana hak vereceğinizi düşünüyorum.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Birim testler hata bulmak için değildir&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bir yazılım sistemindeki hataları (bug) bulmak birim testler ile mümkün değildir. Çünkü birim testlerin yaptığı iş yazılımın en küçük parçalarını kendi içerisinde test etmektir. Peki bu küçük parçaların kendi içlerinde çalışıyor olması, yazılımın gerçek kullanıcılar tarafından kullanılmaya başladığı zaman bir bütün olarak çalışacağını gösterir mi? Kesinlikle hayır. Bir yazılım sistemi, onu oluşturan parçaların toplamından çok daha fazlasıdır. Dolayısıyla bu bütünü test etmek için farklı yöntemler kullanmak gerekir. İşlevsel test (functional testing), bütünleştirme testi (integration testing) bunlara örnek verilebilir ancak konumuz birim test olduğu için bunlara değinmeyeceğim.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Hataları bulamıyorsa birim testler ne işe yarıyor?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Birim test yazmanın sağladığı gerçek fayda, bizi kaliteli kod yazmaya teşvik etmesidir. Peki bu nasıl olur? Öncelikle şunu söylemek gerekir ki, birim test yazmanın birinci kuralı test etmekte olduğumuz sınıfı, bağımlı olduğu diğer bütün bileşenlerden izole etmektir. Örnek verecek olursak, test ettiğiniz sınıfın bir Google servisine bağlanarak veri çektiğini düşünün. Ancak birim test esnasında bu sınıfın Google servisine bağlanıp veri çekmesini istemeyiz. Çünkü birim testin amacı yazılımın Google servisleriyle çalışabildiğini kanıtlamak değildir. Birim test yazarken, bağlantılı olduğumuz diğer bütün parçaların sorunsuz biçimde çalıştığını varsayarak yazarız, çünkü odaklandığımız şey sınıfın kendisidir, bağımlı olduğu diğer bileşenler değil. Bu varsayımı yapabilmek için de, mocking dediğimiz tekniği kullanarak test esnasında gerçek Google servisine bağlanmak yerine bizim yarattığımız sahte bir servise (mock object) bağlanıp sınıfın ihtiyacı olan veriyi döndürürüz.  Bu şekilde test ettiğimiz sınıf dışarıda bir servise bağlanmadan ihtiyacı olan veriyi alır ve işletimini tamamlar.&lt;/p&gt;
+
+&lt;p&gt;Şimdi test etmekte olduğumuz bu sınıfın dışarıdaki Google servisiyle sıkı sıkıya bağlı (tightly coupled) olduğunu düşünün. Sınıf Google servisiyle ilgili bütün bilgileri içinde barındırıyor ve bağlantıyı yaratıp kullanıyor, veri alışverişini yapıyor. Biz bu sınıfa gerçek Google servisine değil de bizim belirlediğimiz sahte servise (mock object) bağlanmasını nasıl söyleyeceğiz? Bu şekilde birbirine sıkıca bağlanmış yazılım bileşenlerini birbirlerinden bağımsız bir şekilde test etmek mümkün değildir. Ancak bu bileşenler gevşek bağlı (loosely coupled) olsaydı, biz sınıfımıza test esnasında sahte servisi, gerçek işletim esnasında ise Google servisini kullanmasını söyleyebilirdik. Bu şekilde yazılım bileşenlerini birbirlerine gevşek bir biçimde bağlamak Dependency Injection tekniğiyle mümkündür ve gevşek bağlı sistemler çok daha kolay bakım yapılabilen, test edilebilen ve eklemeler yapması çok daha kolay olan sistemlerdir.&lt;/p&gt;
+
+&lt;p&gt;Test odaklı yazılım geliştirme yapıyorsak (test-driven development), birim testleri sınıfın kendisinden önce yazmamız gerektiği için bu tarz tasarım detaylarını henüz işin başındayken doğru bir şekilde belirlemiş oluruz. Doğru biçimde birim test yazmak, yazılım bileşenlerini birbirlerine sıkı sıkıya bağlamamızı engelleyerek daha tasarım aşamasındayken daha kaliteli bir yazılım çıkarmamıza yardımcı olur. Özet olarak şunu söylemekte fayda var, bütün bileşenleri birbirinden bağımsız olarak test edilebilen yazılımlar, bakımı nispeten daha kolay olan ve kaliteli yazılımlardır. İşe birim testleri yazarak başlamak da bunu başarmamıza yardımcı olur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Birim test yazmak kodda iyileştirme yapmayı (refactoring) kolaylaştırır&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Birim test yazmanın bir diğer büyük faydası da kodda iyileştirme yaparken (refactoring) ortaya çıkar. Hiçbir kod mükemmel değildir ve iyileştirme her zaman bir ihtiyaçtır. Ancak birçok yazılımcı çalışan sistemi bozmaktan korktuğu için iyileştirme yapmaz. Ancak kapsamlı birim testleriniz varsa, değişiklik yaptığınız sınıfın hala çalışıp çalışmadığını anlamak için birim testlerinizi kullanabilirsiniz. Daha önce birim testlerin hataları bulmak için kullanılmadığını söylemiş olsak da iyileştirme esnasında üzerinde çalıştığımız sınıfı bozup bozmadığımızı anlamak mümkün olabilir. Dolayısıyla birim test yazmak sadece kodu yazarken kaliteli yazmaya teşvik etmekle kalmaz, aynı zamanda ileride kodu iyileştirmemize de yardımcı olur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Doğru birim test nasıl yazılır?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Birim testin nasıl yazılması gerektiği de çok önemlidir. Doğru yazılmayan birim testler bize hiçbir şey kazandırmayacağı gibi en ufak değişiklikte hatalar vermeye başlayıp başımızı ağrıtırlar. Üstüne bir de testlere bakım yapmakla uğraşmak zorunda kalacağımız için de fayda sağlamanın aksine zararlı olabilirler. O yüzden birim test yazarken aşağıdaki noktalara dikkat etmekte fayda var:&lt;/p&gt;
+
+&lt;p&gt;Tek bir şeye odaklanın: Her testin tek bir şeyi test ettiğinden emin olun. Çok gerekli değilse aynı test içerisine birden fazla assert ifadesi koymayın.
+Bağımlılıkları (dependency) değil, tek bir sınıfı test edin: Yazıda daha önce de değindiğimiz gibi, bir sınıfı test ederken o sınıfı bağımlı olduğu diğer yazılım bileşenlerinden izole edin, aksi taktirde yazdığınız test birim test değildir.
+Yazdığınız testler birbirini etkilemesin: Yazdığınız her test birbirinden bağımsız bir şekilde tek başına sorunsuz çalışabilmelidir. Eğer yazdığınız bir birim test başka bir birim testin üreteceği veriye bağımlıysa yanlış yapıyorsunuz demektir.
+Testlerinizi doğru isimlendirin: Test sayısı arttıkça isimlendirmenin önemi de artar. Kafa karıştırıcı test isimleri kullanmak ileride problemlere yol açar. Açıklayıcı olması için test isimlerini uzun tutmanız gerekiyorsa öyle yapın, uzun isimler yanlış isimlerden daha faydalıdır.
+Test koduna ikinci sınıf kod muamelesi yapmayın: Testler de yazılımın bir parçasıdır. Dolayısıyla normal program kodunu yazarken ne kadar özen gösteriyorsanız test kodlarına da aynı özeni gösterin, kod tekrarlarından kaçının, okunabilir test kodu yazın.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.seckintozlu.com/etiketler/unit-test&#34;&gt;Kaynak&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Azure Mobile Services ve Notification Hubs Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/azure-mobile-services-ve-notification-hubs-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 00:21:36 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/azure-mobile-services-ve-notification-hubs-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Azure Mobile Services çok hızlı ve kolay bir şekilde uygulama geliştirmeniz için önceden veya uygulama yazımı sırasında yapılması gereken işlemleri minimize eden bir servistir.&lt;/p&gt;
+
+&lt;p&gt;Kullanımı oldukça kolay olmakla beraber ilk bir kaç adımı gerçekleştirmek bazen can sıkıcı olabilmekte.&lt;/p&gt;
+
+&lt;p&gt;Bunun için ufak bir örnekle bu ilk birkaç adımı beraber atıcaz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://azure.microsoft.com/tr-tr/&#34;&gt;https://azure.microsoft.com/tr-tr/&lt;/a&gt; adresinden portal a girdiniz.Ve mobile services tab ından new diyerek yeni bir mobile services oluşturdunuz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/AzIDXWf&#34;&gt;&lt;img src=&#34;http://i.imgur.com/AzIDXWf.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oluşturduğunuz Mobile Service tıkladınız ve çıkan ekranda Push tabına girdiniz.Bu taba tıkladıktan sonra notification gönderebilieceğiniz platformları göreceksiniz.&lt;/p&gt;
+
+&lt;p&gt;Biz bu örneğimizde Android Platformu için push gönderimini anlatıcaz ve bunun için GCM API kısmına &lt;a href=&#34;https://console.developers.google.com/&#34;&gt;https://console.developers.google.com/&lt;/a&gt; linkinden oluşturduğumuz yeni proje nin API KEY ini yazıyoruz.Bu API KEY i bulmak için yeni proje oluşturduğunuzda Credentials sekmesinden &amp;gt; Add Credentials &amp;gt; API Key ve Server Key tıklıyoruz ve buradaki API KEY i kullanıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOT :&lt;/strong&gt; &lt;strong&gt;APIS&lt;/strong&gt; sekmesinden &lt;strong&gt;Cloud Messaging for Android&lt;/strong&gt; API sini aktif etmeyi unutmayın.&lt;/p&gt;
+
+&lt;p&gt;Azure tarafında yapmanız gerekenler bunlar.&lt;/p&gt;
+
+&lt;p&gt;Client tarafında ki kodlar için ise her platforma özel kodlar bulunmaktadır.&lt;/p&gt;
+
+&lt;p&gt;Android Client ı için örnek kodlara &lt;a href=&#34;https://github.com/aykuttasil/AzureMobileService&#34;&gt;https://github.com/aykuttasil/AzureMobileService&lt;/a&gt; linkinden erişebilirsiniz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Azure tarafında bir çok farklı işlem gerçekleştirebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Örneğin herhangi bir client da (android , ios , http vs.) mobile service altyapısını kullanarak veritabanına veri eklediniz.Ve her veri girişi yapıldığda uygulamanın yüklü olduğu tüm cihazlara bildirim göndermek istiyorsunuz.&lt;/p&gt;
+
+&lt;p&gt;Bu ve buna benzer işlemlerinizi Azure Server tarafında halledebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki resimde her Item tablosuna veri eklendiğin de bildirim gönderen kod bloğunu görebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/VSKzp0b&#34;&gt;&lt;img src=&#34;http://i.imgur.com/VSKzp0b.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ReCaptcha Kullanimi</title>
+      <link>http://yazilim.aykutasil.com/2017/01/recaptcha-kullanimi/</link>
+      <pubDate>Wed, 11 Jan 2017 00:14:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/recaptcha-kullanimi/</guid>
+      <description>
+
+&lt;h1 id=&#34;recaptcha&#34;&gt;ReCaptcha&lt;/h1&gt;
+
+&lt;p&gt;Sitenize gelebilecek saldıralara karşı bir önlem olarak kullanılacak eklentilerden biridir ReCaptcha.&lt;/p&gt;
+
+&lt;p&gt;Kolay bir şekilde entegre edilir ve kolay bir şekilde güvenlik sağlanır.&lt;/p&gt;
+
+&lt;p&gt;Bunun için aşağıdaki adımları uygulamanız yeterli olacaktır.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.google.com/recaptcha/admin#list&#34;&gt;https://www.google.com/recaptcha/admin#list&lt;/a&gt; sitesine gidiniz.Ve gerekli yerleri doldurunuz.&lt;/li&gt;
+&lt;li&gt;Label kısmına ReCaptcha i hangi sayfada kullanacaksınız,(örneğin giriş sayfası için) GirişCaptcha diyin.&lt;/li&gt;
+&lt;li&gt;Domain kısmına sitenizin domain i ekleyin.Her biri bir satır olacak şekilde.Birden fazla domain girerek aynı kodu farklı domainlerde çalıştırabilirsiniz.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Owner kısmına ise Adınız yazın.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://imgur.com/sQRkz2S&#34;&gt;&lt;img src=&#34;http://i.imgur.com/sQRkz2S.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;div kısmını ReCaptcha nın nerede gözükmesini istiyorsanız oraya koyun.(form elementinin içersinde olmalıdır.)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;script kısmını site kodunuzun en altına, body tagınızın bi üstüne koyun.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Client tarafında yapacaklarınız bu kadar.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Server tarafına geçtiğimizde ise Client tarafındaki formdan gönderilen bilgileri alır gibi “g-recaptcha-response” parametresiyle değeri alıyoruz.Ve ReCaptcha api sinin kullanarak eşleşmenin sağlanığ sağlanmadığına bakıyoruz.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Bunun için server kısmına&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;        private static bool ControlReCaptcha(string secretKey, string reCaptcha, string remoteIp)
+
+        {
+
+            var secretkey = secretKey;
+
+            var recaptcha = reCaptcha;
+
+            var remoteip = remoteIp;
+
+
+
+            var recaptchacommand = &amp;quot;https://www.google.com/recaptcha/api/siteverify?secret=&amp;quot; + secretkey +
+
+                                   &amp;quot;&amp;amp;response=&amp;quot; + recaptcha + &amp;quot;&amp;amp;remoteip=&amp;quot; + remoteip;
+
+            var resp = WebRequest.Create(recaptchacommand).GetResponse();
+
+            var str = resp.GetResponseStream();
+
+
+            var sr = new StreamReader(str);
+
+            var a = sr.ReadToEnd();
+
+
+            JObject obj = JObject.Parse(a);
+
+            var sonuc = obj[&amp;quot;success&amp;quot;].ToString().ToLower();
+
+
+            return sonuc == &amp;quot;true&amp;quot;;
+
+        }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;fonksiyonunu ekliyoruz.Ve gerekli parametreleri girdiğimizde fonksiyon bize true – false olacak şekilde sonucu döndürüyor.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Key Hashes &amp; SHA1</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</link>
+      <pubDate>Tue, 10 Jan 2017 23:56:35 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</guid>
+      <description>
+
+&lt;h1 id=&#34;android-key-hashes-sha1&#34;&gt;Android Key Hashes &amp;amp; SHA1&lt;/h1&gt;
+
+&lt;p&gt;Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;openssl hatası alırsanız &lt;a href=&#34;https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip&#34;&gt;https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip&lt;/a&gt; adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.&lt;/p&gt;
+
+&lt;p&gt;Ortam değişkenlerine ulaşmak için : &lt;strong&gt;Denetim Masası &amp;gt; Sistem &amp;gt; Gelişmiş Sİstem Ayarları&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;your_user_name&lt;/strong&gt; yerine kendi kullanıcı adınızı yazmayı unutmayın.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;keytool -list -v -keystore c:\users\your_user_name\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Local IIS Site Kurulumu</title>
       <link>http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/</link>
       <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
