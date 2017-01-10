@@ -521,6 +521,84 @@ select count(NULLIF(ListeFiyati,0)) from #Urun
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/retrofit-multipart-file-upload/">
+                <h3 class="media-heading">Retrofit Multipart File Upload</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Retrofit Multipart File Upload @DebugLog public BelgeResponse BelgeSync(BelgeRequest request, String apiVersion, String appVersion) { try { Map&lt;String, RequestBody&gt; map = new HashMap&lt;&gt;(); String belgeDirPath = SuperHelper.getInternalIztopBelgeDir(mContext, request.getGonderiNo()); File belgeDir = new File(belgeDirPath); boolean isDir = belgeDir.isDirectory(); if (isDir) { File[] files = belgeDir.listFiles(); for (File file : files) { RequestBody requestBody = RequestBody.create(MediaType.parse(&quot;image/jpg&quot;), file); map.put(&quot;file\&quot;; filename=\&quot;&quot; + file.getName(), requestBody); } } //RequestBody requestBodyGonderiNo = RequestBody.create(MediaType.parse(&quot;text/plain&quot;), request.getGonderiNo()); //RequestBody requestBodyMusId = RequestBody.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/">
+                <h3 class="media-heading">Android GcmNetworkManager Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.
+GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.
+Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.
+ OneoffTask PeriodicTask  OneoffTask Kullanımı
+OneoffTask oneoff = new OneoffTask.Builder() // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur. // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz. .setPersisted(true) // Belirtilen network işlemlerinin çalışacağı service i belirtir.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-sms-receiver/">
+                <h3 class="media-heading">Android SMS Receiver</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Android SMS Receiver Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.
+İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.
+Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.
+Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/">
+                <h3 class="media-heading">Android Internet Connection Receiver </h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.
+Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.
+&lt;receiver android:name=&quot;.InternetConnectionReceiver&quot;&gt; &lt;intent-filter&gt; &lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot; /&gt; &lt;/intent-filter&gt; &lt;/receiver&gt;  InternetConnectionReceiver
+public class InternetConnectionReceiver extends BroadcastReceiver { @Override public void onReceive(Context context, Intent intent) { if (CheckConnection(context)) { } } }  Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/postman-ile-api-test-yaz%C4%B1m%C4%B1/">
                 <h3 class="media-heading">Postman ile API Test Yazımı</h3>
               </a>
@@ -644,88 +722,6 @@ Bunun için aşağıdaki adımları uygulamanız yeterli olacaktır.
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/">
-                <h3 class="media-heading">Android Key Hashes &amp; SHA1</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Android Key Hashes &amp; SHA1 Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.
-keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64  openssl hatası alırsanız https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.
-Ortam değişkenlerine ulaşmak için : Denetim Masası &gt; Sistem &gt; Gelişmiş Sİstem Ayarları
-SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/">
-                <h3 class="media-heading">Local IIS Site Kurulumu</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Local IIS Site Kurulumu Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
-İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
-
-Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/">
-                <h3 class="media-heading">TSQL NULLIF Fonksiyonu Nedir ve Nasil Kullanilir</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">TSQL NULLIF fonksiyonu NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.
-Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.
-Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.
-CREATE TABLE #Urun ( UrunID TINYINT, ListeFiyati DECIMAL NULL); GO INSERT #Urun VALUES(1,100); INSERT #Urun VALUES(2,NULL); INSERT #Urun VALUES(3,0); INSERT #Urun VALUES(7,250); INSERT #Urun VALUES(9,458);  ListeFiyati kolonuna göre count yaparsak sonuç olarak 4 dönecegini görürsünüz, çünkü UrunID’si 2 olan ürünün liste fiyati girilmemistir.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-spinner-text-g%C3%BCncelleme/">
-                <h3 class="media-heading">Android Spinner Text Güncelleme</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
-Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
-Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.
-Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
-String.xml
-&lt;string name=&quot;pazartesi&quot;&gt;Pazartesi&lt;/string&gt; &lt;string name=&quot;sali&quot;&gt;Salı&lt;/string&gt; &lt;string name=&quot;carsamba&quot;&gt;Çarşamba&lt;/string&gt; &lt;string name=&quot;persembe&quot;&gt;Perşembe&lt;/string&gt; &lt;string name=&quot;cuma&quot;&gt;Cuma&lt;/string&gt; &lt;string name=&quot;cumartesi&quot;&gt;Cumartesi&lt;/string&gt; &lt;string name=&quot;pazar&quot;&gt;Pazar&lt;/string&gt; &lt;string-array name=&quot;array_gonderi_list_haftalik&quot;&gt; &lt;item&gt;@string/pazartesi&lt;/item&gt; &lt;item&gt;@string/sali&lt;/item&gt; &lt;item&gt;@string/carsamba&lt;/item&gt; &lt;item&gt;@string/persembe&lt;/item&gt; &lt;item&gt;@string/cuma&lt;/item&gt; &lt;item&gt;@string/cumartesi&lt;/item&gt; &lt;item&gt;@string/pazar&lt;/item&gt; &lt;/string-array&gt;  SpinnerHelper.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -733,7 +729,7 @@ String.xml
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         17 posts found
+         20 posts found
       </p>
     </div>
   </div>

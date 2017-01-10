@@ -9,6 +9,336 @@
     <atom:link href="http://yazilim.aykutasil.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Android GcmNetworkManager Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 01:43:53 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.&lt;/p&gt;
+
+&lt;p&gt;Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OneoffTask&lt;/li&gt;
+&lt;li&gt;PeriodicTask&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;OneoffTask Kullanımı&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;OneoffTask oneoff = new OneoffTask.Builder()
+        // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur.
+        // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz.
+        .setPersisted(true)
+        // Belirtilen network işlemlerinin çalışacağı service i belirtir.
+        .setService(MyGcmTaskService.class)
+        // İşleminiz için tag belirleyebilirsiniz.
+        // Aynı tag ile yeni bir istek yaptığınız da &#39;.setUpdateCurrent(true)&#39; olarak belirlenmiş ise isteğinizi yeni istek ile günceller. Yani eski isteğiniz geçersiz olacaktır. &#39;setUpdateCurrent(false)&#39; olarak belirlenir ise aynı tag ile yeni istekte bulunsanız bile her iki isteğiniz de çalışacaktır. 
+        .setTag(tag)
+        // Network isteğinizin çalışma zamanı parametrelerini belirler
+        .setExecutionWindow(0, 10)
+        // İşleminiz için internet gerekliliği veya wireless gerekliliği parametrelerini belirler
+        .setRequiredNetwork(required_network_state)
+        // İşleminiz için cihazın şarja bağlı olup olmaması gerekliliğini belirler
+        .setRequiresCharging(false)
+        // Aynı tag ile yeni istek yapıldığı takdirde güncellenip güncellenmemesi durumunu belirler
+        .setUpdateCurrent(true)
+        // Bundle ile işleminiz için gerekli parametreleri belirleyebilirsiniz
+        .setExtras(bundle)
+        // build eder
+        .build();
+
+GcmNetworkManager.getInstance(context).schedule(oneoff);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;MyGcmTaskService&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Cihazınızı yeniden başlatma gibi durumlar da önceden belirlenmiş task lerinizin çalışmasını devam ettirmesini istiyorsanız
+// burada tekrar belirlemelisiniz.
+@Override
+public void onInitializeTasks() {
+    
+}
+
+// GcmNetworkManager ın kendi algoritması ile seçilen, tanımlamış olduğunuz istek bu kod bloğuna girecek.
+@Override
+public int onRunTask(TaskParams taskParams) {
+    try {
+        Bundle bundle = taskParams.getExtras();
+        return SchedulerRandevuTask(bundle);        
+    } catch (Exception e) {
+        ErrorEvent errorEvent = new ErrorEvent();
+        errorEvent.setErrorContent(e.getMessage());
+        EventBus.getDefault().post(errorEvent);
+        return GcmNetworkManager.RESULT_RESCHEDULE;
+    }
+}
+
+private int SchedulerZiyaretTask(Bundle bundle) {
+    try {
+        // isteğimiz sırasında bundle olarak yüklemiş olduğumuz nesneyi burada yakalıyoruz
+        String jsonModel = bundle.getString(Const.IZTOP_TASK_BUNDLE);
+        ZiyaretRequest request = new Gson().fromJson(jsonModel, ZiyaretRequest.class);
+        ZiyaretResponse ziyaretResponse = sendZiyaretProcess(request);
+        switch (ziyaretResponse.getCode()) {
+            case 0: {
+                EventBus.getDefault().post(ziyaretResponse);                
+                // işlemlerimiz başarılı bir şekilde gerçekleşmiş ise result değeri olarak RESULT_SUCCESS dönüyoruz.
+                // GcmNetworkManager bu işlemi başarılı olduğu için listeden silecek ve tekrar çalıştırmayı denemicektir.
+                return GcmNetworkManager.RESULT_SUCCESS;
+            }
+            default: {
+                // işlemlerimiz başarısız olması durumunda ( burada sunucuya istekte bulunulmuş ve dönen değer 0 değil ise başarısız olarak belirlenmiştir )isteğin tekrar çalışması için result değeri olarak RESULT_RESCHEDULE dönüyoruz.
+                return GcmNetworkManager.RESULT_RESCHEDULE;
+            }
+        }
+    } catch (Exception e) {
+        SuperHelper.CrashlyticsLog(e);
+        e.printStackTrace();
+        return GcmNetworkManager.RESULT_RESCHEDULE;
+    }
+
+
+}
+private ZiyaretResponse sendZiyaretProcess(ZiyaretRequest request) {
+    return ApiManager.getInstance(getApplicationContext()).Ziyaret(request);
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;ApiManager / Ziyaret&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public ZiyaretResponse Ziyaret(ZiyaretRequest request) {
+    try {
+        RestClient restClient = RestClient.getInstance();
+        Call&amp;lt;ZiyaretResponse&amp;gt; responseCall = restClient.getApiService().Ziyaret(request);
+        ZiyaretResponse ziyaretResponse = responseCall.execute().body();
+        return ziyaretResponse;
+    } catch (Exception ex) {
+        return null;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Retrofit ApiService&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@POST(&amp;quot;sunucu/ziyaret/api/adresi&amp;quot;)
+Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest);&amp;lt;/pre&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android SMS Receiver</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-sms-receiver/</link>
+      <pubDate>Wed, 11 Jan 2017 01:42:54 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-sms-receiver/</guid>
+      <description>
+
+&lt;h1 id=&#34;android-sms-receiver&#34;&gt;Android SMS Receiver&lt;/h1&gt;
+
+&lt;p&gt;Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.&lt;/p&gt;
+
+&lt;p&gt;Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.&lt;/p&gt;
+
+&lt;p&gt;Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz. Eğer bir işlem sonucunda sms gelmesini bekliyorsak, beklediğimiz SMS  geciktiği takdirde ve bu sırada cihazın ekranını vs. kapattığımız da Android cihazımız kendini uyku moduna almak isteyecektir. Bunu önlemek için &lt;strong&gt;WakefulBroadcastReceiver&lt;/strong&gt; yapısını kullanıyoruz. Bu yapı aslında Android in WakeLock özelliğini kullanan serviceler için özel olarak tasarlanmış  bir yapıdır. Cihazı uyanık tutar ve işimiz bittiği takdirde bu WakeLock u kaldırmamız gerekir. Bunu da service in içerisinde tanımlarız.&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki fonksiyonu Activity miz içerisinde ihtiyacımız olan yerde çağırır ve SMS receiver ı çalıştırmıış oluruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;LoginActivity&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void RegisterSmsReceiver() {
+    SmsReceiver smsReceiver = new SmsReceiver();
+    IntentFilter intentFilter = new IntentFilter(&amp;quot;android.provider.Telephony.SMS_RECEIVED&amp;quot;);
+    android.os.Handler handler = new android.os.Handler();
+    registerReceiver(smsReceiver, intentFilter, &amp;quot;android.permission.GET_TASKS&amp;quot;, handler);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;SmsReceiver&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsReceiver extends WakefulBroadcastReceiver {
+
+    private static final String TAG = &amp;quot;SmsReceiver&amp;quot;;
+
+    public SmsReceiver() {
+        super();
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Intent myIntent = intent;
+        myIntent.setClass(context, SmsReceiverService.class);
+
+        // startWakeFulService ile AndroidManifest.xml dosyamız içerisinde tanımlamış olduğumuz Service e yönlendiriyoruz.
+        // Ve cihazın uyanık kalmasını sağlıyoruz.
+        startWakefulService(context, myIntent);
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;AndroidManifest.xml&lt;/strong&gt; dosyasında  Service imizi  tanımlıyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;service
+    android:name=&amp;quot;.SmsReceiverService&amp;quot;
+    android:exported=&amp;quot;false&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;exported=”false”&lt;/code&gt; tanımı servisin cihazda ki diğer uygulamalar tarafından çalıştırılamayacağını belirtir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;SmsReceiverService&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsReceiverService extends IntentService {
+
+    private static final String TAG = &amp;quot;SmsReceiverService&amp;quot;;
+    private Context context;
+
+    public SmsReceiverService() {
+        super(TAG);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        context = getApplicationContext();
+    }
+
+
+    @Override
+    protected void onHandleIntent(Intent intent) {
+
+        String msg_from = null;
+        String msgBody = null;
+        if (intent.getAction().equals(&amp;quot;android.provider.Telephony.SMS_RECEIVED&amp;quot;)) {
+            Bundle bundle = intent.getExtras();           //---get the SMS message passed in---
+            SmsMessage[] msgs = null;
+
+            if (bundle != null) {
+                //---retrieve the SMS message received---
+                try {
+                    Object[] pdus = (Object[]) bundle.get(&amp;quot;pdus&amp;quot;);
+                    msgs = new SmsMessage[pdus.length];
+                    for (int i = 0; i &amp;lt; msgs.length; i++) {
+                        msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
+                        msg_from = msgs[i].getOriginatingAddress();
+                        msgBody = msgs[i].getMessageBody();
+
+                    }
+                } catch (Exception e) {
+                     // Log.d(&amp;quot;Exception caught&amp;quot;,e.getMessage());
+                }
+            }
+        }
+
+        SmsEvent smsEvent = new SmsEvent();
+        smsEvent.setActivationCode(&amp;quot;357&amp;quot;);
+        smsEvent.setMsgBody(msgBody);
+        smsEvent.setMsgFrom(msg_from);
+
+        // EventBus ile sonucu istediğimiz yere gönderebiliriz.
+        EventBus.getDefault().post(smsEvent);
+
+        // Service in işini tamamladığını ve artık cihazın WakeLock u serbest bırakabileceğini söylüyoruz.
+        SmsReceiver.completeWakefulIntent(intent);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;SmsEvent&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsEvent {
+    private String activationCode;
+    private String msgFrom;
+    private String msgBody;
+
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
+
+    public String getMsgFrom() {
+        return msgFrom;
+    }
+
+    public void setMsgFrom(String msgFrom) {
+        this.msgFrom = msgFrom;
+    }
+
+    public String getMsgBody() {
+        return msgBody;
+    }
+
+    public void setMsgBody(String msgBody) {
+        this.msgBody = msgBody;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Internet Connection Receiver </title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</link>
+      <pubDate>Wed, 11 Jan 2017 01:42:36 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</guid>
+      <description>&lt;p&gt;Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.&lt;/p&gt;
+
+&lt;p&gt;Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;receiver android:name=&amp;quot;.InternetConnectionReceiver&amp;quot;&amp;gt;
+    &amp;lt;intent-filter&amp;gt;
+        &amp;lt;action android:name=&amp;quot;android.net.conn.CONNECTIVITY_CHANGE&amp;quot; /&amp;gt;
+    &amp;lt;/intent-filter&amp;gt;
+&amp;lt;/receiver&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;InternetConnectionReceiver&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class InternetConnectionReceiver extends BroadcastReceiver {
+
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+
+        if (CheckConnection(context)) {
+
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CheckConnection&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static boolean checkConnection(Context con) {
+    ConnectivityManager cm = (ConnectivityManager) con.getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo netInfo = cm.getActiveNetworkInfo();
+    return netInfo != null &amp;amp;&amp;amp; netInfo.isConnectedOrConnecting();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki kod bloğu da cihazın internete bağlı olması durumunu kontrol eder.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Android ActiveAndroid Kullanımı</title>
       <link>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</link>
       <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
@@ -464,133 +794,6 @@ webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webVie
 &lt;p&gt;Her zaman ki gibi hayal gücüne ve projeye kalmış 😉&lt;/p&gt;
 
 &lt;p&gt;Kalın sağlıcakla..&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>GcmNetworkManager Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2016/12/gcmnetworkmanager-kullan%C4%B1m%C4%B1/</link>
-      <pubDate>Fri, 23 Dec 2016 18:04:15 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2016/12/gcmnetworkmanager-kullan%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.&lt;/p&gt;
-
-&lt;p&gt;Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;OneoffTask&lt;/li&gt;
-&lt;li&gt;PeriodicTask&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;OneoffTask Kullanımı&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;OneoffTask oneoff = new OneoffTask.Builder()
-        // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur.
-        // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz.
-        .setPersisted(true)
-        // Belirtilen network işlemlerinin çalışacağı service i belirtir.
-        .setService(MyGcmTaskService.class)
-        // İşleminiz için tag belirleyebilirsiniz.
-        // Aynı tag ile yeni bir istek yaptığınız da &#39;.setUpdateCurrent(true)&#39; olarak belirlenmiş ise isteğinizi yeni istek ile günceller. Yani eski isteğiniz geçersiz olacaktır. &#39;setUpdateCurrent(false)&#39; olarak belirlenir ise aynı tag ile yeni istekte bulunsanız bile her iki isteğiniz de çalışacaktır. 
-        .setTag(tag)
-        // Network isteğinizin çalışma zamanı parametrelerini belirler
-        .setExecutionWindow(0, 10)
-        // İşleminiz için internet gerekliliği veya wireless gerekliliği parametrelerini belirler
-        .setRequiredNetwork(required_network_state)
-        // İşleminiz için cihazın şarja bağlı olup olmaması gerekliliğini belirler
-        .setRequiresCharging(false)
-        // Aynı tag ile yeni istek yapıldığı takdirde güncellenip güncellenmemesi durumunu belirler
-        .setUpdateCurrent(true)
-        // Bundle ile işleminiz için gerekli parametreleri belirleyebilirsiniz
-        .setExtras(bundle)
-        // build eder
-        .build();
-
-GcmNetworkManager.getInstance(context).schedule(oneoff);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;MyGcmTaskService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Cihazınızı yeniden başlatma gibi durumlar da önceden belirlenmiş task lerinizin çalışmasını devam ettirmesini istiyorsanız
-// burada tekrar belirlemelisiniz.
-@Override
-public void onInitializeTasks() {
-    
-}
-
-// GcmNetworkManager ın kendi algoritması ile seçilen, tanımlamış olduğunuz istek bu kod bloğuna girecek.
-@Override
-public int onRunTask(TaskParams taskParams) {
-    try {
-        Bundle bundle = taskParams.getExtras();
-        return SchedulerRandevuTask(bundle);        
-    } catch (Exception e) {
-        ErrorEvent errorEvent = new ErrorEvent();
-        errorEvent.setErrorContent(e.getMessage());
-        EventBus.getDefault().post(errorEvent);
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-}
-
-private int SchedulerZiyaretTask(Bundle bundle) {
-    try {
-        // isteğimiz sırasında bundle olarak yüklemiş olduğumuz nesneyi burada yakalıyoruz
-        String jsonModel = bundle.getString(Const.IZTOP_TASK_BUNDLE);
-        ZiyaretRequest request = new Gson().fromJson(jsonModel, ZiyaretRequest.class);
-        ZiyaretResponse ziyaretResponse = sendZiyaretProcess(request);
-        switch (ziyaretResponse.getCode()) {
-            case 0: {
-                EventBus.getDefault().post(ziyaretResponse);                
-                // işlemlerimiz başarılı bir şekilde gerçekleşmiş ise result değeri olarak RESULT_SUCCESS dönüyoruz.
-                // GcmNetworkManager bu işlemi başarılı olduğu için listeden silecek ve tekrar çalıştırmayı denemicektir.
-                return GcmNetworkManager.RESULT_SUCCESS;
-            }
-            default: {
-                // işlemlerimiz başarısız olması durumunda ( burada sunucuya istekte bulunulmuş ve dönen değer 0 değil ise başarısız olarak belirlenmiştir )isteğin tekrar çalışması için result değeri olarak RESULT_RESCHEDULE dönüyoruz.
-                return GcmNetworkManager.RESULT_RESCHEDULE;
-            }
-        }
-    } catch (Exception e) {
-        SuperHelper.CrashlyticsLog(e);
-        e.printStackTrace();
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-
-
-}
-private ZiyaretResponse sendZiyaretProcess(ZiyaretRequest request) {
-    return ApiManager.getInstance(getApplicationContext()).Ziyaret(request);
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;ApiManager / Ziyaret&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public ZiyaretResponse Ziyaret(ZiyaretRequest request) {
-    try {
-        RestClient restClient = RestClient.getInstance();
-        Call&amp;lt;ZiyaretResponse&amp;gt; responseCall = restClient.getApiService().Ziyaret(request);
-        ZiyaretResponse ziyaretResponse = responseCall.execute().body();
-        return ziyaretResponse;
-    } catch (Exception ex) {
-        return null;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Retrofit ApiService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@POST(&amp;quot;sunucu/ziyaret/api/adresi&amp;quot;)
-Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest);&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
 </description>
     </item>
     
