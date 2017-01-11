@@ -10,10 +10,10 @@
     
     <item>
       <title>Docker Komutları</title>
-      <link>http://yazilim.aykutasil.com/2016/12/docker-komutlar%C4%B1/</link>
-      <pubDate>Sun, 25 Dec 2016 22:49:17 +0300</pubDate>
+      <link>http://yazilim.aykutasil.com/2017/01/docker-komutlar%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2016/12/docker-komutlar%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/2017/01/docker-komutlar%C4%B1/</guid>
       <description>
 
 &lt;h2 id=&#34;docker-komutları-ve-açıklamaları&#34;&gt;Docker Komutları ve Açıklamaları&lt;/h2&gt;
@@ -137,6 +137,58 @@
 &lt;p&gt;&lt;code&gt;docker attach &amp;lt;container_id&amp;gt;&lt;/code&gt;  Önceden detached modda -d başlatılan bir Container’a attach olmak için kullanılır&lt;/p&gt;
 
 &lt;p&gt;Ek Kaynak : &lt;a href=&#34;http://www.gokhansengun.com/docker-nedir-nasil-calisir-nerede-kullanilir/&#34;&gt;http://www.gokhansengun.com/docker-nedir-nasil-calisir-nerede-kullanilir/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://yazilim.aykutasil.com/2017/01/docker/</link>
+      <pubDate>Wed, 11 Jan 2017 19:55:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/docker/</guid>
+      <description>
+
+&lt;h2 id=&#34;docker&#34;&gt;DOCKER&lt;/h2&gt;
+
+&lt;p&gt;Docker aldı başını gidiyor. Yeni bir devrim açıyor.&lt;/p&gt;
+
+&lt;p&gt;E haliyle yazılım dünyası buna sessiz kalmamakla beraber bir çok Docker nedir? örnekleri vs. hazırlanıyor.&lt;/p&gt;
+
+&lt;p&gt;Bu nedenle biz Docker nedir?  tanımlamasından daha çok hızlı ilerlemeler şeklinde ufak uygulamalar geliştiricez. Bende bu yazı serisiyle paralel şekilde öğrenimimi sağlayacağımı belirtmek isterim ! 🙂&lt;/p&gt;
+
+&lt;p&gt;Başlıyoruz..&lt;/p&gt;
+
+&lt;p&gt;İlk olarak makinemize Docker ı kuralım.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Mac: &lt;a href=&#34;https://docs.docker.com/docker-for-mac/&#34;&gt;https://docs.docker.com/docker-for-mac/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Windows : &lt;a href=&#34;https://docs.docker.com/docker-for-windows/&#34;&gt;https://docs.docker.com/docker-for-windows/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;İndirip kurulumu sağladıktan sonra terminali açarak&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;gt; docker run hello-world&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;komutunu çalıştırıyoruz ve Docker a merhaba diyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki mesajı alanlar için;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker-machine start # start virtual machine for docker
+$ docker-machine env  # it&#39;s helps to get environment variables
+$ eval &amp;quot;$(docker-machine env default)&amp;quot; #set environment variables
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Komutlarını çalıştırarak Docker ın sistemimize tanıtıyoruz ve sonrasında tekrar &lt;strong&gt;docker run Hello-World&lt;/strong&gt; komutunu çalıştırıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/HP4lgFS&#34;&gt;&lt;img src=&#34;http://i.imgur.com/HP4lgFS.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hadi bakalım hayırlı olsun.. 😉&lt;/p&gt;
+
+&lt;p&gt;Ek Kaynak için : &lt;a href=&#34;http://www.enterprisecoding.com/post/yeni-baslayanlar-icin-docker&#34;&gt;http://www.enterprisecoding.com/post/yeni-baslayanlar-icin-docker&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

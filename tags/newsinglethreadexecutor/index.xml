@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/newsinglethreadexecutor/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/newsinglethreadexecutor/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</title>
+      <link>http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/</link>
+      <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/</guid>
+      <description>
+
+&lt;h1 id=&#34;executor-newcachedthreadpool-newfixedthreadpool-n-newsinglethreadexecutor&#34;&gt;Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Thread&lt;/strong&gt; kullanımı, Java ile multi-threading yazılım geliştiriyorsanız mutlaka ama mutlaka bilmeniz gereken konulardan biridir.&lt;/p&gt;
+
+&lt;h2 id=&#34;threadpool&#34;&gt;ThreadPool&lt;/h2&gt;
+
+&lt;p&gt;Gün geldi çattı ve uygulamanız ilk kurulduğu amacın evrimleşmesi sonucu bambaşka bir hale büründü 🙂&lt;/p&gt;
+
+&lt;p&gt;Yani birçok uygulamada gidişat bu yöndedir ve olması gerekende budur.&lt;/p&gt;
+
+&lt;p&gt;Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sadece patron kullanmıyor sonuçta. Ya da patron öyle bir uygulama istemişki ağır işler gerektiriyor. Uzun süreler gerektiren işlemler sonucunda akış tamamlanıyor vs.&lt;/p&gt;
+
+&lt;p&gt;Sözün kısası;&lt;/p&gt;
+
+&lt;p&gt;Uygulamamız içerisinde ki akışları ayrı parçalara bölerek daha hızlı çalışmasını ve aynı anda birden fazla iş yapmamızı sağlayan yapıdır bu Thread ler.&lt;/p&gt;
+
+&lt;p&gt;Peki en basitinden nasıl kullanırız bu yapıyı ? Tabi hödük gibi değil, olması gerektiği gibi.. 😉&lt;/p&gt;
+
+&lt;h2 id=&#34;executors&#34;&gt;Executors&lt;/h2&gt;
+
+&lt;p&gt;Executors sınıfı içerisinde statik olarak tanımlanmış ve kolayca thread pool oluşturabileceğimiz yapılar mevcuttur.&lt;/p&gt;
+
+&lt;h3 id=&#34;executors-newcachedthreadpool&#34;&gt;EXECUTORS.NEWCACHEDTHREADPOOL()&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;
+Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available. These pools will typically improve the performance of programs that execute many short-lived asynchronous tasks. Calls to execute will reuse previously constructed threads if available. If no existing thread is available, a new thread will be created and added to the pool. Threads that have not been used for sixty seconds are terminated and removed from the cache. Thus, a pool that remains idle for long enough will not consume any resources. Note that pools with similar properties but different details (for example, timeout parameters) may be created using ThreadPoolExecutor constructors.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Resmi kaynaklardan yukarıdaki tanımlama yapılmış.&lt;/p&gt;
+
+&lt;p&gt;Yani özetlicek olursak;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Kısa süren işlemlerimizde bu yapıyı kullanmalıyız&lt;/li&gt;
+&lt;li&gt;Bu yapı bizim için otomatik olarak bir thread oluşturur ve ihtiyacı oldukça yeni bir thread oluşturulmasını sağlar&lt;/li&gt;
+&lt;li&gt;Oluşturulan thread ler boş kaldığında thread i kapatır. (60 saniye)&lt;/li&gt;
+&lt;li&gt;Oluşturulan thread le işi bitti ve kapatılması için belli bir süre gerekiyor (60 saniye). Ama bu süre tamamlanmadan yeni bir iş geldi. Bu işi yapmak için yeni bir thread açmaz. Eğer önceden oluşturulan thread ler arasında uygun durumda olan varsa yeni gelen işi orada çalıştırır.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Peki süper. Herşey çok iyi. Olması gerektiği gibi. Peki aynı anda 10000 kişi işlem yapmaya çalıştı. Ve ağır işlemler olduğu için sürekli yeni thread oluşturmak zorunda kaldı. 10000 tane yeni thread. Thread oluşturmak da belli bir süre ve emek gerektiriyor unutma. Peki CPU ? … vs. vs.
+İşte bu yüzden kısa süreli ve hafif işler için bu yapıyı kullanıyoruz. 😉&lt;/p&gt;
+
+&lt;p&gt;Aga bana örnek söyle.&lt;/p&gt;
+
+&lt;p&gt;Tamam sakin ol..  :*&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewCachedThreadPool() {
+    
+    ExecutorService executorService = Executors.newCachedThreadPool();
+
+    for (int a = 0; a &amp;lt; 40; a++) {
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, &amp;quot;ExecuterService: &amp;quot; + Thread.currentThread().getName());
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-43
+I/MainActivity: ExecuterServicee: pool-7-thread-10
+I/MainActivity: ExecuterServicee: pool-7-thread-111
+I/MainActivity: ExecuterServicee: pool-7-thread-47
+I/MainActivity: ExecuterServicee: pool-7-thread-91
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki çıktıdan görüldüğü üzere 111 thread oluşturmuş. Ben 10000 satırın sadece bi kısmını yapıştırdım buraya. Belki 200 tane fln de oluşturmuş olabilir. Yani makineye ve işe bağlı olarak değişiyor. Kodun çalışmasıda ~6-7 saniye kadar sürdü. Yani baya uzun. Eee bu kadar thread açmak kapamak kolay değil.&lt;/p&gt;
+
+&lt;p&gt;Ama 60 saniye sonra tüm thread ler kapatılacak. Bu yönden de bakabilirsin.&lt;/p&gt;
+
+&lt;p&gt;Hangi yönden bakman gerektiğini projen söylücek sana. Kulak ver..&lt;/p&gt;
+
+&lt;p&gt;Neyse..&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static ExecutorService newCachedThreadPool() {
+ return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+ 60L, TimeUnit.SECONDS,
+ new SynchronousQueue&amp;lt;Runnable&amp;gt;());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki fonksiyonu kullanarak kendimize uygun cachedThreadPool oluşturabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Tabi şuraya bakmakta fayda var : &lt;a href=&#34;http://stackoverflow.com/a/1800583/3448461&#34;&gt;http://stackoverflow.com/a/1800583/3448461&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;executors-newfixedthreadpool-n&#34;&gt;EXECUTORS.NEWFIXEDTHREADPOOL(N)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;
+Creates a thread pool that reuses a fixed number of threads operating off a shared unbounded queue. At any point, at most nThreads threads will be active processing tasks. If additional tasks are submitted when all threads are active, they will wait in the queue until a thread is available. If any thread terminates due to a failure during execution prior to shutdown, a new one will take its place if needed to execute subsequent tasks. The threads in the pool will exist until it is explicitly shutdown.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Yani diyor ki;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Uygulaman da daha fazla kontrol sahibi olmak istiyorsan bu yapıyı kullan.&lt;/li&gt;
+&lt;li&gt;Thread e göndereceğin işler daha ağır ve uzun işler ise bu yapıyı kullan&lt;/li&gt;
+&lt;li&gt;Ben senin tanımlamış olduğun kadar Thread oluşturucam. Ve bana iş yolladıkça hangi thread müsaitse onda çalıştırıcam. Tüm Thread ler dolu iken iş gelirse sıraya sokacam. Sen raad ol. Ben halledicem hepsini diyor.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewFixedThreadPool() {
+
+    ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+    for (int a = 0; a &amp;lt; 10000; a++) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-5
+I/MainActivity: ExecuterServicee: pool-7-thread-5
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-3
+I/MainActivity: ExecuterServicee: pool-7-thread-3
+I/MainActivity: ExecuterServicee: pool-7-thread-3
+I/MainActivity: ExecuterServicee: pool-7-thread-3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ortalama ~2 saniye sürdü.&lt;/p&gt;
+
+&lt;h3 id=&#34;executors-newsinglethreadexecutor&#34;&gt;EXECUTORS.NEWSINGLETHREADEXECUTOR()&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewSingleThreadExecutor() {
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+    for (int a = 0; a &amp;lt; 10000; a++) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ortalama ~2 saniye sürdü.&lt;/p&gt;
+
+&lt;p&gt;Tek bir Thread oluşturarak tüm gelen işleri sıraya sokarak bu Thread üzerinde işlemi gerçekleştirir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Peki bir soru ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Executors.newSingleThreadExecutor() ile Executors.newFixedThreadPool(1) arasında fark var mı ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ufakta olsa var tabi.&lt;/p&gt;
+
+&lt;p&gt;Ama ikiside tek bir Thread oluşturur ve gelen tüm işleri bu Thread üzerinden gerçekleştirir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fark :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Similirity
+newSingleThreadExecutor() returns ExecutorService with single thread worker and newFixedThreadPool(1) also returns ExecutorService with single thread worker. In both cases if thread terminates, new thread will be created.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Difference
+ExecutorService returned by newSingleThreadExecutor(), can never increase its thread pool size more than one. ExecutorService returned by newFixedThreadPool(1), can increase its thread pool size more than one at run time by setCorePoolSize() of the class ThreadPoolExecutor.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Yani &lt;strong&gt;newFixedThreadPool(1)&lt;/strong&gt; ile oluşturulan tek Thread yapısı sonradan artırılabilir. Ama &lt;strong&gt;newSingleThreadExecutor()&lt;/strong&gt; ile oluşturulan yapı her zaman tek Thread üzerinden çalıştırılır.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nasıl arttırabiliriz ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void changeThreadSize() {
+
+    ExecutorService executorService = Executors.newFixedThreadPool(1);
+    ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executorService;
+    threadPoolExecutor.setCorePoolSize(2);
+    threadPoolExecutor.setMaximumPoolSize(2);
+
+    for (int a = 0; a &amp;lt; 10000; a++) {
+        threadPoolExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-2
+I/MainActivity: ExecuterServicee: pool-7-thread-2
+I/MainActivity: ExecuterServicee: pool-7-thread-2
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -9,6 +9,393 @@
     <atom:link href="http://yazilim.aykutasil.com/categories/android/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Android ile WebView Etkileşimi</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-ile-webview-etkile%C5%9Fimi/</link>
+      <pubDate>Wed, 11 Jan 2017 19:59:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-ile-webview-etkile%C5%9Fimi/</guid>
+      <description>
+
+&lt;p&gt;Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Backend : .Net&lt;/li&gt;
+&lt;li&gt;Client : Android (Java)&lt;/li&gt;
+&lt;li&gt;Ödeme altyapısı : İyzico&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.&lt;/p&gt;
+
+&lt;p&gt;Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs. giriyor. Bu durumda client ile web sayfası iletişimini de bir şekilde sağlamamız gerekiyor.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Yukarıda ki hikayeyi anlatarak kafanızda bir problemi canlandırmaya çalıştım. Benzer bir çok durum ile karşı karşıya kalabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Ulan ben webview de ki butonu vs nasıl android tarafında kontrol edicem ? gibi akılda deli sorular oluşabilir..&lt;/p&gt;
+
+&lt;p&gt;Tabiri caiz ise : PhoneGap tarzı bişiler.. 🙂 😉&lt;/p&gt;
+
+&lt;p&gt;Neyse.&lt;/p&gt;
+
+&lt;p&gt;Örnek ver hacı abi;&lt;/p&gt;
+
+&lt;h2 id=&#34;layout-xml&#34;&gt;Layout.xml&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;
+    android:orientation=&amp;quot;vertical&amp;quot;&amp;gt;
+
+    &amp;lt;WebView
+        android:id=&amp;quot;@+id/WebView&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;match_parent&amp;quot; /&amp;gt;
+
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;activity-fragment&#34;&gt;Activity – Fragment&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;WebView webView = (WebView) findViewById(R.id.WebView);
+
+WebSettings settings = webView.getSettings();
+settings.setDefaultTextEncodingName(&amp;quot;utf-8&amp;quot;);
+settings.setJavaScriptEnabled(true);
+
+webView.setWebViewClient(new MyWebViewClient());
+webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView, callbackDialog), &amp;quot;Android&amp;quot;); // Buraya dikkat
+webView.loadDataWithBaseURL(null, response.getData().getThreeDSHtmlContent(), &amp;quot;text/html&amp;quot;, &amp;quot;utf-8&amp;quot;, null); // elimizde bulunan bir html dökümanı webview e basıyoruz. URL de verebilirsin istersen
+webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView, callbackDialog), &amp;quot;Android&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki “Android” kısmına istediğimiz ismi verebiliriz. WebView yapısı, burada belirtmiş olduğumuz isim ile sayfaya yüklenen içeriğe bir eklenti yapıyor, yani bir instance alıyor. Biz bu instance ı kullanarak iletişimimizi sağlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Az sabır. Nasıl olduğunu görüceksin..&lt;/p&gt;
+
+&lt;h2 id=&#34;mywebviewclient&#34;&gt;MyWebViewClient&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MyWebViewClient extends WebViewClient {
+
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        super.onPageFinished(view, url);
+        //view.loadUrl(&amp;quot;javascript:window.Android.processHTML(&#39;&amp;lt;html&amp;gt;&#39;+document.getElementsByTagName(&#39;html&#39;)[0].innerHTML+&#39;&amp;lt;/html&amp;gt;&#39;);&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bu blok ne yapıyor ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;window.Android.processHTML&lt;/strong&gt; de ki Android bizim yukarıda belirtmiş olduğumuz aracı.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;processHtml&lt;/strong&gt; ise aşağıda tanımlıcak olduğumuz fonksiyon.&lt;/p&gt;
+
+&lt;p&gt;Diğer kısımlar javascript fonksiyonu zaten. Yani sayfada ki ilk html tag ını bularak içindeki html kodu al.&lt;/p&gt;
+
+&lt;p&gt;Aşağıda ki processHtml e bakarsan görüceksin ki htmlContent parametresi bekliyor.Biz de bu parametreye sayfa içeriğinin html kodunu gönderiyoruz. Almış olduğun bu html içeriğiyle ne yaparsın sana kalmış.&lt;/p&gt;
+
+&lt;h2 id=&#34;mywebviewjavascriptinterface&#34;&gt;MyWebViewJavascriptInterface&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MyWebViewJavascriptInterface {
+
+    Context mContext;
+    WebView mWebView;
+
+    MyWebViewJavascriptInterface(Context c, WebView webView) {
+        this.mContext = c;
+        this.mWebView = webView;
+    }
+
+    @JavascriptInterface
+    public void processHTML(String htmlContent) {
+        // işlem
+        // Toast ile html içeriğini gösterebiliriz       
+    }
+
+    @JavascriptInterface
+    public void islemeDevamEt() {
+       // işlem
+    }
+
+    @JavascriptInterface
+    public void pencereyiKapat() {
+        // işlem
+        // dialog.dismiss();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;WebView miz ile Android native kodumuzun iletişimini bu sınıf sağlıyor.&lt;/p&gt;
+
+&lt;p&gt;Aşşağıda ki  kod ile bunu söylüyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView), &amp;ldquo;Android&amp;rdquo;);&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Not&lt;/em&gt;&lt;/strong&gt; : Android 4.2 den sonra &lt;strong&gt;@JavascriptInterface&lt;/strong&gt; annotations ını eklememiz gerekmekte. Yoksa nolur ? Çalışmaz 😉&lt;/p&gt;
+
+&lt;h2 id=&#34;custom-html-content&#34;&gt;Custom Html Content&lt;/h2&gt;
+
+&lt;p&gt;WebView de gösterdiğimiz html contentinde bir buton ekleyelim.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; &amp;lt;button class=&amp;quot;btn btn-danger&amp;quot; onclick=&amp;quot;PencereyiKapat()&amp;quot;&amp;gt;Pencereyi Kapat&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;WebView içinde ki bu butona basıldığını Android anlasın ve (WebView imizi Dialog içerisinde gösterildiğini varsayarak) dialog penceresini kapasın.&lt;/p&gt;
+
+&lt;p&gt;Butonumuzun olduğu sayfaya  javascript kodumuzu ekliyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+  function PencereyiKapat() {
+     Android.pencereyiKapat();
+  }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki Android i hatırladınız dimi ? 🙂&lt;/p&gt;
+
+&lt;p&gt;HTML sayfamız bu kadar.&lt;/p&gt;
+
+&lt;p&gt;WebView içerisinde ki butona basıldığında javascript fonksiyonu çalışacak ve Android.pencereyiKapat() çalışacak. Yani native tarafta tanımlamış olduğumuz pencereyiKapat() fonksiyonu.&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki yapıyı kullanarak WebView – Android Native etkileşimli yapı kurabilirsin.&lt;/p&gt;
+
+&lt;p&gt;Her zaman ki gibi hayal gücüne ve projeye kalmış 😉&lt;/p&gt;
+
+&lt;p&gt;Kalın sağlıcakla..&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RxJava range() Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 18:52:51 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/</guid>
+      <description>
+
+&lt;h1 id=&#34;rxjava-range-kullanımı&#34;&gt;RxJava range() Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;**Örnek kod:&amp;ndash;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void range() {
+    Observable.range(3, 5).subscribeOn(Schedulers.io())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;val: &amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki kodun çıktısı aşağıdaki gibidir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: val: 3
+I/MainActivity: val: 4
+I/MainActivity: val: 5
+I/MainActivity: val: 6
+I/MainActivity: val: 7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RxJava candır 😉&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RxJava scan() Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 18:49:21 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/</guid>
+      <description>
+
+&lt;h1 id=&#34;rxjava-scan-kullanımı&#34;&gt;RxJava scan() Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;RxJava da scan() kullanımı iki şekilde olur.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1. İlk değer ataması yapılarak&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
+    Observable.just(3, 5, 7, 9)
+            .scan(10,(val1, val2) -&amp;gt; {
+                //
+                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+                return val1 + val2;
+            }).subscribeOn(Schedulers.io())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2. İlk değer ataması yapılmadan&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
+    Observable.just(3, 5, 7, 9)
+            .scan((val1, val2) -&amp;gt; {
+                //
+                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+                return val1 + val2;
+            }).subscribeOn(Schedulers.io())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Observable nesnesinin içindeki her bir item a fonksiyon uygulamamızı sağlar. Ve her iterasyon sonrası sonucu yayınlar yani subscribe.OnSuccess metoduna yollar. Başka bir deyişle scan() kod bloğu içeresinde tanımlamış olduğumuz fonksiyonu item lara sırayla uygulayarak onNext() fonksiyonunu çağırır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
+    Observable.just(3, 5, 7, 9)
+            .scan(10,(val1, val2) -&amp;gt; {
+                //
+                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+                return val1 + val2;
+            }).subscribeOn(Schedulers.io())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki örnek üzerinden gidecek olursak;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: Sonuc:10
+I/MainActivity: val1: 10
+I/MainActivity: val2: 3
+I/MainActivity: Sonuc:13
+I/MainActivity: val1: 13
+I/MainActivity: val2: 5
+I/MainActivity: Sonuc:18
+I/MainActivity: val1: 18
+I/MainActivity: val2: 7
+I/MainActivity: Sonuc:25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;böyle bir çıktı ile karşılaşırız.&lt;/p&gt;
+
+&lt;p&gt;İlk değer ataması yaptığımız için (10) ilk olarak onSuccess in içine bu değer düşer. Daha sonra Observable nesnemizin ilk item ı olan 3 değeri ile toplama işlemi yapılır (10 + 3) ve sonuç onSuccess e  yollanır (13). Daha sonra 13 ile ikinci item olan 5 toplanır (13 + 5) ve sonuç (18) onSuccess e aktarılır. Tüm item lar işlem görünceye kadar devam eder.&lt;/p&gt;
+
+&lt;p&gt;RxJava candır 😉&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RxJava reduce() Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 18:42:04 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/</guid>
+      <description>
+
+&lt;h1 id=&#34;rxjava-reduce-kullanımı&#34;&gt;RxJava reduce() Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;reduce()&lt;/strong&gt; fonskyionu iki şekilde çalışır;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
+    @Override
+    public Integer apply(Integer val1, Integer val2) throws Exception {
+        return null;
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(10,new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
+    @Override
+    public Integer apply(Integer val1, Integer val2) throws Exception {
+        return null;
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki örneklerde daha net görebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;RxJava’nın reduce fonksiyonunu tanımlıcak olursak;&lt;/p&gt;
+
+&lt;p&gt;Observable nesnesine ait her bir item a (1 , 3, 5) fonksiyon uygulanmasını sağlar. Bunu map() gibi fonksiyonlarda sağlıyor. Ama tabi reduce bunu farklı bir şekilde yapıyor.&lt;/p&gt;
+
+&lt;p&gt;Eğer ilk değer (seed) atanmamış ise ilk değer olarak (val1) ilk item ı (1) alıyor.&lt;/p&gt;
+
+&lt;p&gt;Daha sonra biz her item a yapması gereken işlem olarak iki değeri toplamasını söylediğimiz için, ilk değer ve ikinci değeri toplayıp bunu bir sonraki işlem için ilk değer olarak atıyor. İkinci iterasyonda kaldığı yerden devam ederek, ilk değer olarak bir önceki işlemin sonucu ve ikinci değer olarak 2. item ı alıyor. Yine toplama işlemi yaparak bir sonraki işlem için ilk değer ataması yapıyor.&lt;/p&gt;
+
+&lt;p&gt;Tüm item lar ile işlem yapıncaya kadar devam ediyor ve sonuç subscribe.onSuccess in içine düşüyor.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
+    Observable.just(1, 3, 5)
+            .reduce((val1, val2) -&amp;gt; {
+                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+                return val1 + val2;
+            }).retry()
+            .subscribeOn(Schedulers.computation())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 1
+I/MainActivity: val2: 3
+I/MainActivity: val1: 4
+I/MainActivity: val2: 5
+I/MainActivity: Sonuc:9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Burda yukarıda ki işlemden farklı olarak ek bir iterasyon daha yapılıyor. Çünkü ilk değer atamasını biz kendimiz yapıyoruz. İkinci değer olarak da her item sırayla bu görevi üstleniyor. Ve toplama işlemi yapılıp, toplam sonucunu ilk değer olarak atadıktan sonra döngü devam ediyor. Ve sonuç subscribe.onSuccess e düşüyor.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
+    Observable.just(1, 3, 5).reduce(10, (val1, val2) -&amp;gt; {
+        Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+        Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+        return val1 + val2;
+    }).retry()
+            .subscribeOn(Schedulers.computation())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Çıktı:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 10
+I/MainActivity: val2: 1
+I/MainActivity: val1: 11
+I/MainActivity: val2: 3
+I/MainActivity: val1: 14
+I/MainActivity: val2: 5
+I/MainActivity: Sonuc:19
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RxJava candır 😉&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Android Library &amp; Bintray</title>
       <link>http://yazilim.aykutasil.com/2017/01/android-library--bintray/</link>
       <pubDate>Wed, 11 Jan 2017 17:27:29 +0300</pubDate>
@@ -1337,423 +1724,6 @@ Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest)
         this.msgBody = msgBody;
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Internet Connection Receiver </title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</link>
-      <pubDate>Wed, 11 Jan 2017 01:42:36 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</guid>
-      <description>&lt;p&gt;Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.&lt;/p&gt;
-
-&lt;p&gt;Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;receiver android:name=&amp;quot;.InternetConnectionReceiver&amp;quot;&amp;gt;
-    &amp;lt;intent-filter&amp;gt;
-        &amp;lt;action android:name=&amp;quot;android.net.conn.CONNECTIVITY_CHANGE&amp;quot; /&amp;gt;
-    &amp;lt;/intent-filter&amp;gt;
-&amp;lt;/receiver&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;InternetConnectionReceiver&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class InternetConnectionReceiver extends BroadcastReceiver {
-
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-
-        if (CheckConnection(context)) {
-
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;CheckConnection&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static boolean checkConnection(Context con) {
-    ConnectivityManager cm = (ConnectivityManager) con.getSystemService(Context.CONNECTIVITY_SERVICE);
-    NetworkInfo netInfo = cm.getActiveNetworkInfo();
-    return netInfo != null &amp;amp;&amp;amp; netInfo.isConnectedOrConnecting();
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki kod bloğu da cihazın internete bağlı olması durumunu kontrol eder.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android ActiveAndroid Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.&lt;/p&gt;
-
-&lt;p&gt;Kütüphaneyi &lt;a href=&#34;https://github.com/pardom/ActiveAndroid&#34;&gt;buradan&lt;/a&gt; indirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Kullanımı oldukça basittir. Sadece birkaç noktaya özellikle dikkat edilmesi gerekiyor. Bunlardan biri oluşturmuş olduğunuz tabloya yeni alanlar eklediğiniz de tablonuzu güncellemek. Veya herhangi bir sebeple tabloda çeşitli işlemler yapmak.&lt;/p&gt;
-
-&lt;p&gt;Aşağıda kısaca Tablo oluşturmaktan ve gerektiğinde Tablo yu nasıl güncelleyeceğimizden bahsedicem.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Table(name = &amp;quot;Items&amp;quot;)
-public class ModelSampleItem extends Model {
-
-    @Column(name = &amp;quot;Name&amp;quot;)
-    public String name;
-
-    @Column(name = &amp;quot;Surname&amp;quot;)
-    public String surname;
-
-    @Column(name = &amp;quot;Phone&amp;quot;)
-    public String phoneNumber;
-
-    @Column(name = &amp;quot;Xyz&amp;quot;)
-    public String xyz;
-
-    @Column(name = &amp;quot;EMail&amp;quot;)
-    public String email;
-
-    @Column(name = &amp;quot;TryColumn&amp;quot;)
-    public String tryColumn;
-
-
-    @Column(name = &amp;quot;Column3&amp;quot;)
-    public String column3;
-
-    
-
-    public ModelSampleItem() {
-        super();
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki yapıyı kullanarak istediğiniz Tablo yu oluşturmanız mümkün.&lt;/p&gt;
-
-&lt;p&gt;Tabi bundan önce yapmamız gereken birkaç ayar var.&lt;/p&gt;
-
-&lt;p&gt;Android uygulamamızın Manifest dosyasına custom Application Name tanımlıyoruz ve bu isimde bir Class oluşturuyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;application
-    android:name=&amp;quot;.app.AppController&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ve Application dan türeyen sınıfımız&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class AppController extends com.activeandroid.app.Application {
-
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;com.activeandroid.app.Application&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki sınıftan türetmek  aslında &lt;strong&gt;onCreate()&lt;/strong&gt; içerisinde &lt;strong&gt;ActiveAndroid.initializ(this)&lt;/strong&gt; ile aynı anlama gelmektedir.Ama yukarıda ki gibi yaparsak daha güzel bir görünüm olacaktır.&lt;/p&gt;
-
-&lt;p&gt;Ve aşağıdaki meta-taglarını &lt;code&gt;&amp;lt;application&amp;gt;&lt;/code&gt; tagları arasıne ekliyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;meta-data
-    android:name=&amp;quot;AA_DB_NAME&amp;quot;
-    android:value=&amp;quot;newiztop1.db&amp;quot; /&amp;gt;
-&amp;lt;meta-data
-    android:name=&amp;quot;AA_DB_VERSION&amp;quot;
-    android:value=&amp;quot;1&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yapılandırma ayarlarımız bu kadar. Artık &lt;strong&gt;Items&lt;/strong&gt; benzeri tablolarınızı yukarıda ki gibi yazmanız ve uygulamanızı çalıştırmanız yeterli olacaktır.&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki tabloya sonradan bir alan eklememiz gerekti. Uygulamamız büyüdükçe nelere ihtiyacı olacağını kestirmek imkansıza yakındır.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Column(name = &amp;quot;Column4&amp;quot;)
-    public String column4;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Alanımızı Items sınıfımıza ekliyoruz. Ama çalıştırdığımız da uygulamamız hata verecektir.&lt;/p&gt;
-
-&lt;p&gt;Uygulamamıza yeni alan eklediğimizi bildirmek için biraz kıvranmamız gerekmekte.&lt;/p&gt;
-
-&lt;p&gt;Öncelikle &lt;strong&gt;assets&lt;/strong&gt; klasörünün içine migrations isilmli bir klasör oluşturuyoruz. Bu ismi vermek zorunludur. assets/migrations&lt;/p&gt;
-
-&lt;p&gt;Ve oluşturduğumuz migrations klasörüne &lt;strong&gt;2.sql&lt;/strong&gt; isimli bir dosya oluşturuyoruz.Niye 2 peki?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;meta-data
-    android:name=&amp;quot;AA_DB_NAME&amp;quot;
-    android:value=&amp;quot;newiztop1.db&amp;quot; /&amp;gt;
-
-&amp;lt;meta-data
-    android:name=&amp;quot;AA_DB_VERSION&amp;quot;
-    android:value=&amp;quot;1&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Android Manifest dosyasına yapılandırırken &lt;strong&gt;DB_VERSION&lt;/strong&gt; olarak 1 verdik. Bura da belirttiğimiz sayının bir fazlası olması gerekiyor *.sql dosyamızın ismi.&lt;/p&gt;
-
-&lt;p&gt;Ve &lt;strong&gt;2.sql&lt;/strong&gt; dosyamızın içine&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;BEGIN TRANSACTION;
-ALTER TABLE Items ADD COLUMN Column4 TEXT;
-COMMIT;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ekliyoruz.&lt;/p&gt;
-
-&lt;p&gt;Ve çalıştırdığımız da &lt;strong&gt;Items&lt;/strong&gt; tablomuza &lt;strong&gt;Column4&lt;/strong&gt; isimli bir alan eklenmiş olacaktır.Artık bu alanımızı da gönül rahatlığıyla kullanabiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Items Tablomuza herhangi bir satır eklemek istersek :&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ModelSampleItem msi = new ModelSampleItem();
-msi.name = &amp;quot;Aykut&amp;quot;;
-msi.surname = &amp;quot;Asil&amp;quot;;
-msi.phoneNumber = &amp;quot;535&amp;quot;;
-msi.email = &amp;quot;huuuu@gmail.com&amp;quot;;
-msi.xyz = &amp;quot;xy&amp;lt;&amp;quot;;
-msi.Column4 = &amp;quot;merhaba&amp;quot;;
-msi.save();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;dememiz yeterli olacaktır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Kaydedilmiş bir veriyi okumak istersek :&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ModelSampleItem myModel = Model.load(ModelSampleItem.class, 6); // id si 6 olan veriyi getirir
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;veya&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;List&amp;lt;ModelSampleItem&amp;gt; listMOdel = new Select().from(ModelSampleItem.class).execute(); // Tüm verileri List şeklinde getirir.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;İhityacınıza yönelik sorgulamalar yapabilirsiniz. Tek yapmanız gereken biraz kurcalamak.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Robolectric ile UnitTest Yazımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/robolectric-ile-unittest-yaz%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 00:31:52 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/robolectric-ile-unittest-yaz%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.&lt;/p&gt;
-
-&lt;p&gt;Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.&lt;/p&gt;
-
-&lt;p&gt;Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Android Studio da Robolectric kullanarak Unit Test Yazımı&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.(Ben gerektiğinden uzun bi zaman harcadım, siz harcamayın !)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;build.gradle&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-gradle&#34;&gt;apply plugin: &#39;com.android.application&#39;
-
-android {
-    compileSdkVersion 22
-    buildToolsVersion &amp;quot;23.0.0&amp;quot;
-
-    defaultConfig {
-        applicationId &amp;quot;com.a.aykut.tryrobolectric1&amp;quot;
-        minSdkVersion 16
-        targetSdkVersion 21
-        versionCode 1
-        versionName &amp;quot;1.0&amp;quot;
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
-    compile &#39;com.android.support:appcompat-v7:22.2.1&#39;
-    compile &#39;com.jakewharton:butterknife:7.0.1&#39;
-
-    testCompile &#39;junit:junit:4.12&#39;
-    testCompile &#39;com.squareup.assertj:assertj-android:1.1.0&#39;
-    testCompile &#39;org.robolectric:robolectric:3.0&#39;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;MainActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Bind(R.id.button)
-Button button;
-
-@Bind(R.id.textView)
-TextView textView;
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_main);
-  ButterKnife.bind(this);
-}
-
-@OnClick(R.id.button)
-public void buttonClick(View vi) {
-  textView.setText(&amp;quot;tiklandi&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;AndroidManifest.xml  dosyasında herhangi bir değişiklik yapmanıza gerek yok.&lt;/p&gt;
-
-&lt;p&gt;Test sınıfımızı yazmaya başlayalım.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak Android Studio nun sol tarafında yer alan &lt;strong&gt;Build Variant&lt;/strong&gt; tabından &lt;strong&gt;Test Artifact&lt;/strong&gt; kısmını &lt;strong&gt;Unit Tests&lt;/strong&gt; olarak değiştirin.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/rEPljpe&#34;&gt;&lt;img src=&#34;http://i.imgur.com/rEPljpe.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Unit Test yazmak için &lt;strong&gt;src&lt;/strong&gt; klasörüne test isminde bir klasör ve test klasörünün içine de &lt;strong&gt;java&lt;/strong&gt; isimli bir klasör oluşturmanız gerekmektedir.&lt;/p&gt;
-
-&lt;p&gt;yani &lt;strong&gt;src/test&lt;/strong&gt; ve &lt;strong&gt;src/test/java&lt;/strong&gt; klasörlerini oluşturmalısınız.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/gztY5gr&#34;&gt;&lt;img src=&#34;http://i.imgur.com/gztY5gr.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğunuz java klasörüne sağ tıklayarak new &amp;gt; Package diyin ve normal Package isminizle aynı isimde bir Package oluşturun.Burda biz com.a.aykut.tryrobolectric1 ismini kullandık.&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğunuz Package sağ tıklayarak new &amp;gt; Java Class diyin ve test sınıfını oluşturun. Anlaşılabilirlik açısından Test*(Test Edilecek Sınıf ismi) olarak isimlendirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TestMainActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import android.app.Activity;
-
-import android.widget.Button;
-import android.widget.TextView;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class,sdk = 21)
-public class TestMainActivity {
-
-  Activity activity;
-  TextView textView;
-  Button button;
-
-  @Before
-  public void setUp() {
-    activity = Robolectric.setupActivity(MainActivity.class);
-    textView = (TextView) activity.findViewById(R.id.textView);
-    button = (Button) activity.findViewById(R.id.button);
-  }
-
-  @Test
-  public void shouldMainActivityNotBeNull() throws Exception {
-    Robolectric.buildActivity(MainActivity.class).create().pause().resume().get();
-    assertTrue(Robolectric.buildActivity(MainActivity.class).create().get() != null);
-    String hello = new MainActivity().getResources().getString(R.string.hello_world);
-    assertEquals(hello, &amp;quot;Hello world!&amp;quot;);
-
-
-  }
-
-  @Test
-  public void buttonClickChangeTextView() throws Exception {
-    String text = textView.getText().toString();
-    assertEquals(text, &amp;quot;Hello world!&amp;quot;);
-    button.performClick();
-    text = textView.getText().toString();
-    assertEquals(text, &amp;quot;tiklandi&amp;quot;);
-
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Evet.Test sınıfımızı da yazdık.Artık çalıştırabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Testimizi çalıştırmak için yazmış olduğumuz Test Sınıfına sağ tıklayarak Run diyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/7STeLHy&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7STeLHy.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Run dediğiniz de Test çalışacaktır. Fakat aşağıdaki hataya benzer bir hata alırsanız endişelenmeyin.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;java.lang.RuntimeException: build\intermediates\bundles\debug\AndroidManifest.xml not found or not a file; it should point to your project&#39;s AndroidManifest.xml
-
-at org.robolectric.manifest.AndroidManifest.validate(AndroidManifest.java:121)
-
-at org.robolectric.manifest.AndroidManifest.getResourcePath(AndroidManifest.java:469)
-
-at org.robolectric.manifest.AndroidManifest.getIncludedResourcePaths(AndroidManifest.java:475)
-
-at org.robolectric.RobolectricTestRunner.createAppResourceLoader(RobolectricTestRunner.java:491)
-
-at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
-.
-
-.
-
-.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/1TpiUpG&#34;&gt;&lt;img src=&#34;http://i.imgur.com/1TpiUpG.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resim de görüldüğü gibi &lt;strong&gt;Edit Configurations&lt;/strong&gt; a tıklayın.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/pFGTznR&#34;&gt;&lt;img src=&#34;http://i.imgur.com/pFGTznR.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resim deki gibi &lt;strong&gt;Working directory&lt;/strong&gt; yolunun sonuna &lt;strong&gt;\app&lt;/strong&gt; ekleyin.&lt;/p&gt;
-
-&lt;p&gt;Ve şimdi tekrar Test Sınıfına sağ tıklayarak Run diyin.&lt;/p&gt;
-
-&lt;p&gt;Ve sonuç aşağıdaki gibi olmalıdır.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/zIgjUDT&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zIgjUDT.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Kaynak kodlarını aşağıdkai linkten indirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/aykuttasil/RobolectricUnitTest&#34;&gt;https://github.com/aykuttasil/RobolectricUnitTest&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Key Hashes &amp; SHA1</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</link>
-      <pubDate>Tue, 10 Jan 2017 23:56:35 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</guid>
-      <description>
-
-&lt;h1 id=&#34;android-key-hashes-sha1&#34;&gt;Android Key Hashes &amp;amp; SHA1&lt;/h1&gt;
-
-&lt;p&gt;Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;openssl hatası alırsanız &lt;a href=&#34;https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip&#34;&gt;https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip&lt;/a&gt; adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.&lt;/p&gt;
-
-&lt;p&gt;Ortam değişkenlerine ulaşmak için : &lt;strong&gt;Denetim Masası &amp;gt; Sistem &amp;gt; Gelişmiş Sİstem Ayarları&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;your_user_name&lt;/strong&gt; yerine kendi kullanıcı adınızı yazmayı unutmayın.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;keytool -list -v -keystore c:\users\your_user_name\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>

@@ -9,6 +9,926 @@
     <atom:link href="http://yazilim.aykutasil.com/categories/yazilim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Android ile WebView Etkileşimi</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-ile-webview-etkile%C5%9Fimi/</link>
+      <pubDate>Wed, 11 Jan 2017 19:59:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-ile-webview-etkile%C5%9Fimi/</guid>
+      <description>
+
+&lt;p&gt;Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Backend : .Net&lt;/li&gt;
+&lt;li&gt;Client : Android (Java)&lt;/li&gt;
+&lt;li&gt;Ödeme altyapısı : İyzico&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.&lt;/p&gt;
+
+&lt;p&gt;Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs. giriyor. Bu durumda client ile web sayfası iletişimini de bir şekilde sağlamamız gerekiyor.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Yukarıda ki hikayeyi anlatarak kafanızda bir problemi canlandırmaya çalıştım. Benzer bir çok durum ile karşı karşıya kalabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Ulan ben webview de ki butonu vs nasıl android tarafında kontrol edicem ? gibi akılda deli sorular oluşabilir..&lt;/p&gt;
+
+&lt;p&gt;Tabiri caiz ise : PhoneGap tarzı bişiler.. 🙂 😉&lt;/p&gt;
+
+&lt;p&gt;Neyse.&lt;/p&gt;
+
+&lt;p&gt;Örnek ver hacı abi;&lt;/p&gt;
+
+&lt;h2 id=&#34;layout-xml&#34;&gt;Layout.xml&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;
+    android:orientation=&amp;quot;vertical&amp;quot;&amp;gt;
+
+    &amp;lt;WebView
+        android:id=&amp;quot;@+id/WebView&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;match_parent&amp;quot; /&amp;gt;
+
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;activity-fragment&#34;&gt;Activity – Fragment&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;WebView webView = (WebView) findViewById(R.id.WebView);
+
+WebSettings settings = webView.getSettings();
+settings.setDefaultTextEncodingName(&amp;quot;utf-8&amp;quot;);
+settings.setJavaScriptEnabled(true);
+
+webView.setWebViewClient(new MyWebViewClient());
+webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView, callbackDialog), &amp;quot;Android&amp;quot;); // Buraya dikkat
+webView.loadDataWithBaseURL(null, response.getData().getThreeDSHtmlContent(), &amp;quot;text/html&amp;quot;, &amp;quot;utf-8&amp;quot;, null); // elimizde bulunan bir html dökümanı webview e basıyoruz. URL de verebilirsin istersen
+webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView, callbackDialog), &amp;quot;Android&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki “Android” kısmına istediğimiz ismi verebiliriz. WebView yapısı, burada belirtmiş olduğumuz isim ile sayfaya yüklenen içeriğe bir eklenti yapıyor, yani bir instance alıyor. Biz bu instance ı kullanarak iletişimimizi sağlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Az sabır. Nasıl olduğunu görüceksin..&lt;/p&gt;
+
+&lt;h2 id=&#34;mywebviewclient&#34;&gt;MyWebViewClient&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MyWebViewClient extends WebViewClient {
+
+    @Override
+    public void onPageFinished(WebView view, String url) {
+        super.onPageFinished(view, url);
+        //view.loadUrl(&amp;quot;javascript:window.Android.processHTML(&#39;&amp;lt;html&amp;gt;&#39;+document.getElementsByTagName(&#39;html&#39;)[0].innerHTML+&#39;&amp;lt;/html&amp;gt;&#39;);&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bu blok ne yapıyor ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;window.Android.processHTML&lt;/strong&gt; de ki Android bizim yukarıda belirtmiş olduğumuz aracı.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;processHtml&lt;/strong&gt; ise aşağıda tanımlıcak olduğumuz fonksiyon.&lt;/p&gt;
+
+&lt;p&gt;Diğer kısımlar javascript fonksiyonu zaten. Yani sayfada ki ilk html tag ını bularak içindeki html kodu al.&lt;/p&gt;
+
+&lt;p&gt;Aşağıda ki processHtml e bakarsan görüceksin ki htmlContent parametresi bekliyor.Biz de bu parametreye sayfa içeriğinin html kodunu gönderiyoruz. Almış olduğun bu html içeriğiyle ne yaparsın sana kalmış.&lt;/p&gt;
+
+&lt;h2 id=&#34;mywebviewjavascriptinterface&#34;&gt;MyWebViewJavascriptInterface&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MyWebViewJavascriptInterface {
+
+    Context mContext;
+    WebView mWebView;
+
+    MyWebViewJavascriptInterface(Context c, WebView webView) {
+        this.mContext = c;
+        this.mWebView = webView;
+    }
+
+    @JavascriptInterface
+    public void processHTML(String htmlContent) {
+        // işlem
+        // Toast ile html içeriğini gösterebiliriz       
+    }
+
+    @JavascriptInterface
+    public void islemeDevamEt() {
+       // işlem
+    }
+
+    @JavascriptInterface
+    public void pencereyiKapat() {
+        // işlem
+        // dialog.dismiss();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;WebView miz ile Android native kodumuzun iletişimini bu sınıf sağlıyor.&lt;/p&gt;
+
+&lt;p&gt;Aşşağıda ki  kod ile bunu söylüyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView), &amp;ldquo;Android&amp;rdquo;);&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Not&lt;/em&gt;&lt;/strong&gt; : Android 4.2 den sonra &lt;strong&gt;@JavascriptInterface&lt;/strong&gt; annotations ını eklememiz gerekmekte. Yoksa nolur ? Çalışmaz 😉&lt;/p&gt;
+
+&lt;h2 id=&#34;custom-html-content&#34;&gt;Custom Html Content&lt;/h2&gt;
+
+&lt;p&gt;WebView de gösterdiğimiz html contentinde bir buton ekleyelim.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; &amp;lt;button class=&amp;quot;btn btn-danger&amp;quot; onclick=&amp;quot;PencereyiKapat()&amp;quot;&amp;gt;Pencereyi Kapat&amp;lt;/button&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;WebView içinde ki bu butona basıldığını Android anlasın ve (WebView imizi Dialog içerisinde gösterildiğini varsayarak) dialog penceresini kapasın.&lt;/p&gt;
+
+&lt;p&gt;Butonumuzun olduğu sayfaya  javascript kodumuzu ekliyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+  function PencereyiKapat() {
+     Android.pencereyiKapat();
+  }
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki Android i hatırladınız dimi ? 🙂&lt;/p&gt;
+
+&lt;p&gt;HTML sayfamız bu kadar.&lt;/p&gt;
+
+&lt;p&gt;WebView içerisinde ki butona basıldığında javascript fonksiyonu çalışacak ve Android.pencereyiKapat() çalışacak. Yani native tarafta tanımlamış olduğumuz pencereyiKapat() fonksiyonu.&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki yapıyı kullanarak WebView – Android Native etkileşimli yapı kurabilirsin.&lt;/p&gt;
+
+&lt;p&gt;Her zaman ki gibi hayal gücüne ve projeye kalmış 😉&lt;/p&gt;
+
+&lt;p&gt;Kalın sağlıcakla..&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Docker Komutları</title>
+      <link>http://yazilim.aykutasil.com/2017/01/docker-komutlar%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/docker-komutlar%C4%B1/</guid>
+      <description>
+
+&lt;h2 id=&#34;docker-komutları-ve-açıklamaları&#34;&gt;Docker Komutları ve Açıklamaları&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker images
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Docker hostuna yüklü olan image leri gösterir.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker ps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Docker hostunda yüklü olan imagelerle inşa edilmiş olan container ları listeler.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;İlk olarak Local de (bilgisayarımızda) hello-world isminde bir image var mı kontrol eder. Eğer varsa direkt olarak çalıştırır.&lt;/p&gt;
+
+&lt;p&gt;Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local e indirir ve ardından çalıştırır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker pull hello-world
+&amp;gt; docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutlarının birleşimidir.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker run -p 8080:80 nginx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;nginx image local de arar, eğer bulamazsa indirir ve local imize kurar.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;-p&lt;/strong&gt; parametresi kendisinden sonra verilen parametredeki portlar arasında port forwarding yani port yönlendirme yapar.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;-p&lt;/strong&gt; = host umuzdaki 8080 portunu container ımızda ki 80 portuna yönlendirme işlemini sağlıyoruz&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; docker exec -it &amp;lt;container_id&amp;gt; /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutu ile Container’a bir Bash Shell açabiliriz. -i interaktif terminali -t ise terminalin attach olmasını istediğimizi belirtir. &lt;strong&gt;docker exec -it /bin/bash&lt;/strong&gt; komutunu çalıştırın (Container ID’nin sadece baştan birkaç harfini vermemizin yettiğine -çakışma olmadığı müddetçe- dikkat edin).&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz container ın içine girerek komutları çalıştırmamıza olanak sağlar.&lt;/p&gt;
+
+&lt;p&gt;Container ın içindeyken;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; ps -ef
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;komutu ile container ın çalıştırmış olduğu tüm process leri listeleyebiliriz.&lt;/p&gt;
+
+&lt;h2 id=&#34;komutlar&#34;&gt;Komutlar&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;docker images&lt;/code&gt; Lokal registery’de mevcut bulunan Image’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker ps&lt;/code&gt; Halihazırda çalışmakta olan Container’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker ps -a&lt;/code&gt;  Docker Daemon üzerindeki bütün Container’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker ps -aq&lt;/code&gt; Docker Daemon üzerindeki bütün Container’ların ID’lerini listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker pull &amp;lt;repository_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;image_tag&amp;gt;&lt;/code&gt;    Belirtilen Image’ı lokal registry’ye indirir. Örnek: docker pull gsengun/jmeter3.0:1.7&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker top &amp;lt;container_id&amp;gt;&lt;/code&gt; İlgili Container’da top komutunu çalıştırarak çıktısını gösterir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker run -it &amp;lt;image_id|image_name&amp;gt;&lt;/code&gt; CMD  Verilen Image’dan terminal’i attach ederek bir Container oluşturur&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker pause &amp;lt;container_id&amp;gt;&lt;/code&gt;   İlgili Container’ı duraklatır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker unpause &amp;lt;container_id&amp;gt;&lt;/code&gt; İlgili Container pause ile duraklatılmış ise çalışmasına devam ettirilir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker stop &amp;lt;container_id&amp;gt;&lt;/code&gt;    İlgili Container’ı durdurur&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker start &amp;lt;container_id&amp;gt;&lt;/code&gt;   İlgili Container’ı durdurulmuşsa tekrar başlatır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rm &amp;lt;container_id&amp;gt;&lt;/code&gt;  İlgili Container’ı kaldırır fakat ilişkili Volume’lara dokunmaz&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rm -v &amp;lt;container_id&amp;gt;&lt;/code&gt;   İlgili Container’ı ilişkili Volume’lar ile birlikte kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rm -f &amp;lt;container_id&amp;gt;&lt;/code&gt;   İlgili Container’ı zorlayarak kaldırır. Çalışan bir Container ancak -f ile kaldırılabilir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi &amp;lt;image_id|image_name&amp;gt;&lt;/code&gt;  İlgili Image’ı siler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi -f &amp;lt;image_id|image_name&amp;gt;&lt;/code&gt;   İlgili Image’ı zorlayarak kaldırır, başka isimlerle Tag’lenmiş Image’lar -f ile kaldırılabilir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker info&lt;/code&gt;   Docker Daemon’la ilgili özet bilgiler verir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker inspect &amp;lt;container_id&amp;gt;&lt;/code&gt; İlgili Container’la ilgili detaylı bilgiler verir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker inspect &amp;lt;image_id|image_name&amp;gt;&lt;/code&gt;  İlgili Image’la ilgili detaylı bilgiler verir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rm $(docker ps -aq)&lt;/code&gt;    Bütün Container’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker stop $(docker ps -aq)&lt;/code&gt;  Çalışan bütün Container’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi $(docker images -aq)&lt;/code&gt;   Bütün Image’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker images -q -f dangling=true&lt;/code&gt; Dangling (taglenmemiş ve bir Container ile ilişkilendirilmemiş) Image’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker rmi $(docker images -q -f dangling=true)&lt;/code&gt;   Dangling Image’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker volume ls -f dangling=true&lt;/code&gt; Dangling Volume’ları listeler&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker volume rm $(docker volume ls -f dangling=true -q)&lt;/code&gt;  Danling Volume’ları kaldırır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker logs &amp;lt;container_id&amp;gt;&lt;/code&gt;    İlgili Container’ın terminalinde o ana kadar oluşan çıktıyı gösterir&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker logs -f &amp;lt;container_id&amp;gt;&lt;/code&gt; İlgili Container’ın terminalinde o ana kadar oluşan çıktıyı gösterir ve -f follow parametresi ile o andan sonra oluşan logları da göstermeye devam eder&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker exec &amp;lt;container_id&amp;gt; &amp;lt;command&amp;gt;&lt;/code&gt;  Çalışan bir Container içinde bir komut koşturmak için kullanılır&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker exec -it &amp;lt;container_id&amp;gt; /bin/bash&lt;/code&gt;  Çalışan bir Container içinde terminal açmak için kullanılır. İlgili Image’da /bin/bash bulunduğu varsayımı ile&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;docker attach &amp;lt;container_id&amp;gt;&lt;/code&gt;  Önceden detached modda -d başlatılan bir Container’a attach olmak için kullanılır&lt;/p&gt;
+
+&lt;p&gt;Ek Kaynak : &lt;a href=&#34;http://www.gokhansengun.com/docker-nedir-nasil-calisir-nerede-kullanilir/&#34;&gt;http://www.gokhansengun.com/docker-nedir-nasil-calisir-nerede-kullanilir/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://yazilim.aykutasil.com/2017/01/docker/</link>
+      <pubDate>Wed, 11 Jan 2017 19:55:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/docker/</guid>
+      <description>
+
+&lt;h2 id=&#34;docker&#34;&gt;DOCKER&lt;/h2&gt;
+
+&lt;p&gt;Docker aldı başını gidiyor. Yeni bir devrim açıyor.&lt;/p&gt;
+
+&lt;p&gt;E haliyle yazılım dünyası buna sessiz kalmamakla beraber bir çok Docker nedir? örnekleri vs. hazırlanıyor.&lt;/p&gt;
+
+&lt;p&gt;Bu nedenle biz Docker nedir?  tanımlamasından daha çok hızlı ilerlemeler şeklinde ufak uygulamalar geliştiricez. Bende bu yazı serisiyle paralel şekilde öğrenimimi sağlayacağımı belirtmek isterim ! 🙂&lt;/p&gt;
+
+&lt;p&gt;Başlıyoruz..&lt;/p&gt;
+
+&lt;p&gt;İlk olarak makinemize Docker ı kuralım.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Mac: &lt;a href=&#34;https://docs.docker.com/docker-for-mac/&#34;&gt;https://docs.docker.com/docker-for-mac/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Windows : &lt;a href=&#34;https://docs.docker.com/docker-for-windows/&#34;&gt;https://docs.docker.com/docker-for-windows/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;İndirip kurulumu sağladıktan sonra terminali açarak&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;gt; docker run hello-world&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;komutunu çalıştırıyoruz ve Docker a merhaba diyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki mesajı alanlar için;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ docker-machine start # start virtual machine for docker
+$ docker-machine env  # it&#39;s helps to get environment variables
+$ eval &amp;quot;$(docker-machine env default)&amp;quot; #set environment variables
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Komutlarını çalıştırarak Docker ın sistemimize tanıtıyoruz ve sonrasında tekrar &lt;strong&gt;docker run Hello-World&lt;/strong&gt; komutunu çalıştırıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/HP4lgFS&#34;&gt;&lt;img src=&#34;http://i.imgur.com/HP4lgFS.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hadi bakalım hayırlı olsun.. 😉&lt;/p&gt;
+
+&lt;p&gt;Ek Kaynak için : &lt;a href=&#34;http://www.enterprisecoding.com/post/yeni-baslayanlar-icin-docker&#34;&gt;http://www.enterprisecoding.com/post/yeni-baslayanlar-icin-docker&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ExecutorService submit() – execute()</title>
+      <link>http://yazilim.aykutasil.com/2017/01/executorservice-submit--execute/</link>
+      <pubDate>Wed, 11 Jan 2017 19:26:49 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/executorservice-submit--execute/</guid>
+      <description>
+
+&lt;h1 id=&#34;executorservice-submit-execute&#34;&gt;ExecutorService submit() – execute()&lt;/h1&gt;
+
+&lt;p&gt;Link : &lt;a href=&#34;http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html&#34;&gt;http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</title>
+      <link>http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/</link>
+      <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/</guid>
+      <description>
+
+&lt;h1 id=&#34;executor-newcachedthreadpool-newfixedthreadpool-n-newsinglethreadexecutor&#34;&gt;Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Thread&lt;/strong&gt; kullanımı, Java ile multi-threading yazılım geliştiriyorsanız mutlaka ama mutlaka bilmeniz gereken konulardan biridir.&lt;/p&gt;
+
+&lt;h2 id=&#34;threadpool&#34;&gt;ThreadPool&lt;/h2&gt;
+
+&lt;p&gt;Gün geldi çattı ve uygulamanız ilk kurulduğu amacın evrimleşmesi sonucu bambaşka bir hale büründü 🙂&lt;/p&gt;
+
+&lt;p&gt;Yani birçok uygulamada gidişat bu yöndedir ve olması gerekende budur.&lt;/p&gt;
+
+&lt;p&gt;Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sadece patron kullanmıyor sonuçta. Ya da patron öyle bir uygulama istemişki ağır işler gerektiriyor. Uzun süreler gerektiren işlemler sonucunda akış tamamlanıyor vs.&lt;/p&gt;
+
+&lt;p&gt;Sözün kısası;&lt;/p&gt;
+
+&lt;p&gt;Uygulamamız içerisinde ki akışları ayrı parçalara bölerek daha hızlı çalışmasını ve aynı anda birden fazla iş yapmamızı sağlayan yapıdır bu Thread ler.&lt;/p&gt;
+
+&lt;p&gt;Peki en basitinden nasıl kullanırız bu yapıyı ? Tabi hödük gibi değil, olması gerektiği gibi.. 😉&lt;/p&gt;
+
+&lt;h2 id=&#34;executors&#34;&gt;Executors&lt;/h2&gt;
+
+&lt;p&gt;Executors sınıfı içerisinde statik olarak tanımlanmış ve kolayca thread pool oluşturabileceğimiz yapılar mevcuttur.&lt;/p&gt;
+
+&lt;h3 id=&#34;executors-newcachedthreadpool&#34;&gt;EXECUTORS.NEWCACHEDTHREADPOOL()&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;
+Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available. These pools will typically improve the performance of programs that execute many short-lived asynchronous tasks. Calls to execute will reuse previously constructed threads if available. If no existing thread is available, a new thread will be created and added to the pool. Threads that have not been used for sixty seconds are terminated and removed from the cache. Thus, a pool that remains idle for long enough will not consume any resources. Note that pools with similar properties but different details (for example, timeout parameters) may be created using ThreadPoolExecutor constructors.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Resmi kaynaklardan yukarıdaki tanımlama yapılmış.&lt;/p&gt;
+
+&lt;p&gt;Yani özetlicek olursak;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Kısa süren işlemlerimizde bu yapıyı kullanmalıyız&lt;/li&gt;
+&lt;li&gt;Bu yapı bizim için otomatik olarak bir thread oluşturur ve ihtiyacı oldukça yeni bir thread oluşturulmasını sağlar&lt;/li&gt;
+&lt;li&gt;Oluşturulan thread ler boş kaldığında thread i kapatır. (60 saniye)&lt;/li&gt;
+&lt;li&gt;Oluşturulan thread le işi bitti ve kapatılması için belli bir süre gerekiyor (60 saniye). Ama bu süre tamamlanmadan yeni bir iş geldi. Bu işi yapmak için yeni bir thread açmaz. Eğer önceden oluşturulan thread ler arasında uygun durumda olan varsa yeni gelen işi orada çalıştırır.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Peki süper. Herşey çok iyi. Olması gerektiği gibi. Peki aynı anda 10000 kişi işlem yapmaya çalıştı. Ve ağır işlemler olduğu için sürekli yeni thread oluşturmak zorunda kaldı. 10000 tane yeni thread. Thread oluşturmak da belli bir süre ve emek gerektiriyor unutma. Peki CPU ? … vs. vs.
+İşte bu yüzden kısa süreli ve hafif işler için bu yapıyı kullanıyoruz. 😉&lt;/p&gt;
+
+&lt;p&gt;Aga bana örnek söyle.&lt;/p&gt;
+
+&lt;p&gt;Tamam sakin ol..  :*&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewCachedThreadPool() {
+    
+    ExecutorService executorService = Executors.newCachedThreadPool();
+
+    for (int a = 0; a &amp;lt; 40; a++) {
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, &amp;quot;ExecuterService: &amp;quot; + Thread.currentThread().getName());
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-43
+I/MainActivity: ExecuterServicee: pool-7-thread-10
+I/MainActivity: ExecuterServicee: pool-7-thread-111
+I/MainActivity: ExecuterServicee: pool-7-thread-47
+I/MainActivity: ExecuterServicee: pool-7-thread-91
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki çıktıdan görüldüğü üzere 111 thread oluşturmuş. Ben 10000 satırın sadece bi kısmını yapıştırdım buraya. Belki 200 tane fln de oluşturmuş olabilir. Yani makineye ve işe bağlı olarak değişiyor. Kodun çalışmasıda ~6-7 saniye kadar sürdü. Yani baya uzun. Eee bu kadar thread açmak kapamak kolay değil.&lt;/p&gt;
+
+&lt;p&gt;Ama 60 saniye sonra tüm thread ler kapatılacak. Bu yönden de bakabilirsin.&lt;/p&gt;
+
+&lt;p&gt;Hangi yönden bakman gerektiğini projen söylücek sana. Kulak ver..&lt;/p&gt;
+
+&lt;p&gt;Neyse..&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static ExecutorService newCachedThreadPool() {
+ return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+ 60L, TimeUnit.SECONDS,
+ new SynchronousQueue&amp;lt;Runnable&amp;gt;());
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki fonksiyonu kullanarak kendimize uygun cachedThreadPool oluşturabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Tabi şuraya bakmakta fayda var : &lt;a href=&#34;http://stackoverflow.com/a/1800583/3448461&#34;&gt;http://stackoverflow.com/a/1800583/3448461&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;executors-newfixedthreadpool-n&#34;&gt;EXECUTORS.NEWFIXEDTHREADPOOL(N)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;
+Creates a thread pool that reuses a fixed number of threads operating off a shared unbounded queue. At any point, at most nThreads threads will be active processing tasks. If additional tasks are submitted when all threads are active, they will wait in the queue until a thread is available. If any thread terminates due to a failure during execution prior to shutdown, a new one will take its place if needed to execute subsequent tasks. The threads in the pool will exist until it is explicitly shutdown.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Yani diyor ki;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Uygulaman da daha fazla kontrol sahibi olmak istiyorsan bu yapıyı kullan.&lt;/li&gt;
+&lt;li&gt;Thread e göndereceğin işler daha ağır ve uzun işler ise bu yapıyı kullan&lt;/li&gt;
+&lt;li&gt;Ben senin tanımlamış olduğun kadar Thread oluşturucam. Ve bana iş yolladıkça hangi thread müsaitse onda çalıştırıcam. Tüm Thread ler dolu iken iş gelirse sıraya sokacam. Sen raad ol. Ben halledicem hepsini diyor.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewFixedThreadPool() {
+
+    ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+    for (int a = 0; a &amp;lt; 10000; a++) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-5
+I/MainActivity: ExecuterServicee: pool-7-thread-5
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-3
+I/MainActivity: ExecuterServicee: pool-7-thread-3
+I/MainActivity: ExecuterServicee: pool-7-thread-3
+I/MainActivity: ExecuterServicee: pool-7-thread-3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ortalama ~2 saniye sürdü.&lt;/p&gt;
+
+&lt;h3 id=&#34;executors-newsinglethreadexecutor&#34;&gt;EXECUTORS.NEWSINGLETHREADEXECUTOR()&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewSingleThreadExecutor() {
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+    for (int a = 0; a &amp;lt; 10000; a++) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ortalama ~2 saniye sürdü.&lt;/p&gt;
+
+&lt;p&gt;Tek bir Thread oluşturarak tüm gelen işleri sıraya sokarak bu Thread üzerinde işlemi gerçekleştirir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Peki bir soru ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Executors.newSingleThreadExecutor() ile Executors.newFixedThreadPool(1) arasında fark var mı ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ufakta olsa var tabi.&lt;/p&gt;
+
+&lt;p&gt;Ama ikiside tek bir Thread oluşturur ve gelen tüm işleri bu Thread üzerinden gerçekleştirir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fark :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Similirity
+newSingleThreadExecutor() returns ExecutorService with single thread worker and newFixedThreadPool(1) also returns ExecutorService with single thread worker. In both cases if thread terminates, new thread will be created.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+Difference
+ExecutorService returned by newSingleThreadExecutor(), can never increase its thread pool size more than one. ExecutorService returned by newFixedThreadPool(1), can increase its thread pool size more than one at run time by setCorePoolSize() of the class ThreadPoolExecutor.
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Yani &lt;strong&gt;newFixedThreadPool(1)&lt;/strong&gt; ile oluşturulan tek Thread yapısı sonradan artırılabilir. Ama &lt;strong&gt;newSingleThreadExecutor()&lt;/strong&gt; ile oluşturulan yapı her zaman tek Thread üzerinden çalıştırılır.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nasıl arttırabiliriz ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void changeThreadSize() {
+
+    ExecutorService executorService = Executors.newFixedThreadPool(1);
+    ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executorService;
+    threadPoolExecutor.setCorePoolSize(2);
+    threadPoolExecutor.setMaximumPoolSize(2);
+
+    for (int a = 0; a &amp;lt; 10000; a++) {
+        threadPoolExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
+            }
+        });
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-1
+I/MainActivity: ExecuterServicee: pool-7-thread-2
+I/MainActivity: ExecuterServicee: pool-7-thread-2
+I/MainActivity: ExecuterServicee: pool-7-thread-2
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Runnable() &amp; Callable()</title>
+      <link>http://yazilim.aykutasil.com/2017/01/runnable--callable/</link>
+      <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/runnable--callable/</guid>
+      <description>
+
+&lt;h1 id=&#34;runnable-callable&#34;&gt;Runnable() &amp;amp; Callable()&lt;/h1&gt;
+
+&lt;p&gt;Ayrıntılı açıklama için &lt;a href=&#34;http://www.java67.com/2013/01/difference-between-callable-and-runnable-java.html&#34;&gt;bu siteyi&lt;/a&gt; kullanabilirsiniz.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RxJava range() Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 18:52:51 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/</guid>
+      <description>
+
+&lt;h1 id=&#34;rxjava-range-kullanımı&#34;&gt;RxJava range() Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;**Örnek kod:&amp;ndash;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void range() {
+    Observable.range(3, 5).subscribeOn(Schedulers.io())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;val: &amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki kodun çıktısı aşağıdaki gibidir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: val: 3
+I/MainActivity: val: 4
+I/MainActivity: val: 5
+I/MainActivity: val: 6
+I/MainActivity: val: 7
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RxJava candır 😉&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RxJava scan() Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 18:49:21 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/</guid>
+      <description>
+
+&lt;h1 id=&#34;rxjava-scan-kullanımı&#34;&gt;RxJava scan() Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;RxJava da scan() kullanımı iki şekilde olur.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1. İlk değer ataması yapılarak&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
+    Observable.just(3, 5, 7, 9)
+            .scan(10,(val1, val2) -&amp;gt; {
+                //
+                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+                return val1 + val2;
+            }).subscribeOn(Schedulers.io())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2. İlk değer ataması yapılmadan&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
+    Observable.just(3, 5, 7, 9)
+            .scan((val1, val2) -&amp;gt; {
+                //
+                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+                return val1 + val2;
+            }).subscribeOn(Schedulers.io())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Observable nesnesinin içindeki her bir item a fonksiyon uygulamamızı sağlar. Ve her iterasyon sonrası sonucu yayınlar yani subscribe.OnSuccess metoduna yollar. Başka bir deyişle scan() kod bloğu içeresinde tanımlamış olduğumuz fonksiyonu item lara sırayla uygulayarak onNext() fonksiyonunu çağırır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
+    Observable.just(3, 5, 7, 9)
+            .scan(10,(val1, val2) -&amp;gt; {
+                //
+                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+                return val1 + val2;
+            }).subscribeOn(Schedulers.io())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki örnek üzerinden gidecek olursak;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: Sonuc:10
+I/MainActivity: val1: 10
+I/MainActivity: val2: 3
+I/MainActivity: Sonuc:13
+I/MainActivity: val1: 13
+I/MainActivity: val2: 5
+I/MainActivity: Sonuc:18
+I/MainActivity: val1: 18
+I/MainActivity: val2: 7
+I/MainActivity: Sonuc:25
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;böyle bir çıktı ile karşılaşırız.&lt;/p&gt;
+
+&lt;p&gt;İlk değer ataması yaptığımız için (10) ilk olarak onSuccess in içine bu değer düşer. Daha sonra Observable nesnemizin ilk item ı olan 3 değeri ile toplama işlemi yapılır (10 + 3) ve sonuç onSuccess e  yollanır (13). Daha sonra 13 ile ikinci item olan 5 toplanır (13 + 5) ve sonuç (18) onSuccess e aktarılır. Tüm item lar işlem görünceye kadar devam eder.&lt;/p&gt;
+
+&lt;p&gt;RxJava candır 😉&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RxJava reduce() Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 18:42:04 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/</guid>
+      <description>
+
+&lt;h1 id=&#34;rxjava-reduce-kullanımı&#34;&gt;RxJava reduce() Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;reduce()&lt;/strong&gt; fonskyionu iki şekilde çalışır;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
+    @Override
+    public Integer apply(Integer val1, Integer val2) throws Exception {
+        return null;
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(10,new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
+    @Override
+    public Integer apply(Integer val1, Integer val2) throws Exception {
+        return null;
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki örneklerde daha net görebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;RxJava’nın reduce fonksiyonunu tanımlıcak olursak;&lt;/p&gt;
+
+&lt;p&gt;Observable nesnesine ait her bir item a (1 , 3, 5) fonksiyon uygulanmasını sağlar. Bunu map() gibi fonksiyonlarda sağlıyor. Ama tabi reduce bunu farklı bir şekilde yapıyor.&lt;/p&gt;
+
+&lt;p&gt;Eğer ilk değer (seed) atanmamış ise ilk değer olarak (val1) ilk item ı (1) alıyor.&lt;/p&gt;
+
+&lt;p&gt;Daha sonra biz her item a yapması gereken işlem olarak iki değeri toplamasını söylediğimiz için, ilk değer ve ikinci değeri toplayıp bunu bir sonraki işlem için ilk değer olarak atıyor. İkinci iterasyonda kaldığı yerden devam ederek, ilk değer olarak bir önceki işlemin sonucu ve ikinci değer olarak 2. item ı alıyor. Yine toplama işlemi yaparak bir sonraki işlem için ilk değer ataması yapıyor.&lt;/p&gt;
+
+&lt;p&gt;Tüm item lar ile işlem yapıncaya kadar devam ediyor ve sonuç subscribe.onSuccess in içine düşüyor.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
+    Observable.just(1, 3, 5)
+            .reduce((val1, val2) -&amp;gt; {
+                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+                return val1 + val2;
+            }).retry()
+            .subscribeOn(Schedulers.computation())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 1
+I/MainActivity: val2: 3
+I/MainActivity: val1: 4
+I/MainActivity: val2: 5
+I/MainActivity: Sonuc:9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Burda yukarıda ki işlemden farklı olarak ek bir iterasyon daha yapılıyor. Çünkü ilk değer atamasını biz kendimiz yapıyoruz. İkinci değer olarak da her item sırayla bu görevi üstleniyor. Ve toplama işlemi yapılıp, toplam sonucunu ilk değer olarak atadıktan sonra döngü devam ediyor. Ve sonuç subscribe.onSuccess e düşüyor.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
+    Observable.just(1, 3, 5).reduce(10, (val1, val2) -&amp;gt; {
+        Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
+        Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
+        return val1 + val2;
+    }).retry()
+            .subscribeOn(Schedulers.computation())
+            .subscribe(success -&amp;gt; {
+                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
+            });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Çıktı:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 10
+I/MainActivity: val2: 1
+I/MainActivity: val1: 11
+I/MainActivity: val2: 3
+I/MainActivity: val1: 14
+I/MainActivity: val2: 5
+I/MainActivity: Sonuc:19
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RxJava candır 😉&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VS Code &amp; Express &amp; TypeScript &amp; IntelliSense</title>
+      <link>http://yazilim.aykutasil.com/2017/01/vs-code--express--typescript--intellisense/</link>
+      <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/vs-code--express--typescript--intellisense/</guid>
+      <description>
+
+&lt;h1 id=&#34;vs-code-express-typescript-intellisense&#34;&gt;VS Code &amp;amp; Express &amp;amp; TypeScript &amp;amp; IntelliSense&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;VS Code&lt;/a&gt;,  &lt;a href=&#34;https://atom.io/&#34;&gt;Atom&lt;/a&gt; ile aynı çekirdeği paylaşan, &lt;a href=&#34;http://electron.atom.io/&#34;&gt;Electron&lt;/a&gt; kullanılarak microsoft tarafından özelleştirilmiş ve birçok dil ile uygulama geliştirmeniz için çeşitli eklentileri bulunan bir editördür.&lt;/p&gt;
+
+&lt;p&gt;Günümüzün lider dili malum Javascript ve belki de bunun böyle olmasının en temel sebeplerinden biri &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;NodeJS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://nodejs.org/en/&#34;&gt;NodeJS&lt;/a&gt; ile çok hızlı bir şekilde ve tamamen javascript  kullanarak web siteleri, uygulamaları, api service leri vb. geliştirebiliriz.&lt;/p&gt;
+
+&lt;p&gt;Bu yazımızda &lt;strong&gt;VS Code&lt;/strong&gt; un nimetlerinden yararlanarak hızlı ve kolay bir şekilde nasıl NodeJS uygulaması yazabiliriz, bunu görücez.&lt;/p&gt;
+
+&lt;p&gt;Ve bu uygulamamızı geliştirirlem NodeJS in en temel kütüphanelerinden biri olan Express i kullanıcaz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CLI&lt;/strong&gt; kullanarak express uygulaması oluşturabilmemiz için express-generator module ünün global olarak kaydediyoruz.&lt;/p&gt;
+
+&lt;p&gt;Ayrıntılı bilgi &lt;a href=&#34;http://expressjs.com/en/starter/generator.html&#34;&gt;burada&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;npm install express-generator -g&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Daha sonra projemizi oluşturacağımız path e giderek;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;express SampleNodeApp&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;yazarak uygulamamızın temel yapısını kolayca oluşturuyoruz. Daha sonra istediğimiz şekilde özelleştirme yapabiliriz tabiki.&lt;/p&gt;
+
+&lt;p&gt;Daha sonra oluşturduğumuz projeyi VS Code ile açıyoruz.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;VS Code un nimetlerinden faydalanabilmek için &lt;strong&gt;jsconfig.js&lt;/strong&gt; dosyasını eklememiz gerekmekte. VS Code penceresinin sağ alt tarafında bulunan ampül e tıklarsanız kısa yoldan bu dosyayı oluşturabilirsiniz.&lt;/li&gt;
+&lt;li&gt;Daha sonra VS Code un &lt;strong&gt;Debug&lt;/strong&gt; sekmesine girerek sol üstte bulunan ayarlar simgesine tıklıyoruz ve Node seçeneğini seçerek launch.js dosyasını oluşturulmasını sağlıyoruz.&lt;/li&gt;
+&lt;li&gt;Terminali açarak ilk olarak aşağıdaki satırı çalıştırarak typings modülünü yüklüyoruz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;npm install -g typings&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Daha sonra birçok dil için bulunan ve kod yazarken prompt çıkartarak bize öneride bulunan DefinitelyTyped ları ekliyoruz.Biz NodeJs uygulaması geliştirdiğimiz için node için olanı ve express module ünü kullanarak geliştirme yaptığımız içinde express için olanı yüklüyoruz. DefinetlyTyped ı buradan görebilirsiniz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;typings install dt~node --global&lt;/code&gt;
+&lt;code&gt;typings install dt~express dt~serve-static dt~express-serve-static-core --global&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Ve artık hızlı bir şekilde NodeJS uygulaması geliştirmeye hazırız.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Uygulamızın ilk hali aşağıdaki gibidir. Yani express SampleNodeApp yazdığımızda aşağıdaki dosyaları otomatik olarak oluşur.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/AvhZ2zo&#34;&gt;&lt;img src=&#34;http://i.imgur.com/AvhZ2zo.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;__dirname&lt;/strong&gt; in üstüne geldiğimizde any yazısını görürüz. Yani herhangi bir öneri gözükmemektedir.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/aIa7lo5&#34;&gt;&lt;img src=&#34;http://i.imgur.com/aIa7lo5.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sol tarafta en altta bulunan simgeye tıklayarak açtığımız Debug sayfasında &lt;strong&gt;Environment (Node.js)&lt;/strong&gt; i seçiyoruz ve default yapılandırmanın oluşmasını sağlıyoruz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/XDb5nZS&#34;&gt;&lt;img src=&#34;http://i.imgur.com/XDb5nZS.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sağ altta bulunan ampül simgesine tıklayarak (yukarıda ki resimlerden görebilirsiniz) jsconfig.js dosyasını oluşturuyoruz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/SObhMhv&#34;&gt;&lt;img src=&#34;http://i.imgur.com/SObhMhv.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/eYvQGgC&#34;&gt;&lt;img src=&#34;http://i.imgur.com/eYvQGgC.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;VS Code tarafında yapmamız gerekenler bunlar. Şimdi IntelliSense için gerekli modülleri yüklememiz gerekiyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/YHze3y4&#34;&gt;&lt;img src=&#34;http://i.imgur.com/YHze3y4.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/a1gOXCW&#34;&gt;&lt;img src=&#34;http://i.imgur.com/a1gOXCW.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/ACedntg&#34;&gt;&lt;img src=&#34;http://i.imgur.com/ACedntg.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/kC5no16&#34;&gt;&lt;img src=&#34;http://i.imgur.com/kC5no16.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/KEw70NZ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/KEw70NZ.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Gerekli modülleri yükledik. Biz NodeJS uygulaması geliştirdiğimiz için node ve express için olan modülleri kurdur. Diğer dillerden geliştirme yaparken o dile ait eklentileri kurmalısınız.&lt;/p&gt;
+
+&lt;p&gt;Ve sonuç olarak artık yazılan kodun üstüne gelerek açıklamayı ve nasıl kullanılması gerektiğine dair ipuçlarını görebiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/00w0gP9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/00w0gP9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>TCP/IP Nasıl Çalışır ?</title>
       <link>http://yazilim.aykutasil.com/2017/01/tcp/ip-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-/</link>
       <pubDate>Wed, 11 Jan 2017 18:05:02 +0300</pubDate>
@@ -629,744 +1549,6 @@ SET @son_satir_id = SCOPE_IDENTITY();
 &lt;p&gt;Ayrıntılı Bilgi  : &lt;a href=&#34;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&#34;&gt;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Ayrıntılı Bilgi : &lt;a href=&#34;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&#34;&gt;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Javascript Saçmalıkları</title>
-      <link>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 17:14:22 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</guid>
-      <description>&lt;p&gt;Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.&lt;/p&gt;
-
-&lt;p&gt;Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.&lt;/p&gt;
-
-&lt;p&gt;Örneğin elinizde&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;var degisken = ‘İSTANBUL’ ;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; $(&#39;#Iller &amp;gt; option&#39;).each(function(index) {
-                var il = &#39;istanbul&#39;; // veritabanından çektiğimizi düşünelim
-               
-                var txt = $(this).text() // -&amp;gt; &#39;İSTANBUL&#39;
-                if (txt === il) {
-                   // Diğer işlemler
-                }           
-            });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;if (txt === il)&lt;/code&gt;
-ile eşitlik kontrol ediliyor.&lt;/p&gt;
-
-&lt;p&gt;Ve &lt;strong&gt;true&lt;/strong&gt; değeri dönmüyor. Çünkü biri küçük diğeri büyük harfle yazılmış. Gayet normal.&lt;/p&gt;
-
-&lt;p&gt;Peki tamam.&lt;/p&gt;
-
-&lt;p&gt;Büyük yazılan &lt;strong&gt;‘İSTANBUL’&lt;/strong&gt; kelimesini javascript in çok değerli toLowerCase() fonksiyonu ile küçültüyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;var txt = txt.toLowerCase(); // -&amp;gt; &#39;istanbul&#39;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Evet ikisi de ‘istanbul’ oldu artık. Peki şimdi yukarıda belirttiğimiz eşitlik sağlanıcak mı ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HAYIR !&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Çünkü &lt;strong&gt;‘İSTANBUL’&lt;/strong&gt; değişkenini Javascript abimiz küçültürken, büyük ‘İ’ harfiyle sevişiyor. Ve eşitlik bir türlü sağlanamıyor.&lt;/p&gt;
-
-&lt;p&gt;Birde çok değerli Javascript abimizin ( dünya ahiret bacım bu saatten sonra) replace fonksiyonu efsane çalışıyor.&lt;/p&gt;
-
-&lt;p&gt;Replace olmasını istediğimiz değerin sadece ilkini değiştiriyor. Diğerleri pek umrunda değil. Bu nedenle /İ/g fln saçma salak bişiler yapmak gerekiyor.&lt;/p&gt;
-
-&lt;p&gt;Aşağıda ki fonksiyonu çözüm için kullanabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Bu dile şuan – günümüzde (31/03/2016) çok da güvenmeyin abiler ablalar !. Zaten kısa bir araştırma sonrasında Javascript tutarsızlıklarıyla ilgili bir sürü dökümana ulaşabilirsiniz.
-&lt;strong&gt;Not:&lt;/strong&gt; Esneklik beraberinde hata getirir.&lt;/p&gt;
-
-&lt;p&gt;Çözüm (Gerçekten bu yazıyı yazarken sinirliyim !)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;            function clearText(text) {
-                return text.replace(/İ/g, &amp;quot;i&amp;quot;).replace(/Ş/g, &amp;quot;s&amp;quot;).replace(/Ü/g, &amp;quot;u&amp;quot;).replace(/Ö/g, &amp;quot;o&amp;quot;).replace(/Ç/g, &amp;quot;c&amp;quot;)
-                    .toLowerCase()
-                    .replace(/ü/g, &amp;quot;u&amp;quot;).replace(/ı/g, &amp;quot;i&amp;quot;).replace(/ç/g, &amp;quot;c&amp;quot;)
-                    .replace(/ğ/g, &amp;quot;g&amp;quot;).replace(/ş/g, &amp;quot;s&amp;quot;).replace(/ö/g, &amp;quot;o&amp;quot;);
-             
-            }
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Glide ve Palette Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 17:11:30 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.&lt;/p&gt;
-
-&lt;p&gt;Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/bumptech/glide&#34;&gt;https://github.com/bumptech/glide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gradle :&lt;/strong&gt; &lt;code&gt;compile ‘com.github.florent37:glidepalette:1.0.6’&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.&lt;/p&gt;
-
-&lt;p&gt;Link : &lt;a href=&#34;http://developer.android.com/reference/android/support/v7/graphics/Palette.html&#34;&gt;Android Developer&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Gradle : compile ‘com.android.support:palette-v7:23.1.1’&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Bu iki güzel kütüphanenin birlikte kullanımı ile oldukça güzel işler çıkabilir&lt;/p&gt;
-
-&lt;p&gt;Bunun için de bir kütüphane mevcut 🙂&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/florent37/GlidePalette&#34;&gt;https://github.com/florent37/GlidePalette&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; Glide.with(mContext).load(&amp;quot;ImageAdress&amp;quot;)
-                         // Her resim için farklı bir signature belirtmeliyiz. Bu sayede resimlerin tekrar tekrar yüklenmesini engellemiş oluruz.
-                        .signature(new StringSignature(&amp;quot;ImageSignature&amp;quot;))
-                        .centerCrop()
-                        .listener(GlidePalette.with(&amp;quot;ImageAdress&amp;quot;)
-                                        .use(GlidePalette.Profile.VIBRANT_LIGHT)
-                                        .intoTextColor(txt, GlidePalette.Swatch.BODY_TEXT_COLOR)
-                                        .crossfade(true)
-
-                                         // Belirttiğimiz ImageAdress den gelen resmimiz kullanılmaya hazır olduğunda burada yakalayabilir ve 
-                                         // istediğimiz özelleştirmeyi yapabiliriz.
-                                         // Biz burada yüklenen resmin palette.getDarkMutedColor(DefaultColor) fonksiyonu ile rengini yakalıyoruz ve CollapsingToolbar ın expand olduğu durumda ki title rengini değiştiriyoruz.
-                                        .intoCallBack(new BitmapPalette.CallBack() {
-                                            @Override
-                                            public void onPaletteLoaded(@Nullable Palette palette) {
-                                                mCollapsingToolbar.setExpandedTitleColor(palette.getDarkMutedColor(Color.BLACK));
-                                            }
-                                        })
-                                        /*
-                                        .setGlideListener(new RequestListener&amp;lt;String, GlideDrawable&amp;gt;() {
-                                            @Override
-                                            public boolean onException(Exception e, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFirstResource) {
-                                                return false;
-                                            }
-
-                                            @Override
-                                            public boolean onResourceReady(GlideDrawable resource, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                                return false;
-                                            }
-                                        })
-                                        // optional: do stuff with the builder
-                                        .setPaletteBuilderInterceptor(new BitmapPalette.PaletteBuilderInterceptor() {
-                                            @NonNull
-                                            @Override
-                                            public Palette.Builder intercept(Palette.Builder builder) {
-                                                return builder.resizeBitmapSize(100);
-                                            }
-                                        })
-                                        */
-                        )
-                        .into(mCollapsingImageView);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android ViewPager</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-viewpager/</link>
-      <pubDate>Wed, 11 Jan 2017 17:07:51 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-viewpager/</guid>
-      <description>&lt;p&gt;Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.&lt;/p&gt;
-
-&lt;p&gt;İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.&lt;/p&gt;
-
-&lt;script src=&#34;https://gist.github.com/aykuttasil/bc92ffd516a9f6df1ac9.js&#34;&gt;&lt;/script&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android RecyclerView</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</link>
-      <pubDate>Wed, 11 Jan 2017 16:39:33 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</guid>
-      <description>&lt;p&gt;Android &lt;strong&gt;RecyclerView&lt;/strong&gt; yapısı &lt;strong&gt;ListView&lt;/strong&gt; in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂&lt;/p&gt;
-
-&lt;p&gt;Ayrıca &lt;strong&gt;RecyclerView&lt;/strong&gt;, &lt;strong&gt;CoordinatorLayout&lt;/strong&gt; bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.&lt;/p&gt;
-
-&lt;p&gt;ListView in özelleştirilmesi için birçok kütüphane mevcuttur.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Drag-Drop işlemleri için &lt;a href=&#34;https://github.com/bauerca/drag-sort-listview&#34;&gt;https://github.com/bauerca/drag-sort-listview&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Swipe işlemleri &lt;a href=&#34;https://github.com/timroes/EnhancedListView&#34;&gt;https://github.com/timroes/EnhancedListView&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ama bu kütüphane ve benzerleri ömürlerini doldurmuşlar. Çünkü artık RecyclerView var.&lt;/p&gt;
-
-&lt;p&gt;Evet bu kadar tanıtımdan sonra artık örnek kodlara geçebiliriz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Android CardView yapısı için oldukça güzel hazırlanmış bir kütüphane mevcut. Biz de bu kütüphane ile, RecyclerView içersinde göstermek istediğimiz liste elemanlarımızı CardView içine gömücez. Bu sayede hem daha güzel görünüm elde edicez hem de CardView bileşeninin nimetlerinden yararlanıcaz.&lt;/p&gt;
-
-&lt;p&gt;CardsLib Link : &lt;a href=&#34;https://github.com/gabrielemariotti/cardslib&#34;&gt;CardsLib&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Collections</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-collections/</link>
-      <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-collections/</guid>
-      <description>&lt;p&gt;Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.&lt;/p&gt;
-
-&lt;p&gt;Bu sayfa da &lt;strong&gt;Collection&lt;/strong&gt; yapısını ve oldukça önemli fonksiyonlarını göreceğiz.&lt;/p&gt;
-
-&lt;p&gt;Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Collections.swap&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Swap&lt;/strong&gt; kelime anlamı ile takas anlamına gelmektedir. Mevcut dizimiz içerisinde elemanların yerlerini değiştirmeye yarar.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private static final String[] STRINGS = new String[]{
-        &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;
-};
-
-private final List mItems = new ArrayList&amp;lt;&amp;gt;();
-public void setArray()
-{
-  mItems.addAll(Arrays.asList(STRINGS));
-}
-mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
-
-//  1,2,3,4,5
-
- 
-
-private void elemanYerDegistir()
-{
-  Collections.swap(mItems, 0, 4);
-}
-mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
-
-//  5,2,3,4,1
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Custom Toolbar Title</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-custom-toolbar-title/</link>
-      <pubDate>Wed, 11 Jan 2017 16:01:33 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-custom-toolbar-title/</guid>
-      <description>&lt;p&gt;Android Toolbar bileşeni çok yönlü bir yapıya sahiptir. Android Design Library  kullanarak ve AppBarLayout içerisinde tanımlanarak oldukça farklı şekillere bürünebilir.&lt;/p&gt;
-
-&lt;p&gt;Genel kullanımı aşağıdaki gibidir.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
-&amp;lt;android.support.design.widget.CoordinatorLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
- xmlns:app=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
- xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;match_parent&amp;quot;
- android:background=&amp;quot;@color/primary_dark&amp;quot;
- tools:context=&amp;quot;.MainActivity&amp;quot;&amp;gt;
-
- &amp;lt;FrameLayout
- android:id=&amp;quot;@+id/container&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt;
-
- &amp;lt;/FrameLayout&amp;gt;
-
-
- &amp;lt;android.support.design.widget.FloatingActionButton
- android:id=&amp;quot;@+id/fab&amp;quot;
- android:layout_width=&amp;quot;wrap_content&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- android:layout_gravity=&amp;quot;bottom|end&amp;quot;
- android:layout_margin=&amp;quot;@dimen/fab_margin&amp;quot;
- android:src=&amp;quot;@android:drawable/ic_dialog_email&amp;quot; /&amp;gt;
-
-
- &amp;lt;android.support.design.widget.AppBarLayout
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
-
- &amp;lt;android.support.v7.widget.Toolbar
- android:id=&amp;quot;@+id/toolbar&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- android:background=&amp;quot;@color/primary_dark&amp;quot;
- android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
- app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;/&amp;gt;
-
-
- &amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
-
-&amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;app:elevation=&amp;quot;0dp&amp;quot;&lt;/code&gt;  // AppBarLayout içerisinde ki bu tanımlama default olarak tanımlanmış gölgeyi kaldırır.&lt;/p&gt;
-
-&lt;p&gt;Tanımlamış olduğumuz Toolbar a Activity içerisinden (ya da Fragment vb) erişerek gerekli tanımlamaları vs yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Toolbar Custom Title&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Toolbarınızı tanımladığınız yerde aşağıdaki değişiklikleri yaparak Title ınızı istediğiniz gibi özelleştirebilirsiniz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;android.support.design.widget.AppBarLayout
-    android:layout_width=&amp;quot;match_parent&amp;quot;
-    android:layout_height=&amp;quot;wrap_content&amp;quot;
-    app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
-
-    &amp;lt;android.support.v7.widget.Toolbar
-        android:id=&amp;quot;@+id/toolbar&amp;quot;
-        android:layout_width=&amp;quot;match_parent&amp;quot;
-        android:layout_height=&amp;quot;wrap_content&amp;quot;
-        android:background=&amp;quot;@color/primary_dark&amp;quot;
-        android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
-        app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;&amp;gt;
-
-        &amp;lt;TextView
-            android:id=&amp;quot;@+id/toolbar_title&amp;quot;
-            style=&amp;quot;@style/ToolbarTitleStyle&amp;quot;
-            android:layout_width=&amp;quot;wrap_content&amp;quot;
-            android:layout_height=&amp;quot;wrap_content&amp;quot;
-            android:layout_gravity=&amp;quot;center&amp;quot; /&amp;gt;
-    &amp;lt;/android.support.v7.widget.Toolbar&amp;gt;
-
-
-&amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;FragmentX&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; private void setToolbar() {
- Toolbar toolbar = (Toolbar) mActivity.findViewById(R.id.toolbar);
- mActivity.setSupportActionBar(toolbar);
- mActivity.getSupportActionBar().setHomeButtonEnabled(true);
- mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
- mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false); // Default olarak tanımlanmış Title ın gösterilmemesini belirtiyoruz.
- ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(&amp;quot;SORU SOR&amp;quot;); // Custom olarak belirlenmiş TextView e text ataması yapıyoruz.
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Mac OS ile MSSQL Bağlantısı Kurmak</title>
-      <link>http://yazilim.aykutasil.com/2017/01/mac-os-ile-mssql-ba%C4%9Flant%C4%B1s%C4%B1-kurmak/</link>
-      <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/mac-os-ile-mssql-ba%C4%9Flant%C4%B1s%C4%B1-kurmak/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;MSSQL&lt;/strong&gt; oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Senaryomuz şu şekilde;&lt;/p&gt;
-
-&lt;p&gt;Mac OS yüklü bilgisayarımızdan MSSQL yüklü sunucumuza bağlantı kurmak istiyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Aşağıda bahsedecek olduğum uygulamayı  Windows yüklü bilgisayarınızda da SQL Management Studio alternatifi olarak kullanabilirsiniz.&lt;/p&gt;
-
-&lt;h2 id=&#34;dbeaver&#34;&gt;Dbeaver&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://dbeaver.jkiss.org/download/&#34;&gt;http://dbeaver.jkiss.org/download/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize göre olanı indirip kullanmaya başlayabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Database Connection&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/RQqA0wI&#34;&gt;&lt;img src=&#34;http://i.imgur.com/RQqA0wI.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Connections&lt;/strong&gt; a sağ tıklayarak Create New Connection diyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/wb55lJW&#34;&gt;&lt;img src=&#34;http://i.imgur.com/wb55lJW.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Burada SSH yapılandırması yapabiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/R0Vtyt9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/R0Vtyt9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Connection Type&lt;/strong&gt; için seçenekler mevcut.Edit diyerek arasındaki farkları görebiliriz. Biz Test seçeneğini seçiyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/6ft683a&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6ft683a.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki gibi gerekli yerleri dolduruyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/BoSw3vL&#34;&gt;&lt;img src=&#34;http://i.imgur.com/BoSw3vL.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Hangi veritabanına bağlanmak istiyorsak onu seçiyoruz. Eğer ilk defa seçmiş iseniz bazı dosyalar indirmek isteyecektir.&lt;/p&gt;
-
-&lt;p&gt;Biz &lt;strong&gt;MS SQL Server&lt;/strong&gt; ve &lt;strong&gt;Microsoft Driver&lt;/strong&gt; seçeneğini seçiyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Test Connection&lt;/strong&gt; butonuna basarak bağlantı durumunu kontrol edebiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/zM89SAI&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zM89SAI.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>SQL Management Studio Custom Generate Scripts</title>
-      <link>http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/</link>
-      <pubDate>Wed, 11 Jan 2017 15:39:47 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/</guid>
-      <description>&lt;p&gt;SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.&lt;/p&gt;
-
-&lt;p&gt;Senaryomuz şu şekilde;&lt;/p&gt;
-
-&lt;p&gt;Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.&lt;/p&gt;
-
-&lt;p&gt;Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !&lt;/p&gt;
-
-&lt;p&gt;Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.&lt;/p&gt;
-
-&lt;p&gt;Test veritabanında  ki tabloya sağ tıklayarak aşağıdaki gibi seçim yapmak.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt; seçeneği oluşturulan script in bir dosyaya kaydedilmesini&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Clipboard&lt;/strong&gt; seçeneği hafızaya alınmasını ( NotDefteri &amp;gt; CTRL + V diyerek yapıştırabiliriz )
-sağlar.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/phM7Y8A&#34;&gt;&lt;img src=&#34;http://i.imgur.com/phM7Y8A.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Tüm oluşturmuş olduğumuz yapıyı bu yöntem ile script haline getirebiliriz.&lt;/p&gt;
-
-&lt;p&gt;Lakin şöyle bir sıkıntımız olduğunu varsayalım.&lt;/p&gt;
-
-&lt;p&gt;Tablomuzu içindeki verilerle beraber taşımak istiyoruz. Yani script in verileride kapsamasını istiyoruz.&lt;/p&gt;
-
-&lt;p&gt;Bunun için ilk olarak tablomuzun bulunduğu veritabanına sağ tıklayarak aşağıdaki adımları gerçekleştiriyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/TUEWNjo&#34;&gt;&lt;img src=&#34;http://i.imgur.com/TUEWNjo.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/3pGyapU&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3pGyapU.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/6xCVWnQ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6xCVWnQ.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki resimde görmüş olduğunuz Data only seçeneği sadece tabloda kayıtlı olan verilerin scriptini çıkarır.&lt;/p&gt;
-
-&lt;p&gt;Schema and data seçeneği hem schema nın hem de verilerin scriptini çıkararı&lt;/p&gt;
-
-&lt;p&gt;Schema only sadece tablonun schema sının scriptini çıkarır.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/dB2gpdH&#34;&gt;&lt;img src=&#34;http://i.imgur.com/dB2gpdH.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Son ekranda scriptimizin başarılı şekilde oluştuğunu görüyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/7Nx3w3O&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7Nx3w3O.png&#34; title=&#34;source: imgur.com&#34; /&gt;&amp;lt;/a&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğumuz script i hangi veritabanında kullanmak istiyorsak oraya giderek query penceresine yapıştırmamız ve çalıştırmamız yeterli olacaktır.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Foreground Service ile FusedLocationApi Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Burada yapacağımız örnekte kısaca şu aşamaları görücez;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Service i foreground olarak başlatmak&lt;/li&gt;
-&lt;li&gt;Ongoing(devamlı gözüken) notification oluşturmak&lt;/li&gt;
-&lt;li&gt;GoogleApiClient a bağlanmak&lt;/li&gt;
-&lt;li&gt;Location bilgisini notification da göstermek&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ForegroundService.java&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ForegroundService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-
- private static final int LOCATION_NOTIF_ID = 859;
- private static int LocationPeriod = 1000 * 30 ;
- 
- private static Notification notification;
- private static GoogleApiClient _googleApiClient = null;
- private static Context mContext;
- private static NotificationCompat.Builder mBuilder;
-
-
-
- @Override
- public void onCreate() {
- super.onCreate();
- mContext = this;
- mBuilder = new NotificationCompat.Builder(mContext);
- }
-
- @Nullable
- @Override
- public IBinder onBind(Intent intent) {
- return null;
- }
-
- @Override
- public int onStartCommand(Intent intent, int flags, int startId) {
-
-
- // Eğer Service ilk defa çalıştırılıyor ise buildGoogleApiClient fonksiyonu ile GoogleApiClient build ediliyor
- if (_googleApiClient == null) {
- buildGoogleApiClient();
- }
- // GoogleApiClient a bağlanılıyor
- _googleApiClient.connect();
-
- // Notificaiton gösteriyoruz
- LocationNotification(null, &amp;quot;Konum Bilgisi Yok&amp;quot;);
-
- // Service imizi foreground olarak başlatıyoruz
- // Foreground service bizden bir notification parametresi ister. Bunun sebebi sürekli ayakta olduğunu kullanıcıya bildirmektir.
- startForeground(LOCATION_NOTIF_ID, notification);
-
- // Herhangi bir sebeple service imizi durması halinde kendiliğinden tekrar başlaması için START_STICKY dönüyoruz.
- return START_STICKY;
- }
-
-
- public synchronized void buildGoogleApiClient() {
- if (_googleApiClient == null) {
- _googleApiClient = new GoogleApiClient.Builder(this)
- .addConnectionCallbacks(this)
- .addOnConnectionFailedListener(this)
- .addApi(LocationServices.API)
- .build();
- }
- }
-
-
- @Override
- public void onConnected(@Nullable Bundle bundle) {
- // GoogleApiClient a bağlanıldığında Location isteğinde bulunuyoruz.
- LocationRequest();
- }
-
-
- @Override
- public void onConnectionSuspended(int i) {
-
- }
-
-
- @Override
- public void onConnectionFailed(ConnectionResult result) {
- // tekrar bağlanmayı deniyoruz
- _googleApiClient.connect();
- }
-
-
- private void LocationRequest() {
-
-
- // PRIORITY_BALANCED_POWER_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız yok ise (Network, Cell Tower)
- // PRIORITY_HIGH_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız var ise (GPS)
-
- final LocationRequest locationRequest = LocationRequest.create()
- .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
- .setInterval((LocationPeriod * 1000)) 
- .setFastestInterval(LOCATION_FASTEST_INTERVAL);
-
-
- //final LocationRequest locationRequest1 = LocationRequest.create()
- // .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
- // .setInterval((LocationPeriod * 1000))
- // .setFastestInterval(LOCATION_FASTEST_INTERVAL);
-
- // İhtiyaçlarımız doğrultusunda yapılandırdığımız LocationRequest in gerekliliklerini kontrol ederek, cihazın davranışının otomatik olarak ayarlanması için
- // gerekli Dialog penceresinin çıkmasını sağlar ve Kullanıcının onayını ister
-
- // Örnek olarak eğer PRIORITY_HIGH_ACCURACY olrarak belirlenmişse ve cihazın GPS i kapalı ise bir Dialog çıkartarak GPS i açmanızı ister
- LocationSettingsRequest locationSettingsRequest = new LocationSettingsRequest.Builder()
- .addLocationRequest(locationRequest)
- .setAlwaysShow(true)
- .build();
-
- PendingResult&amp;lt;LocationSettingsResult&amp;gt; result =
- LocationServices.SettingsApi.checkLocationSettings(_googleApiClient, locationSettingsRequest);
-
- // Gösterilen Dilag penceresi ile Kullanıcının etkileşimi sonucunun yakalar
- result.setResultCallback(new ResultCallback&amp;lt;LocationSettingsResult&amp;gt;() {
- @DebugLog
- @Override
- public void onResult(LocationSettingsResult locationSettingsResult) {
-
- // locationSettingsStates ile cihazın durumunu kontrol ederek akışımızı yönlendirebiliriz
- LocationSettingsStates locationSettingsStates = locationSettingsResult.getLocationSettingsStates();
- 
- // Konum dinlenmeye başlanır
- // mLocationListener ile konum değişikliği yakalanır.
- FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest, mLocationListener);
- 
- //FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest1, mLocationListener);
- 
- }
- });
-
-
- }
-
-
- private static LocationListener mLocationListener = new LocationListener() {
- @Override
- public void onLocationChanged(Location location) {
-
-
- // Location değişikliğini burada yakalayabiliriz.
- // Belirlemiş olduğumuz periyodik zaman aralığında Location değişikliği kontrol edilecektir.
- }
- };
-
-
- 
- public ForegroundService() {
- }
-
- // Bu fonksiyon yardımı ile başka bir sınıftan konum bilgisine erişebiliriz.
- // static olarak tanımlanmış olması bize kolaylık sağlıcaktır.
- public static Location getLastLocation() {
- if (_googleApiClient != null) {
- return FusedLocationApi.getLastLocation(_googleApiClient);
- } else {
- return null;
- }
- }
-
-
- // GoogleApiClient nesnemize erişmek istersek bu kod bloğunu kullanabiliriz.
- public static GoogleApiClient getGoogleApiClient() {
- return _googleApiClient;
- }
-
- 
- public static void removeLocationUpdates() {
- if (_googleApiClient != null) {
- FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
- }
- }
-
- @DebugLog
- private static void LocationNotification(Location location, String subText) {
- NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
- //
-
- mBuilder.setSmallIcon(R.drawable.ic_stat_device_gps_fixed);
- mBuilder.setTicker(&amp;quot;Konum&amp;quot;);
- //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
- mBuilder.setSubText(subText);
- mBuilder.setOnlyAlertOnce(true);
- mBuilder.setPriority(Notification.PRIORITY_HIGH);
-
-
- if (location != null) {
- mBuilder
- .setContentTitle(&amp;quot;Sapma: &amp;quot; + String.valueOf(location.getAccuracy()))
- .setContentText(&amp;quot;Lat: &amp;quot; + String.valueOf(location.getLatitude()) + &amp;quot; , &amp;quot; +
- &amp;quot;Long: &amp;quot; + String.valueOf(location.getLongitude()))
- .setWhen(System.currentTimeMillis())
- .setShowWhen(true)
- .setUsesChronometer(true)
- .setContentIntent(pendingIntent);
-
-
- } else {
- mBuilder
- .setContentTitle(&amp;quot;&amp;quot;)
- .setContentText(&amp;quot;&amp;quot;);
- }
-
-
- notification = mBuilder.build();
- notificationManager.notify(LOCATION_NOTIF_ID, notification);
- }
-
- @DebugLog
- @Override
- public void onDestroy() {
- if (_googleApiClient != null) {
- if (_googleApiClient.isConnected()) {
- FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
- _googleApiClient.disconnect();
- }
- }
- PeriodicHandler.removeMessages(1);
- stopForeground(true);
- super.onDestroy();
- }
-
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tanımlamış olduğumuz servisi başlatmak için istediğimiz yerden ( Activity , Fragment vb.) aşağıdaki kod bloğunu çalıştırmamız yeterli olucaktır.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Intent serviceIntent = new Intent(context, ForegroundService.class);
-startService(serviceIntent);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Retrofit Multipart File Upload</title>
-      <link>http://yazilim.aykutasil.com/2017/01/retrofit-multipart-file-upload/</link>
-      <pubDate>Wed, 11 Jan 2017 01:50:51 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/retrofit-multipart-file-upload/</guid>
-      <description>
-
-&lt;h1 id=&#34;retrofit-multipart-file-upload&#34;&gt;Retrofit Multipart File Upload&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @DebugLog
-    public BelgeResponse BelgeSync(BelgeRequest request, String apiVersion, String appVersion) {
-        try {
-
-            Map&amp;lt;String, RequestBody&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
-            String belgeDirPath = SuperHelper.getInternalIztopBelgeDir(mContext, request.getGonderiNo());
-            File belgeDir = new File(belgeDirPath);
-            boolean isDir = belgeDir.isDirectory();
-            if (isDir) {
-                File[] files = belgeDir.listFiles();
-                for (File file : files) {
-                    RequestBody requestBody = RequestBody.create(MediaType.parse(&amp;quot;image/jpg&amp;quot;), file);
-                    map.put(&amp;quot;file\&amp;quot;; filename=\&amp;quot;&amp;quot; + file.getName(), requestBody);
-                }
-            }
-
-            //RequestBody requestBodyGonderiNo = RequestBody.create(MediaType.parse(&amp;quot;text/plain&amp;quot;), request.getGonderiNo());
-            //RequestBody requestBodyMusId = RequestBody.create(MediaType.parse(&amp;quot;text/plain&amp;quot;), String.valueOf(request.getMusId()));
-
-            RestClient restClient = RestClient.getInstance();
-            Call&amp;lt;BelgeResponse&amp;gt; responseCall = restClient.getApiService().Belge(
-                    apiVersion,
-                    appVersion,
-                    request.getGonderiNo(),
-                    String.valueOf(request.getMusId()),
-                    map);
-            BelgeResponse resp = responseCall.execute().body();
-            return resp;
-        } catch (Exception ex) {
-            SuperHelper.CrashlyticsLog(ex);
-            return null;
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

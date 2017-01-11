@@ -1,0 +1,548 @@
+
+
+
+  
+
+
+<!DOCTYPE html>
+<html lang="tr-tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.17">
+    <title>Reduce</title>
+    <meta name="author" content="Aykut Asil">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="http://yazilim.aykutasil.com/favicon.png">
+    
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="http://yazilim.aykutasil.com/tags/reduce/index.xml">
+    
+
+    
+    <meta name="description" content="Yazilim - Software">
+    <meta property="og:description" content="Yazilim - Software">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Reduce">
+    <meta property="og:url" content="/tags/reduce/">
+    <meta property="og:site_name" content="Software">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Software">
+    <meta name="twitter:description" content="Yazilim - Software">
+    
+      <meta name="twitter:creator" content="@aykuttasil">
+    
+    
+
+    
+    
+
+    
+
+    
+    
+    
+
+    
+      <link rel="publisher" href="https://plus.google.com/&#43;aykutasil">
+    
+
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" />
+    
+    
+    <link rel="stylesheet" href="http://yazilim.aykutasil.com/css/style-gwlo24d2hxipxk8bi1sxik0zhlpn9t7ebcmgp9kubmmcjfzlavuyhvbqumhn.min.css" />
+    
+    
+    
+      
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="6">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://yazilim.aykutasil.com/">Software</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="http://yazilim.aykutasil.com/#about">
+    
+    
+    
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="6">
+  <div class="sidebar-container">
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Kategoriler</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Etiketler</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Arşiv</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Hakkımda</span>
+    </a>
+  </li>
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/aykuttasil" target="_blank">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://stackoverflow.com/users/3448461/aykuttasil" target="_blank">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+    </ul>
+  </div>
+</nav>
+
+      
+        
+
+      
+      <div id="main" data-behavior="6"
+        class="
+               hasCoverMetaIn
+               ">
+        
+          <section class="postShorten-group main-content-wrap">
+            
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/">
+          RxJava reduce() Kullanımı
+        </a>
+      </h1>
+      <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-01-11T18:42:04&#43;03:00">
+    
+  Ocak 11, 2017
+
+  </time>
+  
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/rxjava">rxjava</a>
+    
+  
+
+
+</div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>
+        RxJava reduce() Kullanımı reduce() fonskyionu iki şekilde çalışır;
+ 1  .reduce(new BiFunction&lt;Integer, Integer, Integer&gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })   2  .reduce(10,new BiFunction&lt;Integer, Integer, Integer&gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })  1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.
+Aşağıdaki örneklerde daha net görebilirsiniz.
+        <br>
+        <a href="http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+            
+
+          </section>
+        
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 <a href="https://github.com/aykuttasil">aykuttasil</a>. Tüm Hakları Saklıdır
+  </span>
+</footer>
+
+      </div>
+    </div>
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+    <h4 id="about-card-name">Aykut Asil</h4>
+    
+      <div id="about-card-bio">Continious Innovation</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Turkey
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Arama Yap" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">içerik bulunamadı</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-ile-webview-etkile%C5%9Fimi/">
+                <h3 class="media-heading">Android ile WebView Etkileşimi</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
+ Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
+Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/docker-komutlar%C4%B1/">
+                <h3 class="media-heading">Docker Komutları</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Docker Komutları ve Açıklamaları &gt; docker images  Docker hostuna yüklü olan image leri gösterir.
+&gt; docker ps  Docker hostunda yüklü olan imagelerle inşa edilmiş olan container ları listeler.
+&gt; docker run hello-world  İlk olarak Local de (bilgisayarımızda) hello-world isminde bir image var mı kontrol eder. Eğer varsa direkt olarak çalıştırır.
+Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local e indirir ve ardından çalıştırır.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/docker/">
+                <h3 class="media-heading">Docker</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">DOCKER Docker aldı başını gidiyor. Yeni bir devrim açıyor.
+E haliyle yazılım dünyası buna sessiz kalmamakla beraber bir çok Docker nedir? örnekleri vs. hazırlanıyor.
+Bu nedenle biz Docker nedir? tanımlamasından daha çok hızlı ilerlemeler şeklinde ufak uygulamalar geliştiricez. Bende bu yazı serisiyle paralel şekilde öğrenimimi sağlayacağımı belirtmek isterim ! 🙂
+Başlıyoruz..
+İlk olarak makinemize Docker ı kuralım.
+ Mac: https://docs.docker.com/docker-for-mac/
+ Windows : https://docs.docker.com/docker-for-windows/
+  İndirip kurulumu sağladıktan sonra terminali açarak</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/executorservice-submit--execute/">
+                <h3 class="media-heading">ExecutorService submit() – execute()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">ExecutorService submit() – execute() Link : http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/">
+                <h3 class="media-heading">Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor() Thread kullanımı, Java ile multi-threading yazılım geliştiriyorsanız mutlaka ama mutlaka bilmeniz gereken konulardan biridir.
+ThreadPool Gün geldi çattı ve uygulamanız ilk kurulduğu amacın evrimleşmesi sonucu bambaşka bir hale büründü 🙂
+Yani birçok uygulamada gidişat bu yöndedir ve olması gerekende budur.
+Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sadece patron kullanmıyor sonuçta. Ya da patron öyle bir uygulama istemişki ağır işler gerektiriyor. Uzun süreler gerektiren işlemler sonucunda akış tamamlanıyor vs.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/runnable--callable/">
+                <h3 class="media-heading">Runnable() &amp; Callable()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Runnable() &amp; Callable() Ayrıntılı açıklama için bu siteyi kullanabilirsiniz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/">
+                <h3 class="media-heading">RxJava range() Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">RxJava range() Kullanımı **Örnek kod:&ndash;
+private void range() { Observable.range(3, 5).subscribeOn(Schedulers.io()) .subscribe(success -&gt; { Log.i(TAG, &quot;val: &quot; + success.toString()); }); }  Açıklama:
+İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7
+Yukarıda ki kodun çıktısı aşağıdaki gibidir.
+I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActivity: val: 6 I/MainActivity: val: 7  RxJava candır 😉</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/">
+                <h3 class="media-heading">RxJava scan() Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">RxJava scan() Kullanımı RxJava da scan() kullanımı iki şekilde olur.
+ 1. İlk değer ataması yapılarak  private void scan() { Observable.just(3, 5, 7, 9) .scan(10,(val1, val2) -&gt; { // Log.i(TAG, &quot;val1: &quot; + val1.toString()); Log.i(TAG, &quot;val2: &quot; + val2.toString()); return val1 + val2; }).subscribeOn(Schedulers.io()) .subscribe(success -&gt; { Log.i(TAG, &quot;Sonuc:&quot; + success.toString()); }); }   2. İlk değer ataması yapılmadan  private void scan() { Observable.just(3, 5, 7, 9) .</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/">
+                <h3 class="media-heading">RxJava reduce() Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">RxJava reduce() Kullanımı reduce() fonskyionu iki şekilde çalışır;
+ 1  .reduce(new BiFunction&lt;Integer, Integer, Integer&gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })   2  .reduce(10,new BiFunction&lt;Integer, Integer, Integer&gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })  1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.
+Aşağıdaki örneklerde daha net görebilirsiniz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/vs-code--express--typescript--intellisense/">
+                <h3 class="media-heading">VS Code &amp; Express &amp; TypeScript &amp; IntelliSense</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">VS Code &amp; Express &amp; TypeScript &amp; IntelliSense VS Code, Atom ile aynı çekirdeği paylaşan, Electron kullanılarak microsoft tarafından özelleştirilmiş ve birçok dil ile uygulama geliştirmeniz için çeşitli eklentileri bulunan bir editördür.
+Günümüzün lider dili malum Javascript ve belki de bunun böyle olmasının en temel sebeplerinden biri NodeJS.
+NodeJS ile çok hızlı bir şekilde ve tamamen javascript kullanarak web siteleri, uygulamaları, api service leri vb. geliştirebiliriz.
+Bu yazımızda VS Code un nimetlerinden yararlanarak hızlı ve kolay bir şekilde nasıl NodeJS uygulaması yazabiliriz, bunu görücez.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="içerik bulunamadı"
+         data-message-one="1 içerik bulundu"
+         data-message-other="{n} içerik bulundu">
+         40 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://yazilim.aykutasil.com/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js"></script>
+
+
+<script src="http://yazilim.aykutasil.com/js/script-wl33z0n6ocaypepiqrazthtivfrliqijej4rq8ek8gvrv1awftmgjuv8k4zc.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight').each(function(i, block) {
+    var code = "";
+    hljs.highlightAuto(block.innerText).value.split(/\r\n|\r|\n/).forEach(function(line) {
+      code += "<span class=\"line\">" + line + "</span><br>";
+    });
+    if (code.length > 0) {
+      block.innerHTML = code;  
+    }
+  });
+  $('pre > code').each(function(i, block) {
+    $(this).addClass('codeblock');
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  </body>
+</html>
