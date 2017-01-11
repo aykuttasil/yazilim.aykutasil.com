@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/sql_scope_identity/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/sql_scope_identity/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SQL SCOPE_IDENTITY()</title>
+      <link>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</link>
+      <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Kısaca özetlemek gerekirse :&lt;/strong&gt; insert ile kayıt edilen tablo satırının id sini getirir.&lt;/p&gt;
+
+&lt;p&gt;Yapılan son kaydın id sini almak için uzun  yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Tüm bunları yapmaktansa:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;DECLARE @son_satir_id INT;
+
+INSERT  INTO tbQwerty
+        ( 
+          Ad ,
+          Soyad
+        )
+VALUES  ( 
+          &#39;Aykut&#39;
+          &#39;Asil&#39;
+        )
+SET @son_satir_id = SCOPE_IDENTITY();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ayrıntılı Bilgi  : &lt;a href=&#34;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&#34;&gt;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ayrıntılı Bilgi : &lt;a href=&#34;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&#34;&gt;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,8 +6,1323 @@
     <description>Recent content in Post-rsses on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <lastBuildDate>Wed, 11 Jan 2017 01:50:51 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jan 2017 18:05:02 +0300</lastBuildDate>
     <atom:link href="http://yazilim.aykutasil.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>TCP/IP Nasıl Çalışır ?</title>
+      <link>http://yazilim.aykutasil.com/2017/01/tcp/ip-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-/</link>
+      <pubDate>Wed, 11 Jan 2017 18:05:02 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/tcp/ip-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-/</guid>
+      <description>
+
+&lt;h1 id=&#34;tcp-ip-nasıl-çalışır&#34;&gt;TCP/IP Nasıl Çalışır ?&lt;/h1&gt;
+
+&lt;p&gt;Bilgisayar ağları kullanılarak bilgisayarların birbirileriyle haberleşmeye başladıkları ilk yıllarda iki bilgisayarın birbiriyle haberleşebilmeleri için aynı marka/model cihazları kullanmaları gerekiyordu. Bunun üzerine farklı üreticiler tarafından üretilen cihazların birbiriyle sorunsuz ve belirli bir düzen içinde haberleşebilmesi için çeşitli standartlar geliştirilmiştir.&lt;/p&gt;
+
+&lt;p&gt;Bunlardan en çok kullanılanı Açık Sistem Bağlantıları komitesi tarafından geliştirilen 7 katmanlı OSI referans modeli ve Amerikan Savunma Bakanlığı tarafından geliştirilen TCP/IP referans modelidir. OSI iki bilgisayar arasındaki haberleşme problemini çözmek için 7 katmanlı (aşamalı) bir ağ sistemi önermiştir.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/TVlx38I&#34;&gt;&lt;img src=&#34;http://i.imgur.com/TVlx38I.gif&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;OSI referans modelindeki 7 katmana karşılık TCP/IP referans modeli 4 katmanlı bir çözüm sunar ve 7 katmanlı OSI modeline göre daha hızlı bir iletişim imkânı sunar. OSI modeli iletişim standartlarını belirlemeye yöneliktir ve TCP/IP daha uygulanabilir bir model olduğu için daha çok uygulamaya yöneliktir.&lt;/p&gt;
+
+&lt;h2 id=&#34;tcp-ip-nedir&#34;&gt;TCP/IP Nedir?&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TCP/IP&lt;/strong&gt; birçok protokolün toplandığı bir protokoller ailesidir. Bu referans modeline en çok kullanılan iki protokolün ismi verilmiştir; TCP (Transmission Control Protocol) ve IP (Internet Protocol). Bu referans modelinde 4 farklı katmanda 15’ten fazla protokol vardır. Veriler bu katmanlar arasında sırasıyla paketlenerek gönderilir, alıcıda ise paketlemenin tersi sırayla teker teker açılarak veri ulaştırılmış olur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;► Protokol:&lt;/strong&gt; Protokoller cihazlar arası iletişimde kullanılan, iletişim kurallarını belirleyen ağ dilleridir. Referans modelinin her katmanda ayrı protokoller görev yapar. Farklı referans modellerinde aynı protokoller çalışabilir.&lt;/p&gt;
+
+&lt;h2 id=&#34;tcp-ip-referans-modeli-katmanları&#34;&gt;TCP/IP Referans Modeli Katmanları&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/vXJSOn0&#34;&gt;&lt;img src=&#34;http://i.imgur.com/vXJSOn0.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;► Uygulama katmanı:&lt;/strong&gt; Bu katmanda gönderilecek veri tipi ve veriyi işleyen uygulamalar bulunur. Örneğin bir HTML web sayfası ve bu veri tipini kullanan HTTP protokolü bu katmandadır. OSI modelindeki sunum ve oturum katmanları TCP/IP modelinde uygulama katmanı içerisinde yer alır. E-Posta gönderimi için kullanılan SMTP ve dosya gönderimi için kullanılan FTP protokolleri bu katmanda bulunur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;► Taşıma katmanı:&lt;/strong&gt; Bu katmanda verinin nasıl gönderileceği belirlenir. Veri güvenliği, hata kontrolü gibi işlemler yapılır. TCP ve UDP bu katmandadır. TCP klasik veri aktarımında UDP ise medya aktarımında kullanılır. TCP, UDP ye göre daha güvenli fakat daha yavaş çalışır. Çünkü TCP ‘de gönderilen her veri paketinin ardından verinin yerine doğru bir şekilde ulaşıp ulaşmadığı kontrol edilir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;► Ağ katmanı:&lt;/strong&gt; IP katmanı olarak da adlandırılan bu katman da verilerin gideceği adres veriye eklenir yani veri bu katmandan gönderilir ve yönlendirilir. IPv4 ün gelecekte yetersiz kalma durumuna karşı IPv6 sistemine geçmek için çalışmalar başlatılmıştır.IPv4 32 bit iken IPv6 ile 128 bitlik adresler kullanılacak. Bu sayede daha fazla cihaza IP adresi atanabilecek.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;► Fiziksel katman:&lt;/strong&gt; Bu katman verinin hangi yolla gönderileceği belirlenir. İletişim ortamının özelliklerini, haberleşme hızını ve kodlama şemasını belirler. Ethernet, Wi-Fi, Token Ring, ATM gibi protokoller bu katmanda çalışır.&lt;/p&gt;
+
+&lt;h2 id=&#34;katmanlar-ve-protokoller-nasıl-işler&#34;&gt;Katmanlar ve Protokoller Nasıl İşler?&lt;/h2&gt;
+
+&lt;p&gt;Örneğin bir web sayfası bilgisayarınıza şu şekilde gelir;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;► Web sayfasının saklı olduğu sunucuda uygulamalar sayfanın HTML veri formatında bir çıktısını oluşturur. Ve bu veriyi HTTP protokolüyle gönder komutunu verir. Bunlar 4. katmanda yani uygulama katmanında olur. Buradan çıkan veri 3. katmana yani taşıma katmanına gönderilir.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;► Taşıma katmanında veriye taşıma katmanının bilgileri yani port bilgisi ve veri boyutu eklenir.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;► Üçüncü katmandan çıkan veri paketine ikinci katmanda verinin gönderileceği bilgisayarın (sunucunun) ve sizin bilgisayarınızın IP adresleri ve verinin son halinin boyutu eklenir.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;► Son katmanda yani fiziksel katmanda fiziksel adresler ve verinin yeni boyutu pakete eklenir.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;► Paket sunucudan çıkar ve sunucu ile sizin bilgisayarınız arasındaki binlerce kilometrelik yolu kat ederek bilgisayarınıza ulaşır.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/rQQwnvv&#34;&gt;&lt;img src=&#34;http://i.imgur.com/rQQwnvv.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Veri bilgisayarınıza ulaştığında bu sefer tersi sırayla katmanlardaki protokoller işletilir. Bilgisayarınız önce fiziksel katmanı ardından ağ katmanını, daha sonra taşıma ve uygulama katmanlarını işletir. Ve en sonunda kalan paketi web tarayıcınıza gönderir. Her katmanda ayrı donanımlar görev yapar. Fiziksel katmanda Switch, ağ katmanında Router, taşıma katmanında ise NAT gibi donanımlar kullanılır.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.elektrikport.com/teknik-kutuphane/tcpip-nasil-calisir/9004&#34;&gt;Kaynak&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Library &amp; Bintray</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-library--bintray/</link>
+      <pubDate>Wed, 11 Jan 2017 17:27:29 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-library--bintray/</guid>
+      <description>&lt;p&gt;Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂&lt;/p&gt;
+
+&lt;p&gt;Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi &lt;strong&gt;maven&lt;/strong&gt; ve &lt;strong&gt;jcenter&lt;/strong&gt; repository e deploy etmek olucak.&lt;/p&gt;
+
+&lt;p&gt;Ve başlayabiliriz.&lt;/p&gt;
+
+&lt;p&gt;İlk olarak &lt;strong&gt;Android Studio&lt;/strong&gt; yu açarak &lt;strong&gt;File &amp;gt; New &amp;gt; New Project&lt;/strong&gt; e tıklayıp yeni bir proje oluşturalım.&lt;/p&gt;
+
+&lt;p&gt;Daha sonra oluşturmuş olduğunuz app e sağ tıklayıp &lt;strong&gt;New &amp;gt; Module&lt;/strong&gt; sekmesinden gerekli yerleri doldurup projemize ekleyelim.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/PQRghY8&#34;&gt;&lt;img src=&#34;http://i.imgur.com/PQRghY8.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/IV1YJmw&#34;&gt;&lt;img src=&#34;http://i.imgur.com/IV1YJmw.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/nQHzaY7&#34;&gt;&lt;img src=&#34;http://i.imgur.com/nQHzaY7.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz module içerisine kodlarımızı yazıyoruz. Module ümüzün sanki bir projeymiş gibi kendine ait dosyaları vardır. Yani kendine ait bir AndroidManifest.xml dosyası , kendine ait drawable klasörü vs. vardı. İstediğimiz şekilde özelleştirme yapabilir ve istediğimiz herhangi bir projede bu kodları kullanabiliriz.(Zaten yapılmış olanları bu şekilde kullanıyoruz. Neyin nasıl yapıldığını anlamak her zaman için ufkumuzu genişletecektir…)&lt;/p&gt;
+
+&lt;p&gt;Kodlarımızı yazdık. Sıra geldi module ümüzün gradle dosyasını düzenlemeye.&lt;/p&gt;
+
+&lt;p&gt;Ama bundan önce Project düzeyindeki gradle dosyasını güncellememiz gerekli.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:2.1.0&#39;
+        classpath &#39;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4&#39;
+        classpath &#39;com.github.dcendents:android-maven-gradle-plugin:1.3&#39;
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/3uET4kz&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3uET4kz.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ve module ümüzün &lt;strong&gt;gradle&lt;/strong&gt; dosyasını düzenliyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.android.library&#39;
+apply plugin: &#39;com.github.dcendents.android-maven&#39; // maven repository e eklememiz için gerekli gradle plugin
+apply plugin: &amp;quot;com.jfrog.bintray&amp;quot; // bintray yapılandırması yapmamız için gerekli gradle plugin
+// Kodların devamında göreceğiniz hazır yazılmış gradle tasklerini getiren yapıda, güncellenmesi gereken yerleri
+// bu şekilde düzenliyoruz.
+ext {
+    PUBLISH_GROUP_ID = &#39;com.aykuttasil&#39;
+    PUBLISH_ARTIFACT_ID = &#39;androidbasichelper&#39;
+    PUBLISH_VERSION = &#39;1.0.0&#39;
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion &amp;quot;23.0.3&amp;quot;
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName &amp;quot;1.0.0&amp;quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+        }
+    }
+}
+
+// Oluşturmuş olduğumuz kütüphane aşağıdaki bağımlılıklara sahip. Sanki bir uygulama geliştiriyormuş gibi 
+// bağımlılık dosyalarını ekliyoruz.
+dependencies {
+    testCompile &#39;junit:junit:4.12&#39;
+    compile &#39;com.android.support:appcompat-v7:23.4.0&#39;
+    compile &#39;com.afollestad.material-dialogs:core:0.8.5.9&#39;
+    compile &#39;com.joanzapata.iconify:android-iconify-fontawesome:2.1.1&#39;
+    compile &#39;com.android.support:appcompat-v7:23.4.0&#39;
+    compile &#39;com.android.support:design:23.4.0&#39;
+}
+
+// Aşağıda ki linke girip bakarsanız aslında gradle task yazılmış olduğunu görürsünüz. Bu yazılan task ler ile
+// oluşturmuş olduğumuz module dosyalarından gerekli dosyalara dönüşümlerini sağlıyoruz.
+apply from: &#39;https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle&#39;
+
+def siteUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper&#39;      // Homepage URL of the library
+def gitUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper.git&#39;   // Git repository URL
+group = &amp;quot;com.aykuttasil&amp;quot;
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging &#39;aar&#39;
+
+                name &#39;com.aykuttasil:androidbasichelper&#39; // TODO
+                description = &#39;Android Basic Helper&#39; // TODO
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name &#39;The Apache Software License, Version 2.0&#39;
+                        url &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
+                    }
+                }
+                developers {
+                    developer {
+                        id &#39;aykuttasil&#39; // TODO
+                        name &#39;Aykut Asil&#39; // TODO
+                        email &#39;aykuttasil@gmail.com&#39; // TODO
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/NPUZYLU&#34;&gt;&lt;img src=&#34;http://i.imgur.com/NPUZYLU.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/waSW8fe&#34;&gt;&lt;img src=&#34;http://i.imgur.com/waSW8fe.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evet gradle dosyalarını düzenledik. Sıra geldi çalıştırmaya.&lt;/p&gt;
+
+&lt;p&gt;Bunun için Android Studio içerisinde ki Terminal kısmına giriyoruz ya da mac in kendi Terminal ini açarak projemizin dizinine giriyoruz.&lt;/p&gt;
+
+&lt;p&gt;Ve aşağıdaki komutu giriyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;./gradlew clean build generateRelease&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/qd5tC3N&#34;&gt;&lt;img src=&#34;http://i.imgur.com/qd5tC3N.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/hIScB2P&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hIScB2P.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/D48QUqE&#34;&gt;&lt;img src=&#34;http://i.imgur.com/D48QUqE.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/cgp1Abp&#34;&gt;&lt;img src=&#34;http://i.imgur.com/cgp1Abp.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evet işlemimize başarılı bir şekilde tamamladık ve gerekli dosyaların oluşturulmasını sağladık.&lt;/p&gt;
+
+&lt;p&gt;Projemizi oluşturduğumuz klasöre gidelim ve &lt;strong&gt;ModuleName &amp;gt; build&lt;/strong&gt; içerisine girerek oluşturulan zip dosyasını  görebiliriz. Bu zip dosyasının içini açarak oluşturulan dosyaları görebilirsiniz. Ve maven repository e bu zip dosyasını ekliceğimizi unutmayın.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/id0McpR&#34;&gt;&lt;img src=&#34;http://i.imgur.com/id0McpR.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Sıra geldi kütüphanemizi maven ve jcenter repository e deploy etmeye.&lt;/p&gt;
+
+&lt;p&gt;İlk olarak &lt;a href=&#34;https://bintray.com/&#34;&gt;https://bintray.com/&lt;/a&gt; adresine girerek üyeliğimizi oluşturuyoruz. Ve sırasıyla aşağıdaki işlemleri yapıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Hesabımızı oluşturduktan sonra &lt;strong&gt;maven&lt;/strong&gt; içerisine girerek &lt;strong&gt;Add New Package&lt;/strong&gt; diyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/AGY1vSx&#34;&gt;&lt;img src=&#34;http://i.imgur.com/AGY1vSx.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki alanlara gerekli bilgileri giriyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/82CCD5F&#34;&gt;&lt;img src=&#34;http://i.imgur.com/82CCD5F.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Daha sonra oluşturmuş olduğumuz package ın içerisine girerek &lt;strong&gt;New Version&lt;/strong&gt; a tıklıyoruz ve &lt;strong&gt;1.0.0&lt;/strong&gt; şeklinde ya da istediğiniz şekilde Name  i düzenliyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/7qNM2aj&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7qNM2aj.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/1bC8KSi&#34;&gt;&lt;img src=&#34;http://i.imgur.com/1bC8KSi.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz versiyon içerisine girerek &lt;strong&gt;Upload Files&lt;/strong&gt; diyoruz ve daha önce oluşturduğumuz &lt;strong&gt;zip&lt;/strong&gt; dosyasını seçerek upload işlemini tamamlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/T2oG4DP&#34;&gt;&lt;img src=&#34;http://i.imgur.com/T2oG4DP.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/w99RPib&#34;&gt;&lt;img src=&#34;http://i.imgur.com/w99RPib.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Kütüphanemizi &lt;strong&gt;maven&lt;/strong&gt; respository yüklemiş bulunmaktayız.&lt;/p&gt;
+
+&lt;p&gt;Fakat Android Studio default olarak &lt;strong&gt;jcenter&lt;/strong&gt; resository kullanmakta. Biz de bu yüzden birkaç işlem daha yapmalıyız ki geliştiriciler kolayca, tek satır ekleyerek kütüphanemizi kullanmaya başlasınlar.&lt;/p&gt;
+
+&lt;p&gt;Aşağıda ki sayfaya gelerek &lt;strong&gt;Add to jCenter&lt;/strong&gt; butonuna tıklıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/lMQR4kl&#34;&gt;&lt;img src=&#34;http://i.imgur.com/lMQR4kl.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ve aşağıdaki gibi gerekli yerleri doldurarak işlemimizi tamamlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/GK7Eq9d&#34;&gt;&lt;img src=&#34;http://i.imgur.com/GK7Eq9d.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Kütüphanemizin kullanımı için birkaç saat beklememiz gerekmektedir. Olmadı diye telaş yapıp kafayı yemeyin 😉&lt;/p&gt;
+
+&lt;p&gt;Bu arada oluşturmuş olduğumuz kütüphanemize aşağıda ki linkten erişip projelerinizde gönül rahatlığıyla kullanabilirsiniz 🙂&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gradle :&lt;/strong&gt; &lt;code&gt;compile ‘com.aykuttasil:androidbasichelper:1.0.0’&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;GitHub :&lt;/strong&gt; &lt;a href=&#34;https://github.com/aykuttasil/AndroidBasicHelper&#34;&gt;https://github.com/aykuttasil/AndroidBasicHelper&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Yukarıda ki yöntem ile local inizde &lt;strong&gt;aar&lt;/strong&gt; dosyası oluşturarak manuel bir şekilde bu aar yi repository lere yükleyebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Peki bunu sadece birkaç komuta indirgesek ve otomatik yüklemeyi sağlasak nasıl olur ? Bencede güzel olur.&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki yöntemin yine bir benzeri (daha okunabilir ve kolay) ve artı ilaveleri şeklinde devam edelim.&lt;/p&gt;
+
+&lt;p&gt;Yeni dosya yapımız ve gradle dosyalarımızı yeri aşağıdaki resimdeki gibi olmalı. Burada 3 adet kendimizin oluşturduğu gradle dosyasını görüyorsunuz gradle klasörünün altında. Diğer gradle lar zaten Android Studio tarafından oluşturuluyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/cQyvhZb&#34;&gt;&lt;img src=&#34;http://i.imgur.com/cQyvhZb.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;build.gradle&lt;/strong&gt; dosyalarımızın içeriği aşağıdaki gibidir.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/0M6faiE&#34;&gt;&lt;img src=&#34;http://i.imgur.com/0M6faiE.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/fO5aXX8&#34;&gt;&lt;img src=&#34;http://i.imgur.com/fO5aXX8.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ext {
+    bintrayRepo = &#39;maven&#39; // maven reposu olduğunu belirtiyoruz
+    bintrayName = &#39;basic-helper&#39; 
+    orgName = &#39;aykuttasil&#39;
+
+    publishedGroupId = &#39;com.aykuttasil&#39;
+    libraryName = &#39;Android Basic Helper&#39;
+    artifact = &#39;androidbasichelperlib&#39; // module ile aynı isimde olması gerekiyor !!
+
+    libraryDescription = &#39;Android Basic Helper&#39;
+
+    siteUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper&#39; 
+    gitUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper.git&#39;
+
+    libraryVersion = rootProject.ext.libraryVersion
+
+    developerId = &#39;aykuttasil&#39;
+    developerName = &#39;Aykut Asil&#39;
+    developerEmail = &#39;aykuttasil@gmail.com&#39;
+
+    licenseName = &#39;The Apache Software License, Version 2.0&#39;
+    licenseUrl = &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
+    allLicenses = [&amp;quot;Apache-2.0&amp;quot;]
+}
+
+if (project.rootProject.file(&#39;local.properties&#39;).exists()) {
+    apply from: rootProject.file(&#39;gradle/install-v1.gradle&#39;)
+    apply from: rootProject.file(&#39;gradle/bintray-android-v1.gradle&#39;)
+}
+
+
+// ./gradlew clean install bintrayUpload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;ext {
+    sdk = 24
+    buildTools = &amp;quot;24.0.1&amp;quot;
+    minSdk = 17
+    libraryVersion = &amp;quot;1.0.20&amp;quot;
+    libraryVersionCode = 11
+    supportVersion = &amp;quot;24.2.0&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Aşağıda ki resimde gördüğünüz gibi (Android Studio Project görünümüne geçmelisiniz) 3 adet gradle dosyamızı hazırladık. Kod kalabalığı olmasın ve neyin nerede olduğu belli olsun diye bu şekilde yaptık. Yoksa direk build.gradle dosyamızın içine de yazabilirdik.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/6coc2bg&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6coc2bg.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.github.dcendents.android-maven&#39;
+
+group = publishedGroupId                               // Maven Group ID for the artifact
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging &#39;aar&#39;
+                groupId publishedGroupId
+                artifactId artifact
+
+                // Add your description here
+                name libraryName
+                description libraryDescription
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name licenseName
+                        url licenseUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id developerId
+                        name developerName
+                        email developerEmail
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+
+                }
+            }
+        }
+    }
+}
+//from https://github.com/workarounds/bundler/blob/master/gradle/install-v1.gradle
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.jfrog.bintray&#39;
+
+version = libraryVersion
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = &#39;sources&#39;
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = &#39;javadoc&#39;
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file(&#39;local.properties&#39;).newDataInputStream())
+
+bintray {
+    user = properties.getProperty(&amp;quot;bintray.user&amp;quot;)
+    key = properties.getProperty(&amp;quot;bintray.apikey&amp;quot;)
+
+    configurations = [&#39;archives&#39;]
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        userOrg = orgName
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = [&#39;Apache-2.0&#39;]
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty(&amp;quot;bintray.gpg.password&amp;quot;)
+                //Optional. The passphrase for GPG signing&#39;
+            }
+        }
+    }
+}
+
+//from https://github.com/workarounds/bundler/blob/master/gradle/bintray-java-v1.gradle
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.jfrog.bintray&#39;
+
+version = libraryVersion
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = &#39;sources&#39;
+}
+
+task javadoc(type: Javadoc) {
+    failOnError = false
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = &#39;javadoc&#39;
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file(&#39;local.properties&#39;).newDataInputStream())
+
+bintray {
+    user = properties.getProperty(&amp;quot;bintray.user&amp;quot;)
+    key = properties.getProperty(&amp;quot;bintray.apikey&amp;quot;)
+
+    configurations = [&#39;archives&#39;]
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        userOrg = orgName
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = allLicenses
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty(&amp;quot;bintray.gpg.password&amp;quot;)
+                //Optional. The passphrase for GPG signing&#39;
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tüm bu dosya yapısını hazırladıktan sonra bintray konfigürasyonu için birkaç işlem daha kaldı.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;local.properties&lt;/strong&gt; dosyamızın içine bintray bilgilerimizi giriyoruz. Bu bilgileri direk build.gradle içerisine girebilirdik fakat bu bilgilere sadece biz sahip olmalıyız 🙂 ve gitignore un içinde local.properties dosyasının ekli olduğuna dikkat edelim !!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/hSrkkEc&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hSrkkEc.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bintray api key almak için bintray sitesine giderek gerekli sayfaya ulaşıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/bmNY7Is&#34;&gt;&lt;img src=&#34;http://i.imgur.com/bmNY7Is.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/Vot0Fkk&#34;&gt;&lt;img src=&#34;http://i.imgur.com/Vot0Fkk.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evet tüm işlemler bu kadar.&lt;/p&gt;
+
+&lt;p&gt;Artık terminalden aşağıdaki komutu yazarak otomatik yüklenmeyi sağlayabiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;./gradlew clean install bintrayUpload&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Runtime Permission</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</link>
+      <pubDate>Wed, 11 Jan 2017 17:24:52 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</guid>
+      <description>&lt;p&gt;Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.&lt;/p&gt;
+
+&lt;p&gt;Bunlardan biri de Android M – Marshmallow (23) ile  gelen Runtime Permissions olayı.&lt;/p&gt;
+
+&lt;p&gt;Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel. İlerleyen zamanlarda illa ki bu alışkanlığı edinecek insanlar olacaktır 😉&lt;/p&gt;
+
+&lt;p&gt;Fazla uzatmadan birkaç link ve ipucu vericem.&lt;/p&gt;
+
+&lt;p&gt;Android Runtime Permissions olayının nasıl yapıldığını görmek için&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;https://github.com/googlesamples/android-RuntimePermissions&#34;&gt;https://github.com/googlesamples/android-RuntimePermissions&lt;/a&gt; burada süper bir örnek var.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&#34;&gt;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&lt;/a&gt; burada kısa bir özet var.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Takıldığınız yeri yorumlarda belirtebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Örneği incelediğiniz de şu satırı yazarken dikkat edin.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA},123456);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;burada sadece&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;yerine&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;android.Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;kullanacaksınız. Yoksa izin listesini bulamaz.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mac OS Arduino Uno (Klon) Kurulumu</title>
+      <link>http://yazilim.aykutasil.com/2017/01/mac-os-arduino-uno-klon-kurulumu/</link>
+      <pubDate>Wed, 11 Jan 2017 17:22:38 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/mac-os-arduino-uno-klon-kurulumu/</guid>
+      <description>&lt;p&gt;Sizde benim gibi klon Arduino Uno kartınızı çalıştıramayıp bozuk zannettiyseniz doğru yerdesiniz.&lt;/p&gt;
+
+&lt;p&gt;Arduino Uno klon kartlarında orijinal Arduino Uno kartına göre farklı bir işlemci kullanılmış ( daha ucuz olanından 😉 ) ve bu yüzden Mac OS kullanıyorsanız ayrı bir driver dosyası indirmeniz gerekmekte.&lt;/p&gt;
+
+&lt;p&gt;Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open source u destekleyen diğer taraf parayı destekleyen insanlardan oluşuyor(muş).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.arduino.cc&#34;&gt;http://www.arduino.cc&lt;/a&gt;   Parayı destekleyen tarafın sitesi&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.arduino.org&#34;&gt;http://www.arduino.org&lt;/a&gt;  Open source u destekleyen taraf&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ben &lt;strong&gt;arduino.org&lt;/strong&gt; daki Arduino IDE yi kurdum çünkü diğerinde birkaç sorun yaşamıştım ama günün sonunda her iki siteden indirdiğiniz IDE ile de geliştirme yapabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Dedikten sonra;&lt;/p&gt;
+
+&lt;p&gt;Mac OS a klon Arduino Uno driverını yüklemek için (CH341) -&amp;gt;  &lt;a href=&#34;http://www.wch.cn/download/CH341SER_MAC_ZIP.html&#34;&gt;http://www.wch.cn/download/CH341SER_MAC_ZIP.html&lt;/a&gt;
+linkinden dosyayı indirin. Çince ama idare edin, Download a basmanız yeter 😉&lt;/p&gt;
+
+&lt;p&gt;Ya da bu linki kullanabilirsiniz : &lt;a href=&#34;http://javacolors.blogspot.com.tr/2014/08/dccduino-usb-drivers-ch340-ch341-chipset.html&#34;&gt;http://javacolors.blogspot.com.tr/2014/08/dccduino-usb-drivers-ch340-ch341-chipset.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Daha sonra terminal e açarak aşağıdaki komutu yazın.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo nvram boot-args=&amp;quot;kext-dev-mode=1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Makineye yeniden başlatın.
+Artık Arduino Uno yu Mac OS görüyor olması lazım.&lt;/p&gt;
+
+&lt;p&gt;Olmadı şu linke bir göz atabilirsin : &lt;a href=&#34;http://arduino.stackexchange.com/questions/12133/mac-osx-yosemite-no-serial-ports-showing-for-uno-r3&#34;&gt;http://arduino.stackexchange.com/questions/12133/mac-osx-yosemite-no-serial-ports-showing-for-uno-r3&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ya da şu video yu izleyebilirsin : &lt;a href=&#34;https://www.youtube.com/watch?v=oHqYK1ezRzo&#34;&gt;https://www.youtube.com/watch?v=oHqYK1ezRzo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Olduysa Arduino IDE nizden port ayarlarını yapmayı unutmayın.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SQL SCOPE_IDENTITY()</title>
+      <link>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</link>
+      <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Kısaca özetlemek gerekirse :&lt;/strong&gt; insert ile kayıt edilen tablo satırının id sini getirir.&lt;/p&gt;
+
+&lt;p&gt;Yapılan son kaydın id sini almak için uzun  yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Tüm bunları yapmaktansa:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;DECLARE @son_satir_id INT;
+
+INSERT  INTO tbQwerty
+        ( 
+          Ad ,
+          Soyad
+        )
+VALUES  ( 
+          &#39;Aykut&#39;
+          &#39;Asil&#39;
+        )
+SET @son_satir_id = SCOPE_IDENTITY();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ayrıntılı Bilgi  : &lt;a href=&#34;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&#34;&gt;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ayrıntılı Bilgi : &lt;a href=&#34;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&#34;&gt;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Javascript Saçmalıkları</title>
+      <link>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 17:14:22 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</guid>
+      <description>&lt;p&gt;Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.&lt;/p&gt;
+
+&lt;p&gt;Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.&lt;/p&gt;
+
+&lt;p&gt;Örneğin elinizde&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;var degisken = ‘İSTANBUL’ ;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; $(&#39;#Iller &amp;gt; option&#39;).each(function(index) {
+                var il = &#39;istanbul&#39;; // veritabanından çektiğimizi düşünelim
+               
+                var txt = $(this).text() // -&amp;gt; &#39;İSTANBUL&#39;
+                if (txt === il) {
+                   // Diğer işlemler
+                }           
+            });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;if (txt === il)&lt;/code&gt;
+ile eşitlik kontrol ediliyor.&lt;/p&gt;
+
+&lt;p&gt;Ve &lt;strong&gt;true&lt;/strong&gt; değeri dönmüyor. Çünkü biri küçük diğeri büyük harfle yazılmış. Gayet normal.&lt;/p&gt;
+
+&lt;p&gt;Peki tamam.&lt;/p&gt;
+
+&lt;p&gt;Büyük yazılan &lt;strong&gt;‘İSTANBUL’&lt;/strong&gt; kelimesini javascript in çok değerli toLowerCase() fonksiyonu ile küçültüyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;var txt = txt.toLowerCase(); // -&amp;gt; &#39;istanbul&#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Evet ikisi de ‘istanbul’ oldu artık. Peki şimdi yukarıda belirttiğimiz eşitlik sağlanıcak mı ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HAYIR !&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Çünkü &lt;strong&gt;‘İSTANBUL’&lt;/strong&gt; değişkenini Javascript abimiz küçültürken, büyük ‘İ’ harfiyle sevişiyor. Ve eşitlik bir türlü sağlanamıyor.&lt;/p&gt;
+
+&lt;p&gt;Birde çok değerli Javascript abimizin ( dünya ahiret bacım bu saatten sonra) replace fonksiyonu efsane çalışıyor.&lt;/p&gt;
+
+&lt;p&gt;Replace olmasını istediğimiz değerin sadece ilkini değiştiriyor. Diğerleri pek umrunda değil. Bu nedenle /İ/g fln saçma salak bişiler yapmak gerekiyor.&lt;/p&gt;
+
+&lt;p&gt;Aşağıda ki fonksiyonu çözüm için kullanabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Bu dile şuan – günümüzde (31/03/2016) çok da güvenmeyin abiler ablalar !. Zaten kısa bir araştırma sonrasında Javascript tutarsızlıklarıyla ilgili bir sürü dökümana ulaşabilirsiniz.
+&lt;strong&gt;Not:&lt;/strong&gt; Esneklik beraberinde hata getirir.&lt;/p&gt;
+
+&lt;p&gt;Çözüm (Gerçekten bu yazıyı yazarken sinirliyim !)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;            function clearText(text) {
+                return text.replace(/İ/g, &amp;quot;i&amp;quot;).replace(/Ş/g, &amp;quot;s&amp;quot;).replace(/Ü/g, &amp;quot;u&amp;quot;).replace(/Ö/g, &amp;quot;o&amp;quot;).replace(/Ç/g, &amp;quot;c&amp;quot;)
+                    .toLowerCase()
+                    .replace(/ü/g, &amp;quot;u&amp;quot;).replace(/ı/g, &amp;quot;i&amp;quot;).replace(/ç/g, &amp;quot;c&amp;quot;)
+                    .replace(/ğ/g, &amp;quot;g&amp;quot;).replace(/ş/g, &amp;quot;s&amp;quot;).replace(/ö/g, &amp;quot;o&amp;quot;);
+             
+            }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Glide ve Palette Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 17:11:30 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.&lt;/p&gt;
+
+&lt;p&gt;Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/bumptech/glide&#34;&gt;https://github.com/bumptech/glide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gradle :&lt;/strong&gt; &lt;code&gt;compile ‘com.github.florent37:glidepalette:1.0.6’&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.&lt;/p&gt;
+
+&lt;p&gt;Link : &lt;a href=&#34;http://developer.android.com/reference/android/support/v7/graphics/Palette.html&#34;&gt;Android Developer&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Gradle : compile ‘com.android.support:palette-v7:23.1.1’&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bu iki güzel kütüphanenin birlikte kullanımı ile oldukça güzel işler çıkabilir&lt;/p&gt;
+
+&lt;p&gt;Bunun için de bir kütüphane mevcut 🙂&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/florent37/GlidePalette&#34;&gt;https://github.com/florent37/GlidePalette&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; Glide.with(mContext).load(&amp;quot;ImageAdress&amp;quot;)
+                         // Her resim için farklı bir signature belirtmeliyiz. Bu sayede resimlerin tekrar tekrar yüklenmesini engellemiş oluruz.
+                        .signature(new StringSignature(&amp;quot;ImageSignature&amp;quot;))
+                        .centerCrop()
+                        .listener(GlidePalette.with(&amp;quot;ImageAdress&amp;quot;)
+                                        .use(GlidePalette.Profile.VIBRANT_LIGHT)
+                                        .intoTextColor(txt, GlidePalette.Swatch.BODY_TEXT_COLOR)
+                                        .crossfade(true)
+
+                                         // Belirttiğimiz ImageAdress den gelen resmimiz kullanılmaya hazır olduğunda burada yakalayabilir ve 
+                                         // istediğimiz özelleştirmeyi yapabiliriz.
+                                         // Biz burada yüklenen resmin palette.getDarkMutedColor(DefaultColor) fonksiyonu ile rengini yakalıyoruz ve CollapsingToolbar ın expand olduğu durumda ki title rengini değiştiriyoruz.
+                                        .intoCallBack(new BitmapPalette.CallBack() {
+                                            @Override
+                                            public void onPaletteLoaded(@Nullable Palette palette) {
+                                                mCollapsingToolbar.setExpandedTitleColor(palette.getDarkMutedColor(Color.BLACK));
+                                            }
+                                        })
+                                        /*
+                                        .setGlideListener(new RequestListener&amp;lt;String, GlideDrawable&amp;gt;() {
+                                            @Override
+                                            public boolean onException(Exception e, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFirstResource) {
+                                                return false;
+                                            }
+
+                                            @Override
+                                            public boolean onResourceReady(GlideDrawable resource, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                                return false;
+                                            }
+                                        })
+                                        // optional: do stuff with the builder
+                                        .setPaletteBuilderInterceptor(new BitmapPalette.PaletteBuilderInterceptor() {
+                                            @NonNull
+                                            @Override
+                                            public Palette.Builder intercept(Palette.Builder builder) {
+                                                return builder.resizeBitmapSize(100);
+                                            }
+                                        })
+                                        */
+                        )
+                        .into(mCollapsingImageView);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android ViewPager</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-viewpager/</link>
+      <pubDate>Wed, 11 Jan 2017 17:07:51 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-viewpager/</guid>
+      <description>&lt;p&gt;Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.&lt;/p&gt;
+
+&lt;p&gt;İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/aykuttasil/bc92ffd516a9f6df1ac9.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android RecyclerView</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</link>
+      <pubDate>Wed, 11 Jan 2017 16:39:33 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</guid>
+      <description>&lt;p&gt;Android &lt;strong&gt;RecyclerView&lt;/strong&gt; yapısı &lt;strong&gt;ListView&lt;/strong&gt; in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂&lt;/p&gt;
+
+&lt;p&gt;Ayrıca &lt;strong&gt;RecyclerView&lt;/strong&gt;, &lt;strong&gt;CoordinatorLayout&lt;/strong&gt; bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.&lt;/p&gt;
+
+&lt;p&gt;ListView in özelleştirilmesi için birçok kütüphane mevcuttur.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Drag-Drop işlemleri için &lt;a href=&#34;https://github.com/bauerca/drag-sort-listview&#34;&gt;https://github.com/bauerca/drag-sort-listview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Swipe işlemleri &lt;a href=&#34;https://github.com/timroes/EnhancedListView&#34;&gt;https://github.com/timroes/EnhancedListView&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ama bu kütüphane ve benzerleri ömürlerini doldurmuşlar. Çünkü artık RecyclerView var.&lt;/p&gt;
+
+&lt;p&gt;Evet bu kadar tanıtımdan sonra artık örnek kodlara geçebiliriz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Android CardView yapısı için oldukça güzel hazırlanmış bir kütüphane mevcut. Biz de bu kütüphane ile, RecyclerView içersinde göstermek istediğimiz liste elemanlarımızı CardView içine gömücez. Bu sayede hem daha güzel görünüm elde edicez hem de CardView bileşeninin nimetlerinden yararlanıcaz.&lt;/p&gt;
+
+&lt;p&gt;CardsLib Link : &lt;a href=&#34;https://github.com/gabrielemariotti/cardslib&#34;&gt;CardsLib&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Collections</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-collections/</link>
+      <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-collections/</guid>
+      <description>&lt;p&gt;Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.&lt;/p&gt;
+
+&lt;p&gt;Bu sayfa da &lt;strong&gt;Collection&lt;/strong&gt; yapısını ve oldukça önemli fonksiyonlarını göreceğiz.&lt;/p&gt;
+
+&lt;p&gt;Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Collections.swap&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Swap&lt;/strong&gt; kelime anlamı ile takas anlamına gelmektedir. Mevcut dizimiz içerisinde elemanların yerlerini değiştirmeye yarar.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private static final String[] STRINGS = new String[]{
+        &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;
+};
+
+private final List mItems = new ArrayList&amp;lt;&amp;gt;();
+public void setArray()
+{
+  mItems.addAll(Arrays.asList(STRINGS));
+}
+mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
+
+//  1,2,3,4,5
+
+ 
+
+private void elemanYerDegistir()
+{
+  Collections.swap(mItems, 0, 4);
+}
+mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
+
+//  5,2,3,4,1
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Custom Toolbar Title</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-custom-toolbar-title/</link>
+      <pubDate>Wed, 11 Jan 2017 16:01:33 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-custom-toolbar-title/</guid>
+      <description>&lt;p&gt;Android Toolbar bileşeni çok yönlü bir yapıya sahiptir. Android Design Library  kullanarak ve AppBarLayout içerisinde tanımlanarak oldukça farklı şekillere bürünebilir.&lt;/p&gt;
+
+&lt;p&gt;Genel kullanımı aşağıdaki gibidir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;android.support.design.widget.CoordinatorLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+ xmlns:app=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
+ xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+ android:layout_width=&amp;quot;match_parent&amp;quot;
+ android:layout_height=&amp;quot;match_parent&amp;quot;
+ android:background=&amp;quot;@color/primary_dark&amp;quot;
+ tools:context=&amp;quot;.MainActivity&amp;quot;&amp;gt;
+
+ &amp;lt;FrameLayout
+ android:id=&amp;quot;@+id/container&amp;quot;
+ android:layout_width=&amp;quot;match_parent&amp;quot;
+ android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt;
+
+ &amp;lt;/FrameLayout&amp;gt;
+
+
+ &amp;lt;android.support.design.widget.FloatingActionButton
+ android:id=&amp;quot;@+id/fab&amp;quot;
+ android:layout_width=&amp;quot;wrap_content&amp;quot;
+ android:layout_height=&amp;quot;wrap_content&amp;quot;
+ android:layout_gravity=&amp;quot;bottom|end&amp;quot;
+ android:layout_margin=&amp;quot;@dimen/fab_margin&amp;quot;
+ android:src=&amp;quot;@android:drawable/ic_dialog_email&amp;quot; /&amp;gt;
+
+
+ &amp;lt;android.support.design.widget.AppBarLayout
+ android:layout_width=&amp;quot;match_parent&amp;quot;
+ android:layout_height=&amp;quot;wrap_content&amp;quot;
+ app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
+
+ &amp;lt;android.support.v7.widget.Toolbar
+ android:id=&amp;quot;@+id/toolbar&amp;quot;
+ android:layout_width=&amp;quot;match_parent&amp;quot;
+ android:layout_height=&amp;quot;wrap_content&amp;quot;
+ android:background=&amp;quot;@color/primary_dark&amp;quot;
+ android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
+ app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;/&amp;gt;
+
+
+ &amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
+
+&amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;app:elevation=&amp;quot;0dp&amp;quot;&lt;/code&gt;  // AppBarLayout içerisinde ki bu tanımlama default olarak tanımlanmış gölgeyi kaldırır.&lt;/p&gt;
+
+&lt;p&gt;Tanımlamış olduğumuz Toolbar a Activity içerisinden (ya da Fragment vb) erişerek gerekli tanımlamaları vs yapabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Toolbar Custom Title&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Toolbarınızı tanımladığınız yerde aşağıdaki değişiklikleri yaparak Title ınızı istediğiniz gibi özelleştirebilirsiniz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;android.support.design.widget.AppBarLayout
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
+
+    &amp;lt;android.support.v7.widget.Toolbar
+        android:id=&amp;quot;@+id/toolbar&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:background=&amp;quot;@color/primary_dark&amp;quot;
+        android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
+        app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;&amp;gt;
+
+        &amp;lt;TextView
+            android:id=&amp;quot;@+id/toolbar_title&amp;quot;
+            style=&amp;quot;@style/ToolbarTitleStyle&amp;quot;
+            android:layout_width=&amp;quot;wrap_content&amp;quot;
+            android:layout_height=&amp;quot;wrap_content&amp;quot;
+            android:layout_gravity=&amp;quot;center&amp;quot; /&amp;gt;
+    &amp;lt;/android.support.v7.widget.Toolbar&amp;gt;
+
+
+&amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;FragmentX&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; private void setToolbar() {
+ Toolbar toolbar = (Toolbar) mActivity.findViewById(R.id.toolbar);
+ mActivity.setSupportActionBar(toolbar);
+ mActivity.getSupportActionBar().setHomeButtonEnabled(true);
+ mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+ mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false); // Default olarak tanımlanmış Title ın gösterilmemesini belirtiyoruz.
+ ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(&amp;quot;SORU SOR&amp;quot;); // Custom olarak belirlenmiş TextView e text ataması yapıyoruz.
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mac OS ile MSSQL Bağlantısı Kurmak</title>
+      <link>http://yazilim.aykutasil.com/2017/01/mac-os-ile-mssql-ba%C4%9Flant%C4%B1s%C4%B1-kurmak/</link>
+      <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/mac-os-ile-mssql-ba%C4%9Flant%C4%B1s%C4%B1-kurmak/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;MSSQL&lt;/strong&gt; oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Senaryomuz şu şekilde;&lt;/p&gt;
+
+&lt;p&gt;Mac OS yüklü bilgisayarımızdan MSSQL yüklü sunucumuza bağlantı kurmak istiyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Aşağıda bahsedecek olduğum uygulamayı  Windows yüklü bilgisayarınızda da SQL Management Studio alternatifi olarak kullanabilirsiniz.&lt;/p&gt;
+
+&lt;h2 id=&#34;dbeaver&#34;&gt;Dbeaver&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dbeaver.jkiss.org/download/&#34;&gt;http://dbeaver.jkiss.org/download/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize göre olanı indirip kullanmaya başlayabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Database Connection&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/RQqA0wI&#34;&gt;&lt;img src=&#34;http://i.imgur.com/RQqA0wI.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Connections&lt;/strong&gt; a sağ tıklayarak Create New Connection diyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/wb55lJW&#34;&gt;&lt;img src=&#34;http://i.imgur.com/wb55lJW.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Burada SSH yapılandırması yapabiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/R0Vtyt9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/R0Vtyt9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Connection Type&lt;/strong&gt; için seçenekler mevcut.Edit diyerek arasındaki farkları görebiliriz. Biz Test seçeneğini seçiyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/6ft683a&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6ft683a.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki gibi gerekli yerleri dolduruyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/BoSw3vL&#34;&gt;&lt;img src=&#34;http://i.imgur.com/BoSw3vL.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hangi veritabanına bağlanmak istiyorsak onu seçiyoruz. Eğer ilk defa seçmiş iseniz bazı dosyalar indirmek isteyecektir.&lt;/p&gt;
+
+&lt;p&gt;Biz &lt;strong&gt;MS SQL Server&lt;/strong&gt; ve &lt;strong&gt;Microsoft Driver&lt;/strong&gt; seçeneğini seçiyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Test Connection&lt;/strong&gt; butonuna basarak bağlantı durumunu kontrol edebiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/zM89SAI&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zM89SAI.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SQL Management Studio Custom Generate Scripts</title>
+      <link>http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/</link>
+      <pubDate>Wed, 11 Jan 2017 15:39:47 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/</guid>
+      <description>&lt;p&gt;SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.&lt;/p&gt;
+
+&lt;p&gt;Senaryomuz şu şekilde;&lt;/p&gt;
+
+&lt;p&gt;Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.&lt;/p&gt;
+
+&lt;p&gt;Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !&lt;/p&gt;
+
+&lt;p&gt;Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.&lt;/p&gt;
+
+&lt;p&gt;Test veritabanında  ki tabloya sağ tıklayarak aşağıdaki gibi seçim yapmak.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt; seçeneği oluşturulan script in bir dosyaya kaydedilmesini&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clipboard&lt;/strong&gt; seçeneği hafızaya alınmasını ( NotDefteri &amp;gt; CTRL + V diyerek yapıştırabiliriz )
+sağlar.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/phM7Y8A&#34;&gt;&lt;img src=&#34;http://i.imgur.com/phM7Y8A.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tüm oluşturmuş olduğumuz yapıyı bu yöntem ile script haline getirebiliriz.&lt;/p&gt;
+
+&lt;p&gt;Lakin şöyle bir sıkıntımız olduğunu varsayalım.&lt;/p&gt;
+
+&lt;p&gt;Tablomuzu içindeki verilerle beraber taşımak istiyoruz. Yani script in verileride kapsamasını istiyoruz.&lt;/p&gt;
+
+&lt;p&gt;Bunun için ilk olarak tablomuzun bulunduğu veritabanına sağ tıklayarak aşağıdaki adımları gerçekleştiriyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/TUEWNjo&#34;&gt;&lt;img src=&#34;http://i.imgur.com/TUEWNjo.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/3pGyapU&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3pGyapU.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/6xCVWnQ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6xCVWnQ.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki resimde görmüş olduğunuz Data only seçeneği sadece tabloda kayıtlı olan verilerin scriptini çıkarır.&lt;/p&gt;
+
+&lt;p&gt;Schema and data seçeneği hem schema nın hem de verilerin scriptini çıkararı&lt;/p&gt;
+
+&lt;p&gt;Schema only sadece tablonun schema sının scriptini çıkarır.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/dB2gpdH&#34;&gt;&lt;img src=&#34;http://i.imgur.com/dB2gpdH.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Son ekranda scriptimizin başarılı şekilde oluştuğunu görüyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/7Nx3w3O&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7Nx3w3O.png&#34; title=&#34;source: imgur.com&#34; /&gt;&amp;lt;/a&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz script i hangi veritabanında kullanmak istiyorsak oraya giderek query penceresine yapıştırmamız ve çalıştırmamız yeterli olacaktır.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Foreground Service ile FusedLocationApi Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Burada yapacağımız örnekte kısaca şu aşamaları görücez;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Service i foreground olarak başlatmak&lt;/li&gt;
+&lt;li&gt;Ongoing(devamlı gözüken) notification oluşturmak&lt;/li&gt;
+&lt;li&gt;GoogleApiClient a bağlanmak&lt;/li&gt;
+&lt;li&gt;Location bilgisini notification da göstermek&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ForegroundService.java&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ForegroundService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+ private static final int LOCATION_NOTIF_ID = 859;
+ private static int LocationPeriod = 1000 * 30 ;
+ 
+ private static Notification notification;
+ private static GoogleApiClient _googleApiClient = null;
+ private static Context mContext;
+ private static NotificationCompat.Builder mBuilder;
+
+
+
+ @Override
+ public void onCreate() {
+ super.onCreate();
+ mContext = this;
+ mBuilder = new NotificationCompat.Builder(mContext);
+ }
+
+ @Nullable
+ @Override
+ public IBinder onBind(Intent intent) {
+ return null;
+ }
+
+ @Override
+ public int onStartCommand(Intent intent, int flags, int startId) {
+
+
+ // Eğer Service ilk defa çalıştırılıyor ise buildGoogleApiClient fonksiyonu ile GoogleApiClient build ediliyor
+ if (_googleApiClient == null) {
+ buildGoogleApiClient();
+ }
+ // GoogleApiClient a bağlanılıyor
+ _googleApiClient.connect();
+
+ // Notificaiton gösteriyoruz
+ LocationNotification(null, &amp;quot;Konum Bilgisi Yok&amp;quot;);
+
+ // Service imizi foreground olarak başlatıyoruz
+ // Foreground service bizden bir notification parametresi ister. Bunun sebebi sürekli ayakta olduğunu kullanıcıya bildirmektir.
+ startForeground(LOCATION_NOTIF_ID, notification);
+
+ // Herhangi bir sebeple service imizi durması halinde kendiliğinden tekrar başlaması için START_STICKY dönüyoruz.
+ return START_STICKY;
+ }
+
+
+ public synchronized void buildGoogleApiClient() {
+ if (_googleApiClient == null) {
+ _googleApiClient = new GoogleApiClient.Builder(this)
+ .addConnectionCallbacks(this)
+ .addOnConnectionFailedListener(this)
+ .addApi(LocationServices.API)
+ .build();
+ }
+ }
+
+
+ @Override
+ public void onConnected(@Nullable Bundle bundle) {
+ // GoogleApiClient a bağlanıldığında Location isteğinde bulunuyoruz.
+ LocationRequest();
+ }
+
+
+ @Override
+ public void onConnectionSuspended(int i) {
+
+ }
+
+
+ @Override
+ public void onConnectionFailed(ConnectionResult result) {
+ // tekrar bağlanmayı deniyoruz
+ _googleApiClient.connect();
+ }
+
+
+ private void LocationRequest() {
+
+
+ // PRIORITY_BALANCED_POWER_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız yok ise (Network, Cell Tower)
+ // PRIORITY_HIGH_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız var ise (GPS)
+
+ final LocationRequest locationRequest = LocationRequest.create()
+ .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+ .setInterval((LocationPeriod * 1000)) 
+ .setFastestInterval(LOCATION_FASTEST_INTERVAL);
+
+
+ //final LocationRequest locationRequest1 = LocationRequest.create()
+ // .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
+ // .setInterval((LocationPeriod * 1000))
+ // .setFastestInterval(LOCATION_FASTEST_INTERVAL);
+
+ // İhtiyaçlarımız doğrultusunda yapılandırdığımız LocationRequest in gerekliliklerini kontrol ederek, cihazın davranışının otomatik olarak ayarlanması için
+ // gerekli Dialog penceresinin çıkmasını sağlar ve Kullanıcının onayını ister
+
+ // Örnek olarak eğer PRIORITY_HIGH_ACCURACY olrarak belirlenmişse ve cihazın GPS i kapalı ise bir Dialog çıkartarak GPS i açmanızı ister
+ LocationSettingsRequest locationSettingsRequest = new LocationSettingsRequest.Builder()
+ .addLocationRequest(locationRequest)
+ .setAlwaysShow(true)
+ .build();
+
+ PendingResult&amp;lt;LocationSettingsResult&amp;gt; result =
+ LocationServices.SettingsApi.checkLocationSettings(_googleApiClient, locationSettingsRequest);
+
+ // Gösterilen Dilag penceresi ile Kullanıcının etkileşimi sonucunun yakalar
+ result.setResultCallback(new ResultCallback&amp;lt;LocationSettingsResult&amp;gt;() {
+ @DebugLog
+ @Override
+ public void onResult(LocationSettingsResult locationSettingsResult) {
+
+ // locationSettingsStates ile cihazın durumunu kontrol ederek akışımızı yönlendirebiliriz
+ LocationSettingsStates locationSettingsStates = locationSettingsResult.getLocationSettingsStates();
+ 
+ // Konum dinlenmeye başlanır
+ // mLocationListener ile konum değişikliği yakalanır.
+ FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest, mLocationListener);
+ 
+ //FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest1, mLocationListener);
+ 
+ }
+ });
+
+
+ }
+
+
+ private static LocationListener mLocationListener = new LocationListener() {
+ @Override
+ public void onLocationChanged(Location location) {
+
+
+ // Location değişikliğini burada yakalayabiliriz.
+ // Belirlemiş olduğumuz periyodik zaman aralığında Location değişikliği kontrol edilecektir.
+ }
+ };
+
+
+ 
+ public ForegroundService() {
+ }
+
+ // Bu fonksiyon yardımı ile başka bir sınıftan konum bilgisine erişebiliriz.
+ // static olarak tanımlanmış olması bize kolaylık sağlıcaktır.
+ public static Location getLastLocation() {
+ if (_googleApiClient != null) {
+ return FusedLocationApi.getLastLocation(_googleApiClient);
+ } else {
+ return null;
+ }
+ }
+
+
+ // GoogleApiClient nesnemize erişmek istersek bu kod bloğunu kullanabiliriz.
+ public static GoogleApiClient getGoogleApiClient() {
+ return _googleApiClient;
+ }
+
+ 
+ public static void removeLocationUpdates() {
+ if (_googleApiClient != null) {
+ FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
+ }
+ }
+
+ @DebugLog
+ private static void LocationNotification(Location location, String subText) {
+ NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+ //
+
+ mBuilder.setSmallIcon(R.drawable.ic_stat_device_gps_fixed);
+ mBuilder.setTicker(&amp;quot;Konum&amp;quot;);
+ //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+ mBuilder.setSubText(subText);
+ mBuilder.setOnlyAlertOnce(true);
+ mBuilder.setPriority(Notification.PRIORITY_HIGH);
+
+
+ if (location != null) {
+ mBuilder
+ .setContentTitle(&amp;quot;Sapma: &amp;quot; + String.valueOf(location.getAccuracy()))
+ .setContentText(&amp;quot;Lat: &amp;quot; + String.valueOf(location.getLatitude()) + &amp;quot; , &amp;quot; +
+ &amp;quot;Long: &amp;quot; + String.valueOf(location.getLongitude()))
+ .setWhen(System.currentTimeMillis())
+ .setShowWhen(true)
+ .setUsesChronometer(true)
+ .setContentIntent(pendingIntent);
+
+
+ } else {
+ mBuilder
+ .setContentTitle(&amp;quot;&amp;quot;)
+ .setContentText(&amp;quot;&amp;quot;);
+ }
+
+
+ notification = mBuilder.build();
+ notificationManager.notify(LOCATION_NOTIF_ID, notification);
+ }
+
+ @DebugLog
+ @Override
+ public void onDestroy() {
+ if (_googleApiClient != null) {
+ if (_googleApiClient.isConnected()) {
+ FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
+ _googleApiClient.disconnect();
+ }
+ }
+ PeriodicHandler.removeMessages(1);
+ stopForeground(true);
+ super.onDestroy();
+ }
+
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tanımlamış olduğumuz servisi başlatmak için istediğimiz yerden ( Activity , Fragment vb.) aşağıdaki kod bloğunu çalıştırmamız yeterli olucaktır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Intent serviceIntent = new Intent(context, ForegroundService.class);
+startService(serviceIntent);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Retrofit Multipart File Upload</title>
@@ -53,1281 +1368,6 @@
         }
     }
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android GcmNetworkManager Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 01:43:53 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.&lt;/p&gt;
-
-&lt;p&gt;Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;OneoffTask&lt;/li&gt;
-&lt;li&gt;PeriodicTask&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;OneoffTask Kullanımı&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;OneoffTask oneoff = new OneoffTask.Builder()
-        // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur.
-        // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz.
-        .setPersisted(true)
-        // Belirtilen network işlemlerinin çalışacağı service i belirtir.
-        .setService(MyGcmTaskService.class)
-        // İşleminiz için tag belirleyebilirsiniz.
-        // Aynı tag ile yeni bir istek yaptığınız da &#39;.setUpdateCurrent(true)&#39; olarak belirlenmiş ise isteğinizi yeni istek ile günceller. Yani eski isteğiniz geçersiz olacaktır. &#39;setUpdateCurrent(false)&#39; olarak belirlenir ise aynı tag ile yeni istekte bulunsanız bile her iki isteğiniz de çalışacaktır. 
-        .setTag(tag)
-        // Network isteğinizin çalışma zamanı parametrelerini belirler
-        .setExecutionWindow(0, 10)
-        // İşleminiz için internet gerekliliği veya wireless gerekliliği parametrelerini belirler
-        .setRequiredNetwork(required_network_state)
-        // İşleminiz için cihazın şarja bağlı olup olmaması gerekliliğini belirler
-        .setRequiresCharging(false)
-        // Aynı tag ile yeni istek yapıldığı takdirde güncellenip güncellenmemesi durumunu belirler
-        .setUpdateCurrent(true)
-        // Bundle ile işleminiz için gerekli parametreleri belirleyebilirsiniz
-        .setExtras(bundle)
-        // build eder
-        .build();
-
-GcmNetworkManager.getInstance(context).schedule(oneoff);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;MyGcmTaskService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Cihazınızı yeniden başlatma gibi durumlar da önceden belirlenmiş task lerinizin çalışmasını devam ettirmesini istiyorsanız
-// burada tekrar belirlemelisiniz.
-@Override
-public void onInitializeTasks() {
-    
-}
-
-// GcmNetworkManager ın kendi algoritması ile seçilen, tanımlamış olduğunuz istek bu kod bloğuna girecek.
-@Override
-public int onRunTask(TaskParams taskParams) {
-    try {
-        Bundle bundle = taskParams.getExtras();
-        return SchedulerRandevuTask(bundle);        
-    } catch (Exception e) {
-        ErrorEvent errorEvent = new ErrorEvent();
-        errorEvent.setErrorContent(e.getMessage());
-        EventBus.getDefault().post(errorEvent);
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-}
-
-private int SchedulerZiyaretTask(Bundle bundle) {
-    try {
-        // isteğimiz sırasında bundle olarak yüklemiş olduğumuz nesneyi burada yakalıyoruz
-        String jsonModel = bundle.getString(Const.IZTOP_TASK_BUNDLE);
-        ZiyaretRequest request = new Gson().fromJson(jsonModel, ZiyaretRequest.class);
-        ZiyaretResponse ziyaretResponse = sendZiyaretProcess(request);
-        switch (ziyaretResponse.getCode()) {
-            case 0: {
-                EventBus.getDefault().post(ziyaretResponse);                
-                // işlemlerimiz başarılı bir şekilde gerçekleşmiş ise result değeri olarak RESULT_SUCCESS dönüyoruz.
-                // GcmNetworkManager bu işlemi başarılı olduğu için listeden silecek ve tekrar çalıştırmayı denemicektir.
-                return GcmNetworkManager.RESULT_SUCCESS;
-            }
-            default: {
-                // işlemlerimiz başarısız olması durumunda ( burada sunucuya istekte bulunulmuş ve dönen değer 0 değil ise başarısız olarak belirlenmiştir )isteğin tekrar çalışması için result değeri olarak RESULT_RESCHEDULE dönüyoruz.
-                return GcmNetworkManager.RESULT_RESCHEDULE;
-            }
-        }
-    } catch (Exception e) {
-        SuperHelper.CrashlyticsLog(e);
-        e.printStackTrace();
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-
-
-}
-private ZiyaretResponse sendZiyaretProcess(ZiyaretRequest request) {
-    return ApiManager.getInstance(getApplicationContext()).Ziyaret(request);
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;ApiManager / Ziyaret&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public ZiyaretResponse Ziyaret(ZiyaretRequest request) {
-    try {
-        RestClient restClient = RestClient.getInstance();
-        Call&amp;lt;ZiyaretResponse&amp;gt; responseCall = restClient.getApiService().Ziyaret(request);
-        ZiyaretResponse ziyaretResponse = responseCall.execute().body();
-        return ziyaretResponse;
-    } catch (Exception ex) {
-        return null;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Retrofit ApiService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@POST(&amp;quot;sunucu/ziyaret/api/adresi&amp;quot;)
-Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest);&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android SMS Receiver</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-sms-receiver/</link>
-      <pubDate>Wed, 11 Jan 2017 01:42:54 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-sms-receiver/</guid>
-      <description>
-
-&lt;h1 id=&#34;android-sms-receiver&#34;&gt;Android SMS Receiver&lt;/h1&gt;
-
-&lt;p&gt;Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.&lt;/p&gt;
-
-&lt;p&gt;Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.&lt;/p&gt;
-
-&lt;p&gt;Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz. Eğer bir işlem sonucunda sms gelmesini bekliyorsak, beklediğimiz SMS  geciktiği takdirde ve bu sırada cihazın ekranını vs. kapattığımız da Android cihazımız kendini uyku moduna almak isteyecektir. Bunu önlemek için &lt;strong&gt;WakefulBroadcastReceiver&lt;/strong&gt; yapısını kullanıyoruz. Bu yapı aslında Android in WakeLock özelliğini kullanan serviceler için özel olarak tasarlanmış  bir yapıdır. Cihazı uyanık tutar ve işimiz bittiği takdirde bu WakeLock u kaldırmamız gerekir. Bunu da service in içerisinde tanımlarız.&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki fonksiyonu Activity miz içerisinde ihtiyacımız olan yerde çağırır ve SMS receiver ı çalıştırmıış oluruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;LoginActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void RegisterSmsReceiver() {
-    SmsReceiver smsReceiver = new SmsReceiver();
-    IntentFilter intentFilter = new IntentFilter(&amp;quot;android.provider.Telephony.SMS_RECEIVED&amp;quot;);
-    android.os.Handler handler = new android.os.Handler();
-    registerReceiver(smsReceiver, intentFilter, &amp;quot;android.permission.GET_TASKS&amp;quot;, handler);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsReceiver&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsReceiver extends WakefulBroadcastReceiver {
-
-    private static final String TAG = &amp;quot;SmsReceiver&amp;quot;;
-
-    public SmsReceiver() {
-        super();
-    }
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        Intent myIntent = intent;
-        myIntent.setClass(context, SmsReceiverService.class);
-
-        // startWakeFulService ile AndroidManifest.xml dosyamız içerisinde tanımlamış olduğumuz Service e yönlendiriyoruz.
-        // Ve cihazın uyanık kalmasını sağlıyoruz.
-        startWakefulService(context, myIntent);
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;AndroidManifest.xml&lt;/strong&gt; dosyasında  Service imizi  tanımlıyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;service
-    android:name=&amp;quot;.SmsReceiverService&amp;quot;
-    android:exported=&amp;quot;false&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;exported=”false”&lt;/code&gt; tanımı servisin cihazda ki diğer uygulamalar tarafından çalıştırılamayacağını belirtir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsReceiverService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsReceiverService extends IntentService {
-
-    private static final String TAG = &amp;quot;SmsReceiverService&amp;quot;;
-    private Context context;
-
-    public SmsReceiverService() {
-        super(TAG);
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        context = getApplicationContext();
-    }
-
-
-    @Override
-    protected void onHandleIntent(Intent intent) {
-
-        String msg_from = null;
-        String msgBody = null;
-        if (intent.getAction().equals(&amp;quot;android.provider.Telephony.SMS_RECEIVED&amp;quot;)) {
-            Bundle bundle = intent.getExtras();           //---get the SMS message passed in---
-            SmsMessage[] msgs = null;
-
-            if (bundle != null) {
-                //---retrieve the SMS message received---
-                try {
-                    Object[] pdus = (Object[]) bundle.get(&amp;quot;pdus&amp;quot;);
-                    msgs = new SmsMessage[pdus.length];
-                    for (int i = 0; i &amp;lt; msgs.length; i++) {
-                        msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-                        msg_from = msgs[i].getOriginatingAddress();
-                        msgBody = msgs[i].getMessageBody();
-
-                    }
-                } catch (Exception e) {
-                     // Log.d(&amp;quot;Exception caught&amp;quot;,e.getMessage());
-                }
-            }
-        }
-
-        SmsEvent smsEvent = new SmsEvent();
-        smsEvent.setActivationCode(&amp;quot;357&amp;quot;);
-        smsEvent.setMsgBody(msgBody);
-        smsEvent.setMsgFrom(msg_from);
-
-        // EventBus ile sonucu istediğimiz yere gönderebiliriz.
-        EventBus.getDefault().post(smsEvent);
-
-        // Service in işini tamamladığını ve artık cihazın WakeLock u serbest bırakabileceğini söylüyoruz.
-        SmsReceiver.completeWakefulIntent(intent);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsEvent&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsEvent {
-    private String activationCode;
-    private String msgFrom;
-    private String msgBody;
-
-
-    public String getActivationCode() {
-        return activationCode;
-    }
-
-    public void setActivationCode(String activationCode) {
-        this.activationCode = activationCode;
-    }
-
-    public String getMsgFrom() {
-        return msgFrom;
-    }
-
-    public void setMsgFrom(String msgFrom) {
-        this.msgFrom = msgFrom;
-    }
-
-    public String getMsgBody() {
-        return msgBody;
-    }
-
-    public void setMsgBody(String msgBody) {
-        this.msgBody = msgBody;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Internet Connection Receiver </title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</link>
-      <pubDate>Wed, 11 Jan 2017 01:42:36 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</guid>
-      <description>&lt;p&gt;Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.&lt;/p&gt;
-
-&lt;p&gt;Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;receiver android:name=&amp;quot;.InternetConnectionReceiver&amp;quot;&amp;gt;
-    &amp;lt;intent-filter&amp;gt;
-        &amp;lt;action android:name=&amp;quot;android.net.conn.CONNECTIVITY_CHANGE&amp;quot; /&amp;gt;
-    &amp;lt;/intent-filter&amp;gt;
-&amp;lt;/receiver&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;InternetConnectionReceiver&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class InternetConnectionReceiver extends BroadcastReceiver {
-
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-
-        if (CheckConnection(context)) {
-
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;CheckConnection&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static boolean checkConnection(Context con) {
-    ConnectivityManager cm = (ConnectivityManager) con.getSystemService(Context.CONNECTIVITY_SERVICE);
-    NetworkInfo netInfo = cm.getActiveNetworkInfo();
-    return netInfo != null &amp;amp;&amp;amp; netInfo.isConnectedOrConnecting();
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki kod bloğu da cihazın internete bağlı olması durumunu kontrol eder.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Postman ile API Test Yazımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/postman-ile-api-test-yaz%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 01:09:39 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/postman-ile-api-test-yaz%C4%B1m%C4%B1/</guid>
-      <description>
-
-&lt;h1 id=&#34;postman&#34;&gt;POSTMAN&lt;/h1&gt;
-
-&lt;p&gt;Postman HTTP Request lerinizi istediğiniz şekilde düzenleyip çalıştırabileceğiniz ve test edebileceğiniz bir Chrome eklentisidir.&lt;/p&gt;
-
-&lt;p&gt;Bu &lt;a href=&#34;https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop&#34;&gt;linkten&lt;/a&gt; Chrome a ekleyebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Postman kullanarak API lerinizi test edebilirsiniz..&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Tek bir butona tıklayarak istediğiniz kadar Request i çalıştırabilir ve bu Requst lerden gelen değerleri başka bir Requestinize parametre olarak gönderebilrsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/uNpJFK4&#34;&gt;&lt;img src=&#34;http://i.imgur.com/uNpJFK4.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıdaki ekran Postman i yüklediğinizde açılan ilk ekrandır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Enter request URL here&lt;/strong&gt; yazan kutucuğa End Point yani istek yapacağımız adres yazılır.&lt;/p&gt;
-
-&lt;p&gt;Şuan &lt;strong&gt;GET&lt;/strong&gt; olarak gözüken yerden yapılacak olan istediğin cinsi seçilir.&lt;strong&gt;(POST , GET ,PUT ,DELETE vs.)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Authorization&lt;/strong&gt; tabından Request gönderilecek adreste bir kimlik doğrulama var ise burdan gerekli parametreler girilebilir.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Headers&lt;/strong&gt; tabından yapılacak olan istekte bulunması gereken Header bilgileri girilir.(Content-Type gibi)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Body&lt;/strong&gt; tabından End Point i belirtilmiş adrese gönderilecek veriler girilir.Bu veriiler form-data , urlencoded , raw , binary şeklinde olabilir.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Pre-request&lt;/strong&gt; script tabını  kullanarak istek yapmadan hemen önce otomatik olarak yapılacak işlemleri belirleyebiliriz.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Tests&lt;/strong&gt; tabından yapılan isteklere ait çeşitli testler yazabiliriz.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ve &lt;strong&gt;SEND&lt;/strong&gt; butouna tıklayarak istek gönderilir.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;No Environment&lt;/strong&gt; yazan kısma tıklayarak farklı projeler için Environment tanımlayabilriz.Ve her proje kendine ait Environment  Variable ları kullanır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Environment variable&lt;/strong&gt; lar &lt;strong&gt;Global&lt;/strong&gt; olarak ta tanımlanabilir.Bu şekilde tanımlanmış variable lar tüm oluşturulmuş olan Environment lar içinden erişilebilir.&lt;/p&gt;
-
-&lt;p&gt;Sabit environment lar oluşturmak için No Environment tabına tıklanarak bir Environment oluşturulur ve &lt;strong&gt;Manage Environment&lt;/strong&gt; diyerek sabit değişkenler oluşturulabilir.&lt;/p&gt;
-
-&lt;p&gt;Dinamik olarak oluşturmak için Tests tabı kullanılır.&lt;/p&gt;
-
-&lt;p&gt;Ve kullanım şekli :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;postman.setEnvironmentVariable(&amp;quot;key&amp;quot;,&amp;quot;value&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Global variable oluşturmak için:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;postman.setGlobalEnvironmentVariable(&amp;quot;key&amp;quot;,&amp;quot;value&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/xZwuAHQ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/xZwuAHQ.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda görüldüğü gibi Requestimize ait sabit değerleri bu şekilde environment variable olarak kaydedebiliriz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/LuJbfDN&#34;&gt;&lt;img src=&#34;http://i.imgur.com/LuJbfDN.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda görüldüğü gibi oluşturmuş olduğumuz environment variable ı adres çubuğunda kullandık.Ve url nin devamını kendimiz el ile yazdık.Response olarak dönen değeride yukarıda ki  gibi görebiliyoruz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/jqkOC9D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/jqkOC9D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yaptığımız istek sonucu dönen Responsumuzu test etmeye geldi sıra.&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki resimde gördüğünüz gibi gelen response değerinde status diye bir property bulunuyor  mu ? ve responce code değeri 200 mü ? diye basit bir test yazıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SEND&lt;/strong&gt; dediğimizde yazdığımız testlerde çalışacak ve Response sonucunu gördüğümüz ekranın üstünde bulunan Tests(&lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;) tabına tıklayarak test sonçlarını görebilicez.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Şimdi bir Blog yazısı kayıt etmeye çalışalım.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/iOr6a5D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/iOr6a5D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Bu şekilde yazıp  &lt;strong&gt;SEND&lt;/strong&gt; e bastığımız da Response olarak Invalid hatası vericektir.Çünkü Authorization bilgilerini girmemizi istemektedir.Bunu yapabilmemiz aşağıdaki gibi bir token oluşturuyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/PIMTrVC&#34;&gt;&lt;img src=&#34;http://i.imgur.com/PIMTrVC.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/optSB3D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/optSB3D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ve oluşturduğumuz token bilgileriniz Blog post ederken kullanabilmek için &lt;strong&gt;Environment Variable&lt;/strong&gt; olarak atıyoruz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Ve aşağıdaki gibi Blog Post değerlerimizi güncelliyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/XWxEZRv&#34;&gt;&lt;img src=&#34;http://i.imgur.com/XWxEZRv.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/5hcJ3kJ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/5hcJ3kJ.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Bir Blog mesajı yazarken&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
- &amp;quot;post&amp;quot; : &amp;quot;Merhaba&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;bu şekilde oluşturabileceğiniz gibi&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
- &amp;quot;post&amp;quot; : &amp;quot;{{token}}&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;bu şekilde de kaydetmiş olduğunuz Environment Variable ları değer olarak atayabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Bu şekil de zincirleme reaksiyonlar oluşturabilir ve bir istek sonucu dönen değeri diğer isteğinize parametre olarak gönderebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/3qNG7qq&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3qNG7qq.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/LPrqyEn&#34;&gt;&lt;img src=&#34;http://i.imgur.com/LPrqyEn.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda görüldüğü gibi environment variable değerinizi Url nize parametre olarak yerleştirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Postman de test yazarken kullanabileceğiniz ve çok yararlı olabilecek console.log u aktif etmek için bir kaç ayar yapmanız gerekmekte.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Chromu u açın ve adres satırına chrome://flags  yazın.&lt;/li&gt;
-&lt;li&gt;Çıkan pencerece “package” diye arama yapın (CTRL + F)&lt;/li&gt;
-&lt;li&gt;Ve  #debug-packed-apps  enable yapın.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/hMi6dle&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hMi6dle.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Şimdi Postman ekranına gelin ve herhangi bir yere sağ tıklayarak öğeyi denetle diyin ve Console tabını açın.&lt;/p&gt;
-
-&lt;p&gt;Bu ekran da postman de test yazarken kullanmış olduğunuz &lt;code&gt;console.log(“xyz”)&lt;/code&gt; komutunun sonucunu görebilirsiniz.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android ActiveAndroid Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-activeandroid-kullan%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.&lt;/p&gt;
-
-&lt;p&gt;Kütüphaneyi &lt;a href=&#34;https://github.com/pardom/ActiveAndroid&#34;&gt;buradan&lt;/a&gt; indirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Kullanımı oldukça basittir. Sadece birkaç noktaya özellikle dikkat edilmesi gerekiyor. Bunlardan biri oluşturmuş olduğunuz tabloya yeni alanlar eklediğiniz de tablonuzu güncellemek. Veya herhangi bir sebeple tabloda çeşitli işlemler yapmak.&lt;/p&gt;
-
-&lt;p&gt;Aşağıda kısaca Tablo oluşturmaktan ve gerektiğinde Tablo yu nasıl güncelleyeceğimizden bahsedicem.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Table(name = &amp;quot;Items&amp;quot;)
-public class ModelSampleItem extends Model {
-
-    @Column(name = &amp;quot;Name&amp;quot;)
-    public String name;
-
-    @Column(name = &amp;quot;Surname&amp;quot;)
-    public String surname;
-
-    @Column(name = &amp;quot;Phone&amp;quot;)
-    public String phoneNumber;
-
-    @Column(name = &amp;quot;Xyz&amp;quot;)
-    public String xyz;
-
-    @Column(name = &amp;quot;EMail&amp;quot;)
-    public String email;
-
-    @Column(name = &amp;quot;TryColumn&amp;quot;)
-    public String tryColumn;
-
-
-    @Column(name = &amp;quot;Column3&amp;quot;)
-    public String column3;
-
-    
-
-    public ModelSampleItem() {
-        super();
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki yapıyı kullanarak istediğiniz Tablo yu oluşturmanız mümkün.&lt;/p&gt;
-
-&lt;p&gt;Tabi bundan önce yapmamız gereken birkaç ayar var.&lt;/p&gt;
-
-&lt;p&gt;Android uygulamamızın Manifest dosyasına custom Application Name tanımlıyoruz ve bu isimde bir Class oluşturuyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;application
-    android:name=&amp;quot;.app.AppController&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ve Application dan türeyen sınıfımız&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class AppController extends com.activeandroid.app.Application {
-
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;com.activeandroid.app.Application&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki sınıftan türetmek  aslında &lt;strong&gt;onCreate()&lt;/strong&gt; içerisinde &lt;strong&gt;ActiveAndroid.initializ(this)&lt;/strong&gt; ile aynı anlama gelmektedir.Ama yukarıda ki gibi yaparsak daha güzel bir görünüm olacaktır.&lt;/p&gt;
-
-&lt;p&gt;Ve aşağıdaki meta-taglarını &lt;code&gt;&amp;lt;application&amp;gt;&lt;/code&gt; tagları arasıne ekliyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;meta-data
-    android:name=&amp;quot;AA_DB_NAME&amp;quot;
-    android:value=&amp;quot;newiztop1.db&amp;quot; /&amp;gt;
-&amp;lt;meta-data
-    android:name=&amp;quot;AA_DB_VERSION&amp;quot;
-    android:value=&amp;quot;1&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yapılandırma ayarlarımız bu kadar. Artık &lt;strong&gt;Items&lt;/strong&gt; benzeri tablolarınızı yukarıda ki gibi yazmanız ve uygulamanızı çalıştırmanız yeterli olacaktır.&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki tabloya sonradan bir alan eklememiz gerekti. Uygulamamız büyüdükçe nelere ihtiyacı olacağını kestirmek imkansıza yakındır.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Column(name = &amp;quot;Column4&amp;quot;)
-    public String column4;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Alanımızı Items sınıfımıza ekliyoruz. Ama çalıştırdığımız da uygulamamız hata verecektir.&lt;/p&gt;
-
-&lt;p&gt;Uygulamamıza yeni alan eklediğimizi bildirmek için biraz kıvranmamız gerekmekte.&lt;/p&gt;
-
-&lt;p&gt;Öncelikle &lt;strong&gt;assets&lt;/strong&gt; klasörünün içine migrations isilmli bir klasör oluşturuyoruz. Bu ismi vermek zorunludur. assets/migrations&lt;/p&gt;
-
-&lt;p&gt;Ve oluşturduğumuz migrations klasörüne &lt;strong&gt;2.sql&lt;/strong&gt; isimli bir dosya oluşturuyoruz.Niye 2 peki?&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;meta-data
-    android:name=&amp;quot;AA_DB_NAME&amp;quot;
-    android:value=&amp;quot;newiztop1.db&amp;quot; /&amp;gt;
-
-&amp;lt;meta-data
-    android:name=&amp;quot;AA_DB_VERSION&amp;quot;
-    android:value=&amp;quot;1&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Android Manifest dosyasına yapılandırırken &lt;strong&gt;DB_VERSION&lt;/strong&gt; olarak 1 verdik. Bura da belirttiğimiz sayının bir fazlası olması gerekiyor *.sql dosyamızın ismi.&lt;/p&gt;
-
-&lt;p&gt;Ve &lt;strong&gt;2.sql&lt;/strong&gt; dosyamızın içine&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;BEGIN TRANSACTION;
-ALTER TABLE Items ADD COLUMN Column4 TEXT;
-COMMIT;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ekliyoruz.&lt;/p&gt;
-
-&lt;p&gt;Ve çalıştırdığımız da &lt;strong&gt;Items&lt;/strong&gt; tablomuza &lt;strong&gt;Column4&lt;/strong&gt; isimli bir alan eklenmiş olacaktır.Artık bu alanımızı da gönül rahatlığıyla kullanabiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Items Tablomuza herhangi bir satır eklemek istersek :&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ModelSampleItem msi = new ModelSampleItem();
-msi.name = &amp;quot;Aykut&amp;quot;;
-msi.surname = &amp;quot;Asil&amp;quot;;
-msi.phoneNumber = &amp;quot;535&amp;quot;;
-msi.email = &amp;quot;huuuu@gmail.com&amp;quot;;
-msi.xyz = &amp;quot;xy&amp;lt;&amp;quot;;
-msi.Column4 = &amp;quot;merhaba&amp;quot;;
-msi.save();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;dememiz yeterli olacaktır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Kaydedilmiş bir veriyi okumak istersek :&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;ModelSampleItem myModel = Model.load(ModelSampleItem.class, 6); // id si 6 olan veriyi getirir
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;veya&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;List&amp;lt;ModelSampleItem&amp;gt; listMOdel = new Select().from(ModelSampleItem.class).execute(); // Tüm verileri List şeklinde getirir.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;İhityacınıza yönelik sorgulamalar yapabilirsiniz. Tek yapmanız gereken biraz kurcalamak.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Robolectric ile UnitTest Yazımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/robolectric-ile-unittest-yaz%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 00:31:52 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/robolectric-ile-unittest-yaz%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.&lt;/p&gt;
-
-&lt;p&gt;Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.&lt;/p&gt;
-
-&lt;p&gt;Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Android Studio da Robolectric kullanarak Unit Test Yazımı&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.(Ben gerektiğinden uzun bi zaman harcadım, siz harcamayın !)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;build.gradle&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-gradle&#34;&gt;apply plugin: &#39;com.android.application&#39;
-
-android {
-    compileSdkVersion 22
-    buildToolsVersion &amp;quot;23.0.0&amp;quot;
-
-    defaultConfig {
-        applicationId &amp;quot;com.a.aykut.tryrobolectric1&amp;quot;
-        minSdkVersion 16
-        targetSdkVersion 21
-        versionCode 1
-        versionName &amp;quot;1.0&amp;quot;
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
-    compile &#39;com.android.support:appcompat-v7:22.2.1&#39;
-    compile &#39;com.jakewharton:butterknife:7.0.1&#39;
-
-    testCompile &#39;junit:junit:4.12&#39;
-    testCompile &#39;com.squareup.assertj:assertj-android:1.1.0&#39;
-    testCompile &#39;org.robolectric:robolectric:3.0&#39;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;MainActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Bind(R.id.button)
-Button button;
-
-@Bind(R.id.textView)
-TextView textView;
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_main);
-  ButterKnife.bind(this);
-}
-
-@OnClick(R.id.button)
-public void buttonClick(View vi) {
-  textView.setText(&amp;quot;tiklandi&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;AndroidManifest.xml  dosyasında herhangi bir değişiklik yapmanıza gerek yok.&lt;/p&gt;
-
-&lt;p&gt;Test sınıfımızı yazmaya başlayalım.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak Android Studio nun sol tarafında yer alan &lt;strong&gt;Build Variant&lt;/strong&gt; tabından &lt;strong&gt;Test Artifact&lt;/strong&gt; kısmını &lt;strong&gt;Unit Tests&lt;/strong&gt; olarak değiştirin.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/rEPljpe&#34;&gt;&lt;img src=&#34;http://i.imgur.com/rEPljpe.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Unit Test yazmak için &lt;strong&gt;src&lt;/strong&gt; klasörüne test isminde bir klasör ve test klasörünün içine de &lt;strong&gt;java&lt;/strong&gt; isimli bir klasör oluşturmanız gerekmektedir.&lt;/p&gt;
-
-&lt;p&gt;yani &lt;strong&gt;src/test&lt;/strong&gt; ve &lt;strong&gt;src/test/java&lt;/strong&gt; klasörlerini oluşturmalısınız.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/gztY5gr&#34;&gt;&lt;img src=&#34;http://i.imgur.com/gztY5gr.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğunuz java klasörüne sağ tıklayarak new &amp;gt; Package diyin ve normal Package isminizle aynı isimde bir Package oluşturun.Burda biz com.a.aykut.tryrobolectric1 ismini kullandık.&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğunuz Package sağ tıklayarak new &amp;gt; Java Class diyin ve test sınıfını oluşturun. Anlaşılabilirlik açısından Test*(Test Edilecek Sınıf ismi) olarak isimlendirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TestMainActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import android.app.Activity;
-
-import android.widget.Button;
-import android.widget.TextView;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class,sdk = 21)
-public class TestMainActivity {
-
-  Activity activity;
-  TextView textView;
-  Button button;
-
-  @Before
-  public void setUp() {
-    activity = Robolectric.setupActivity(MainActivity.class);
-    textView = (TextView) activity.findViewById(R.id.textView);
-    button = (Button) activity.findViewById(R.id.button);
-  }
-
-  @Test
-  public void shouldMainActivityNotBeNull() throws Exception {
-    Robolectric.buildActivity(MainActivity.class).create().pause().resume().get();
-    assertTrue(Robolectric.buildActivity(MainActivity.class).create().get() != null);
-    String hello = new MainActivity().getResources().getString(R.string.hello_world);
-    assertEquals(hello, &amp;quot;Hello world!&amp;quot;);
-
-
-  }
-
-  @Test
-  public void buttonClickChangeTextView() throws Exception {
-    String text = textView.getText().toString();
-    assertEquals(text, &amp;quot;Hello world!&amp;quot;);
-    button.performClick();
-    text = textView.getText().toString();
-    assertEquals(text, &amp;quot;tiklandi&amp;quot;);
-
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Evet.Test sınıfımızı da yazdık.Artık çalıştırabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Testimizi çalıştırmak için yazmış olduğumuz Test Sınıfına sağ tıklayarak Run diyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/7STeLHy&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7STeLHy.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Run dediğiniz de Test çalışacaktır. Fakat aşağıdaki hataya benzer bir hata alırsanız endişelenmeyin.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;java.lang.RuntimeException: build\intermediates\bundles\debug\AndroidManifest.xml not found or not a file; it should point to your project&#39;s AndroidManifest.xml
-
-at org.robolectric.manifest.AndroidManifest.validate(AndroidManifest.java:121)
-
-at org.robolectric.manifest.AndroidManifest.getResourcePath(AndroidManifest.java:469)
-
-at org.robolectric.manifest.AndroidManifest.getIncludedResourcePaths(AndroidManifest.java:475)
-
-at org.robolectric.RobolectricTestRunner.createAppResourceLoader(RobolectricTestRunner.java:491)
-
-at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
-.
-
-.
-
-.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/1TpiUpG&#34;&gt;&lt;img src=&#34;http://i.imgur.com/1TpiUpG.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resim de görüldüğü gibi &lt;strong&gt;Edit Configurations&lt;/strong&gt; a tıklayın.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/pFGTznR&#34;&gt;&lt;img src=&#34;http://i.imgur.com/pFGTznR.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resim deki gibi &lt;strong&gt;Working directory&lt;/strong&gt; yolunun sonuna &lt;strong&gt;\app&lt;/strong&gt; ekleyin.&lt;/p&gt;
-
-&lt;p&gt;Ve şimdi tekrar Test Sınıfına sağ tıklayarak Run diyin.&lt;/p&gt;
-
-&lt;p&gt;Ve sonuç aşağıdaki gibi olmalıdır.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/zIgjUDT&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zIgjUDT.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Kaynak kodlarını aşağıdkai linkten indirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/aykuttasil/RobolectricUnitTest&#34;&gt;https://github.com/aykuttasil/RobolectricUnitTest&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Unit Test Nedir ? Niçin ve Nasıl Yapılır ?</title>
-      <link>http://yazilim.aykutasil.com/2017/01/unit-test-nedir--ni%C3%A7in-ve-nas%C4%B1l-yap%C4%B1l%C4%B1r-/</link>
-      <pubDate>Wed, 11 Jan 2017 00:27:54 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/unit-test-nedir--ni%C3%A7in-ve-nas%C4%B1l-yap%C4%B1l%C4%B1r-/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Unit Test Nedir ? Niçin ve Nasıl Yapılır ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Yıl olmuş 2014 hala birim test makalesi mi yazıyorsun diye düşünüyor olabilirsiniz. Ancak, birim testi uzun zamandır kullanılan bir yöntem olmasına rağmen tam olarak ne işe yaradığı, neden yapıldığı ve nasıl yapılması gerektiği konusunda açıklayıcı bir Türkçe yazı bulmak malesef zor. Bu yüzden, yazılım mühendisi adaylarına ve kariyerine yeni başlayan arkadaşlara faydalı olabilmek adına bu yazıyı yazmak uygun olur diye düşündüm.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Birim Testi Nedir?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Birim testi adından anlaşıldığı üzere yazılım birimlerinin test edilmesidir. Burada yazılım birimi dediğimiz şey ise test edilebilen en küçük yazılım bileşenidir. Nesneye yönelik programlama yaklaşımını ele alacak olursak, yazılım birimleri sınıflardır diyebiliriz. Yapılan şey basit olarak sınıf davranışlarının (metodlar) belirli girdiler sağlandığı zaman doğru bir şekilde çalışıp, istediğimiz sonucu üretip üretmediğini kontrol etmektir. Bu şekilde yazılımın küçük birimleri test edildiği zaman, bütünü oluşturan parçaların en azından kendi içlerinde çalıştığından emin olmuş oluruz. Buraya kadar söylediklerimiz birim testinin genel tanımıdır, ama yazılım geliştiren kişiler olarak asıl anlamamız gereken şey birim testini niçin yaptığımızdır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Birim Test Niçin Yapılır?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Bu soruyu eminim ki birçok yazılımcı kendi kendine sormuştur. Bir kısmımız tam olarak neye hizmet ettiğini anlamasak da, faydalı olduğunu düşündüğümüz için ve kendimizi daha güvende hissetmek adına birim test yazarız. Bazılarımız ise birim test yazmanın faydalı olduğunu bilmemize rağmen çeşitli bahaneler üreterek birim test yazmaktan kaçarız. Bunun arkasındaki asıl sebep ise birim testlerin ve test odaklı yazılım geliştirme tekniğinin (test-driven development) asıl amacını kavrayamamış olmamızdır. Her şeyden önce şunu söylemek gerekir: Birim testleri yazılımları test etmek için yazılmaz. İsmi “birim test” olan bir yöntem için “asıl amacı yazılımları test etmek değildir” demek ilk başta çok mantıklı gelmeyebilir ama yazıyı okudukça bana hak vereceğinizi düşünüyorum.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Birim testler hata bulmak için değildir&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Bir yazılım sistemindeki hataları (bug) bulmak birim testler ile mümkün değildir. Çünkü birim testlerin yaptığı iş yazılımın en küçük parçalarını kendi içerisinde test etmektir. Peki bu küçük parçaların kendi içlerinde çalışıyor olması, yazılımın gerçek kullanıcılar tarafından kullanılmaya başladığı zaman bir bütün olarak çalışacağını gösterir mi? Kesinlikle hayır. Bir yazılım sistemi, onu oluşturan parçaların toplamından çok daha fazlasıdır. Dolayısıyla bu bütünü test etmek için farklı yöntemler kullanmak gerekir. İşlevsel test (functional testing), bütünleştirme testi (integration testing) bunlara örnek verilebilir ancak konumuz birim test olduğu için bunlara değinmeyeceğim.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Hataları bulamıyorsa birim testler ne işe yarıyor?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Birim test yazmanın sağladığı gerçek fayda, bizi kaliteli kod yazmaya teşvik etmesidir. Peki bu nasıl olur? Öncelikle şunu söylemek gerekir ki, birim test yazmanın birinci kuralı test etmekte olduğumuz sınıfı, bağımlı olduğu diğer bütün bileşenlerden izole etmektir. Örnek verecek olursak, test ettiğiniz sınıfın bir Google servisine bağlanarak veri çektiğini düşünün. Ancak birim test esnasında bu sınıfın Google servisine bağlanıp veri çekmesini istemeyiz. Çünkü birim testin amacı yazılımın Google servisleriyle çalışabildiğini kanıtlamak değildir. Birim test yazarken, bağlantılı olduğumuz diğer bütün parçaların sorunsuz biçimde çalıştığını varsayarak yazarız, çünkü odaklandığımız şey sınıfın kendisidir, bağımlı olduğu diğer bileşenler değil. Bu varsayımı yapabilmek için de, mocking dediğimiz tekniği kullanarak test esnasında gerçek Google servisine bağlanmak yerine bizim yarattığımız sahte bir servise (mock object) bağlanıp sınıfın ihtiyacı olan veriyi döndürürüz.  Bu şekilde test ettiğimiz sınıf dışarıda bir servise bağlanmadan ihtiyacı olan veriyi alır ve işletimini tamamlar.&lt;/p&gt;
-
-&lt;p&gt;Şimdi test etmekte olduğumuz bu sınıfın dışarıdaki Google servisiyle sıkı sıkıya bağlı (tightly coupled) olduğunu düşünün. Sınıf Google servisiyle ilgili bütün bilgileri içinde barındırıyor ve bağlantıyı yaratıp kullanıyor, veri alışverişini yapıyor. Biz bu sınıfa gerçek Google servisine değil de bizim belirlediğimiz sahte servise (mock object) bağlanmasını nasıl söyleyeceğiz? Bu şekilde birbirine sıkıca bağlanmış yazılım bileşenlerini birbirlerinden bağımsız bir şekilde test etmek mümkün değildir. Ancak bu bileşenler gevşek bağlı (loosely coupled) olsaydı, biz sınıfımıza test esnasında sahte servisi, gerçek işletim esnasında ise Google servisini kullanmasını söyleyebilirdik. Bu şekilde yazılım bileşenlerini birbirlerine gevşek bir biçimde bağlamak Dependency Injection tekniğiyle mümkündür ve gevşek bağlı sistemler çok daha kolay bakım yapılabilen, test edilebilen ve eklemeler yapması çok daha kolay olan sistemlerdir.&lt;/p&gt;
-
-&lt;p&gt;Test odaklı yazılım geliştirme yapıyorsak (test-driven development), birim testleri sınıfın kendisinden önce yazmamız gerektiği için bu tarz tasarım detaylarını henüz işin başındayken doğru bir şekilde belirlemiş oluruz. Doğru biçimde birim test yazmak, yazılım bileşenlerini birbirlerine sıkı sıkıya bağlamamızı engelleyerek daha tasarım aşamasındayken daha kaliteli bir yazılım çıkarmamıza yardımcı olur. Özet olarak şunu söylemekte fayda var, bütün bileşenleri birbirinden bağımsız olarak test edilebilen yazılımlar, bakımı nispeten daha kolay olan ve kaliteli yazılımlardır. İşe birim testleri yazarak başlamak da bunu başarmamıza yardımcı olur.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Birim test yazmak kodda iyileştirme yapmayı (refactoring) kolaylaştırır&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Birim test yazmanın bir diğer büyük faydası da kodda iyileştirme yaparken (refactoring) ortaya çıkar. Hiçbir kod mükemmel değildir ve iyileştirme her zaman bir ihtiyaçtır. Ancak birçok yazılımcı çalışan sistemi bozmaktan korktuğu için iyileştirme yapmaz. Ancak kapsamlı birim testleriniz varsa, değişiklik yaptığınız sınıfın hala çalışıp çalışmadığını anlamak için birim testlerinizi kullanabilirsiniz. Daha önce birim testlerin hataları bulmak için kullanılmadığını söylemiş olsak da iyileştirme esnasında üzerinde çalıştığımız sınıfı bozup bozmadığımızı anlamak mümkün olabilir. Dolayısıyla birim test yazmak sadece kodu yazarken kaliteli yazmaya teşvik etmekle kalmaz, aynı zamanda ileride kodu iyileştirmemize de yardımcı olur.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Doğru birim test nasıl yazılır?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Birim testin nasıl yazılması gerektiği de çok önemlidir. Doğru yazılmayan birim testler bize hiçbir şey kazandırmayacağı gibi en ufak değişiklikte hatalar vermeye başlayıp başımızı ağrıtırlar. Üstüne bir de testlere bakım yapmakla uğraşmak zorunda kalacağımız için de fayda sağlamanın aksine zararlı olabilirler. O yüzden birim test yazarken aşağıdaki noktalara dikkat etmekte fayda var:&lt;/p&gt;
-
-&lt;p&gt;Tek bir şeye odaklanın: Her testin tek bir şeyi test ettiğinden emin olun. Çok gerekli değilse aynı test içerisine birden fazla assert ifadesi koymayın.
-Bağımlılıkları (dependency) değil, tek bir sınıfı test edin: Yazıda daha önce de değindiğimiz gibi, bir sınıfı test ederken o sınıfı bağımlı olduğu diğer yazılım bileşenlerinden izole edin, aksi taktirde yazdığınız test birim test değildir.
-Yazdığınız testler birbirini etkilemesin: Yazdığınız her test birbirinden bağımsız bir şekilde tek başına sorunsuz çalışabilmelidir. Eğer yazdığınız bir birim test başka bir birim testin üreteceği veriye bağımlıysa yanlış yapıyorsunuz demektir.
-Testlerinizi doğru isimlendirin: Test sayısı arttıkça isimlendirmenin önemi de artar. Kafa karıştırıcı test isimleri kullanmak ileride problemlere yol açar. Açıklayıcı olması için test isimlerini uzun tutmanız gerekiyorsa öyle yapın, uzun isimler yanlış isimlerden daha faydalıdır.
-Test koduna ikinci sınıf kod muamelesi yapmayın: Testler de yazılımın bir parçasıdır. Dolayısıyla normal program kodunu yazarken ne kadar özen gösteriyorsanız test kodlarına da aynı özeni gösterin, kod tekrarlarından kaçının, okunabilir test kodu yazın.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.seckintozlu.com/etiketler/unit-test&#34;&gt;Kaynak&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Azure Mobile Services ve Notification Hubs Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/azure-mobile-services-ve-notification-hubs-kullan%C4%B1m%C4%B1/</link>
-      <pubDate>Wed, 11 Jan 2017 00:21:36 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/azure-mobile-services-ve-notification-hubs-kullan%C4%B1m%C4%B1/</guid>
-      <description>&lt;p&gt;Azure Mobile Services çok hızlı ve kolay bir şekilde uygulama geliştirmeniz için önceden veya uygulama yazımı sırasında yapılması gereken işlemleri minimize eden bir servistir.&lt;/p&gt;
-
-&lt;p&gt;Kullanımı oldukça kolay olmakla beraber ilk bir kaç adımı gerçekleştirmek bazen can sıkıcı olabilmekte.&lt;/p&gt;
-
-&lt;p&gt;Bunun için ufak bir örnekle bu ilk birkaç adımı beraber atıcaz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://azure.microsoft.com/tr-tr/&#34;&gt;https://azure.microsoft.com/tr-tr/&lt;/a&gt; adresinden portal a girdiniz.Ve mobile services tab ından new diyerek yeni bir mobile services oluşturdunuz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/AzIDXWf&#34;&gt;&lt;img src=&#34;http://i.imgur.com/AzIDXWf.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oluşturduğunuz Mobile Service tıkladınız ve çıkan ekranda Push tabına girdiniz.Bu taba tıkladıktan sonra notification gönderebilieceğiniz platformları göreceksiniz.&lt;/p&gt;
-
-&lt;p&gt;Biz bu örneğimizde Android Platformu için push gönderimini anlatıcaz ve bunun için GCM API kısmına &lt;a href=&#34;https://console.developers.google.com/&#34;&gt;https://console.developers.google.com/&lt;/a&gt; linkinden oluşturduğumuz yeni proje nin API KEY ini yazıyoruz.Bu API KEY i bulmak için yeni proje oluşturduğunuzda Credentials sekmesinden &amp;gt; Add Credentials &amp;gt; API Key ve Server Key tıklıyoruz ve buradaki API KEY i kullanıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;NOT :&lt;/strong&gt; &lt;strong&gt;APIS&lt;/strong&gt; sekmesinden &lt;strong&gt;Cloud Messaging for Android&lt;/strong&gt; API sini aktif etmeyi unutmayın.&lt;/p&gt;
-
-&lt;p&gt;Azure tarafında yapmanız gerekenler bunlar.&lt;/p&gt;
-
-&lt;p&gt;Client tarafında ki kodlar için ise her platforma özel kodlar bulunmaktadır.&lt;/p&gt;
-
-&lt;p&gt;Android Client ı için örnek kodlara &lt;a href=&#34;https://github.com/aykuttasil/AzureMobileService&#34;&gt;https://github.com/aykuttasil/AzureMobileService&lt;/a&gt; linkinden erişebilirsiniz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Azure tarafında bir çok farklı işlem gerçekleştirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Örneğin herhangi bir client da (android , ios , http vs.) mobile service altyapısını kullanarak veritabanına veri eklediniz.Ve her veri girişi yapıldığda uygulamanın yüklü olduğu tüm cihazlara bildirim göndermek istiyorsunuz.&lt;/p&gt;
-
-&lt;p&gt;Bu ve buna benzer işlemlerinizi Azure Server tarafında halledebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki resimde her Item tablosuna veri eklendiğin de bildirim gönderen kod bloğunu görebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/VSKzp0b&#34;&gt;&lt;img src=&#34;http://i.imgur.com/VSKzp0b.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ReCaptcha Kullanimi</title>
-      <link>http://yazilim.aykutasil.com/2017/01/recaptcha-kullanimi/</link>
-      <pubDate>Wed, 11 Jan 2017 00:14:08 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/recaptcha-kullanimi/</guid>
-      <description>
-
-&lt;h1 id=&#34;recaptcha&#34;&gt;ReCaptcha&lt;/h1&gt;
-
-&lt;p&gt;Sitenize gelebilecek saldıralara karşı bir önlem olarak kullanılacak eklentilerden biridir ReCaptcha.&lt;/p&gt;
-
-&lt;p&gt;Kolay bir şekilde entegre edilir ve kolay bir şekilde güvenlik sağlanır.&lt;/p&gt;
-
-&lt;p&gt;Bunun için aşağıdaki adımları uygulamanız yeterli olacaktır.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.google.com/recaptcha/admin#list&#34;&gt;https://www.google.com/recaptcha/admin#list&lt;/a&gt; sitesine gidiniz.Ve gerekli yerleri doldurunuz.&lt;/li&gt;
-&lt;li&gt;Label kısmına ReCaptcha i hangi sayfada kullanacaksınız,(örneğin giriş sayfası için) GirişCaptcha diyin.&lt;/li&gt;
-&lt;li&gt;Domain kısmına sitenizin domain i ekleyin.Her biri bir satır olacak şekilde.Birden fazla domain girerek aynı kodu farklı domainlerde çalıştırabilirsiniz.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Owner kısmına ise Adınız yazın.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://imgur.com/sQRkz2S&#34;&gt;&lt;img src=&#34;http://i.imgur.com/sQRkz2S.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;div kısmını ReCaptcha nın nerede gözükmesini istiyorsanız oraya koyun.(form elementinin içersinde olmalıdır.)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;script kısmını site kodunuzun en altına, body tagınızın bi üstüne koyun.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Client tarafında yapacaklarınız bu kadar.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Server tarafına geçtiğimizde ise Client tarafındaki formdan gönderilen bilgileri alır gibi “g-recaptcha-response” parametresiyle değeri alıyoruz.Ve ReCaptcha api sinin kullanarak eşleşmenin sağlanığ sağlanmadığına bakıyoruz.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Bunun için server kısmına&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;        private static bool ControlReCaptcha(string secretKey, string reCaptcha, string remoteIp)
-
-        {
-
-            var secretkey = secretKey;
-
-            var recaptcha = reCaptcha;
-
-            var remoteip = remoteIp;
-
-
-
-            var recaptchacommand = &amp;quot;https://www.google.com/recaptcha/api/siteverify?secret=&amp;quot; + secretkey +
-
-                                   &amp;quot;&amp;amp;response=&amp;quot; + recaptcha + &amp;quot;&amp;amp;remoteip=&amp;quot; + remoteip;
-
-            var resp = WebRequest.Create(recaptchacommand).GetResponse();
-
-            var str = resp.GetResponseStream();
-
-
-            var sr = new StreamReader(str);
-
-            var a = sr.ReadToEnd();
-
-
-            JObject obj = JObject.Parse(a);
-
-            var sonuc = obj[&amp;quot;success&amp;quot;].ToString().ToLower();
-
-
-            return sonuc == &amp;quot;true&amp;quot;;
-
-        }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;fonksiyonunu ekliyoruz.Ve gerekli parametreleri girdiğimizde fonksiyon bize true – false olacak şekilde sonucu döndürüyor.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Key Hashes &amp; SHA1</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</link>
-      <pubDate>Tue, 10 Jan 2017 23:56:35 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</guid>
-      <description>
-
-&lt;h1 id=&#34;android-key-hashes-sha1&#34;&gt;Android Key Hashes &amp;amp; SHA1&lt;/h1&gt;
-
-&lt;p&gt;Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;openssl hatası alırsanız &lt;a href=&#34;https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip&#34;&gt;https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip&lt;/a&gt; adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.&lt;/p&gt;
-
-&lt;p&gt;Ortam değişkenlerine ulaşmak için : &lt;strong&gt;Denetim Masası &amp;gt; Sistem &amp;gt; Gelişmiş Sİstem Ayarları&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;your_user_name&lt;/strong&gt; yerine kendi kullanıcı adınızı yazmayı unutmayın.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;keytool -list -v -keystore c:\users\your_user_name\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Local IIS Site Kurulumu</title>
-      <link>http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/</link>
-      <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/</guid>
-      <description>
-
-&lt;h1 id=&#34;local-iis-site-kurulumu&#34;&gt;Local IIS Site Kurulumu&lt;/h1&gt;
-
-&lt;p&gt;Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak  &lt;strong&gt;“Windows özellikleriniz Aç veya Kapat”&lt;/strong&gt; yazıp arama yapıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/d5obWDA&#34;&gt;&lt;img src=&#34;http://i.imgur.com/d5obWDA.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.&lt;/p&gt;
-
-&lt;h4 id=&#34;visual-studio-net-uygulamamızı-iis-e-tanıtma&#34;&gt;Visual Studio .Net Uygulamamızı IIS e Tanıtma&lt;/h4&gt;
-
-&lt;p&gt;Visual Studio da uygulamızın ayarlar kısmına girerek yukarıdaki gibi yapılandırıyoruz.&lt;/p&gt;
-
-&lt;p&gt;Servers ın alt kısmında görmüş olduğunuz Local IIS i seçmeyi unutmayalım. Bu seçenek Local imize IIS kurduktan sonra geldi.&lt;/p&gt;
-
-&lt;p&gt;Şimdi sıra IIS yapılandırmasında.&lt;/p&gt;
-
-&lt;p&gt;Bunun için yine başlat tuşuna basarak iis yazalım ve Internet Information Services (IIS) Yöneticisi ne girelim.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/e2lPp4E&#34;&gt;&lt;img src=&#34;http://i.imgur.com/e2lPp4E.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Siteler e sağ tıklayarak Web Sitesi Ekle diyelim.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/UuDqEXb&#34;&gt;&lt;img src=&#34;http://i.imgur.com/UuDqEXb.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki gibi gerekli yerleri dolduralım.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Site adı :&lt;/strong&gt; Herhangi bir isim girebiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Fiziksel Yol :&lt;/strong&gt;  uygulamamızın kodlarının bulunduğu klasörü göstermeliyiz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not&lt;/strong&gt; : Web.Config dosyasının bulunduğu klasörün adresi gösterilmelidir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Ana bilgisayar adı :&lt;/strong&gt; Visual Studio da girdiğimiz adresin aynısını girmeliyiz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/SQwIO0c&#34;&gt;&lt;img src=&#34;http://i.imgur.com/SQwIO0c.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;host-dosyası-yapılandırması&#34;&gt;Host dosyası yapılandırması&lt;/h4&gt;
-
-&lt;p&gt;IIS e kaydetmiş olduğumuz domain adresini Windows a söylemeliyiz.&lt;/p&gt;
-
-&lt;p&gt;Bunun için &lt;strong&gt;Windows/System32/drivers/etc&lt;/strong&gt; klasörünün içinde bulunan Host dosyasını  açarak adresimizi eklemeliyiz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Host dosyasını masaüstünüze kopyalayın. Gerekli düzenlemeleri yaptıktan sonra dosyayı kopyalayıp tekrar etc klasörünün içine yapıştırın.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/ABzsBY9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/ABzsBY9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki resimdeki gibi adresimizi ekleyip kaydediyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/BGUmzda&#34;&gt;&lt;img src=&#34;http://i.imgur.com/BGUmzda.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Artık Visual Studio muzda uygulamızı derleyebilir ve belirlediğimiz domainden erişim sağlayabiliriz.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>TSQL NULLIF Fonksiyonu Nedir ve Nasil Kullanilir</title>
-      <link>http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/</link>
-      <pubDate>Tue, 10 Jan 2017 23:08:34 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/</guid>
-      <description>
-
-&lt;h2 id=&#34;tsql-nullif-fonksiyonu&#34;&gt;TSQL NULLIF fonksiyonu&lt;/h2&gt;
-
-&lt;p&gt;NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.&lt;/p&gt;
-
-&lt;p&gt;Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.&lt;/p&gt;
-
-&lt;p&gt;Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;CREATE TABLE #Urun (
-UrunID TINYINT,
-ListeFiyati DECIMAL NULL); 
-
-GO
-
-INSERT #Urun VALUES(1,100);
-INSERT #Urun VALUES(2,NULL);
-INSERT #Urun VALUES(3,0);
-INSERT #Urun VALUES(7,250);
-INSERT #Urun VALUES(9,458);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ListeFiyati kolonuna göre count yaparsak sonuç olarak 4 dönecegini görürsünüz, çünkü UrunID’si 2 olan ürünün liste fiyati girilmemistir. Count fonksiyonu null degerleri saymayacagi için 5 degil 4 degerini döndürür. Count(*) veya count(UrunID) yazarsaniz ID kolonu hiç null olmadigi için 5 degerini görürsünüz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select count(*) from #Urun
---sonuç : 5
-
-select count(UrunID) from #Urun
---sonuç : 5
-
-select count(ListeFiyati) from #Urun
---sonuç 4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Simdi gelelim NULLIF fonksiyonuna. Liste fiyati 0 olarak girilen ürünlerin sayiya dahil etmek istemiyorsak, Liste fiyati 0 olanlari NULL ‘a çevirerek count islemini yapabiliriz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select NULLIF(ListeFiyati,0) from #Urun
-/*
-Liste Fiyati 0 olanlari NULL yap.
-Sonuç:
-100
-NULL
-NULL
-250
-458
-*/
-
---Liste Fiyati 0 olanlar hariç sayiyi bulmak istiyorsak. (count fonksiyonunun NULL degerleri saymadigini unutmayalim)
-select count(NULLIF(ListeFiyati,0)) from #Urun
---sonuç : 3.
---Çünkü bir ürüne ait liste fiyati 0 di. Onu NULL’ a degistirdik ve ----sayisini getirdik.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.yazilimmutfagi.com/10170/veritabani/sql-server/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir.aspx&#34;&gt;Kaynak&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Spinner Text Güncelleme</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-spinner-text-g%C3%BCncelleme/</link>
-      <pubDate>Tue, 10 Jan 2017 23:00:03 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-spinner-text-g%C3%BCncelleme/</guid>
-      <description>
-
-&lt;h2 id=&#34;dinamik-olarak-spinner-text-güncelleme&#34;&gt;Dinamik Olarak Spinner Text Güncelleme&lt;/h2&gt;
-
-&lt;p&gt;Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.&lt;/p&gt;
-
-&lt;p&gt;Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;String.xml&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;string name=&amp;quot;pazartesi&amp;quot;&amp;gt;Pazartesi&amp;lt;/string&amp;gt;
-&amp;lt;string name=&amp;quot;sali&amp;quot;&amp;gt;Salı&amp;lt;/string&amp;gt;
-&amp;lt;string name=&amp;quot;carsamba&amp;quot;&amp;gt;Çarşamba&amp;lt;/string&amp;gt;
-&amp;lt;string name=&amp;quot;persembe&amp;quot;&amp;gt;Perşembe&amp;lt;/string&amp;gt;
-&amp;lt;string name=&amp;quot;cuma&amp;quot;&amp;gt;Cuma&amp;lt;/string&amp;gt;
-&amp;lt;string name=&amp;quot;cumartesi&amp;quot;&amp;gt;Cumartesi&amp;lt;/string&amp;gt;
-&amp;lt;string name=&amp;quot;pazar&amp;quot;&amp;gt;Pazar&amp;lt;/string&amp;gt;
-
-
-&amp;lt;string-array name=&amp;quot;array_gonderi_list_haftalik&amp;quot;&amp;gt;
-    &amp;lt;item&amp;gt;@string/pazartesi&amp;lt;/item&amp;gt;
-    &amp;lt;item&amp;gt;@string/sali&amp;lt;/item&amp;gt;
-    &amp;lt;item&amp;gt;@string/carsamba&amp;lt;/item&amp;gt;
-    &amp;lt;item&amp;gt;@string/persembe&amp;lt;/item&amp;gt;
-    &amp;lt;item&amp;gt;@string/cuma&amp;lt;/item&amp;gt;
-    &amp;lt;item&amp;gt;@string/cumartesi&amp;lt;/item&amp;gt;
-    &amp;lt;item&amp;gt;@string/pazar&amp;lt;/item&amp;gt;
-&amp;lt;/string-array&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;SpinnerHelper.java&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static String[] getChangedSpinnerItemText(Context context) {
-    String[] originalList = context.getResources().getStringArray(R.array.array_gonderi_list_haftalik);
-
-    Resources resources = context.getResources();
-    for (int a = 0; a &amp;lt; originalList.length; a++) {
-        int count = 0;
-        if (originalList[a].equals(resources.getString(R.string.pazartesi))) {
-            count = 2;
-            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
-        } else if (originalList[a].equals(resources.getString(R.string.sali))) {
-            count = 4;
-            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
-        } else if (originalList[a].equals(resources.getString(R.string.carsamba))) {
-            count = 7;
-            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
-        } else {
-            count = 8
-            originalList[a] += &amp;quot; ( &amp;quot; + count + &amp;quot; )&amp;quot;;
-        }
-    }
-    return originalList;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Daha sonra spinnerımızı tanımladığımız yere giderek spinnerımızı yapılandırıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;FragmentX.java&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void setSpinnerNavToolbar() {
-
- // Guncelledikten sonra spinner görünümü örneği
- // Pazartesi ( 2 )
- // Salı ( 4 )
- // ... 
- 
- // Spinner itemlarının güncellenmiş halini barındıran listeyi getiriyoruz.
- String[] changedList = getChangedSpinnerItemText(context);
-
- // Spinner adapterımıza eklemeler yapılmış String Arrayi veriyoruz.
- ArrayAdapter&amp;lt;CharSequence&amp;gt; adapter = new ArrayAdapter&amp;lt;CharSequence&amp;gt;(mContext, R.layout.spinner_nav_item_layout,changedList);
- Spinner spinner = (Spinner) findViewById(R.id.spinner_nav);
- spiner.setAdapter(adapter);
- spinner.setVisibility(NavigationView.VISIBLE);
- spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
- @Override
- public void onItemSelected(AdapterView&amp;lt;?&amp;gt; parent, View view, int position, long id) {
-
- // Original Liste elemanlarımızı getiriyoruz 
- String[] originalList = context.getResources().getStringArray(R.array.array_gonderi_list_haftalik);
- 
- // Original Liste elemanını baz alarak işlem yapmak 
- // Bu sayede Pazartesi , Salı gibi değerleri alıyoruz. Değiştirilmiş (güncellenmiş) değerleri sadece görünüm için kullanıyoruz.
- String secilendeger = originalList[position];
-
-
- // Pazartesi seçildiğinde yapmak istediğimiz işlemleri burada belirtebiliriz.
- if (secilendeger.equals(getResources().getString(R.string.pazartesi))) {
-
- } 
- // Salı seçildiğinde yapmak istediğimiz işlemleri burada belirtebiliriz.
- else if(secilendeger.equals(getResources().getString(R.string.pazartesi)))
- {
-
- }
- }
-
- @DebugLog
- @Override
- public void onNothingSelected(AdapterView&amp;lt;?&amp;gt; parent) {
-
- }
- });
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Runnable() &amp; Callable()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/runnable--callable/</link>
-      <pubDate>Tue, 10 Jan 2017 22:44:52 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/runnable--callable/</guid>
-      <description>
-
-&lt;h1 id=&#34;runnable-callable&#34;&gt;Runnable() &amp;amp; Callable()&lt;/h1&gt;
-
-&lt;p&gt;Ayrıntılı açıklama için &lt;a href=&#34;http://www.java67.com/2013/01/difference-between-callable-and-runnable-java.html&#34;&gt;bu siteyi&lt;/a&gt; kullanabilirsiniz.&lt;/p&gt;
 </description>
     </item>
     

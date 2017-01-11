@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/foreground-service/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/foreground-service/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Foreground Service ile FusedLocationApi Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Burada yapacağımız örnekte kısaca şu aşamaları görücez;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Service i foreground olarak başlatmak&lt;/li&gt;
+&lt;li&gt;Ongoing(devamlı gözüken) notification oluşturmak&lt;/li&gt;
+&lt;li&gt;GoogleApiClient a bağlanmak&lt;/li&gt;
+&lt;li&gt;Location bilgisini notification da göstermek&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ForegroundService.java&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ForegroundService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+ private static final int LOCATION_NOTIF_ID = 859;
+ private static int LocationPeriod = 1000 * 30 ;
+ 
+ private static Notification notification;
+ private static GoogleApiClient _googleApiClient = null;
+ private static Context mContext;
+ private static NotificationCompat.Builder mBuilder;
+
+
+
+ @Override
+ public void onCreate() {
+ super.onCreate();
+ mContext = this;
+ mBuilder = new NotificationCompat.Builder(mContext);
+ }
+
+ @Nullable
+ @Override
+ public IBinder onBind(Intent intent) {
+ return null;
+ }
+
+ @Override
+ public int onStartCommand(Intent intent, int flags, int startId) {
+
+
+ // Eğer Service ilk defa çalıştırılıyor ise buildGoogleApiClient fonksiyonu ile GoogleApiClient build ediliyor
+ if (_googleApiClient == null) {
+ buildGoogleApiClient();
+ }
+ // GoogleApiClient a bağlanılıyor
+ _googleApiClient.connect();
+
+ // Notificaiton gösteriyoruz
+ LocationNotification(null, &amp;quot;Konum Bilgisi Yok&amp;quot;);
+
+ // Service imizi foreground olarak başlatıyoruz
+ // Foreground service bizden bir notification parametresi ister. Bunun sebebi sürekli ayakta olduğunu kullanıcıya bildirmektir.
+ startForeground(LOCATION_NOTIF_ID, notification);
+
+ // Herhangi bir sebeple service imizi durması halinde kendiliğinden tekrar başlaması için START_STICKY dönüyoruz.
+ return START_STICKY;
+ }
+
+
+ public synchronized void buildGoogleApiClient() {
+ if (_googleApiClient == null) {
+ _googleApiClient = new GoogleApiClient.Builder(this)
+ .addConnectionCallbacks(this)
+ .addOnConnectionFailedListener(this)
+ .addApi(LocationServices.API)
+ .build();
+ }
+ }
+
+
+ @Override
+ public void onConnected(@Nullable Bundle bundle) {
+ // GoogleApiClient a bağlanıldığında Location isteğinde bulunuyoruz.
+ LocationRequest();
+ }
+
+
+ @Override
+ public void onConnectionSuspended(int i) {
+
+ }
+
+
+ @Override
+ public void onConnectionFailed(ConnectionResult result) {
+ // tekrar bağlanmayı deniyoruz
+ _googleApiClient.connect();
+ }
+
+
+ private void LocationRequest() {
+
+
+ // PRIORITY_BALANCED_POWER_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız yok ise (Network, Cell Tower)
+ // PRIORITY_HIGH_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız var ise (GPS)
+
+ final LocationRequest locationRequest = LocationRequest.create()
+ .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+ .setInterval((LocationPeriod * 1000)) 
+ .setFastestInterval(LOCATION_FASTEST_INTERVAL);
+
+
+ //final LocationRequest locationRequest1 = LocationRequest.create()
+ // .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
+ // .setInterval((LocationPeriod * 1000))
+ // .setFastestInterval(LOCATION_FASTEST_INTERVAL);
+
+ // İhtiyaçlarımız doğrultusunda yapılandırdığımız LocationRequest in gerekliliklerini kontrol ederek, cihazın davranışının otomatik olarak ayarlanması için
+ // gerekli Dialog penceresinin çıkmasını sağlar ve Kullanıcının onayını ister
+
+ // Örnek olarak eğer PRIORITY_HIGH_ACCURACY olrarak belirlenmişse ve cihazın GPS i kapalı ise bir Dialog çıkartarak GPS i açmanızı ister
+ LocationSettingsRequest locationSettingsRequest = new LocationSettingsRequest.Builder()
+ .addLocationRequest(locationRequest)
+ .setAlwaysShow(true)
+ .build();
+
+ PendingResult&amp;lt;LocationSettingsResult&amp;gt; result =
+ LocationServices.SettingsApi.checkLocationSettings(_googleApiClient, locationSettingsRequest);
+
+ // Gösterilen Dilag penceresi ile Kullanıcının etkileşimi sonucunun yakalar
+ result.setResultCallback(new ResultCallback&amp;lt;LocationSettingsResult&amp;gt;() {
+ @DebugLog
+ @Override
+ public void onResult(LocationSettingsResult locationSettingsResult) {
+
+ // locationSettingsStates ile cihazın durumunu kontrol ederek akışımızı yönlendirebiliriz
+ LocationSettingsStates locationSettingsStates = locationSettingsResult.getLocationSettingsStates();
+ 
+ // Konum dinlenmeye başlanır
+ // mLocationListener ile konum değişikliği yakalanır.
+ FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest, mLocationListener);
+ 
+ //FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest1, mLocationListener);
+ 
+ }
+ });
+
+
+ }
+
+
+ private static LocationListener mLocationListener = new LocationListener() {
+ @Override
+ public void onLocationChanged(Location location) {
+
+
+ // Location değişikliğini burada yakalayabiliriz.
+ // Belirlemiş olduğumuz periyodik zaman aralığında Location değişikliği kontrol edilecektir.
+ }
+ };
+
+
+ 
+ public ForegroundService() {
+ }
+
+ // Bu fonksiyon yardımı ile başka bir sınıftan konum bilgisine erişebiliriz.
+ // static olarak tanımlanmış olması bize kolaylık sağlıcaktır.
+ public static Location getLastLocation() {
+ if (_googleApiClient != null) {
+ return FusedLocationApi.getLastLocation(_googleApiClient);
+ } else {
+ return null;
+ }
+ }
+
+
+ // GoogleApiClient nesnemize erişmek istersek bu kod bloğunu kullanabiliriz.
+ public static GoogleApiClient getGoogleApiClient() {
+ return _googleApiClient;
+ }
+
+ 
+ public static void removeLocationUpdates() {
+ if (_googleApiClient != null) {
+ FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
+ }
+ }
+
+ @DebugLog
+ private static void LocationNotification(Location location, String subText) {
+ NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+ //
+
+ mBuilder.setSmallIcon(R.drawable.ic_stat_device_gps_fixed);
+ mBuilder.setTicker(&amp;quot;Konum&amp;quot;);
+ //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+ mBuilder.setSubText(subText);
+ mBuilder.setOnlyAlertOnce(true);
+ mBuilder.setPriority(Notification.PRIORITY_HIGH);
+
+
+ if (location != null) {
+ mBuilder
+ .setContentTitle(&amp;quot;Sapma: &amp;quot; + String.valueOf(location.getAccuracy()))
+ .setContentText(&amp;quot;Lat: &amp;quot; + String.valueOf(location.getLatitude()) + &amp;quot; , &amp;quot; +
+ &amp;quot;Long: &amp;quot; + String.valueOf(location.getLongitude()))
+ .setWhen(System.currentTimeMillis())
+ .setShowWhen(true)
+ .setUsesChronometer(true)
+ .setContentIntent(pendingIntent);
+
+
+ } else {
+ mBuilder
+ .setContentTitle(&amp;quot;&amp;quot;)
+ .setContentText(&amp;quot;&amp;quot;);
+ }
+
+
+ notification = mBuilder.build();
+ notificationManager.notify(LOCATION_NOTIF_ID, notification);
+ }
+
+ @DebugLog
+ @Override
+ public void onDestroy() {
+ if (_googleApiClient != null) {
+ if (_googleApiClient.isConnected()) {
+ FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
+ _googleApiClient.disconnect();
+ }
+ }
+ PeriodicHandler.removeMessages(1);
+ stopForeground(true);
+ super.onDestroy();
+ }
+
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tanımlamış olduğumuz servisi başlatmak için istediğimiz yerden ( Activity , Fragment vb.) aşağıdaki kod bloğunu çalıştırmamız yeterli olucaktır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Intent serviceIntent = new Intent(context, ForegroundService.class);
+startService(serviceIntent);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

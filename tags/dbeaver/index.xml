@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/dbeaver/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/dbeaver/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Mac OS ile MSSQL Bağlantısı Kurmak</title>
+      <link>http://yazilim.aykutasil.com/2017/01/mac-os-ile-mssql-ba%C4%9Flant%C4%B1s%C4%B1-kurmak/</link>
+      <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/mac-os-ile-mssql-ba%C4%9Flant%C4%B1s%C4%B1-kurmak/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;MSSQL&lt;/strong&gt; oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Senaryomuz şu şekilde;&lt;/p&gt;
+
+&lt;p&gt;Mac OS yüklü bilgisayarımızdan MSSQL yüklü sunucumuza bağlantı kurmak istiyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Aşağıda bahsedecek olduğum uygulamayı  Windows yüklü bilgisayarınızda da SQL Management Studio alternatifi olarak kullanabilirsiniz.&lt;/p&gt;
+
+&lt;h2 id=&#34;dbeaver&#34;&gt;Dbeaver&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dbeaver.jkiss.org/download/&#34;&gt;http://dbeaver.jkiss.org/download/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize göre olanı indirip kullanmaya başlayabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Database Connection&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/RQqA0wI&#34;&gt;&lt;img src=&#34;http://i.imgur.com/RQqA0wI.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Connections&lt;/strong&gt; a sağ tıklayarak Create New Connection diyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/wb55lJW&#34;&gt;&lt;img src=&#34;http://i.imgur.com/wb55lJW.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Burada SSH yapılandırması yapabiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/R0Vtyt9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/R0Vtyt9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Connection Type&lt;/strong&gt; için seçenekler mevcut.Edit diyerek arasındaki farkları görebiliriz. Biz Test seçeneğini seçiyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/6ft683a&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6ft683a.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki gibi gerekli yerleri dolduruyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/BoSw3vL&#34;&gt;&lt;img src=&#34;http://i.imgur.com/BoSw3vL.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hangi veritabanına bağlanmak istiyorsak onu seçiyoruz. Eğer ilk defa seçmiş iseniz bazı dosyalar indirmek isteyecektir.&lt;/p&gt;
+
+&lt;p&gt;Biz &lt;strong&gt;MS SQL Server&lt;/strong&gt; ve &lt;strong&gt;Microsoft Driver&lt;/strong&gt; seçeneğini seçiyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Test Connection&lt;/strong&gt; butonuna basarak bağlantı durumunu kontrol edebiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/zM89SAI&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zM89SAI.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

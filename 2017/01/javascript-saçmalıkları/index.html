@@ -1,0 +1,799 @@
+
+
+  
+    
+  
+
+
+  
+
+
+<!DOCTYPE html>
+<html lang="tr-tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.17">
+    <title>Javascript Saçmalıkları</title>
+    <meta name="author" content="Aykut Asil">
+    <meta name="keywords" content="yazilim, sofware, javascript">
+
+    <link rel="icon" href="http://yazilim.aykutasil.com/favicon.png">
+    
+
+    
+    <meta name="description" content="Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.
+Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.
+Örneğin elinizde
+var degisken = ‘İSTANBUL’ ;
+şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.
+$(&#39;#Iller &gt; option&#39;).">
+    <meta property="og:description" content="Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.
+Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.
+Örneğin elinizde
+var degisken = ‘İSTANBUL’ ;
+şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.
+$(&#39;#Iller &gt; option&#39;).">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Javascript Saçmalıkları">
+    <meta property="og:url" content="/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/">
+    <meta property="og:site_name" content="Software">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Software">
+    <meta name="twitter:description" content="Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.
+Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.
+Örneğin elinizde
+var degisken = ‘İSTANBUL’ ;
+şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.
+$(&#39;#Iller &gt; option&#39;).">
+    
+      <meta name="twitter:creator" content="@aykuttasil">
+    
+    
+
+    
+    
+
+    
+
+    
+    
+    
+
+    
+      <link rel="publisher" href="https://plus.google.com/&#43;aykutasil">
+    
+
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" />
+    
+    
+    <link rel="stylesheet" href="http://yazilim.aykutasil.com/css/style-gwlo24d2hxipxk8bi1sxik0zhlpn9t7ebcmgp9kubmmcjfzlavuyhvbqumhn.min.css" />
+    
+    
+    
+      
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="6">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://yazilim.aykutasil.com/">Software</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="http://yazilim.aykutasil.com/#about">
+    
+    
+    
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="6">
+  <div class="sidebar-container">
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Kategoriler</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Etiketler</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Arşiv</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Hakkımda</span>
+    </a>
+  </li>
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/aykuttasil" target="_blank">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://stackoverflow.com/users/3448461/aykuttasil" target="_blank">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('https://c8.staticflickr.com/8/7421/9339731831_9ba94f287c_k.jpg')"
+       data-behavior="6">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Javascript Saçmalıkları
+    </h1>
+  
+  <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-01-11T17:14:22&#43;03:00">
+    
+  Ocak 11, 2017
+
+  </time>
+  
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/javascript">javascript</a>
+    
+  
+
+
+</div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="6"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.</p>
+
+<p>Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.</p>
+
+<p>Örneğin elinizde</p>
+
+<p><code>var degisken = ‘İSTANBUL’ ;</code></p>
+
+<p>şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.</p>
+
+<pre><code class="language-javascript"> $('#Iller &gt; option').each(function(index) {
+                var il = 'istanbul'; // veritabanından çektiğimizi düşünelim
+               
+                var txt = $(this).text() // -&gt; 'İSTANBUL'
+                if (txt === il) {
+                   // Diğer işlemler
+                }           
+            });
+</code></pre>
+
+<p>Yukarıda</p>
+
+<p><code>if (txt === il)</code>
+ile eşitlik kontrol ediliyor.</p>
+
+<p>Ve <strong>true</strong> değeri dönmüyor. Çünkü biri küçük diğeri büyük harfle yazılmış. Gayet normal.</p>
+
+<p>Peki tamam.</p>
+
+<p>Büyük yazılan <strong>‘İSTANBUL’</strong> kelimesini javascript in çok değerli toLowerCase() fonksiyonu ile küçültüyoruz.</p>
+
+<p><code>var txt = txt.toLowerCase(); // -&gt; 'istanbul'</code></p>
+
+<p>Evet ikisi de ‘istanbul’ oldu artık. Peki şimdi yukarıda belirttiğimiz eşitlik sağlanıcak mı ?</p>
+
+<p><strong>HAYIR !</strong></p>
+
+<p>Çünkü <strong>‘İSTANBUL’</strong> değişkenini Javascript abimiz küçültürken, büyük ‘İ’ harfiyle sevişiyor. Ve eşitlik bir türlü sağlanamıyor.</p>
+
+<p>Birde çok değerli Javascript abimizin ( dünya ahiret bacım bu saatten sonra) replace fonksiyonu efsane çalışıyor.</p>
+
+<p>Replace olmasını istediğimiz değerin sadece ilkini değiştiriyor. Diğerleri pek umrunda değil. Bu nedenle /İ/g fln saçma salak bişiler yapmak gerekiyor.</p>
+
+<p>Aşağıda ki fonksiyonu çözüm için kullanabilirsiniz.</p>
+
+<p>Bu dile şuan – günümüzde (31/03/2016) çok da güvenmeyin abiler ablalar !. Zaten kısa bir araştırma sonrasında Javascript tutarsızlıklarıyla ilgili bir sürü dökümana ulaşabilirsiniz.
+<strong>Not:</strong> Esneklik beraberinde hata getirir.</p>
+
+<p>Çözüm (Gerçekten bu yazıyı yazarken sinirliyim !)</p>
+
+<pre><code class="language-javascript">            function clearText(text) {
+                return text.replace(/İ/g, &quot;i&quot;).replace(/Ş/g, &quot;s&quot;).replace(/Ü/g, &quot;u&quot;).replace(/Ö/g, &quot;o&quot;).replace(/Ç/g, &quot;c&quot;)
+                    .toLowerCase()
+                    .replace(/ü/g, &quot;u&quot;).replace(/ı/g, &quot;i&quot;).replace(/ç/g, &quot;c&quot;)
+                    .replace(/ğ/g, &quot;g&quot;).replace(/ş/g, &quot;s&quot;).replace(/ö/g, &quot;o&quot;);
+             
+            }
+</code></pre>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+              
+                <div class="post-footer-tags">
+                  <span class="text-color-light text-small">TAGGED IN</span><br/>
+                  
+  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/software/">software</a>
+
+  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/javascript/">javascript</a>
+
+                </div>
+              
+            
+            <div class="post-actions-wrap">
+  <nav>
+    <ul class="post-actions post-action-nav">
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/2017/01/sql-scope_identity/" data-tooltip="SQL SCOPE_IDENTITY()">
+        
+          <i class="fa fa-angle-left"></i>
+          <span class="hide-xs hide-sm text-small icon-ml">ÖNCEKİ</span>
+        </a>
+      </li>
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/" data-tooltip="Android Glide ve Palette Kullanımı">
+        
+          <span class="hide-xs hide-sm text-small icon-mr">SONRAKİ</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <ul class="post-actions post-action-share">
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+        <i class="fa fa-share-alt"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-google-plus"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-facebook-official"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    
+      <li class="post-action">
+        <a class="post-action-btn btn btn--default" href="#disqus_thread">
+          <i class="fa fa-comment-o"></i>
+        </a>
+      </li>
+    
+    <li class="post-action">
+      
+        <a class="post-action-btn btn btn--default" href="#">
+      
+        <i class="fa fa-list"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 <a href="https://github.com/aykuttasil">aykuttasil</a>. Tüm Hakları Saklıdır
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="6">
+        <div class="post-actions-wrap">
+  <nav>
+    <ul class="post-actions post-action-nav">
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/2017/01/sql-scope_identity/" data-tooltip="SQL SCOPE_IDENTITY()">
+        
+          <i class="fa fa-angle-left"></i>
+          <span class="hide-xs hide-sm text-small icon-ml">ÖNCEKİ</span>
+        </a>
+      </li>
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/" data-tooltip="Android Glide ve Palette Kullanımı">
+        
+          <span class="hide-xs hide-sm text-small icon-mr">SONRAKİ</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <ul class="post-actions post-action-share">
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+        <i class="fa fa-share-alt"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-google-plus"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-facebook-official"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    
+      <li class="post-action">
+        <a class="post-action-btn btn btn--default" href="#disqus_thread">
+          <i class="fa fa-comment-o"></i>
+        </a>
+      </li>
+    
+    <li class="post-action">
+      
+        <a class="post-action-btn btn btn--default" href="#">
+      
+        <i class="fa fa-list"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="6">
+  <ul class="share-options">
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+      </a>
+    </li>
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+      </a>
+    </li>
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2f2017%2f01%2fjavascript-sa%25C3%25A7mal%25C4%25B1klar%25C4%25B1%2f">
+        <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+    <h4 id="about-card-name">Aykut Asil</h4>
+    
+      <div id="about-card-bio">Continious Innovation</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Turkey
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Arama Yap" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">içerik bulunamadı</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/tcp/ip-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-/">
+                <h3 class="media-heading">TCP/IP Nasıl Çalışır ?</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">TCP/IP Nasıl Çalışır ? Bilgisayar ağları kullanılarak bilgisayarların birbirileriyle haberleşmeye başladıkları ilk yıllarda iki bilgisayarın birbiriyle haberleşebilmeleri için aynı marka/model cihazları kullanmaları gerekiyordu. Bunun üzerine farklı üreticiler tarafından üretilen cihazların birbiriyle sorunsuz ve belirli bir düzen içinde haberleşebilmesi için çeşitli standartlar geliştirilmiştir.
+Bunlardan en çok kullanılanı Açık Sistem Bağlantıları komitesi tarafından geliştirilen 7 katmanlı OSI referans modeli ve Amerikan Savunma Bakanlığı tarafından geliştirilen TCP/IP referans modelidir. OSI iki bilgisayar arasındaki haberleşme problemini çözmek için 7 katmanlı (aşamalı) bir ağ sistemi önermiştir.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-library--bintray/">
+                <h3 class="media-heading">Android Library &amp; Bintray</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂
+Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi maven ve jcenter repository e deploy etmek olucak.
+Ve başlayabiliriz.
+İlk olarak Android Studio yu açarak File &gt; New &gt; New Project e tıklayıp yeni bir proje oluşturalım.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-runtime-permission/">
+                <h3 class="media-heading">Android Runtime Permission</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.
+Bunlardan biri de Android M – Marshmallow (23) ile gelen Runtime Permissions olayı.
+Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/mac-os-arduino-uno-klon-kurulumu/">
+                <h3 class="media-heading">Mac OS Arduino Uno (Klon) Kurulumu</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Sizde benim gibi klon Arduino Uno kartınızı çalıştıramayıp bozuk zannettiyseniz doğru yerdesiniz.
+Arduino Uno klon kartlarında orijinal Arduino Uno kartına göre farklı bir işlemci kullanılmış ( daha ucuz olanından 😉 ) ve bu yüzden Mac OS kullanıyorsanız ayrı bir driver dosyası indirmeniz gerekmekte.
+Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open source u destekleyen diğer taraf parayı destekleyen insanlardan oluşuyor(muş).
+ http://www.arduino.cc Parayı destekleyen tarafın sitesi
+ http://www.arduino.org Open source u destekleyen taraf</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/sql-scope_identity/">
+                <h3 class="media-heading">SQL SCOPE_IDENTITY()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Kısaca özetlemek gerekirse : insert ile kayıt edilen tablo satırının id sini getirir.
+Yapılan son kaydın id sini almak için uzun yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.
+Tüm bunları yapmaktansa:
+DECLARE @son_satir_id INT; INSERT INTO tbQwerty ( Ad , Soyad ) VALUES ( 'Aykut' 'Asil' ) SET @son_satir_id = SCOPE_IDENTITY();  Ayrıntılı Bilgi : https://technet.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/">
+                <h3 class="media-heading">Javascript Saçmalıkları</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.
+Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.
+Örneğin elinizde
+var degisken = ‘İSTANBUL’ ;
+şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.
+$('#Iller &gt; option').</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/">
+                <h3 class="media-heading">Android Glide ve Palette Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.
+Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.
+ Github : https://github.com/bumptech/glide
+ Gradle : compile ‘com.github.florent37:glidepalette:1.0.6’
+  Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-viewpager/">
+                <h3 class="media-heading">Android ViewPager</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.
+İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.
+ </div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-recyclerview/">
+                <h3 class="media-heading">Android RecyclerView</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Android RecyclerView yapısı ListView in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂
+Ayrıca RecyclerView, CoordinatorLayout bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.
+ListView in özelleştirilmesi için birçok kütüphane mevcuttur.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-collections/">
+                <h3 class="media-heading">Android Collections</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.
+Bu sayfa da Collection yapısını ve oldukça önemli fonksiyonlarını göreceğiz.
+Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.
+Collections.swap
+Swap kelime anlamı ile takas anlamına gelmektedir.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="içerik bulunamadı"
+         data-message-one="1 içerik bulundu"
+         data-message-other="{n} içerik bulundu">
+         34 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://yazilim.aykutasil.com/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js"></script>
+
+
+<script src="http://yazilim.aykutasil.com/js/script-wl33z0n6ocaypepiqrazthtivfrliqijej4rq8ek8gvrv1awftmgjuv8k4zc.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight').each(function(i, block) {
+    var code = "";
+    hljs.highlightAuto(block.innerText).value.split(/\r\n|\r|\n/).forEach(function(line) {
+      code += "<span class=\"line\">" + line + "</span><br>";
+    });
+    if (code.length > 0) {
+      block.innerHTML = code;  
+    }
+  });
+  $('pre > code').each(function(i, block) {
+    $(this).addClass('codeblock');
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/yazilim.aykutasil.com\/2017\/01\/javascript-sa%C3%A7mal%C4%B1klar%C4%B1\/';
+          
+            this.page.identifier = '\/2017\/01\/javascript-sa%C3%A7mal%C4%B1klar%C4%B1\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'yazilimaykutasil';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+  </body>
+</html>

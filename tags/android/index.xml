@@ -9,6 +9,1009 @@
     <atom:link href="http://yazilim.aykutasil.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Android Library &amp; Bintray</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-library--bintray/</link>
+      <pubDate>Wed, 11 Jan 2017 17:27:29 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-library--bintray/</guid>
+      <description>&lt;p&gt;Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂&lt;/p&gt;
+
+&lt;p&gt;Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi &lt;strong&gt;maven&lt;/strong&gt; ve &lt;strong&gt;jcenter&lt;/strong&gt; repository e deploy etmek olucak.&lt;/p&gt;
+
+&lt;p&gt;Ve başlayabiliriz.&lt;/p&gt;
+
+&lt;p&gt;İlk olarak &lt;strong&gt;Android Studio&lt;/strong&gt; yu açarak &lt;strong&gt;File &amp;gt; New &amp;gt; New Project&lt;/strong&gt; e tıklayıp yeni bir proje oluşturalım.&lt;/p&gt;
+
+&lt;p&gt;Daha sonra oluşturmuş olduğunuz app e sağ tıklayıp &lt;strong&gt;New &amp;gt; Module&lt;/strong&gt; sekmesinden gerekli yerleri doldurup projemize ekleyelim.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/PQRghY8&#34;&gt;&lt;img src=&#34;http://i.imgur.com/PQRghY8.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/IV1YJmw&#34;&gt;&lt;img src=&#34;http://i.imgur.com/IV1YJmw.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/nQHzaY7&#34;&gt;&lt;img src=&#34;http://i.imgur.com/nQHzaY7.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz module içerisine kodlarımızı yazıyoruz. Module ümüzün sanki bir projeymiş gibi kendine ait dosyaları vardır. Yani kendine ait bir AndroidManifest.xml dosyası , kendine ait drawable klasörü vs. vardı. İstediğimiz şekilde özelleştirme yapabilir ve istediğimiz herhangi bir projede bu kodları kullanabiliriz.(Zaten yapılmış olanları bu şekilde kullanıyoruz. Neyin nasıl yapıldığını anlamak her zaman için ufkumuzu genişletecektir…)&lt;/p&gt;
+
+&lt;p&gt;Kodlarımızı yazdık. Sıra geldi module ümüzün gradle dosyasını düzenlemeye.&lt;/p&gt;
+
+&lt;p&gt;Ama bundan önce Project düzeyindeki gradle dosyasını güncellememiz gerekli.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:2.1.0&#39;
+        classpath &#39;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4&#39;
+        classpath &#39;com.github.dcendents:android-maven-gradle-plugin:1.3&#39;
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/3uET4kz&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3uET4kz.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ve module ümüzün &lt;strong&gt;gradle&lt;/strong&gt; dosyasını düzenliyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.android.library&#39;
+apply plugin: &#39;com.github.dcendents.android-maven&#39; // maven repository e eklememiz için gerekli gradle plugin
+apply plugin: &amp;quot;com.jfrog.bintray&amp;quot; // bintray yapılandırması yapmamız için gerekli gradle plugin
+// Kodların devamında göreceğiniz hazır yazılmış gradle tasklerini getiren yapıda, güncellenmesi gereken yerleri
+// bu şekilde düzenliyoruz.
+ext {
+    PUBLISH_GROUP_ID = &#39;com.aykuttasil&#39;
+    PUBLISH_ARTIFACT_ID = &#39;androidbasichelper&#39;
+    PUBLISH_VERSION = &#39;1.0.0&#39;
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion &amp;quot;23.0.3&amp;quot;
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName &amp;quot;1.0.0&amp;quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
+        }
+    }
+}
+
+// Oluşturmuş olduğumuz kütüphane aşağıdaki bağımlılıklara sahip. Sanki bir uygulama geliştiriyormuş gibi 
+// bağımlılık dosyalarını ekliyoruz.
+dependencies {
+    testCompile &#39;junit:junit:4.12&#39;
+    compile &#39;com.android.support:appcompat-v7:23.4.0&#39;
+    compile &#39;com.afollestad.material-dialogs:core:0.8.5.9&#39;
+    compile &#39;com.joanzapata.iconify:android-iconify-fontawesome:2.1.1&#39;
+    compile &#39;com.android.support:appcompat-v7:23.4.0&#39;
+    compile &#39;com.android.support:design:23.4.0&#39;
+}
+
+// Aşağıda ki linke girip bakarsanız aslında gradle task yazılmış olduğunu görürsünüz. Bu yazılan task ler ile
+// oluşturmuş olduğumuz module dosyalarından gerekli dosyalara dönüşümlerini sağlıyoruz.
+apply from: &#39;https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle&#39;
+
+def siteUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper&#39;      // Homepage URL of the library
+def gitUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper.git&#39;   // Git repository URL
+group = &amp;quot;com.aykuttasil&amp;quot;
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging &#39;aar&#39;
+
+                name &#39;com.aykuttasil:androidbasichelper&#39; // TODO
+                description = &#39;Android Basic Helper&#39; // TODO
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name &#39;The Apache Software License, Version 2.0&#39;
+                        url &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
+                    }
+                }
+                developers {
+                    developer {
+                        id &#39;aykuttasil&#39; // TODO
+                        name &#39;Aykut Asil&#39; // TODO
+                        email &#39;aykuttasil@gmail.com&#39; // TODO
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/NPUZYLU&#34;&gt;&lt;img src=&#34;http://i.imgur.com/NPUZYLU.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/waSW8fe&#34;&gt;&lt;img src=&#34;http://i.imgur.com/waSW8fe.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evet gradle dosyalarını düzenledik. Sıra geldi çalıştırmaya.&lt;/p&gt;
+
+&lt;p&gt;Bunun için Android Studio içerisinde ki Terminal kısmına giriyoruz ya da mac in kendi Terminal ini açarak projemizin dizinine giriyoruz.&lt;/p&gt;
+
+&lt;p&gt;Ve aşağıdaki komutu giriyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;./gradlew clean build generateRelease&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/qd5tC3N&#34;&gt;&lt;img src=&#34;http://i.imgur.com/qd5tC3N.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/hIScB2P&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hIScB2P.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/D48QUqE&#34;&gt;&lt;img src=&#34;http://i.imgur.com/D48QUqE.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/cgp1Abp&#34;&gt;&lt;img src=&#34;http://i.imgur.com/cgp1Abp.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evet işlemimize başarılı bir şekilde tamamladık ve gerekli dosyaların oluşturulmasını sağladık.&lt;/p&gt;
+
+&lt;p&gt;Projemizi oluşturduğumuz klasöre gidelim ve &lt;strong&gt;ModuleName &amp;gt; build&lt;/strong&gt; içerisine girerek oluşturulan zip dosyasını  görebiliriz. Bu zip dosyasının içini açarak oluşturulan dosyaları görebilirsiniz. Ve maven repository e bu zip dosyasını ekliceğimizi unutmayın.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/id0McpR&#34;&gt;&lt;img src=&#34;http://i.imgur.com/id0McpR.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Sıra geldi kütüphanemizi maven ve jcenter repository e deploy etmeye.&lt;/p&gt;
+
+&lt;p&gt;İlk olarak &lt;a href=&#34;https://bintray.com/&#34;&gt;https://bintray.com/&lt;/a&gt; adresine girerek üyeliğimizi oluşturuyoruz. Ve sırasıyla aşağıdaki işlemleri yapıyoruz.&lt;/p&gt;
+
+&lt;p&gt;Hesabımızı oluşturduktan sonra &lt;strong&gt;maven&lt;/strong&gt; içerisine girerek &lt;strong&gt;Add New Package&lt;/strong&gt; diyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/AGY1vSx&#34;&gt;&lt;img src=&#34;http://i.imgur.com/AGY1vSx.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki alanlara gerekli bilgileri giriyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/82CCD5F&#34;&gt;&lt;img src=&#34;http://i.imgur.com/82CCD5F.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Daha sonra oluşturmuş olduğumuz package ın içerisine girerek &lt;strong&gt;New Version&lt;/strong&gt; a tıklıyoruz ve &lt;strong&gt;1.0.0&lt;/strong&gt; şeklinde ya da istediğiniz şekilde Name  i düzenliyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/7qNM2aj&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7qNM2aj.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/1bC8KSi&#34;&gt;&lt;img src=&#34;http://i.imgur.com/1bC8KSi.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz versiyon içerisine girerek &lt;strong&gt;Upload Files&lt;/strong&gt; diyoruz ve daha önce oluşturduğumuz &lt;strong&gt;zip&lt;/strong&gt; dosyasını seçerek upload işlemini tamamlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/T2oG4DP&#34;&gt;&lt;img src=&#34;http://i.imgur.com/T2oG4DP.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/w99RPib&#34;&gt;&lt;img src=&#34;http://i.imgur.com/w99RPib.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Kütüphanemizi &lt;strong&gt;maven&lt;/strong&gt; respository yüklemiş bulunmaktayız.&lt;/p&gt;
+
+&lt;p&gt;Fakat Android Studio default olarak &lt;strong&gt;jcenter&lt;/strong&gt; resository kullanmakta. Biz de bu yüzden birkaç işlem daha yapmalıyız ki geliştiriciler kolayca, tek satır ekleyerek kütüphanemizi kullanmaya başlasınlar.&lt;/p&gt;
+
+&lt;p&gt;Aşağıda ki sayfaya gelerek &lt;strong&gt;Add to jCenter&lt;/strong&gt; butonuna tıklıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/lMQR4kl&#34;&gt;&lt;img src=&#34;http://i.imgur.com/lMQR4kl.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ve aşağıdaki gibi gerekli yerleri doldurarak işlemimizi tamamlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/GK7Eq9d&#34;&gt;&lt;img src=&#34;http://i.imgur.com/GK7Eq9d.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Kütüphanemizin kullanımı için birkaç saat beklememiz gerekmektedir. Olmadı diye telaş yapıp kafayı yemeyin 😉&lt;/p&gt;
+
+&lt;p&gt;Bu arada oluşturmuş olduğumuz kütüphanemize aşağıda ki linkten erişip projelerinizde gönül rahatlığıyla kullanabilirsiniz 🙂&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gradle :&lt;/strong&gt; &lt;code&gt;compile ‘com.aykuttasil:androidbasichelper:1.0.0’&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;GitHub :&lt;/strong&gt; &lt;a href=&#34;https://github.com/aykuttasil/AndroidBasicHelper&#34;&gt;https://github.com/aykuttasil/AndroidBasicHelper&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Yukarıda ki yöntem ile local inizde &lt;strong&gt;aar&lt;/strong&gt; dosyası oluşturarak manuel bir şekilde bu aar yi repository lere yükleyebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Peki bunu sadece birkaç komuta indirgesek ve otomatik yüklemeyi sağlasak nasıl olur ? Bencede güzel olur.&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki yöntemin yine bir benzeri (daha okunabilir ve kolay) ve artı ilaveleri şeklinde devam edelim.&lt;/p&gt;
+
+&lt;p&gt;Yeni dosya yapımız ve gradle dosyalarımızı yeri aşağıdaki resimdeki gibi olmalı. Burada 3 adet kendimizin oluşturduğu gradle dosyasını görüyorsunuz gradle klasörünün altında. Diğer gradle lar zaten Android Studio tarafından oluşturuluyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/cQyvhZb&#34;&gt;&lt;img src=&#34;http://i.imgur.com/cQyvhZb.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;build.gradle&lt;/strong&gt; dosyalarımızın içeriği aşağıdaki gibidir.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/0M6faiE&#34;&gt;&lt;img src=&#34;http://i.imgur.com/0M6faiE.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/fO5aXX8&#34;&gt;&lt;img src=&#34;http://i.imgur.com/fO5aXX8.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ext {
+    bintrayRepo = &#39;maven&#39; // maven reposu olduğunu belirtiyoruz
+    bintrayName = &#39;basic-helper&#39; 
+    orgName = &#39;aykuttasil&#39;
+
+    publishedGroupId = &#39;com.aykuttasil&#39;
+    libraryName = &#39;Android Basic Helper&#39;
+    artifact = &#39;androidbasichelperlib&#39; // module ile aynı isimde olması gerekiyor !!
+
+    libraryDescription = &#39;Android Basic Helper&#39;
+
+    siteUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper&#39; 
+    gitUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper.git&#39;
+
+    libraryVersion = rootProject.ext.libraryVersion
+
+    developerId = &#39;aykuttasil&#39;
+    developerName = &#39;Aykut Asil&#39;
+    developerEmail = &#39;aykuttasil@gmail.com&#39;
+
+    licenseName = &#39;The Apache Software License, Version 2.0&#39;
+    licenseUrl = &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
+    allLicenses = [&amp;quot;Apache-2.0&amp;quot;]
+}
+
+if (project.rootProject.file(&#39;local.properties&#39;).exists()) {
+    apply from: rootProject.file(&#39;gradle/install-v1.gradle&#39;)
+    apply from: rootProject.file(&#39;gradle/bintray-android-v1.gradle&#39;)
+}
+
+
+// ./gradlew clean install bintrayUpload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;ext {
+    sdk = 24
+    buildTools = &amp;quot;24.0.1&amp;quot;
+    minSdk = 17
+    libraryVersion = &amp;quot;1.0.20&amp;quot;
+    libraryVersionCode = 11
+    supportVersion = &amp;quot;24.2.0&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Aşağıda ki resimde gördüğünüz gibi (Android Studio Project görünümüne geçmelisiniz) 3 adet gradle dosyamızı hazırladık. Kod kalabalığı olmasın ve neyin nerede olduğu belli olsun diye bu şekilde yaptık. Yoksa direk build.gradle dosyamızın içine de yazabilirdik.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/6coc2bg&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6coc2bg.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.github.dcendents.android-maven&#39;
+
+group = publishedGroupId                               // Maven Group ID for the artifact
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging &#39;aar&#39;
+                groupId publishedGroupId
+                artifactId artifact
+
+                // Add your description here
+                name libraryName
+                description libraryDescription
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name licenseName
+                        url licenseUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id developerId
+                        name developerName
+                        email developerEmail
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+
+                }
+            }
+        }
+    }
+}
+//from https://github.com/workarounds/bundler/blob/master/gradle/install-v1.gradle
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.jfrog.bintray&#39;
+
+version = libraryVersion
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = &#39;sources&#39;
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = &#39;javadoc&#39;
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file(&#39;local.properties&#39;).newDataInputStream())
+
+bintray {
+    user = properties.getProperty(&amp;quot;bintray.user&amp;quot;)
+    key = properties.getProperty(&amp;quot;bintray.apikey&amp;quot;)
+
+    configurations = [&#39;archives&#39;]
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        userOrg = orgName
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = [&#39;Apache-2.0&#39;]
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty(&amp;quot;bintray.gpg.password&amp;quot;)
+                //Optional. The passphrase for GPG signing&#39;
+            }
+        }
+    }
+}
+
+//from https://github.com/workarounds/bundler/blob/master/gradle/bintray-java-v1.gradle
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.jfrog.bintray&#39;
+
+version = libraryVersion
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = &#39;sources&#39;
+}
+
+task javadoc(type: Javadoc) {
+    failOnError = false
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = &#39;javadoc&#39;
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file(&#39;local.properties&#39;).newDataInputStream())
+
+bintray {
+    user = properties.getProperty(&amp;quot;bintray.user&amp;quot;)
+    key = properties.getProperty(&amp;quot;bintray.apikey&amp;quot;)
+
+    configurations = [&#39;archives&#39;]
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        userOrg = orgName
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = allLicenses
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty(&amp;quot;bintray.gpg.password&amp;quot;)
+                //Optional. The passphrase for GPG signing&#39;
+            }
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tüm bu dosya yapısını hazırladıktan sonra bintray konfigürasyonu için birkaç işlem daha kaldı.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;local.properties&lt;/strong&gt; dosyamızın içine bintray bilgilerimizi giriyoruz. Bu bilgileri direk build.gradle içerisine girebilirdik fakat bu bilgilere sadece biz sahip olmalıyız 🙂 ve gitignore un içinde local.properties dosyasının ekli olduğuna dikkat edelim !!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/hSrkkEc&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hSrkkEc.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bintray api key almak için bintray sitesine giderek gerekli sayfaya ulaşıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/bmNY7Is&#34;&gt;&lt;img src=&#34;http://i.imgur.com/bmNY7Is.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/Vot0Fkk&#34;&gt;&lt;img src=&#34;http://i.imgur.com/Vot0Fkk.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evet tüm işlemler bu kadar.&lt;/p&gt;
+
+&lt;p&gt;Artık terminalden aşağıdaki komutu yazarak otomatik yüklenmeyi sağlayabiliriz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;./gradlew clean install bintrayUpload&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Runtime Permission</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</link>
+      <pubDate>Wed, 11 Jan 2017 17:24:52 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</guid>
+      <description>&lt;p&gt;Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.&lt;/p&gt;
+
+&lt;p&gt;Bunlardan biri de Android M – Marshmallow (23) ile  gelen Runtime Permissions olayı.&lt;/p&gt;
+
+&lt;p&gt;Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel. İlerleyen zamanlarda illa ki bu alışkanlığı edinecek insanlar olacaktır 😉&lt;/p&gt;
+
+&lt;p&gt;Fazla uzatmadan birkaç link ve ipucu vericem.&lt;/p&gt;
+
+&lt;p&gt;Android Runtime Permissions olayının nasıl yapıldığını görmek için&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;https://github.com/googlesamples/android-RuntimePermissions&#34;&gt;https://github.com/googlesamples/android-RuntimePermissions&lt;/a&gt; burada süper bir örnek var.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&#34;&gt;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&lt;/a&gt; burada kısa bir özet var.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Takıldığınız yeri yorumlarda belirtebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Örneği incelediğiniz de şu satırı yazarken dikkat edin.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA},123456);&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;burada sadece&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;yerine&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;android.Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;kullanacaksınız. Yoksa izin listesini bulamaz.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Glide ve Palette Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 17:11:30 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.&lt;/p&gt;
+
+&lt;p&gt;Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/bumptech/glide&#34;&gt;https://github.com/bumptech/glide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gradle :&lt;/strong&gt; &lt;code&gt;compile ‘com.github.florent37:glidepalette:1.0.6’&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.&lt;/p&gt;
+
+&lt;p&gt;Link : &lt;a href=&#34;http://developer.android.com/reference/android/support/v7/graphics/Palette.html&#34;&gt;Android Developer&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Gradle : compile ‘com.android.support:palette-v7:23.1.1’&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Bu iki güzel kütüphanenin birlikte kullanımı ile oldukça güzel işler çıkabilir&lt;/p&gt;
+
+&lt;p&gt;Bunun için de bir kütüphane mevcut 🙂&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/florent37/GlidePalette&#34;&gt;https://github.com/florent37/GlidePalette&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; Glide.with(mContext).load(&amp;quot;ImageAdress&amp;quot;)
+                         // Her resim için farklı bir signature belirtmeliyiz. Bu sayede resimlerin tekrar tekrar yüklenmesini engellemiş oluruz.
+                        .signature(new StringSignature(&amp;quot;ImageSignature&amp;quot;))
+                        .centerCrop()
+                        .listener(GlidePalette.with(&amp;quot;ImageAdress&amp;quot;)
+                                        .use(GlidePalette.Profile.VIBRANT_LIGHT)
+                                        .intoTextColor(txt, GlidePalette.Swatch.BODY_TEXT_COLOR)
+                                        .crossfade(true)
+
+                                         // Belirttiğimiz ImageAdress den gelen resmimiz kullanılmaya hazır olduğunda burada yakalayabilir ve 
+                                         // istediğimiz özelleştirmeyi yapabiliriz.
+                                         // Biz burada yüklenen resmin palette.getDarkMutedColor(DefaultColor) fonksiyonu ile rengini yakalıyoruz ve CollapsingToolbar ın expand olduğu durumda ki title rengini değiştiriyoruz.
+                                        .intoCallBack(new BitmapPalette.CallBack() {
+                                            @Override
+                                            public void onPaletteLoaded(@Nullable Palette palette) {
+                                                mCollapsingToolbar.setExpandedTitleColor(palette.getDarkMutedColor(Color.BLACK));
+                                            }
+                                        })
+                                        /*
+                                        .setGlideListener(new RequestListener&amp;lt;String, GlideDrawable&amp;gt;() {
+                                            @Override
+                                            public boolean onException(Exception e, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFirstResource) {
+                                                return false;
+                                            }
+
+                                            @Override
+                                            public boolean onResourceReady(GlideDrawable resource, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                                return false;
+                                            }
+                                        })
+                                        // optional: do stuff with the builder
+                                        .setPaletteBuilderInterceptor(new BitmapPalette.PaletteBuilderInterceptor() {
+                                            @NonNull
+                                            @Override
+                                            public Palette.Builder intercept(Palette.Builder builder) {
+                                                return builder.resizeBitmapSize(100);
+                                            }
+                                        })
+                                        */
+                        )
+                        .into(mCollapsingImageView);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android ViewPager</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-viewpager/</link>
+      <pubDate>Wed, 11 Jan 2017 17:07:51 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-viewpager/</guid>
+      <description>&lt;p&gt;Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.&lt;/p&gt;
+
+&lt;p&gt;İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/aykuttasil/bc92ffd516a9f6df1ac9.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android RecyclerView</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</link>
+      <pubDate>Wed, 11 Jan 2017 16:39:33 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</guid>
+      <description>&lt;p&gt;Android &lt;strong&gt;RecyclerView&lt;/strong&gt; yapısı &lt;strong&gt;ListView&lt;/strong&gt; in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂&lt;/p&gt;
+
+&lt;p&gt;Ayrıca &lt;strong&gt;RecyclerView&lt;/strong&gt;, &lt;strong&gt;CoordinatorLayout&lt;/strong&gt; bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.&lt;/p&gt;
+
+&lt;p&gt;ListView in özelleştirilmesi için birçok kütüphane mevcuttur.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Drag-Drop işlemleri için &lt;a href=&#34;https://github.com/bauerca/drag-sort-listview&#34;&gt;https://github.com/bauerca/drag-sort-listview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Swipe işlemleri &lt;a href=&#34;https://github.com/timroes/EnhancedListView&#34;&gt;https://github.com/timroes/EnhancedListView&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ama bu kütüphane ve benzerleri ömürlerini doldurmuşlar. Çünkü artık RecyclerView var.&lt;/p&gt;
+
+&lt;p&gt;Evet bu kadar tanıtımdan sonra artık örnek kodlara geçebiliriz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Android CardView yapısı için oldukça güzel hazırlanmış bir kütüphane mevcut. Biz de bu kütüphane ile, RecyclerView içersinde göstermek istediğimiz liste elemanlarımızı CardView içine gömücez. Bu sayede hem daha güzel görünüm elde edicez hem de CardView bileşeninin nimetlerinden yararlanıcaz.&lt;/p&gt;
+
+&lt;p&gt;CardsLib Link : &lt;a href=&#34;https://github.com/gabrielemariotti/cardslib&#34;&gt;CardsLib&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Collections</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-collections/</link>
+      <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-collections/</guid>
+      <description>&lt;p&gt;Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.&lt;/p&gt;
+
+&lt;p&gt;Bu sayfa da &lt;strong&gt;Collection&lt;/strong&gt; yapısını ve oldukça önemli fonksiyonlarını göreceğiz.&lt;/p&gt;
+
+&lt;p&gt;Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Collections.swap&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Swap&lt;/strong&gt; kelime anlamı ile takas anlamına gelmektedir. Mevcut dizimiz içerisinde elemanların yerlerini değiştirmeye yarar.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private static final String[] STRINGS = new String[]{
+        &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;
+};
+
+private final List mItems = new ArrayList&amp;lt;&amp;gt;();
+public void setArray()
+{
+  mItems.addAll(Arrays.asList(STRINGS));
+}
+mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
+
+//  1,2,3,4,5
+
+ 
+
+private void elemanYerDegistir()
+{
+  Collections.swap(mItems, 0, 4);
+}
+mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
+
+//  5,2,3,4,1
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Android Custom Toolbar Title</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-custom-toolbar-title/</link>
+      <pubDate>Wed, 11 Jan 2017 16:01:33 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-custom-toolbar-title/</guid>
+      <description>&lt;p&gt;Android Toolbar bileşeni çok yönlü bir yapıya sahiptir. Android Design Library  kullanarak ve AppBarLayout içerisinde tanımlanarak oldukça farklı şekillere bürünebilir.&lt;/p&gt;
+
+&lt;p&gt;Genel kullanımı aşağıdaki gibidir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;android.support.design.widget.CoordinatorLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+ xmlns:app=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
+ xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+ android:layout_width=&amp;quot;match_parent&amp;quot;
+ android:layout_height=&amp;quot;match_parent&amp;quot;
+ android:background=&amp;quot;@color/primary_dark&amp;quot;
+ tools:context=&amp;quot;.MainActivity&amp;quot;&amp;gt;
+
+ &amp;lt;FrameLayout
+ android:id=&amp;quot;@+id/container&amp;quot;
+ android:layout_width=&amp;quot;match_parent&amp;quot;
+ android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt;
+
+ &amp;lt;/FrameLayout&amp;gt;
+
+
+ &amp;lt;android.support.design.widget.FloatingActionButton
+ android:id=&amp;quot;@+id/fab&amp;quot;
+ android:layout_width=&amp;quot;wrap_content&amp;quot;
+ android:layout_height=&amp;quot;wrap_content&amp;quot;
+ android:layout_gravity=&amp;quot;bottom|end&amp;quot;
+ android:layout_margin=&amp;quot;@dimen/fab_margin&amp;quot;
+ android:src=&amp;quot;@android:drawable/ic_dialog_email&amp;quot; /&amp;gt;
+
+
+ &amp;lt;android.support.design.widget.AppBarLayout
+ android:layout_width=&amp;quot;match_parent&amp;quot;
+ android:layout_height=&amp;quot;wrap_content&amp;quot;
+ app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
+
+ &amp;lt;android.support.v7.widget.Toolbar
+ android:id=&amp;quot;@+id/toolbar&amp;quot;
+ android:layout_width=&amp;quot;match_parent&amp;quot;
+ android:layout_height=&amp;quot;wrap_content&amp;quot;
+ android:background=&amp;quot;@color/primary_dark&amp;quot;
+ android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
+ app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;/&amp;gt;
+
+
+ &amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
+
+&amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;app:elevation=&amp;quot;0dp&amp;quot;&lt;/code&gt;  // AppBarLayout içerisinde ki bu tanımlama default olarak tanımlanmış gölgeyi kaldırır.&lt;/p&gt;
+
+&lt;p&gt;Tanımlamış olduğumuz Toolbar a Activity içerisinden (ya da Fragment vb) erişerek gerekli tanımlamaları vs yapabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Toolbar Custom Title&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Toolbarınızı tanımladığınız yerde aşağıdaki değişiklikleri yaparak Title ınızı istediğiniz gibi özelleştirebilirsiniz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;android.support.design.widget.AppBarLayout
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
+
+    &amp;lt;android.support.v7.widget.Toolbar
+        android:id=&amp;quot;@+id/toolbar&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:background=&amp;quot;@color/primary_dark&amp;quot;
+        android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
+        app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;&amp;gt;
+
+        &amp;lt;TextView
+            android:id=&amp;quot;@+id/toolbar_title&amp;quot;
+            style=&amp;quot;@style/ToolbarTitleStyle&amp;quot;
+            android:layout_width=&amp;quot;wrap_content&amp;quot;
+            android:layout_height=&amp;quot;wrap_content&amp;quot;
+            android:layout_gravity=&amp;quot;center&amp;quot; /&amp;gt;
+    &amp;lt;/android.support.v7.widget.Toolbar&amp;gt;
+
+
+&amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;FragmentX&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; private void setToolbar() {
+ Toolbar toolbar = (Toolbar) mActivity.findViewById(R.id.toolbar);
+ mActivity.setSupportActionBar(toolbar);
+ mActivity.getSupportActionBar().setHomeButtonEnabled(true);
+ mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+ mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false); // Default olarak tanımlanmış Title ın gösterilmemesini belirtiyoruz.
+ ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(&amp;quot;SORU SOR&amp;quot;); // Custom olarak belirlenmiş TextView e text ataması yapıyoruz.
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Foreground Service ile FusedLocationApi Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</guid>
+      <description>&lt;p&gt;Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Burada yapacağımız örnekte kısaca şu aşamaları görücez;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Service i foreground olarak başlatmak&lt;/li&gt;
+&lt;li&gt;Ongoing(devamlı gözüken) notification oluşturmak&lt;/li&gt;
+&lt;li&gt;GoogleApiClient a bağlanmak&lt;/li&gt;
+&lt;li&gt;Location bilgisini notification da göstermek&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ForegroundService.java&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ForegroundService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
+ private static final int LOCATION_NOTIF_ID = 859;
+ private static int LocationPeriod = 1000 * 30 ;
+ 
+ private static Notification notification;
+ private static GoogleApiClient _googleApiClient = null;
+ private static Context mContext;
+ private static NotificationCompat.Builder mBuilder;
+
+
+
+ @Override
+ public void onCreate() {
+ super.onCreate();
+ mContext = this;
+ mBuilder = new NotificationCompat.Builder(mContext);
+ }
+
+ @Nullable
+ @Override
+ public IBinder onBind(Intent intent) {
+ return null;
+ }
+
+ @Override
+ public int onStartCommand(Intent intent, int flags, int startId) {
+
+
+ // Eğer Service ilk defa çalıştırılıyor ise buildGoogleApiClient fonksiyonu ile GoogleApiClient build ediliyor
+ if (_googleApiClient == null) {
+ buildGoogleApiClient();
+ }
+ // GoogleApiClient a bağlanılıyor
+ _googleApiClient.connect();
+
+ // Notificaiton gösteriyoruz
+ LocationNotification(null, &amp;quot;Konum Bilgisi Yok&amp;quot;);
+
+ // Service imizi foreground olarak başlatıyoruz
+ // Foreground service bizden bir notification parametresi ister. Bunun sebebi sürekli ayakta olduğunu kullanıcıya bildirmektir.
+ startForeground(LOCATION_NOTIF_ID, notification);
+
+ // Herhangi bir sebeple service imizi durması halinde kendiliğinden tekrar başlaması için START_STICKY dönüyoruz.
+ return START_STICKY;
+ }
+
+
+ public synchronized void buildGoogleApiClient() {
+ if (_googleApiClient == null) {
+ _googleApiClient = new GoogleApiClient.Builder(this)
+ .addConnectionCallbacks(this)
+ .addOnConnectionFailedListener(this)
+ .addApi(LocationServices.API)
+ .build();
+ }
+ }
+
+
+ @Override
+ public void onConnected(@Nullable Bundle bundle) {
+ // GoogleApiClient a bağlanıldığında Location isteğinde bulunuyoruz.
+ LocationRequest();
+ }
+
+
+ @Override
+ public void onConnectionSuspended(int i) {
+
+ }
+
+
+ @Override
+ public void onConnectionFailed(ConnectionResult result) {
+ // tekrar bağlanmayı deniyoruz
+ _googleApiClient.connect();
+ }
+
+
+ private void LocationRequest() {
+
+
+ // PRIORITY_BALANCED_POWER_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız yok ise (Network, Cell Tower)
+ // PRIORITY_HIGH_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız var ise (GPS)
+
+ final LocationRequest locationRequest = LocationRequest.create()
+ .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+ .setInterval((LocationPeriod * 1000)) 
+ .setFastestInterval(LOCATION_FASTEST_INTERVAL);
+
+
+ //final LocationRequest locationRequest1 = LocationRequest.create()
+ // .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
+ // .setInterval((LocationPeriod * 1000))
+ // .setFastestInterval(LOCATION_FASTEST_INTERVAL);
+
+ // İhtiyaçlarımız doğrultusunda yapılandırdığımız LocationRequest in gerekliliklerini kontrol ederek, cihazın davranışının otomatik olarak ayarlanması için
+ // gerekli Dialog penceresinin çıkmasını sağlar ve Kullanıcının onayını ister
+
+ // Örnek olarak eğer PRIORITY_HIGH_ACCURACY olrarak belirlenmişse ve cihazın GPS i kapalı ise bir Dialog çıkartarak GPS i açmanızı ister
+ LocationSettingsRequest locationSettingsRequest = new LocationSettingsRequest.Builder()
+ .addLocationRequest(locationRequest)
+ .setAlwaysShow(true)
+ .build();
+
+ PendingResult&amp;lt;LocationSettingsResult&amp;gt; result =
+ LocationServices.SettingsApi.checkLocationSettings(_googleApiClient, locationSettingsRequest);
+
+ // Gösterilen Dilag penceresi ile Kullanıcının etkileşimi sonucunun yakalar
+ result.setResultCallback(new ResultCallback&amp;lt;LocationSettingsResult&amp;gt;() {
+ @DebugLog
+ @Override
+ public void onResult(LocationSettingsResult locationSettingsResult) {
+
+ // locationSettingsStates ile cihazın durumunu kontrol ederek akışımızı yönlendirebiliriz
+ LocationSettingsStates locationSettingsStates = locationSettingsResult.getLocationSettingsStates();
+ 
+ // Konum dinlenmeye başlanır
+ // mLocationListener ile konum değişikliği yakalanır.
+ FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest, mLocationListener);
+ 
+ //FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest1, mLocationListener);
+ 
+ }
+ });
+
+
+ }
+
+
+ private static LocationListener mLocationListener = new LocationListener() {
+ @Override
+ public void onLocationChanged(Location location) {
+
+
+ // Location değişikliğini burada yakalayabiliriz.
+ // Belirlemiş olduğumuz periyodik zaman aralığında Location değişikliği kontrol edilecektir.
+ }
+ };
+
+
+ 
+ public ForegroundService() {
+ }
+
+ // Bu fonksiyon yardımı ile başka bir sınıftan konum bilgisine erişebiliriz.
+ // static olarak tanımlanmış olması bize kolaylık sağlıcaktır.
+ public static Location getLastLocation() {
+ if (_googleApiClient != null) {
+ return FusedLocationApi.getLastLocation(_googleApiClient);
+ } else {
+ return null;
+ }
+ }
+
+
+ // GoogleApiClient nesnemize erişmek istersek bu kod bloğunu kullanabiliriz.
+ public static GoogleApiClient getGoogleApiClient() {
+ return _googleApiClient;
+ }
+
+ 
+ public static void removeLocationUpdates() {
+ if (_googleApiClient != null) {
+ FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
+ }
+ }
+
+ @DebugLog
+ private static void LocationNotification(Location location, String subText) {
+ NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+ //
+
+ mBuilder.setSmallIcon(R.drawable.ic_stat_device_gps_fixed);
+ mBuilder.setTicker(&amp;quot;Konum&amp;quot;);
+ //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+ mBuilder.setSubText(subText);
+ mBuilder.setOnlyAlertOnce(true);
+ mBuilder.setPriority(Notification.PRIORITY_HIGH);
+
+
+ if (location != null) {
+ mBuilder
+ .setContentTitle(&amp;quot;Sapma: &amp;quot; + String.valueOf(location.getAccuracy()))
+ .setContentText(&amp;quot;Lat: &amp;quot; + String.valueOf(location.getLatitude()) + &amp;quot; , &amp;quot; +
+ &amp;quot;Long: &amp;quot; + String.valueOf(location.getLongitude()))
+ .setWhen(System.currentTimeMillis())
+ .setShowWhen(true)
+ .setUsesChronometer(true)
+ .setContentIntent(pendingIntent);
+
+
+ } else {
+ mBuilder
+ .setContentTitle(&amp;quot;&amp;quot;)
+ .setContentText(&amp;quot;&amp;quot;);
+ }
+
+
+ notification = mBuilder.build();
+ notificationManager.notify(LOCATION_NOTIF_ID, notification);
+ }
+
+ @DebugLog
+ @Override
+ public void onDestroy() {
+ if (_googleApiClient != null) {
+ if (_googleApiClient.isConnected()) {
+ FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
+ _googleApiClient.disconnect();
+ }
+ }
+ PeriodicHandler.removeMessages(1);
+ stopForeground(true);
+ super.onDestroy();
+ }
+
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Tanımlamış olduğumuz servisi başlatmak için istediğimiz yerden ( Activity , Fragment vb.) aşağıdaki kod bloğunu çalıştırmamız yeterli olucaktır.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Intent serviceIntent = new Intent(context, ForegroundService.class);
+startService(serviceIntent);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Android GcmNetworkManager Kullanımı</title>
       <link>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</link>
       <pubDate>Wed, 11 Jan 2017 01:43:53 +0300</pubDate>

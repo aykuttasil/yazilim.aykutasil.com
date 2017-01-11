@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/categories/javascript/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Javascript Saçmalıkları</title>
+      <link>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</link>
+      <pubDate>Wed, 11 Jan 2017 17:14:22 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</guid>
+      <description>&lt;p&gt;Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.&lt;/p&gt;
+
+&lt;p&gt;Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.&lt;/p&gt;
+
+&lt;p&gt;Örneğin elinizde&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;var degisken = ‘İSTANBUL’ ;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; $(&#39;#Iller &amp;gt; option&#39;).each(function(index) {
+                var il = &#39;istanbul&#39;; // veritabanından çektiğimizi düşünelim
+               
+                var txt = $(this).text() // -&amp;gt; &#39;İSTANBUL&#39;
+                if (txt === il) {
+                   // Diğer işlemler
+                }           
+            });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;if (txt === il)&lt;/code&gt;
+ile eşitlik kontrol ediliyor.&lt;/p&gt;
+
+&lt;p&gt;Ve &lt;strong&gt;true&lt;/strong&gt; değeri dönmüyor. Çünkü biri küçük diğeri büyük harfle yazılmış. Gayet normal.&lt;/p&gt;
+
+&lt;p&gt;Peki tamam.&lt;/p&gt;
+
+&lt;p&gt;Büyük yazılan &lt;strong&gt;‘İSTANBUL’&lt;/strong&gt; kelimesini javascript in çok değerli toLowerCase() fonksiyonu ile küçültüyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;var txt = txt.toLowerCase(); // -&amp;gt; &#39;istanbul&#39;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Evet ikisi de ‘istanbul’ oldu artık. Peki şimdi yukarıda belirttiğimiz eşitlik sağlanıcak mı ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;HAYIR !&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Çünkü &lt;strong&gt;‘İSTANBUL’&lt;/strong&gt; değişkenini Javascript abimiz küçültürken, büyük ‘İ’ harfiyle sevişiyor. Ve eşitlik bir türlü sağlanamıyor.&lt;/p&gt;
+
+&lt;p&gt;Birde çok değerli Javascript abimizin ( dünya ahiret bacım bu saatten sonra) replace fonksiyonu efsane çalışıyor.&lt;/p&gt;
+
+&lt;p&gt;Replace olmasını istediğimiz değerin sadece ilkini değiştiriyor. Diğerleri pek umrunda değil. Bu nedenle /İ/g fln saçma salak bişiler yapmak gerekiyor.&lt;/p&gt;
+
+&lt;p&gt;Aşağıda ki fonksiyonu çözüm için kullanabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Bu dile şuan – günümüzde (31/03/2016) çok da güvenmeyin abiler ablalar !. Zaten kısa bir araştırma sonrasında Javascript tutarsızlıklarıyla ilgili bir sürü dökümana ulaşabilirsiniz.
+&lt;strong&gt;Not:&lt;/strong&gt; Esneklik beraberinde hata getirir.&lt;/p&gt;
+
+&lt;p&gt;Çözüm (Gerçekten bu yazıyı yazarken sinirliyim !)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;            function clearText(text) {
+                return text.replace(/İ/g, &amp;quot;i&amp;quot;).replace(/Ş/g, &amp;quot;s&amp;quot;).replace(/Ü/g, &amp;quot;u&amp;quot;).replace(/Ö/g, &amp;quot;o&amp;quot;).replace(/Ç/g, &amp;quot;c&amp;quot;)
+                    .toLowerCase()
+                    .replace(/ü/g, &amp;quot;u&amp;quot;).replace(/ı/g, &amp;quot;i&amp;quot;).replace(/ç/g, &amp;quot;c&amp;quot;)
+                    .replace(/ğ/g, &amp;quot;g&amp;quot;).replace(/ş/g, &amp;quot;s&amp;quot;).replace(/ö/g, &amp;quot;o&amp;quot;);
+             
+            }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

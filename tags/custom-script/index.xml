@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/custom-script/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/custom-script/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SQL Management Studio Custom Generate Scripts</title>
+      <link>http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/</link>
+      <pubDate>Wed, 11 Jan 2017 15:39:47 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/</guid>
+      <description>&lt;p&gt;SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.&lt;/p&gt;
+
+&lt;p&gt;Senaryomuz şu şekilde;&lt;/p&gt;
+
+&lt;p&gt;Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.&lt;/p&gt;
+
+&lt;p&gt;Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !&lt;/p&gt;
+
+&lt;p&gt;Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.&lt;/p&gt;
+
+&lt;p&gt;Test veritabanında  ki tabloya sağ tıklayarak aşağıdaki gibi seçim yapmak.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt; seçeneği oluşturulan script in bir dosyaya kaydedilmesini&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clipboard&lt;/strong&gt; seçeneği hafızaya alınmasını ( NotDefteri &amp;gt; CTRL + V diyerek yapıştırabiliriz )
+sağlar.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/phM7Y8A&#34;&gt;&lt;img src=&#34;http://i.imgur.com/phM7Y8A.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tüm oluşturmuş olduğumuz yapıyı bu yöntem ile script haline getirebiliriz.&lt;/p&gt;
+
+&lt;p&gt;Lakin şöyle bir sıkıntımız olduğunu varsayalım.&lt;/p&gt;
+
+&lt;p&gt;Tablomuzu içindeki verilerle beraber taşımak istiyoruz. Yani script in verileride kapsamasını istiyoruz.&lt;/p&gt;
+
+&lt;p&gt;Bunun için ilk olarak tablomuzun bulunduğu veritabanına sağ tıklayarak aşağıdaki adımları gerçekleştiriyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/TUEWNjo&#34;&gt;&lt;img src=&#34;http://i.imgur.com/TUEWNjo.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/3pGyapU&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3pGyapU.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/6xCVWnQ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6xCVWnQ.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Aşağıdaki resimde görmüş olduğunuz Data only seçeneği sadece tabloda kayıtlı olan verilerin scriptini çıkarır.&lt;/p&gt;
+
+&lt;p&gt;Schema and data seçeneği hem schema nın hem de verilerin scriptini çıkararı&lt;/p&gt;
+
+&lt;p&gt;Schema only sadece tablonun schema sının scriptini çıkarır.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/dB2gpdH&#34;&gt;&lt;img src=&#34;http://i.imgur.com/dB2gpdH.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Son ekranda scriptimizin başarılı şekilde oluştuğunu görüyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/7Nx3w3O&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7Nx3w3O.png&#34; title=&#34;source: imgur.com&#34; /&gt;&amp;lt;/a&lt;/p&gt;
+
+&lt;p&gt;Oluşturmuş olduğumuz script i hangi veritabanında kullanmak istiyorsak oraya giderek query penceresine yapıştırmamız ve çalıştırmamız yeterli olacaktır.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
