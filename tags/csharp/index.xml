@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/csharp/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/csharp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>CSharp Null Kontrolü</title>
+      <link>http://yazilim.aykutasil.com/2017/01/csharp-null-kontrol%C3%BC/</link>
+      <pubDate>Mon, 16 Jan 2017 11:13:16 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/csharp-null-kontrol%C3%BC/</guid>
+      <description>
+
+&lt;h1 id=&#34;c-ve-operator-kullanımı&#34;&gt;C# ? ve ?? Operator Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;Kısaca bahsedilecek olursa &lt;strong&gt;?&lt;/strong&gt; operatörü &lt;strong&gt;null&lt;/strong&gt; kontrolü yapılmasını sağlar.&lt;/p&gt;
+
+&lt;p&gt;Yazılım geliştirme sırasında en çok rastlanan hatanın sebebi &lt;strong&gt;null&lt;/strong&gt; dönen ifadelerdir. Bu bazen bir değişken bazen parametre vs. olabilir. Ama sebep ifadenin null olmasıdır.&lt;/p&gt;
+
+&lt;p&gt;Önceden şu şekilde kontrol ediyorduk.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;var a;
+if(a != null)
+{
+  Console.Write(a);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;şimdi&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;var a;
+Console.Write(a ?? &amp;quot;boş değer&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıdaki söz dizimi ile şunu söylüyoruz.
+- Eğer &lt;strong&gt;a&lt;/strong&gt; değeri null değil ise ekrana a nın değerini yaz.
+- Eğer &lt;strong&gt;a&lt;/strong&gt; değeri null ise &lt;strong&gt;??&lt;/strong&gt; operatörünün sağındaki değeri yani burada &lt;strong&gt;boş değer&lt;/strong&gt; ifedesini yaz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;int? length = customers?.Length; // null if customers is null   
+Customer first = customers?[0];  // null if customers is null  
+int? count = customers?[0]?.Orders?.Count();  // null if customers, the first customer, or Orders is null  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıdaki örneği incelersek aslında kod kalitemizin ve okunabilirliğin ne kadar arttığını görebiliriz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;Customers customers = DbHelper.GetCustomers();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıdaki kodu çalıştırdığımızda &lt;code&gt;DbHelper.GetCustomers()&lt;/code&gt; fonksiyonunda &lt;strong&gt;null&lt;/strong&gt; döndüğünü düşünelim.
+Biz null kontrolü yapmadan &lt;code&gt;customers.size()&lt;/code&gt;gibi bir fonksiyonu çağıracak olsak uygulamamız patlıcaktır.
+Çünkü null bir ifadenin &lt;strong&gt;size&lt;/strong&gt; ı olamaz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;int? size = customers?.size;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;yukarıda ki gibi kodumuzu geliştirirsek uygulamamızın patlamasını önlemiş oluruz.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
