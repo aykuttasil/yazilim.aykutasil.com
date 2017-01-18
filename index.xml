@@ -6,8 +6,169 @@
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <lastBuildDate>Mon, 16 Jan 2017 11:13:16 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 18 Jan 2017 12:09:26 +0300</lastBuildDate>
     <atom:link href="http://yazilim.aykutasil.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Yeoman Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/2017/01/yeoman-kullan%C4%B1m%C4%B1/</link>
+      <pubDate>Wed, 18 Jan 2017 12:09:26 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/yeoman-kullan%C4%B1m%C4%B1/</guid>
+      <description>
+
+&lt;h2 id=&#34;yeoman&#34;&gt;Yeoman&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://yeoman.io/&#34;&gt;Yeoman&lt;/a&gt; ile kendi proje yapımızı kurgulayabilir ve opsiyonlar belirleyerek ona göre dosya içeriğimizi vs. düzenleyebiliriz.
+Ya da oluşturduğumuz projeye önceden belirlediğimiz bir dosyayı ekleyebilir ve gerekli ayarlamaları otomatik olarak yapmasını sağlayabiliriz. (yeni bir Controller eklemek gibi vs.)&lt;/p&gt;
+
+&lt;p&gt;Ve hazırladığımız bu proje yapısını paket yönetim sistemlerine yollayarak diğer kişilerin kullanımına açabilir veyahut kendimizin de istediğimiz yerden erişebilmesini sağlayabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Öncelikle bilgisayarınız da nodejs yüklü olduğunu varsayıyoruz. Eğer yüklü değilse &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;buradan&lt;/a&gt; gerekli işlemleri yaparak kurabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Daha sonra &lt;code&gt;npm install -g yo&lt;/code&gt; komutunu çalıştırarak &lt;code&gt;yo&lt;/code&gt;komutunun heryerden çalışmasını sağlıyoruz.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://yeoman.io/generators/&#34;&gt;Generators&lt;/a&gt;, diğer kişilerin oluşturmuş olduğu yapıları görmek için kullanabiliriz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Evet kendi proje yapımızı hazırlamaya başlayabiliriz&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Öncelikle yine &lt;strong&gt;Yeoman&lt;/strong&gt; ın kendisini kullanarak yeni yapımızı kurmak için gerekli dosyaların yapılanmasını sağlıyoruz.
+Bunun için &lt;code&gt;npm install -g generator-generator&lt;/code&gt; komutunu çalıştırıyoruz.
+Ve &lt;code&gt;yo generator&lt;/code&gt;komutu ile gerekli dosya yapısının oluşturulmasını sağlıyoruz.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;yo generator&lt;/code&gt; komutunu çalıştırdığımız da bize &lt;strong&gt;proje ismi (name)&lt;/strong&gt; gibi sorular gelecek ve bizde uygun değerleri girerek dosyaların ona göre düzenlemesini sağlıcaz. Ama &lt;strong&gt;name&lt;/strong&gt; değerini girerken &lt;strong&gt;generators&lt;/strong&gt; ile başladığına emin olmalıyız.&lt;/p&gt;
+
+&lt;p&gt;Ayrıntılı bilgi &lt;a href=&#34;https://github.com/yeoman/generator-generator&#34;&gt;burada&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ve oluşturulan dosya yapısı şu şekilde olmalı;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/VEuO0t8&#34;&gt;&lt;img src=&#34;http://i.imgur.com/VEuO0t8.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;app/templates&lt;/strong&gt; klasörü altındaki tüm dosyalar bizim asıl oluşturmak istediğimiz dosya yapısı. Yani tüm bu işlemler sonrasında &lt;code&gt;yo xyz&lt;/code&gt;çalıştırdığımız da &lt;strong&gt;templates&lt;/strong&gt; klasöründe ki dosyalar oluşturulacaktır.
+Tabi ki bizim belirlediğimiz değerler ile bu dosyaların içeriği vs. oluşturulacak. Yoksa bi anlamı kalmaz dimi ;)&lt;/p&gt;
+
+&lt;p&gt;Yukarıda ki resimde &lt;strong&gt;a,b,dummytext .txt&lt;/strong&gt; ve &lt;strong&gt;testFolder&lt;/strong&gt; klasörünü görüyorsunuz.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-txt&#34;&gt;a.txt&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;Merhaba A 
+
+Proje ismi : &amp;lt;%= name %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;b-txt&#34;&gt;b.txt&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Dosya B
+
+Değişken değer: &amp;lt;%= degiskenB %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;dummy-txt&#34;&gt;dummy.txt&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;Dummy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;dosya içeriklerinin bu şekilde olduğunu varsayalım.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;app/index.js&lt;/strong&gt; dosyasını açıyoruz ve gerekli düzenlemeleri yapıyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&#39;use strict&#39;;
+var Generator = require(&#39;yeoman-generator&#39;);
+var chalk = require(&#39;chalk&#39;); // yazı renklendirme için kullanılır
+var yosay = require(&#39;yosay&#39;); // yeoman çalıştırılırken ilk başta gözüken proje bilgilendirme kısmını hazırlamaka için kullanılır
+
+module.exports = Generator.extend({
+  prompting: function () {
+    var done = this.async();
+
+    this.log(yosay(
+      &#39;Aykut Asil proje oluşturma yapısına Hoş Geldiniz... &#39; +
+      chalk.red(&#39;generator-sample-yeoman&#39;) +
+      &#39; generator!&#39;
+    ));
+
+    var prompts = [{
+      type: &#39;confirm&#39;,
+      name: &#39;someAnswer&#39;,
+      message: &#39;www.aykutasil.com u ziyaret ettin mi ?&#39;,
+      default: true
+    }, {
+      type: &#39;input&#39;,
+      name: &#39;name&#39;,
+      message: &#39;Proje adı&#39;,
+      default: this.appname
+    }, {
+      type: &#39;input&#39;,
+      name: &#39;degiskenB&#39;,
+      message: &#39;B name&#39;,
+      default: this.appname
+    }];
+
+    return this.prompt(prompts).then(function (props) {
+      this.props = props;
+      this.log(props.someAnswer);
+      this.log(props.name);
+
+      done();
+    }.bind(this));
+  },
+
+  writing: {
+    config: function () {
+      this.fs.copyTpl( // Eğer hazırlanan dosya içerisinde değişken kullanılmış ise copyTpl ile kopyalama yapılır
+        this.templatePath(&#39;a.txt&#39;),
+        this.destinationPath(&#39;a.txt&#39;), {
+          name: this.props.name
+        }
+      );
+
+      this.fs.copyTpl(
+        this.templatePath(&#39;b.txt&#39;),
+        this.destinationPath(&#39;b.txt&#39;), {
+          degiskenB: this.props.degiskenB
+        }
+      );
+
+      this.fs.copy( // Hazırlanacak dosya aynen kopyalama yapılacak ise yani dosya içerisinde değişken ile doldurulacak bir bölüm yok ise
+        // copy ile kopyalama yapılır
+        this.templatePath(&#39;dummyfile.txt&#39;),
+        this.destinationPath(&#39;dummyfile.txt&#39;)
+      );
+
+      this.fs.copy(
+        this.templatePath(&#39;testFolder/_test.txt&#39;),
+        this.destinationPath(&#39;testFolderDeneme/test.txt&#39;)
+      );
+    }
+  },
+
+  install: function () {
+    // this.installDependencies(); // tüm dosyala kopyalandıktan sonra npm init çalıştırılması için kullanılır. Eğer çalıştırılmazsa node_modules klasörü oluşturulmamış olur.
+  }
+});
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda kodların yanında ayrıntılı açıklama var.&lt;/p&gt;
+
+&lt;p&gt;İşlemlerimizi tamamladıktan sonra local imizde test etmek ya da kullanabilmek için &lt;code&gt;npm link&lt;/code&gt; komutunu çalıştırıyoruz.(ana klasör içerisinde iken çalıştırıyoruz)&lt;/p&gt;
+
+&lt;p&gt;Ve herhangi bir yerde yeni bir klasör oluşturalım.
+Klasör içerisindeyken &lt;code&gt;yo sample_generator&lt;/code&gt; komutunu çalıştıralım.&lt;/p&gt;
+
+&lt;p&gt;Ve sonuç:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/ome2le3&#34;&gt;&lt;img src=&#34;http://i.imgur.com/ome2le3.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/h5BxC6u&#34;&gt;&lt;img src=&#34;http://i.imgur.com/h5BxC6u.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/f2QglwV&#34;&gt;&lt;img src=&#34;http://i.imgur.com/f2QglwV.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://imgur.com/36yb5ij&#34;&gt;&lt;img src=&#34;http://i.imgur.com/36yb5ij.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>CSharp Null Kontrolü</title>
@@ -1531,49 +1692,6 @@ bintray {
 &lt;p&gt;&lt;code&gt;android.Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;kullanacaksınız. Yoksa izin listesini bulamaz.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Mac OS Arduino Uno (Klon) Kurulumu</title>
-      <link>http://yazilim.aykutasil.com/2017/01/mac-os-arduino-uno-klon-kurulumu/</link>
-      <pubDate>Wed, 11 Jan 2017 17:22:38 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/mac-os-arduino-uno-klon-kurulumu/</guid>
-      <description>&lt;p&gt;Sizde benim gibi klon Arduino Uno kartınızı çalıştıramayıp bozuk zannettiyseniz doğru yerdesiniz.&lt;/p&gt;
-
-&lt;p&gt;Arduino Uno klon kartlarında orijinal Arduino Uno kartına göre farklı bir işlemci kullanılmış ( daha ucuz olanından 😉 ) ve bu yüzden Mac OS kullanıyorsanız ayrı bir driver dosyası indirmeniz gerekmekte.&lt;/p&gt;
-
-&lt;p&gt;Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open source u destekleyen diğer taraf parayı destekleyen insanlardan oluşuyor(muş).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.arduino.cc&#34;&gt;http://www.arduino.cc&lt;/a&gt;   Parayı destekleyen tarafın sitesi&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.arduino.org&#34;&gt;http://www.arduino.org&lt;/a&gt;  Open source u destekleyen taraf&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ben &lt;strong&gt;arduino.org&lt;/strong&gt; daki Arduino IDE yi kurdum çünkü diğerinde birkaç sorun yaşamıştım ama günün sonunda her iki siteden indirdiğiniz IDE ile de geliştirme yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Dedikten sonra;&lt;/p&gt;
-
-&lt;p&gt;Mac OS a klon Arduino Uno driverını yüklemek için (CH341) -&amp;gt;  &lt;a href=&#34;http://www.wch.cn/download/CH341SER_MAC_ZIP.html&#34;&gt;http://www.wch.cn/download/CH341SER_MAC_ZIP.html&lt;/a&gt;
-linkinden dosyayı indirin. Çince ama idare edin, Download a basmanız yeter 😉&lt;/p&gt;
-
-&lt;p&gt;Ya da bu linki kullanabilirsiniz : &lt;a href=&#34;http://javacolors.blogspot.com.tr/2014/08/dccduino-usb-drivers-ch340-ch341-chipset.html&#34;&gt;http://javacolors.blogspot.com.tr/2014/08/dccduino-usb-drivers-ch340-ch341-chipset.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Daha sonra terminal e açarak aşağıdaki komutu yazın.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo nvram boot-args=&amp;quot;kext-dev-mode=1&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Makineye yeniden başlatın.
-Artık Arduino Uno yu Mac OS görüyor olması lazım.&lt;/p&gt;
-
-&lt;p&gt;Olmadı şu linke bir göz atabilirsin : &lt;a href=&#34;http://arduino.stackexchange.com/questions/12133/mac-osx-yosemite-no-serial-ports-showing-for-uno-r3&#34;&gt;http://arduino.stackexchange.com/questions/12133/mac-osx-yosemite-no-serial-ports-showing-for-uno-r3&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ya da şu video yu izleyebilirsin : &lt;a href=&#34;https://www.youtube.com/watch?v=oHqYK1ezRzo&#34;&gt;https://www.youtube.com/watch?v=oHqYK1ezRzo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Olduysa Arduino IDE nizden port ayarlarını yapmayı unutmayın.&lt;/p&gt;
 </description>
     </item>
     
