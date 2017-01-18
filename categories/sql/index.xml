@@ -10,10 +10,10 @@
     
     <item>
       <title>SQL SCOPE_IDENTITY()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</link>
+      <link>http://yazilim.aykutasil.com/sql_scope_identity</link>
       <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</guid>
+      <guid>http://yazilim.aykutasil.com/sql_scope_identity</guid>
       <description>&lt;p&gt;&lt;strong&gt;Kısaca özetlemek gerekirse :&lt;/strong&gt; insert ile kayıt edilen tablo satırının id sini getirir.&lt;/p&gt;
 
 &lt;p&gt;Yapılan son kaydın id sini almak için uzun  yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.&lt;/p&gt;
@@ -42,10 +42,10 @@ SET @son_satir_id = SCOPE_IDENTITY();
     
     <item>
       <title>Mac OS ile MSSQL Bağlantısı Kurmak</title>
-      <link>http://yazilim.aykutasil.com/2017/01/mac-os-ile-mssql-ba%C4%9Flant%C4%B1s%C4%B1-kurmak/</link>
+      <link>http://yazilim.aykutasil.com/macos-mssql-connection</link>
       <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/mac-os-ile-mssql-ba%C4%9Flant%C4%B1s%C4%B1-kurmak/</guid>
+      <guid>http://yazilim.aykutasil.com/macos-mssql-connection</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;MSSQL&lt;/strong&gt; oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.&lt;/p&gt;
@@ -151,11 +151,11 @@ sağlar.&lt;/li&gt;
     </item>
     
     <item>
-      <title>TSQL NULLIF Fonksiyonu Nedir ve Nasil Kullanilir</title>
-      <link>http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/</link>
+      <title>TSQL NULLIF Fonksiyonu Nedir ve Nasıl Kullanılır</title>
+      <link>http://yazilim.aykutasil.com/sql_nullif_fonksiyonu_kullanimi</link>
       <pubDate>Tue, 10 Jan 2017 23:08:34 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir/</guid>
+      <guid>http://yazilim.aykutasil.com/sql_nullif_fonksiyonu_kullanimi</guid>
       <description>
 
 &lt;h2 id=&#34;tsql-nullif-fonksiyonu&#34;&gt;TSQL NULLIF fonksiyonu&lt;/h2&gt;

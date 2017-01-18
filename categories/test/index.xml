@@ -10,10 +10,10 @@
     
     <item>
       <title>Postman ile API Test Yazımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/postman-ile-api-test-yaz%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/postman-api-test</link>
       <pubDate>Wed, 11 Jan 2017 01:09:39 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/postman-ile-api-test-yaz%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/postman-api-test</guid>
       <description>
 
 &lt;h1 id=&#34;postman&#34;&gt;POSTMAN&lt;/h1&gt;
@@ -158,10 +158,10 @@
     
     <item>
       <title>Robolectric ile UnitTest Yazımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/robolectric-ile-unittest-yaz%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/android-robolectric-test</link>
       <pubDate>Wed, 11 Jan 2017 00:31:52 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/robolectric-ile-unittest-yaz%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/android-robolectric-test</guid>
       <description>&lt;p&gt;Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.&lt;/p&gt;
 
 &lt;p&gt;Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.&lt;/p&gt;
@@ -347,10 +347,10 @@ at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
     
     <item>
       <title>Unit Test Nedir ? Niçin ve Nasıl Yapılır ?</title>
-      <link>http://yazilim.aykutasil.com/2017/01/unit-test-nedir--ni%C3%A7in-ve-nas%C4%B1l-yap%C4%B1l%C4%B1r-/</link>
+      <link>http://yazilim.aykutasil.com/unittest-nedir</link>
       <pubDate>Wed, 11 Jan 2017 00:27:54 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/unit-test-nedir--ni%C3%A7in-ve-nas%C4%B1l-yap%C4%B1l%C4%B1r-/</guid>
+      <guid>http://yazilim.aykutasil.com/unittest-nedir</guid>
       <description>&lt;p&gt;&lt;strong&gt;Unit Test Nedir ? Niçin ve Nasıl Yapılır ?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Yıl olmuş 2014 hala birim test makalesi mi yazıyorsun diye düşünüyor olabilirsiniz. Ancak, birim testi uzun zamandır kullanılan bir yöntem olmasına rağmen tam olarak ne işe yaradığı, neden yapıldığı ve nasıl yapılması gerektiği konusunda açıklayıcı bir Türkçe yazı bulmak malesef zor. Bu yüzden, yazılım mühendisi adaylarına ve kariyerine yeni başlayan arkadaşlara faydalı olabilmek adına bu yazıyı yazmak uygun olur diye düşündüm.&lt;/p&gt;

@@ -10,10 +10,10 @@
     
     <item>
       <title>Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/</link>
+      <link>http://yazilim.aykutasil.com/java-executor</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/</guid>
+      <guid>http://yazilim.aykutasil.com/java-executor</guid>
       <description>
 
 &lt;h1 id=&#34;executor-newcachedthreadpool-newfixedthreadpool-n-newsinglethreadexecutor&#34;&gt;Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()&lt;/h1&gt;

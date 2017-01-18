@@ -10,10 +10,10 @@
     
     <item>
       <title>Foreground Service ile FusedLocationApi Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi</link>
       <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi</guid>
       <description>&lt;p&gt;Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.&lt;/p&gt;
 
 &lt;p&gt;Burada yapacağımız örnekte kısaca şu aşamaları görücez;&lt;/p&gt;

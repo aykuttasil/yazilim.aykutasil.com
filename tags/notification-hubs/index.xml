@@ -10,10 +10,10 @@
     
     <item>
       <title>Azure Mobile Services ve Notification Hubs Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/azure-mobile-services-ve-notification-hubs-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/azure-notification-hubs-kullanimi</link>
       <pubDate>Wed, 11 Jan 2017 00:21:36 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/azure-mobile-services-ve-notification-hubs-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/azure-notification-hubs-kullanimi</guid>
       <description>&lt;p&gt;Azure Mobile Services çok hızlı ve kolay bir şekilde uygulama geliştirmeniz için önceden veya uygulama yazımı sırasında yapılması gereken işlemleri minimize eden bir servistir.&lt;/p&gt;
 
 &lt;p&gt;Kullanımı oldukça kolay olmakla beraber ilk bir kaç adımı gerçekleştirmek bazen can sıkıcı olabilmekte.&lt;/p&gt;

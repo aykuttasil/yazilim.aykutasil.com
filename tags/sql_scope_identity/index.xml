@@ -10,10 +10,10 @@
     
     <item>
       <title>SQL SCOPE_IDENTITY()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</link>
+      <link>http://yazilim.aykutasil.com/sql_scope_identity</link>
       <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</guid>
+      <guid>http://yazilim.aykutasil.com/sql_scope_identity</guid>
       <description>&lt;p&gt;&lt;strong&gt;Kısaca özetlemek gerekirse :&lt;/strong&gt; insert ile kayıt edilen tablo satırının id sini getirir.&lt;/p&gt;
 
 &lt;p&gt;Yapılan son kaydın id sini almak için uzun  yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.&lt;/p&gt;

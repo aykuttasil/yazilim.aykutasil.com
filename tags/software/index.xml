@@ -10,13 +10,13 @@
     
     <item>
       <title>Yeoman Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/yeoman-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/yeoman-kullanimi</link>
       <pubDate>Wed, 18 Jan 2017 12:09:26 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/yeoman-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/yeoman-kullanimi</guid>
       <description>
 
-&lt;h2 id=&#34;yeoman&#34;&gt;Yeoman&lt;/h2&gt;
+&lt;h2 id=&#34;yeoman-kullanımı&#34;&gt;Yeoman Kullanımı&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://yeoman.io/&#34;&gt;Yeoman&lt;/a&gt; ile kendi proje yapımızı kurgulayabilir ve opsiyonlar belirleyerek ona göre dosya içeriğimizi vs. düzenleyebiliriz.
 Ya da oluşturduğumuz projeye önceden belirlediğimiz bir dosyayı ekleyebilir ve gerekli ayarlamaları otomatik olarak yapmasını sağlayabiliriz. (yeni bir Controller eklemek gibi vs.)&lt;/p&gt;
@@ -166,15 +166,22 @@ Klasör içerisindeyken &lt;code&gt;yo sample_generator&lt;/code&gt; komutunu ç
 &lt;p&gt;&lt;a href=&#34;http://imgur.com/f2QglwV&#34;&gt;&lt;img src=&#34;http://i.imgur.com/f2QglwV.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://imgur.com/36yb5ij&#34;&gt;&lt;img src=&#34;http://i.imgur.com/36yb5ij.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ek Kaynaklar&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://scotch.io/tutorials/create-a-custom-yeoman-generator-in-4-easy-steps&#34;&gt;https://scotch.io/tutorials/create-a-custom-yeoman-generator-in-4-easy-steps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.tutsplus.com/tutorials/build-your-own-yeoman-generator--cms-20040&#34;&gt;https://code.tutsplus.com/tutorials/build-your-own-yeoman-generator--cms-20040&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>CSharp Null Kontrolü</title>
-      <link>http://yazilim.aykutasil.com/2017/01/csharp-null-kontrol%C3%BC/</link>
+      <link>http://yazilim.aykutasil.com/csharp-soru-isareti-syntax</link>
       <pubDate>Mon, 16 Jan 2017 11:13:16 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/csharp-null-kontrol%C3%BC/</guid>
+      <guid>http://yazilim.aykutasil.com/csharp-soru-isareti-syntax</guid>
       <description>
 
 &lt;h1 id=&#34;c-ve-operator-kullanımı&#34;&gt;C# ? ve ?? Operator Kullanımı&lt;/h1&gt;
@@ -227,10 +234,10 @@ Biz null kontrolü yapmadan &lt;code&gt;customers.size()&lt;/code&gt;gibi bir fo
     
     <item>
       <title>ExecutorService submit() – execute()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/executorservice-submit--execute/</link>
+      <link>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute</link>
       <pubDate>Wed, 11 Jan 2017 19:26:49 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/executorservice-submit--execute/</guid>
+      <guid>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute</guid>
       <description>
 
 &lt;h1 id=&#34;executorservice-submit-execute&#34;&gt;ExecutorService submit() – execute()&lt;/h1&gt;
@@ -241,10 +248,10 @@ Biz null kontrolü yapmadan &lt;code&gt;customers.size()&lt;/code&gt;gibi bir fo
     
     <item>
       <title>Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/</link>
+      <link>http://yazilim.aykutasil.com/java-executor</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/executor-newcachedthreadpool-newfixedthreadpooln-newsinglethreadexecutor/</guid>
+      <guid>http://yazilim.aykutasil.com/java-executor</guid>
       <description>
 
 &lt;h1 id=&#34;executor-newcachedthreadpool-newfixedthreadpool-n-newsinglethreadexecutor&#34;&gt;Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()&lt;/h1&gt;
@@ -465,10 +472,10 @@ I/MainActivity: ExecuterServicee: pool-7-thread-2
     
     <item>
       <title>Runnable() &amp; Callable()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/runnable--callable/</link>
+      <link>http://yazilim.aykutasil.com/java-runnable-and-callable</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/runnable--callable/</guid>
+      <guid>http://yazilim.aykutasil.com/java-runnable-and-callable</guid>
       <description>
 
 &lt;h1 id=&#34;runnable-callable&#34;&gt;Runnable() &amp;amp; Callable()&lt;/h1&gt;
@@ -479,10 +486,10 @@ I/MainActivity: ExecuterServicee: pool-7-thread-2
     
     <item>
       <title>RxJava range() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/rxjava-range</link>
       <pubDate>Wed, 11 Jan 2017 18:52:51 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/rxjava-range</guid>
       <description>
 
 &lt;h1 id=&#34;rxjava-range-kullanımı&#34;&gt;RxJava range() Kullanımı&lt;/h1&gt;
@@ -516,10 +523,10 @@ I/MainActivity: val: 7
     
     <item>
       <title>RxJava scan() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/rxjava-scan</link>
       <pubDate>Wed, 11 Jan 2017 18:49:21 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/rxjava-scan</guid>
       <description>
 
 &lt;h1 id=&#34;rxjava-scan-kullanımı&#34;&gt;RxJava scan() Kullanımı&lt;/h1&gt;
@@ -604,10 +611,10 @@ I/MainActivity: Sonuc:25
     
     <item>
       <title>RxJava reduce() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/rxjava-reduce</link>
       <pubDate>Wed, 11 Jan 2017 18:42:04 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/rxjava-reduce</guid>
       <description>
 
 &lt;h1 id=&#34;rxjava-reduce-kullanımı&#34;&gt;RxJava reduce() Kullanımı&lt;/h1&gt;
@@ -707,10 +714,10 @@ I/MainActivity: Sonuc:19
     
     <item>
       <title>VS Code &amp; Express &amp; TypeScript &amp; IntelliSense</title>
-      <link>http://yazilim.aykutasil.com/2017/01/vs-code--express--typescript--intellisense/</link>
+      <link>http://yazilim.aykutasil.com/vscode-intellisense</link>
       <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/vs-code--express--typescript--intellisense/</guid>
+      <guid>http://yazilim.aykutasil.com/vscode-intellisense</guid>
       <description>
 
 &lt;h1 id=&#34;vs-code-express-typescript-intellisense&#34;&gt;VS Code &amp;amp; Express &amp;amp; TypeScript &amp;amp; IntelliSense&lt;/h1&gt;
@@ -804,10 +811,10 @@ I/MainActivity: Sonuc:19
     
     <item>
       <title>TCP/IP Nasıl Çalışır ?</title>
-      <link>http://yazilim.aykutasil.com/2017/01/tcp/ip-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-/</link>
+      <link>http://yazilim.aykutasil.com/tcpip-nedir_nasil_calisir</link>
       <pubDate>Wed, 11 Jan 2017 18:05:02 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/tcp/ip-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-/</guid>
+      <guid>http://yazilim.aykutasil.com/tcpip-nedir_nasil_calisir</guid>
       <description>
 
 &lt;h1 id=&#34;tcp-ip-nasıl-çalışır&#34;&gt;TCP/IP Nasıl Çalışır ?&lt;/h1&gt;
@@ -1353,10 +1360,10 @@ bintray {
     
     <item>
       <title>Mac OS Arduino Uno (Klon) Kurulumu</title>
-      <link>http://yazilim.aykutasil.com/2017/01/mac-os-arduino-uno-klon-kurulumu/</link>
+      <link>http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum</link>
       <pubDate>Wed, 11 Jan 2017 17:22:38 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/mac-os-arduino-uno-klon-kurulumu/</guid>
+      <guid>http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum</guid>
       <description>&lt;p&gt;Sizde benim gibi klon Arduino Uno kartınızı çalıştıramayıp bozuk zannettiyseniz doğru yerdesiniz.&lt;/p&gt;
 
 &lt;p&gt;Arduino Uno klon kartlarında orijinal Arduino Uno kartına göre farklı bir işlemci kullanılmış ( daha ucuz olanından 😉 ) ve bu yüzden Mac OS kullanıyorsanız ayrı bir driver dosyası indirmeniz gerekmekte.&lt;/p&gt;
@@ -1396,10 +1403,10 @@ Artık Arduino Uno yu Mac OS görüyor olması lazım.&lt;/p&gt;
     
     <item>
       <title>SQL SCOPE_IDENTITY()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</link>
+      <link>http://yazilim.aykutasil.com/sql_scope_identity</link>
       <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/sql-scope_identity/</guid>
+      <guid>http://yazilim.aykutasil.com/sql_scope_identity</guid>
       <description>&lt;p&gt;&lt;strong&gt;Kısaca özetlemek gerekirse :&lt;/strong&gt; insert ile kayıt edilen tablo satırının id sini getirir.&lt;/p&gt;
 
 &lt;p&gt;Yapılan son kaydın id sini almak için uzun  yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.&lt;/p&gt;
@@ -1427,11 +1434,11 @@ SET @son_satir_id = SCOPE_IDENTITY();
     </item>
     
     <item>
-      <title>Javascript Saçmalıkları</title>
-      <link>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</link>
+      <title>Javascript Gariplikleri</title>
+      <link>http://yazilim.aykutasil.com/javascript-gariplikleri</link>
       <pubDate>Wed, 11 Jan 2017 17:14:22 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/javascript-gariplikleri</guid>
       <description>&lt;p&gt;Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.&lt;/p&gt;

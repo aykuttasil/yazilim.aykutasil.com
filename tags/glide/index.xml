@@ -10,10 +10,10 @@
     
     <item>
       <title>Android Glide ve Palette Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi</link>
       <pubDate>Wed, 11 Jan 2017 17:11:30 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi</guid>
       <description>&lt;p&gt;Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.&lt;/p&gt;
 
 &lt;p&gt;Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.&lt;/p&gt;

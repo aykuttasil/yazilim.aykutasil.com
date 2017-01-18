@@ -10,10 +10,10 @@
     
     <item>
       <title>Android ile WebView Etkileşimi</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-ile-webview-etkile%C5%9Fimi/</link>
+      <link>http://yazilim.aykutasil.com/android-webview-etkilesimi</link>
       <pubDate>Wed, 11 Jan 2017 19:59:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-ile-webview-etkile%C5%9Fimi/</guid>
+      <guid>http://yazilim.aykutasil.com/android-webview-etkilesimi</guid>
       <description>
 
 &lt;p&gt;Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak&lt;/p&gt;
@@ -169,10 +169,10 @@ webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webVie
     
     <item>
       <title>ExecutorService submit() – execute()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/executorservice-submit--execute/</link>
+      <link>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute</link>
       <pubDate>Wed, 11 Jan 2017 19:26:49 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/executorservice-submit--execute/</guid>
+      <guid>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute</guid>
       <description>
 
 &lt;h1 id=&#34;executorservice-submit-execute&#34;&gt;ExecutorService submit() – execute()&lt;/h1&gt;
@@ -183,10 +183,10 @@ webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webVie
     
     <item>
       <title>Runnable() &amp; Callable()</title>
-      <link>http://yazilim.aykutasil.com/2017/01/runnable--callable/</link>
+      <link>http://yazilim.aykutasil.com/java-runnable-and-callable</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/runnable--callable/</guid>
+      <guid>http://yazilim.aykutasil.com/java-runnable-and-callable</guid>
       <description>
 
 &lt;h1 id=&#34;runnable-callable&#34;&gt;Runnable() &amp;amp; Callable()&lt;/h1&gt;
@@ -197,10 +197,10 @@ webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webVie
     
     <item>
       <title>RxJava range() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/rxjava-range</link>
       <pubDate>Wed, 11 Jan 2017 18:52:51 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-range-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/rxjava-range</guid>
       <description>
 
 &lt;h1 id=&#34;rxjava-range-kullanımı&#34;&gt;RxJava range() Kullanımı&lt;/h1&gt;
@@ -234,10 +234,10 @@ I/MainActivity: val: 7
     
     <item>
       <title>RxJava scan() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/rxjava-scan</link>
       <pubDate>Wed, 11 Jan 2017 18:49:21 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-scan-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/rxjava-scan</guid>
       <description>
 
 &lt;h1 id=&#34;rxjava-scan-kullanımı&#34;&gt;RxJava scan() Kullanımı&lt;/h1&gt;
@@ -322,10 +322,10 @@ I/MainActivity: Sonuc:25
     
     <item>
       <title>RxJava reduce() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/rxjava-reduce</link>
       <pubDate>Wed, 11 Jan 2017 18:42:04 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/rxjava-reduce-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/rxjava-reduce</guid>
       <description>
 
 &lt;h1 id=&#34;rxjava-reduce-kullanımı&#34;&gt;RxJava reduce() Kullanımı&lt;/h1&gt;
@@ -914,10 +914,10 @@ bintray {
     
     <item>
       <title>Android Glide ve Palette Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi</link>
       <pubDate>Wed, 11 Jan 2017 17:11:30 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-glide-ve-palette-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi</guid>
       <description>&lt;p&gt;Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.&lt;/p&gt;
 
 &lt;p&gt;Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.&lt;/p&gt;
@@ -1178,10 +1178,10 @@ mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
     
     <item>
       <title>Foreground Service ile FusedLocationApi Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi</link>
       <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/foreground-service-ile-fusedlocationapi-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi</guid>
       <description>&lt;p&gt;Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.&lt;/p&gt;
 
 &lt;p&gt;Burada yapacağımız örnekte kısaca şu aşamaları görücez;&lt;/p&gt;
@@ -1428,10 +1428,10 @@ startService(serviceIntent);
     
     <item>
       <title>Android GcmNetworkManager Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</link>
       <pubDate>Wed, 11 Jan 2017 01:43:53 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</guid>
       <description>&lt;p&gt;GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.&lt;/p&gt;
 
 &lt;p&gt;GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.&lt;/p&gt;

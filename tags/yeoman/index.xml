@@ -10,13 +10,13 @@
     
     <item>
       <title>Yeoman Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/yeoman-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/yeoman-kullanimi</link>
       <pubDate>Wed, 18 Jan 2017 12:09:26 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/yeoman-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/yeoman-kullanimi</guid>
       <description>
 
-&lt;h2 id=&#34;yeoman&#34;&gt;Yeoman&lt;/h2&gt;
+&lt;h2 id=&#34;yeoman-kullanımı&#34;&gt;Yeoman Kullanımı&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://yeoman.io/&#34;&gt;Yeoman&lt;/a&gt; ile kendi proje yapımızı kurgulayabilir ve opsiyonlar belirleyerek ona göre dosya içeriğimizi vs. düzenleyebiliriz.
 Ya da oluşturduğumuz projeye önceden belirlediğimiz bir dosyayı ekleyebilir ve gerekli ayarlamaları otomatik olarak yapmasını sağlayabiliriz. (yeni bir Controller eklemek gibi vs.)&lt;/p&gt;
@@ -166,6 +166,13 @@ Klasör içerisindeyken &lt;code&gt;yo sample_generator&lt;/code&gt; komutunu ç
 &lt;p&gt;&lt;a href=&#34;http://imgur.com/f2QglwV&#34;&gt;&lt;img src=&#34;http://i.imgur.com/f2QglwV.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://imgur.com/36yb5ij&#34;&gt;&lt;img src=&#34;http://i.imgur.com/36yb5ij.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ek Kaynaklar&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://scotch.io/tutorials/create-a-custom-yeoman-generator-in-4-easy-steps&#34;&gt;https://scotch.io/tutorials/create-a-custom-yeoman-generator-in-4-easy-steps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.tutsplus.com/tutorials/build-your-own-yeoman-generator--cms-20040&#34;&gt;https://code.tutsplus.com/tutorials/build-your-own-yeoman-generator--cms-20040&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

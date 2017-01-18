@@ -9,11 +9,11 @@
     <atom:link href="http://yazilim.aykutasil.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Javascript Saçmalıkları</title>
-      <link>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</link>
+      <title>Javascript Gariplikleri</title>
+      <link>http://yazilim.aykutasil.com/javascript-gariplikleri</link>
       <pubDate>Wed, 11 Jan 2017 17:14:22 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/javascript-sa%C3%A7mal%C4%B1klar%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/javascript-gariplikleri</guid>
       <description>&lt;p&gt;Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.&lt;/p&gt;
 
 &lt;p&gt;Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.&lt;/p&gt;

@@ -10,10 +10,10 @@
     
     <item>
       <title>Android GcmNetworkManager Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</link>
+      <link>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</link>
       <pubDate>Wed, 11 Jan 2017 01:43:53 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-gcmnetworkmanager-kullan%C4%B1m%C4%B1/</guid>
+      <guid>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</guid>
       <description>&lt;p&gt;GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.&lt;/p&gt;
 
 &lt;p&gt;GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.&lt;/p&gt;
