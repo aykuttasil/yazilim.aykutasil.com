@@ -9,6 +9,76 @@
     <atom:link href="http://yazilim.aykutasil.com/categories/yazilim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Arduino HC-06 Bluetooth Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/arduino_hc06_kullanimi</link>
+      <pubDate>Sun, 12 Mar 2017 23:40:36 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/arduino_hc06_kullanimi</guid>
+      <description>
+
+&lt;h1 id=&#34;hc-06-bluetooth&#34;&gt;HC-06 Bluetooth&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Aşağıdaki kodu &lt;strong&gt;Arduino&lt;/strong&gt; kartınıza yükleyiniz&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=Qwerty.BluetoothTerminal&amp;amp;hl=tr&#34;&gt;Bluetooth Terminal&lt;/a&gt; uygulamasını telefonunuza indirin&lt;/li&gt;
+&lt;li&gt;HC-06 modulünün &lt;strong&gt;TX-R&lt;/strong&gt;X çıkışlarını Arduino kartınızın &lt;strong&gt;RX-T&lt;/strong&gt;X girişlerine entegre edin. (Ters sıralamaya dikkat)&lt;/li&gt;
+&lt;li&gt;Cihazınızdan normal bluetooh bağlantısı kurar gibi &lt;strong&gt;HC-06&lt;/strong&gt; modülü ile bağlantı kurun ve şifre olarak &lt;strong&gt;1234&lt;/strong&gt; girin.&lt;/li&gt;
+&lt;li&gt;Aşağıdaki kodda görebileceğiniz gibi 0,1,2,3,4 için farklı işlemler yapılmasını sağladık. Siz de ihtiyacınıza göre ayarlayın. Ben led parlaklığını düzenledim ya da motor hızı olarak da düşünebiliriz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-arduino&#34;&gt;const int LED_PIN = 9;
+
+char veri;
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(LED_PIN, OUTPUT);
+  Serial.println(&amp;quot;HC-06 Kontrol Projesi&amp;quot;);
+}
+
+void loop() {
+  if (Serial.available() &amp;gt; 0) {
+
+    veri = Serial.read();
+
+    if (veri == &#39;0&#39;) {
+      digitalWrite(LED_PIN, LOW);
+      Serial.println(&amp;quot;LED Sonduruldu.&amp;quot; );
+    }
+
+    if (veri == &#39;1&#39;) {
+      digitalWrite(LED_PIN, HIGH);
+      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
+    }
+    
+    if (veri == &#39;2&#39;) {
+      analogWrite(LED_PIN, 200);
+      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
+    }
+    
+    if (veri == &#39;3&#39;) {
+      //digitalWrite(LED_PIN, HIGH);
+      analogWrite(LED_PIN, 255);
+      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
+    }
+
+    if (veri == &#39;4&#39;) {
+      //digitalWrite(LED_PIN, HIGH);
+      analogWrite(LED_PIN, 50);
+
+      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
+    }
+
+
+  }
+  delay(100);
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Yeoman Kullanımı</title>
       <link>http://yazilim.aykutasil.com/yeoman-kullanimi</link>
       <pubDate>Wed, 18 Jan 2017 12:09:26 +0300</pubDate>
@@ -1658,46 +1728,6 @@ bintray {
 &lt;p&gt;Artık terminalden aşağıdaki komutu yazarak otomatik yüklenmeyi sağlayabiliriz.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;./gradlew clean install bintrayUpload&lt;/code&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Android Runtime Permission</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</link>
-      <pubDate>Wed, 11 Jan 2017 17:24:52 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</guid>
-      <description>&lt;p&gt;Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.&lt;/p&gt;
-
-&lt;p&gt;Bunlardan biri de Android M – Marshmallow (23) ile  gelen Runtime Permissions olayı.&lt;/p&gt;
-
-&lt;p&gt;Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel. İlerleyen zamanlarda illa ki bu alışkanlığı edinecek insanlar olacaktır 😉&lt;/p&gt;
-
-&lt;p&gt;Fazla uzatmadan birkaç link ve ipucu vericem.&lt;/p&gt;
-
-&lt;p&gt;Android Runtime Permissions olayının nasıl yapıldığını görmek için&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;https://github.com/googlesamples/android-RuntimePermissions&#34;&gt;https://github.com/googlesamples/android-RuntimePermissions&lt;/a&gt; burada süper bir örnek var.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&#34;&gt;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&lt;/a&gt; burada kısa bir özet var.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Takıldığınız yeri yorumlarda belirtebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Örneği incelediğiniz de şu satırı yazarken dikkat edin.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA},123456);&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;burada sadece&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;yerine&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;android.Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;kullanacaksınız. Yoksa izin listesini bulamaz.&lt;/p&gt;
 </description>
     </item>
     

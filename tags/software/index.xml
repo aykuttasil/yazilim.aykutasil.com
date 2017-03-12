@@ -9,6 +9,76 @@
     <atom:link href="http://yazilim.aykutasil.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Arduino HC-06 Bluetooth Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/arduino_hc06_kullanimi</link>
+      <pubDate>Sun, 12 Mar 2017 23:40:36 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/arduino_hc06_kullanimi</guid>
+      <description>
+
+&lt;h1 id=&#34;hc-06-bluetooth&#34;&gt;HC-06 Bluetooth&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Aşağıdaki kodu &lt;strong&gt;Arduino&lt;/strong&gt; kartınıza yükleyiniz&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=Qwerty.BluetoothTerminal&amp;amp;hl=tr&#34;&gt;Bluetooth Terminal&lt;/a&gt; uygulamasını telefonunuza indirin&lt;/li&gt;
+&lt;li&gt;HC-06 modulünün &lt;strong&gt;TX-R&lt;/strong&gt;X çıkışlarını Arduino kartınızın &lt;strong&gt;RX-T&lt;/strong&gt;X girişlerine entegre edin. (Ters sıralamaya dikkat)&lt;/li&gt;
+&lt;li&gt;Cihazınızdan normal bluetooh bağlantısı kurar gibi &lt;strong&gt;HC-06&lt;/strong&gt; modülü ile bağlantı kurun ve şifre olarak &lt;strong&gt;1234&lt;/strong&gt; girin.&lt;/li&gt;
+&lt;li&gt;Aşağıdaki kodda görebileceğiniz gibi 0,1,2,3,4 için farklı işlemler yapılmasını sağladık. Siz de ihtiyacınıza göre ayarlayın. Ben led parlaklığını düzenledim ya da motor hızı olarak da düşünebiliriz.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-arduino&#34;&gt;const int LED_PIN = 9;
+
+char veri;
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(LED_PIN, OUTPUT);
+  Serial.println(&amp;quot;HC-06 Kontrol Projesi&amp;quot;);
+}
+
+void loop() {
+  if (Serial.available() &amp;gt; 0) {
+
+    veri = Serial.read();
+
+    if (veri == &#39;0&#39;) {
+      digitalWrite(LED_PIN, LOW);
+      Serial.println(&amp;quot;LED Sonduruldu.&amp;quot; );
+    }
+
+    if (veri == &#39;1&#39;) {
+      digitalWrite(LED_PIN, HIGH);
+      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
+    }
+    
+    if (veri == &#39;2&#39;) {
+      analogWrite(LED_PIN, 200);
+      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
+    }
+    
+    if (veri == &#39;3&#39;) {
+      //digitalWrite(LED_PIN, HIGH);
+      analogWrite(LED_PIN, 255);
+      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
+    }
+
+    if (veri == &#39;4&#39;) {
+      //digitalWrite(LED_PIN, HIGH);
+      analogWrite(LED_PIN, 50);
+
+      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
+    }
+
+
+  }
+  delay(100);
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Yeoman Kullanımı</title>
       <link>http://yazilim.aykutasil.com/yeoman-kullanimi</link>
       <pubDate>Wed, 18 Jan 2017 12:09:26 +0300</pubDate>
@@ -1430,73 +1500,6 @@ SET @son_satir_id = SCOPE_IDENTITY();
 &lt;p&gt;Ayrıntılı Bilgi  : &lt;a href=&#34;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&#34;&gt;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Ayrıntılı Bilgi : &lt;a href=&#34;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&#34;&gt;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Javascript Gariplikleri</title>
-      <link>http://yazilim.aykutasil.com/javascript-gariplikleri</link>
-      <pubDate>Wed, 11 Jan 2017 17:14:22 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/javascript-gariplikleri</guid>
-      <description>&lt;p&gt;Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.&lt;/p&gt;
-
-&lt;p&gt;Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.&lt;/p&gt;
-
-&lt;p&gt;Örneğin elinizde&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;var degisken = ‘İSTANBUL’ ;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;şeklinde bir değişkeniniz var. Ve siz ihtiyacınız doğrultusunda bu kelimeyi veritabanından çektiğiniz ‘istanbul’ kelimesi ile karşılaştırmak istiyorsunuz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt; $(&#39;#Iller &amp;gt; option&#39;).each(function(index) {
-                var il = &#39;istanbul&#39;; // veritabanından çektiğimizi düşünelim
-               
-                var txt = $(this).text() // -&amp;gt; &#39;İSTANBUL&#39;
-                if (txt === il) {
-                   // Diğer işlemler
-                }           
-            });
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;if (txt === il)&lt;/code&gt;
-ile eşitlik kontrol ediliyor.&lt;/p&gt;
-
-&lt;p&gt;Ve &lt;strong&gt;true&lt;/strong&gt; değeri dönmüyor. Çünkü biri küçük diğeri büyük harfle yazılmış. Gayet normal.&lt;/p&gt;
-
-&lt;p&gt;Peki tamam.&lt;/p&gt;
-
-&lt;p&gt;Büyük yazılan &lt;strong&gt;‘İSTANBUL’&lt;/strong&gt; kelimesini javascript in çok değerli toLowerCase() fonksiyonu ile küçültüyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;var txt = txt.toLowerCase(); // -&amp;gt; &#39;istanbul&#39;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Evet ikisi de ‘istanbul’ oldu artık. Peki şimdi yukarıda belirttiğimiz eşitlik sağlanıcak mı ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HAYIR !&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Çünkü &lt;strong&gt;‘İSTANBUL’&lt;/strong&gt; değişkenini Javascript abimiz küçültürken, büyük ‘İ’ harfiyle sevişiyor. Ve eşitlik bir türlü sağlanamıyor.&lt;/p&gt;
-
-&lt;p&gt;Birde çok değerli Javascript abimizin ( dünya ahiret bacım bu saatten sonra) replace fonksiyonu efsane çalışıyor.&lt;/p&gt;
-
-&lt;p&gt;Replace olmasını istediğimiz değerin sadece ilkini değiştiriyor. Diğerleri pek umrunda değil. Bu nedenle /İ/g fln saçma salak bişiler yapmak gerekiyor.&lt;/p&gt;
-
-&lt;p&gt;Aşağıda ki fonksiyonu çözüm için kullanabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Bu dile şuan – günümüzde (31/03/2016) çok da güvenmeyin abiler ablalar !. Zaten kısa bir araştırma sonrasında Javascript tutarsızlıklarıyla ilgili bir sürü dökümana ulaşabilirsiniz.
-&lt;strong&gt;Not:&lt;/strong&gt; Esneklik beraberinde hata getirir.&lt;/p&gt;
-
-&lt;p&gt;Çözüm (Gerçekten bu yazıyı yazarken sinirliyim !)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;            function clearText(text) {
-                return text.replace(/İ/g, &amp;quot;i&amp;quot;).replace(/Ş/g, &amp;quot;s&amp;quot;).replace(/Ü/g, &amp;quot;u&amp;quot;).replace(/Ö/g, &amp;quot;o&amp;quot;).replace(/Ç/g, &amp;quot;c&amp;quot;)
-                    .toLowerCase()
-                    .replace(/ü/g, &amp;quot;u&amp;quot;).replace(/ı/g, &amp;quot;i&amp;quot;).replace(/ç/g, &amp;quot;c&amp;quot;)
-                    .replace(/ğ/g, &amp;quot;g&amp;quot;).replace(/ş/g, &amp;quot;s&amp;quot;).replace(/ö/g, &amp;quot;o&amp;quot;);
-             
-            }
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
