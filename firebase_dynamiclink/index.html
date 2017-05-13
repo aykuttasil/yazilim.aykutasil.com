@@ -1,0 +1,914 @@
+
+
+  
+    
+  
+
+
+  
+
+
+<!DOCTYPE html>
+<html lang="tr-tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.17">
+    <title>Firebase Dynamic Links</title>
+    <meta name="author" content="Aykut Asil">
+    <meta name="keywords" content="yazilim, sofware, firebase, dynamiclink">
+
+    <link rel="icon" href="http://yazilim.aykutasil.com/favicon.png">
+    
+
+    
+    <meta name="description" content="Firebase Dynamic Links Öyle bir link olsun ki;
+ Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz.">
+    <meta property="og:description" content="Firebase Dynamic Links Öyle bir link olsun ki;
+ Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Firebase Dynamic Links">
+    <meta property="og:url" content="firebase_dynamiclink">
+    <meta property="og:site_name" content="Software">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Software">
+    <meta name="twitter:description" content="Firebase Dynamic Links Öyle bir link olsun ki;
+ Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz.">
+    
+      <meta name="twitter:creator" content="@aykuttasil">
+    
+    
+
+    
+    
+
+    
+
+    
+    
+    
+
+    
+      <link rel="publisher" href="https://plus.google.com/&#43;aykutasil">
+    
+
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" />
+    
+    
+    <link rel="stylesheet" href="http://yazilim.aykutasil.com/css/style-gwlo24d2hxipxk8bi1sxik0zhlpn9t7ebcmgp9kubmmcjfzlavuyhvbqumhn.min.css" />
+    
+    
+    
+      
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="6">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="http://yazilim.aykutasil.com/">Software</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="http://yazilim.aykutasil.com/#about">
+    
+    
+    
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="6">
+  <div class="sidebar-container">
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">Kategoriler</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">Etiketler</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Arşiv</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Hakkımda</span>
+    </a>
+  </li>
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/aykuttasil" target="_blank">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://stackoverflow.com/users/3448461/aykuttasil" target="_blank">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+      
+      <span class="sidebar-button-desc">Stack Overflow</span>
+    </a>
+  </li>
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('https://c8.staticflickr.com/8/7421/9339731831_9ba94f287c_k.jpg')"
+       data-behavior="6">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Firebase Dynamic Links
+    </h1>
+  
+  <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-04-17T01:53:03&#43;03:00">
+    
+  Nisan 17, 2017
+
+  </time>
+  
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>
+    
+  
+
+
+</div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="6"
+        class="hasCover
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<h2 id="firebase-dynamic-links">Firebase Dynamic Links</h2>
+
+<p>Öyle bir link olsun ki;</p>
+
+<ul>
+<li>Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın,</li>
+<li>Eğer mobil cihazımda ki browserdan linke tıklarsan;
+
+<ul>
+<li>Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.),</li>
+<li>Uygulama cihazda yüklü değilse Google Play Store veya  App Store açılsın,</li>
+<li>Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın,</li>
+<li>&hellip;</li>
+</ul></li>
+</ul>
+
+<p>gibi sorulara tek bir link ile cevap verebilirsiniz.</p>
+
+<p>Burda açıklayacağım kısım Android uygulaması üzerine olacaktır.</p>
+
+<h3 id="nasıl-başlarım">Nasıl başlarım?</h3>
+
+<p>Öncelikle <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a> adresinden bir proje oluşturuyoruz.</p>
+
+<p>Dynamic Links tabına tıkladığımızda <a href="https://abcd.app.goo.gl/">https://abcd.app.goo.gl/</a> benzeri bir adres görürüz. Bu adresi daha sonra oluşturucağımız dynamic linkler için kullanıcaz.</p>
+
+<h3 id="dört-şekilde-dynamic-link-oluşturabiliriz">Dört şekilde Dynamic Link oluşturabiliriz</h3>
+
+<ul>
+<li><p><a href="https://console.firebase.google.com/project/_/durablelinks/links/">Firebase Console</a> kullanılarak</p></li>
+
+<li><p><a href="https://firebase.google.com/docs/dynamic-links/ios/create">iOS Builder API</a> kullanılarak</p></li>
+
+<li><p><a href="https://app_code.app.goo.gl/?link=your_deep_link&amp;apn=package_name[&amp;amv=minimum_version][&amp;al=android_link][&amp;afl=fallback_link">https://app_code.app.goo.gl/?link=your_deep_link&amp;apn=package_name[&amp;amv=minimum_version][&amp;al=android_link][&amp;afl=fallback_link</a>]</p></li>
+</ul>
+
+<p>gibi bir linkte gerekli parametreleri uygun şekilde değiştirerek dynamic linkimizi oluşturabiliriz.</p>
+
+<ul>
+<li></li>
+</ul>
+
+<pre><code>POST https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=api_key
+Content-Type: application/json
+
+{
+    &quot;dynamicLinkInfo&quot;: {
+        &quot;dynamicLinkDomain&quot;: &quot;c49ss.app.goo.gl&quot;,
+        &quot;link&quot;: &quot;https://play.google.com/store/apps/details?id=com.coderockets.referandumproject&quot;, // Masaüstü browserlarından bu linke tıkladığımızda gidilecek adres
+        &quot;androidInfo&quot;: {
+            &quot;androidPackageName&quot;: &quot;com.coderockets.referandumproject&quot;, // Android uygulamamızın package name i
+            &quot;androidMinPackageVersionCode&quot;: &quot;21&quot;, // Linki alan kişide uygulamamız yüklü fakat eski versiyon yüklü ise (&lt;21) direk olarak Google Play sayfasına yönlendirilir.
+            &quot;androidLink&quot;: &quot;http://referandum?questionId=xyz&quot; // Android cihazından linke tıklanıldığında bu linke yönlendirilme yapılır. Uygulamamızda gerekli ayarlamaları yaparak direk gerekli sayfaya(Activity) yönlendiririz.
+        },
+        &quot;socialMetaTagInfo&quot;: {
+            &quot;socialTitle&quot;: &quot;Question text&quot;, // Sosyal medyada bu link paylaşıldığında görünecek başlık ayarlaması
+            &quot;socialDescription&quot;: &quot;Hemen Referandum topluluğuna katılarak cevap verebilirsin.&quot;, // Sosyal medya paylaşımında görünecek açıklama
+            &quot;socialImageLink&quot;: &quot;Question Image Url&quot; // Sosyal medya paylaşımında görünecek resim
+        }
+    },
+    &quot;suffix&quot;: {
+        &quot;option&quot;: &quot;SHORT&quot; // shortLink sonundaki id nin daha kısa olmasını sağlar. UNGUESSABLE yaparsak daha uzun karakterli bir unique id ile link oluşturulur. shortLink: https://c49ss.app.goo.gl/5TI3
+    }
+}
+</code></pre>
+
+<p>şeklinde bir REST isteği göndererek dynamic linkimizi aşağıdaki response şeklinde elde edebiliriz.</p>
+
+<pre><code>{
+  &quot;shortLink&quot;: &quot;https://c49ss.app.goo.gl/5TI3&quot;,
+  &quot;previewLink&quot;: &quot;https://c49ss.app.goo.gl/?link=https://play.google.com/store/apps/details?id%3Dcom.coderockets.referandumproject&amp;al=http://referandum?questionId%3Dxyz&amp;apn=com.coderockets.referandumproject&amp;amv=21&amp;st=Question+text&amp;sd=Hemen+Referandum+toplulu%C4%9Funa+kat%C4%B1larak+cevap+verebilirsin.&amp;si=Question+Image+Url&amp;d=1&quot;
+}
+</code></pre>
+
+<p><strong>shortLink</strong> ile <strong>previewLink</strong> aynı görevi üstlenir. Aralarında bir fark yok.</p>
+
+<hr />
+
+<h2 id="android-uygulamamızı-yapılandıralım">Android Uygulamamızı Yapılandıralım</h2>
+
+<ul>
+<li><p>AndroidManifest.xml dosyamızda ilgili Activity tanımı içerisinde aşağıdaki gibi düzenleme yapıyoruz.</p>
+
+<pre><code>    &lt;activity
+        android:name=&quot;.activity.UniqueQuestionActivity&quot;
+        android:parentActivityName=&quot;.activity.MainActivity&quot;&gt;
+
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+            &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+
+            &lt;data android:host=&quot;referandum&quot; android:scheme=&quot;http&quot; /&gt;
+            &lt;data android:host=&quot;referandum&quot; android:scheme=&quot;https&quot; /&gt;
+        &lt;/intent-filter&gt;
+
+        &lt;meta-data android:name=&quot;android.support.PARENT_ACTIVITY&quot;
+         android:value=&quot;.activity.MainActivity&quot; /&gt;
+    &lt;/activity&gt;
+</code></pre></li>
+
+<li><p>İlgili Activity içerisinde aşağıdaki tanımlamaları yapıyoruz.</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+// ...
+
+// Build GoogleApiClient with AppInvite API for receiving deep links
+mGoogleApiClient = new GoogleApiClient.Builder(this)
+        .enableAutoManage(this, this)
+        .addApi(AppInvite.API)
+        .build();
+
+// Check if this app was launched from a deep link. Setting autoLaunchDeepLink to true
+// would automatically launch the deep link if one is found.
+boolean autoLaunchDeepLink = false;
+AppInvite.AppInviteApi.getInvitation(mGoogleApiClient, this, autoLaunchDeepLink)
+        .setResultCallback(
+                new ResultCallback&lt;AppInviteInvitationResult&gt;() {
+                    @Override
+                    public void onResult(@NonNull AppInviteInvitationResult result) {
+                        if (result.getStatus().isSuccess()) {
+                            // Extract deep link from Intent
+                            Intent intent = result.getInvitationIntent();
+                            String deepLink = AppInviteReferral.getDeepLink(intent);
+
+                            // Handle the deep link. For example, open the linked
+                            // content, or apply promotional credit to the user's
+                            // account.
+
+                            // ...
+                        } else {
+                            Log.d(TAG, &quot;getInvitation: no deep link found.&quot;);
+                        }
+                    }
+                });
+}
+</code></pre></li>
+</ul>
+
+<p>Yukarıda ki kodu dynamic link ile açılabilen her Activity içerisinde tanımlamalısınız.</p>
+
+<p>Aslında aşağıda ki gibi de link ve parametrelere ulaşabilirsiniz.</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+ if (getIntent() != null &amp;&amp; getIntent().getAction() != null) {
+            
+            // Link : http://referandum/?questionId=xxx
+            String questionId = &quot;&quot;;
+            switch (getIntent().getAction()) {
+                case Intent.ACTION_VIEW: {
+                    if (getIntent().getData().getHost().equals(&quot;referandum&quot;)) {
+                        questionId = getIntent().getData().getQueryParameter(&quot;questionId&quot;);
+                    }
+                    break;
+                }
+            }
+        }
+}        
+</code></pre>
+
+<p>Ama ilk durumda ki gibi <strong>getInvitation()</strong> ile dynamic linki işlerseniz Firebase arka tarafta başka işlemlerde yapıyor olacaktır. Mesela Firebase Analytics tanımlamışsanız Firebase Console undan;</p>
+
+<ul>
+<li>dynamic_link_app_open</li>
+<li>dynamic_link_first_open</li>
+<li>dynamic_link_app_update</li>
+</ul>
+
+<p>parametrelerine ait istatistikleri görebilirsiniz.</p>
+
+<hr />
+
+<p>Kaynaklar:</p>
+
+<ul>
+<li><a href="https://firebase.google.com/docs/dynamic-links/">https://firebase.google.com/docs/dynamic-links/</a></li>
+<li><a href="https://firebase.google.com/docs/dynamic-links/rest">https://firebase.google.com/docs/dynamic-links/rest</a></li>
+<li><a href="https://firebase.google.com/docs/dynamic-links/android/receive">https://firebase.google.com/docs/dynamic-links/android/receive</a></li>
+</ul>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+              
+                <div class="post-footer-tags">
+                  <span class="text-color-light text-small">TAGGED IN</span><br/>
+                  
+  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/software/">software</a>
+
+  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/firebase/">firebase</a>
+
+  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/dynamiclink/">dynamiclink</a>
+
+                </div>
+              
+            
+            <div class="post-actions-wrap">
+  <nav>
+    <ul class="post-actions post-action-nav">
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--disabled">
+        
+          <i class="fa fa-angle-left"></i>
+          <span class="hide-xs hide-sm text-small icon-ml">ÖNCEKİ</span>
+        </a>
+      </li>
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/arduino_hc06_kullanimi" data-tooltip="Arduino HC-06 Bluetooth Kullanımı">
+        
+          <span class="hide-xs hide-sm text-small icon-mr">SONRAKİ</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <ul class="post-actions post-action-share">
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+        <i class="fa fa-share-alt"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-google-plus"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-facebook-official"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    
+      <li class="post-action">
+        <a class="post-action-btn btn btn--default" href="#disqus_thread">
+          <i class="fa fa-comment-o"></i>
+        </a>
+      </li>
+    
+    <li class="post-action">
+      
+        <a class="post-action-btn btn btn--default" href="#">
+      
+        <i class="fa fa-list"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 <a href="https://github.com/aykuttasil">aykuttasil</a>. Tüm Hakları Saklıdır
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="6">
+        <div class="post-actions-wrap">
+  <nav>
+    <ul class="post-actions post-action-nav">
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--disabled">
+        
+          <i class="fa fa-angle-left"></i>
+          <span class="hide-xs hide-sm text-small icon-ml">ÖNCEKİ</span>
+        </a>
+      </li>
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/arduino_hc06_kullanimi" data-tooltip="Arduino HC-06 Bluetooth Kullanımı">
+        
+          <span class="hide-xs hide-sm text-small icon-mr">SONRAKİ</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <ul class="post-actions post-action-share">
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+        <i class="fa fa-share-alt"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-google-plus"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-facebook-official"></i>
+      </a>
+    </li>
+    <li class="post-action hide-xs">
+      <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    
+      <li class="post-action">
+        <a class="post-action-btn btn btn--default" href="#disqus_thread">
+          <i class="fa fa-comment-o"></i>
+        </a>
+      </li>
+    
+    <li class="post-action">
+      
+        <a class="post-action-btn btn btn--default" href="#">
+      
+        <i class="fa fa-list"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="6">
+  <ul class="share-options">
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
+      </a>
+    </li>
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+      </a>
+    </li>
+    <li class="share-option">
+      <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2ffirebase_dynamiclink">
+        <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+    <h4 id="about-card-name">Aykut Asil</h4>
+    
+      <div id="about-card-bio">Continious Innovation</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Software Developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Turkey
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Arama Yap" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">içerik bulunamadı</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/firebase_dynamiclink">
+                <h3 class="media-heading">Firebase Dynamic Links</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Firebase Dynamic Links Öyle bir link olsun ki;
+ Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/arduino_hc06_kullanimi">
+                <h3 class="media-heading">Arduino HC-06 Bluetooth Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">HC-06 Bluetooth  Aşağıdaki kodu Arduino kartınıza yükleyiniz Bluetooth Terminal uygulamasını telefonunuza indirin HC-06 modulünün TX-RX çıkışlarını Arduino kartınızın RX-TX girişlerine entegre edin. (Ters sıralamaya dikkat) Cihazınızdan normal bluetooh bağlantısı kurar gibi HC-06 modülü ile bağlantı kurun ve şifre olarak 1234 girin. Aşağıdaki kodda görebileceğiniz gibi 0,1,2,3,4 için farklı işlemler yapılmasını sağladık. Siz de ihtiyacınıza göre ayarlayın. Ben led parlaklığını düzenledim ya da motor hızı olarak da düşünebiliriz.  const int LED_PIN = 9; char veri; void setup() { Serial.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/yeoman-kullanimi">
+                <h3 class="media-heading">Yeoman Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Yeoman Kullanımı Yeoman ile kendi proje yapımızı kurgulayabilir ve opsiyonlar belirleyerek ona göre dosya içeriğimizi vs. düzenleyebiliriz. Ya da oluşturduğumuz projeye önceden belirlediğimiz bir dosyayı ekleyebilir ve gerekli ayarlamaları otomatik olarak yapmasını sağlayabiliriz. (yeni bir Controller eklemek gibi vs.)
+Ve hazırladığımız bu proje yapısını paket yönetim sistemlerine yollayarak diğer kişilerin kullanımına açabilir veyahut kendimizin de istediğimiz yerden erişebilmesini sağlayabiliriz.
+Öncelikle bilgisayarınız da nodejs yüklü olduğunu varsayıyoruz. Eğer yüklü değilse buradan gerekli işlemleri yaparak kurabiliriz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/csharp-soru-isareti-syntax">
+                <h3 class="media-heading">CSharp Null Kontrolü</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">C# ? ve ?? Operator Kullanımı Kısaca bahsedilecek olursa ? operatörü null kontrolü yapılmasını sağlar.
+Yazılım geliştirme sırasında en çok rastlanan hatanın sebebi null dönen ifadelerdir. Bu bazen bir değişken bazen parametre vs. olabilir. Ama sebep ifadenin null olmasıdır.
+Önceden şu şekilde kontrol ediyorduk.
+var a; if(a != null) { Console.Write(a); }  şimdi
+var a; Console.Write(a ?? &quot;boş değer&quot;);  Yukarıdaki söz dizimi ile şunu söylüyoruz. - Eğer a değeri null değil ise ekrana a nın değerini yaz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/android-webview-etkilesimi">
+                <h3 class="media-heading">Android ile WebView Etkileşimi</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
+ Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
+Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/docker-komutlari">
+                <h3 class="media-heading">Docker Komutları</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Docker Komutları ve Açıklamaları &gt; docker images  Docker hostuna yüklü olan image leri gösterir.
+&gt; docker ps  Docker hostunda yüklü olan imagelerle inşa edilmiş olan container ları listeler.
+&gt; docker run hello-world  İlk olarak Local de (bilgisayarımızda) hello-world isminde bir image var mı kontrol eder. Eğer varsa direkt olarak çalıştırır.
+Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local e indirir ve ardından çalıştırır.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/docker/">
+                <h3 class="media-heading">Docker</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">DOCKER Docker aldı başını gidiyor. Yeni bir devrim açıyor.
+E haliyle yazılım dünyası buna sessiz kalmamakla beraber bir çok Docker nedir? örnekleri vs. hazırlanıyor.
+Bu nedenle biz Docker nedir? tanımlamasından daha çok hızlı ilerlemeler şeklinde ufak uygulamalar geliştiricez. Bende bu yazı serisiyle paralel şekilde öğrenimimi sağlayacağımı belirtmek isterim ! 🙂
+Başlıyoruz..
+İlk olarak makinemize Docker ı kuralım.
+ Mac: https://docs.docker.com/docker-for-mac/
+ Windows : https://docs.docker.com/docker-for-windows/
+  İndirip kurulumu sağladıktan sonra terminali açarak</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/java-executorservice-submit-and-execute">
+                <h3 class="media-heading">ExecutorService submit() – execute()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">ExecutorService submit() – execute() Link : http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/java-executor">
+                <h3 class="media-heading">Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor() Thread kullanımı, Java ile multi-threading yazılım geliştiriyorsanız mutlaka ama mutlaka bilmeniz gereken konulardan biridir.
+ThreadPool Gün geldi çattı ve uygulamanız ilk kurulduğu amacın evrimleşmesi sonucu bambaşka bir hale büründü 🙂
+Yani birçok uygulamada gidişat bu yöndedir ve olması gerekende budur.
+Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sadece patron kullanmıyor sonuçta. Ya da patron öyle bir uygulama istemişki ağır işler gerektiriyor. Uzun süreler gerektiren işlemler sonucunda akış tamamlanıyor vs.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/java-runnable-and-callable">
+                <h3 class="media-heading">Runnable() &amp; Callable()</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Runnable() &amp; Callable() Ayrıntılı açıklama için bu siteyi kullanabilirsiniz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="içerik bulunamadı"
+         data-message-one="1 içerik bulundu"
+         data-message-other="{n} içerik bulundu">
+         44 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('http://yazilim.aykutasil.com/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js"></script>
+
+
+<script src="http://yazilim.aykutasil.com/js/script-wl33z0n6ocaypepiqrazthtivfrliqijej4rq8ek8gvrv1awftmgjuv8k4zc.min.js"></script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight').each(function(i, block) {
+    var code = "";
+    hljs.highlightAuto(block.innerText).value.split(/\r\n|\r|\n/).forEach(function(line) {
+      code += "<span class=\"line\">" + line + "</span><br>";
+    });
+    if (code.length > 0) {
+      block.innerHTML = code;  
+    }
+  });
+  $('pre > code').each(function(i, block) {
+    $(this).addClass('codeblock');
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'http:\/\/yazilim.aykutasil.com\/firebase_dynamiclink';
+          
+            this.page.identifier = '\/firebase_dynamiclink'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'yazilimaykutasil';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+  </body>
+</html>

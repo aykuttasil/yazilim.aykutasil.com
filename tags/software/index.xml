@@ -9,6 +9,198 @@
     <atom:link href="http://yazilim.aykutasil.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Firebase Dynamic Links</title>
+      <link>http://yazilim.aykutasil.com/firebase_dynamiclink</link>
+      <pubDate>Mon, 17 Apr 2017 01:53:03 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/firebase_dynamiclink</guid>
+      <description>
+
+&lt;h2 id=&#34;firebase-dynamic-links&#34;&gt;Firebase Dynamic Links&lt;/h2&gt;
+
+&lt;p&gt;Öyle bir link olsun ki;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın,&lt;/li&gt;
+&lt;li&gt;Eğer mobil cihazımda ki browserdan linke tıklarsan;
+
+&lt;ul&gt;
+&lt;li&gt;Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.),&lt;/li&gt;
+&lt;li&gt;Uygulama cihazda yüklü değilse Google Play Store veya  App Store açılsın,&lt;/li&gt;
+&lt;li&gt;Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın,&lt;/li&gt;
+&lt;li&gt;&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;gibi sorulara tek bir link ile cevap verebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Burda açıklayacağım kısım Android uygulaması üzerine olacaktır.&lt;/p&gt;
+
+&lt;h3 id=&#34;nasıl-başlarım&#34;&gt;Nasıl başlarım?&lt;/h3&gt;
+
+&lt;p&gt;Öncelikle &lt;a href=&#34;https://console.firebase.google.com/&#34;&gt;https://console.firebase.google.com/&lt;/a&gt; adresinden bir proje oluşturuyoruz.&lt;/p&gt;
+
+&lt;p&gt;Dynamic Links tabına tıkladığımızda &lt;a href=&#34;https://abcd.app.goo.gl/&#34;&gt;https://abcd.app.goo.gl/&lt;/a&gt; benzeri bir adres görürüz. Bu adresi daha sonra oluşturucağımız dynamic linkler için kullanıcaz.&lt;/p&gt;
+
+&lt;h3 id=&#34;dört-şekilde-dynamic-link-oluşturabiliriz&#34;&gt;Dört şekilde Dynamic Link oluşturabiliriz&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://console.firebase.google.com/project/_/durablelinks/links/&#34;&gt;Firebase Console&lt;/a&gt; kullanılarak&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://firebase.google.com/docs/dynamic-links/ios/create&#34;&gt;iOS Builder API&lt;/a&gt; kullanılarak&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://app_code.app.goo.gl/?link=your_deep_link&amp;amp;apn=package_name[&amp;amp;amv=minimum_version][&amp;amp;al=android_link][&amp;amp;afl=fallback_link&#34;&gt;https://app_code.app.goo.gl/?link=your_deep_link&amp;amp;apn=package_name[&amp;amp;amv=minimum_version][&amp;amp;al=android_link][&amp;amp;afl=fallback_link&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;gibi bir linkte gerekli parametreleri uygun şekilde değiştirerek dynamic linkimizi oluşturabiliriz.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;POST https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=api_key
+Content-Type: application/json
+
+{
+    &amp;quot;dynamicLinkInfo&amp;quot;: {
+        &amp;quot;dynamicLinkDomain&amp;quot;: &amp;quot;c49ss.app.goo.gl&amp;quot;,
+        &amp;quot;link&amp;quot;: &amp;quot;https://play.google.com/store/apps/details?id=com.coderockets.referandumproject&amp;quot;, // Masaüstü browserlarından bu linke tıkladığımızda gidilecek adres
+        &amp;quot;androidInfo&amp;quot;: {
+            &amp;quot;androidPackageName&amp;quot;: &amp;quot;com.coderockets.referandumproject&amp;quot;, // Android uygulamamızın package name i
+            &amp;quot;androidMinPackageVersionCode&amp;quot;: &amp;quot;21&amp;quot;, // Linki alan kişide uygulamamız yüklü fakat eski versiyon yüklü ise (&amp;lt;21) direk olarak Google Play sayfasına yönlendirilir.
+            &amp;quot;androidLink&amp;quot;: &amp;quot;http://referandum?questionId=xyz&amp;quot; // Android cihazından linke tıklanıldığında bu linke yönlendirilme yapılır. Uygulamamızda gerekli ayarlamaları yaparak direk gerekli sayfaya(Activity) yönlendiririz.
+        },
+        &amp;quot;socialMetaTagInfo&amp;quot;: {
+            &amp;quot;socialTitle&amp;quot;: &amp;quot;Question text&amp;quot;, // Sosyal medyada bu link paylaşıldığında görünecek başlık ayarlaması
+            &amp;quot;socialDescription&amp;quot;: &amp;quot;Hemen Referandum topluluğuna katılarak cevap verebilirsin.&amp;quot;, // Sosyal medya paylaşımında görünecek açıklama
+            &amp;quot;socialImageLink&amp;quot;: &amp;quot;Question Image Url&amp;quot; // Sosyal medya paylaşımında görünecek resim
+        }
+    },
+    &amp;quot;suffix&amp;quot;: {
+        &amp;quot;option&amp;quot;: &amp;quot;SHORT&amp;quot; // shortLink sonundaki id nin daha kısa olmasını sağlar. UNGUESSABLE yaparsak daha uzun karakterli bir unique id ile link oluşturulur. shortLink: https://c49ss.app.goo.gl/5TI3
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;şeklinde bir REST isteği göndererek dynamic linkimizi aşağıdaki response şeklinde elde edebiliriz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;shortLink&amp;quot;: &amp;quot;https://c49ss.app.goo.gl/5TI3&amp;quot;,
+  &amp;quot;previewLink&amp;quot;: &amp;quot;https://c49ss.app.goo.gl/?link=https://play.google.com/store/apps/details?id%3Dcom.coderockets.referandumproject&amp;amp;al=http://referandum?questionId%3Dxyz&amp;amp;apn=com.coderockets.referandumproject&amp;amp;amv=21&amp;amp;st=Question+text&amp;amp;sd=Hemen+Referandum+toplulu%C4%9Funa+kat%C4%B1larak+cevap+verebilirsin.&amp;amp;si=Question+Image+Url&amp;amp;d=1&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;shortLink&lt;/strong&gt; ile &lt;strong&gt;previewLink&lt;/strong&gt; aynı görevi üstlenir. Aralarında bir fark yok.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;android-uygulamamızı-yapılandıralım&#34;&gt;Android Uygulamamızı Yapılandıralım&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;AndroidManifest.xml dosyamızda ilgili Activity tanımı içerisinde aşağıdaki gibi düzenleme yapıyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;activity
+        android:name=&amp;quot;.activity.UniqueQuestionActivity&amp;quot;
+        android:parentActivityName=&amp;quot;.activity.MainActivity&amp;quot;&amp;gt;
+
+        &amp;lt;intent-filter&amp;gt;
+            &amp;lt;action android:name=&amp;quot;android.intent.action.VIEW&amp;quot; /&amp;gt;
+            &amp;lt;category android:name=&amp;quot;android.intent.category.DEFAULT&amp;quot; /&amp;gt;
+            &amp;lt;category android:name=&amp;quot;android.intent.category.BROWSABLE&amp;quot; /&amp;gt;
+
+            &amp;lt;data android:host=&amp;quot;referandum&amp;quot; android:scheme=&amp;quot;http&amp;quot; /&amp;gt;
+            &amp;lt;data android:host=&amp;quot;referandum&amp;quot; android:scheme=&amp;quot;https&amp;quot; /&amp;gt;
+        &amp;lt;/intent-filter&amp;gt;
+
+        &amp;lt;meta-data android:name=&amp;quot;android.support.PARENT_ACTIVITY&amp;quot;
+         android:value=&amp;quot;.activity.MainActivity&amp;quot; /&amp;gt;
+    &amp;lt;/activity&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;İlgili Activity içerisinde aşağıdaki tanımlamaları yapıyoruz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Override
+protected void onCreate(Bundle savedInstanceState) {
+// ...
+
+// Build GoogleApiClient with AppInvite API for receiving deep links
+mGoogleApiClient = new GoogleApiClient.Builder(this)
+        .enableAutoManage(this, this)
+        .addApi(AppInvite.API)
+        .build();
+
+// Check if this app was launched from a deep link. Setting autoLaunchDeepLink to true
+// would automatically launch the deep link if one is found.
+boolean autoLaunchDeepLink = false;
+AppInvite.AppInviteApi.getInvitation(mGoogleApiClient, this, autoLaunchDeepLink)
+        .setResultCallback(
+                new ResultCallback&amp;lt;AppInviteInvitationResult&amp;gt;() {
+                    @Override
+                    public void onResult(@NonNull AppInviteInvitationResult result) {
+                        if (result.getStatus().isSuccess()) {
+                            // Extract deep link from Intent
+                            Intent intent = result.getInvitationIntent();
+                            String deepLink = AppInviteReferral.getDeepLink(intent);
+
+                            // Handle the deep link. For example, open the linked
+                            // content, or apply promotional credit to the user&#39;s
+                            // account.
+
+                            // ...
+                        } else {
+                            Log.d(TAG, &amp;quot;getInvitation: no deep link found.&amp;quot;);
+                        }
+                    }
+                });
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Yukarıda ki kodu dynamic link ile açılabilen her Activity içerisinde tanımlamalısınız.&lt;/p&gt;
+
+&lt;p&gt;Aslında aşağıda ki gibi de link ve parametrelere ulaşabilirsiniz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@Override
+protected void onCreate(Bundle savedInstanceState) {
+ if (getIntent() != null &amp;amp;&amp;amp; getIntent().getAction() != null) {
+            
+            // Link : http://referandum/?questionId=xxx
+            String questionId = &amp;quot;&amp;quot;;
+            switch (getIntent().getAction()) {
+                case Intent.ACTION_VIEW: {
+                    if (getIntent().getData().getHost().equals(&amp;quot;referandum&amp;quot;)) {
+                        questionId = getIntent().getData().getQueryParameter(&amp;quot;questionId&amp;quot;);
+                    }
+                    break;
+                }
+            }
+        }
+}        
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ama ilk durumda ki gibi &lt;strong&gt;getInvitation()&lt;/strong&gt; ile dynamic linki işlerseniz Firebase arka tarafta başka işlemlerde yapıyor olacaktır. Mesela Firebase Analytics tanımlamışsanız Firebase Console undan;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;dynamic_link_app_open&lt;/li&gt;
+&lt;li&gt;dynamic_link_first_open&lt;/li&gt;
+&lt;li&gt;dynamic_link_app_update&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;parametrelerine ait istatistikleri görebilirsiniz.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Kaynaklar:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/dynamic-links/&#34;&gt;https://firebase.google.com/docs/dynamic-links/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/dynamic-links/rest&#34;&gt;https://firebase.google.com/docs/dynamic-links/rest&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firebase.google.com/docs/dynamic-links/android/receive&#34;&gt;https://firebase.google.com/docs/dynamic-links/android/receive&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Arduino HC-06 Bluetooth Kullanımı</title>
       <link>http://yazilim.aykutasil.com/arduino_hc06_kullanimi</link>
       <pubDate>Sun, 12 Mar 2017 23:40:36 +0300</pubDate>
@@ -1468,38 +1660,6 @@ Artık Arduino Uno yu Mac OS görüyor olması lazım.&lt;/p&gt;
 &lt;p&gt;Ya da şu video yu izleyebilirsin : &lt;a href=&#34;https://www.youtube.com/watch?v=oHqYK1ezRzo&#34;&gt;https://www.youtube.com/watch?v=oHqYK1ezRzo&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Olduysa Arduino IDE nizden port ayarlarını yapmayı unutmayın.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>SQL SCOPE_IDENTITY()</title>
-      <link>http://yazilim.aykutasil.com/sql_scope_identity</link>
-      <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/sql_scope_identity</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Kısaca özetlemek gerekirse :&lt;/strong&gt; insert ile kayıt edilen tablo satırının id sini getirir.&lt;/p&gt;
-
-&lt;p&gt;Yapılan son kaydın id sini almak için uzun  yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Tüm bunları yapmaktansa:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;DECLARE @son_satir_id INT;
-
-INSERT  INTO tbQwerty
-        ( 
-          Ad ,
-          Soyad
-        )
-VALUES  ( 
-          &#39;Aykut&#39;
-          &#39;Asil&#39;
-        )
-SET @son_satir_id = SCOPE_IDENTITY();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ayrıntılı Bilgi  : &lt;a href=&#34;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&#34;&gt;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ayrıntılı Bilgi : &lt;a href=&#34;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&#34;&gt;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
