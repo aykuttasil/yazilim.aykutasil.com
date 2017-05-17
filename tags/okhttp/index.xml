@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/okhttp/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/okhttp/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Retrofit Oauth</title>
+      <link>http://yazilim.aykutasil.com/retrofit_oauth</link>
+      <pubDate>Wed, 17 May 2017 11:58:43 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/retrofit_oauth</guid>
+      <description>
+
+&lt;h2 id=&#34;retrofit-oauth-entegrasyonu&#34;&gt;Retrofit Oauth Entegrasyonu&lt;/h2&gt;
+
+&lt;p&gt;Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya &lt;a href=&#34;https://oauth.net/&#34;&gt;buraya&lt;/a&gt; bakabilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.&lt;/p&gt;
+
+&lt;h4 id=&#34;nasıl-çalışıyor&#34;&gt;Nasıl Çalışıyor?&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://bahadir.almaci.com/2010/02/oauth-nedir-nasil-calisir/&#34;&gt;Kısaca&lt;/a&gt; anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz. Bu tokenın işlevsellik ömürleri vardır. Yani 10 dakika süre ile bu tokenı yetkilendir deriz. Çünkü sonuçta asıl amacımız güvenlik. Kullanıcı ad ve şifre bilgisi birilerinin eline geçmesi ile token bilgisinin birilerinin eline geçmesi aynı anlama gelir. Tabi eğer tokena bir ömür biçmezsek.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Peki elimizde ki token ın bir ömrünün olması uygulamamıza nasıl bir akış olmasını gerektiriyor ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Zorunlu olmamakla beraber bazen elimizde token ile beraber birde refresh token bilgisi olur. Eğer token süresi dolmuşsa refresh token kullanılarak yeni taze bir token isteği yapılır ve yeni isteklerde bu yeni token kullanılır.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Refresh token yok ise ilk başta tokenımızı nasıl elde ediyor isek(tüm header bilgileri tekrar girilecek; cliend_id,secret_id vs.) o şekilde süreci baştan başlatmamız gerekecek ve elde ettiğimiz tokenı yeni isteklerimizde kullanmamız gerekecek.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Biz ikinci kısım için &lt;a href=&#34;http://square.github.io/retrofit/&#34;&gt;Retrofit&lt;/a&gt; yapılandırmasını anlatıcaz.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;RestClient&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RestClient {
+
+    private static RestClient _instance;
+    private OkHttpClient client;
+    private ApiService apiService;
+
+    @DebugLog
+    private RestClient(Context context) {
+
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+
+        clientBuilder.addInterceptor(chain -&amp;gt; {
+            Request original = chain.request();
+
+            Request request = original.newBuilder()
+                    .addHeader(&amp;quot;Content-Type&amp;quot;, &amp;quot;application/json&amp;quot;)
+                    .addHeader(&amp;quot;X-App-Name&amp;quot;, &amp;quot;Dokar&amp;quot;) // Optional
+                    .addHeader(&amp;quot;X-api-version&amp;quot;, &amp;quot;1.0&amp;quot;) // Optional
+                    .method(original.method(), original.body())
+                    .build();
+
+            return chain.proceed(request);
+        });
+
+        clientBuilder.addInterceptor(chain -&amp;gt; {
+            Request original = chain.request();
+
+            Request.Builder builder = original.newBuilder();
+
+            String tokenType = &amp;quot;Bearer&amp;quot;;
+            String authToken = AppDataHelper.getInstance(context).getAccessToken(); // Veritabanından ya da SharedPreference vs. den tokenımızı çekiyoruz
+
+            // Eğer token bilgisi var ise request imizin header ına &amp;quot;Authorization: Bearer tokenanahtari&amp;quot; şeklinde ekleme yapıyoruz.
+            if (authToken != null) {
+                builder.header(&amp;quot;Authorization&amp;quot;, tokenType + &amp;quot; &amp;quot; + authToken);
+            }
+
+            Request request = builder
+                    .method(original.method(), original.body())
+                    .build();
+
+            return chain.proceed(request);
+        });
+
+        // Yapılan istekleri loglamak için interceptor
+        clientBuilder.addInterceptor(httpLoggingInterceptor);
+
+        // *****************************
+        // ÖNEMLİ
+        // Otomatize ettiğimiz kısım burası
+        clientBuilder.authenticator(new TokenAuthenticator(context));
+
+        clientBuilder.connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS);
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat(&amp;quot;yyyy-MM-dd&#39;T&#39;HH:mm:ss&amp;quot;)
+                .excludeFieldsWithoutExposeAnnotation() // Android 23 için düzenleme
+                .create();
+
+        client = clientBuilder.build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .baseUrl(BuildConfig.BACKEND_URL)
+                .client(client)
+                .build();
+
+        apiService = retrofit.create(ApiService.class);
+    }
+
+    @DebugLog
+    public static RestClient getInstance(Context context) {
+        if (_instance == null) {
+            _instance = new RestClient(context);
+        }
+        return _instance;
+    }
+
+    @DebugLog
+    public ApiService getApiService() {
+        return apiService;
+    }
+
+    @DebugLog
+    public OkHttpClient getOkHttpClient() {
+        return client;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda &lt;strong&gt;ÖNEMLİ&lt;/strong&gt; yazan alanda &lt;code&gt;clientBuilder.authenticator(new TokenAuthenticator(context))&lt;/code&gt; şeklinde bir authenticator işlevi ekledik.&lt;/p&gt;
+
+&lt;p&gt;Bu sınıfın şunu yapıyor:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Belirttiğimiz header ve body bilgileri doğrultusunda istek yaptık ve sonuç olarak &lt;strong&gt;401&lt;/strong&gt; response code döndü. Yani kimlik doğrulanamadı. Eğer  &lt;strong&gt;401&lt;/strong&gt; döner ise &lt;code&gt;TokenAuthenticator(context&lt;/code&gt; sınıfı devreye girecek ve bizim requestimizin istediğimiz alanlarını düzenleyerek yine aynı isteği otomatik olarak yapıcak.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;TokenAuthenticator&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class TokenAuthenticator implements Authenticator {
+
+    private Context mContext;
+
+    public TokenAuthenticator(Context context) {
+        this.mContext = context;
+    }
+
+    @DebugLog
+    @Override
+    public Request authenticate(Route route, Response response)
+            throws IOException {
+
+        // İlk başta tokenımızı nasıl elde ettiysek yine aynı şekilde ama senkron şekilde elde ediyoruz.
+        AccessTokenResponse accessTokenResponse = RestClient.getInstance(mContext)
+                .getApiService()
+                .getAccessTokenImmediate(AccessTokenRequest.buildParams())
+                .execute()
+                .body();
+
+        String accessToken = accessTokenResponse.getAccessToken();
+
+        // Veritabanımızda ki token bilgisi güncelliyoruz
+        AppDataHelper.getInstance(mContext).saveAccessToken(accessToken);
+
+        String tokenType = &amp;quot;Bearer&amp;quot;;
+
+        Request original = response.request();
+        Request.Builder newRequestBuilder = original.newBuilder();
+
+        // Eski isteğimizde ki Authorization header alanını siliyoruz. Eğer silmezsek birden fazla aynı keye sahip header alanımız olur.
+        if (original.headers().get(&amp;quot;Authorization&amp;quot;) != null) {
+            Logger.i(&amp;quot;Authorization Header is: &amp;quot; + original.headers().get(&amp;quot;Authorization&amp;quot;));
+            newRequestBuilder.removeHeader(&amp;quot;Authorization&amp;quot;);
+        }
+
+        // Ve yeni token değeri ile tekrar Authorization headerı ekliyoruz.
+        Request newRequest = newRequestBuilder
+                .addHeader(&amp;quot;Authorization&amp;quot;, tokenType + &amp;quot; &amp;quot; + accessToken)
+                .method(original.method(), original.body())
+                .build();
+
+        return newRequest;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;401&lt;/strong&gt; response kod döndü&lt;/li&gt;
+&lt;li&gt;Yukarıda ki kod çalıştı&lt;/li&gt;
+&lt;li&gt;Yeni token elde edildi&lt;/li&gt;
+&lt;li&gt;Yapılan request header bilgileri güncellendi&lt;/li&gt;
+&lt;li&gt;İsteğimiz aynı parametreler ile(&lt;strong&gt;body&lt;/strong&gt; alanı vs.) tekrar yapıldı&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ve gülen surat..
+:)&lt;/p&gt;
+
+&lt;p&gt;Sorunuz varsa sorabilirsiniz.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
