@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software</title>
+    <link>http://yazilim.aykutasil.com/tags/extensin-function/index.xml</link>
+    <description>Recent content on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr-tr</language>
+    <atom:link href="http://yazilim.aykutasil.com/tags/extensin-function/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kotlin apply Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/kotlin_apply</link>
+      <pubDate>Tue, 06 Jun 2017 10:47:58 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_apply</guid>
+      <description>&lt;pre&gt;&lt;code&gt;fun &amp;lt;T&amp;gt; T.apply(f: T.() -&amp;gt; Unit): T { f(); return this }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;apply()&lt;/code&gt; tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var file = File(dir)
+file.mkdirs()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;veya Java ile yazıcak olursak&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File makeDir(String path) {
+    File result = new File(path);
+    result.mkdirs();
+    return result;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki kod şu şekilde yazılabilir:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File(dir).apply { mkdirs() }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
