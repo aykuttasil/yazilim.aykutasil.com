@@ -211,6 +211,62 @@ ga('send', 'pageview');
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/">
+          Android Internet Connection Receiver 
+        </a>
+      </h1>
+      <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-01-11T01:42:36&#43;03:00">
+    
+  Ocak 11, 2017
+
+  </time>
+  
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/java">java</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>
+    
+  
+
+
+</div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>
+        Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.
+Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.
+&lt;receiver android:name=&quot;.InternetConnectionReceiver&quot;&gt; &lt;intent-filter&gt; &lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot; /&gt; &lt;/intent-filter&gt; &lt;/receiver&gt;  InternetConnectionReceiver
+public class InternetConnectionReceiver extends BroadcastReceiver { @Override public void onReceive(Context context, Intent intent) { if (CheckConnection(context)) { } } }  Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.
+        <br>
+        <a href="http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://yazilim.aykutasil.com/postman-api-test">
           Postman ile API Test Yazımı
         </a>
@@ -696,62 +752,6 @@ CREATE TABLE #Urun ( UrunID TINYINT, ListeFiyati DECIMAL NULL); GO INSERT #Urun 
 </article>
 
             
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://yazilim.aykutasil.com/android-spinner-dynamic-text">
-          Android Spinner Text Güncelleme
-        </a>
-      </h1>
-      <div class="post-meta">
-  <time itemprop="datePublished" datetime="2017-01-10T23:00:03&#43;03:00">
-    
-  Ocak 10, 2017
-
-  </time>
-  
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>
-    
-  
-
-
-</div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>
-        Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
-Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
-Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.
-Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
-String.xml
-&lt;string name=&quot;pazartesi&quot;&gt;Pazartesi&lt;/string&gt; &lt;string name=&quot;sali&quot;&gt;Salı&lt;/string&gt; &lt;string name=&quot;carsamba&quot;&gt;Çarşamba&lt;/string&gt; &lt;string name=&quot;persembe&quot;&gt;Perşembe&lt;/string&gt; &lt;string name=&quot;cuma&quot;&gt;Cuma&lt;/string&gt; &lt;string name=&quot;cumartesi&quot;&gt;Cumartesi&lt;/string&gt; &lt;string name=&quot;pazar&quot;&gt;Pazar&lt;/string&gt; &lt;string-array name=&quot;array_gonderi_list_haftalik&quot;&gt; &lt;item&gt;@string/pazartesi&lt;/item&gt; &lt;item&gt;@string/sali&lt;/item&gt; &lt;item&gt;@string/carsamba&lt;/item&gt; &lt;item&gt;@string/persembe&lt;/item&gt; &lt;item&gt;@string/cuma&lt;/item&gt; &lt;item&gt;@string/cumartesi&lt;/item&gt; &lt;item&gt;@string/pazar&lt;/item&gt; &lt;/string-array&gt;  SpinnerHelper.
-        <br>
-        <a href="http://yazilim.aykutasil.com/android-spinner-dynamic-text" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
             
   <div class="pagination-bar">
     <ul class="pagination">
@@ -764,7 +764,14 @@ String.xml
         </li>
       
       
-      <li class="pagination-number">Sayfa 4 of 4</li>
+        <li class="pagination-next">
+          <a class="btn btn--default btn--small" href="http://yazilim.aykutasil.com/tags/software/page/5/">
+            <span>ESKİ İÇERİKLER</span>
+            <i class="fa fa-angle-right text-base icon-ml"></i>
+          </a>
+        </li>
+      
+      <li class="pagination-number">Sayfa 4 of 5</li>
     </ul>
   </div>
 
@@ -824,6 +831,26 @@ String.xml
       <div class="no-result text-color-light text-center">içerik bulunamadı</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_let">
+                <h3 class="media-heading">Kotlin Let Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"> Kotlin let fonksiyonu kısaca null kontrolünün yapılmasını sağlar.
+Örneğin:
+private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse istediğimiz işlemi çalıştırırız. Bu yapıyı let ile çok daha kolay ve anlaşılır hale getirebiliriz.
+ private var mPhotoUrl: String? = null fun uploadClicked() { mPhotoUrl?.let { uploadPhoto(it) } }  </div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -999,26 +1026,6 @@ Başlıyoruz..
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/java-executor">
-                <h3 class="media-heading">Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor() Thread kullanımı, Java ile multi-threading yazılım geliştiriyorsanız mutlaka ama mutlaka bilmeniz gereken konulardan biridir.
-ThreadPool Gün geldi çattı ve uygulamanız ilk kurulduğu amacın evrimleşmesi sonucu bambaşka bir hale büründü 🙂
-Yani birçok uygulamada gidişat bu yöndedir ve olması gerekende budur.
-Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sadece patron kullanmıyor sonuçta. Ya da patron öyle bir uygulama istemişki ağır işler gerektiriyor. Uzun süreler gerektiren işlemler sonucunda akış tamamlanıyor vs.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1026,7 +1033,7 @@ Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sad
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         45 posts found
+         46 posts found
       </p>
     </div>
   </div>

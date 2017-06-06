@@ -6,8 +6,42 @@
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <lastBuildDate>Wed, 17 May 2017 11:58:43 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 06 Jun 2017 04:33:06 +0300</lastBuildDate>
     <atom:link href="http://yazilim.aykutasil.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kotlin Let Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/kotlin_let</link>
+      <pubDate>Tue, 06 Jun 2017 04:33:06 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_let</guid>
+      <description>
+
+&lt;h1 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;let&lt;/strong&gt; fonksiyonu kısaca null kontrolünün yapılmasını sağlar.&lt;/p&gt;
+
+&lt;p&gt;Örneğin:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private var mPhotoUrl: String? = null
+
+fun uploadClicked() {
+    if (mPhotoUrl != null) {
+        uploadPhoto(mPhotoUrl!!)
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse istediğimiz işlemi çalıştırırız. Bu yapıyı &lt;code&gt;let&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    private var mPhotoUrl: String? = null
+
+    fun uploadClicked() {
+        mPhotoUrl?.let { uploadPhoto(it) }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Retrofit Oauth</title>
@@ -1514,103 +1548,6 @@ I/MainActivity: Sonuc:19
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>VS Code &amp; Express &amp; TypeScript &amp; IntelliSense</title>
-      <link>http://yazilim.aykutasil.com/vscode-intellisense</link>
-      <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/vscode-intellisense</guid>
-      <description>
-
-&lt;h1 id=&#34;vs-code-express-typescript-intellisense&#34;&gt;VS Code &amp;amp; Express &amp;amp; TypeScript &amp;amp; IntelliSense&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://code.visualstudio.com/&#34;&gt;VS Code&lt;/a&gt;,  &lt;a href=&#34;https://atom.io/&#34;&gt;Atom&lt;/a&gt; ile aynı çekirdeği paylaşan, &lt;a href=&#34;http://electron.atom.io/&#34;&gt;Electron&lt;/a&gt; kullanılarak microsoft tarafından özelleştirilmiş ve birçok dil ile uygulama geliştirmeniz için çeşitli eklentileri bulunan bir editördür.&lt;/p&gt;
-
-&lt;p&gt;Günümüzün lider dili malum Javascript ve belki de bunun böyle olmasının en temel sebeplerinden biri &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;NodeJS&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://nodejs.org/en/&#34;&gt;NodeJS&lt;/a&gt; ile çok hızlı bir şekilde ve tamamen javascript  kullanarak web siteleri, uygulamaları, api service leri vb. geliştirebiliriz.&lt;/p&gt;
-
-&lt;p&gt;Bu yazımızda &lt;strong&gt;VS Code&lt;/strong&gt; un nimetlerinden yararlanarak hızlı ve kolay bir şekilde nasıl NodeJS uygulaması yazabiliriz, bunu görücez.&lt;/p&gt;
-
-&lt;p&gt;Ve bu uygulamamızı geliştirirlem NodeJS in en temel kütüphanelerinden biri olan Express i kullanıcaz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;CLI&lt;/strong&gt; kullanarak express uygulaması oluşturabilmemiz için express-generator module ünün global olarak kaydediyoruz.&lt;/p&gt;
-
-&lt;p&gt;Ayrıntılı bilgi &lt;a href=&#34;http://expressjs.com/en/starter/generator.html&#34;&gt;burada&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;npm install express-generator -g&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Daha sonra projemizi oluşturacağımız path e giderek;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;express SampleNodeApp&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;yazarak uygulamamızın temel yapısını kolayca oluşturuyoruz. Daha sonra istediğimiz şekilde özelleştirme yapabiliriz tabiki.&lt;/p&gt;
-
-&lt;p&gt;Daha sonra oluşturduğumuz projeyi VS Code ile açıyoruz.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;VS Code un nimetlerinden faydalanabilmek için &lt;strong&gt;jsconfig.js&lt;/strong&gt; dosyasını eklememiz gerekmekte. VS Code penceresinin sağ alt tarafında bulunan ampül e tıklarsanız kısa yoldan bu dosyayı oluşturabilirsiniz.&lt;/li&gt;
-&lt;li&gt;Daha sonra VS Code un &lt;strong&gt;Debug&lt;/strong&gt; sekmesine girerek sol üstte bulunan ayarlar simgesine tıklıyoruz ve Node seçeneğini seçerek launch.js dosyasını oluşturulmasını sağlıyoruz.&lt;/li&gt;
-&lt;li&gt;Terminali açarak ilk olarak aşağıdaki satırı çalıştırarak typings modülünü yüklüyoruz.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;npm install -g typings&lt;/code&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Daha sonra birçok dil için bulunan ve kod yazarken prompt çıkartarak bize öneride bulunan DefinitelyTyped ları ekliyoruz.Biz NodeJs uygulaması geliştirdiğimiz için node için olanı ve express module ünü kullanarak geliştirme yaptığımız içinde express için olanı yüklüyoruz. DefinetlyTyped ı buradan görebilirsiniz.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;typings install dt~node --global&lt;/code&gt;
-&lt;code&gt;typings install dt~express dt~serve-static dt~express-serve-static-core --global&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Ve artık hızlı bir şekilde NodeJS uygulaması geliştirmeye hazırız.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Uygulamızın ilk hali aşağıdaki gibidir. Yani express SampleNodeApp yazdığımızda aşağıdaki dosyaları otomatik olarak oluşur.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/AvhZ2zo&#34;&gt;&lt;img src=&#34;http://i.imgur.com/AvhZ2zo.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;__dirname&lt;/strong&gt; in üstüne geldiğimizde any yazısını görürüz. Yani herhangi bir öneri gözükmemektedir.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/aIa7lo5&#34;&gt;&lt;img src=&#34;http://i.imgur.com/aIa7lo5.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Sol tarafta en altta bulunan simgeye tıklayarak açtığımız Debug sayfasında &lt;strong&gt;Environment (Node.js)&lt;/strong&gt; i seçiyoruz ve default yapılandırmanın oluşmasını sağlıyoruz.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/XDb5nZS&#34;&gt;&lt;img src=&#34;http://i.imgur.com/XDb5nZS.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Sağ altta bulunan ampül simgesine tıklayarak (yukarıda ki resimlerden görebilirsiniz) jsconfig.js dosyasını oluşturuyoruz.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/SObhMhv&#34;&gt;&lt;img src=&#34;http://i.imgur.com/SObhMhv.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/eYvQGgC&#34;&gt;&lt;img src=&#34;http://i.imgur.com/eYvQGgC.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;VS Code tarafında yapmamız gerekenler bunlar. Şimdi IntelliSense için gerekli modülleri yüklememiz gerekiyor.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/YHze3y4&#34;&gt;&lt;img src=&#34;http://i.imgur.com/YHze3y4.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/a1gOXCW&#34;&gt;&lt;img src=&#34;http://i.imgur.com/a1gOXCW.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/ACedntg&#34;&gt;&lt;img src=&#34;http://i.imgur.com/ACedntg.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/kC5no16&#34;&gt;&lt;img src=&#34;http://i.imgur.com/kC5no16.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/KEw70NZ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/KEw70NZ.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Gerekli modülleri yükledik. Biz NodeJS uygulaması geliştirdiğimiz için node ve express için olan modülleri kurdur. Diğer dillerden geliştirme yaparken o dile ait eklentileri kurmalısınız.&lt;/p&gt;
-
-&lt;p&gt;Ve sonuç olarak artık yazılan kodun üstüne gelerek açıklamayı ve nasıl kullanılması gerektiğine dair ipuçlarını görebiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/00w0gP9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/00w0gP9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -211,6 +211,60 @@ ga('send', 'pageview');
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_let">
+          Kotlin Let Kullanımı
+        </a>
+      </h1>
+      <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-06-06T04:33:06&#43;03:00">
+    
+  Haziran 6, 2017
+
+  </time>
+  
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/kotlin">kotlin</a>
+    
+  
+
+
+</div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>
+        Kotlin let fonksiyonu kısaca null kontrolünün yapılmasını sağlar.
+Örneğin:
+private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse istediğimiz işlemi çalıştırırız. Bu yapıyı let ile çok daha kolay ve anlaşılır hale getirebiliriz.
+ private var mPhotoUrl: String? = null fun uploadClicked() { mPhotoUrl?.let { uploadPhoto(it) } }
+        <br>
+        <a href="http://yazilim.aykutasil.com/kotlin_let" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://yazilim.aykutasil.com/retrofit_oauth">
           Retrofit Oauth
         </a>
@@ -671,60 +725,6 @@ I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActiv
 </article>
 
             
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://yazilim.aykutasil.com/rxjava-scan">
-          RxJava scan() Kullanımı
-        </a>
-      </h1>
-      <div class="post-meta">
-  <time itemprop="datePublished" datetime="2017-01-11T18:49:21&#43;03:00">
-    
-  Ocak 11, 2017
-
-  </time>
-  
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/rxjava">rxjava</a>
-    
-  
-
-
-</div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>
-        RxJava scan() Kullanımı RxJava da scan() kullanımı iki şekilde olur.
- 1. İlk değer ataması yapılarak  private void scan() { Observable.just(3, 5, 7, 9) .scan(10,(val1, val2) -&gt; { // Log.i(TAG, &quot;val1: &quot; + val1.toString()); Log.i(TAG, &quot;val2: &quot; + val2.toString()); return val1 + val2; }).subscribeOn(Schedulers.io()) .subscribe(success -&gt; { Log.i(TAG, &quot;Sonuc:&quot; + success.toString()); }); }   2. İlk değer ataması yapılmadan  private void scan() { Observable.just(3, 5, 7, 9) .
-        <br>
-        <a href="http://yazilim.aykutasil.com/rxjava-scan" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
             
   <div class="pagination-bar">
     <ul class="pagination">
@@ -737,7 +737,7 @@ I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActiv
           </a>
         </li>
       
-      <li class="pagination-number">Sayfa 1 of 4</li>
+      <li class="pagination-number">Sayfa 1 of 5</li>
     </ul>
   </div>
 
@@ -797,6 +797,26 @@ I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActiv
       <div class="no-result text-color-light text-center">içerik bulunamadı</div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_let">
+                <h3 class="media-heading">Kotlin Let Kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"> Kotlin let fonksiyonu kısaca null kontrolünün yapılmasını sağlar.
+Örneğin:
+private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse istediğimiz işlemi çalıştırırız. Bu yapıyı let ile çok daha kolay ve anlaşılır hale getirebiliriz.
+ private var mPhotoUrl: String? = null fun uploadClicked() { mPhotoUrl?.let { uploadPhoto(it) } }  </div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -972,26 +992,6 @@ Başlıyoruz..
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/java-executor">
-                <h3 class="media-heading">Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor() Thread kullanımı, Java ile multi-threading yazılım geliştiriyorsanız mutlaka ama mutlaka bilmeniz gereken konulardan biridir.
-ThreadPool Gün geldi çattı ve uygulamanız ilk kurulduğu amacın evrimleşmesi sonucu bambaşka bir hale büründü 🙂
-Yani birçok uygulamada gidişat bu yöndedir ve olması gerekende budur.
-Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sadece patron kullanmıyor sonuçta. Ya da patron öyle bir uygulama istemişki ağır işler gerektiriyor. Uzun süreler gerektiren işlemler sonucunda akış tamamlanıyor vs.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -999,7 +999,7 @@ Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sad
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         45 posts found
+         46 posts found
       </p>
     </div>
   </div>
