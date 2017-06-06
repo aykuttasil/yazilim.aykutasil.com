@@ -64,7 +64,10 @@
 
 &lt;h1 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h1&gt;
 
-&lt;p&gt;&lt;strong&gt;let()&lt;/strong&gt; kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fun &amp;lt;T, R&amp;gt; T.let(f: (T) -&amp;gt; R): R = f(this)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;let()&lt;/code&gt; temel olarak, belirli bir kapsam için bir &lt;strong&gt;değişken/kod bloğu&lt;/strong&gt; oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
 
 &lt;p&gt;Örneğin:&lt;/p&gt;
 
@@ -77,13 +80,22 @@ fun uploadClicked() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğunu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
+&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    private var mPhotoUrl: String? = null
 
     fun uploadClicked() {
         mPhotoUrl?.let { uploadPhoto(it) }
     }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Not:&lt;/strong&gt; &lt;code&gt;let()&lt;/code&gt; ile sarmalanan bir kod bloğu içerisinde sarmalayıcıya &lt;code&gt;it&lt;/code&gt; ile ulaşılabilir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File(&amp;quot;a.txt&amp;quot;).let {
+    // it kullanılarak file nesnesine erişilebilir.
+}
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>

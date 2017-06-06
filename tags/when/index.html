@@ -313,6 +313,26 @@ if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörl
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/06/kotlin_apply/">
+                <h3 class="media-heading">kotlin_apply</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">fun &lt;T&gt; T.apply(f: T.() -&gt; Unit): T { f(); return this }  apply() tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.
+var file = File(dir) file.mkdirs()  veya Java ile yazıcak olursak
+File makeDir(String path) { File result = new File(path); result.mkdirs(); return result; }  Yukarıda ki kod şu şekilde yazılabilir:
+File(dir).apply { mkdirs() }  </div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_when">
                 <h3 class="media-heading">Kotlin when kullanımı</h3>
               </a>
@@ -341,10 +361,9 @@ if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörl
                   Jun 6, 2017
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather">Kotlin let() kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani let() bir sarmalıyıcı fonksiyondur.
+              <div class="media-content hide-xs font-merryweather">Kotlin fun &lt;T, R&gt; T.let(f: (T) -&gt; R): R = f(this)  let() temel olarak, belirli bir kapsam için bir değişken/kod bloğu oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani let() bir sarmalıyıcı fonksiyondur.
 Örneğin:
-private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğunu çalıştırılır. Bu kodu let() ile çok daha kolay ve anlaşılır hale getirebiliriz.
- private var mPhotoUrl: String?</div>
+private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğu çalıştırılır.</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -483,30 +502,6 @@ Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/docker/">
-                <h3 class="media-heading">Docker</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">DOCKER Docker aldı başını gidiyor. Yeni bir devrim açıyor.
-E haliyle yazılım dünyası buna sessiz kalmamakla beraber bir çok Docker nedir? örnekleri vs. hazırlanıyor.
-Bu nedenle biz Docker nedir? tanımlamasından daha çok hızlı ilerlemeler şeklinde ufak uygulamalar geliştiricez. Bende bu yazı serisiyle paralel şekilde öğrenimimi sağlayacağımı belirtmek isterim ! 🙂
-Başlıyoruz..
-İlk olarak makinemize Docker ı kuralım.
- Mac: https://docs.docker.com/docker-for-mac/
- Windows : https://docs.docker.com/docker-for-windows/
-  İndirip kurulumu sağladıktan sonra terminali açarak</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -514,7 +509,7 @@ Başlıyoruz..
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         47 posts found
+         48 posts found
       </p>
     </div>
   </div>

@@ -208,6 +208,61 @@ ga('send', 'pageview');
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-runtime-permission/">
+          Android Runtime Permission
+        </a>
+      </h1>
+      <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-01-11T17:24:52&#43;03:00">
+    
+  Ocak 11, 2017
+
+  </time>
+  
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/java">java</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>
+    
+  
+
+
+</div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>
+        Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.
+Bunlardan biri de Android M – Marshmallow (23) ile gelen Runtime Permissions olayı.
+Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel.
+        <br>
+        <a href="http://yazilim.aykutasil.com/2017/01/android-runtime-permission/" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+          
+            
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum">
           Mac OS Arduino Uno (Klon) Kurulumu
         </a>
@@ -692,62 +747,6 @@ Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize gö
 </article>
 
           
-            
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/">
-          SQL Management Studio Custom Generate Scripts
-        </a>
-      </h1>
-      <div class="post-meta">
-  <time itemprop="datePublished" datetime="2017-01-11T15:39:47&#43;03:00">
-    
-  Ocak 11, 2017
-
-  </time>
-  
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/sql">sql</a>
-    
-  
-
-
-</div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>
-        SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
-Senaryomuz şu şekilde;
-Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.
-Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !
-Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.
-Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.
-        <br>
-        <a href="http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
           
   <div class="pagination-bar">
     <ul class="pagination">
@@ -830,6 +829,26 @@ Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler o
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/06/kotlin_apply/">
+                <h3 class="media-heading">kotlin_apply</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">fun &lt;T&gt; T.apply(f: T.() -&gt; Unit): T { f(); return this }  apply() tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.
+var file = File(dir) file.mkdirs()  veya Java ile yazıcak olursak
+File makeDir(String path) { File result = new File(path); result.mkdirs(); return result; }  Yukarıda ki kod şu şekilde yazılabilir:
+File(dir).apply { mkdirs() }  </div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_when">
                 <h3 class="media-heading">Kotlin when kullanımı</h3>
               </a>
@@ -858,10 +877,9 @@ if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörl
                   Jun 6, 2017
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather">Kotlin let() kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani let() bir sarmalıyıcı fonksiyondur.
+              <div class="media-content hide-xs font-merryweather">Kotlin fun &lt;T, R&gt; T.let(f: (T) -&gt; R): R = f(this)  let() temel olarak, belirli bir kapsam için bir değişken/kod bloğu oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani let() bir sarmalıyıcı fonksiyondur.
 Örneğin:
-private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğunu çalıştırılır. Bu kodu let() ile çok daha kolay ve anlaşılır hale getirebiliriz.
- private var mPhotoUrl: String?</div>
+private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğu çalıştırılır.</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -1000,30 +1018,6 @@ Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/docker/">
-                <h3 class="media-heading">Docker</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">DOCKER Docker aldı başını gidiyor. Yeni bir devrim açıyor.
-E haliyle yazılım dünyası buna sessiz kalmamakla beraber bir çok Docker nedir? örnekleri vs. hazırlanıyor.
-Bu nedenle biz Docker nedir? tanımlamasından daha çok hızlı ilerlemeler şeklinde ufak uygulamalar geliştiricez. Bende bu yazı serisiyle paralel şekilde öğrenimimi sağlayacağımı belirtmek isterim ! 🙂
-Başlıyoruz..
-İlk olarak makinemize Docker ı kuralım.
- Mac: https://docs.docker.com/docker-for-mac/
- Windows : https://docs.docker.com/docker-for-windows/
-  İndirip kurulumu sağladıktan sonra terminali açarak</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1031,7 +1025,7 @@ Başlıyoruz..
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         47 posts found
+         48 posts found
       </p>
     </div>
   </div>

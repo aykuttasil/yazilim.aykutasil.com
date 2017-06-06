@@ -9,6 +9,37 @@
     <atom:link href="http://yazilim.aykutasil.com/categories/yazilim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>kotlin_apply</title>
+      <link>http://yazilim.aykutasil.com/2017/06/kotlin_apply/</link>
+      <pubDate>Tue, 06 Jun 2017 10:47:58 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/06/kotlin_apply/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;fun &amp;lt;T&amp;gt; T.apply(f: T.() -&amp;gt; Unit): T { f(); return this }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;apply()&lt;/code&gt; tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var file = File(dir)
+file.mkdirs()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;veya Java ile yazıcak olursak&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File makeDir(String path) {
+    File result = new File(path);
+    result.mkdirs();
+    return result;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki kod şu şekilde yazılabilir:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File(dir).apply { mkdirs() }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Kotlin when kullanımı</title>
       <link>http://yazilim.aykutasil.com/kotlin_when</link>
       <pubDate>Tue, 06 Jun 2017 04:42:56 +0300</pubDate>
@@ -64,7 +95,10 @@
 
 &lt;h1 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h1&gt;
 
-&lt;p&gt;&lt;strong&gt;let()&lt;/strong&gt; kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fun &amp;lt;T, R&amp;gt; T.let(f: (T) -&amp;gt; R): R = f(this)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;let()&lt;/code&gt; temel olarak, belirli bir kapsam için bir &lt;strong&gt;değişken/kod bloğu&lt;/strong&gt; oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
 
 &lt;p&gt;Örneğin:&lt;/p&gt;
 
@@ -77,13 +111,22 @@ fun uploadClicked() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğunu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
+&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    private var mPhotoUrl: String? = null
 
     fun uploadClicked() {
         mPhotoUrl?.let { uploadPhoto(it) }
     }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Not:&lt;/strong&gt; &lt;code&gt;let()&lt;/code&gt; ile sarmalanan bir kod bloğu içerisinde sarmalayıcıya &lt;code&gt;it&lt;/code&gt; ile ulaşılabilir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File(&amp;quot;a.txt&amp;quot;).let {
+    // it kullanılarak file nesnesine erişilebilir.
+}
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
@@ -1400,94 +1443,6 @@ I/MainActivity: val: 5
 I/MainActivity: val: 6
 I/MainActivity: val: 7
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>RxJava scan() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-scan</link>
-      <pubDate>Wed, 11 Jan 2017 18:49:21 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/rxjava-scan</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-scan-kullanımı&#34;&gt;RxJava scan() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;RxJava da scan() kullanımı iki şekilde olur.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1. İlk değer ataması yapılarak&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan(10,(val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2. İlk değer ataması yapılmadan&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan((val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Observable nesnesinin içindeki her bir item a fonksiyon uygulamamızı sağlar. Ve her iterasyon sonrası sonucu yayınlar yani subscribe.OnSuccess metoduna yollar. Başka bir deyişle scan() kod bloğu içeresinde tanımlamış olduğumuz fonksiyonu item lara sırayla uygulayarak onNext() fonksiyonunu çağırır.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan(10,(val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki örnek üzerinden gidecek olursak;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: Sonuc:10
-I/MainActivity: val1: 10
-I/MainActivity: val2: 3
-I/MainActivity: Sonuc:13
-I/MainActivity: val1: 13
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:18
-I/MainActivity: val1: 18
-I/MainActivity: val2: 7
-I/MainActivity: Sonuc:25
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;böyle bir çıktı ile karşılaşırız.&lt;/p&gt;
-
-&lt;p&gt;İlk değer ataması yaptığımız için (10) ilk olarak onSuccess in içine bu değer düşer. Daha sonra Observable nesnemizin ilk item ı olan 3 değeri ile toplama işlemi yapılır (10 + 3) ve sonuç onSuccess e  yollanır (13). Daha sonra 13 ile ikinci item olan 5 toplanır (13 + 5) ve sonuç (18) onSuccess e aktarılır. Tüm item lar işlem görünceye kadar devam eder.&lt;/p&gt;
 
 &lt;p&gt;RxJava candır 😉&lt;/p&gt;
 </description>

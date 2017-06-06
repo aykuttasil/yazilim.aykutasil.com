@@ -9,6 +9,37 @@
     <atom:link href="http://yazilim.aykutasil.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>kotlin_apply</title>
+      <link>http://yazilim.aykutasil.com/2017/06/kotlin_apply/</link>
+      <pubDate>Tue, 06 Jun 2017 10:47:58 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/06/kotlin_apply/</guid>
+      <description>&lt;pre&gt;&lt;code&gt;fun &amp;lt;T&amp;gt; T.apply(f: T.() -&amp;gt; Unit): T { f(); return this }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;apply()&lt;/code&gt; tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var file = File(dir)
+file.mkdirs()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;veya Java ile yazıcak olursak&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File makeDir(String path) {
+    File result = new File(path);
+    result.mkdirs();
+    return result;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki kod şu şekilde yazılabilir:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File(dir).apply { mkdirs() }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Kotlin when kullanımı</title>
       <link>http://yazilim.aykutasil.com/kotlin_when</link>
       <pubDate>Tue, 06 Jun 2017 04:42:56 +0300</pubDate>
@@ -64,7 +95,10 @@
 
 &lt;h1 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h1&gt;
 
-&lt;p&gt;&lt;strong&gt;let()&lt;/strong&gt; kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fun &amp;lt;T, R&amp;gt; T.let(f: (T) -&amp;gt; R): R = f(this)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;let()&lt;/code&gt; temel olarak, belirli bir kapsam için bir &lt;strong&gt;değişken/kod bloğu&lt;/strong&gt; oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
 
 &lt;p&gt;Örneğin:&lt;/p&gt;
 
@@ -77,13 +111,22 @@ fun uploadClicked() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğunu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
+&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    private var mPhotoUrl: String? = null
 
     fun uploadClicked() {
         mPhotoUrl?.let { uploadPhoto(it) }
     }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Not:&lt;/strong&gt; &lt;code&gt;let()&lt;/code&gt; ile sarmalanan bir kod bloğu içerisinde sarmalayıcıya &lt;code&gt;it&lt;/code&gt; ile ulaşılabilir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;File(&amp;quot;a.txt&amp;quot;).let {
+    // it kullanılarak file nesnesine erişilebilir.
+}
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
@@ -1347,66 +1390,6 @@ I/MainActivity: Sonuc:19
 &lt;p&gt;Ve sonuç olarak artık yazılan kodun üstüne gelerek açıklamayı ve nasıl kullanılması gerektiğine dair ipuçlarını görebiliriz.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://imgur.com/00w0gP9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/00w0gP9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>TCP/IP Nasıl Çalışır ?</title>
-      <link>http://yazilim.aykutasil.com/tcpip-nedir_nasil_calisir</link>
-      <pubDate>Wed, 11 Jan 2017 18:05:02 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/tcpip-nedir_nasil_calisir</guid>
-      <description>
-
-&lt;h1 id=&#34;tcp-ip-nasıl-çalışır&#34;&gt;TCP/IP Nasıl Çalışır ?&lt;/h1&gt;
-
-&lt;p&gt;Bilgisayar ağları kullanılarak bilgisayarların birbirileriyle haberleşmeye başladıkları ilk yıllarda iki bilgisayarın birbiriyle haberleşebilmeleri için aynı marka/model cihazları kullanmaları gerekiyordu. Bunun üzerine farklı üreticiler tarafından üretilen cihazların birbiriyle sorunsuz ve belirli bir düzen içinde haberleşebilmesi için çeşitli standartlar geliştirilmiştir.&lt;/p&gt;
-
-&lt;p&gt;Bunlardan en çok kullanılanı Açık Sistem Bağlantıları komitesi tarafından geliştirilen 7 katmanlı OSI referans modeli ve Amerikan Savunma Bakanlığı tarafından geliştirilen TCP/IP referans modelidir. OSI iki bilgisayar arasındaki haberleşme problemini çözmek için 7 katmanlı (aşamalı) bir ağ sistemi önermiştir.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/TVlx38I&#34;&gt;&lt;img src=&#34;http://i.imgur.com/TVlx38I.gif&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;OSI referans modelindeki 7 katmana karşılık TCP/IP referans modeli 4 katmanlı bir çözüm sunar ve 7 katmanlı OSI modeline göre daha hızlı bir iletişim imkânı sunar. OSI modeli iletişim standartlarını belirlemeye yöneliktir ve TCP/IP daha uygulanabilir bir model olduğu için daha çok uygulamaya yöneliktir.&lt;/p&gt;
-
-&lt;h2 id=&#34;tcp-ip-nedir&#34;&gt;TCP/IP Nedir?&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;TCP/IP&lt;/strong&gt; birçok protokolün toplandığı bir protokoller ailesidir. Bu referans modeline en çok kullanılan iki protokolün ismi verilmiştir; TCP (Transmission Control Protocol) ve IP (Internet Protocol). Bu referans modelinde 4 farklı katmanda 15’ten fazla protokol vardır. Veriler bu katmanlar arasında sırasıyla paketlenerek gönderilir, alıcıda ise paketlemenin tersi sırayla teker teker açılarak veri ulaştırılmış olur.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;► Protokol:&lt;/strong&gt; Protokoller cihazlar arası iletişimde kullanılan, iletişim kurallarını belirleyen ağ dilleridir. Referans modelinin her katmanda ayrı protokoller görev yapar. Farklı referans modellerinde aynı protokoller çalışabilir.&lt;/p&gt;
-
-&lt;h2 id=&#34;tcp-ip-referans-modeli-katmanları&#34;&gt;TCP/IP Referans Modeli Katmanları&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/vXJSOn0&#34;&gt;&lt;img src=&#34;http://i.imgur.com/vXJSOn0.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;► Uygulama katmanı:&lt;/strong&gt; Bu katmanda gönderilecek veri tipi ve veriyi işleyen uygulamalar bulunur. Örneğin bir HTML web sayfası ve bu veri tipini kullanan HTTP protokolü bu katmandadır. OSI modelindeki sunum ve oturum katmanları TCP/IP modelinde uygulama katmanı içerisinde yer alır. E-Posta gönderimi için kullanılan SMTP ve dosya gönderimi için kullanılan FTP protokolleri bu katmanda bulunur.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;► Taşıma katmanı:&lt;/strong&gt; Bu katmanda verinin nasıl gönderileceği belirlenir. Veri güvenliği, hata kontrolü gibi işlemler yapılır. TCP ve UDP bu katmandadır. TCP klasik veri aktarımında UDP ise medya aktarımında kullanılır. TCP, UDP ye göre daha güvenli fakat daha yavaş çalışır. Çünkü TCP ‘de gönderilen her veri paketinin ardından verinin yerine doğru bir şekilde ulaşıp ulaşmadığı kontrol edilir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;► Ağ katmanı:&lt;/strong&gt; IP katmanı olarak da adlandırılan bu katman da verilerin gideceği adres veriye eklenir yani veri bu katmandan gönderilir ve yönlendirilir. IPv4 ün gelecekte yetersiz kalma durumuna karşı IPv6 sistemine geçmek için çalışmalar başlatılmıştır.IPv4 32 bit iken IPv6 ile 128 bitlik adresler kullanılacak. Bu sayede daha fazla cihaza IP adresi atanabilecek.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;► Fiziksel katman:&lt;/strong&gt; Bu katman verinin hangi yolla gönderileceği belirlenir. İletişim ortamının özelliklerini, haberleşme hızını ve kodlama şemasını belirler. Ethernet, Wi-Fi, Token Ring, ATM gibi protokoller bu katmanda çalışır.&lt;/p&gt;
-
-&lt;h2 id=&#34;katmanlar-ve-protokoller-nasıl-işler&#34;&gt;Katmanlar ve Protokoller Nasıl İşler?&lt;/h2&gt;
-
-&lt;p&gt;Örneğin bir web sayfası bilgisayarınıza şu şekilde gelir;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;► Web sayfasının saklı olduğu sunucuda uygulamalar sayfanın HTML veri formatında bir çıktısını oluşturur. Ve bu veriyi HTTP protokolüyle gönder komutunu verir. Bunlar 4. katmanda yani uygulama katmanında olur. Buradan çıkan veri 3. katmana yani taşıma katmanına gönderilir.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;► Taşıma katmanında veriye taşıma katmanının bilgileri yani port bilgisi ve veri boyutu eklenir.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;► Üçüncü katmandan çıkan veri paketine ikinci katmanda verinin gönderileceği bilgisayarın (sunucunun) ve sizin bilgisayarınızın IP adresleri ve verinin son halinin boyutu eklenir.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;► Son katmanda yani fiziksel katmanda fiziksel adresler ve verinin yeni boyutu pakete eklenir.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;► Paket sunucudan çıkar ve sunucu ile sizin bilgisayarınız arasındaki binlerce kilometrelik yolu kat ederek bilgisayarınıza ulaşır.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/rQQwnvv&#34;&gt;&lt;img src=&#34;http://i.imgur.com/rQQwnvv.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Veri bilgisayarınıza ulaştığında bu sefer tersi sırayla katmanlardaki protokoller işletilir. Bilgisayarınız önce fiziksel katmanı ardından ağ katmanını, daha sonra taşıma ve uygulama katmanlarını işletir. Ve en sonunda kalan paketi web tarayıcınıza gönderir. Her katmanda ayrı donanımlar görev yapar. Fiziksel katmanda Switch, ağ katmanında Router, taşıma katmanında ise NAT gibi donanımlar kullanılır.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.elektrikport.com/teknik-kutuphane/tcpip-nasil-calisir/9004&#34;&gt;Kaynak&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
