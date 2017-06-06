@@ -211,6 +211,63 @@ ga('send', 'pageview');
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://yazilim.aykutasil.com/rxjava-range">
+          RxJava range() Kullanımı
+        </a>
+      </h1>
+      <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-01-11T18:52:51&#43;03:00">
+    
+  Ocak 11, 2017
+
+  </time>
+  
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/rxjava">rxjava</a>
+    
+  
+
+
+</div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>
+        RxJava range() Kullanımı **Örnek kod:&ndash;
+private void range() { Observable.range(3, 5).subscribeOn(Schedulers.io()) .subscribe(success -&gt; { Log.i(TAG, &quot;val: &quot; + success.toString()); }); }  Açıklama:
+İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7
+Yukarıda ki kodun çıktısı aşağıdaki gibidir.
+I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActivity: val: 6 I/MainActivity: val: 7  RxJava candır 😉
+        <br>
+        <a href="http://yazilim.aykutasil.com/rxjava-range" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://yazilim.aykutasil.com/rxjava-scan">
           RxJava scan() Kullanımı
         </a>
@@ -687,63 +744,6 @@ $(&lsquo;#Iller &gt; option&rsquo;).
 </article>
 
             
-              
-  
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi">
-          Android Glide ve Palette Kullanımı
-        </a>
-      </h1>
-      <div class="post-meta">
-  <time itemprop="datePublished" datetime="2017-01-11T17:11:30&#43;03:00">
-    
-  Ocak 11, 2017
-
-  </time>
-  
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/java">java</a>
-    
-  
-
-
-</div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>
-        Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.
-Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.
- Github : <a href="https://github.com/bumptech/glide">https://github.com/bumptech/glide</a>
- Gradle : compile ‘com.github.florent37:glidepalette:1.0.6’
-  Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.
-        <br>
-        <a href="http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-            
             
   <div class="pagination-bar">
     <ul class="pagination">
@@ -827,6 +827,26 @@ Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüp
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_when">
+                <h3 class="media-heading">Kotlin when kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Kotlin&rsquo;de when operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.
+if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.
+ val i = 10 when { i &lt; 7 -&gt; println(&quot;first block&quot;) fooString.startsWith(&quot;hello&quot;) -&gt; println(&quot;second block&quot;) else -&gt; println(&quot;else block&quot;) }  Yukarıda ki örnek if-else if-else yapısının aynısıdır.
+ when (i) { 0, 21 -&gt; println(&quot;0 or 21&quot;) in 1..20 -&gt; println(&quot;in the range 1 to 20&quot;) else -&gt; println(&quot;none of the above&quot;) }  Yukarıda ki gibi aralıklar tanımlanabilir ve bu aralıklara uyum kontrolü yapılarak ilgili işlemlerin yapılması sağlanılabilir.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_let">
                 <h3 class="media-heading">Kotlin Let Kullanımı</h3>
               </a>
@@ -835,10 +855,10 @@ Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüp
                   Jun 6, 2017
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"> Kotlin let fonksiyonu kısaca null kontrolünün yapılmasını sağlar.
+              <div class="media-content hide-xs font-merryweather">Kotlin let() kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani let() bir sarmalıyıcı fonksiyondur.
 Örneğin:
-private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse istediğimiz işlemi çalıştırırız. Bu yapıyı let ile çok daha kolay ve anlaşılır hale getirebiliriz.
- private var mPhotoUrl: String? = null fun uploadClicked() { mPhotoUrl?.let { uploadPhoto(it) } }  </div>
+private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğunu çalıştırılır. Bu kodu let() ile çok daha kolay ve anlaşılır hale getirebiliriz.
+ private var mPhotoUrl: String?</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -1001,23 +1021,6 @@ Başlıyoruz..
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/java-executorservice-submit-and-execute">
-                <h3 class="media-heading">ExecutorService submit() – execute()</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">ExecutorService submit() – execute() Link : http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -1025,7 +1028,7 @@ Başlıyoruz..
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         46 posts found
+         47 posts found
       </p>
     </div>
   </div>

@@ -18,7 +18,7 @@
 
 &lt;h1 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h1&gt;
 
-&lt;p&gt;&lt;strong&gt;let&lt;/strong&gt; fonksiyonu kısaca null kontrolünün yapılmasını sağlar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;let()&lt;/strong&gt; kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
 
 &lt;p&gt;Örneğin:&lt;/p&gt;
 
@@ -31,7 +31,7 @@ fun uploadClicked() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse istediğimiz işlemi çalıştırırız. Bu yapıyı &lt;code&gt;let&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
+&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğunu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    private var mPhotoUrl: String? = null
 

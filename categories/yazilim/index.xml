@@ -9,6 +9,52 @@
     <atom:link href="http://yazilim.aykutasil.com/categories/yazilim/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Kotlin when kullanımı</title>
+      <link>http://yazilim.aykutasil.com/kotlin_when</link>
+      <pubDate>Tue, 06 Jun 2017 04:42:56 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_when</guid>
+      <description>&lt;p&gt;Kotlin&amp;rsquo;de &lt;code&gt;when&lt;/code&gt; operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;if- else if&lt;/code&gt; yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    val i = 10
+    when {
+        i &amp;lt; 7 -&amp;gt; println(&amp;quot;first block&amp;quot;)
+        fooString.startsWith(&amp;quot;hello&amp;quot;) -&amp;gt; println(&amp;quot;second block&amp;quot;)
+        else -&amp;gt; println(&amp;quot;else block&amp;quot;)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki örnek if-else if-else yapısının aynısıdır.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt;    when (i) {
+        0, 21 -&amp;gt; println(&amp;quot;0 or 21&amp;quot;)
+        in 1..20 -&amp;gt; println(&amp;quot;in the range 1 to 20&amp;quot;)
+        else -&amp;gt; println(&amp;quot;none of the above&amp;quot;)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki gibi aralıklar tanımlanabilir ve bu aralıklara uyum kontrolü yapılarak ilgili işlemlerin yapılması sağlanılabilir.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt;
+    var result = when (i) {
+        0, 21 -&amp;gt; &amp;quot;0 or 21&amp;quot;
+        in 1..20 -&amp;gt; &amp;quot;in the range 1 to 20&amp;quot;
+        else -&amp;gt; &amp;quot;none of the above&amp;quot;
+    }
+    println(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki gibi &lt;code&gt;when&lt;/code&gt; sonucu bir değişkene atanarak istenilen yerde kullanılabilir.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Kotlin Let Kullanımı</title>
       <link>http://yazilim.aykutasil.com/kotlin_let</link>
       <pubDate>Tue, 06 Jun 2017 04:33:06 +0300</pubDate>
@@ -18,7 +64,7 @@
 
 &lt;h1 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h1&gt;
 
-&lt;p&gt;&lt;strong&gt;let&lt;/strong&gt; fonksiyonu kısaca null kontrolünün yapılmasını sağlar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;let()&lt;/strong&gt; kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
 
 &lt;p&gt;Örneğin:&lt;/p&gt;
 
@@ -31,7 +77,7 @@ fun uploadClicked() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse istediğimiz işlemi çalıştırırız. Bu yapıyı &lt;code&gt;let&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
+&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğunu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    private var mPhotoUrl: String? = null
 
@@ -1442,109 +1488,6 @@ I/MainActivity: Sonuc:25
 &lt;p&gt;böyle bir çıktı ile karşılaşırız.&lt;/p&gt;
 
 &lt;p&gt;İlk değer ataması yaptığımız için (10) ilk olarak onSuccess in içine bu değer düşer. Daha sonra Observable nesnemizin ilk item ı olan 3 değeri ile toplama işlemi yapılır (10 + 3) ve sonuç onSuccess e  yollanır (13). Daha sonra 13 ile ikinci item olan 5 toplanır (13 + 5) ve sonuç (18) onSuccess e aktarılır. Tüm item lar işlem görünceye kadar devam eder.&lt;/p&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>RxJava reduce() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-reduce</link>
-      <pubDate>Wed, 11 Jan 2017 18:42:04 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/rxjava-reduce</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-reduce-kullanımı&#34;&gt;RxJava reduce() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;reduce()&lt;/strong&gt; fonskyionu iki şekilde çalışır;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
-    @Override
-    public Integer apply(Integer val1, Integer val2) throws Exception {
-        return null;
-    }
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(10,new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
-    @Override
-    public Integer apply(Integer val1, Integer val2) throws Exception {
-        return null;
-    }
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki örneklerde daha net görebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;RxJava’nın reduce fonksiyonunu tanımlıcak olursak;&lt;/p&gt;
-
-&lt;p&gt;Observable nesnesine ait her bir item a (1 , 3, 5) fonksiyon uygulanmasını sağlar. Bunu map() gibi fonksiyonlarda sağlıyor. Ama tabi reduce bunu farklı bir şekilde yapıyor.&lt;/p&gt;
-
-&lt;p&gt;Eğer ilk değer (seed) atanmamış ise ilk değer olarak (val1) ilk item ı (1) alıyor.&lt;/p&gt;
-
-&lt;p&gt;Daha sonra biz her item a yapması gereken işlem olarak iki değeri toplamasını söylediğimiz için, ilk değer ve ikinci değeri toplayıp bunu bir sonraki işlem için ilk değer olarak atıyor. İkinci iterasyonda kaldığı yerden devam ederek, ilk değer olarak bir önceki işlemin sonucu ve ikinci değer olarak 2. item ı alıyor. Yine toplama işlemi yaparak bir sonraki işlem için ilk değer ataması yapıyor.&lt;/p&gt;
-
-&lt;p&gt;Tüm item lar ile işlem yapıncaya kadar devam ediyor ve sonuç subscribe.onSuccess in içine düşüyor.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
-    Observable.just(1, 3, 5)
-            .reduce((val1, val2) -&amp;gt; {
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).retry()
-            .subscribeOn(Schedulers.computation())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 1
-I/MainActivity: val2: 3
-I/MainActivity: val1: 4
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:9
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Burda yukarıda ki işlemden farklı olarak ek bir iterasyon daha yapılıyor. Çünkü ilk değer atamasını biz kendimiz yapıyoruz. İkinci değer olarak da her item sırayla bu görevi üstleniyor. Ve toplama işlemi yapılıp, toplam sonucunu ilk değer olarak atadıktan sonra döngü devam ediyor. Ve sonuç subscribe.onSuccess e düşüyor.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
-    Observable.just(1, 3, 5).reduce(10, (val1, val2) -&amp;gt; {
-        Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-        Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-        return val1 + val2;
-    }).retry()
-            .subscribeOn(Schedulers.computation())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Çıktı:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 10
-I/MainActivity: val2: 1
-I/MainActivity: val1: 11
-I/MainActivity: val2: 3
-I/MainActivity: val1: 14
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:19
-&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;RxJava candır 😉&lt;/p&gt;
 </description>

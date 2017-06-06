@@ -9,6 +9,52 @@
     <atom:link href="http://yazilim.aykutasil.com/categories/kotlin/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Kotlin when kullanımı</title>
+      <link>http://yazilim.aykutasil.com/kotlin_when</link>
+      <pubDate>Tue, 06 Jun 2017 04:42:56 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_when</guid>
+      <description>&lt;p&gt;Kotlin&amp;rsquo;de &lt;code&gt;when&lt;/code&gt; operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;if- else if&lt;/code&gt; yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    val i = 10
+    when {
+        i &amp;lt; 7 -&amp;gt; println(&amp;quot;first block&amp;quot;)
+        fooString.startsWith(&amp;quot;hello&amp;quot;) -&amp;gt; println(&amp;quot;second block&amp;quot;)
+        else -&amp;gt; println(&amp;quot;else block&amp;quot;)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki örnek if-else if-else yapısının aynısıdır.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt;    when (i) {
+        0, 21 -&amp;gt; println(&amp;quot;0 or 21&amp;quot;)
+        in 1..20 -&amp;gt; println(&amp;quot;in the range 1 to 20&amp;quot;)
+        else -&amp;gt; println(&amp;quot;none of the above&amp;quot;)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki gibi aralıklar tanımlanabilir ve bu aralıklara uyum kontrolü yapılarak ilgili işlemlerin yapılması sağlanılabilir.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt;
+    var result = when (i) {
+        0, 21 -&amp;gt; &amp;quot;0 or 21&amp;quot;
+        in 1..20 -&amp;gt; &amp;quot;in the range 1 to 20&amp;quot;
+        else -&amp;gt; &amp;quot;none of the above&amp;quot;
+    }
+    println(result)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Yukarıda ki gibi &lt;code&gt;when&lt;/code&gt; sonucu bir değişkene atanarak istenilen yerde kullanılabilir.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Kotlin Let Kullanımı</title>
       <link>http://yazilim.aykutasil.com/kotlin_let</link>
       <pubDate>Tue, 06 Jun 2017 04:33:06 +0300</pubDate>
@@ -18,7 +64,7 @@
 
 &lt;h1 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h1&gt;
 
-&lt;p&gt;&lt;strong&gt;let&lt;/strong&gt; fonksiyonu kısaca null kontrolünün yapılmasını sağlar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;let()&lt;/strong&gt; kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
 
 &lt;p&gt;Örneğin:&lt;/p&gt;
 
@@ -31,7 +77,7 @@ fun uploadClicked() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse istediğimiz işlemi çalıştırırız. Bu yapıyı &lt;code&gt;let&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
+&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğunu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;    private var mPhotoUrl: String? = null
 

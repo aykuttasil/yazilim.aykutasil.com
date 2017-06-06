@@ -314,6 +314,26 @@ Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open sou
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_when">
+                <h3 class="media-heading">Kotlin when kullanımı</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Kotlin&rsquo;de when operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.
+if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.
+ val i = 10 when { i &lt; 7 -&gt; println(&quot;first block&quot;) fooString.startsWith(&quot;hello&quot;) -&gt; println(&quot;second block&quot;) else -&gt; println(&quot;else block&quot;) }  Yukarıda ki örnek if-else if-else yapısının aynısıdır.
+ when (i) { 0, 21 -&gt; println(&quot;0 or 21&quot;) in 1..20 -&gt; println(&quot;in the range 1 to 20&quot;) else -&gt; println(&quot;none of the above&quot;) }  Yukarıda ki gibi aralıklar tanımlanabilir ve bu aralıklara uyum kontrolü yapılarak ilgili işlemlerin yapılması sağlanılabilir.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_let">
                 <h3 class="media-heading">Kotlin Let Kullanımı</h3>
               </a>
@@ -322,10 +342,10 @@ Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open sou
                   Jun 6, 2017
                 </span>
               </span>
-              <div class="media-content hide-xs font-merryweather"> Kotlin let fonksiyonu kısaca null kontrolünün yapılmasını sağlar.
+              <div class="media-content hide-xs font-merryweather">Kotlin let() kullanılarak kodumuzun belli bir kısmını diğer kısımlarından izole hale getirebiliriz. Yani let() bir sarmalıyıcı fonksiyondur.
 Örneğin:
-private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse istediğimiz işlemi çalıştırırız. Bu yapıyı let ile çok daha kolay ve anlaşılır hale getirebiliriz.
- private var mPhotoUrl: String? = null fun uploadClicked() { mPhotoUrl?.let { uploadPhoto(it) } }  </div>
+private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğunu çalıştırılır. Bu kodu let() ile çok daha kolay ve anlaşılır hale getirebiliriz.
+ private var mPhotoUrl: String?</div>
             </div>
             <div style="clear:both;"></div>
             <hr>
@@ -488,23 +508,6 @@ Başlıyoruz..
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/java-executorservice-submit-and-execute">
-                <h3 class="media-heading">ExecutorService submit() – execute()</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">ExecutorService submit() – execute() Link : http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -512,7 +515,7 @@ Başlıyoruz..
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         46 posts found
+         47 posts found
       </p>
     </div>
   </div>
