@@ -6,8 +6,66 @@
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <lastBuildDate>Tue, 06 Jun 2017 10:47:58 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 18 Jun 2017 02:24:37 +0300</lastBuildDate>
     <atom:link href="http://yazilim.aykutasil.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kotlin Lambda</title>
+      <link>http://yazilim.aykutasil.com/kotlin_lambda</link>
+      <pubDate>Sun, 18 Jun 2017 02:24:37 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_lambda</guid>
+      <description>
+
+&lt;h1 id=&#34;kotlin-lambda-kullanımı&#34;&gt;Kotlin Lambda Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;Kotlin dili ile geliştirme yaparken fonksiyonel programlama nimetlerinden faydalanmamızı sağlayan &lt;strong&gt;lambda&lt;/strong&gt; birçok konuda bize yardımcı olacaktır. Doğru kullanımını öğrendiğimiz ölçüde nimetlerinin farkına varabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Belli başlı lambda kullanımları için aşağıdaki örneği inceleyebilirsiniz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_kotlin_lambda)
+
+        // Normal Kullanım
+        ButtonPress.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                toast(&amp;quot;Press Me Click&amp;quot;)
+            }
+
+        })
+
+        // Yukarıda ki yapıyı lambda kullanarak bu şekle çevirebiliriz
+        ButtonPress.setOnClickListener({ v -&amp;gt; toast(&amp;quot;Press Me&amp;quot;) })
+
+        // Eğer son parametre lambda fonksiyonu ise bu fonksiyonu parantez &#39;()&#39; dışına çıkarabiliriz.
+        // Birden fazla parametre var ise sadece en son lambda parametresi parantez dışına çıkarılabilir.
+        ButtonPress.setOnClickListener() {
+            v -&amp;gt;
+            toast(&amp;quot;Press Me&amp;quot;)
+        }
+
+        // Fonksiyon tek bir parametre alıyorsa ve bu lambda parametresi ise parantezler silinebilir
+        ButtonPress.setOnClickListener {
+            v -&amp;gt;
+            toast(&amp;quot;Press Me&amp;quot;)
+        }
+
+        // Lambda fonksiyonunun tek bir parametresi var ise (v) ve kullanılmayacaksa &#39;v -&amp;gt;&#39; silinebilir
+        ButtonPress.setOnClickListener {
+            toast(&amp;quot;Press Me&amp;quot;)
+        }
+
+        // Lambda fonksiyonunun tek bir parametresi var ise ve eğer bu parametreye ihtiyaç duyulur ise
+        // v-&amp;gt; yerine &#39;it&#39; özel kelimesi kullanılabilir.
+        ButtonPress.setOnClickListener {
+            toast(it.javaClass.name)
+        }
+
+    }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Kotlin apply Kullanımı</title>
@@ -1409,43 +1467,6 @@ I/MainActivity: ExecuterServicee: pool-7-thread-2
 &lt;h1 id=&#34;runnable-callable&#34;&gt;Runnable() &amp;amp; Callable()&lt;/h1&gt;
 
 &lt;p&gt;Ayrıntılı açıklama için &lt;a href=&#34;http://www.java67.com/2013/01/difference-between-callable-and-runnable-java.html&#34;&gt;bu siteyi&lt;/a&gt; kullanabilirsiniz.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>RxJava range() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-range</link>
-      <pubDate>Wed, 11 Jan 2017 18:52:51 +0300</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/rxjava-range</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-range-kullanımı&#34;&gt;RxJava range() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;**Örnek kod:&amp;ndash;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void range() {
-    Observable.range(3, 5).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;val: &amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki kodun çıktısı aşağıdaki gibidir.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val: 3
-I/MainActivity: val: 4
-I/MainActivity: val: 5
-I/MainActivity: val: 6
-I/MainActivity: val: 7
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
 </description>
     </item>
     

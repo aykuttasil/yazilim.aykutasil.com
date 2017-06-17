@@ -211,6 +211,60 @@ ga('send', 'pageview');
     
     <div class="postShorten-header">
       <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/">
+          Android Key Hashes &amp; SHA1
+        </a>
+      </h1>
+      <div class="post-meta">
+  <time itemprop="datePublished" datetime="2017-01-10T23:56:35&#43;03:00">
+    
+  Ocak 10, 2017
+
+  </time>
+  
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
+    
+      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>
+    
+  
+
+
+</div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>
+        Android Key Hashes &amp; SHA1 Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.
+keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%.android\debug.keystore | openssl sha1 -binary | openssl base64  openssl hatası alırsanız <a href="https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip">https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip</a> adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.
+Ortam değişkenlerine ulaşmak için : Denetim Masası &gt; Sistem &gt; Gelişmiş Sİstem Ayarları
+SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.
+        <br>
+        <a href="http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/" class="postShorten-excerpt_link link">Okumaya Devam Et</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
         <a class="link-unstyled" href="http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/">
           Local IIS Site Kurulumu
         </a>
@@ -440,6 +494,25 @@ String.xml
           <div class="media">
             
             <div class="media-body">
+              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_lambda">
+                <h3 class="media-heading">Kotlin Lambda</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Kotlin Lambda Kullanımı Kotlin dili ile geliştirme yaparken fonksiyonel programlama nimetlerinden faydalanmamızı sağlayan lambda birçok konuda bize yardımcı olacaktır. Doğru kullanımını öğrendiğimiz ölçüde nimetlerinin farkına varabiliriz.
+Belli başlı lambda kullanımları için aşağıdaki örneği inceleyebilirsiniz.
+ override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_kotlin_lambda) // Normal Kullanım ButtonPress.setOnClickListener(object : View.OnClickListener { override fun onClick(view: View?) { toast(&quot;Press Me Click&quot;) } }) // Yukarıda ki yapıyı lambda kullanarak bu şekle çevirebiliriz ButtonPress.setOnClickListener({ v -&gt; toast(&quot;Press Me&quot;) }) // Eğer son parametre lambda fonksiyonu ise bu fonksiyonu parantez '()' dışına çıkarabiliriz.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
               <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_apply">
                 <h3 class="media-heading">Kotlin apply Kullanımı</h3>
               </a>
@@ -609,26 +682,6 @@ Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/docker-komutlari">
-                <h3 class="media-heading">Docker Komutları</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jan 1, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Docker Komutları ve Açıklamaları &gt; docker images  Docker hostuna yüklü olan image leri gösterir.
-&gt; docker ps  Docker hostunda yüklü olan imagelerle inşa edilmiş olan container ları listeler.
-&gt; docker run hello-world  İlk olarak Local de (bilgisayarımızda) hello-world isminde bir image var mı kontrol eder. Eğer varsa direkt olarak çalıştırır.
-Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local e indirir ve ardından çalıştırır.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -636,7 +689,7 @@ Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local
          data-message-zero="içerik bulunamadı"
          data-message-one="1 içerik bulundu"
          data-message-other="{n} içerik bulundu">
-         48 posts found
+         49 posts found
       </p>
     </div>
   </div>

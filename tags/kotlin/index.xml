@@ -9,6 +9,64 @@
     <atom:link href="http://yazilim.aykutasil.com/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Kotlin Lambda</title>
+      <link>http://yazilim.aykutasil.com/kotlin_lambda</link>
+      <pubDate>Sun, 18 Jun 2017 02:24:37 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_lambda</guid>
+      <description>
+
+&lt;h1 id=&#34;kotlin-lambda-kullanımı&#34;&gt;Kotlin Lambda Kullanımı&lt;/h1&gt;
+
+&lt;p&gt;Kotlin dili ile geliştirme yaparken fonksiyonel programlama nimetlerinden faydalanmamızı sağlayan &lt;strong&gt;lambda&lt;/strong&gt; birçok konuda bize yardımcı olacaktır. Doğru kullanımını öğrendiğimiz ölçüde nimetlerinin farkına varabiliriz.&lt;/p&gt;
+
+&lt;p&gt;Belli başlı lambda kullanımları için aşağıdaki örneği inceleyebilirsiniz.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_kotlin_lambda)
+
+        // Normal Kullanım
+        ButtonPress.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                toast(&amp;quot;Press Me Click&amp;quot;)
+            }
+
+        })
+
+        // Yukarıda ki yapıyı lambda kullanarak bu şekle çevirebiliriz
+        ButtonPress.setOnClickListener({ v -&amp;gt; toast(&amp;quot;Press Me&amp;quot;) })
+
+        // Eğer son parametre lambda fonksiyonu ise bu fonksiyonu parantez &#39;()&#39; dışına çıkarabiliriz.
+        // Birden fazla parametre var ise sadece en son lambda parametresi parantez dışına çıkarılabilir.
+        ButtonPress.setOnClickListener() {
+            v -&amp;gt;
+            toast(&amp;quot;Press Me&amp;quot;)
+        }
+
+        // Fonksiyon tek bir parametre alıyorsa ve bu lambda parametresi ise parantezler silinebilir
+        ButtonPress.setOnClickListener {
+            v -&amp;gt;
+            toast(&amp;quot;Press Me&amp;quot;)
+        }
+
+        // Lambda fonksiyonunun tek bir parametresi var ise (v) ve kullanılmayacaksa &#39;v -&amp;gt;&#39; silinebilir
+        ButtonPress.setOnClickListener {
+            toast(&amp;quot;Press Me&amp;quot;)
+        }
+
+        // Lambda fonksiyonunun tek bir parametresi var ise ve eğer bu parametreye ihtiyaç duyulur ise
+        // v-&amp;gt; yerine &#39;it&#39; özel kelimesi kullanılabilir.
+        ButtonPress.setOnClickListener {
+            toast(it.javaClass.name)
+        }
+
+    }
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Kotlin apply Kullanımı</title>
       <link>http://yazilim.aykutasil.com/kotlin_apply</link>
       <pubDate>Tue, 06 Jun 2017 10:47:58 +0300</pubDate>
