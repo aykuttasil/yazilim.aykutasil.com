@@ -1,200 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/robolectric/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Robolectric on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/robolectric/</link>
+    <description>Recent content in Robolectric on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/robolectric/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 00:31:52 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/robolectric/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Robolectric ile UnitTest Yazımı</title>
-      <link>http://yazilim.aykutasil.com/android-robolectric-test</link>
+      <link>http://yazilim.aykutasil.com/android-robolectric-test/</link>
       <pubDate>Wed, 11 Jan 2017 00:31:52 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-robolectric-test</guid>
-      <description>&lt;p&gt;Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.&lt;/p&gt;
-
-&lt;p&gt;Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.&lt;/p&gt;
-
-&lt;p&gt;Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Android Studio da Robolectric kullanarak Unit Test Yazımı&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.(Ben gerektiğinden uzun bi zaman harcadım, siz harcamayın !)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;build.gradle&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-gradle&#34;&gt;apply plugin: &#39;com.android.application&#39;
-
-android {
-    compileSdkVersion 22
-    buildToolsVersion &amp;quot;23.0.0&amp;quot;
-
-    defaultConfig {
-        applicationId &amp;quot;com.a.aykut.tryrobolectric1&amp;quot;
-        minSdkVersion 16
-        targetSdkVersion 21
-        versionCode 1
-        versionName &amp;quot;1.0&amp;quot;
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
-    compile &#39;com.android.support:appcompat-v7:22.2.1&#39;
-    compile &#39;com.jakewharton:butterknife:7.0.1&#39;
-
-    testCompile &#39;junit:junit:4.12&#39;
-    testCompile &#39;com.squareup.assertj:assertj-android:1.1.0&#39;
-    testCompile &#39;org.robolectric:robolectric:3.0&#39;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;MainActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Bind(R.id.button)
-Button button;
-
-@Bind(R.id.textView)
-TextView textView;
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_main);
-  ButterKnife.bind(this);
-}
-
-@OnClick(R.id.button)
-public void buttonClick(View vi) {
-  textView.setText(&amp;quot;tiklandi&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;AndroidManifest.xml  dosyasında herhangi bir değişiklik yapmanıza gerek yok.&lt;/p&gt;
-
-&lt;p&gt;Test sınıfımızı yazmaya başlayalım.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak Android Studio nun sol tarafında yer alan &lt;strong&gt;Build Variant&lt;/strong&gt; tabından &lt;strong&gt;Test Artifact&lt;/strong&gt; kısmını &lt;strong&gt;Unit Tests&lt;/strong&gt; olarak değiştirin.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/rEPljpe&#34;&gt;&lt;img src=&#34;http://i.imgur.com/rEPljpe.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Unit Test yazmak için &lt;strong&gt;src&lt;/strong&gt; klasörüne test isminde bir klasör ve test klasörünün içine de &lt;strong&gt;java&lt;/strong&gt; isimli bir klasör oluşturmanız gerekmektedir.&lt;/p&gt;
-
-&lt;p&gt;yani &lt;strong&gt;src/test&lt;/strong&gt; ve &lt;strong&gt;src/test/java&lt;/strong&gt; klasörlerini oluşturmalısınız.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/gztY5gr&#34;&gt;&lt;img src=&#34;http://i.imgur.com/gztY5gr.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğunuz java klasörüne sağ tıklayarak new &amp;gt; Package diyin ve normal Package isminizle aynı isimde bir Package oluşturun.Burda biz com.a.aykut.tryrobolectric1 ismini kullandık.&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğunuz Package sağ tıklayarak new &amp;gt; Java Class diyin ve test sınıfını oluşturun. Anlaşılabilirlik açısından Test*(Test Edilecek Sınıf ismi) olarak isimlendirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TestMainActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import android.app.Activity;
-
-import android.widget.Button;
-import android.widget.TextView;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class,sdk = 21)
-public class TestMainActivity {
-
-  Activity activity;
-  TextView textView;
-  Button button;
-
-  @Before
-  public void setUp() {
-    activity = Robolectric.setupActivity(MainActivity.class);
-    textView = (TextView) activity.findViewById(R.id.textView);
-    button = (Button) activity.findViewById(R.id.button);
-  }
-
-  @Test
-  public void shouldMainActivityNotBeNull() throws Exception {
-    Robolectric.buildActivity(MainActivity.class).create().pause().resume().get();
-    assertTrue(Robolectric.buildActivity(MainActivity.class).create().get() != null);
-    String hello = new MainActivity().getResources().getString(R.string.hello_world);
-    assertEquals(hello, &amp;quot;Hello world!&amp;quot;);
-
-
-  }
-
-  @Test
-  public void buttonClickChangeTextView() throws Exception {
-    String text = textView.getText().toString();
-    assertEquals(text, &amp;quot;Hello world!&amp;quot;);
-    button.performClick();
-    text = textView.getText().toString();
-    assertEquals(text, &amp;quot;tiklandi&amp;quot;);
-
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Evet.Test sınıfımızı da yazdık.Artık çalıştırabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Testimizi çalıştırmak için yazmış olduğumuz Test Sınıfına sağ tıklayarak Run diyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/7STeLHy&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7STeLHy.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Run dediğiniz de Test çalışacaktır. Fakat aşağıdaki hataya benzer bir hata alırsanız endişelenmeyin.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;java.lang.RuntimeException: build\intermediates\bundles\debug\AndroidManifest.xml not found or not a file; it should point to your project&#39;s AndroidManifest.xml
-
-at org.robolectric.manifest.AndroidManifest.validate(AndroidManifest.java:121)
-
-at org.robolectric.manifest.AndroidManifest.getResourcePath(AndroidManifest.java:469)
-
-at org.robolectric.manifest.AndroidManifest.getIncludedResourcePaths(AndroidManifest.java:475)
-
-at org.robolectric.RobolectricTestRunner.createAppResourceLoader(RobolectricTestRunner.java:491)
-
-at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
-.
-
-.
-
-.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/1TpiUpG&#34;&gt;&lt;img src=&#34;http://i.imgur.com/1TpiUpG.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resim de görüldüğü gibi &lt;strong&gt;Edit Configurations&lt;/strong&gt; a tıklayın.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/pFGTznR&#34;&gt;&lt;img src=&#34;http://i.imgur.com/pFGTznR.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resim deki gibi &lt;strong&gt;Working directory&lt;/strong&gt; yolunun sonuna &lt;strong&gt;\app&lt;/strong&gt; ekleyin.&lt;/p&gt;
-
-&lt;p&gt;Ve şimdi tekrar Test Sınıfına sağ tıklayarak Run diyin.&lt;/p&gt;
-
-&lt;p&gt;Ve sonuç aşağıdaki gibi olmalıdır.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/zIgjUDT&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zIgjUDT.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Kaynak kodlarını aşağıdkai linkten indirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/aykuttasil/RobolectricUnitTest&#34;&gt;https://github.com/aykuttasil/RobolectricUnitTest&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/android-robolectric-test/</guid>
+      <description>Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.
+Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.
+Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.
+Android Studio da Robolectric kullanarak Unit Test Yazımı
+Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.</description>
     </item>
     
   </channel>

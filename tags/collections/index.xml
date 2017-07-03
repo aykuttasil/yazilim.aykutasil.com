@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/collections/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Collections on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/collections/</link>
+    <description>Recent content in Collections on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/collections/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 16:10:10 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/collections/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Android Collections</title>
@@ -14,40 +17,11 @@
       <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-collections/</guid>
-      <description>&lt;p&gt;Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.&lt;/p&gt;
-
-&lt;p&gt;Bu sayfa da &lt;strong&gt;Collection&lt;/strong&gt; yapısını ve oldukça önemli fonksiyonlarını göreceğiz.&lt;/p&gt;
-
-&lt;p&gt;Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Collections.swap&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Swap&lt;/strong&gt; kelime anlamı ile takas anlamına gelmektedir. Mevcut dizimiz içerisinde elemanların yerlerini değiştirmeye yarar.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private static final String[] STRINGS = new String[]{
-        &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;
-};
-
-private final List mItems = new ArrayList&amp;lt;&amp;gt;();
-public void setArray()
-{
-  mItems.addAll(Arrays.asList(STRINGS));
-}
-mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
-
-//  1,2,3,4,5
-
- 
-
-private void elemanYerDegistir()
-{
-  Collections.swap(mItems, 0, 4);
-}
-mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
-
-//  5,2,3,4,1
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.
+Bu sayfa da Collection yapısını ve oldukça önemli fonksiyonlarını göreceğiz.
+Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.
+Collections.swap
+Swap kelime anlamı ile takas anlamına gelmektedir.</description>
     </item>
     
   </channel>

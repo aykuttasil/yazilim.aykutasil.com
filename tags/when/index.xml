@@ -1,57 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/when/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>When on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/when/</link>
+    <description>Recent content in When on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/when/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jun 2017 04:42:56 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/when/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Kotlin when kullanımı</title>
-      <link>http://yazilim.aykutasil.com/kotlin_when</link>
+      <link>http://yazilim.aykutasil.com/kotlin_when/</link>
       <pubDate>Tue, 06 Jun 2017 04:42:56 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/kotlin_when</guid>
-      <description>&lt;p&gt;Kotlin&amp;rsquo;de &lt;code&gt;when&lt;/code&gt; operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;if- else if&lt;/code&gt; yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    val i = 10
-    when {
-        i &amp;lt; 7 -&amp;gt; println(&amp;quot;first block&amp;quot;)
-        fooString.startsWith(&amp;quot;hello&amp;quot;) -&amp;gt; println(&amp;quot;second block&amp;quot;)
-        else -&amp;gt; println(&amp;quot;else block&amp;quot;)
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki örnek if-else if-else yapısının aynısıdır.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;pre&gt;&lt;code&gt;    when (i) {
-        0, 21 -&amp;gt; println(&amp;quot;0 or 21&amp;quot;)
-        in 1..20 -&amp;gt; println(&amp;quot;in the range 1 to 20&amp;quot;)
-        else -&amp;gt; println(&amp;quot;none of the above&amp;quot;)
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki gibi aralıklar tanımlanabilir ve bu aralıklara uyum kontrolü yapılarak ilgili işlemlerin yapılması sağlanılabilir.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;pre&gt;&lt;code&gt;
-    var result = when (i) {
-        0, 21 -&amp;gt; &amp;quot;0 or 21&amp;quot;
-        in 1..20 -&amp;gt; &amp;quot;in the range 1 to 20&amp;quot;
-        else -&amp;gt; &amp;quot;none of the above&amp;quot;
-    }
-    println(result)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki gibi &lt;code&gt;when&lt;/code&gt; sonucu bir değişkene atanarak istenilen yerde kullanılabilir.&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/kotlin_when/</guid>
+      <description>Kotlin&amp;rsquo;de when operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.
+if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.
+ val i = 10 when { i &amp;lt; 7 -&amp;gt; println(&amp;quot;first block&amp;quot;) fooString.startsWith(&amp;quot;hello&amp;quot;) -&amp;gt; println(&amp;quot;second block&amp;quot;) else -&amp;gt; println(&amp;quot;else block&amp;quot;) }  Yukarıda ki örnek if-else if-else yapısının aynısıdır.
+ when (i) { 0, 21 -&amp;gt; println(&amp;quot;0 or 21&amp;quot;) in 1..20 -&amp;gt; println(&amp;quot;in the range 1 to 20&amp;quot;) else -&amp;gt; println(&amp;quot;none of the above&amp;quot;) }  Yukarıda ki gibi aralıklar tanımlanabilir ve bu aralıklara uyum kontrolü yapılarak ilgili işlemlerin yapılması sağlanılabilir.</description>
     </item>
     
   </channel>

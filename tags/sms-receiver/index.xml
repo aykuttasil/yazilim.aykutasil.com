@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/sms-receiver/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Sms Receiver on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/sms-receiver/</link>
+    <description>Recent content in Sms Receiver on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/sms-receiver/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 01:42:54 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/sms-receiver/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Android SMS Receiver</title>
@@ -14,154 +17,10 @@
       <pubDate>Wed, 11 Jan 2017 01:42:54 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-sms-receiver/</guid>
-      <description>
-
-&lt;h1 id=&#34;android-sms-receiver&#34;&gt;Android SMS Receiver&lt;/h1&gt;
-
-&lt;p&gt;Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.&lt;/p&gt;
-
-&lt;p&gt;Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.&lt;/p&gt;
-
-&lt;p&gt;Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz. Eğer bir işlem sonucunda sms gelmesini bekliyorsak, beklediğimiz SMS  geciktiği takdirde ve bu sırada cihazın ekranını vs. kapattığımız da Android cihazımız kendini uyku moduna almak isteyecektir. Bunu önlemek için &lt;strong&gt;WakefulBroadcastReceiver&lt;/strong&gt; yapısını kullanıyoruz. Bu yapı aslında Android in WakeLock özelliğini kullanan serviceler için özel olarak tasarlanmış  bir yapıdır. Cihazı uyanık tutar ve işimiz bittiği takdirde bu WakeLock u kaldırmamız gerekir. Bunu da service in içerisinde tanımlarız.&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki fonksiyonu Activity miz içerisinde ihtiyacımız olan yerde çağırır ve SMS receiver ı çalıştırmıış oluruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;LoginActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void RegisterSmsReceiver() {
-    SmsReceiver smsReceiver = new SmsReceiver();
-    IntentFilter intentFilter = new IntentFilter(&amp;quot;android.provider.Telephony.SMS_RECEIVED&amp;quot;);
-    android.os.Handler handler = new android.os.Handler();
-    registerReceiver(smsReceiver, intentFilter, &amp;quot;android.permission.GET_TASKS&amp;quot;, handler);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsReceiver&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsReceiver extends WakefulBroadcastReceiver {
-
-    private static final String TAG = &amp;quot;SmsReceiver&amp;quot;;
-
-    public SmsReceiver() {
-        super();
-    }
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        Intent myIntent = intent;
-        myIntent.setClass(context, SmsReceiverService.class);
-
-        // startWakeFulService ile AndroidManifest.xml dosyamız içerisinde tanımlamış olduğumuz Service e yönlendiriyoruz.
-        // Ve cihazın uyanık kalmasını sağlıyoruz.
-        startWakefulService(context, myIntent);
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;AndroidManifest.xml&lt;/strong&gt; dosyasında  Service imizi  tanımlıyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;service
-    android:name=&amp;quot;.SmsReceiverService&amp;quot;
-    android:exported=&amp;quot;false&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;exported=”false”&lt;/code&gt; tanımı servisin cihazda ki diğer uygulamalar tarafından çalıştırılamayacağını belirtir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsReceiverService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsReceiverService extends IntentService {
-
-    private static final String TAG = &amp;quot;SmsReceiverService&amp;quot;;
-    private Context context;
-
-    public SmsReceiverService() {
-        super(TAG);
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        context = getApplicationContext();
-    }
-
-
-    @Override
-    protected void onHandleIntent(Intent intent) {
-
-        String msg_from = null;
-        String msgBody = null;
-        if (intent.getAction().equals(&amp;quot;android.provider.Telephony.SMS_RECEIVED&amp;quot;)) {
-            Bundle bundle = intent.getExtras();           //---get the SMS message passed in---
-            SmsMessage[] msgs = null;
-
-            if (bundle != null) {
-                //---retrieve the SMS message received---
-                try {
-                    Object[] pdus = (Object[]) bundle.get(&amp;quot;pdus&amp;quot;);
-                    msgs = new SmsMessage[pdus.length];
-                    for (int i = 0; i &amp;lt; msgs.length; i++) {
-                        msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-                        msg_from = msgs[i].getOriginatingAddress();
-                        msgBody = msgs[i].getMessageBody();
-
-                    }
-                } catch (Exception e) {
-                     // Log.d(&amp;quot;Exception caught&amp;quot;,e.getMessage());
-                }
-            }
-        }
-
-        SmsEvent smsEvent = new SmsEvent();
-        smsEvent.setActivationCode(&amp;quot;357&amp;quot;);
-        smsEvent.setMsgBody(msgBody);
-        smsEvent.setMsgFrom(msg_from);
-
-        // EventBus ile sonucu istediğimiz yere gönderebiliriz.
-        EventBus.getDefault().post(smsEvent);
-
-        // Service in işini tamamladığını ve artık cihazın WakeLock u serbest bırakabileceğini söylüyoruz.
-        SmsReceiver.completeWakefulIntent(intent);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsEvent&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsEvent {
-    private String activationCode;
-    private String msgFrom;
-    private String msgBody;
-
-
-    public String getActivationCode() {
-        return activationCode;
-    }
-
-    public void setActivationCode(String activationCode) {
-        this.activationCode = activationCode;
-    }
-
-    public String getMsgFrom() {
-        return msgFrom;
-    }
-
-    public void setMsgFrom(String msgFrom) {
-        this.msgFrom = msgFrom;
-    }
-
-    public String getMsgBody() {
-        return msgBody;
-    }
-
-    public void setMsgBody(String msgBody) {
-        this.msgBody = msgBody;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Android SMS Receiver Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.
+İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.
+Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.
+Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz.</description>
     </item>
     
   </channel>

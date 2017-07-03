@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/permission/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Permission on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/permission/</link>
+    <description>Recent content in Permission on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/permission/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 17:24:52 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/permission/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Android Runtime Permission</title>
@@ -14,38 +17,9 @@
       <pubDate>Wed, 11 Jan 2017 17:24:52 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</guid>
-      <description>&lt;p&gt;Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.&lt;/p&gt;
-
-&lt;p&gt;Bunlardan biri de Android M – Marshmallow (23) ile  gelen Runtime Permissions olayı.&lt;/p&gt;
-
-&lt;p&gt;Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel. İlerleyen zamanlarda illa ki bu alışkanlığı edinecek insanlar olacaktır 😉&lt;/p&gt;
-
-&lt;p&gt;Fazla uzatmadan birkaç link ve ipucu vericem.&lt;/p&gt;
-
-&lt;p&gt;Android Runtime Permissions olayının nasıl yapıldığını görmek için&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;https://github.com/googlesamples/android-RuntimePermissions&#34;&gt;https://github.com/googlesamples/android-RuntimePermissions&lt;/a&gt; burada süper bir örnek var.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&#34;&gt;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&lt;/a&gt; burada kısa bir özet var.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Takıldığınız yeri yorumlarda belirtebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Örneği incelediğiniz de şu satırı yazarken dikkat edin.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA},123456);&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;burada sadece&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;yerine&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;android.Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;kullanacaksınız. Yoksa izin listesini bulamaz.&lt;/p&gt;
-</description>
+      <description>Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.
+Bunlardan biri de Android M – Marshmallow (23) ile gelen Runtime Permissions olayı.
+Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel.</description>
     </item>
     
   </channel>

@@ -1,239 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/categories/rxjava/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Rxjava on Software</title>
+    <link>http://yazilim.aykutasil.com/categories/rxjava/</link>
+    <description>Recent content in Rxjava on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/categories/rxjava/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 18:52:51 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/categories/rxjava/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>RxJava range() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-range</link>
+      <link>http://yazilim.aykutasil.com/rxjava-range/</link>
       <pubDate>Wed, 11 Jan 2017 18:52:51 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/rxjava-range</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-range-kullanımı&#34;&gt;RxJava range() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;**Örnek kod:&amp;ndash;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void range() {
-    Observable.range(3, 5).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;val: &amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki kodun çıktısı aşağıdaki gibidir.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val: 3
-I/MainActivity: val: 4
-I/MainActivity: val: 5
-I/MainActivity: val: 6
-I/MainActivity: val: 7
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/rxjava-range/</guid>
+      <description>RxJava range() Kullanımı **Örnek kod:&amp;ndash;
+private void range() { Observable.range(3, 5).subscribeOn(Schedulers.io()) .subscribe(success -&amp;gt; { Log.i(TAG, &amp;quot;val: &amp;quot; + success.toString()); }); }  Açıklama:
+İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7
+Yukarıda ki kodun çıktısı aşağıdaki gibidir.
+I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActivity: val: 6 I/MainActivity: val: 7  RxJava candır 😉</description>
     </item>
     
     <item>
       <title>RxJava scan() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-scan</link>
+      <link>http://yazilim.aykutasil.com/rxjava-scan/</link>
       <pubDate>Wed, 11 Jan 2017 18:49:21 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/rxjava-scan</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-scan-kullanımı&#34;&gt;RxJava scan() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;RxJava da scan() kullanımı iki şekilde olur.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1. İlk değer ataması yapılarak&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan(10,(val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2. İlk değer ataması yapılmadan&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan((val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Observable nesnesinin içindeki her bir item a fonksiyon uygulamamızı sağlar. Ve her iterasyon sonrası sonucu yayınlar yani subscribe.OnSuccess metoduna yollar. Başka bir deyişle scan() kod bloğu içeresinde tanımlamış olduğumuz fonksiyonu item lara sırayla uygulayarak onNext() fonksiyonunu çağırır.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan(10,(val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki örnek üzerinden gidecek olursak;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: Sonuc:10
-I/MainActivity: val1: 10
-I/MainActivity: val2: 3
-I/MainActivity: Sonuc:13
-I/MainActivity: val1: 13
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:18
-I/MainActivity: val1: 18
-I/MainActivity: val2: 7
-I/MainActivity: Sonuc:25
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;böyle bir çıktı ile karşılaşırız.&lt;/p&gt;
-
-&lt;p&gt;İlk değer ataması yaptığımız için (10) ilk olarak onSuccess in içine bu değer düşer. Daha sonra Observable nesnemizin ilk item ı olan 3 değeri ile toplama işlemi yapılır (10 + 3) ve sonuç onSuccess e  yollanır (13). Daha sonra 13 ile ikinci item olan 5 toplanır (13 + 5) ve sonuç (18) onSuccess e aktarılır. Tüm item lar işlem görünceye kadar devam eder.&lt;/p&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/rxjava-scan/</guid>
+      <description>RxJava scan() Kullanımı RxJava da scan() kullanımı iki şekilde olur.
+ 1. İlk değer ataması yapılarak  private void scan() { Observable.just(3, 5, 7, 9) .scan(10,(val1, val2) -&amp;gt; { // Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString()); Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString()); return val1 + val2; }).subscribeOn(Schedulers.io()) .subscribe(success -&amp;gt; { Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString()); }); }   2. İlk değer ataması yapılmadan  private void scan() { Observable.just(3, 5, 7, 9) .</description>
     </item>
     
     <item>
       <title>RxJava reduce() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-reduce</link>
+      <link>http://yazilim.aykutasil.com/rxjava-reduce/</link>
       <pubDate>Wed, 11 Jan 2017 18:42:04 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/rxjava-reduce</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-reduce-kullanımı&#34;&gt;RxJava reduce() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;reduce()&lt;/strong&gt; fonskyionu iki şekilde çalışır;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
-    @Override
-    public Integer apply(Integer val1, Integer val2) throws Exception {
-        return null;
-    }
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(10,new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
-    @Override
-    public Integer apply(Integer val1, Integer val2) throws Exception {
-        return null;
-    }
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki örneklerde daha net görebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;RxJava’nın reduce fonksiyonunu tanımlıcak olursak;&lt;/p&gt;
-
-&lt;p&gt;Observable nesnesine ait her bir item a (1 , 3, 5) fonksiyon uygulanmasını sağlar. Bunu map() gibi fonksiyonlarda sağlıyor. Ama tabi reduce bunu farklı bir şekilde yapıyor.&lt;/p&gt;
-
-&lt;p&gt;Eğer ilk değer (seed) atanmamış ise ilk değer olarak (val1) ilk item ı (1) alıyor.&lt;/p&gt;
-
-&lt;p&gt;Daha sonra biz her item a yapması gereken işlem olarak iki değeri toplamasını söylediğimiz için, ilk değer ve ikinci değeri toplayıp bunu bir sonraki işlem için ilk değer olarak atıyor. İkinci iterasyonda kaldığı yerden devam ederek, ilk değer olarak bir önceki işlemin sonucu ve ikinci değer olarak 2. item ı alıyor. Yine toplama işlemi yaparak bir sonraki işlem için ilk değer ataması yapıyor.&lt;/p&gt;
-
-&lt;p&gt;Tüm item lar ile işlem yapıncaya kadar devam ediyor ve sonuç subscribe.onSuccess in içine düşüyor.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
-    Observable.just(1, 3, 5)
-            .reduce((val1, val2) -&amp;gt; {
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).retry()
-            .subscribeOn(Schedulers.computation())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 1
-I/MainActivity: val2: 3
-I/MainActivity: val1: 4
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:9
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Burda yukarıda ki işlemden farklı olarak ek bir iterasyon daha yapılıyor. Çünkü ilk değer atamasını biz kendimiz yapıyoruz. İkinci değer olarak da her item sırayla bu görevi üstleniyor. Ve toplama işlemi yapılıp, toplam sonucunu ilk değer olarak atadıktan sonra döngü devam ediyor. Ve sonuç subscribe.onSuccess e düşüyor.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
-    Observable.just(1, 3, 5).reduce(10, (val1, val2) -&amp;gt; {
-        Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-        Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-        return val1 + val2;
-    }).retry()
-            .subscribeOn(Schedulers.computation())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Çıktı:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 10
-I/MainActivity: val2: 1
-I/MainActivity: val1: 11
-I/MainActivity: val2: 3
-I/MainActivity: val1: 14
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:19
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/rxjava-reduce/</guid>
+      <description>RxJava reduce() Kullanımı reduce() fonskyionu iki şekilde çalışır;
+ 1  .reduce(new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })   2  .reduce(10,new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })  1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.
+Aşağıdaki örneklerde daha net görebilirsiniz.</description>
     </item>
     
   </channel>

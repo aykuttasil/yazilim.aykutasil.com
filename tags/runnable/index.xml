@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/runnable/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Runnable on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/runnable/</link>
+    <description>Recent content in Runnable on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/runnable/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 18:55:08 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/runnable/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Runnable() &amp; Callable()</title>
-      <link>http://yazilim.aykutasil.com/java-runnable-and-callable</link>
+      <link>http://yazilim.aykutasil.com/java-runnable-and-callable/</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/java-runnable-and-callable</guid>
-      <description>
-
-&lt;h1 id=&#34;runnable-callable&#34;&gt;Runnable() &amp;amp; Callable()&lt;/h1&gt;
-
-&lt;p&gt;Ayrıntılı açıklama için &lt;a href=&#34;http://www.java67.com/2013/01/difference-between-callable-and-runnable-java.html&#34;&gt;bu siteyi&lt;/a&gt; kullanabilirsiniz.&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/java-runnable-and-callable/</guid>
+      <description>Runnable() &amp;amp; Callable() Ayrıntılı açıklama için bu siteyi kullanabilirsiniz.</description>
     </item>
     
   </channel>

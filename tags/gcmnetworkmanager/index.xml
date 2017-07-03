@@ -1,138 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/gcmnetworkmanager/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Gcmnetworkmanager on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/gcmnetworkmanager/</link>
+    <description>Recent content in Gcmnetworkmanager on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/gcmnetworkmanager/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 01:43:53 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/gcmnetworkmanager/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Android GcmNetworkManager Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 01:43:53 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</guid>
-      <description>&lt;p&gt;GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.&lt;/p&gt;
-
-&lt;p&gt;Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;OneoffTask&lt;/li&gt;
-&lt;li&gt;PeriodicTask&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;OneoffTask Kullanımı&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;OneoffTask oneoff = new OneoffTask.Builder()
-        // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur.
-        // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz.
-        .setPersisted(true)
-        // Belirtilen network işlemlerinin çalışacağı service i belirtir.
-        .setService(MyGcmTaskService.class)
-        // İşleminiz için tag belirleyebilirsiniz.
-        // Aynı tag ile yeni bir istek yaptığınız da &#39;.setUpdateCurrent(true)&#39; olarak belirlenmiş ise isteğinizi yeni istek ile günceller. Yani eski isteğiniz geçersiz olacaktır. &#39;setUpdateCurrent(false)&#39; olarak belirlenir ise aynı tag ile yeni istekte bulunsanız bile her iki isteğiniz de çalışacaktır. 
-        .setTag(tag)
-        // Network isteğinizin çalışma zamanı parametrelerini belirler
-        .setExecutionWindow(0, 10)
-        // İşleminiz için internet gerekliliği veya wireless gerekliliği parametrelerini belirler
-        .setRequiredNetwork(required_network_state)
-        // İşleminiz için cihazın şarja bağlı olup olmaması gerekliliğini belirler
-        .setRequiresCharging(false)
-        // Aynı tag ile yeni istek yapıldığı takdirde güncellenip güncellenmemesi durumunu belirler
-        .setUpdateCurrent(true)
-        // Bundle ile işleminiz için gerekli parametreleri belirleyebilirsiniz
-        .setExtras(bundle)
-        // build eder
-        .build();
-
-GcmNetworkManager.getInstance(context).schedule(oneoff);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;MyGcmTaskService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Cihazınızı yeniden başlatma gibi durumlar da önceden belirlenmiş task lerinizin çalışmasını devam ettirmesini istiyorsanız
-// burada tekrar belirlemelisiniz.
-@Override
-public void onInitializeTasks() {
-    
-}
-
-// GcmNetworkManager ın kendi algoritması ile seçilen, tanımlamış olduğunuz istek bu kod bloğuna girecek.
-@Override
-public int onRunTask(TaskParams taskParams) {
-    try {
-        Bundle bundle = taskParams.getExtras();
-        return SchedulerRandevuTask(bundle);        
-    } catch (Exception e) {
-        ErrorEvent errorEvent = new ErrorEvent();
-        errorEvent.setErrorContent(e.getMessage());
-        EventBus.getDefault().post(errorEvent);
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-}
-
-private int SchedulerZiyaretTask(Bundle bundle) {
-    try {
-        // isteğimiz sırasında bundle olarak yüklemiş olduğumuz nesneyi burada yakalıyoruz
-        String jsonModel = bundle.getString(Const.IZTOP_TASK_BUNDLE);
-        ZiyaretRequest request = new Gson().fromJson(jsonModel, ZiyaretRequest.class);
-        ZiyaretResponse ziyaretResponse = sendZiyaretProcess(request);
-        switch (ziyaretResponse.getCode()) {
-            case 0: {
-                EventBus.getDefault().post(ziyaretResponse);                
-                // işlemlerimiz başarılı bir şekilde gerçekleşmiş ise result değeri olarak RESULT_SUCCESS dönüyoruz.
-                // GcmNetworkManager bu işlemi başarılı olduğu için listeden silecek ve tekrar çalıştırmayı denemicektir.
-                return GcmNetworkManager.RESULT_SUCCESS;
-            }
-            default: {
-                // işlemlerimiz başarısız olması durumunda ( burada sunucuya istekte bulunulmuş ve dönen değer 0 değil ise başarısız olarak belirlenmiştir )isteğin tekrar çalışması için result değeri olarak RESULT_RESCHEDULE dönüyoruz.
-                return GcmNetworkManager.RESULT_RESCHEDULE;
-            }
-        }
-    } catch (Exception e) {
-        SuperHelper.CrashlyticsLog(e);
-        e.printStackTrace();
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-
-
-}
-private ZiyaretResponse sendZiyaretProcess(ZiyaretRequest request) {
-    return ApiManager.getInstance(getApplicationContext()).Ziyaret(request);
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;ApiManager / Ziyaret&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public ZiyaretResponse Ziyaret(ZiyaretRequest request) {
-    try {
-        RestClient restClient = RestClient.getInstance();
-        Call&amp;lt;ZiyaretResponse&amp;gt; responseCall = restClient.getApiService().Ziyaret(request);
-        ZiyaretResponse ziyaretResponse = responseCall.execute().body();
-        return ziyaretResponse;
-    } catch (Exception ex) {
-        return null;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Retrofit ApiService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@POST(&amp;quot;sunucu/ziyaret/api/adresi&amp;quot;)
-Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest);&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi/</guid>
+      <description>GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.
+GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.
+Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.
+ OneoffTask PeriodicTask  OneoffTask Kullanımı
+OneoffTask oneoff = new OneoffTask.Builder() // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur. // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz. .setPersisted(true) // Belirtilen network işlemlerinin çalışacağı service i belirtir.</description>
     </item>
     
   </channel>

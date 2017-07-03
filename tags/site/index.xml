@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/site/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Site on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/site/</link>
+    <description>Recent content in Site on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/site/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Jan 2017 23:20:12 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/site/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Local IIS Site Kurulumu</title>
@@ -14,62 +17,10 @@
       <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/</guid>
-      <description>
+      <description>Local IIS Site Kurulumu Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
+İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
 
-&lt;h1 id=&#34;local-iis-site-kurulumu&#34;&gt;Local IIS Site Kurulumu&lt;/h1&gt;
-
-&lt;p&gt;Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak  &lt;strong&gt;“Windows özellikleriniz Aç veya Kapat”&lt;/strong&gt; yazıp arama yapıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/d5obWDA&#34;&gt;&lt;img src=&#34;http://i.imgur.com/d5obWDA.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.&lt;/p&gt;
-
-&lt;h4 id=&#34;visual-studio-net-uygulamamızı-iis-e-tanıtma&#34;&gt;Visual Studio .Net Uygulamamızı IIS e Tanıtma&lt;/h4&gt;
-
-&lt;p&gt;Visual Studio da uygulamızın ayarlar kısmına girerek yukarıdaki gibi yapılandırıyoruz.&lt;/p&gt;
-
-&lt;p&gt;Servers ın alt kısmında görmüş olduğunuz Local IIS i seçmeyi unutmayalım. Bu seçenek Local imize IIS kurduktan sonra geldi.&lt;/p&gt;
-
-&lt;p&gt;Şimdi sıra IIS yapılandırmasında.&lt;/p&gt;
-
-&lt;p&gt;Bunun için yine başlat tuşuna basarak iis yazalım ve Internet Information Services (IIS) Yöneticisi ne girelim.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/e2lPp4E&#34;&gt;&lt;img src=&#34;http://i.imgur.com/e2lPp4E.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Siteler e sağ tıklayarak Web Sitesi Ekle diyelim.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/UuDqEXb&#34;&gt;&lt;img src=&#34;http://i.imgur.com/UuDqEXb.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki gibi gerekli yerleri dolduralım.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Site adı :&lt;/strong&gt; Herhangi bir isim girebiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Fiziksel Yol :&lt;/strong&gt;  uygulamamızın kodlarının bulunduğu klasörü göstermeliyiz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not&lt;/strong&gt; : Web.Config dosyasının bulunduğu klasörün adresi gösterilmelidir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Ana bilgisayar adı :&lt;/strong&gt; Visual Studio da girdiğimiz adresin aynısını girmeliyiz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/SQwIO0c&#34;&gt;&lt;img src=&#34;http://i.imgur.com/SQwIO0c.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;host-dosyası-yapılandırması&#34;&gt;Host dosyası yapılandırması&lt;/h4&gt;
-
-&lt;p&gt;IIS e kaydetmiş olduğumuz domain adresini Windows a söylemeliyiz.&lt;/p&gt;
-
-&lt;p&gt;Bunun için &lt;strong&gt;Windows/System32/drivers/etc&lt;/strong&gt; klasörünün içinde bulunan Host dosyasını  açarak adresimizi eklemeliyiz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Host dosyasını masaüstünüze kopyalayın. Gerekli düzenlemeleri yaptıktan sonra dosyayı kopyalayıp tekrar etc klasörünün içine yapıştırın.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/ABzsBY9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/ABzsBY9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki resimdeki gibi adresimizi ekleyip kaydediyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/BGUmzda&#34;&gt;&lt;img src=&#34;http://i.imgur.com/BGUmzda.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Artık Visual Studio muzda uygulamızı derleyebilir ve belirlediğimiz domainden erişim sağlayabiliriz.&lt;/p&gt;
-</description>
+Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.</description>
     </item>
     
   </channel>

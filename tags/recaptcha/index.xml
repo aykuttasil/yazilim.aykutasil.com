@@ -1,87 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/recaptcha/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Recaptcha on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/recaptcha/</link>
+    <description>Recent content in Recaptcha on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/recaptcha/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 00:14:08 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/recaptcha/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>ReCaptcha Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/recaptcha-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/recaptcha-kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 00:14:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/recaptcha-kullanimi</guid>
-      <description>
-
-&lt;h1 id=&#34;recaptcha&#34;&gt;ReCaptcha&lt;/h1&gt;
-
-&lt;p&gt;Sitenize gelebilecek saldıralara karşı bir önlem olarak kullanılacak eklentilerden biridir ReCaptcha.&lt;/p&gt;
-
-&lt;p&gt;Kolay bir şekilde entegre edilir ve kolay bir şekilde güvenlik sağlanır.&lt;/p&gt;
-
-&lt;p&gt;Bunun için aşağıdaki adımları uygulamanız yeterli olacaktır.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.google.com/recaptcha/admin#list&#34;&gt;https://www.google.com/recaptcha/admin#list&lt;/a&gt; sitesine gidiniz.Ve gerekli yerleri doldurunuz.&lt;/li&gt;
-&lt;li&gt;Label kısmına ReCaptcha i hangi sayfada kullanacaksınız,(örneğin giriş sayfası için) GirişCaptcha diyin.&lt;/li&gt;
-&lt;li&gt;Domain kısmına sitenizin domain i ekleyin.Her biri bir satır olacak şekilde.Birden fazla domain girerek aynı kodu farklı domainlerde çalıştırabilirsiniz.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Owner kısmına ise Adınız yazın.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://imgur.com/sQRkz2S&#34;&gt;&lt;img src=&#34;http://i.imgur.com/sQRkz2S.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;div kısmını ReCaptcha nın nerede gözükmesini istiyorsanız oraya koyun.(form elementinin içersinde olmalıdır.)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;script kısmını site kodunuzun en altına, body tagınızın bi üstüne koyun.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Client tarafında yapacaklarınız bu kadar.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Server tarafına geçtiğimizde ise Client tarafındaki formdan gönderilen bilgileri alır gibi “g-recaptcha-response” parametresiyle değeri alıyoruz.Ve ReCaptcha api sinin kullanarak eşleşmenin sağlanığ sağlanmadığına bakıyoruz.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Bunun için server kısmına&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;        private static bool ControlReCaptcha(string secretKey, string reCaptcha, string remoteIp)
-
-        {
-
-            var secretkey = secretKey;
-
-            var recaptcha = reCaptcha;
-
-            var remoteip = remoteIp;
-
-
-
-            var recaptchacommand = &amp;quot;https://www.google.com/recaptcha/api/siteverify?secret=&amp;quot; + secretkey +
-
-                                   &amp;quot;&amp;amp;response=&amp;quot; + recaptcha + &amp;quot;&amp;amp;remoteip=&amp;quot; + remoteip;
-
-            var resp = WebRequest.Create(recaptchacommand).GetResponse();
-
-            var str = resp.GetResponseStream();
-
-
-            var sr = new StreamReader(str);
-
-            var a = sr.ReadToEnd();
-
-
-            JObject obj = JObject.Parse(a);
-
-            var sonuc = obj[&amp;quot;success&amp;quot;].ToString().ToLower();
-
-
-            return sonuc == &amp;quot;true&amp;quot;;
-
-        }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;fonksiyonunu ekliyoruz.Ve gerekli parametreleri girdiğimizde fonksiyon bize true – false olacak şekilde sonucu döndürüyor.&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/recaptcha-kullanimi/</guid>
+      <description>ReCaptcha Sitenize gelebilecek saldıralara karşı bir önlem olarak kullanılacak eklentilerden biridir ReCaptcha.
+Kolay bir şekilde entegre edilir ve kolay bir şekilde güvenlik sağlanır.
+Bunun için aşağıdaki adımları uygulamanız yeterli olacaktır.
+ https://www.google.com/recaptcha/admin#list sitesine gidiniz.Ve gerekli yerleri doldurunuz. Label kısmına ReCaptcha i hangi sayfada kullanacaksınız,(örneğin giriş sayfası için) GirişCaptcha diyin. Domain kısmına sitenizin domain i ekleyin.Her biri bir satır olacak şekilde.Birden fazla domain girerek aynı kodu farklı domainlerde çalıştırabilirsiniz. Owner kısmına ise Adınız yazın.</description>
     </item>
     
   </channel>

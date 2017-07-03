@@ -1,95 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/mssql/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Mssql on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/mssql/</link>
+    <description>Recent content in Mssql on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 17:20:37 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>SQL SCOPE_IDENTITY()</title>
-      <link>http://yazilim.aykutasil.com/sql_scope_identity</link>
+      <link>http://yazilim.aykutasil.com/sql_scope_identity/</link>
       <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/sql_scope_identity</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Kısaca özetlemek gerekirse :&lt;/strong&gt; insert ile kayıt edilen tablo satırının id sini getirir.&lt;/p&gt;
-
-&lt;p&gt;Yapılan son kaydın id sini almak için uzun  yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Tüm bunları yapmaktansa:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;DECLARE @son_satir_id INT;
-
-INSERT  INTO tbQwerty
-        ( 
-          Ad ,
-          Soyad
-        )
-VALUES  ( 
-          &#39;Aykut&#39;
-          &#39;Asil&#39;
-        )
-SET @son_satir_id = SCOPE_IDENTITY();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ayrıntılı Bilgi  : &lt;a href=&#34;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&#34;&gt;https://technet.microsoft.com/tr-tr/library/ms190315(v=sql.110).aspx&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ayrıntılı Bilgi : &lt;a href=&#34;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&#34;&gt;https://ahmetrende.com/2010/11/23/sql-serverda-son-kaydin-id-degerini-almak-scope_identity/&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/sql_scope_identity/</guid>
+      <description>Kısaca özetlemek gerekirse : insert ile kayıt edilen tablo satırının id sini getirir.
+Yapılan son kaydın id sini almak için uzun yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.
+Tüm bunları yapmaktansa:
+DECLARE @son_satir_id INT; INSERT INTO tbQwerty ( Ad , Soyad ) VALUES ( &#39;Aykut&#39; &#39;Asil&#39; ) SET @son_satir_id = SCOPE_IDENTITY();  Ayrıntılı Bilgi : https://technet.</description>
     </item>
     
     <item>
       <title>Mac OS ile MSSQL Bağlantısı Kurmak</title>
-      <link>http://yazilim.aykutasil.com/macos-mssql-connection</link>
+      <link>http://yazilim.aykutasil.com/macos-mssql-connection/</link>
       <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/macos-mssql-connection</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;MSSQL&lt;/strong&gt; oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Senaryomuz şu şekilde;&lt;/p&gt;
-
-&lt;p&gt;Mac OS yüklü bilgisayarımızdan MSSQL yüklü sunucumuza bağlantı kurmak istiyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Aşağıda bahsedecek olduğum uygulamayı  Windows yüklü bilgisayarınızda da SQL Management Studio alternatifi olarak kullanabilirsiniz.&lt;/p&gt;
-
-&lt;h2 id=&#34;dbeaver&#34;&gt;Dbeaver&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://dbeaver.jkiss.org/download/&#34;&gt;http://dbeaver.jkiss.org/download/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize göre olanı indirip kullanmaya başlayabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Database Connection&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/RQqA0wI&#34;&gt;&lt;img src=&#34;http://i.imgur.com/RQqA0wI.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Connections&lt;/strong&gt; a sağ tıklayarak Create New Connection diyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/wb55lJW&#34;&gt;&lt;img src=&#34;http://i.imgur.com/wb55lJW.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Burada SSH yapılandırması yapabiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/R0Vtyt9&#34;&gt;&lt;img src=&#34;http://i.imgur.com/R0Vtyt9.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Connection Type&lt;/strong&gt; için seçenekler mevcut.Edit diyerek arasındaki farkları görebiliriz. Biz Test seçeneğini seçiyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/6ft683a&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6ft683a.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki gibi gerekli yerleri dolduruyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/BoSw3vL&#34;&gt;&lt;img src=&#34;http://i.imgur.com/BoSw3vL.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Hangi veritabanına bağlanmak istiyorsak onu seçiyoruz. Eğer ilk defa seçmiş iseniz bazı dosyalar indirmek isteyecektir.&lt;/p&gt;
-
-&lt;p&gt;Biz &lt;strong&gt;MS SQL Server&lt;/strong&gt; ve &lt;strong&gt;Microsoft Driver&lt;/strong&gt; seçeneğini seçiyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Test Connection&lt;/strong&gt; butonuna basarak bağlantı durumunu kontrol edebiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/zM89SAI&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zM89SAI.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/macos-mssql-connection/</guid>
+      <description>MSSQL oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.
+Senaryomuz şu şekilde;
+Mac OS yüklü bilgisayarımızdan MSSQL yüklü sunucumuza bağlantı kurmak istiyoruz.
+Not : Aşağıda bahsedecek olduğum uygulamayı Windows yüklü bilgisayarınızda da SQL Management Studio alternatifi olarak kullanabilirsiniz.
+Dbeaver http://dbeaver.jkiss.org/download/
+Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize göre olanı indirip kullanmaya başlayabilirsiniz.</description>
     </item>
     
     <item>
@@ -98,120 +43,24 @@ SET @son_satir_id = SCOPE_IDENTITY();
       <pubDate>Wed, 11 Jan 2017 15:39:47 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/sql-management-studio-custom-generate-scripts/</guid>
-      <description>&lt;p&gt;SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.&lt;/p&gt;
-
-&lt;p&gt;Senaryomuz şu şekilde;&lt;/p&gt;
-
-&lt;p&gt;Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.&lt;/p&gt;
-
-&lt;p&gt;Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !&lt;/p&gt;
-
-&lt;p&gt;Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.&lt;/p&gt;
-
-&lt;p&gt;Test veritabanında  ki tabloya sağ tıklayarak aşağıdaki gibi seçim yapmak.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt; seçeneği oluşturulan script in bir dosyaya kaydedilmesini&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Clipboard&lt;/strong&gt; seçeneği hafızaya alınmasını ( NotDefteri &amp;gt; CTRL + V diyerek yapıştırabiliriz )
-sağlar.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/phM7Y8A&#34;&gt;&lt;img src=&#34;http://i.imgur.com/phM7Y8A.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Tüm oluşturmuş olduğumuz yapıyı bu yöntem ile script haline getirebiliriz.&lt;/p&gt;
-
-&lt;p&gt;Lakin şöyle bir sıkıntımız olduğunu varsayalım.&lt;/p&gt;
-
-&lt;p&gt;Tablomuzu içindeki verilerle beraber taşımak istiyoruz. Yani script in verileride kapsamasını istiyoruz.&lt;/p&gt;
-
-&lt;p&gt;Bunun için ilk olarak tablomuzun bulunduğu veritabanına sağ tıklayarak aşağıdaki adımları gerçekleştiriyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/TUEWNjo&#34;&gt;&lt;img src=&#34;http://i.imgur.com/TUEWNjo.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/3pGyapU&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3pGyapU.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/6xCVWnQ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6xCVWnQ.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki resimde görmüş olduğunuz Data only seçeneği sadece tabloda kayıtlı olan verilerin scriptini çıkarır.&lt;/p&gt;
-
-&lt;p&gt;Schema and data seçeneği hem schema nın hem de verilerin scriptini çıkararı&lt;/p&gt;
-
-&lt;p&gt;Schema only sadece tablonun schema sının scriptini çıkarır.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/dB2gpdH&#34;&gt;&lt;img src=&#34;http://i.imgur.com/dB2gpdH.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Son ekranda scriptimizin başarılı şekilde oluştuğunu görüyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/7Nx3w3O&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7Nx3w3O.png&#34; title=&#34;source: imgur.com&#34; /&gt;&amp;lt;/a&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğumuz script i hangi veritabanında kullanmak istiyorsak oraya giderek query penceresine yapıştırmamız ve çalıştırmamız yeterli olacaktır.&lt;/p&gt;
-</description>
+      <description>SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
+Senaryomuz şu şekilde;
+Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.
+Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !
+Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.
+Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.</description>
     </item>
     
     <item>
       <title>TSQL NULLIF Fonksiyonu Nedir ve Nasıl Kullanılır</title>
-      <link>http://yazilim.aykutasil.com/sql_nullif_fonksiyonu_kullanimi</link>
+      <link>http://yazilim.aykutasil.com/sql_nullif_fonksiyonu_kullanimi/</link>
       <pubDate>Tue, 10 Jan 2017 23:08:34 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/sql_nullif_fonksiyonu_kullanimi</guid>
-      <description>
-
-&lt;h2 id=&#34;tsql-nullif-fonksiyonu&#34;&gt;TSQL NULLIF fonksiyonu&lt;/h2&gt;
-
-&lt;p&gt;NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.&lt;/p&gt;
-
-&lt;p&gt;Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.&lt;/p&gt;
-
-&lt;p&gt;Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;CREATE TABLE #Urun (
-UrunID TINYINT,
-ListeFiyati DECIMAL NULL); 
-
-GO
-
-INSERT #Urun VALUES(1,100);
-INSERT #Urun VALUES(2,NULL);
-INSERT #Urun VALUES(3,0);
-INSERT #Urun VALUES(7,250);
-INSERT #Urun VALUES(9,458);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ListeFiyati kolonuna göre count yaparsak sonuç olarak 4 dönecegini görürsünüz, çünkü UrunID’si 2 olan ürünün liste fiyati girilmemistir. Count fonksiyonu null degerleri saymayacagi için 5 degil 4 degerini döndürür. Count(*) veya count(UrunID) yazarsaniz ID kolonu hiç null olmadigi için 5 degerini görürsünüz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select count(*) from #Urun
---sonuç : 5
-
-select count(UrunID) from #Urun
---sonuç : 5
-
-select count(ListeFiyati) from #Urun
---sonuç 4
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Simdi gelelim NULLIF fonksiyonuna. Liste fiyati 0 olarak girilen ürünlerin sayiya dahil etmek istemiyorsak, Liste fiyati 0 olanlari NULL ‘a çevirerek count islemini yapabiliriz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sql&#34;&gt;select NULLIF(ListeFiyati,0) from #Urun
-/*
-Liste Fiyati 0 olanlari NULL yap.
-Sonuç:
-100
-NULL
-NULL
-250
-458
-*/
-
---Liste Fiyati 0 olanlar hariç sayiyi bulmak istiyorsak. (count fonksiyonunun NULL degerleri saymadigini unutmayalim)
-select count(NULLIF(ListeFiyati,0)) from #Urun
---sonuç : 3.
---Çünkü bir ürüne ait liste fiyati 0 di. Onu NULL’ a degistirdik ve ----sayisini getirdik.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.yazilimmutfagi.com/10170/veritabani/sql-server/tsql-nullif-fonksiyonu-nedir-ve-nasil-kullanilir.aspx&#34;&gt;Kaynak&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/sql_nullif_fonksiyonu_kullanimi/</guid>
+      <description>TSQL NULLIF fonksiyonu NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.
+Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.
+Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.
+CREATE TABLE #Urun ( UrunID TINYINT, ListeFiyati DECIMAL NULL); GO INSERT #Urun VALUES(1,100); INSERT #Urun VALUES(2,NULL); INSERT #Urun VALUES(3,0); INSERT #Urun VALUES(7,250); INSERT #Urun VALUES(9,458);  ListeFiyati kolonuna göre count yaparsak sonuç olarak 4 dönecegini görürsünüz, çünkü UrunID’si 2 olan ürünün liste fiyati girilmemistir.</description>
     </item>
     
   </channel>

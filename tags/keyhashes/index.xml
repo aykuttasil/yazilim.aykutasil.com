@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/keyhashes/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Keyhashes on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/keyhashes/</link>
+    <description>Recent content in Keyhashes on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/keyhashes/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Jan 2017 23:56:35 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/keyhashes/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Android Key Hashes &amp; SHA1</title>
@@ -14,26 +17,10 @@
       <pubDate>Tue, 10 Jan 2017 23:56:35 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</guid>
-      <description>
-
-&lt;h1 id=&#34;android-key-hashes-sha1&#34;&gt;Android Key Hashes &amp;amp; SHA1&lt;/h1&gt;
-
-&lt;p&gt;Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;openssl hatası alırsanız &lt;a href=&#34;https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip&#34;&gt;https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip&lt;/a&gt; adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.&lt;/p&gt;
-
-&lt;p&gt;Ortam değişkenlerine ulaşmak için : &lt;strong&gt;Denetim Masası &amp;gt; Sistem &amp;gt; Gelişmiş Sİstem Ayarları&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;your_user_name&lt;/strong&gt; yerine kendi kullanıcı adınızı yazmayı unutmayın.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;keytool -list -v -keystore c:\users\your_user_name\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Android Key Hashes &amp;amp; SHA1 Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.
+keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64  openssl hatası alırsanız https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.
+Ortam değişkenlerine ulaşmak için : Denetim Masası &amp;gt; Sistem &amp;gt; Gelişmiş Sİstem Ayarları
+SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.</description>
     </item>
     
   </channel>

@@ -1,597 +1,70 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/categories/android/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Android on Software</title>
+    <link>http://yazilim.aykutasil.com/categories/android/</link>
+    <description>Recent content in Android on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 May 2017 11:58:43 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Retrofit Oauth</title>
-      <link>http://yazilim.aykutasil.com/retrofit_oauth</link>
+      <link>http://yazilim.aykutasil.com/retrofit_oauth/</link>
       <pubDate>Wed, 17 May 2017 11:58:43 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/retrofit_oauth</guid>
-      <description>
-
-&lt;h2 id=&#34;retrofit-oauth-entegrasyonu&#34;&gt;Retrofit Oauth Entegrasyonu&lt;/h2&gt;
-
-&lt;p&gt;Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya &lt;a href=&#34;https://oauth.net/&#34;&gt;buraya&lt;/a&gt; bakabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.&lt;/p&gt;
-
-&lt;h4 id=&#34;nasıl-çalışıyor&#34;&gt;Nasıl Çalışıyor?&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://bahadir.almaci.com/2010/02/oauth-nedir-nasil-calisir/&#34;&gt;Kısaca&lt;/a&gt; anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz. Bu tokenın işlevsellik ömürleri vardır. Yani 10 dakika süre ile bu tokenı yetkilendir deriz. Çünkü sonuçta asıl amacımız güvenlik. Kullanıcı ad ve şifre bilgisi birilerinin eline geçmesi ile token bilgisinin birilerinin eline geçmesi aynı anlama gelir. Tabi eğer tokena bir ömür biçmezsek.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Peki elimizde ki token ın bir ömrünün olması uygulamamıza nasıl bir akış olmasını gerektiriyor ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Zorunlu olmamakla beraber bazen elimizde token ile beraber birde refresh token bilgisi olur. Eğer token süresi dolmuşsa refresh token kullanılarak yeni taze bir token isteği yapılır ve yeni isteklerde bu yeni token kullanılır.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Refresh token yok ise ilk başta tokenımızı nasıl elde ediyor isek(tüm header bilgileri tekrar girilecek; cliend_id,secret_id vs.) o şekilde süreci baştan başlatmamız gerekecek ve elde ettiğimiz tokenı yeni isteklerimizde kullanmamız gerekecek.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Biz ikinci kısım için &lt;a href=&#34;http://square.github.io/retrofit/&#34;&gt;Retrofit&lt;/a&gt; yapılandırmasını anlatıcaz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;RestClient&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class RestClient {
-
-    private static RestClient _instance;
-    private OkHttpClient client;
-    private ApiService apiService;
-
-    @DebugLog
-    private RestClient(Context context) {
-
-        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
-
-        clientBuilder.addInterceptor(chain -&amp;gt; {
-            Request original = chain.request();
-
-            Request request = original.newBuilder()
-                    .addHeader(&amp;quot;Content-Type&amp;quot;, &amp;quot;application/json&amp;quot;)
-                    .addHeader(&amp;quot;X-App-Name&amp;quot;, &amp;quot;Dokar&amp;quot;) // Optional
-                    .addHeader(&amp;quot;X-api-version&amp;quot;, &amp;quot;1.0&amp;quot;) // Optional
-                    .method(original.method(), original.body())
-                    .build();
-
-            return chain.proceed(request);
-        });
-
-        clientBuilder.addInterceptor(chain -&amp;gt; {
-            Request original = chain.request();
-
-            Request.Builder builder = original.newBuilder();
-
-            String tokenType = &amp;quot;Bearer&amp;quot;;
-            String authToken = AppDataHelper.getInstance(context).getAccessToken(); // Veritabanından ya da SharedPreference vs. den tokenımızı çekiyoruz
-
-            // Eğer token bilgisi var ise request imizin header ına &amp;quot;Authorization: Bearer tokenanahtari&amp;quot; şeklinde ekleme yapıyoruz.
-            if (authToken != null) {
-                builder.header(&amp;quot;Authorization&amp;quot;, tokenType + &amp;quot; &amp;quot; + authToken);
-            }
-
-            Request request = builder
-                    .method(original.method(), original.body())
-                    .build();
-
-            return chain.proceed(request);
-        });
-
-        // Yapılan istekleri loglamak için interceptor
-        clientBuilder.addInterceptor(httpLoggingInterceptor);
-
-        // *****************************
-        // ÖNEMLİ
-        // Otomatize ettiğimiz kısım burası
-        clientBuilder.authenticator(new TokenAuthenticator(context));
-
-        clientBuilder.connectTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(60, TimeUnit.SECONDS);
-
-        Gson gson = new GsonBuilder()
-                .setDateFormat(&amp;quot;yyyy-MM-dd&#39;T&#39;HH:mm:ss&amp;quot;)
-                .excludeFieldsWithoutExposeAnnotation() // Android 23 için düzenleme
-                .create();
-
-        client = clientBuilder.build();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(BuildConfig.BACKEND_URL)
-                .client(client)
-                .build();
-
-        apiService = retrofit.create(ApiService.class);
-    }
-
-    @DebugLog
-    public static RestClient getInstance(Context context) {
-        if (_instance == null) {
-            _instance = new RestClient(context);
-        }
-        return _instance;
-    }
-
-    @DebugLog
-    public ApiService getApiService() {
-        return apiService;
-    }
-
-    @DebugLog
-    public OkHttpClient getOkHttpClient() {
-        return client;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda &lt;strong&gt;ÖNEMLİ&lt;/strong&gt; yazan alanda &lt;code&gt;clientBuilder.authenticator(new TokenAuthenticator(context))&lt;/code&gt; şeklinde bir authenticator işlevi ekledik.&lt;/p&gt;
-
-&lt;p&gt;Bu sınıfın şunu yapıyor:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Belirttiğimiz header ve body bilgileri doğrultusunda istek yaptık ve sonuç olarak &lt;strong&gt;401&lt;/strong&gt; response code döndü. Yani kimlik doğrulanamadı. Eğer  &lt;strong&gt;401&lt;/strong&gt; döner ise &lt;code&gt;TokenAuthenticator(context&lt;/code&gt; sınıfı devreye girecek ve bizim requestimizin istediğimiz alanlarını düzenleyerek yine aynı isteği otomatik olarak yapıcak.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;TokenAuthenticator&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class TokenAuthenticator implements Authenticator {
-
-    private Context mContext;
-
-    public TokenAuthenticator(Context context) {
-        this.mContext = context;
-    }
-
-    @DebugLog
-    @Override
-    public Request authenticate(Route route, Response response)
-            throws IOException {
-
-        // İlk başta tokenımızı nasıl elde ettiysek yine aynı şekilde ama senkron şekilde elde ediyoruz.
-        AccessTokenResponse accessTokenResponse = RestClient.getInstance(mContext)
-                .getApiService()
-                .getAccessTokenImmediate(AccessTokenRequest.buildParams())
-                .execute()
-                .body();
-
-        String accessToken = accessTokenResponse.getAccessToken();
-
-        // Veritabanımızda ki token bilgisi güncelliyoruz
-        AppDataHelper.getInstance(mContext).saveAccessToken(accessToken);
-
-        String tokenType = &amp;quot;Bearer&amp;quot;;
-
-        Request original = response.request();
-        Request.Builder newRequestBuilder = original.newBuilder();
-
-        // Eski isteğimizde ki Authorization header alanını siliyoruz. Eğer silmezsek birden fazla aynı keye sahip header alanımız olur.
-        if (original.headers().get(&amp;quot;Authorization&amp;quot;) != null) {
-            Logger.i(&amp;quot;Authorization Header is: &amp;quot; + original.headers().get(&amp;quot;Authorization&amp;quot;));
-            newRequestBuilder.removeHeader(&amp;quot;Authorization&amp;quot;);
-        }
-
-        // Ve yeni token değeri ile tekrar Authorization headerı ekliyoruz.
-        Request newRequest = newRequestBuilder
-                .addHeader(&amp;quot;Authorization&amp;quot;, tokenType + &amp;quot; &amp;quot; + accessToken)
-                .method(original.method(), original.body())
-                .build();
-
-        return newRequest;
-    }
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;401&lt;/strong&gt; response kod döndü&lt;/li&gt;
-&lt;li&gt;Yukarıda ki kod çalıştı&lt;/li&gt;
-&lt;li&gt;Yeni token elde edildi&lt;/li&gt;
-&lt;li&gt;Yapılan request header bilgileri güncellendi&lt;/li&gt;
-&lt;li&gt;İsteğimiz aynı parametreler ile(&lt;strong&gt;body&lt;/strong&gt; alanı vs.) tekrar yapıldı&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ve gülen surat..
-:)&lt;/p&gt;
-
-&lt;p&gt;Sorunuz varsa sorabilirsiniz.&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/retrofit_oauth/</guid>
+      <description>Retrofit Oauth Entegrasyonu Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya buraya bakabilirsiniz.
+Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.
+Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz.</description>
     </item>
     
     <item>
       <title>Android ile WebView Etkileşimi</title>
-      <link>http://yazilim.aykutasil.com/android-webview-etkilesimi</link>
+      <link>http://yazilim.aykutasil.com/android-webview-etkilesimi/</link>
       <pubDate>Wed, 11 Jan 2017 19:59:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-webview-etkilesimi</guid>
-      <description>
-
-&lt;p&gt;Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Backend : .Net&lt;/li&gt;
-&lt;li&gt;Client : Android (Java)&lt;/li&gt;
-&lt;li&gt;Ödeme altyapısı : İyzico&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.&lt;/p&gt;
-
-&lt;p&gt;Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs. giriyor. Bu durumda client ile web sayfası iletişimini de bir şekilde sağlamamız gerekiyor.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Yukarıda ki hikayeyi anlatarak kafanızda bir problemi canlandırmaya çalıştım. Benzer bir çok durum ile karşı karşıya kalabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Ulan ben webview de ki butonu vs nasıl android tarafında kontrol edicem ? gibi akılda deli sorular oluşabilir..&lt;/p&gt;
-
-&lt;p&gt;Tabiri caiz ise : PhoneGap tarzı bişiler.. 🙂 😉&lt;/p&gt;
-
-&lt;p&gt;Neyse.&lt;/p&gt;
-
-&lt;p&gt;Örnek ver hacı abi;&lt;/p&gt;
-
-&lt;h2 id=&#34;layout-xml&#34;&gt;Layout.xml&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
-&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
-    android:layout_width=&amp;quot;match_parent&amp;quot;
-    android:layout_height=&amp;quot;match_parent&amp;quot;
-    android:orientation=&amp;quot;vertical&amp;quot;&amp;gt;
-
-    &amp;lt;WebView
-        android:id=&amp;quot;@+id/WebView&amp;quot;
-        android:layout_width=&amp;quot;match_parent&amp;quot;
-        android:layout_height=&amp;quot;match_parent&amp;quot; /&amp;gt;
-
-&amp;lt;/LinearLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;activity-fragment&#34;&gt;Activity – Fragment&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;WebView webView = (WebView) findViewById(R.id.WebView);
-
-WebSettings settings = webView.getSettings();
-settings.setDefaultTextEncodingName(&amp;quot;utf-8&amp;quot;);
-settings.setJavaScriptEnabled(true);
-
-webView.setWebViewClient(new MyWebViewClient());
-webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView, callbackDialog), &amp;quot;Android&amp;quot;); // Buraya dikkat
-webView.loadDataWithBaseURL(null, response.getData().getThreeDSHtmlContent(), &amp;quot;text/html&amp;quot;, &amp;quot;utf-8&amp;quot;, null); // elimizde bulunan bir html dökümanı webview e basıyoruz. URL de verebilirsin istersen
-webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView, callbackDialog), &amp;quot;Android&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki “Android” kısmına istediğimiz ismi verebiliriz. WebView yapısı, burada belirtmiş olduğumuz isim ile sayfaya yüklenen içeriğe bir eklenti yapıyor, yani bir instance alıyor. Biz bu instance ı kullanarak iletişimimizi sağlıyoruz.&lt;/p&gt;
-
-&lt;p&gt;Az sabır. Nasıl olduğunu görüceksin..&lt;/p&gt;
-
-&lt;h2 id=&#34;mywebviewclient&#34;&gt;MyWebViewClient&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MyWebViewClient extends WebViewClient {
-
-    @Override
-    public void onPageFinished(WebView view, String url) {
-        super.onPageFinished(view, url);
-        //view.loadUrl(&amp;quot;javascript:window.Android.processHTML(&#39;&amp;lt;html&amp;gt;&#39;+document.getElementsByTagName(&#39;html&#39;)[0].innerHTML+&#39;&amp;lt;/html&amp;gt;&#39;);&amp;quot;);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Bu blok ne yapıyor ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;window.Android.processHTML&lt;/strong&gt; de ki Android bizim yukarıda belirtmiş olduğumuz aracı.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;processHtml&lt;/strong&gt; ise aşağıda tanımlıcak olduğumuz fonksiyon.&lt;/p&gt;
-
-&lt;p&gt;Diğer kısımlar javascript fonksiyonu zaten. Yani sayfada ki ilk html tag ını bularak içindeki html kodu al.&lt;/p&gt;
-
-&lt;p&gt;Aşağıda ki processHtml e bakarsan görüceksin ki htmlContent parametresi bekliyor.Biz de bu parametreye sayfa içeriğinin html kodunu gönderiyoruz. Almış olduğun bu html içeriğiyle ne yaparsın sana kalmış.&lt;/p&gt;
-
-&lt;h2 id=&#34;mywebviewjavascriptinterface&#34;&gt;MyWebViewJavascriptInterface&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MyWebViewJavascriptInterface {
-
-    Context mContext;
-    WebView mWebView;
-
-    MyWebViewJavascriptInterface(Context c, WebView webView) {
-        this.mContext = c;
-        this.mWebView = webView;
-    }
-
-    @JavascriptInterface
-    public void processHTML(String htmlContent) {
-        // işlem
-        // Toast ile html içeriğini gösterebiliriz       
-    }
-
-    @JavascriptInterface
-    public void islemeDevamEt() {
-       // işlem
-    }
-
-    @JavascriptInterface
-    public void pencereyiKapat() {
-        // işlem
-        // dialog.dismiss();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;WebView miz ile Android native kodumuzun iletişimini bu sınıf sağlıyor.&lt;/p&gt;
-
-&lt;p&gt;Aşşağıda ki  kod ile bunu söylüyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView), &amp;ldquo;Android&amp;rdquo;);&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Not&lt;/em&gt;&lt;/strong&gt; : Android 4.2 den sonra &lt;strong&gt;@JavascriptInterface&lt;/strong&gt; annotations ını eklememiz gerekmekte. Yoksa nolur ? Çalışmaz 😉&lt;/p&gt;
-
-&lt;h2 id=&#34;custom-html-content&#34;&gt;Custom Html Content&lt;/h2&gt;
-
-&lt;p&gt;WebView de gösterdiğimiz html contentinde bir buton ekleyelim.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; &amp;lt;button class=&amp;quot;btn btn-danger&amp;quot; onclick=&amp;quot;PencereyiKapat()&amp;quot;&amp;gt;Pencereyi Kapat&amp;lt;/button&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;WebView içinde ki bu butona basıldığını Android anlasın ve (WebView imizi Dialog içerisinde gösterildiğini varsayarak) dialog penceresini kapasın.&lt;/p&gt;
-
-&lt;p&gt;Butonumuzun olduğu sayfaya  javascript kodumuzu ekliyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-  function PencereyiKapat() {
-     Android.pencereyiKapat();
-  }
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki Android i hatırladınız dimi ? 🙂&lt;/p&gt;
-
-&lt;p&gt;HTML sayfamız bu kadar.&lt;/p&gt;
-
-&lt;p&gt;WebView içerisinde ki butona basıldığında javascript fonksiyonu çalışacak ve Android.pencereyiKapat() çalışacak. Yani native tarafta tanımlamış olduğumuz pencereyiKapat() fonksiyonu.&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki yapıyı kullanarak WebView – Android Native etkileşimli yapı kurabilirsin.&lt;/p&gt;
-
-&lt;p&gt;Her zaman ki gibi hayal gücüne ve projeye kalmış 😉&lt;/p&gt;
-
-&lt;p&gt;Kalın sağlıcakla..&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/android-webview-etkilesimi/</guid>
+      <description>Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
+ Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
+Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.</description>
     </item>
     
     <item>
       <title>RxJava range() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-range</link>
+      <link>http://yazilim.aykutasil.com/rxjava-range/</link>
       <pubDate>Wed, 11 Jan 2017 18:52:51 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/rxjava-range</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-range-kullanımı&#34;&gt;RxJava range() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;**Örnek kod:&amp;ndash;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void range() {
-    Observable.range(3, 5).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;val: &amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki kodun çıktısı aşağıdaki gibidir.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val: 3
-I/MainActivity: val: 4
-I/MainActivity: val: 5
-I/MainActivity: val: 6
-I/MainActivity: val: 7
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/rxjava-range/</guid>
+      <description>RxJava range() Kullanımı **Örnek kod:&amp;ndash;
+private void range() { Observable.range(3, 5).subscribeOn(Schedulers.io()) .subscribe(success -&amp;gt; { Log.i(TAG, &amp;quot;val: &amp;quot; + success.toString()); }); }  Açıklama:
+İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7
+Yukarıda ki kodun çıktısı aşağıdaki gibidir.
+I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActivity: val: 6 I/MainActivity: val: 7  RxJava candır 😉</description>
     </item>
     
     <item>
       <title>RxJava scan() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-scan</link>
+      <link>http://yazilim.aykutasil.com/rxjava-scan/</link>
       <pubDate>Wed, 11 Jan 2017 18:49:21 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/rxjava-scan</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-scan-kullanımı&#34;&gt;RxJava scan() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;RxJava da scan() kullanımı iki şekilde olur.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1. İlk değer ataması yapılarak&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan(10,(val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2. İlk değer ataması yapılmadan&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan((val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Açıklama:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Observable nesnesinin içindeki her bir item a fonksiyon uygulamamızı sağlar. Ve her iterasyon sonrası sonucu yayınlar yani subscribe.OnSuccess metoduna yollar. Başka bir deyişle scan() kod bloğu içeresinde tanımlamış olduğumuz fonksiyonu item lara sırayla uygulayarak onNext() fonksiyonunu çağırır.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void scan() {
-    Observable.just(3, 5, 7, 9)
-            .scan(10,(val1, val2) -&amp;gt; {
-                //
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).subscribeOn(Schedulers.io())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki örnek üzerinden gidecek olursak;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: Sonuc:10
-I/MainActivity: val1: 10
-I/MainActivity: val2: 3
-I/MainActivity: Sonuc:13
-I/MainActivity: val1: 13
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:18
-I/MainActivity: val1: 18
-I/MainActivity: val2: 7
-I/MainActivity: Sonuc:25
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;böyle bir çıktı ile karşılaşırız.&lt;/p&gt;
-
-&lt;p&gt;İlk değer ataması yaptığımız için (10) ilk olarak onSuccess in içine bu değer düşer. Daha sonra Observable nesnemizin ilk item ı olan 3 değeri ile toplama işlemi yapılır (10 + 3) ve sonuç onSuccess e  yollanır (13). Daha sonra 13 ile ikinci item olan 5 toplanır (13 + 5) ve sonuç (18) onSuccess e aktarılır. Tüm item lar işlem görünceye kadar devam eder.&lt;/p&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/rxjava-scan/</guid>
+      <description>RxJava scan() Kullanımı RxJava da scan() kullanımı iki şekilde olur.
+ 1. İlk değer ataması yapılarak  private void scan() { Observable.just(3, 5, 7, 9) .scan(10,(val1, val2) -&amp;gt; { // Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString()); Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString()); return val1 + val2; }).subscribeOn(Schedulers.io()) .subscribe(success -&amp;gt; { Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString()); }); }   2. İlk değer ataması yapılmadan  private void scan() { Observable.just(3, 5, 7, 9) .</description>
     </item>
     
     <item>
       <title>RxJava reduce() Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/rxjava-reduce</link>
+      <link>http://yazilim.aykutasil.com/rxjava-reduce/</link>
       <pubDate>Wed, 11 Jan 2017 18:42:04 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/rxjava-reduce</guid>
-      <description>
-
-&lt;h1 id=&#34;rxjava-reduce-kullanımı&#34;&gt;RxJava reduce() Kullanımı&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;reduce()&lt;/strong&gt; fonskyionu iki şekilde çalışır;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
-    @Override
-    public Integer apply(Integer val1, Integer val2) throws Exception {
-        return null;
-    }
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;.reduce(10,new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() {
-    @Override
-    public Integer apply(Integer val1, Integer val2) throws Exception {
-        return null;
-    }
-})
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki örneklerde daha net görebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;RxJava’nın reduce fonksiyonunu tanımlıcak olursak;&lt;/p&gt;
-
-&lt;p&gt;Observable nesnesine ait her bir item a (1 , 3, 5) fonksiyon uygulanmasını sağlar. Bunu map() gibi fonksiyonlarda sağlıyor. Ama tabi reduce bunu farklı bir şekilde yapıyor.&lt;/p&gt;
-
-&lt;p&gt;Eğer ilk değer (seed) atanmamış ise ilk değer olarak (val1) ilk item ı (1) alıyor.&lt;/p&gt;
-
-&lt;p&gt;Daha sonra biz her item a yapması gereken işlem olarak iki değeri toplamasını söylediğimiz için, ilk değer ve ikinci değeri toplayıp bunu bir sonraki işlem için ilk değer olarak atıyor. İkinci iterasyonda kaldığı yerden devam ederek, ilk değer olarak bir önceki işlemin sonucu ve ikinci değer olarak 2. item ı alıyor. Yine toplama işlemi yaparak bir sonraki işlem için ilk değer ataması yapıyor.&lt;/p&gt;
-
-&lt;p&gt;Tüm item lar ile işlem yapıncaya kadar devam ediyor ve sonuç subscribe.onSuccess in içine düşüyor.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
-    Observable.just(1, 3, 5)
-            .reduce((val1, val2) -&amp;gt; {
-                Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-                Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-                return val1 + val2;
-            }).retry()
-            .subscribeOn(Schedulers.computation())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 1
-I/MainActivity: val2: 3
-I/MainActivity: val1: 4
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:9
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Burda yukarıda ki işlemden farklı olarak ek bir iterasyon daha yapılıyor. Çünkü ilk değer atamasını biz kendimiz yapıyoruz. İkinci değer olarak da her item sırayla bu görevi üstleniyor. Ve toplama işlemi yapılıp, toplam sonucunu ilk değer olarak atadıktan sonra döngü devam ediyor. Ve sonuç subscribe.onSuccess e düşüyor.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void reduce() {
-    Observable.just(1, 3, 5).reduce(10, (val1, val2) -&amp;gt; {
-        Log.i(TAG, &amp;quot;val1: &amp;quot; + val1.toString());
-        Log.i(TAG, &amp;quot;val2: &amp;quot; + val2.toString());
-        return val1 + val2;
-    }).retry()
-            .subscribeOn(Schedulers.computation())
-            .subscribe(success -&amp;gt; {
-                Log.i(TAG, &amp;quot;Sonuc:&amp;quot; + success.toString());
-            });
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Çıktı:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: val1: 10
-I/MainActivity: val2: 1
-I/MainActivity: val1: 11
-I/MainActivity: val2: 3
-I/MainActivity: val1: 14
-I/MainActivity: val2: 5
-I/MainActivity: Sonuc:19
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;RxJava candır 😉&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/rxjava-reduce/</guid>
+      <description>RxJava reduce() Kullanımı reduce() fonskyionu iki şekilde çalışır;
+ 1  .reduce(new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })   2  .reduce(10,new BiFunction&amp;lt;Integer, Integer, Integer&amp;gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })  1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.
+Aşağıdaki örneklerde daha net görebilirsiniz.</description>
     </item>
     
     <item>
@@ -600,447 +73,10 @@ I/MainActivity: Sonuc:19
       <pubDate>Wed, 11 Jan 2017 17:27:29 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-library--bintray/</guid>
-      <description>&lt;p&gt;Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂&lt;/p&gt;
-
-&lt;p&gt;Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi &lt;strong&gt;maven&lt;/strong&gt; ve &lt;strong&gt;jcenter&lt;/strong&gt; repository e deploy etmek olucak.&lt;/p&gt;
-
-&lt;p&gt;Ve başlayabiliriz.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak &lt;strong&gt;Android Studio&lt;/strong&gt; yu açarak &lt;strong&gt;File &amp;gt; New &amp;gt; New Project&lt;/strong&gt; e tıklayıp yeni bir proje oluşturalım.&lt;/p&gt;
-
-&lt;p&gt;Daha sonra oluşturmuş olduğunuz app e sağ tıklayıp &lt;strong&gt;New &amp;gt; Module&lt;/strong&gt; sekmesinden gerekli yerleri doldurup projemize ekleyelim.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/PQRghY8&#34;&gt;&lt;img src=&#34;http://i.imgur.com/PQRghY8.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/IV1YJmw&#34;&gt;&lt;img src=&#34;http://i.imgur.com/IV1YJmw.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/nQHzaY7&#34;&gt;&lt;img src=&#34;http://i.imgur.com/nQHzaY7.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğumuz module içerisine kodlarımızı yazıyoruz. Module ümüzün sanki bir projeymiş gibi kendine ait dosyaları vardır. Yani kendine ait bir AndroidManifest.xml dosyası , kendine ait drawable klasörü vs. vardı. İstediğimiz şekilde özelleştirme yapabilir ve istediğimiz herhangi bir projede bu kodları kullanabiliriz.(Zaten yapılmış olanları bu şekilde kullanıyoruz. Neyin nasıl yapıldığını anlamak her zaman için ufkumuzu genişletecektir…)&lt;/p&gt;
-
-&lt;p&gt;Kodlarımızı yazdık. Sıra geldi module ümüzün gradle dosyasını düzenlemeye.&lt;/p&gt;
-
-&lt;p&gt;Ama bundan önce Project düzeyindeki gradle dosyasını güncellememiz gerekli.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath &#39;com.android.tools.build:gradle:2.1.0&#39;
-        classpath &#39;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4&#39;
-        classpath &#39;com.github.dcendents:android-maven-gradle-plugin:1.3&#39;
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/3uET4kz&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3uET4kz.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ve module ümüzün &lt;strong&gt;gradle&lt;/strong&gt; dosyasını düzenliyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.android.library&#39;
-apply plugin: &#39;com.github.dcendents.android-maven&#39; // maven repository e eklememiz için gerekli gradle plugin
-apply plugin: &amp;quot;com.jfrog.bintray&amp;quot; // bintray yapılandırması yapmamız için gerekli gradle plugin
-// Kodların devamında göreceğiniz hazır yazılmış gradle tasklerini getiren yapıda, güncellenmesi gereken yerleri
-// bu şekilde düzenliyoruz.
-ext {
-    PUBLISH_GROUP_ID = &#39;com.aykuttasil&#39;
-    PUBLISH_ARTIFACT_ID = &#39;androidbasichelper&#39;
-    PUBLISH_VERSION = &#39;1.0.0&#39;
-}
-
-android {
-    compileSdkVersion 23
-    buildToolsVersion &amp;quot;23.0.3&amp;quot;
-
-    defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 23
-        versionCode 1
-        versionName &amp;quot;1.0.0&amp;quot;
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
-        }
-    }
-}
-
-// Oluşturmuş olduğumuz kütüphane aşağıdaki bağımlılıklara sahip. Sanki bir uygulama geliştiriyormuş gibi 
-// bağımlılık dosyalarını ekliyoruz.
-dependencies {
-    testCompile &#39;junit:junit:4.12&#39;
-    compile &#39;com.android.support:appcompat-v7:23.4.0&#39;
-    compile &#39;com.afollestad.material-dialogs:core:0.8.5.9&#39;
-    compile &#39;com.joanzapata.iconify:android-iconify-fontawesome:2.1.1&#39;
-    compile &#39;com.android.support:appcompat-v7:23.4.0&#39;
-    compile &#39;com.android.support:design:23.4.0&#39;
-}
-
-// Aşağıda ki linke girip bakarsanız aslında gradle task yazılmış olduğunu görürsünüz. Bu yazılan task ler ile
-// oluşturmuş olduğumuz module dosyalarından gerekli dosyalara dönüşümlerini sağlıyoruz.
-apply from: &#39;https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle&#39;
-
-def siteUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper&#39;      // Homepage URL of the library
-def gitUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper.git&#39;   // Git repository URL
-group = &amp;quot;com.aykuttasil&amp;quot;
-
-install {
-    repositories.mavenInstaller {
-        pom {
-            project {
-                packaging &#39;aar&#39;
-
-                name &#39;com.aykuttasil:androidbasichelper&#39; // TODO
-                description = &#39;Android Basic Helper&#39; // TODO
-                url siteUrl
-
-                // Set your license
-                licenses {
-                    license {
-                        name &#39;The Apache Software License, Version 2.0&#39;
-                        url &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
-                    }
-                }
-                developers {
-                    developer {
-                        id &#39;aykuttasil&#39; // TODO
-                        name &#39;Aykut Asil&#39; // TODO
-                        email &#39;aykuttasil@gmail.com&#39; // TODO
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/NPUZYLU&#34;&gt;&lt;img src=&#34;http://i.imgur.com/NPUZYLU.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/waSW8fe&#34;&gt;&lt;img src=&#34;http://i.imgur.com/waSW8fe.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Evet gradle dosyalarını düzenledik. Sıra geldi çalıştırmaya.&lt;/p&gt;
-
-&lt;p&gt;Bunun için Android Studio içerisinde ki Terminal kısmına giriyoruz ya da mac in kendi Terminal ini açarak projemizin dizinine giriyoruz.&lt;/p&gt;
-
-&lt;p&gt;Ve aşağıdaki komutu giriyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;./gradlew clean build generateRelease&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/qd5tC3N&#34;&gt;&lt;img src=&#34;http://i.imgur.com/qd5tC3N.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/hIScB2P&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hIScB2P.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/D48QUqE&#34;&gt;&lt;img src=&#34;http://i.imgur.com/D48QUqE.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/cgp1Abp&#34;&gt;&lt;img src=&#34;http://i.imgur.com/cgp1Abp.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Evet işlemimize başarılı bir şekilde tamamladık ve gerekli dosyaların oluşturulmasını sağladık.&lt;/p&gt;
-
-&lt;p&gt;Projemizi oluşturduğumuz klasöre gidelim ve &lt;strong&gt;ModuleName &amp;gt; build&lt;/strong&gt; içerisine girerek oluşturulan zip dosyasını  görebiliriz. Bu zip dosyasının içini açarak oluşturulan dosyaları görebilirsiniz. Ve maven repository e bu zip dosyasını ekliceğimizi unutmayın.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/id0McpR&#34;&gt;&lt;img src=&#34;http://i.imgur.com/id0McpR.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Sıra geldi kütüphanemizi maven ve jcenter repository e deploy etmeye.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak &lt;a href=&#34;https://bintray.com/&#34;&gt;https://bintray.com/&lt;/a&gt; adresine girerek üyeliğimizi oluşturuyoruz. Ve sırasıyla aşağıdaki işlemleri yapıyoruz.&lt;/p&gt;
-
-&lt;p&gt;Hesabımızı oluşturduktan sonra &lt;strong&gt;maven&lt;/strong&gt; içerisine girerek &lt;strong&gt;Add New Package&lt;/strong&gt; diyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/AGY1vSx&#34;&gt;&lt;img src=&#34;http://i.imgur.com/AGY1vSx.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki alanlara gerekli bilgileri giriyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/82CCD5F&#34;&gt;&lt;img src=&#34;http://i.imgur.com/82CCD5F.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Daha sonra oluşturmuş olduğumuz package ın içerisine girerek &lt;strong&gt;New Version&lt;/strong&gt; a tıklıyoruz ve &lt;strong&gt;1.0.0&lt;/strong&gt; şeklinde ya da istediğiniz şekilde Name  i düzenliyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/7qNM2aj&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7qNM2aj.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/1bC8KSi&#34;&gt;&lt;img src=&#34;http://i.imgur.com/1bC8KSi.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğumuz versiyon içerisine girerek &lt;strong&gt;Upload Files&lt;/strong&gt; diyoruz ve daha önce oluşturduğumuz &lt;strong&gt;zip&lt;/strong&gt; dosyasını seçerek upload işlemini tamamlıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/T2oG4DP&#34;&gt;&lt;img src=&#34;http://i.imgur.com/T2oG4DP.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/w99RPib&#34;&gt;&lt;img src=&#34;http://i.imgur.com/w99RPib.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Kütüphanemizi &lt;strong&gt;maven&lt;/strong&gt; respository yüklemiş bulunmaktayız.&lt;/p&gt;
-
-&lt;p&gt;Fakat Android Studio default olarak &lt;strong&gt;jcenter&lt;/strong&gt; resository kullanmakta. Biz de bu yüzden birkaç işlem daha yapmalıyız ki geliştiriciler kolayca, tek satır ekleyerek kütüphanemizi kullanmaya başlasınlar.&lt;/p&gt;
-
-&lt;p&gt;Aşağıda ki sayfaya gelerek &lt;strong&gt;Add to jCenter&lt;/strong&gt; butonuna tıklıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/lMQR4kl&#34;&gt;&lt;img src=&#34;http://i.imgur.com/lMQR4kl.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ve aşağıdaki gibi gerekli yerleri doldurarak işlemimizi tamamlıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/GK7Eq9d&#34;&gt;&lt;img src=&#34;http://i.imgur.com/GK7Eq9d.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Kütüphanemizin kullanımı için birkaç saat beklememiz gerekmektedir. Olmadı diye telaş yapıp kafayı yemeyin 😉&lt;/p&gt;
-
-&lt;p&gt;Bu arada oluşturmuş olduğumuz kütüphanemize aşağıda ki linkten erişip projelerinizde gönül rahatlığıyla kullanabilirsiniz 🙂&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gradle :&lt;/strong&gt; &lt;code&gt;compile ‘com.aykuttasil:androidbasichelper:1.0.0’&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;GitHub :&lt;/strong&gt; &lt;a href=&#34;https://github.com/aykuttasil/AndroidBasicHelper&#34;&gt;https://github.com/aykuttasil/AndroidBasicHelper&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Yukarıda ki yöntem ile local inizde &lt;strong&gt;aar&lt;/strong&gt; dosyası oluşturarak manuel bir şekilde bu aar yi repository lere yükleyebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Peki bunu sadece birkaç komuta indirgesek ve otomatik yüklemeyi sağlasak nasıl olur ? Bencede güzel olur.&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki yöntemin yine bir benzeri (daha okunabilir ve kolay) ve artı ilaveleri şeklinde devam edelim.&lt;/p&gt;
-
-&lt;p&gt;Yeni dosya yapımız ve gradle dosyalarımızı yeri aşağıdaki resimdeki gibi olmalı. Burada 3 adet kendimizin oluşturduğu gradle dosyasını görüyorsunuz gradle klasörünün altında. Diğer gradle lar zaten Android Studio tarafından oluşturuluyor.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/cQyvhZb&#34;&gt;&lt;img src=&#34;http://i.imgur.com/cQyvhZb.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;build.gradle&lt;/strong&gt; dosyalarımızın içeriği aşağıdaki gibidir.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/0M6faiE&#34;&gt;&lt;img src=&#34;http://i.imgur.com/0M6faiE.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/fO5aXX8&#34;&gt;&lt;img src=&#34;http://i.imgur.com/fO5aXX8.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ext {
-    bintrayRepo = &#39;maven&#39; // maven reposu olduğunu belirtiyoruz
-    bintrayName = &#39;basic-helper&#39; 
-    orgName = &#39;aykuttasil&#39;
-
-    publishedGroupId = &#39;com.aykuttasil&#39;
-    libraryName = &#39;Android Basic Helper&#39;
-    artifact = &#39;androidbasichelperlib&#39; // module ile aynı isimde olması gerekiyor !!
-
-    libraryDescription = &#39;Android Basic Helper&#39;
-
-    siteUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper&#39; 
-    gitUrl = &#39;https://github.com/aykuttasil/AndroidBasicHelper.git&#39;
-
-    libraryVersion = rootProject.ext.libraryVersion
-
-    developerId = &#39;aykuttasil&#39;
-    developerName = &#39;Aykut Asil&#39;
-    developerEmail = &#39;aykuttasil@gmail.com&#39;
-
-    licenseName = &#39;The Apache Software License, Version 2.0&#39;
-    licenseUrl = &#39;http://www.apache.org/licenses/LICENSE-2.0.txt&#39;
-    allLicenses = [&amp;quot;Apache-2.0&amp;quot;]
-}
-
-if (project.rootProject.file(&#39;local.properties&#39;).exists()) {
-    apply from: rootProject.file(&#39;gradle/install-v1.gradle&#39;)
-    apply from: rootProject.file(&#39;gradle/bintray-android-v1.gradle&#39;)
-}
-
-
-// ./gradlew clean install bintrayUpload
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;ext {
-    sdk = 24
-    buildTools = &amp;quot;24.0.1&amp;quot;
-    minSdk = 17
-    libraryVersion = &amp;quot;1.0.20&amp;quot;
-    libraryVersionCode = 11
-    supportVersion = &amp;quot;24.2.0&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Aşağıda ki resimde gördüğünüz gibi (Android Studio Project görünümüne geçmelisiniz) 3 adet gradle dosyamızı hazırladık. Kod kalabalığı olmasın ve neyin nerede olduğu belli olsun diye bu şekilde yaptık. Yoksa direk build.gradle dosyamızın içine de yazabilirdik.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/6coc2bg&#34;&gt;&lt;img src=&#34;http://i.imgur.com/6coc2bg.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.github.dcendents.android-maven&#39;
-
-group = publishedGroupId                               // Maven Group ID for the artifact
-
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging &#39;aar&#39;
-                groupId publishedGroupId
-                artifactId artifact
-
-                // Add your description here
-                name libraryName
-                description libraryDescription
-                url siteUrl
-
-                // Set your license
-                licenses {
-                    license {
-                        name licenseName
-                        url licenseUrl
-                    }
-                }
-                developers {
-                    developer {
-                        id developerId
-                        name developerName
-                        email developerEmail
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-
-                }
-            }
-        }
-    }
-}
-//from https://github.com/workarounds/bundler/blob/master/gradle/install-v1.gradle
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.jfrog.bintray&#39;
-
-version = libraryVersion
-
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier = &#39;sources&#39;
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = &#39;javadoc&#39;
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-// Bintray
-Properties properties = new Properties()
-properties.load(project.rootProject.file(&#39;local.properties&#39;).newDataInputStream())
-
-bintray {
-    user = properties.getProperty(&amp;quot;bintray.user&amp;quot;)
-    key = properties.getProperty(&amp;quot;bintray.apikey&amp;quot;)
-
-    configurations = [&#39;archives&#39;]
-    pkg {
-        repo = bintrayRepo
-        name = bintrayName
-        desc = libraryDescription
-        userOrg = orgName
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = [&#39;Apache-2.0&#39;]
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            desc = libraryDescription
-            gpg {
-                sign = true //Determines whether to GPG sign the files. The default is false
-                passphrase = properties.getProperty(&amp;quot;bintray.gpg.password&amp;quot;)
-                //Optional. The passphrase for GPG signing&#39;
-            }
-        }
-    }
-}
-
-//from https://github.com/workarounds/bundler/blob/master/gradle/bintray-java-v1.gradle
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;apply plugin: &#39;com.jfrog.bintray&#39;
-
-version = libraryVersion
-
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = &#39;sources&#39;
-}
-
-task javadoc(type: Javadoc) {
-    failOnError = false
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = &#39;javadoc&#39;
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-// Bintray
-Properties properties = new Properties()
-properties.load(project.rootProject.file(&#39;local.properties&#39;).newDataInputStream())
-
-bintray {
-    user = properties.getProperty(&amp;quot;bintray.user&amp;quot;)
-    key = properties.getProperty(&amp;quot;bintray.apikey&amp;quot;)
-
-    configurations = [&#39;archives&#39;]
-    pkg {
-        repo = bintrayRepo
-        name = bintrayName
-        desc = libraryDescription
-        userOrg = orgName
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = allLicenses
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            desc = libraryDescription
-            gpg {
-                sign = true //Determines whether to GPG sign the files. The default is false
-                passphrase = properties.getProperty(&amp;quot;bintray.gpg.password&amp;quot;)
-                //Optional. The passphrase for GPG signing&#39;
-            }
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tüm bu dosya yapısını hazırladıktan sonra bintray konfigürasyonu için birkaç işlem daha kaldı.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;local.properties&lt;/strong&gt; dosyamızın içine bintray bilgilerimizi giriyoruz. Bu bilgileri direk build.gradle içerisine girebilirdik fakat bu bilgilere sadece biz sahip olmalıyız 🙂 ve gitignore un içinde local.properties dosyasının ekli olduğuna dikkat edelim !!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/hSrkkEc&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hSrkkEc.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Bintray api key almak için bintray sitesine giderek gerekli sayfaya ulaşıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/bmNY7Is&#34;&gt;&lt;img src=&#34;http://i.imgur.com/bmNY7Is.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/Vot0Fkk&#34;&gt;&lt;img src=&#34;http://i.imgur.com/Vot0Fkk.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Evet tüm işlemler bu kadar.&lt;/p&gt;
-
-&lt;p&gt;Artık terminalden aşağıdaki komutu yazarak otomatik yüklenmeyi sağlayabiliriz.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;./gradlew clean install bintrayUpload&lt;/code&gt;&lt;/p&gt;
-</description>
+      <description>Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂
+Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi maven ve jcenter repository e deploy etmek olucak.
+Ve başlayabiliriz.
+İlk olarak Android Studio yu açarak File &amp;gt; New &amp;gt; New Project e tıklayıp yeni bir proje oluşturalım.</description>
     </item>
     
     <item>
@@ -1049,115 +85,22 @@ bintray {
       <pubDate>Wed, 11 Jan 2017 17:24:52 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</guid>
-      <description>&lt;p&gt;Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.&lt;/p&gt;
-
-&lt;p&gt;Bunlardan biri de Android M – Marshmallow (23) ile  gelen Runtime Permissions olayı.&lt;/p&gt;
-
-&lt;p&gt;Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel. İlerleyen zamanlarda illa ki bu alışkanlığı edinecek insanlar olacaktır 😉&lt;/p&gt;
-
-&lt;p&gt;Fazla uzatmadan birkaç link ve ipucu vericem.&lt;/p&gt;
-
-&lt;p&gt;Android Runtime Permissions olayının nasıl yapıldığını görmek için&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;https://github.com/googlesamples/android-RuntimePermissions&#34;&gt;https://github.com/googlesamples/android-RuntimePermissions&lt;/a&gt; burada süper bir örnek var.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&#34;&gt;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&lt;/a&gt; burada kısa bir özet var.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Takıldığınız yeri yorumlarda belirtebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Örneği incelediğiniz de şu satırı yazarken dikkat edin.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA},123456);&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;burada sadece&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;yerine&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;android.Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;kullanacaksınız. Yoksa izin listesini bulamaz.&lt;/p&gt;
-</description>
+      <description>Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.
+Bunlardan biri de Android M – Marshmallow (23) ile gelen Runtime Permissions olayı.
+Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel.</description>
     </item>
     
     <item>
       <title>Android Glide ve Palette Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 17:11:30 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi</guid>
-      <description>&lt;p&gt;Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.&lt;/p&gt;
-
-&lt;p&gt;Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/bumptech/glide&#34;&gt;https://github.com/bumptech/glide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gradle :&lt;/strong&gt; &lt;code&gt;compile ‘com.github.florent37:glidepalette:1.0.6’&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.&lt;/p&gt;
-
-&lt;p&gt;Link : &lt;a href=&#34;http://developer.android.com/reference/android/support/v7/graphics/Palette.html&#34;&gt;Android Developer&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Gradle : compile ‘com.android.support:palette-v7:23.1.1’&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Bu iki güzel kütüphanenin birlikte kullanımı ile oldukça güzel işler çıkabilir&lt;/p&gt;
-
-&lt;p&gt;Bunun için de bir kütüphane mevcut 🙂&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/florent37/GlidePalette&#34;&gt;https://github.com/florent37/GlidePalette&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; Glide.with(mContext).load(&amp;quot;ImageAdress&amp;quot;)
-                         // Her resim için farklı bir signature belirtmeliyiz. Bu sayede resimlerin tekrar tekrar yüklenmesini engellemiş oluruz.
-                        .signature(new StringSignature(&amp;quot;ImageSignature&amp;quot;))
-                        .centerCrop()
-                        .listener(GlidePalette.with(&amp;quot;ImageAdress&amp;quot;)
-                                        .use(GlidePalette.Profile.VIBRANT_LIGHT)
-                                        .intoTextColor(txt, GlidePalette.Swatch.BODY_TEXT_COLOR)
-                                        .crossfade(true)
-
-                                         // Belirttiğimiz ImageAdress den gelen resmimiz kullanılmaya hazır olduğunda burada yakalayabilir ve 
-                                         // istediğimiz özelleştirmeyi yapabiliriz.
-                                         // Biz burada yüklenen resmin palette.getDarkMutedColor(DefaultColor) fonksiyonu ile rengini yakalıyoruz ve CollapsingToolbar ın expand olduğu durumda ki title rengini değiştiriyoruz.
-                                        .intoCallBack(new BitmapPalette.CallBack() {
-                                            @Override
-                                            public void onPaletteLoaded(@Nullable Palette palette) {
-                                                mCollapsingToolbar.setExpandedTitleColor(palette.getDarkMutedColor(Color.BLACK));
-                                            }
-                                        })
-                                        /*
-                                        .setGlideListener(new RequestListener&amp;lt;String, GlideDrawable&amp;gt;() {
-                                            @Override
-                                            public boolean onException(Exception e, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFirstResource) {
-                                                return false;
-                                            }
-
-                                            @Override
-                                            public boolean onResourceReady(GlideDrawable resource, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                                return false;
-                                            }
-                                        })
-                                        // optional: do stuff with the builder
-                                        .setPaletteBuilderInterceptor(new BitmapPalette.PaletteBuilderInterceptor() {
-                                            @NonNull
-                                            @Override
-                                            public Palette.Builder intercept(Palette.Builder builder) {
-                                                return builder.resizeBitmapSize(100);
-                                            }
-                                        })
-                                        */
-                        )
-                        .into(mCollapsingImageView);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi/</guid>
+      <description>Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.
+Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.
+ Github : https://github.com/bumptech/glide
+ Gradle : compile ‘com.github.florent37:glidepalette:1.0.6’
+  Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.</description>
     </item>
     
     <item>
@@ -1166,12 +109,9 @@ bintray {
       <pubDate>Wed, 11 Jan 2017 17:07:51 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-viewpager/</guid>
-      <description>&lt;p&gt;Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.&lt;/p&gt;
-
-&lt;p&gt;İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.&lt;/p&gt;
-
-&lt;script src=&#34;https://gist.github.com/aykuttasil/bc92ffd516a9f6df1ac9.js&#34;&gt;&lt;/script&gt;
-</description>
+      <description>Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.
+İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.
+ </description>
     </item>
     
     <item>
@@ -1180,27 +120,9 @@ bintray {
       <pubDate>Wed, 11 Jan 2017 16:39:33 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</guid>
-      <description>&lt;p&gt;Android &lt;strong&gt;RecyclerView&lt;/strong&gt; yapısı &lt;strong&gt;ListView&lt;/strong&gt; in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂&lt;/p&gt;
-
-&lt;p&gt;Ayrıca &lt;strong&gt;RecyclerView&lt;/strong&gt;, &lt;strong&gt;CoordinatorLayout&lt;/strong&gt; bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.&lt;/p&gt;
-
-&lt;p&gt;ListView in özelleştirilmesi için birçok kütüphane mevcuttur.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Drag-Drop işlemleri için &lt;a href=&#34;https://github.com/bauerca/drag-sort-listview&#34;&gt;https://github.com/bauerca/drag-sort-listview&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Swipe işlemleri &lt;a href=&#34;https://github.com/timroes/EnhancedListView&#34;&gt;https://github.com/timroes/EnhancedListView&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ama bu kütüphane ve benzerleri ömürlerini doldurmuşlar. Çünkü artık RecyclerView var.&lt;/p&gt;
-
-&lt;p&gt;Evet bu kadar tanıtımdan sonra artık örnek kodlara geçebiliriz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Android CardView yapısı için oldukça güzel hazırlanmış bir kütüphane mevcut. Biz de bu kütüphane ile, RecyclerView içersinde göstermek istediğimiz liste elemanlarımızı CardView içine gömücez. Bu sayede hem daha güzel görünüm elde edicez hem de CardView bileşeninin nimetlerinden yararlanıcaz.&lt;/p&gt;
-
-&lt;p&gt;CardsLib Link : &lt;a href=&#34;https://github.com/gabrielemariotti/cardslib&#34;&gt;CardsLib&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Android RecyclerView yapısı ListView in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂
+Ayrıca RecyclerView, CoordinatorLayout bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.
+ListView in özelleştirilmesi için birçok kütüphane mevcuttur.</description>
     </item>
     
     <item>
@@ -1209,40 +131,11 @@ bintray {
       <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-collections/</guid>
-      <description>&lt;p&gt;Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.&lt;/p&gt;
-
-&lt;p&gt;Bu sayfa da &lt;strong&gt;Collection&lt;/strong&gt; yapısını ve oldukça önemli fonksiyonlarını göreceğiz.&lt;/p&gt;
-
-&lt;p&gt;Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Collections.swap&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Swap&lt;/strong&gt; kelime anlamı ile takas anlamına gelmektedir. Mevcut dizimiz içerisinde elemanların yerlerini değiştirmeye yarar.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private static final String[] STRINGS = new String[]{
-        &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;
-};
-
-private final List mItems = new ArrayList&amp;lt;&amp;gt;();
-public void setArray()
-{
-  mItems.addAll(Arrays.asList(STRINGS));
-}
-mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
-
-//  1,2,3,4,5
-
- 
-
-private void elemanYerDegistir()
-{
-  Collections.swap(mItems, 0, 4);
-}
-mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
-
-//  5,2,3,4,1
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.
+Bu sayfa da Collection yapısını ve oldukça önemli fonksiyonlarını göreceğiz.
+Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.
+Collections.swap
+Swap kelime anlamı ile takas anlamına gelmektedir.</description>
     </item>
     
     <item>
@@ -1251,350 +144,20 @@ mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
       <pubDate>Wed, 11 Jan 2017 16:01:33 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-custom-toolbar-title/</guid>
-      <description>&lt;p&gt;Android Toolbar bileşeni çok yönlü bir yapıya sahiptir. Android Design Library  kullanarak ve AppBarLayout içerisinde tanımlanarak oldukça farklı şekillere bürünebilir.&lt;/p&gt;
-
-&lt;p&gt;Genel kullanımı aşağıdaki gibidir.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
-&amp;lt;android.support.design.widget.CoordinatorLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
- xmlns:app=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
- xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;match_parent&amp;quot;
- android:background=&amp;quot;@color/primary_dark&amp;quot;
- tools:context=&amp;quot;.MainActivity&amp;quot;&amp;gt;
-
- &amp;lt;FrameLayout
- android:id=&amp;quot;@+id/container&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt;
-
- &amp;lt;/FrameLayout&amp;gt;
-
-
- &amp;lt;android.support.design.widget.FloatingActionButton
- android:id=&amp;quot;@+id/fab&amp;quot;
- android:layout_width=&amp;quot;wrap_content&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- android:layout_gravity=&amp;quot;bottom|end&amp;quot;
- android:layout_margin=&amp;quot;@dimen/fab_margin&amp;quot;
- android:src=&amp;quot;@android:drawable/ic_dialog_email&amp;quot; /&amp;gt;
-
-
- &amp;lt;android.support.design.widget.AppBarLayout
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
-
- &amp;lt;android.support.v7.widget.Toolbar
- android:id=&amp;quot;@+id/toolbar&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- android:background=&amp;quot;@color/primary_dark&amp;quot;
- android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
- app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;/&amp;gt;
-
-
- &amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
-
-&amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;app:elevation=&amp;quot;0dp&amp;quot;&lt;/code&gt;  // AppBarLayout içerisinde ki bu tanımlama default olarak tanımlanmış gölgeyi kaldırır.&lt;/p&gt;
-
-&lt;p&gt;Tanımlamış olduğumuz Toolbar a Activity içerisinden (ya da Fragment vb) erişerek gerekli tanımlamaları vs yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Toolbar Custom Title&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Toolbarınızı tanımladığınız yerde aşağıdaki değişiklikleri yaparak Title ınızı istediğiniz gibi özelleştirebilirsiniz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;android.support.design.widget.AppBarLayout
-    android:layout_width=&amp;quot;match_parent&amp;quot;
-    android:layout_height=&amp;quot;wrap_content&amp;quot;
-    app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
-
-    &amp;lt;android.support.v7.widget.Toolbar
-        android:id=&amp;quot;@+id/toolbar&amp;quot;
-        android:layout_width=&amp;quot;match_parent&amp;quot;
-        android:layout_height=&amp;quot;wrap_content&amp;quot;
-        android:background=&amp;quot;@color/primary_dark&amp;quot;
-        android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
-        app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;&amp;gt;
-
-        &amp;lt;TextView
-            android:id=&amp;quot;@+id/toolbar_title&amp;quot;
-            style=&amp;quot;@style/ToolbarTitleStyle&amp;quot;
-            android:layout_width=&amp;quot;wrap_content&amp;quot;
-            android:layout_height=&amp;quot;wrap_content&amp;quot;
-            android:layout_gravity=&amp;quot;center&amp;quot; /&amp;gt;
-    &amp;lt;/android.support.v7.widget.Toolbar&amp;gt;
-
-
-&amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;FragmentX&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; private void setToolbar() {
- Toolbar toolbar = (Toolbar) mActivity.findViewById(R.id.toolbar);
- mActivity.setSupportActionBar(toolbar);
- mActivity.getSupportActionBar().setHomeButtonEnabled(true);
- mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
- mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false); // Default olarak tanımlanmış Title ın gösterilmemesini belirtiyoruz.
- ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(&amp;quot;SORU SOR&amp;quot;); // Custom olarak belirlenmiş TextView e text ataması yapıyoruz.
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Android Toolbar bileşeni çok yönlü bir yapıya sahiptir. Android Design Library kullanarak ve AppBarLayout içerisinde tanımlanarak oldukça farklı şekillere bürünebilir.
+Genel kullanımı aşağıdaki gibidir.
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt; &amp;lt;android.support.design.widget.CoordinatorLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot; xmlns:app=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot; xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;match_parent&amp;quot; android:background=&amp;quot;@color/primary_dark&amp;quot; tools:context=&amp;quot;.MainActivity&amp;quot;&amp;gt; &amp;lt;FrameLayout android:id=&amp;quot;@+id/container&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt; &amp;lt;/FrameLayout&amp;gt; &amp;lt;android.support.design.widget.FloatingActionButton android:id=&amp;quot;@+id/fab&amp;quot; android:layout_width=&amp;quot;wrap_content&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; android:layout_gravity=&amp;quot;bottom|end&amp;quot; android:layout_margin=&amp;quot;@dimen/fab_margin&amp;quot; android:src=&amp;quot;@android:drawable/ic_dialog_email&amp;quot; /&amp;gt; &amp;lt;android.support.design.widget.AppBarLayout android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; app:elevation=&amp;quot;0dp&amp;quot;&amp;gt; &amp;lt;android.support.v7.widget.Toolbar android:id=&amp;quot;@+id/toolbar&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; android:background=&amp;quot;@color/primary_dark&amp;quot; android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot; app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;/&amp;gt; &amp;lt;/android.support.design.widget.AppBarLayout&amp;gt; &amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;  app:elevation=&amp;quot;0dp&amp;quot; // AppBarLayout içerisinde ki bu tanımlama default olarak tanımlanmış gölgeyi kaldırır.</description>
     </item>
     
     <item>
       <title>Foreground Service ile FusedLocationApi Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi</guid>
-      <description>&lt;p&gt;Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Burada yapacağımız örnekte kısaca şu aşamaları görücez;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Service i foreground olarak başlatmak&lt;/li&gt;
-&lt;li&gt;Ongoing(devamlı gözüken) notification oluşturmak&lt;/li&gt;
-&lt;li&gt;GoogleApiClient a bağlanmak&lt;/li&gt;
-&lt;li&gt;Location bilgisini notification da göstermek&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ForegroundService.java&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ForegroundService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-
- private static final int LOCATION_NOTIF_ID = 859;
- private static int LocationPeriod = 1000 * 30 ;
- 
- private static Notification notification;
- private static GoogleApiClient _googleApiClient = null;
- private static Context mContext;
- private static NotificationCompat.Builder mBuilder;
-
-
-
- @Override
- public void onCreate() {
- super.onCreate();
- mContext = this;
- mBuilder = new NotificationCompat.Builder(mContext);
- }
-
- @Nullable
- @Override
- public IBinder onBind(Intent intent) {
- return null;
- }
-
- @Override
- public int onStartCommand(Intent intent, int flags, int startId) {
-
-
- // Eğer Service ilk defa çalıştırılıyor ise buildGoogleApiClient fonksiyonu ile GoogleApiClient build ediliyor
- if (_googleApiClient == null) {
- buildGoogleApiClient();
- }
- // GoogleApiClient a bağlanılıyor
- _googleApiClient.connect();
-
- // Notificaiton gösteriyoruz
- LocationNotification(null, &amp;quot;Konum Bilgisi Yok&amp;quot;);
-
- // Service imizi foreground olarak başlatıyoruz
- // Foreground service bizden bir notification parametresi ister. Bunun sebebi sürekli ayakta olduğunu kullanıcıya bildirmektir.
- startForeground(LOCATION_NOTIF_ID, notification);
-
- // Herhangi bir sebeple service imizi durması halinde kendiliğinden tekrar başlaması için START_STICKY dönüyoruz.
- return START_STICKY;
- }
-
-
- public synchronized void buildGoogleApiClient() {
- if (_googleApiClient == null) {
- _googleApiClient = new GoogleApiClient.Builder(this)
- .addConnectionCallbacks(this)
- .addOnConnectionFailedListener(this)
- .addApi(LocationServices.API)
- .build();
- }
- }
-
-
- @Override
- public void onConnected(@Nullable Bundle bundle) {
- // GoogleApiClient a bağlanıldığında Location isteğinde bulunuyoruz.
- LocationRequest();
- }
-
-
- @Override
- public void onConnectionSuspended(int i) {
-
- }
-
-
- @Override
- public void onConnectionFailed(ConnectionResult result) {
- // tekrar bağlanmayı deniyoruz
- _googleApiClient.connect();
- }
-
-
- private void LocationRequest() {
-
-
- // PRIORITY_BALANCED_POWER_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız yok ise (Network, Cell Tower)
- // PRIORITY_HIGH_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız var ise (GPS)
-
- final LocationRequest locationRequest = LocationRequest.create()
- .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
- .setInterval((LocationPeriod * 1000)) 
- .setFastestInterval(LOCATION_FASTEST_INTERVAL);
-
-
- //final LocationRequest locationRequest1 = LocationRequest.create()
- // .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
- // .setInterval((LocationPeriod * 1000))
- // .setFastestInterval(LOCATION_FASTEST_INTERVAL);
-
- // İhtiyaçlarımız doğrultusunda yapılandırdığımız LocationRequest in gerekliliklerini kontrol ederek, cihazın davranışının otomatik olarak ayarlanması için
- // gerekli Dialog penceresinin çıkmasını sağlar ve Kullanıcının onayını ister
-
- // Örnek olarak eğer PRIORITY_HIGH_ACCURACY olrarak belirlenmişse ve cihazın GPS i kapalı ise bir Dialog çıkartarak GPS i açmanızı ister
- LocationSettingsRequest locationSettingsRequest = new LocationSettingsRequest.Builder()
- .addLocationRequest(locationRequest)
- .setAlwaysShow(true)
- .build();
-
- PendingResult&amp;lt;LocationSettingsResult&amp;gt; result =
- LocationServices.SettingsApi.checkLocationSettings(_googleApiClient, locationSettingsRequest);
-
- // Gösterilen Dilag penceresi ile Kullanıcının etkileşimi sonucunun yakalar
- result.setResultCallback(new ResultCallback&amp;lt;LocationSettingsResult&amp;gt;() {
- @DebugLog
- @Override
- public void onResult(LocationSettingsResult locationSettingsResult) {
-
- // locationSettingsStates ile cihazın durumunu kontrol ederek akışımızı yönlendirebiliriz
- LocationSettingsStates locationSettingsStates = locationSettingsResult.getLocationSettingsStates();
- 
- // Konum dinlenmeye başlanır
- // mLocationListener ile konum değişikliği yakalanır.
- FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest, mLocationListener);
- 
- //FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest1, mLocationListener);
- 
- }
- });
-
-
- }
-
-
- private static LocationListener mLocationListener = new LocationListener() {
- @Override
- public void onLocationChanged(Location location) {
-
-
- // Location değişikliğini burada yakalayabiliriz.
- // Belirlemiş olduğumuz periyodik zaman aralığında Location değişikliği kontrol edilecektir.
- }
- };
-
-
- 
- public ForegroundService() {
- }
-
- // Bu fonksiyon yardımı ile başka bir sınıftan konum bilgisine erişebiliriz.
- // static olarak tanımlanmış olması bize kolaylık sağlıcaktır.
- public static Location getLastLocation() {
- if (_googleApiClient != null) {
- return FusedLocationApi.getLastLocation(_googleApiClient);
- } else {
- return null;
- }
- }
-
-
- // GoogleApiClient nesnemize erişmek istersek bu kod bloğunu kullanabiliriz.
- public static GoogleApiClient getGoogleApiClient() {
- return _googleApiClient;
- }
-
- 
- public static void removeLocationUpdates() {
- if (_googleApiClient != null) {
- FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
- }
- }
-
- @DebugLog
- private static void LocationNotification(Location location, String subText) {
- NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
- //
-
- mBuilder.setSmallIcon(R.drawable.ic_stat_device_gps_fixed);
- mBuilder.setTicker(&amp;quot;Konum&amp;quot;);
- //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
- mBuilder.setSubText(subText);
- mBuilder.setOnlyAlertOnce(true);
- mBuilder.setPriority(Notification.PRIORITY_HIGH);
-
-
- if (location != null) {
- mBuilder
- .setContentTitle(&amp;quot;Sapma: &amp;quot; + String.valueOf(location.getAccuracy()))
- .setContentText(&amp;quot;Lat: &amp;quot; + String.valueOf(location.getLatitude()) + &amp;quot; , &amp;quot; +
- &amp;quot;Long: &amp;quot; + String.valueOf(location.getLongitude()))
- .setWhen(System.currentTimeMillis())
- .setShowWhen(true)
- .setUsesChronometer(true)
- .setContentIntent(pendingIntent);
-
-
- } else {
- mBuilder
- .setContentTitle(&amp;quot;&amp;quot;)
- .setContentText(&amp;quot;&amp;quot;);
- }
-
-
- notification = mBuilder.build();
- notificationManager.notify(LOCATION_NOTIF_ID, notification);
- }
-
- @DebugLog
- @Override
- public void onDestroy() {
- if (_googleApiClient != null) {
- if (_googleApiClient.isConnected()) {
- FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
- _googleApiClient.disconnect();
- }
- }
- PeriodicHandler.removeMessages(1);
- stopForeground(true);
- super.onDestroy();
- }
-
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tanımlamış olduğumuz servisi başlatmak için istediğimiz yerden ( Activity , Fragment vb.) aşağıdaki kod bloğunu çalıştırmamız yeterli olucaktır.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Intent serviceIntent = new Intent(context, ForegroundService.class);
-startService(serviceIntent);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi/</guid>
+      <description>Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.
+Burada yapacağımız örnekte kısaca şu aşamaları görücez;
+ Service i foreground olarak başlatmak Ongoing(devamlı gözüken) notification oluşturmak GoogleApiClient a bağlanmak Location bilgisini notification da göstermek  İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.</description>
     </item>
     
     <item>
@@ -1603,172 +166,107 @@ startService(serviceIntent);
       <pubDate>Wed, 11 Jan 2017 01:50:51 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/retrofit-multipart-file-upload/</guid>
-      <description>
-
-&lt;h1 id=&#34;retrofit-multipart-file-upload&#34;&gt;Retrofit Multipart File Upload&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;    @DebugLog
-    public BelgeResponse BelgeSync(BelgeRequest request, String apiVersion, String appVersion) {
-        try {
-
-            Map&amp;lt;String, RequestBody&amp;gt; map = new HashMap&amp;lt;&amp;gt;();
-            String belgeDirPath = SuperHelper.getInternalIztopBelgeDir(mContext, request.getGonderiNo());
-            File belgeDir = new File(belgeDirPath);
-            boolean isDir = belgeDir.isDirectory();
-            if (isDir) {
-                File[] files = belgeDir.listFiles();
-                for (File file : files) {
-                    RequestBody requestBody = RequestBody.create(MediaType.parse(&amp;quot;image/jpg&amp;quot;), file);
-                    map.put(&amp;quot;file\&amp;quot;; filename=\&amp;quot;&amp;quot; + file.getName(), requestBody);
-                }
-            }
-
-            //RequestBody requestBodyGonderiNo = RequestBody.create(MediaType.parse(&amp;quot;text/plain&amp;quot;), request.getGonderiNo());
-            //RequestBody requestBodyMusId = RequestBody.create(MediaType.parse(&amp;quot;text/plain&amp;quot;), String.valueOf(request.getMusId()));
-
-            RestClient restClient = RestClient.getInstance();
-            Call&amp;lt;BelgeResponse&amp;gt; responseCall = restClient.getApiService().Belge(
-                    apiVersion,
-                    appVersion,
-                    request.getGonderiNo(),
-                    String.valueOf(request.getMusId()),
-                    map);
-            BelgeResponse resp = responseCall.execute().body();
-            return resp;
-        } catch (Exception ex) {
-            SuperHelper.CrashlyticsLog(ex);
-            return null;
-        }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Retrofit Multipart File Upload @DebugLog public BelgeResponse BelgeSync(BelgeRequest request, String apiVersion, String appVersion) { try { Map&amp;lt;String, RequestBody&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); String belgeDirPath = SuperHelper.getInternalIztopBelgeDir(mContext, request.getGonderiNo()); File belgeDir = new File(belgeDirPath); boolean isDir = belgeDir.isDirectory(); if (isDir) { File[] files = belgeDir.listFiles(); for (File file : files) { RequestBody requestBody = RequestBody.create(MediaType.parse(&amp;quot;image/jpg&amp;quot;), file); map.put(&amp;quot;file\&amp;quot;; filename=\&amp;quot;&amp;quot; + file.getName(), requestBody); } } //RequestBody requestBodyGonderiNo = RequestBody.create(MediaType.parse(&amp;quot;text/plain&amp;quot;), request.getGonderiNo()); //RequestBody requestBodyMusId = RequestBody.</description>
     </item>
     
     <item>
       <title>Android GcmNetworkManager Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 01:43:53 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</guid>
-      <description>&lt;p&gt;GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.&lt;/p&gt;
-
-&lt;p&gt;Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;OneoffTask&lt;/li&gt;
-&lt;li&gt;PeriodicTask&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;OneoffTask Kullanımı&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;OneoffTask oneoff = new OneoffTask.Builder()
-        // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur.
-        // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz.
-        .setPersisted(true)
-        // Belirtilen network işlemlerinin çalışacağı service i belirtir.
-        .setService(MyGcmTaskService.class)
-        // İşleminiz için tag belirleyebilirsiniz.
-        // Aynı tag ile yeni bir istek yaptığınız da &#39;.setUpdateCurrent(true)&#39; olarak belirlenmiş ise isteğinizi yeni istek ile günceller. Yani eski isteğiniz geçersiz olacaktır. &#39;setUpdateCurrent(false)&#39; olarak belirlenir ise aynı tag ile yeni istekte bulunsanız bile her iki isteğiniz de çalışacaktır. 
-        .setTag(tag)
-        // Network isteğinizin çalışma zamanı parametrelerini belirler
-        .setExecutionWindow(0, 10)
-        // İşleminiz için internet gerekliliği veya wireless gerekliliği parametrelerini belirler
-        .setRequiredNetwork(required_network_state)
-        // İşleminiz için cihazın şarja bağlı olup olmaması gerekliliğini belirler
-        .setRequiresCharging(false)
-        // Aynı tag ile yeni istek yapıldığı takdirde güncellenip güncellenmemesi durumunu belirler
-        .setUpdateCurrent(true)
-        // Bundle ile işleminiz için gerekli parametreleri belirleyebilirsiniz
-        .setExtras(bundle)
-        // build eder
-        .build();
-
-GcmNetworkManager.getInstance(context).schedule(oneoff);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;MyGcmTaskService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Cihazınızı yeniden başlatma gibi durumlar da önceden belirlenmiş task lerinizin çalışmasını devam ettirmesini istiyorsanız
-// burada tekrar belirlemelisiniz.
-@Override
-public void onInitializeTasks() {
+      <guid>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi/</guid>
+      <description>GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.
+GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.
+Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.
+ OneoffTask PeriodicTask  OneoffTask Kullanımı
+OneoffTask oneoff = new OneoffTask.Builder() // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur. // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz. .setPersisted(true) // Belirtilen network işlemlerinin çalışacağı service i belirtir.</description>
+    </item>
     
-}
-
-// GcmNetworkManager ın kendi algoritması ile seçilen, tanımlamış olduğunuz istek bu kod bloğuna girecek.
-@Override
-public int onRunTask(TaskParams taskParams) {
-    try {
-        Bundle bundle = taskParams.getExtras();
-        return SchedulerRandevuTask(bundle);        
-    } catch (Exception e) {
-        ErrorEvent errorEvent = new ErrorEvent();
-        errorEvent.setErrorContent(e.getMessage());
-        EventBus.getDefault().post(errorEvent);
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-}
-
-private int SchedulerZiyaretTask(Bundle bundle) {
-    try {
-        // isteğimiz sırasında bundle olarak yüklemiş olduğumuz nesneyi burada yakalıyoruz
-        String jsonModel = bundle.getString(Const.IZTOP_TASK_BUNDLE);
-        ZiyaretRequest request = new Gson().fromJson(jsonModel, ZiyaretRequest.class);
-        ZiyaretResponse ziyaretResponse = sendZiyaretProcess(request);
-        switch (ziyaretResponse.getCode()) {
-            case 0: {
-                EventBus.getDefault().post(ziyaretResponse);                
-                // işlemlerimiz başarılı bir şekilde gerçekleşmiş ise result değeri olarak RESULT_SUCCESS dönüyoruz.
-                // GcmNetworkManager bu işlemi başarılı olduğu için listeden silecek ve tekrar çalıştırmayı denemicektir.
-                return GcmNetworkManager.RESULT_SUCCESS;
-            }
-            default: {
-                // işlemlerimiz başarısız olması durumunda ( burada sunucuya istekte bulunulmuş ve dönen değer 0 değil ise başarısız olarak belirlenmiştir )isteğin tekrar çalışması için result değeri olarak RESULT_RESCHEDULE dönüyoruz.
-                return GcmNetworkManager.RESULT_RESCHEDULE;
-            }
-        }
-    } catch (Exception e) {
-        SuperHelper.CrashlyticsLog(e);
-        e.printStackTrace();
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-
-
-}
-private ZiyaretResponse sendZiyaretProcess(ZiyaretRequest request) {
-    return ApiManager.getInstance(getApplicationContext()).Ziyaret(request);
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;ApiManager / Ziyaret&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public ZiyaretResponse Ziyaret(ZiyaretRequest request) {
-    try {
-        RestClient restClient = RestClient.getInstance();
-        Call&amp;lt;ZiyaretResponse&amp;gt; responseCall = restClient.getApiService().Ziyaret(request);
-        ZiyaretResponse ziyaretResponse = responseCall.execute().body();
-        return ziyaretResponse;
-    } catch (Exception ex) {
-        return null;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Retrofit ApiService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@POST(&amp;quot;sunucu/ziyaret/api/adresi&amp;quot;)
-Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest);&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-</description>
+    <item>
+      <title>Android SMS Receiver</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-sms-receiver/</link>
+      <pubDate>Wed, 11 Jan 2017 01:42:54 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-sms-receiver/</guid>
+      <description>Android SMS Receiver Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.
+İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.
+Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.
+Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz.</description>
+    </item>
+    
+    <item>
+      <title>Android Internet Connection Receiver </title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</link>
+      <pubDate>Wed, 11 Jan 2017 01:42:36 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</guid>
+      <description>Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.
+Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.
+&amp;lt;receiver android:name=&amp;quot;.InternetConnectionReceiver&amp;quot;&amp;gt; &amp;lt;intent-filter&amp;gt; &amp;lt;action android:name=&amp;quot;android.net.conn.CONNECTIVITY_CHANGE&amp;quot; /&amp;gt; &amp;lt;/intent-filter&amp;gt; &amp;lt;/receiver&amp;gt;  InternetConnectionReceiver
+public class InternetConnectionReceiver extends BroadcastReceiver { @Override public void onReceive(Context context, Intent intent) { if (CheckConnection(context)) { } } }  Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.</description>
+    </item>
+    
+    <item>
+      <title>Android ActiveAndroid Kullanımı</title>
+      <link>http://yazilim.aykutasil.com/activeandroid-kullanimi/</link>
+      <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/activeandroid-kullanimi/</guid>
+      <description>Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.
+ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.
+Kütüphaneyi buradan indirebilirsiniz.
+Kullanımı oldukça basittir. Sadece birkaç noktaya özellikle dikkat edilmesi gerekiyor. Bunlardan biri oluşturmuş olduğunuz tabloya yeni alanlar eklediğiniz de tablonuzu güncellemek. Veya herhangi bir sebeple tabloda çeşitli işlemler yapmak.
+Aşağıda kısaca Tablo oluşturmaktan ve gerektiğinde Tablo yu nasıl güncelleyeceğimizden bahsedicem.
+@Table(name = &amp;quot;Items&amp;quot;) public class ModelSampleItem extends Model { @Column(name = &amp;quot;Name&amp;quot;) public String name; @Column(name = &amp;quot;Surname&amp;quot;) public String surname; @Column(name = &amp;quot;Phone&amp;quot;) public String phoneNumber; @Column(name = &amp;quot;Xyz&amp;quot;) public String xyz; @Column(name = &amp;quot;EMail&amp;quot;) public String email; @Column(name = &amp;quot;TryColumn&amp;quot;) public String tryColumn; @Column(name = &amp;quot;Column3&amp;quot;) public String column3; public ModelSampleItem() { super(); } }  Yukarıda ki yapıyı kullanarak istediğiniz Tablo yu oluşturmanız mümkün.</description>
+    </item>
+    
+    <item>
+      <title>Robolectric ile UnitTest Yazımı</title>
+      <link>http://yazilim.aykutasil.com/android-robolectric-test/</link>
+      <pubDate>Wed, 11 Jan 2017 00:31:52 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/android-robolectric-test/</guid>
+      <description>Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.
+Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.
+Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.
+Android Studio da Robolectric kullanarak Unit Test Yazımı
+Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.</description>
+    </item>
+    
+    <item>
+      <title>Android Key Hashes &amp; SHA1</title>
+      <link>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</link>
+      <pubDate>Tue, 10 Jan 2017 23:56:35 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</guid>
+      <description>Android Key Hashes &amp;amp; SHA1 Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.
+keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64  openssl hatası alırsanız https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.
+Ortam değişkenlerine ulaşmak için : Denetim Masası &amp;gt; Sistem &amp;gt; Gelişmiş Sİstem Ayarları
+SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.</description>
+    </item>
+    
+    <item>
+      <title>Android Spinner Text Güncelleme</title>
+      <link>http://yazilim.aykutasil.com/android-spinner-dynamic-text/</link>
+      <pubDate>Tue, 10 Jan 2017 23:00:03 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/android-spinner-dynamic-text/</guid>
+      <description>Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
+Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
+Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.
+Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
+String.xml
+&amp;lt;string name=&amp;quot;pazartesi&amp;quot;&amp;gt;Pazartesi&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;sali&amp;quot;&amp;gt;Salı&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;carsamba&amp;quot;&amp;gt;Çarşamba&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;persembe&amp;quot;&amp;gt;Perşembe&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;cuma&amp;quot;&amp;gt;Cuma&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;cumartesi&amp;quot;&amp;gt;Cumartesi&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;pazar&amp;quot;&amp;gt;Pazar&amp;lt;/string&amp;gt; &amp;lt;string-array name=&amp;quot;array_gonderi_list_haftalik&amp;quot;&amp;gt; &amp;lt;item&amp;gt;@string/pazartesi&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/sali&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/carsamba&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/persembe&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/cuma&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/cumartesi&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/pazar&amp;lt;/item&amp;gt; &amp;lt;/string-array&amp;gt;  SpinnerHelper.</description>
+    </item>
+    
+    <item>
+      <title>Kotlin Sealed Class</title>
+      <link>http://yazilim.aykutasil.com/kotlin_sealed_class/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_sealed_class/</guid>
+      <description>Kotlin Sealed Class Enum yapısına benzer bir yapıya sahiptir. Ve benzer görevler için kullanılır. Aradaki fark enum lar sabit değer ifade etmek için kullanılırken sealed yapısı normal sınıf gibi fakat enum mantığıyla kullanılır. Yani belli bir duruma ait fonksiyonları bir arada tutmak ve when() gibi fonksiyonlar ile birlikte kullanımını sağlamak için kullanılır.
+// Sealed class enum yapısına benzer // Bir durum için belli başlı akışları bir arada tutmamızı sağlar ve bu akışların yönetimini kolaylaştırır.</description>
     </item>
     
   </channel>

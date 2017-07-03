@@ -1,422 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/categories/java/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Java on Software</title>
+    <link>http://yazilim.aykutasil.com/categories/java/</link>
+    <description>Recent content in Java on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 19:59:08 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Android ile WebView Etkileşimi</title>
-      <link>http://yazilim.aykutasil.com/android-webview-etkilesimi</link>
+      <link>http://yazilim.aykutasil.com/android-webview-etkilesimi/</link>
       <pubDate>Wed, 11 Jan 2017 19:59:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-webview-etkilesimi</guid>
-      <description>
-
-&lt;p&gt;Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Backend : .Net&lt;/li&gt;
-&lt;li&gt;Client : Android (Java)&lt;/li&gt;
-&lt;li&gt;Ödeme altyapısı : İyzico&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.&lt;/p&gt;
-
-&lt;p&gt;Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs. giriyor. Bu durumda client ile web sayfası iletişimini de bir şekilde sağlamamız gerekiyor.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Yukarıda ki hikayeyi anlatarak kafanızda bir problemi canlandırmaya çalıştım. Benzer bir çok durum ile karşı karşıya kalabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Ulan ben webview de ki butonu vs nasıl android tarafında kontrol edicem ? gibi akılda deli sorular oluşabilir..&lt;/p&gt;
-
-&lt;p&gt;Tabiri caiz ise : PhoneGap tarzı bişiler.. 🙂 😉&lt;/p&gt;
-
-&lt;p&gt;Neyse.&lt;/p&gt;
-
-&lt;p&gt;Örnek ver hacı abi;&lt;/p&gt;
-
-&lt;h2 id=&#34;layout-xml&#34;&gt;Layout.xml&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
-&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
-    android:layout_width=&amp;quot;match_parent&amp;quot;
-    android:layout_height=&amp;quot;match_parent&amp;quot;
-    android:orientation=&amp;quot;vertical&amp;quot;&amp;gt;
-
-    &amp;lt;WebView
-        android:id=&amp;quot;@+id/WebView&amp;quot;
-        android:layout_width=&amp;quot;match_parent&amp;quot;
-        android:layout_height=&amp;quot;match_parent&amp;quot; /&amp;gt;
-
-&amp;lt;/LinearLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;activity-fragment&#34;&gt;Activity – Fragment&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;WebView webView = (WebView) findViewById(R.id.WebView);
-
-WebSettings settings = webView.getSettings();
-settings.setDefaultTextEncodingName(&amp;quot;utf-8&amp;quot;);
-settings.setJavaScriptEnabled(true);
-
-webView.setWebViewClient(new MyWebViewClient());
-webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView, callbackDialog), &amp;quot;Android&amp;quot;); // Buraya dikkat
-webView.loadDataWithBaseURL(null, response.getData().getThreeDSHtmlContent(), &amp;quot;text/html&amp;quot;, &amp;quot;utf-8&amp;quot;, null); // elimizde bulunan bir html dökümanı webview e basıyoruz. URL de verebilirsin istersen
-webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView, callbackDialog), &amp;quot;Android&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki “Android” kısmına istediğimiz ismi verebiliriz. WebView yapısı, burada belirtmiş olduğumuz isim ile sayfaya yüklenen içeriğe bir eklenti yapıyor, yani bir instance alıyor. Biz bu instance ı kullanarak iletişimimizi sağlıyoruz.&lt;/p&gt;
-
-&lt;p&gt;Az sabır. Nasıl olduğunu görüceksin..&lt;/p&gt;
-
-&lt;h2 id=&#34;mywebviewclient&#34;&gt;MyWebViewClient&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MyWebViewClient extends WebViewClient {
-
-    @Override
-    public void onPageFinished(WebView view, String url) {
-        super.onPageFinished(view, url);
-        //view.loadUrl(&amp;quot;javascript:window.Android.processHTML(&#39;&amp;lt;html&amp;gt;&#39;+document.getElementsByTagName(&#39;html&#39;)[0].innerHTML+&#39;&amp;lt;/html&amp;gt;&#39;);&amp;quot;);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Bu blok ne yapıyor ?&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;window.Android.processHTML&lt;/strong&gt; de ki Android bizim yukarıda belirtmiş olduğumuz aracı.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;processHtml&lt;/strong&gt; ise aşağıda tanımlıcak olduğumuz fonksiyon.&lt;/p&gt;
-
-&lt;p&gt;Diğer kısımlar javascript fonksiyonu zaten. Yani sayfada ki ilk html tag ını bularak içindeki html kodu al.&lt;/p&gt;
-
-&lt;p&gt;Aşağıda ki processHtml e bakarsan görüceksin ki htmlContent parametresi bekliyor.Biz de bu parametreye sayfa içeriğinin html kodunu gönderiyoruz. Almış olduğun bu html içeriğiyle ne yaparsın sana kalmış.&lt;/p&gt;
-
-&lt;h2 id=&#34;mywebviewjavascriptinterface&#34;&gt;MyWebViewJavascriptInterface&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class MyWebViewJavascriptInterface {
-
-    Context mContext;
-    WebView mWebView;
-
-    MyWebViewJavascriptInterface(Context c, WebView webView) {
-        this.mContext = c;
-        this.mWebView = webView;
-    }
-
-    @JavascriptInterface
-    public void processHTML(String htmlContent) {
-        // işlem
-        // Toast ile html içeriğini gösterebiliriz       
-    }
-
-    @JavascriptInterface
-    public void islemeDevamEt() {
-       // işlem
-    }
-
-    @JavascriptInterface
-    public void pencereyiKapat() {
-        // işlem
-        // dialog.dismiss();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;WebView miz ile Android native kodumuzun iletişimini bu sınıf sağlıyor.&lt;/p&gt;
-
-&lt;p&gt;Aşşağıda ki  kod ile bunu söylüyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webView), &amp;ldquo;Android&amp;rdquo;);&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Not&lt;/em&gt;&lt;/strong&gt; : Android 4.2 den sonra &lt;strong&gt;@JavascriptInterface&lt;/strong&gt; annotations ını eklememiz gerekmekte. Yoksa nolur ? Çalışmaz 😉&lt;/p&gt;
-
-&lt;h2 id=&#34;custom-html-content&#34;&gt;Custom Html Content&lt;/h2&gt;
-
-&lt;p&gt;WebView de gösterdiğimiz html contentinde bir buton ekleyelim.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt; &amp;lt;button class=&amp;quot;btn btn-danger&amp;quot; onclick=&amp;quot;PencereyiKapat()&amp;quot;&amp;gt;Pencereyi Kapat&amp;lt;/button&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;WebView içinde ki bu butona basıldığını Android anlasın ve (WebView imizi Dialog içerisinde gösterildiğini varsayarak) dialog penceresini kapasın.&lt;/p&gt;
-
-&lt;p&gt;Butonumuzun olduğu sayfaya  javascript kodumuzu ekliyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
-  function PencereyiKapat() {
-     Android.pencereyiKapat();
-  }
-&amp;lt;/script&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki Android i hatırladınız dimi ? 🙂&lt;/p&gt;
-
-&lt;p&gt;HTML sayfamız bu kadar.&lt;/p&gt;
-
-&lt;p&gt;WebView içerisinde ki butona basıldığında javascript fonksiyonu çalışacak ve Android.pencereyiKapat() çalışacak. Yani native tarafta tanımlamış olduğumuz pencereyiKapat() fonksiyonu.&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki yapıyı kullanarak WebView – Android Native etkileşimli yapı kurabilirsin.&lt;/p&gt;
-
-&lt;p&gt;Her zaman ki gibi hayal gücüne ve projeye kalmış 😉&lt;/p&gt;
-
-&lt;p&gt;Kalın sağlıcakla..&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/android-webview-etkilesimi/</guid>
+      <description>Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
+ Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
+Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.</description>
     </item>
     
     <item>
       <title>ExecutorService submit() – execute()</title>
-      <link>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute</link>
+      <link>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute/</link>
       <pubDate>Wed, 11 Jan 2017 19:26:49 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute</guid>
-      <description>
-
-&lt;h1 id=&#34;executorservice-submit-execute&#34;&gt;ExecutorService submit() – execute()&lt;/h1&gt;
-
-&lt;p&gt;Link : &lt;a href=&#34;http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html&#34;&gt;http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute/</guid>
+      <description>ExecutorService submit() – execute() Link : http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html</description>
     </item>
     
     <item>
       <title>Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()</title>
-      <link>http://yazilim.aykutasil.com/java-executor</link>
+      <link>http://yazilim.aykutasil.com/java-executor/</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/java-executor</guid>
-      <description>
-
-&lt;h1 id=&#34;executor-newcachedthreadpool-newfixedthreadpool-n-newsinglethreadexecutor&#34;&gt;Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor()&lt;/h1&gt;
-
-&lt;p&gt;&lt;strong&gt;Thread&lt;/strong&gt; kullanımı, Java ile multi-threading yazılım geliştiriyorsanız mutlaka ama mutlaka bilmeniz gereken konulardan biridir.&lt;/p&gt;
-
-&lt;h2 id=&#34;threadpool&#34;&gt;ThreadPool&lt;/h2&gt;
-
-&lt;p&gt;Gün geldi çattı ve uygulamanız ilk kurulduğu amacın evrimleşmesi sonucu bambaşka bir hale büründü 🙂&lt;/p&gt;
-
-&lt;p&gt;Yani birçok uygulamada gidişat bu yöndedir ve olması gerekende budur.&lt;/p&gt;
-
-&lt;p&gt;Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sadece patron kullanmıyor sonuçta. Ya da patron öyle bir uygulama istemişki ağır işler gerektiriyor. Uzun süreler gerektiren işlemler sonucunda akış tamamlanıyor vs.&lt;/p&gt;
-
-&lt;p&gt;Sözün kısası;&lt;/p&gt;
-
-&lt;p&gt;Uygulamamız içerisinde ki akışları ayrı parçalara bölerek daha hızlı çalışmasını ve aynı anda birden fazla iş yapmamızı sağlayan yapıdır bu Thread ler.&lt;/p&gt;
-
-&lt;p&gt;Peki en basitinden nasıl kullanırız bu yapıyı ? Tabi hödük gibi değil, olması gerektiği gibi.. 😉&lt;/p&gt;
-
-&lt;h2 id=&#34;executors&#34;&gt;Executors&lt;/h2&gt;
-
-&lt;p&gt;Executors sınıfı içerisinde statik olarak tanımlanmış ve kolayca thread pool oluşturabileceğimiz yapılar mevcuttur.&lt;/p&gt;
-
-&lt;h3 id=&#34;executors-newcachedthreadpool&#34;&gt;EXECUTORS.NEWCACHEDTHREADPOOL()&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;
-Creates a thread pool that creates new threads as needed, but will reuse previously constructed threads when they are available. These pools will typically improve the performance of programs that execute many short-lived asynchronous tasks. Calls to execute will reuse previously constructed threads if available. If no existing thread is available, a new thread will be created and added to the pool. Threads that have not been used for sixty seconds are terminated and removed from the cache. Thus, a pool that remains idle for long enough will not consume any resources. Note that pools with similar properties but different details (for example, timeout parameters) may be created using ThreadPoolExecutor constructors.
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Resmi kaynaklardan yukarıdaki tanımlama yapılmış.&lt;/p&gt;
-
-&lt;p&gt;Yani özetlicek olursak;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Kısa süren işlemlerimizde bu yapıyı kullanmalıyız&lt;/li&gt;
-&lt;li&gt;Bu yapı bizim için otomatik olarak bir thread oluşturur ve ihtiyacı oldukça yeni bir thread oluşturulmasını sağlar&lt;/li&gt;
-&lt;li&gt;Oluşturulan thread ler boş kaldığında thread i kapatır. (60 saniye)&lt;/li&gt;
-&lt;li&gt;Oluşturulan thread le işi bitti ve kapatılması için belli bir süre gerekiyor (60 saniye). Ama bu süre tamamlanmadan yeni bir iş geldi. Bu işi yapmak için yeni bir thread açmaz. Eğer önceden oluşturulan thread ler arasında uygun durumda olan varsa yeni gelen işi orada çalıştırır.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Peki süper. Herşey çok iyi. Olması gerektiği gibi. Peki aynı anda 10000 kişi işlem yapmaya çalıştı. Ve ağır işlemler olduğu için sürekli yeni thread oluşturmak zorunda kaldı. 10000 tane yeni thread. Thread oluşturmak da belli bir süre ve emek gerektiriyor unutma. Peki CPU ? … vs. vs.
-İşte bu yüzden kısa süreli ve hafif işler için bu yapıyı kullanıyoruz. 😉&lt;/p&gt;
-
-&lt;p&gt;Aga bana örnek söyle.&lt;/p&gt;
-
-&lt;p&gt;Tamam sakin ol..  :*&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewCachedThreadPool() {
-    
-    ExecutorService executorService = Executors.newCachedThreadPool();
-
-    for (int a = 0; a &amp;lt; 40; a++) {
-        executorService.submit(new Runnable() {
-            @Override
-            public void run() {
-                Log.i(TAG, &amp;quot;ExecuterService: &amp;quot; + Thread.currentThread().getName());
-            }
-        });
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-43
-I/MainActivity: ExecuterServicee: pool-7-thread-10
-I/MainActivity: ExecuterServicee: pool-7-thread-111
-I/MainActivity: ExecuterServicee: pool-7-thread-47
-I/MainActivity: ExecuterServicee: pool-7-thread-91
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki çıktıdan görüldüğü üzere 111 thread oluşturmuş. Ben 10000 satırın sadece bi kısmını yapıştırdım buraya. Belki 200 tane fln de oluşturmuş olabilir. Yani makineye ve işe bağlı olarak değişiyor. Kodun çalışmasıda ~6-7 saniye kadar sürdü. Yani baya uzun. Eee bu kadar thread açmak kapamak kolay değil.&lt;/p&gt;
-
-&lt;p&gt;Ama 60 saniye sonra tüm thread ler kapatılacak. Bu yönden de bakabilirsin.&lt;/p&gt;
-
-&lt;p&gt;Hangi yönden bakman gerektiğini projen söylücek sana. Kulak ver..&lt;/p&gt;
-
-&lt;p&gt;Neyse..&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static ExecutorService newCachedThreadPool() {
- return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
- 60L, TimeUnit.SECONDS,
- new SynchronousQueue&amp;lt;Runnable&amp;gt;());
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Not:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki fonksiyonu kullanarak kendimize uygun cachedThreadPool oluşturabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Tabi şuraya bakmakta fayda var : &lt;a href=&#34;http://stackoverflow.com/a/1800583/3448461&#34;&gt;http://stackoverflow.com/a/1800583/3448461&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;executors-newfixedthreadpool-n&#34;&gt;EXECUTORS.NEWFIXEDTHREADPOOL(N)&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;
-Creates a thread pool that reuses a fixed number of threads operating off a shared unbounded queue. At any point, at most nThreads threads will be active processing tasks. If additional tasks are submitted when all threads are active, they will wait in the queue until a thread is available. If any thread terminates due to a failure during execution prior to shutdown, a new one will take its place if needed to execute subsequent tasks. The threads in the pool will exist until it is explicitly shutdown.
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Yani diyor ki;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Uygulaman da daha fazla kontrol sahibi olmak istiyorsan bu yapıyı kullan.&lt;/li&gt;
-&lt;li&gt;Thread e göndereceğin işler daha ağır ve uzun işler ise bu yapıyı kullan&lt;/li&gt;
-&lt;li&gt;Ben senin tanımlamış olduğun kadar Thread oluşturucam. Ve bana iş yolladıkça hangi thread müsaitse onda çalıştırıcam. Tüm Thread ler dolu iken iş gelirse sıraya sokacam. Sen raad ol. Ben halledicem hepsini diyor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewFixedThreadPool() {
-
-    ExecutorService executorService = Executors.newFixedThreadPool(5);
-
-    for (int a = 0; a &amp;lt; 10000; a++) {
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
-            }
-        });
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-5
-I/MainActivity: ExecuterServicee: pool-7-thread-5
-I/MainActivity: ExecuterServicee: pool-7-thread-1
-I/MainActivity: ExecuterServicee: pool-7-thread-3
-I/MainActivity: ExecuterServicee: pool-7-thread-3
-I/MainActivity: ExecuterServicee: pool-7-thread-3
-I/MainActivity: ExecuterServicee: pool-7-thread-3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ortalama ~2 saniye sürdü.&lt;/p&gt;
-
-&lt;h3 id=&#34;executors-newsinglethreadexecutor&#34;&gt;EXECUTORS.NEWSINGLETHREADEXECUTOR()&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void executorServiceNewSingleThreadExecutor() {
-    ExecutorService executorService = Executors.newSingleThreadExecutor();
-
-    for (int a = 0; a &amp;lt; 10000; a++) {
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
-            }
-        });
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-1
-I/MainActivity: ExecuterServicee: pool-7-thread-1
-I/MainActivity: ExecuterServicee: pool-7-thread-1
-I/MainActivity: ExecuterServicee: pool-7-thread-1
-I/MainActivity: ExecuterServicee: pool-7-thread-1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ortalama ~2 saniye sürdü.&lt;/p&gt;
-
-&lt;p&gt;Tek bir Thread oluşturarak tüm gelen işleri sıraya sokarak bu Thread üzerinde işlemi gerçekleştirir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Peki bir soru ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Executors.newSingleThreadExecutor() ile Executors.newFixedThreadPool(1) arasında fark var mı ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Ufakta olsa var tabi.&lt;/p&gt;
-
-&lt;p&gt;Ama ikiside tek bir Thread oluşturur ve gelen tüm işleri bu Thread üzerinden gerçekleştirir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Fark :&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-Similirity
-newSingleThreadExecutor() returns ExecutorService with single thread worker and newFixedThreadPool(1) also returns ExecutorService with single thread worker. In both cases if thread terminates, new thread will be created.
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;
-Difference
-ExecutorService returned by newSingleThreadExecutor(), can never increase its thread pool size more than one. ExecutorService returned by newFixedThreadPool(1), can increase its thread pool size more than one at run time by setCorePoolSize() of the class ThreadPoolExecutor.
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Yani &lt;strong&gt;newFixedThreadPool(1)&lt;/strong&gt; ile oluşturulan tek Thread yapısı sonradan artırılabilir. Ama &lt;strong&gt;newSingleThreadExecutor()&lt;/strong&gt; ile oluşturulan yapı her zaman tek Thread üzerinden çalıştırılır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Nasıl arttırabiliriz ?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void changeThreadSize() {
-
-    ExecutorService executorService = Executors.newFixedThreadPool(1);
-    ThreadPoolExecutor threadPoolExecutor = (ThreadPoolExecutor) executorService;
-    threadPoolExecutor.setCorePoolSize(2);
-    threadPoolExecutor.setMaximumPoolSize(2);
-
-    for (int a = 0; a &amp;lt; 10000; a++) {
-        threadPoolExecutor.execute(new Runnable() {
-            @Override
-            public void run() {
-                Log.i(TAG, &amp;quot;ExecuterServicee: &amp;quot; + Thread.currentThread().getName());
-            }
-        });
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Çıktı:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;I/MainActivity: ExecuterServicee: pool-7-thread-1
-I/MainActivity: ExecuterServicee: pool-7-thread-1
-I/MainActivity: ExecuterServicee: pool-7-thread-2
-I/MainActivity: ExecuterServicee: pool-7-thread-2
-I/MainActivity: ExecuterServicee: pool-7-thread-2
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/java-executor/</guid>
+      <description>Executor newCachedThreadPool() newFixedThreadPool(n) newSingleThreadExecutor() Thread kullanımı, Java ile multi-threading yazılım geliştiriyorsanız mutlaka ama mutlaka bilmeniz gereken konulardan biridir.
+ThreadPool Gün geldi çattı ve uygulamanız ilk kurulduğu amacın evrimleşmesi sonucu bambaşka bir hale büründü 🙂
+Yani birçok uygulamada gidişat bu yöndedir ve olması gerekende budur.
+Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sadece patron kullanmıyor sonuçta. Ya da patron öyle bir uygulama istemişki ağır işler gerektiriyor. Uzun süreler gerektiren işlemler sonucunda akış tamamlanıyor vs.</description>
     </item>
     
     <item>
       <title>Runnable() &amp; Callable()</title>
-      <link>http://yazilim.aykutasil.com/java-runnable-and-callable</link>
+      <link>http://yazilim.aykutasil.com/java-runnable-and-callable/</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/java-runnable-and-callable</guid>
-      <description>
-
-&lt;h1 id=&#34;runnable-callable&#34;&gt;Runnable() &amp;amp; Callable()&lt;/h1&gt;
-
-&lt;p&gt;Ayrıntılı açıklama için &lt;a href=&#34;http://www.java67.com/2013/01/difference-between-callable-and-runnable-java.html&#34;&gt;bu siteyi&lt;/a&gt; kullanabilirsiniz.&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/java-runnable-and-callable/</guid>
+      <description>Runnable() &amp;amp; Callable() Ayrıntılı açıklama için bu siteyi kullanabilirsiniz.</description>
     </item>
     
     <item>
@@ -425,115 +58,22 @@ I/MainActivity: ExecuterServicee: pool-7-thread-2
       <pubDate>Wed, 11 Jan 2017 17:24:52 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</guid>
-      <description>&lt;p&gt;Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.&lt;/p&gt;
-
-&lt;p&gt;Bunlardan biri de Android M – Marshmallow (23) ile  gelen Runtime Permissions olayı.&lt;/p&gt;
-
-&lt;p&gt;Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel. İlerleyen zamanlarda illa ki bu alışkanlığı edinecek insanlar olacaktır 😉&lt;/p&gt;
-
-&lt;p&gt;Fazla uzatmadan birkaç link ve ipucu vericem.&lt;/p&gt;
-
-&lt;p&gt;Android Runtime Permissions olayının nasıl yapıldığını görmek için&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;https://github.com/googlesamples/android-RuntimePermissions&#34;&gt;https://github.com/googlesamples/android-RuntimePermissions&lt;/a&gt; burada süper bir örnek var.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Link : &lt;a href=&#34;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&#34;&gt;http://android-developers.blogspot.com.tr/2015/08/building-better-apps-with-runtime.html&lt;/a&gt; burada kısa bir özet var.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Takıldığınız yeri yorumlarda belirtebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Not :&lt;/strong&gt; Örneği incelediğiniz de şu satırı yazarken dikkat edin.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CAMERA},123456);&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;burada sadece&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;yerine&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;android.Manifest.permission.CAMERA&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;kullanacaksınız. Yoksa izin listesini bulamaz.&lt;/p&gt;
-</description>
+      <description>Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.
+Bunlardan biri de Android M – Marshmallow (23) ile gelen Runtime Permissions olayı.
+Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel.</description>
     </item>
     
     <item>
       <title>Android Glide ve Palette Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 17:11:30 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi</guid>
-      <description>&lt;p&gt;Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.&lt;/p&gt;
-
-&lt;p&gt;Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/bumptech/glide&#34;&gt;https://github.com/bumptech/glide&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gradle :&lt;/strong&gt; &lt;code&gt;compile ‘com.github.florent37:glidepalette:1.0.6’&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.&lt;/p&gt;
-
-&lt;p&gt;Link : &lt;a href=&#34;http://developer.android.com/reference/android/support/v7/graphics/Palette.html&#34;&gt;Android Developer&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Gradle : compile ‘com.android.support:palette-v7:23.1.1’&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Bu iki güzel kütüphanenin birlikte kullanımı ile oldukça güzel işler çıkabilir&lt;/p&gt;
-
-&lt;p&gt;Bunun için de bir kütüphane mevcut 🙂&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Github :&lt;/strong&gt; &lt;a href=&#34;https://github.com/florent37/GlidePalette&#34;&gt;https://github.com/florent37/GlidePalette&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; Glide.with(mContext).load(&amp;quot;ImageAdress&amp;quot;)
-                         // Her resim için farklı bir signature belirtmeliyiz. Bu sayede resimlerin tekrar tekrar yüklenmesini engellemiş oluruz.
-                        .signature(new StringSignature(&amp;quot;ImageSignature&amp;quot;))
-                        .centerCrop()
-                        .listener(GlidePalette.with(&amp;quot;ImageAdress&amp;quot;)
-                                        .use(GlidePalette.Profile.VIBRANT_LIGHT)
-                                        .intoTextColor(txt, GlidePalette.Swatch.BODY_TEXT_COLOR)
-                                        .crossfade(true)
-
-                                         // Belirttiğimiz ImageAdress den gelen resmimiz kullanılmaya hazır olduğunda burada yakalayabilir ve 
-                                         // istediğimiz özelleştirmeyi yapabiliriz.
-                                         // Biz burada yüklenen resmin palette.getDarkMutedColor(DefaultColor) fonksiyonu ile rengini yakalıyoruz ve CollapsingToolbar ın expand olduğu durumda ki title rengini değiştiriyoruz.
-                                        .intoCallBack(new BitmapPalette.CallBack() {
-                                            @Override
-                                            public void onPaletteLoaded(@Nullable Palette palette) {
-                                                mCollapsingToolbar.setExpandedTitleColor(palette.getDarkMutedColor(Color.BLACK));
-                                            }
-                                        })
-                                        /*
-                                        .setGlideListener(new RequestListener&amp;lt;String, GlideDrawable&amp;gt;() {
-                                            @Override
-                                            public boolean onException(Exception e, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFirstResource) {
-                                                return false;
-                                            }
-
-                                            @Override
-                                            public boolean onResourceReady(GlideDrawable resource, String model, Target&amp;lt;GlideDrawable&amp;gt; target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                                return false;
-                                            }
-                                        })
-                                        // optional: do stuff with the builder
-                                        .setPaletteBuilderInterceptor(new BitmapPalette.PaletteBuilderInterceptor() {
-                                            @NonNull
-                                            @Override
-                                            public Palette.Builder intercept(Palette.Builder builder) {
-                                                return builder.resizeBitmapSize(100);
-                                            }
-                                        })
-                                        */
-                        )
-                        .into(mCollapsingImageView);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/android-glide-ve-palette-kullanimi/</guid>
+      <description>Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.
+Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.
+ Github : https://github.com/bumptech/glide
+ Gradle : compile ‘com.github.florent37:glidepalette:1.0.6’
+  Google ın geliştirmiş olduğu Palette kütüphanesi ise, resimlerinizin renkleriyle ilgilenir. Daha farklı işlemler içinde kullanılabilir resim boyutlandırma vs. gibi. Ama renklerle ilgili işlemler için oldukça güzel bir kütüphanedir.</description>
     </item>
     
     <item>
@@ -542,12 +82,9 @@ I/MainActivity: ExecuterServicee: pool-7-thread-2
       <pubDate>Wed, 11 Jan 2017 17:07:51 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-viewpager/</guid>
-      <description>&lt;p&gt;Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.&lt;/p&gt;
-
-&lt;p&gt;İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.&lt;/p&gt;
-
-&lt;script src=&#34;https://gist.github.com/aykuttasil/bc92ffd516a9f6df1ac9.js&#34;&gt;&lt;/script&gt;
-</description>
+      <description>Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.
+İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.
+ </description>
     </item>
     
     <item>
@@ -556,27 +93,9 @@ I/MainActivity: ExecuterServicee: pool-7-thread-2
       <pubDate>Wed, 11 Jan 2017 16:39:33 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</guid>
-      <description>&lt;p&gt;Android &lt;strong&gt;RecyclerView&lt;/strong&gt; yapısı &lt;strong&gt;ListView&lt;/strong&gt; in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂&lt;/p&gt;
-
-&lt;p&gt;Ayrıca &lt;strong&gt;RecyclerView&lt;/strong&gt;, &lt;strong&gt;CoordinatorLayout&lt;/strong&gt; bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.&lt;/p&gt;
-
-&lt;p&gt;ListView in özelleştirilmesi için birçok kütüphane mevcuttur.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Drag-Drop işlemleri için &lt;a href=&#34;https://github.com/bauerca/drag-sort-listview&#34;&gt;https://github.com/bauerca/drag-sort-listview&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Swipe işlemleri &lt;a href=&#34;https://github.com/timroes/EnhancedListView&#34;&gt;https://github.com/timroes/EnhancedListView&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ama bu kütüphane ve benzerleri ömürlerini doldurmuşlar. Çünkü artık RecyclerView var.&lt;/p&gt;
-
-&lt;p&gt;Evet bu kadar tanıtımdan sonra artık örnek kodlara geçebiliriz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Android CardView yapısı için oldukça güzel hazırlanmış bir kütüphane mevcut. Biz de bu kütüphane ile, RecyclerView içersinde göstermek istediğimiz liste elemanlarımızı CardView içine gömücez. Bu sayede hem daha güzel görünüm elde edicez hem de CardView bileşeninin nimetlerinden yararlanıcaz.&lt;/p&gt;
-
-&lt;p&gt;CardsLib Link : &lt;a href=&#34;https://github.com/gabrielemariotti/cardslib&#34;&gt;CardsLib&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>Android RecyclerView yapısı ListView in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂
+Ayrıca RecyclerView, CoordinatorLayout bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.
+ListView in özelleştirilmesi için birçok kütüphane mevcuttur.</description>
     </item>
     
     <item>
@@ -585,417 +104,35 @@ I/MainActivity: ExecuterServicee: pool-7-thread-2
       <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-collections/</guid>
-      <description>&lt;p&gt;Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.&lt;/p&gt;
-
-&lt;p&gt;Bu sayfa da &lt;strong&gt;Collection&lt;/strong&gt; yapısını ve oldukça önemli fonksiyonlarını göreceğiz.&lt;/p&gt;
-
-&lt;p&gt;Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Collections.swap&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Swap&lt;/strong&gt; kelime anlamı ile takas anlamına gelmektedir. Mevcut dizimiz içerisinde elemanların yerlerini değiştirmeye yarar.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private static final String[] STRINGS = new String[]{
-        &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;
-};
-
-private final List mItems = new ArrayList&amp;lt;&amp;gt;();
-public void setArray()
-{
-  mItems.addAll(Arrays.asList(STRINGS));
-}
-mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
-
-//  1,2,3,4,5
-
- 
-
-private void elemanYerDegistir()
-{
-  Collections.swap(mItems, 0, 4);
-}
-mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır.
-
-//  5,2,3,4,1
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.
+Bu sayfa da Collection yapısını ve oldukça önemli fonksiyonlarını göreceğiz.
+Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.
+Collections.swap
+Swap kelime anlamı ile takas anlamına gelmektedir.</description>
     </item>
     
     <item>
       <title>Foreground Service ile FusedLocationApi Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi</guid>
-      <description>&lt;p&gt;Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Burada yapacağımız örnekte kısaca şu aşamaları görücez;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Service i foreground olarak başlatmak&lt;/li&gt;
-&lt;li&gt;Ongoing(devamlı gözüken) notification oluşturmak&lt;/li&gt;
-&lt;li&gt;GoogleApiClient a bağlanmak&lt;/li&gt;
-&lt;li&gt;Location bilgisini notification da göstermek&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ForegroundService.java&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class ForegroundService extends Service implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-
- private static final int LOCATION_NOTIF_ID = 859;
- private static int LocationPeriod = 1000 * 30 ;
- 
- private static Notification notification;
- private static GoogleApiClient _googleApiClient = null;
- private static Context mContext;
- private static NotificationCompat.Builder mBuilder;
-
-
-
- @Override
- public void onCreate() {
- super.onCreate();
- mContext = this;
- mBuilder = new NotificationCompat.Builder(mContext);
- }
-
- @Nullable
- @Override
- public IBinder onBind(Intent intent) {
- return null;
- }
-
- @Override
- public int onStartCommand(Intent intent, int flags, int startId) {
-
-
- // Eğer Service ilk defa çalıştırılıyor ise buildGoogleApiClient fonksiyonu ile GoogleApiClient build ediliyor
- if (_googleApiClient == null) {
- buildGoogleApiClient();
- }
- // GoogleApiClient a bağlanılıyor
- _googleApiClient.connect();
-
- // Notificaiton gösteriyoruz
- LocationNotification(null, &amp;quot;Konum Bilgisi Yok&amp;quot;);
-
- // Service imizi foreground olarak başlatıyoruz
- // Foreground service bizden bir notification parametresi ister. Bunun sebebi sürekli ayakta olduğunu kullanıcıya bildirmektir.
- startForeground(LOCATION_NOTIF_ID, notification);
-
- // Herhangi bir sebeple service imizi durması halinde kendiliğinden tekrar başlaması için START_STICKY dönüyoruz.
- return START_STICKY;
- }
-
-
- public synchronized void buildGoogleApiClient() {
- if (_googleApiClient == null) {
- _googleApiClient = new GoogleApiClient.Builder(this)
- .addConnectionCallbacks(this)
- .addOnConnectionFailedListener(this)
- .addApi(LocationServices.API)
- .build();
- }
- }
-
-
- @Override
- public void onConnected(@Nullable Bundle bundle) {
- // GoogleApiClient a bağlanıldığında Location isteğinde bulunuyoruz.
- LocationRequest();
- }
-
-
- @Override
- public void onConnectionSuspended(int i) {
-
- }
-
-
- @Override
- public void onConnectionFailed(ConnectionResult result) {
- // tekrar bağlanmayı deniyoruz
- _googleApiClient.connect();
- }
-
-
- private void LocationRequest() {
-
-
- // PRIORITY_BALANCED_POWER_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız yok ise (Network, Cell Tower)
- // PRIORITY_HIGH_ACCURACY -&amp;gt; hassas konum bilgisine ihtiyacımız var ise (GPS)
-
- final LocationRequest locationRequest = LocationRequest.create()
- .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
- .setInterval((LocationPeriod * 1000)) 
- .setFastestInterval(LOCATION_FASTEST_INTERVAL);
-
-
- //final LocationRequest locationRequest1 = LocationRequest.create()
- // .setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY)
- // .setInterval((LocationPeriod * 1000))
- // .setFastestInterval(LOCATION_FASTEST_INTERVAL);
-
- // İhtiyaçlarımız doğrultusunda yapılandırdığımız LocationRequest in gerekliliklerini kontrol ederek, cihazın davranışının otomatik olarak ayarlanması için
- // gerekli Dialog penceresinin çıkmasını sağlar ve Kullanıcının onayını ister
-
- // Örnek olarak eğer PRIORITY_HIGH_ACCURACY olrarak belirlenmişse ve cihazın GPS i kapalı ise bir Dialog çıkartarak GPS i açmanızı ister
- LocationSettingsRequest locationSettingsRequest = new LocationSettingsRequest.Builder()
- .addLocationRequest(locationRequest)
- .setAlwaysShow(true)
- .build();
-
- PendingResult&amp;lt;LocationSettingsResult&amp;gt; result =
- LocationServices.SettingsApi.checkLocationSettings(_googleApiClient, locationSettingsRequest);
-
- // Gösterilen Dilag penceresi ile Kullanıcının etkileşimi sonucunun yakalar
- result.setResultCallback(new ResultCallback&amp;lt;LocationSettingsResult&amp;gt;() {
- @DebugLog
- @Override
- public void onResult(LocationSettingsResult locationSettingsResult) {
-
- // locationSettingsStates ile cihazın durumunu kontrol ederek akışımızı yönlendirebiliriz
- LocationSettingsStates locationSettingsStates = locationSettingsResult.getLocationSettingsStates();
- 
- // Konum dinlenmeye başlanır
- // mLocationListener ile konum değişikliği yakalanır.
- FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest, mLocationListener);
- 
- //FusedLocationApi.requestLocationUpdates(_googleApiClient, locationRequest1, mLocationListener);
- 
- }
- });
-
-
- }
-
-
- private static LocationListener mLocationListener = new LocationListener() {
- @Override
- public void onLocationChanged(Location location) {
-
-
- // Location değişikliğini burada yakalayabiliriz.
- // Belirlemiş olduğumuz periyodik zaman aralığında Location değişikliği kontrol edilecektir.
- }
- };
-
-
- 
- public ForegroundService() {
- }
-
- // Bu fonksiyon yardımı ile başka bir sınıftan konum bilgisine erişebiliriz.
- // static olarak tanımlanmış olması bize kolaylık sağlıcaktır.
- public static Location getLastLocation() {
- if (_googleApiClient != null) {
- return FusedLocationApi.getLastLocation(_googleApiClient);
- } else {
- return null;
- }
- }
-
-
- // GoogleApiClient nesnemize erişmek istersek bu kod bloğunu kullanabiliriz.
- public static GoogleApiClient getGoogleApiClient() {
- return _googleApiClient;
- }
-
- 
- public static void removeLocationUpdates() {
- if (_googleApiClient != null) {
- FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
- }
- }
-
- @DebugLog
- private static void LocationNotification(Location location, String subText) {
- NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
- //
-
- mBuilder.setSmallIcon(R.drawable.ic_stat_device_gps_fixed);
- mBuilder.setTicker(&amp;quot;Konum&amp;quot;);
- //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
- mBuilder.setSubText(subText);
- mBuilder.setOnlyAlertOnce(true);
- mBuilder.setPriority(Notification.PRIORITY_HIGH);
-
-
- if (location != null) {
- mBuilder
- .setContentTitle(&amp;quot;Sapma: &amp;quot; + String.valueOf(location.getAccuracy()))
- .setContentText(&amp;quot;Lat: &amp;quot; + String.valueOf(location.getLatitude()) + &amp;quot; , &amp;quot; +
- &amp;quot;Long: &amp;quot; + String.valueOf(location.getLongitude()))
- .setWhen(System.currentTimeMillis())
- .setShowWhen(true)
- .setUsesChronometer(true)
- .setContentIntent(pendingIntent);
-
-
- } else {
- mBuilder
- .setContentTitle(&amp;quot;&amp;quot;)
- .setContentText(&amp;quot;&amp;quot;);
- }
-
-
- notification = mBuilder.build();
- notificationManager.notify(LOCATION_NOTIF_ID, notification);
- }
-
- @DebugLog
- @Override
- public void onDestroy() {
- if (_googleApiClient != null) {
- if (_googleApiClient.isConnected()) {
- FusedLocationApi.removeLocationUpdates(_googleApiClient, mLocationListener);
- _googleApiClient.disconnect();
- }
- }
- PeriodicHandler.removeMessages(1);
- stopForeground(true);
- super.onDestroy();
- }
-
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Tanımlamış olduğumuz servisi başlatmak için istediğimiz yerden ( Activity , Fragment vb.) aşağıdaki kod bloğunu çalıştırmamız yeterli olucaktır.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;Intent serviceIntent = new Intent(context, ForegroundService.class);
-startService(serviceIntent);
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/foregroundservice-ve-fusedlocationapi-kullanimi/</guid>
+      <description>Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.
+Burada yapacağımız örnekte kısaca şu aşamaları görücez;
+ Service i foreground olarak başlatmak Ongoing(devamlı gözüken) notification oluşturmak GoogleApiClient a bağlanmak Location bilgisini notification da göstermek  İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.</description>
     </item>
     
     <item>
       <title>Android GcmNetworkManager Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 01:43:53 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi</guid>
-      <description>&lt;p&gt;GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.&lt;/p&gt;
-
-&lt;p&gt;Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;OneoffTask&lt;/li&gt;
-&lt;li&gt;PeriodicTask&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;OneoffTask Kullanımı&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;OneoffTask oneoff = new OneoffTask.Builder()
-        // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur.
-        // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz.
-        .setPersisted(true)
-        // Belirtilen network işlemlerinin çalışacağı service i belirtir.
-        .setService(MyGcmTaskService.class)
-        // İşleminiz için tag belirleyebilirsiniz.
-        // Aynı tag ile yeni bir istek yaptığınız da &#39;.setUpdateCurrent(true)&#39; olarak belirlenmiş ise isteğinizi yeni istek ile günceller. Yani eski isteğiniz geçersiz olacaktır. &#39;setUpdateCurrent(false)&#39; olarak belirlenir ise aynı tag ile yeni istekte bulunsanız bile her iki isteğiniz de çalışacaktır. 
-        .setTag(tag)
-        // Network isteğinizin çalışma zamanı parametrelerini belirler
-        .setExecutionWindow(0, 10)
-        // İşleminiz için internet gerekliliği veya wireless gerekliliği parametrelerini belirler
-        .setRequiredNetwork(required_network_state)
-        // İşleminiz için cihazın şarja bağlı olup olmaması gerekliliğini belirler
-        .setRequiresCharging(false)
-        // Aynı tag ile yeni istek yapıldığı takdirde güncellenip güncellenmemesi durumunu belirler
-        .setUpdateCurrent(true)
-        // Bundle ile işleminiz için gerekli parametreleri belirleyebilirsiniz
-        .setExtras(bundle)
-        // build eder
-        .build();
-
-GcmNetworkManager.getInstance(context).schedule(oneoff);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;MyGcmTaskService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;// Cihazınızı yeniden başlatma gibi durumlar da önceden belirlenmiş task lerinizin çalışmasını devam ettirmesini istiyorsanız
-// burada tekrar belirlemelisiniz.
-@Override
-public void onInitializeTasks() {
-    
-}
-
-// GcmNetworkManager ın kendi algoritması ile seçilen, tanımlamış olduğunuz istek bu kod bloğuna girecek.
-@Override
-public int onRunTask(TaskParams taskParams) {
-    try {
-        Bundle bundle = taskParams.getExtras();
-        return SchedulerRandevuTask(bundle);        
-    } catch (Exception e) {
-        ErrorEvent errorEvent = new ErrorEvent();
-        errorEvent.setErrorContent(e.getMessage());
-        EventBus.getDefault().post(errorEvent);
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-}
-
-private int SchedulerZiyaretTask(Bundle bundle) {
-    try {
-        // isteğimiz sırasında bundle olarak yüklemiş olduğumuz nesneyi burada yakalıyoruz
-        String jsonModel = bundle.getString(Const.IZTOP_TASK_BUNDLE);
-        ZiyaretRequest request = new Gson().fromJson(jsonModel, ZiyaretRequest.class);
-        ZiyaretResponse ziyaretResponse = sendZiyaretProcess(request);
-        switch (ziyaretResponse.getCode()) {
-            case 0: {
-                EventBus.getDefault().post(ziyaretResponse);                
-                // işlemlerimiz başarılı bir şekilde gerçekleşmiş ise result değeri olarak RESULT_SUCCESS dönüyoruz.
-                // GcmNetworkManager bu işlemi başarılı olduğu için listeden silecek ve tekrar çalıştırmayı denemicektir.
-                return GcmNetworkManager.RESULT_SUCCESS;
-            }
-            default: {
-                // işlemlerimiz başarısız olması durumunda ( burada sunucuya istekte bulunulmuş ve dönen değer 0 değil ise başarısız olarak belirlenmiştir )isteğin tekrar çalışması için result değeri olarak RESULT_RESCHEDULE dönüyoruz.
-                return GcmNetworkManager.RESULT_RESCHEDULE;
-            }
-        }
-    } catch (Exception e) {
-        SuperHelper.CrashlyticsLog(e);
-        e.printStackTrace();
-        return GcmNetworkManager.RESULT_RESCHEDULE;
-    }
-
-
-}
-private ZiyaretResponse sendZiyaretProcess(ZiyaretRequest request) {
-    return ApiManager.getInstance(getApplicationContext()).Ziyaret(request);
-}
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;ApiManager / Ziyaret&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public ZiyaretResponse Ziyaret(ZiyaretRequest request) {
-    try {
-        RestClient restClient = RestClient.getInstance();
-        Call&amp;lt;ZiyaretResponse&amp;gt; responseCall = restClient.getApiService().Ziyaret(request);
-        ZiyaretResponse ziyaretResponse = responseCall.execute().body();
-        return ziyaretResponse;
-    } catch (Exception ex) {
-        return null;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Retrofit ApiService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@POST(&amp;quot;sunucu/ziyaret/api/adresi&amp;quot;)
-Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest);&amp;lt;/pre&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/android-gcmnetworkmanager-kullanimi/</guid>
+      <description>GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.
+GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.
+Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.
+ OneoffTask PeriodicTask  OneoffTask Kullanımı
+OneoffTask oneoff = new OneoffTask.Builder() // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur. // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz. .setPersisted(true) // Belirtilen network işlemlerinin çalışacağı service i belirtir.</description>
     </item>
     
     <item>
@@ -1004,154 +141,10 @@ Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest)
       <pubDate>Wed, 11 Jan 2017 01:42:54 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-sms-receiver/</guid>
-      <description>
-
-&lt;h1 id=&#34;android-sms-receiver&#34;&gt;Android SMS Receiver&lt;/h1&gt;
-
-&lt;p&gt;Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.&lt;/p&gt;
-
-&lt;p&gt;Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.&lt;/p&gt;
-
-&lt;p&gt;Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz. Eğer bir işlem sonucunda sms gelmesini bekliyorsak, beklediğimiz SMS  geciktiği takdirde ve bu sırada cihazın ekranını vs. kapattığımız da Android cihazımız kendini uyku moduna almak isteyecektir. Bunu önlemek için &lt;strong&gt;WakefulBroadcastReceiver&lt;/strong&gt; yapısını kullanıyoruz. Bu yapı aslında Android in WakeLock özelliğini kullanan serviceler için özel olarak tasarlanmış  bir yapıdır. Cihazı uyanık tutar ve işimiz bittiği takdirde bu WakeLock u kaldırmamız gerekir. Bunu da service in içerisinde tanımlarız.&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki fonksiyonu Activity miz içerisinde ihtiyacımız olan yerde çağırır ve SMS receiver ı çalıştırmıış oluruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;LoginActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public void RegisterSmsReceiver() {
-    SmsReceiver smsReceiver = new SmsReceiver();
-    IntentFilter intentFilter = new IntentFilter(&amp;quot;android.provider.Telephony.SMS_RECEIVED&amp;quot;);
-    android.os.Handler handler = new android.os.Handler();
-    registerReceiver(smsReceiver, intentFilter, &amp;quot;android.permission.GET_TASKS&amp;quot;, handler);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsReceiver&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsReceiver extends WakefulBroadcastReceiver {
-
-    private static final String TAG = &amp;quot;SmsReceiver&amp;quot;;
-
-    public SmsReceiver() {
-        super();
-    }
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        Intent myIntent = intent;
-        myIntent.setClass(context, SmsReceiverService.class);
-
-        // startWakeFulService ile AndroidManifest.xml dosyamız içerisinde tanımlamış olduğumuz Service e yönlendiriyoruz.
-        // Ve cihazın uyanık kalmasını sağlıyoruz.
-        startWakefulService(context, myIntent);
-
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;AndroidManifest.xml&lt;/strong&gt; dosyasında  Service imizi  tanımlıyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;service
-    android:name=&amp;quot;.SmsReceiverService&amp;quot;
-    android:exported=&amp;quot;false&amp;quot; /&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;exported=”false”&lt;/code&gt; tanımı servisin cihazda ki diğer uygulamalar tarafından çalıştırılamayacağını belirtir.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsReceiverService&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsReceiverService extends IntentService {
-
-    private static final String TAG = &amp;quot;SmsReceiverService&amp;quot;;
-    private Context context;
-
-    public SmsReceiverService() {
-        super(TAG);
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        context = getApplicationContext();
-    }
-
-
-    @Override
-    protected void onHandleIntent(Intent intent) {
-
-        String msg_from = null;
-        String msgBody = null;
-        if (intent.getAction().equals(&amp;quot;android.provider.Telephony.SMS_RECEIVED&amp;quot;)) {
-            Bundle bundle = intent.getExtras();           //---get the SMS message passed in---
-            SmsMessage[] msgs = null;
-
-            if (bundle != null) {
-                //---retrieve the SMS message received---
-                try {
-                    Object[] pdus = (Object[]) bundle.get(&amp;quot;pdus&amp;quot;);
-                    msgs = new SmsMessage[pdus.length];
-                    for (int i = 0; i &amp;lt; msgs.length; i++) {
-                        msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-                        msg_from = msgs[i].getOriginatingAddress();
-                        msgBody = msgs[i].getMessageBody();
-
-                    }
-                } catch (Exception e) {
-                     // Log.d(&amp;quot;Exception caught&amp;quot;,e.getMessage());
-                }
-            }
-        }
-
-        SmsEvent smsEvent = new SmsEvent();
-        smsEvent.setActivationCode(&amp;quot;357&amp;quot;);
-        smsEvent.setMsgBody(msgBody);
-        smsEvent.setMsgFrom(msg_from);
-
-        // EventBus ile sonucu istediğimiz yere gönderebiliriz.
-        EventBus.getDefault().post(smsEvent);
-
-        // Service in işini tamamladığını ve artık cihazın WakeLock u serbest bırakabileceğini söylüyoruz.
-        SmsReceiver.completeWakefulIntent(intent);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;SmsEvent&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class SmsEvent {
-    private String activationCode;
-    private String msgFrom;
-    private String msgBody;
-
-
-    public String getActivationCode() {
-        return activationCode;
-    }
-
-    public void setActivationCode(String activationCode) {
-        this.activationCode = activationCode;
-    }
-
-    public String getMsgFrom() {
-        return msgFrom;
-    }
-
-    public void setMsgFrom(String msgFrom) {
-        this.msgFrom = msgFrom;
-    }
-
-    public String getMsgBody() {
-        return msgBody;
-    }
-
-    public void setMsgBody(String msgBody) {
-        this.msgBody = msgBody;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Android SMS Receiver Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.
+İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.
+Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.
+Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz.</description>
     </item>
     
     <item>
@@ -1160,234 +153,23 @@ Call&amp;lt;ZiyaretResponse&amp;gt; Ziyaret(@Body ZiyaretRequest ziyaretRequest)
       <pubDate>Wed, 11 Jan 2017 01:42:36 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</guid>
-      <description>&lt;p&gt;Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.&lt;/p&gt;
-
-&lt;p&gt;Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;receiver android:name=&amp;quot;.InternetConnectionReceiver&amp;quot;&amp;gt;
-    &amp;lt;intent-filter&amp;gt;
-        &amp;lt;action android:name=&amp;quot;android.net.conn.CONNECTIVITY_CHANGE&amp;quot; /&amp;gt;
-    &amp;lt;/intent-filter&amp;gt;
-&amp;lt;/receiver&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;InternetConnectionReceiver&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public class InternetConnectionReceiver extends BroadcastReceiver {
-
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-
-        if (CheckConnection(context)) {
-
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;CheckConnection&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;public static boolean checkConnection(Context con) {
-    ConnectivityManager cm = (ConnectivityManager) con.getSystemService(Context.CONNECTIVITY_SERVICE);
-    NetworkInfo netInfo = cm.getActiveNetworkInfo();
-    return netInfo != null &amp;amp;&amp;amp; netInfo.isConnectedOrConnecting();
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki kod bloğu da cihazın internete bağlı olması durumunu kontrol eder.&lt;/p&gt;
-</description>
+      <description>Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.
+Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.
+&amp;lt;receiver android:name=&amp;quot;.InternetConnectionReceiver&amp;quot;&amp;gt; &amp;lt;intent-filter&amp;gt; &amp;lt;action android:name=&amp;quot;android.net.conn.CONNECTIVITY_CHANGE&amp;quot; /&amp;gt; &amp;lt;/intent-filter&amp;gt; &amp;lt;/receiver&amp;gt;  InternetConnectionReceiver
+public class InternetConnectionReceiver extends BroadcastReceiver { @Override public void onReceive(Context context, Intent intent) { if (CheckConnection(context)) { } } }  Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.</description>
     </item>
     
     <item>
       <title>Robolectric ile UnitTest Yazımı</title>
-      <link>http://yazilim.aykutasil.com/android-robolectric-test</link>
+      <link>http://yazilim.aykutasil.com/android-robolectric-test/</link>
       <pubDate>Wed, 11 Jan 2017 00:31:52 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-robolectric-test</guid>
-      <description>&lt;p&gt;Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.&lt;/p&gt;
-
-&lt;p&gt;Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.&lt;/p&gt;
-
-&lt;p&gt;Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Android Studio da Robolectric kullanarak Unit Test Yazımı&lt;/p&gt;
-
-&lt;p&gt;Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.(Ben gerektiğinden uzun bi zaman harcadım, siz harcamayın !)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;build.gradle&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-gradle&#34;&gt;apply plugin: &#39;com.android.application&#39;
-
-android {
-    compileSdkVersion 22
-    buildToolsVersion &amp;quot;23.0.0&amp;quot;
-
-    defaultConfig {
-        applicationId &amp;quot;com.a.aykut.tryrobolectric1&amp;quot;
-        minSdkVersion 16
-        targetSdkVersion 21
-        versionCode 1
-        versionName &amp;quot;1.0&amp;quot;
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile(&#39;proguard-android.txt&#39;), &#39;proguard-rules.pro&#39;
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
-    compile &#39;com.android.support:appcompat-v7:22.2.1&#39;
-    compile &#39;com.jakewharton:butterknife:7.0.1&#39;
-
-    testCompile &#39;junit:junit:4.12&#39;
-    testCompile &#39;com.squareup.assertj:assertj-android:1.1.0&#39;
-    testCompile &#39;org.robolectric:robolectric:3.0&#39;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;MainActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Bind(R.id.button)
-Button button;
-
-@Bind(R.id.textView)
-TextView textView;
-
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-  super.onCreate(savedInstanceState);
-  setContentView(R.layout.activity_main);
-  ButterKnife.bind(this);
-}
-
-@OnClick(R.id.button)
-public void buttonClick(View vi) {
-  textView.setText(&amp;quot;tiklandi&amp;quot;);
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;AndroidManifest.xml  dosyasında herhangi bir değişiklik yapmanıza gerek yok.&lt;/p&gt;
-
-&lt;p&gt;Test sınıfımızı yazmaya başlayalım.&lt;/p&gt;
-
-&lt;p&gt;İlk olarak Android Studio nun sol tarafında yer alan &lt;strong&gt;Build Variant&lt;/strong&gt; tabından &lt;strong&gt;Test Artifact&lt;/strong&gt; kısmını &lt;strong&gt;Unit Tests&lt;/strong&gt; olarak değiştirin.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/rEPljpe&#34;&gt;&lt;img src=&#34;http://i.imgur.com/rEPljpe.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Unit Test yazmak için &lt;strong&gt;src&lt;/strong&gt; klasörüne test isminde bir klasör ve test klasörünün içine de &lt;strong&gt;java&lt;/strong&gt; isimli bir klasör oluşturmanız gerekmektedir.&lt;/p&gt;
-
-&lt;p&gt;yani &lt;strong&gt;src/test&lt;/strong&gt; ve &lt;strong&gt;src/test/java&lt;/strong&gt; klasörlerini oluşturmalısınız.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/gztY5gr&#34;&gt;&lt;img src=&#34;http://i.imgur.com/gztY5gr.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğunuz java klasörüne sağ tıklayarak new &amp;gt; Package diyin ve normal Package isminizle aynı isimde bir Package oluşturun.Burda biz com.a.aykut.tryrobolectric1 ismini kullandık.&lt;/p&gt;
-
-&lt;p&gt;Oluşturmuş olduğunuz Package sağ tıklayarak new &amp;gt; Java Class diyin ve test sınıfını oluşturun. Anlaşılabilirlik açısından Test*(Test Edilecek Sınıf ismi) olarak isimlendirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;TestMainActivity&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;import android.app.Activity;
-
-import android.widget.Button;
-import android.widget.TextView;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class,sdk = 21)
-public class TestMainActivity {
-
-  Activity activity;
-  TextView textView;
-  Button button;
-
-  @Before
-  public void setUp() {
-    activity = Robolectric.setupActivity(MainActivity.class);
-    textView = (TextView) activity.findViewById(R.id.textView);
-    button = (Button) activity.findViewById(R.id.button);
-  }
-
-  @Test
-  public void shouldMainActivityNotBeNull() throws Exception {
-    Robolectric.buildActivity(MainActivity.class).create().pause().resume().get();
-    assertTrue(Robolectric.buildActivity(MainActivity.class).create().get() != null);
-    String hello = new MainActivity().getResources().getString(R.string.hello_world);
-    assertEquals(hello, &amp;quot;Hello world!&amp;quot;);
-
-
-  }
-
-  @Test
-  public void buttonClickChangeTextView() throws Exception {
-    String text = textView.getText().toString();
-    assertEquals(text, &amp;quot;Hello world!&amp;quot;);
-    button.performClick();
-    text = textView.getText().toString();
-    assertEquals(text, &amp;quot;tiklandi&amp;quot;);
-
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Evet.Test sınıfımızı da yazdık.Artık çalıştırabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Testimizi çalıştırmak için yazmış olduğumuz Test Sınıfına sağ tıklayarak Run diyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/7STeLHy&#34;&gt;&lt;img src=&#34;http://i.imgur.com/7STeLHy.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Run dediğiniz de Test çalışacaktır. Fakat aşağıdaki hataya benzer bir hata alırsanız endişelenmeyin.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;java.lang.RuntimeException: build\intermediates\bundles\debug\AndroidManifest.xml not found or not a file; it should point to your project&#39;s AndroidManifest.xml
-
-at org.robolectric.manifest.AndroidManifest.validate(AndroidManifest.java:121)
-
-at org.robolectric.manifest.AndroidManifest.getResourcePath(AndroidManifest.java:469)
-
-at org.robolectric.manifest.AndroidManifest.getIncludedResourcePaths(AndroidManifest.java:475)
-
-at org.robolectric.RobolectricTestRunner.createAppResourceLoader(RobolectricTestRunner.java:491)
-
-at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
-.
-
-.
-
-.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/1TpiUpG&#34;&gt;&lt;img src=&#34;http://i.imgur.com/1TpiUpG.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resim de görüldüğü gibi &lt;strong&gt;Edit Configurations&lt;/strong&gt; a tıklayın.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/pFGTznR&#34;&gt;&lt;img src=&#34;http://i.imgur.com/pFGTznR.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resim deki gibi &lt;strong&gt;Working directory&lt;/strong&gt; yolunun sonuna &lt;strong&gt;\app&lt;/strong&gt; ekleyin.&lt;/p&gt;
-
-&lt;p&gt;Ve şimdi tekrar Test Sınıfına sağ tıklayarak Run diyin.&lt;/p&gt;
-
-&lt;p&gt;Ve sonuç aşağıdaki gibi olmalıdır.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/zIgjUDT&#34;&gt;&lt;img src=&#34;http://i.imgur.com/zIgjUDT.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Kaynak kodlarını aşağıdkai linkten indirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/aykuttasil/RobolectricUnitTest&#34;&gt;https://github.com/aykuttasil/RobolectricUnitTest&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/android-robolectric-test/</guid>
+      <description>Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.
+Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.
+Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.
+Android Studio da Robolectric kullanarak Unit Test Yazımı
+Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.</description>
     </item>
     
   </channel>

@@ -1,179 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/yeoman/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Yeoman on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/yeoman/</link>
+    <description>Recent content in Yeoman on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/yeoman/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Jan 2017 12:09:26 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/yeoman/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Yeoman Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/yeoman-kullanimi</link>
+      <link>http://yazilim.aykutasil.com/yeoman-kullanimi/</link>
       <pubDate>Wed, 18 Jan 2017 12:09:26 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/yeoman-kullanimi</guid>
-      <description>
-
-&lt;h2 id=&#34;yeoman-kullanımı&#34;&gt;Yeoman Kullanımı&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://yeoman.io/&#34;&gt;Yeoman&lt;/a&gt; ile kendi proje yapımızı kurgulayabilir ve opsiyonlar belirleyerek ona göre dosya içeriğimizi vs. düzenleyebiliriz.
-Ya da oluşturduğumuz projeye önceden belirlediğimiz bir dosyayı ekleyebilir ve gerekli ayarlamaları otomatik olarak yapmasını sağlayabiliriz. (yeni bir Controller eklemek gibi vs.)&lt;/p&gt;
-
-&lt;p&gt;Ve hazırladığımız bu proje yapısını paket yönetim sistemlerine yollayarak diğer kişilerin kullanımına açabilir veyahut kendimizin de istediğimiz yerden erişebilmesini sağlayabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Öncelikle bilgisayarınız da nodejs yüklü olduğunu varsayıyoruz. Eğer yüklü değilse &lt;a href=&#34;https://nodejs.org/en/&#34;&gt;buradan&lt;/a&gt; gerekli işlemleri yaparak kurabiliriz.&lt;/p&gt;
-
-&lt;p&gt;Daha sonra &lt;code&gt;npm install -g yo&lt;/code&gt; komutunu çalıştırarak &lt;code&gt;yo&lt;/code&gt;komutunun heryerden çalışmasını sağlıyoruz.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://yeoman.io/generators/&#34;&gt;Generators&lt;/a&gt;, diğer kişilerin oluşturmuş olduğu yapıları görmek için kullanabiliriz.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Evet kendi proje yapımızı hazırlamaya başlayabiliriz&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Öncelikle yine &lt;strong&gt;Yeoman&lt;/strong&gt; ın kendisini kullanarak yeni yapımızı kurmak için gerekli dosyaların yapılanmasını sağlıyoruz.
-Bunun için &lt;code&gt;npm install -g generator-generator&lt;/code&gt; komutunu çalıştırıyoruz.
-Ve &lt;code&gt;yo generator&lt;/code&gt;komutu ile gerekli dosya yapısının oluşturulmasını sağlıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;yo generator&lt;/code&gt; komutunu çalıştırdığımız da bize &lt;strong&gt;proje ismi (name)&lt;/strong&gt; gibi sorular gelecek ve bizde uygun değerleri girerek dosyaların ona göre düzenlemesini sağlıcaz. Ama &lt;strong&gt;name&lt;/strong&gt; değerini girerken &lt;strong&gt;generators&lt;/strong&gt; ile başladığına emin olmalıyız.&lt;/p&gt;
-
-&lt;p&gt;Ayrıntılı bilgi &lt;a href=&#34;https://github.com/yeoman/generator-generator&#34;&gt;burada&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Ve oluşturulan dosya yapısı şu şekilde olmalı;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/VEuO0t8&#34;&gt;&lt;img src=&#34;http://i.imgur.com/VEuO0t8.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;app/templates&lt;/strong&gt; klasörü altındaki tüm dosyalar bizim asıl oluşturmak istediğimiz dosya yapısı. Yani tüm bu işlemler sonrasında &lt;code&gt;yo xyz&lt;/code&gt;çalıştırdığımız da &lt;strong&gt;templates&lt;/strong&gt; klasöründe ki dosyalar oluşturulacaktır.
-Tabi ki bizim belirlediğimiz değerler ile bu dosyaların içeriği vs. oluşturulacak. Yoksa bi anlamı kalmaz dimi ;)&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki resimde &lt;strong&gt;a,b,dummytext .txt&lt;/strong&gt; ve &lt;strong&gt;testFolder&lt;/strong&gt; klasörünü görüyorsunuz.&lt;/p&gt;
-
-&lt;h2 id=&#34;a-txt&#34;&gt;a.txt&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;Merhaba A 
-
-Proje ismi : &amp;lt;%= name %&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;b-txt&#34;&gt;b.txt&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Dosya B
-
-Değişken değer: &amp;lt;%= degiskenB %&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;dummy-txt&#34;&gt;dummy.txt&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;Dummy
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;dosya içeriklerinin bu şekilde olduğunu varsayalım.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;app/index.js&lt;/strong&gt; dosyasını açıyoruz ve gerekli düzenlemeleri yapıyoruz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&#39;use strict&#39;;
-var Generator = require(&#39;yeoman-generator&#39;);
-var chalk = require(&#39;chalk&#39;); // yazı renklendirme için kullanılır
-var yosay = require(&#39;yosay&#39;); // yeoman çalıştırılırken ilk başta gözüken proje bilgilendirme kısmını hazırlamaka için kullanılır
-
-module.exports = Generator.extend({
-  prompting: function () {
-    var done = this.async();
-
-    this.log(yosay(
-      &#39;Aykut Asil proje oluşturma yapısına Hoş Geldiniz... &#39; +
-      chalk.red(&#39;generator-sample-yeoman&#39;) +
-      &#39; generator!&#39;
-    ));
-
-    var prompts = [{
-      type: &#39;confirm&#39;,
-      name: &#39;someAnswer&#39;,
-      message: &#39;www.aykutasil.com u ziyaret ettin mi ?&#39;,
-      default: true
-    }, {
-      type: &#39;input&#39;,
-      name: &#39;name&#39;,
-      message: &#39;Proje adı&#39;,
-      default: this.appname
-    }, {
-      type: &#39;input&#39;,
-      name: &#39;degiskenB&#39;,
-      message: &#39;B name&#39;,
-      default: this.appname
-    }];
-
-    return this.prompt(prompts).then(function (props) {
-      this.props = props;
-      this.log(props.someAnswer);
-      this.log(props.name);
-
-      done();
-    }.bind(this));
-  },
-
-  writing: {
-    config: function () {
-      this.fs.copyTpl( // Eğer hazırlanan dosya içerisinde değişken kullanılmış ise copyTpl ile kopyalama yapılır
-        this.templatePath(&#39;a.txt&#39;),
-        this.destinationPath(&#39;a.txt&#39;), {
-          name: this.props.name
-        }
-      );
-
-      this.fs.copyTpl(
-        this.templatePath(&#39;b.txt&#39;),
-        this.destinationPath(&#39;b.txt&#39;), {
-          degiskenB: this.props.degiskenB
-        }
-      );
-
-      this.fs.copy( // Hazırlanacak dosya aynen kopyalama yapılacak ise yani dosya içerisinde değişken ile doldurulacak bir bölüm yok ise
-        // copy ile kopyalama yapılır
-        this.templatePath(&#39;dummyfile.txt&#39;),
-        this.destinationPath(&#39;dummyfile.txt&#39;)
-      );
-
-      this.fs.copy(
-        this.templatePath(&#39;testFolder/_test.txt&#39;),
-        this.destinationPath(&#39;testFolderDeneme/test.txt&#39;)
-      );
-    }
-  },
-
-  install: function () {
-    // this.installDependencies(); // tüm dosyala kopyalandıktan sonra npm init çalıştırılması için kullanılır. Eğer çalıştırılmazsa node_modules klasörü oluşturulmamış olur.
-  }
-});
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda kodların yanında ayrıntılı açıklama var.&lt;/p&gt;
-
-&lt;p&gt;İşlemlerimizi tamamladıktan sonra local imizde test etmek ya da kullanabilmek için &lt;code&gt;npm link&lt;/code&gt; komutunu çalıştırıyoruz.(ana klasör içerisinde iken çalıştırıyoruz)&lt;/p&gt;
-
-&lt;p&gt;Ve herhangi bir yerde yeni bir klasör oluşturalım.
-Klasör içerisindeyken &lt;code&gt;yo sample_generator&lt;/code&gt; komutunu çalıştıralım.&lt;/p&gt;
-
-&lt;p&gt;Ve sonuç:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/ome2le3&#34;&gt;&lt;img src=&#34;http://i.imgur.com/ome2le3.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/h5BxC6u&#34;&gt;&lt;img src=&#34;http://i.imgur.com/h5BxC6u.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/f2QglwV&#34;&gt;&lt;img src=&#34;http://i.imgur.com/f2QglwV.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/36yb5ij&#34;&gt;&lt;img src=&#34;http://i.imgur.com/36yb5ij.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Ek Kaynaklar&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://scotch.io/tutorials/create-a-custom-yeoman-generator-in-4-easy-steps&#34;&gt;https://scotch.io/tutorials/create-a-custom-yeoman-generator-in-4-easy-steps&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://code.tutsplus.com/tutorials/build-your-own-yeoman-generator--cms-20040&#34;&gt;https://code.tutsplus.com/tutorials/build-your-own-yeoman-generator--cms-20040&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/yeoman-kullanimi/</guid>
+      <description>Yeoman Kullanımı Yeoman ile kendi proje yapımızı kurgulayabilir ve opsiyonlar belirleyerek ona göre dosya içeriğimizi vs. düzenleyebiliriz. Ya da oluşturduğumuz projeye önceden belirlediğimiz bir dosyayı ekleyebilir ve gerekli ayarlamaları otomatik olarak yapmasını sağlayabiliriz. (yeni bir Controller eklemek gibi vs.)
+Ve hazırladığımız bu proje yapısını paket yönetim sistemlerine yollayarak diğer kişilerin kullanımına açabilir veyahut kendimizin de istediğimiz yerden erişebilmesini sağlayabiliriz.
+Öncelikle bilgisayarınız da nodejs yüklü olduğunu varsayıyoruz. Eğer yüklü değilse buradan gerekli işlemleri yaparak kurabiliriz.</description>
     </item>
     
   </channel>

@@ -1,54 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/uno/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Uno on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/uno/</link>
+    <description>Recent content in Uno on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/uno/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 17:22:38 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/uno/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Mac OS Arduino Uno (Klon) Kurulumu</title>
-      <link>http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum</link>
+      <link>http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum/</link>
       <pubDate>Wed, 11 Jan 2017 17:22:38 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum</guid>
-      <description>&lt;p&gt;Sizde benim gibi klon Arduino Uno kartınızı çalıştıramayıp bozuk zannettiyseniz doğru yerdesiniz.&lt;/p&gt;
-
-&lt;p&gt;Arduino Uno klon kartlarında orijinal Arduino Uno kartına göre farklı bir işlemci kullanılmış ( daha ucuz olanından 😉 ) ve bu yüzden Mac OS kullanıyorsanız ayrı bir driver dosyası indirmeniz gerekmekte.&lt;/p&gt;
-
-&lt;p&gt;Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open source u destekleyen diğer taraf parayı destekleyen insanlardan oluşuyor(muş).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.arduino.cc&#34;&gt;http://www.arduino.cc&lt;/a&gt;   Parayı destekleyen tarafın sitesi&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.arduino.org&#34;&gt;http://www.arduino.org&lt;/a&gt;  Open source u destekleyen taraf&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ben &lt;strong&gt;arduino.org&lt;/strong&gt; daki Arduino IDE yi kurdum çünkü diğerinde birkaç sorun yaşamıştım ama günün sonunda her iki siteden indirdiğiniz IDE ile de geliştirme yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Dedikten sonra;&lt;/p&gt;
-
-&lt;p&gt;Mac OS a klon Arduino Uno driverını yüklemek için (CH341) -&amp;gt;  &lt;a href=&#34;http://www.wch.cn/download/CH341SER_MAC_ZIP.html&#34;&gt;http://www.wch.cn/download/CH341SER_MAC_ZIP.html&lt;/a&gt;
-linkinden dosyayı indirin. Çince ama idare edin, Download a basmanız yeter 😉&lt;/p&gt;
-
-&lt;p&gt;Ya da bu linki kullanabilirsiniz : &lt;a href=&#34;http://javacolors.blogspot.com.tr/2014/08/dccduino-usb-drivers-ch340-ch341-chipset.html&#34;&gt;http://javacolors.blogspot.com.tr/2014/08/dccduino-usb-drivers-ch340-ch341-chipset.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Daha sonra terminal e açarak aşağıdaki komutu yazın.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo nvram boot-args=&amp;quot;kext-dev-mode=1&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Makineye yeniden başlatın.
-Artık Arduino Uno yu Mac OS görüyor olması lazım.&lt;/p&gt;
-
-&lt;p&gt;Olmadı şu linke bir göz atabilirsin : &lt;a href=&#34;http://arduino.stackexchange.com/questions/12133/mac-osx-yosemite-no-serial-ports-showing-for-uno-r3&#34;&gt;http://arduino.stackexchange.com/questions/12133/mac-osx-yosemite-no-serial-ports-showing-for-uno-r3&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ya da şu video yu izleyebilirsin : &lt;a href=&#34;https://www.youtube.com/watch?v=oHqYK1ezRzo&#34;&gt;https://www.youtube.com/watch?v=oHqYK1ezRzo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Olduysa Arduino IDE nizden port ayarlarını yapmayı unutmayın.&lt;/p&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum/</guid>
+      <description>Sizde benim gibi klon Arduino Uno kartınızı çalıştıramayıp bozuk zannettiyseniz doğru yerdesiniz.
+Arduino Uno klon kartlarında orijinal Arduino Uno kartına göre farklı bir işlemci kullanılmış ( daha ucuz olanından 😉 ) ve bu yüzden Mac OS kullanıyorsanız ayrı bir driver dosyası indirmeniz gerekmekte.
+Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open source u destekleyen diğer taraf parayı destekleyen insanlardan oluşuyor(muş).
+ http://www.arduino.cc Parayı destekleyen tarafın sitesi
+ http://www.arduino.org Open source u destekleyen taraf</description>
     </item>
     
   </channel>

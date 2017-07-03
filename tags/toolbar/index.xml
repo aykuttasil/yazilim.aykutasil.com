@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/toolbar/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Toolbar on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/toolbar/</link>
+    <description>Recent content in Toolbar on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/toolbar/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 16:01:33 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/toolbar/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Android Custom Toolbar Title</title>
@@ -14,100 +17,9 @@
       <pubDate>Wed, 11 Jan 2017 16:01:33 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/2017/01/android-custom-toolbar-title/</guid>
-      <description>&lt;p&gt;Android Toolbar bileşeni çok yönlü bir yapıya sahiptir. Android Design Library  kullanarak ve AppBarLayout içerisinde tanımlanarak oldukça farklı şekillere bürünebilir.&lt;/p&gt;
-
-&lt;p&gt;Genel kullanımı aşağıdaki gibidir.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
-&amp;lt;android.support.design.widget.CoordinatorLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
- xmlns:app=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
- xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;match_parent&amp;quot;
- android:background=&amp;quot;@color/primary_dark&amp;quot;
- tools:context=&amp;quot;.MainActivity&amp;quot;&amp;gt;
-
- &amp;lt;FrameLayout
- android:id=&amp;quot;@+id/container&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt;
-
- &amp;lt;/FrameLayout&amp;gt;
-
-
- &amp;lt;android.support.design.widget.FloatingActionButton
- android:id=&amp;quot;@+id/fab&amp;quot;
- android:layout_width=&amp;quot;wrap_content&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- android:layout_gravity=&amp;quot;bottom|end&amp;quot;
- android:layout_margin=&amp;quot;@dimen/fab_margin&amp;quot;
- android:src=&amp;quot;@android:drawable/ic_dialog_email&amp;quot; /&amp;gt;
-
-
- &amp;lt;android.support.design.widget.AppBarLayout
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
-
- &amp;lt;android.support.v7.widget.Toolbar
- android:id=&amp;quot;@+id/toolbar&amp;quot;
- android:layout_width=&amp;quot;match_parent&amp;quot;
- android:layout_height=&amp;quot;wrap_content&amp;quot;
- android:background=&amp;quot;@color/primary_dark&amp;quot;
- android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
- app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;/&amp;gt;
-
-
- &amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
-
-&amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;app:elevation=&amp;quot;0dp&amp;quot;&lt;/code&gt;  // AppBarLayout içerisinde ki bu tanımlama default olarak tanımlanmış gölgeyi kaldırır.&lt;/p&gt;
-
-&lt;p&gt;Tanımlamış olduğumuz Toolbar a Activity içerisinden (ya da Fragment vb) erişerek gerekli tanımlamaları vs yapabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Toolbar Custom Title&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Toolbarınızı tanımladığınız yerde aşağıdaki değişiklikleri yaparak Title ınızı istediğiniz gibi özelleştirebilirsiniz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;android.support.design.widget.AppBarLayout
-    android:layout_width=&amp;quot;match_parent&amp;quot;
-    android:layout_height=&amp;quot;wrap_content&amp;quot;
-    app:elevation=&amp;quot;0dp&amp;quot;&amp;gt;
-
-    &amp;lt;android.support.v7.widget.Toolbar
-        android:id=&amp;quot;@+id/toolbar&amp;quot;
-        android:layout_width=&amp;quot;match_parent&amp;quot;
-        android:layout_height=&amp;quot;wrap_content&amp;quot;
-        android:background=&amp;quot;@color/primary_dark&amp;quot;
-        android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot;
-        app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;&amp;gt;
-
-        &amp;lt;TextView
-            android:id=&amp;quot;@+id/toolbar_title&amp;quot;
-            style=&amp;quot;@style/ToolbarTitleStyle&amp;quot;
-            android:layout_width=&amp;quot;wrap_content&amp;quot;
-            android:layout_height=&amp;quot;wrap_content&amp;quot;
-            android:layout_gravity=&amp;quot;center&amp;quot; /&amp;gt;
-    &amp;lt;/android.support.v7.widget.Toolbar&amp;gt;
-
-
-&amp;lt;/android.support.design.widget.AppBarLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;FragmentX&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt; private void setToolbar() {
- Toolbar toolbar = (Toolbar) mActivity.findViewById(R.id.toolbar);
- mActivity.setSupportActionBar(toolbar);
- mActivity.getSupportActionBar().setHomeButtonEnabled(true);
- mActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
- mActivity.getSupportActionBar().setDisplayShowTitleEnabled(false); // Default olarak tanımlanmış Title ın gösterilmemesini belirtiyoruz.
- ((TextView) toolbar.findViewById(R.id.toolbar_title)).setText(&amp;quot;SORU SOR&amp;quot;); // Custom olarak belirlenmiş TextView e text ataması yapıyoruz.
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <description>Android Toolbar bileşeni çok yönlü bir yapıya sahiptir. Android Design Library kullanarak ve AppBarLayout içerisinde tanımlanarak oldukça farklı şekillere bürünebilir.
+Genel kullanımı aşağıdaki gibidir.
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt; &amp;lt;android.support.design.widget.CoordinatorLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot; xmlns:app=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot; xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;match_parent&amp;quot; android:background=&amp;quot;@color/primary_dark&amp;quot; tools:context=&amp;quot;.MainActivity&amp;quot;&amp;gt; &amp;lt;FrameLayout android:id=&amp;quot;@+id/container&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt; &amp;lt;/FrameLayout&amp;gt; &amp;lt;android.support.design.widget.FloatingActionButton android:id=&amp;quot;@+id/fab&amp;quot; android:layout_width=&amp;quot;wrap_content&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; android:layout_gravity=&amp;quot;bottom|end&amp;quot; android:layout_margin=&amp;quot;@dimen/fab_margin&amp;quot; android:src=&amp;quot;@android:drawable/ic_dialog_email&amp;quot; /&amp;gt; &amp;lt;android.support.design.widget.AppBarLayout android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; app:elevation=&amp;quot;0dp&amp;quot;&amp;gt; &amp;lt;android.support.v7.widget.Toolbar android:id=&amp;quot;@+id/toolbar&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; android:background=&amp;quot;@color/primary_dark&amp;quot; android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot; app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;/&amp;gt; &amp;lt;/android.support.design.widget.AppBarLayout&amp;gt; &amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;  app:elevation=&amp;quot;0dp&amp;quot; // AppBarLayout içerisinde ki bu tanımlama default olarak tanımlanmış gölgeyi kaldırır.</description>
     </item>
     
   </channel>

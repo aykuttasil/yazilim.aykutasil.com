@@ -1,81 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/bluetooth/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Bluetooth on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/bluetooth/</link>
+    <description>Recent content in Bluetooth on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/bluetooth/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Mar 2017 23:40:36 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/bluetooth/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Arduino HC-06 Bluetooth Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/arduino_hc06_kullanimi</link>
+      <link>http://yazilim.aykutasil.com/arduino_hc06_kullanimi/</link>
       <pubDate>Sun, 12 Mar 2017 23:40:36 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/arduino_hc06_kullanimi</guid>
-      <description>
-
-&lt;h1 id=&#34;hc-06-bluetooth&#34;&gt;HC-06 Bluetooth&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Aşağıdaki kodu &lt;strong&gt;Arduino&lt;/strong&gt; kartınıza yükleyiniz&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=Qwerty.BluetoothTerminal&amp;amp;hl=tr&#34;&gt;Bluetooth Terminal&lt;/a&gt; uygulamasını telefonunuza indirin&lt;/li&gt;
-&lt;li&gt;HC-06 modulünün &lt;strong&gt;TX-R&lt;/strong&gt;X çıkışlarını Arduino kartınızın &lt;strong&gt;RX-T&lt;/strong&gt;X girişlerine entegre edin. (Ters sıralamaya dikkat)&lt;/li&gt;
-&lt;li&gt;Cihazınızdan normal bluetooh bağlantısı kurar gibi &lt;strong&gt;HC-06&lt;/strong&gt; modülü ile bağlantı kurun ve şifre olarak &lt;strong&gt;1234&lt;/strong&gt; girin.&lt;/li&gt;
-&lt;li&gt;Aşağıdaki kodda görebileceğiniz gibi 0,1,2,3,4 için farklı işlemler yapılmasını sağladık. Siz de ihtiyacınıza göre ayarlayın. Ben led parlaklığını düzenledim ya da motor hızı olarak da düşünebiliriz.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-arduino&#34;&gt;const int LED_PIN = 9;
-
-char veri;
-
-
-void setup() {
-  Serial.begin(9600);
-  pinMode(LED_PIN, OUTPUT);
-  Serial.println(&amp;quot;HC-06 Kontrol Projesi&amp;quot;);
-}
-
-void loop() {
-  if (Serial.available() &amp;gt; 0) {
-
-    veri = Serial.read();
-
-    if (veri == &#39;0&#39;) {
-      digitalWrite(LED_PIN, LOW);
-      Serial.println(&amp;quot;LED Sonduruldu.&amp;quot; );
-    }
-
-    if (veri == &#39;1&#39;) {
-      digitalWrite(LED_PIN, HIGH);
-      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
-    }
-    
-    if (veri == &#39;2&#39;) {
-      analogWrite(LED_PIN, 200);
-      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
-    }
-    
-    if (veri == &#39;3&#39;) {
-      //digitalWrite(LED_PIN, HIGH);
-      analogWrite(LED_PIN, 255);
-      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
-    }
-
-    if (veri == &#39;4&#39;) {
-      //digitalWrite(LED_PIN, HIGH);
-      analogWrite(LED_PIN, 50);
-
-      Serial.println(&amp;quot;LED Yakildi.&amp;quot;);
-    }
-
-
-  }
-  delay(100);
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/arduino_hc06_kullanimi/</guid>
+      <description>HC-06 Bluetooth  Aşağıdaki kodu Arduino kartınıza yükleyiniz Bluetooth Terminal uygulamasını telefonunuza indirin HC-06 modulünün TX-RX çıkışlarını Arduino kartınızın RX-TX girişlerine entegre edin. (Ters sıralamaya dikkat) Cihazınızdan normal bluetooh bağlantısı kurar gibi HC-06 modülü ile bağlantı kurun ve şifre olarak 1234 girin. Aşağıdaki kodda görebileceğiniz gibi 0,1,2,3,4 için farklı işlemler yapılmasını sağladık. Siz de ihtiyacınıza göre ayarlayın. Ben led parlaklığını düzenledim ya da motor hızı olarak da düşünebiliriz.  const int LED_PIN = 9; char veri; void setup() { Serial.</description>
     </item>
     
   </channel>

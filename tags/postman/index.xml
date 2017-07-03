@@ -1,159 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/postman/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Postman on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/postman/</link>
+    <description>Recent content in Postman on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/postman/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Jan 2017 01:09:39 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/postman/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Postman ile API Test Yazımı</title>
-      <link>http://yazilim.aykutasil.com/postman-api-test</link>
+      <link>http://yazilim.aykutasil.com/postman-api-test/</link>
       <pubDate>Wed, 11 Jan 2017 01:09:39 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/postman-api-test</guid>
-      <description>
+      <guid>http://yazilim.aykutasil.com/postman-api-test/</guid>
+      <description>POSTMAN Postman HTTP Request lerinizi istediğiniz şekilde düzenleyip çalıştırabileceğiniz ve test edebileceğiniz bir Chrome eklentisidir.
+Bu linkten Chrome a ekleyebilirsiniz.
+Postman kullanarak API lerinizi test edebilirsiniz..
+Tek bir butona tıklayarak istediğiniz kadar Request i çalıştırabilir ve bu Requst lerden gelen değerleri başka bir Requestinize parametre olarak gönderebilrsiniz.
 
-&lt;h1 id=&#34;postman&#34;&gt;POSTMAN&lt;/h1&gt;
-
-&lt;p&gt;Postman HTTP Request lerinizi istediğiniz şekilde düzenleyip çalıştırabileceğiniz ve test edebileceğiniz bir Chrome eklentisidir.&lt;/p&gt;
-
-&lt;p&gt;Bu &lt;a href=&#34;https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop&#34;&gt;linkten&lt;/a&gt; Chrome a ekleyebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Postman kullanarak API lerinizi test edebilirsiniz..&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Tek bir butona tıklayarak istediğiniz kadar Request i çalıştırabilir ve bu Requst lerden gelen değerleri başka bir Requestinize parametre olarak gönderebilrsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/uNpJFK4&#34;&gt;&lt;img src=&#34;http://i.imgur.com/uNpJFK4.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıdaki ekran Postman i yüklediğinizde açılan ilk ekrandır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Enter request URL here&lt;/strong&gt; yazan kutucuğa End Point yani istek yapacağımız adres yazılır.&lt;/p&gt;
-
-&lt;p&gt;Şuan &lt;strong&gt;GET&lt;/strong&gt; olarak gözüken yerden yapılacak olan istediğin cinsi seçilir.&lt;strong&gt;(POST , GET ,PUT ,DELETE vs.)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Authorization&lt;/strong&gt; tabından Request gönderilecek adreste bir kimlik doğrulama var ise burdan gerekli parametreler girilebilir.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Headers&lt;/strong&gt; tabından yapılacak olan istekte bulunması gereken Header bilgileri girilir.(Content-Type gibi)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Body&lt;/strong&gt; tabından End Point i belirtilmiş adrese gönderilecek veriler girilir.Bu veriiler form-data , urlencoded , raw , binary şeklinde olabilir.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Pre-request&lt;/strong&gt; script tabını  kullanarak istek yapmadan hemen önce otomatik olarak yapılacak işlemleri belirleyebiliriz.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Tests&lt;/strong&gt; tabından yapılan isteklere ait çeşitli testler yazabiliriz.&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ve &lt;strong&gt;SEND&lt;/strong&gt; butouna tıklayarak istek gönderilir.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;No Environment&lt;/strong&gt; yazan kısma tıklayarak farklı projeler için Environment tanımlayabilriz.Ve her proje kendine ait Environment  Variable ları kullanır.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Environment variable&lt;/strong&gt; lar &lt;strong&gt;Global&lt;/strong&gt; olarak ta tanımlanabilir.Bu şekilde tanımlanmış variable lar tüm oluşturulmuş olan Environment lar içinden erişilebilir.&lt;/p&gt;
-
-&lt;p&gt;Sabit environment lar oluşturmak için No Environment tabına tıklanarak bir Environment oluşturulur ve &lt;strong&gt;Manage Environment&lt;/strong&gt; diyerek sabit değişkenler oluşturulabilir.&lt;/p&gt;
-
-&lt;p&gt;Dinamik olarak oluşturmak için Tests tabı kullanılır.&lt;/p&gt;
-
-&lt;p&gt;Ve kullanım şekli :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;postman.setEnvironmentVariable(&amp;quot;key&amp;quot;,&amp;quot;value&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Global variable oluşturmak için:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;postman.setGlobalEnvironmentVariable(&amp;quot;key&amp;quot;,&amp;quot;value&amp;quot;);
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/xZwuAHQ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/xZwuAHQ.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda görüldüğü gibi Requestimize ait sabit değerleri bu şekilde environment variable olarak kaydedebiliriz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/LuJbfDN&#34;&gt;&lt;img src=&#34;http://i.imgur.com/LuJbfDN.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda görüldüğü gibi oluşturmuş olduğumuz environment variable ı adres çubuğunda kullandık.Ve url nin devamını kendimiz el ile yazdık.Response olarak dönen değeride yukarıda ki  gibi görebiliyoruz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/jqkOC9D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/jqkOC9D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yaptığımız istek sonucu dönen Responsumuzu test etmeye geldi sıra.&lt;/p&gt;
-
-&lt;p&gt;Yukarıda ki resimde gördüğünüz gibi gelen response değerinde status diye bir property bulunuyor  mu ? ve responce code değeri 200 mü ? diye basit bir test yazıyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SEND&lt;/strong&gt; dediğimizde yazdığımız testlerde çalışacak ve Response sonucunu gördüğümüz ekranın üstünde bulunan Tests(&lt;sup&gt;2&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;) tabına tıklayarak test sonçlarını görebilicez.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Şimdi bir Blog yazısı kayıt etmeye çalışalım.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/iOr6a5D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/iOr6a5D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Bu şekilde yazıp  &lt;strong&gt;SEND&lt;/strong&gt; e bastığımız da Response olarak Invalid hatası vericektir.Çünkü Authorization bilgilerini girmemizi istemektedir.Bunu yapabilmemiz aşağıdaki gibi bir token oluşturuyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/PIMTrVC&#34;&gt;&lt;img src=&#34;http://i.imgur.com/PIMTrVC.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/optSB3D&#34;&gt;&lt;img src=&#34;http://i.imgur.com/optSB3D.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Ve oluşturduğumuz token bilgileriniz Blog post ederken kullanabilmek için &lt;strong&gt;Environment Variable&lt;/strong&gt; olarak atıyoruz.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Ve aşağıdaki gibi Blog Post değerlerimizi güncelliyoruz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/XWxEZRv&#34;&gt;&lt;img src=&#34;http://i.imgur.com/XWxEZRv.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/5hcJ3kJ&#34;&gt;&lt;img src=&#34;http://i.imgur.com/5hcJ3kJ.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Bir Blog mesajı yazarken&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
- &amp;quot;post&amp;quot; : &amp;quot;Merhaba&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;bu şekilde oluşturabileceğiniz gibi&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
- &amp;quot;post&amp;quot; : &amp;quot;{{token}}&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;bu şekilde de kaydetmiş olduğunuz Environment Variable ları değer olarak atayabilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Bu şekil de zincirleme reaksiyonlar oluşturabilir ve bir istek sonucu dönen değeri diğer isteğinize parametre olarak gönderebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/3qNG7qq&#34;&gt;&lt;img src=&#34;http://i.imgur.com/3qNG7qq.jpg&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/LPrqyEn&#34;&gt;&lt;img src=&#34;http://i.imgur.com/LPrqyEn.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Yukarıda görüldüğü gibi environment variable değerinizi Url nize parametre olarak yerleştirebilirsiniz.&lt;/p&gt;
-
-&lt;p&gt;Postman de test yazarken kullanabileceğiniz ve çok yararlı olabilecek console.log u aktif etmek için bir kaç ayar yapmanız gerekmekte.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Chromu u açın ve adres satırına chrome://flags  yazın.&lt;/li&gt;
-&lt;li&gt;Çıkan pencerece “package” diye arama yapın (CTRL + F)&lt;/li&gt;
-&lt;li&gt;Ve  #debug-packed-apps  enable yapın.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://imgur.com/hMi6dle&#34;&gt;&lt;img src=&#34;http://i.imgur.com/hMi6dle.png&#34; title=&#34;source: imgur.com&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Şimdi Postman ekranına gelin ve herhangi bir yere sağ tıklayarak öğeyi denetle diyin ve Console tabını açın.&lt;/p&gt;
-
-&lt;p&gt;Bu ekran da postman de test yazarken kullanmış olduğunuz &lt;code&gt;console.log(“xyz”)&lt;/code&gt; komutunun sonucunu görebilirsiniz.&lt;/p&gt;
-</description>
+Yukarıdaki ekran Postman i yüklediğinizde açılan ilk ekrandır.
+Enter request URL here yazan kutucuğa End Point yani istek yapacağımız adres yazılır.</description>
     </item>
     
   </channel>

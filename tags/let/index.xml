@@ -1,57 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software</title>
-    <link>http://yazilim.aykutasil.com/tags/let/index.xml</link>
-    <description>Recent content on Software</description>
+    <title>Let on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/let/</link>
+    <description>Recent content in Let on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <atom:link href="http://yazilim.aykutasil.com/tags/let/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jun 2017 04:33:06 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/let/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Kotlin Let Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/kotlin_let</link>
+      <link>http://yazilim.aykutasil.com/kotlin_let/</link>
       <pubDate>Tue, 06 Jun 2017 04:33:06 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/kotlin_let</guid>
-      <description>
-
-&lt;h1 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;fun &amp;lt;T, R&amp;gt; T.let(f: (T) -&amp;gt; R): R = f(this)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;let()&lt;/code&gt; temel olarak, belirli bir kapsam için bir &lt;strong&gt;değişken/kod bloğu&lt;/strong&gt; oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani &lt;code&gt;let()&lt;/code&gt; bir sarmalıyıcı fonksiyondur.&lt;/p&gt;
-
-&lt;p&gt;Örneğin:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;private var mPhotoUrl: String? = null
-
-fun uploadClicked() {
-    if (mPhotoUrl != null) {
-        uploadPhoto(mPhotoUrl!!)
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Yukarıda ki &lt;code&gt;if (mPhotoUrl != null)&lt;/code&gt; satırı ile null kontrolü yapılır ve eğer &lt;code&gt;null&lt;/code&gt; değilse &lt;code&gt;uploadPhoto(mPhotoUrl!!)&lt;/code&gt; kod bloğu çalıştırılır. Bu kodu &lt;code&gt;let()&lt;/code&gt; ile çok daha kolay ve anlaşılır hale getirebiliriz.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    private var mPhotoUrl: String? = null
-
-    fun uploadClicked() {
-        mPhotoUrl?.let { uploadPhoto(it) }
-    }
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;Not:&lt;/strong&gt; &lt;code&gt;let()&lt;/code&gt; ile sarmalanan bir kod bloğu içerisinde sarmalayıcıya &lt;code&gt;it&lt;/code&gt; ile ulaşılabilir.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;File(&amp;quot;a.txt&amp;quot;).let {
-    // it kullanılarak file nesnesine erişilebilir.
-}
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://yazilim.aykutasil.com/kotlin_let/</guid>
+      <description>Kotlin fun &amp;lt;T, R&amp;gt; T.let(f: (T) -&amp;gt; R): R = f(this)  let() temel olarak, belirli bir kapsam için bir değişken/kod bloğu oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani let() bir sarmalıyıcı fonksiyondur.
+Örneğin:
+private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğu çalıştırılır.</description>
     </item>
     
   </channel>
