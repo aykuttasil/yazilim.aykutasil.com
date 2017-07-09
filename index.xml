@@ -6,10 +6,31 @@
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <lastBuildDate>Sun, 18 Jun 2017 02:24:37 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 09 Jul 2017 00:00:00 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kotlin @JvmOverloads</title>
+      <link>http://yazilim.aykutasil.com/kotlin_jvmoverloads/</link>
+      <pubDate>Sun, 09 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_jvmoverloads/</guid>
+      <description>Kotlin @JvmOverloads Kotlin ile uygulama geliştirmeyi teşvik eden en büyük etkenlerden biri şüphesiz Java dili uyumlu yapısıdır. Her iki tarafdan da birbirlerine referanslar verilebilir.
+Kotlin dilinin Java&amp;rsquo;dan ayıran özelliklerinden biri Java compiler ından daha zeki olmasıdır. Nitekim java dili yaşlanıyor :). Kotlin ile oluşturulan bazı yapıların Java tarafına uyumlu hale getirilmesi için bazen ufak düzenlemelere gerek duyulabiliyor. Bu düzenlemelerden bir tanesi de @JvmOverloads annotation kullanımı.
+fun ViewGroup.inflate(resId: Int, attachToRoot: Boolean = false): View { return LayoutInflater.</description>
+    </item>
+    
+    <item>
+      <title>Kotlin Sealed Class</title>
+      <link>http://yazilim.aykutasil.com/kotlin_sealed_class/</link>
+      <pubDate>Sat, 01 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_sealed_class/</guid>
+      <description>Kotlin Sealed Class Enum yapısına benzer bir yapıya sahiptir. Ve benzer görevler için kullanılır. Aradaki fark enum lar sabit değer ifade etmek için kullanılırken sealed yapısı normal sınıf gibi fakat enum mantığıyla kullanılır. Yani belli bir duruma ait fonksiyonları bir arada tutmak ve when() gibi fonksiyonlar ile birlikte kullanımını sağlamak için kullanılır.
+// Sealed class enum yapısına benzer // Bir durum için belli başlı akışları bir arada tutmamızı sağlar ve bu akışların yönetimini kolaylaştırır.</description>
+    </item>
     
     <item>
       <title>Kotlin Lambda</title>
@@ -594,16 +615,6 @@ Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif
 https://docs.docker.com/engine/reference/commandline/exec/
 Yukarıdaki linki takip ederek nasıl komut çalıştıracağınızı öğrenebilirsiniz. Ya da Kitematic gibi bir uygulama yüklü ise bu uygulamayı açarak ve çalışan image e tıklayarak exe butonuna basmamız yeterli olucaktır.
 Bu sayfada anlatmak istediğim şey tüm bunları yaptınız ve container ın içindeyken bir dosya oluşturdunuz. Ve bu dosyanın içeriğini düzenlemeniz gerekmekte.</description>
-    </item>
-    
-    <item>
-      <title>Kotlin Sealed Class</title>
-      <link>http://yazilim.aykutasil.com/kotlin_sealed_class/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/kotlin_sealed_class/</guid>
-      <description>Kotlin Sealed Class Enum yapısına benzer bir yapıya sahiptir. Ve benzer görevler için kullanılır. Aradaki fark enum lar sabit değer ifade etmek için kullanılırken sealed yapısı normal sınıf gibi fakat enum mantığıyla kullanılır. Yani belli bir duruma ait fonksiyonları bir arada tutmak ve when() gibi fonksiyonlar ile birlikte kullanımını sağlamak için kullanılır.
-// Sealed class enum yapısına benzer // Bir durum için belli başlı akışları bir arada tutmamızı sağlar ve bu akışların yönetimini kolaylaştırır.</description>
     </item>
     
   </channel>

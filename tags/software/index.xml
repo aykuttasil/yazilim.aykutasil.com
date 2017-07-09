@@ -6,10 +6,31 @@
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr-tr</language>
-    <lastBuildDate>Sun, 18 Jun 2017 02:24:37 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 09 Jul 2017 00:00:00 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Kotlin @JvmOverloads</title>
+      <link>http://yazilim.aykutasil.com/kotlin_jvmoverloads/</link>
+      <pubDate>Sun, 09 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_jvmoverloads/</guid>
+      <description>Kotlin @JvmOverloads Kotlin ile uygulama geliştirmeyi teşvik eden en büyük etkenlerden biri şüphesiz Java dili uyumlu yapısıdır. Her iki tarafdan da birbirlerine referanslar verilebilir.
+Kotlin dilinin Java&amp;rsquo;dan ayıran özelliklerinden biri Java compiler ından daha zeki olmasıdır. Nitekim java dili yaşlanıyor :). Kotlin ile oluşturulan bazı yapıların Java tarafına uyumlu hale getirilmesi için bazen ufak düzenlemelere gerek duyulabiliyor. Bu düzenlemelerden bir tanesi de @JvmOverloads annotation kullanımı.
+fun ViewGroup.inflate(resId: Int, attachToRoot: Boolean = false): View { return LayoutInflater.</description>
+    </item>
+    
+    <item>
+      <title>Kotlin Sealed Class</title>
+      <link>http://yazilim.aykutasil.com/kotlin_sealed_class/</link>
+      <pubDate>Sat, 01 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/kotlin_sealed_class/</guid>
+      <description>Kotlin Sealed Class Enum yapısına benzer bir yapıya sahiptir. Ve benzer görevler için kullanılır. Aradaki fark enum lar sabit değer ifade etmek için kullanılırken sealed yapısı normal sınıf gibi fakat enum mantığıyla kullanılır. Yani belli bir duruma ait fonksiyonları bir arada tutmak ve when() gibi fonksiyonlar ile birlikte kullanımını sağlamak için kullanılır.
+// Sealed class enum yapısına benzer // Bir durum için belli başlı akışları bir arada tutmamızı sağlar ve bu akışların yönetimini kolaylaştırır.</description>
+    </item>
     
     <item>
       <title>Kotlin Lambda</title>
@@ -530,16 +551,6 @@ Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değe
 Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
 String.xml
 &amp;lt;string name=&amp;quot;pazartesi&amp;quot;&amp;gt;Pazartesi&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;sali&amp;quot;&amp;gt;Salı&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;carsamba&amp;quot;&amp;gt;Çarşamba&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;persembe&amp;quot;&amp;gt;Perşembe&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;cuma&amp;quot;&amp;gt;Cuma&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;cumartesi&amp;quot;&amp;gt;Cumartesi&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;pazar&amp;quot;&amp;gt;Pazar&amp;lt;/string&amp;gt; &amp;lt;string-array name=&amp;quot;array_gonderi_list_haftalik&amp;quot;&amp;gt; &amp;lt;item&amp;gt;@string/pazartesi&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/sali&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/carsamba&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/persembe&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/cuma&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/cumartesi&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/pazar&amp;lt;/item&amp;gt; &amp;lt;/string-array&amp;gt;  SpinnerHelper.</description>
-    </item>
-    
-    <item>
-      <title>Kotlin Sealed Class</title>
-      <link>http://yazilim.aykutasil.com/kotlin_sealed_class/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://yazilim.aykutasil.com/kotlin_sealed_class/</guid>
-      <description>Kotlin Sealed Class Enum yapısına benzer bir yapıya sahiptir. Ve benzer görevler için kullanılır. Aradaki fark enum lar sabit değer ifade etmek için kullanılırken sealed yapısı normal sınıf gibi fakat enum mantığıyla kullanılır. Yani belli bir duruma ait fonksiyonları bir arada tutmak ve when() gibi fonksiyonlar ile birlikte kullanımını sağlamak için kullanılır.
-// Sealed class enum yapısına benzer // Bir durum için belli başlı akışları bir arada tutmamızı sağlar ve bu akışların yönetimini kolaylaştırır.</description>
     </item>
     
   </channel>

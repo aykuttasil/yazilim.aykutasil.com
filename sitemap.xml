@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://yazilim.aykutasil.com/kotlin_jvmoverloads/</loc>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yazilim.aykutasil.com/kotlin_sealed_class/</loc>
+    <lastmod>2017-07-01T00:00:00+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yazilim.aykutasil.com/kotlin_lambda/</loc>
     <lastmod>2017-06-18T02:24:37+03:00</lastmod>
   </url>
@@ -261,19 +271,25 @@
   
   <url>
     <loc>http://yazilim.aykutasil.com/tags/android/</loc>
-    <lastmod>2017-06-06T04:42:56+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://yazilim.aykutasil.com/categories/android/</loc>
-    <lastmod>2017-05-17T11:58:43+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://yazilim.aykutasil.com/tags/android-test/</loc>
     <lastmod>2017-01-11T00:31:52+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://yazilim.aykutasil.com/tags/annotations/</loc>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -368,7 +384,7 @@
   
   <url>
     <loc>http://yazilim.aykutasil.com/categories/</loc>
-    <lastmod>2017-05-17T11:58:43+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -422,6 +438,7 @@
   
   <url>
     <loc>http://yazilim.aykutasil.com/tags/enum/</loc>
+    <lastmod>2017-07-01T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -582,6 +599,12 @@
   </url>
   
   <url>
+    <loc>http://yazilim.aykutasil.com/tags/jvmoverloads/</loc>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://yazilim.aykutasil.com/tags/keyhashes/</loc>
     <lastmod>2017-01-10T23:56:35+03:00</lastmod>
     <priority>0</priority>
@@ -595,18 +618,14 @@
   
   <url>
     <loc>http://yazilim.aykutasil.com/tags/kotlin/</loc>
-    <lastmod>2017-06-18T02:24:37+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://yazilim.aykutasil.com/categories/kotlin/</loc>
-    <lastmod>2017-06-18T02:24:37+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://yazilim.aykutasil.com/kotlin_sealed_class/</loc>
   </url>
   
   <url>
@@ -761,7 +780,7 @@
   
   <url>
     <loc>http://yazilim.aykutasil.com/post/</loc>
-    <lastmod>2017-06-18T02:24:37+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -821,6 +840,7 @@
   
   <url>
     <loc>http://yazilim.aykutasil.com/tags/sealed/</loc>
+    <lastmod>2017-07-01T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -850,13 +870,13 @@
   
   <url>
     <loc>http://yazilim.aykutasil.com/</loc>
-    <lastmod>2017-06-18T02:24:37+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://yazilim.aykutasil.com/tags/software/</loc>
-    <lastmod>2017-06-18T02:24:37+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1018,7 +1038,7 @@
   
   <url>
     <loc>http://yazilim.aykutasil.com/categories/yazilim/</loc>
-    <lastmod>2017-06-18T02:24:37+03:00</lastmod>
+    <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <priority>0</priority>
   </url>
   
