@@ -156,6 +156,24 @@
     </item>
     
     <item>
+      <title>Cloud</title>
+      <link>http://yazilim.aykutasil.com/tags/cloud/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud Dns</title>
+      <link>http://yazilim.aykutasil.com/tags/cloud-dns/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/cloud-dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Collections</title>
       <link>http://yazilim.aykutasil.com/tags/collections/</link>
       <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
@@ -183,6 +201,15 @@
     </item>
     
     <item>
+      <title>Custom Dns</title>
+      <link>http://yazilim.aykutasil.com/tags/custom-dns/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/custom-dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Custom Script</title>
       <link>http://yazilim.aykutasil.com/tags/custom-script/</link>
       <pubDate>Wed, 11 Jan 2017 15:39:47 +0300</pubDate>
@@ -201,11 +228,29 @@
     </item>
     
     <item>
+      <title>Dns</title>
+      <link>http://yazilim.aykutasil.com/tags/dns/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>http://yazilim.aykutasil.com/tags/docker/</link>
       <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Domain</title>
+      <link>http://yazilim.aykutasil.com/tags/domain/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/domain/</guid>
       <description></description>
     </item>
     
@@ -305,6 +350,15 @@
       <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/tags/fusedlocationapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gcloud</title>
+      <link>http://yazilim.aykutasil.com/tags/gcloud/</link>
+      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/gcloud/</guid>
       <description></description>
     </item>
     
