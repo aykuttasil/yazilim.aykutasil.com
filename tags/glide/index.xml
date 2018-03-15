@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Glide on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/glide/</link>
+    <link>https://yazilim.aykutasil.com/tags/glide/</link>
     <description>Recent content in Glide on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 17:11:30 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/glide/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/glide/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Android Glide ve Palette Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/post/android_glide_palette/</link>
+      <link>https://yazilim.aykutasil.com/post/android_glide_palette/</link>
       <pubDate>Wed, 11 Jan 2017 17:11:30 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/android_glide_palette/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_glide_palette/</guid>
       <description>Google ın resim işlemleri için geliştirmiş olduğu Glide kütüphanesi Android kaynaklarını, cache mekanizmasını vs. verimli şekilde kullanarak uygulamanıza hız ve kalite kazandırır.
 Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüphaneyi incelemenizi tavsiye ediyorum.
  Github : https://github.com/bumptech/glide

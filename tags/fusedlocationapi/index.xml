@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fusedlocationapi on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/fusedlocationapi/</link>
+    <link>https://yazilim.aykutasil.com/tags/fusedlocationapi/</link>
     <description>Recent content in Fusedlocationapi on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 15:27:59 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/fusedlocationapi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/fusedlocationapi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Foreground Service ile FusedLocationApi Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/</link>
+      <link>https://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/</link>
       <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/</guid>
+      <guid>https://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/</guid>
       <description>Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.
 Burada yapacağımız örnekte kısaca şu aşamaları görücez;
  Service i foreground olarak başlatmak Ongoing(devamlı gözüken) notification oluşturmak GoogleApiClient a bağlanmak Location bilgisini notification da göstermek  İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.</description>

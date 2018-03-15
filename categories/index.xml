@@ -2,165 +2,165 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Software</title>
-    <link>http://yazilim.aykutasil.com/categories/</link>
+    <link>https://yazilim.aykutasil.com/categories/</link>
     <description>Recent content in Categories on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Sun, 27 Aug 2017 00:00:00 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Android</title>
-      <link>http://yazilim.aykutasil.com/categories/android/</link>
+      <link>https://yazilim.aykutasil.com/categories/android/</link>
       <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/android/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/android/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Arduino</title>
-      <link>http://yazilim.aykutasil.com/categories/arduino/</link>
+      <link>https://yazilim.aykutasil.com/categories/arduino/</link>
       <pubDate>Sun, 12 Mar 2017 23:40:36 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/arduino/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/arduino/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Azure</title>
-      <link>http://yazilim.aykutasil.com/categories/azure/</link>
+      <link>https://yazilim.aykutasil.com/categories/azure/</link>
       <pubDate>Wed, 11 Jan 2017 00:21:36 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/azure/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/azure/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C#</title>
-      <link>http://yazilim.aykutasil.com/categories/c#/</link>
+      <link>https://yazilim.aykutasil.com/categories/c#/</link>
       <pubDate>Mon, 16 Jan 2017 11:13:16 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/c#/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/c#/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>http://yazilim.aykutasil.com/categories/docker/</link>
+      <link>https://yazilim.aykutasil.com/categories/docker/</link>
       <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/docker/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Genel</title>
-      <link>http://yazilim.aykutasil.com/categories/genel/</link>
+      <link>https://yazilim.aykutasil.com/categories/genel/</link>
       <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/genel/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/genel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Iis</title>
-      <link>http://yazilim.aykutasil.com/categories/iis/</link>
+      <link>https://yazilim.aykutasil.com/categories/iis/</link>
       <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/iis/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/iis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
-      <link>http://yazilim.aykutasil.com/categories/java/</link>
+      <link>https://yazilim.aykutasil.com/categories/java/</link>
       <pubDate>Wed, 11 Jan 2017 19:59:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/java/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>http://yazilim.aykutasil.com/categories/javascript/</link>
+      <link>https://yazilim.aykutasil.com/categories/javascript/</link>
       <pubDate>Wed, 11 Jan 2017 17:14:22 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/javascript/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kotlin</title>
-      <link>http://yazilim.aykutasil.com/categories/kotlin/</link>
+      <link>https://yazilim.aykutasil.com/categories/kotlin/</link>
       <pubDate>Sun, 09 Jul 2017 00:00:00 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/kotlin/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/kotlin/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Orm</title>
-      <link>http://yazilim.aykutasil.com/categories/orm/</link>
+      <link>https://yazilim.aykutasil.com/categories/orm/</link>
       <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/orm/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/orm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rxjava</title>
-      <link>http://yazilim.aykutasil.com/categories/rxjava/</link>
+      <link>https://yazilim.aykutasil.com/categories/rxjava/</link>
       <pubDate>Wed, 11 Jan 2017 18:52:51 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/rxjava/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/rxjava/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sql</title>
-      <link>http://yazilim.aykutasil.com/categories/sql/</link>
+      <link>https://yazilim.aykutasil.com/categories/sql/</link>
       <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/sql/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/sql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Test</title>
-      <link>http://yazilim.aykutasil.com/categories/test/</link>
+      <link>https://yazilim.aykutasil.com/categories/test/</link>
       <pubDate>Wed, 11 Jan 2017 01:09:39 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/test/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/test/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vscode</title>
-      <link>http://yazilim.aykutasil.com/categories/vscode/</link>
+      <link>https://yazilim.aykutasil.com/categories/vscode/</link>
       <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/vscode/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/vscode/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Windows</title>
-      <link>http://yazilim.aykutasil.com/categories/windows/</link>
+      <link>https://yazilim.aykutasil.com/categories/windows/</link>
       <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/windows/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/windows/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Yazilim</title>
-      <link>http://yazilim.aykutasil.com/categories/yazilim/</link>
+      <link>https://yazilim.aykutasil.com/categories/yazilim/</link>
       <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/categories/yazilim/</guid>
+      <guid>https://yazilim.aykutasil.com/categories/yazilim/</guid>
       <description></description>
     </item>
     

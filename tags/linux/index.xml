@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/linux/</link>
+    <link>https://yazilim.aykutasil.com/tags/linux/</link>
     <description>Recent content in Linux on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Sun, 25 Dec 2016 03:51:49 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Docker Container Install nano</title>
-      <link>http://yazilim.aykutasil.com/post/dockerinstallnano/</link>
+      <link>https://yazilim.aykutasil.com/post/dockerinstallnano/</link>
       <pubDate>Sun, 25 Dec 2016 03:51:49 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/dockerinstallnano/</guid>
+      <guid>https://yazilim.aykutasil.com/post/dockerinstallnano/</guid>
       <description>Docker ile ayağa kaldırmış olduğunuz bir container olduğunu varsayalım ve bu docker container a erişerek komut satırı çalıştırmanız gerekiyor.
 https://docs.docker.com/engine/reference/commandline/exec/
 Yukarıdaki linki takip ederek nasıl komut çalıştıracağınızı öğrenebilirsiniz. Ya da Kitematic gibi bir uygulama yüklü ise bu uygulamayı açarak ve çalışan image e tıklayarak exe butonuna basmamız yeterli olucaktır.

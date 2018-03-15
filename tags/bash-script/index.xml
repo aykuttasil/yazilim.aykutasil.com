@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bash Script on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/bash-script/</link>
+    <link>https://yazilim.aykutasil.com/tags/bash-script/</link>
     <description>Recent content in Bash Script on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 19:56:08 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/bash-script/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/bash-script/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Docker Komutları</title>
-      <link>http://yazilim.aykutasil.com/post/docker_komutlari/</link>
+      <link>https://yazilim.aykutasil.com/post/docker_komutlari/</link>
       <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/docker_komutlari/</guid>
+      <guid>https://yazilim.aykutasil.com/post/docker_komutlari/</guid>
       <description>Docker Komutları ve Açıklamaları
 &amp;gt; docker images  Docker hostuna yüklü olan image leri gösterir.
 &amp;gt; docker ps  Docker hostunda yüklü olan imagelerle inşa edilmiş olan container ları listeler.

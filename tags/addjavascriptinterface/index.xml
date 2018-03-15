@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Addjavascriptinterface on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/addjavascriptinterface/</link>
+    <link>https://yazilim.aykutasil.com/tags/addjavascriptinterface/</link>
     <description>Recent content in Addjavascriptinterface on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 19:59:08 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/addjavascriptinterface/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/addjavascriptinterface/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Android ile WebView Etkileşimi</title>
-      <link>http://yazilim.aykutasil.com/android-webview-etkilesimi/</link>
+      <link>https://yazilim.aykutasil.com/android-webview-etkilesimi/</link>
       <pubDate>Wed, 11 Jan 2017 19:59:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-webview-etkilesimi/</guid>
+      <guid>https://yazilim.aykutasil.com/android-webview-etkilesimi/</guid>
       <description>Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
  Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
 Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.</description>

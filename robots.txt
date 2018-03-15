@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://yazilim.aykutasil.com/sitemap.xml
+Sitemap: https://yazilim.aykutasil.com/sitemap.xml

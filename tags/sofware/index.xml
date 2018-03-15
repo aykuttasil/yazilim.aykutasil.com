@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sofware on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/sofware/</link>
+    <link>https://yazilim.aykutasil.com/tags/sofware/</link>
     <description>Recent content in Sofware on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 19:59:08 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/sofware/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/sofware/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Android ile WebView Etkileşimi</title>
-      <link>http://yazilim.aykutasil.com/android-webview-etkilesimi/</link>
+      <link>https://yazilim.aykutasil.com/android-webview-etkilesimi/</link>
       <pubDate>Wed, 11 Jan 2017 19:59:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-webview-etkilesimi/</guid>
+      <guid>https://yazilim.aykutasil.com/android-webview-etkilesimi/</guid>
       <description>Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
  Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
 Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.</description>
@@ -24,10 +24,10 @@ Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine
     
     <item>
       <title>Docker Komutları</title>
-      <link>http://yazilim.aykutasil.com/post/docker_komutlari/</link>
+      <link>https://yazilim.aykutasil.com/post/docker_komutlari/</link>
       <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/docker_komutlari/</guid>
+      <guid>https://yazilim.aykutasil.com/post/docker_komutlari/</guid>
       <description>Docker Komutları ve Açıklamaları
 &amp;gt; docker images  Docker hostuna yüklü olan image leri gösterir.
 &amp;gt; docker ps  Docker hostunda yüklü olan imagelerle inşa edilmiş olan container ları listeler.
@@ -37,10 +37,10 @@ Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local
     
     <item>
       <title>Docker</title>
-      <link>http://yazilim.aykutasil.com/post/docker/</link>
+      <link>https://yazilim.aykutasil.com/post/docker/</link>
       <pubDate>Wed, 11 Jan 2017 19:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/docker/</guid>
+      <guid>https://yazilim.aykutasil.com/post/docker/</guid>
       <description>DOCKER
 Docker aldı başını gidiyor. Yeni bir devrim açıyor.
 E haliyle yazılım dünyası buna sessiz kalmamakla beraber bir çok Docker nedir? örnekleri vs. hazırlanıyor.

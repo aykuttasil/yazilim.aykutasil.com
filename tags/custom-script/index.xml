@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Custom Script on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/custom-script/</link>
+    <link>https://yazilim.aykutasil.com/tags/custom-script/</link>
     <description>Recent content in Custom Script on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 15:39:47 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/custom-script/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/custom-script/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SQL Management Studio Custom Generate Scripts</title>
-      <link>http://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/</link>
+      <link>https://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/</link>
       <pubDate>Wed, 11 Jan 2017 15:39:47 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/</guid>
+      <guid>https://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/</guid>
       <description>SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
 Senaryomuz şu şekilde;
 Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.

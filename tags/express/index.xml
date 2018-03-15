@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Express on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/express/</link>
+    <link>https://yazilim.aykutasil.com/tags/express/</link>
     <description>Recent content in Express on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 18:14:05 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/express/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/express/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>VS Code &amp; Express &amp; TypeScript &amp; IntelliSense</title>
-      <link>http://yazilim.aykutasil.com/post/vscode_express_typescript_intellisense/</link>
+      <link>https://yazilim.aykutasil.com/post/vscode_express_typescript_intellisense/</link>
       <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/vscode_express_typescript_intellisense/</guid>
+      <guid>https://yazilim.aykutasil.com/post/vscode_express_typescript_intellisense/</guid>
       <description>VS Code &amp;amp; Express &amp;amp; TypeScript &amp;amp; IntelliSense VS Code, Atom ile aynı çekirdeği paylaşan, Electron kullanılarak microsoft tarafından özelleştirilmiş ve birçok dil ile uygulama geliştirmeniz için çeşitli eklentileri bulunan bir editördür.
 Günümüzün lider dili malum Javascript ve belki de bunun böyle olmasının en temel sebeplerinden biri NodeJS.
 NodeJS ile çok hızlı bir şekilde ve tamamen javascript kullanarak web siteleri, uygulamaları, api service leri vb. geliştirebiliriz.

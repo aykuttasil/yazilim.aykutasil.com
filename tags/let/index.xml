@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Let on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/let/</link>
+    <link>https://yazilim.aykutasil.com/tags/let/</link>
     <description>Recent content in Let on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Tue, 06 Jun 2017 04:33:06 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/let/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/let/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kotlin Let Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/post/kotlin_let/</link>
+      <link>https://yazilim.aykutasil.com/post/kotlin_let/</link>
       <pubDate>Tue, 06 Jun 2017 04:33:06 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/kotlin_let/</guid>
+      <guid>https://yazilim.aykutasil.com/post/kotlin_let/</guid>
       <description>Kotlin fun &amp;lt;T, R&amp;gt; T.let(f: (T) -&amp;gt; R): R = f(this)  let() temel olarak, belirli bir kapsam için bir değişken/kod bloğu oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani let() bir sarmalıyıcı fonksiyondur.
 Örneğin:
 private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğu çalıştırılır.</description>

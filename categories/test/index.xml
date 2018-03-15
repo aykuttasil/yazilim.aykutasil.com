@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Test on Software</title>
-    <link>http://yazilim.aykutasil.com/categories/test/</link>
+    <link>https://yazilim.aykutasil.com/categories/test/</link>
     <description>Recent content in Test on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 01:09:39 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/categories/test/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/categories/test/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Postman ile API Test Yazımı</title>
-      <link>http://yazilim.aykutasil.com/post/postman_api_test/</link>
+      <link>https://yazilim.aykutasil.com/post/postman_api_test/</link>
       <pubDate>Wed, 11 Jan 2017 01:09:39 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/postman_api_test/</guid>
+      <guid>https://yazilim.aykutasil.com/post/postman_api_test/</guid>
       <description>POSTMAN Postman HTTP Request lerinizi istediğiniz şekilde düzenleyip çalıştırabileceğiniz ve test edebileceğiniz bir Chrome eklentisidir.
 Bu linkten Chrome a ekleyebilirsiniz.
 Postman kullanarak API lerinizi test edebilirsiniz..
@@ -28,10 +28,10 @@ Enter request URL here yazan kutucuğa End Point yani istek yapacağımız adres
     
     <item>
       <title>Robolectric ile UnitTest Yazımı</title>
-      <link>http://yazilim.aykutasil.com/post/robolectric/</link>
+      <link>https://yazilim.aykutasil.com/post/robolectric/</link>
       <pubDate>Wed, 11 Jan 2017 00:31:52 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/robolectric/</guid>
+      <guid>https://yazilim.aykutasil.com/post/robolectric/</guid>
       <description>Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.
 Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.
 Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.
@@ -41,10 +41,10 @@ Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herh
     
     <item>
       <title>Unit Test Nedir ? Niçin ve Nasıl Yapılır ?</title>
-      <link>http://yazilim.aykutasil.com/post/unittest_nedir_nicin_kullanilir/</link>
+      <link>https://yazilim.aykutasil.com/post/unittest_nedir_nicin_kullanilir/</link>
       <pubDate>Wed, 11 Jan 2017 00:27:54 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/unittest_nedir_nicin_kullanilir/</guid>
+      <guid>https://yazilim.aykutasil.com/post/unittest_nedir_nicin_kullanilir/</guid>
       <description>Unit Test Nedir ? Niçin ve Nasıl Yapılır ?
 Yıl olmuş 2014 hala birim test makalesi mi yazıyorsun diye düşünüyor olabilirsiniz. Ancak, birim testi uzun zamandır kullanılan bir yöntem olmasına rağmen tam olarak ne işe yaradığı, neden yapıldığı ve nasıl yapılması gerektiği konusunda açıklayıcı bir Türkçe yazı bulmak malesef zor. Bu yüzden, yazılım mühendisi adaylarına ve kariyerine yeni başlayan arkadaşlara faydalı olabilmek adına bu yazıyı yazmak uygun olur diye düşündüm.</description>
     </item>

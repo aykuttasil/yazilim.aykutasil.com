@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Apply on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/apply/</link>
+    <link>https://yazilim.aykutasil.com/tags/apply/</link>
     <description>Recent content in Apply on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Tue, 06 Jun 2017 10:47:58 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/apply/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/apply/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kotlin apply Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/post/kotlin_apply/</link>
+      <link>https://yazilim.aykutasil.com/post/kotlin_apply/</link>
       <pubDate>Tue, 06 Jun 2017 10:47:58 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/kotlin_apply/</guid>
+      <guid>https://yazilim.aykutasil.com/post/kotlin_apply/</guid>
       <description>fun &amp;lt;T&amp;gt; T.apply(f: T.() -&amp;gt; Unit): T { f(); return this }  apply() tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.
 var file = File(dir) file.mkdirs()  veya Java ile yazacak olursak
 File makeDir(String path) { File result = new File(path); result.mkdirs(); return result; }  Bu kodu aşağıdaki yapıya çevirebiliriz.

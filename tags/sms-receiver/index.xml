@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sms Receiver on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/sms-receiver/</link>
+    <link>https://yazilim.aykutasil.com/tags/sms-receiver/</link>
     <description>Recent content in Sms Receiver on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 01:42:54 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/sms-receiver/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/sms-receiver/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Android SMS Receiver</title>
-      <link>http://yazilim.aykutasil.com/post/android_sms_receiver/</link>
+      <link>https://yazilim.aykutasil.com/post/android_sms_receiver/</link>
       <pubDate>Wed, 11 Jan 2017 01:42:54 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/android_sms_receiver/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_sms_receiver/</guid>
       <description>Android SMS Receiver Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.
 İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.
 Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.

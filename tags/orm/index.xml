@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Orm on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/orm/</link>
+    <link>https://yazilim.aykutasil.com/tags/orm/</link>
     <description>Recent content in Orm on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 01:00:19 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/orm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Android ActiveAndroid Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/post/activeandroid/</link>
+      <link>https://yazilim.aykutasil.com/post/activeandroid/</link>
       <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/activeandroid/</guid>
+      <guid>https://yazilim.aykutasil.com/post/activeandroid/</guid>
       <description>Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.
 ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.
 Kütüphaneyi buradan indirebilirsiniz.

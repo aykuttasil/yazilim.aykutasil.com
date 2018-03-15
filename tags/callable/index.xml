@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Callable on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/callable/</link>
+    <link>https://yazilim.aykutasil.com/tags/callable/</link>
     <description>Recent content in Callable on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 18:55:08 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/callable/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/callable/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Runnable() &amp; Callable()</title>
-      <link>http://yazilim.aykutasil.com/post/runnable_callable/</link>
+      <link>https://yazilim.aykutasil.com/post/runnable_callable/</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/runnable_callable/</guid>
+      <guid>https://yazilim.aykutasil.com/post/runnable_callable/</guid>
       <description>Runnable() &amp;amp; Callable() Ayrıntılı açıklama için bu siteyi kullanabilirsiniz.</description>
     </item>
     

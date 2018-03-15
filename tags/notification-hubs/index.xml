@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Notification Hubs on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/notification-hubs/</link>
+    <link>https://yazilim.aykutasil.com/tags/notification-hubs/</link>
     <description>Recent content in Notification Hubs on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 00:21:36 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/notification-hubs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/notification-hubs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Azure Mobile Services ve Notification Hubs Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/post/azure_notification_hubs_kullanimi/</link>
+      <link>https://yazilim.aykutasil.com/post/azure_notification_hubs_kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 00:21:36 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/azure_notification_hubs_kullanimi/</guid>
+      <guid>https://yazilim.aykutasil.com/post/azure_notification_hubs_kullanimi/</guid>
       <description>Azure Mobile Services çok hızlı ve kolay bir şekilde uygulama geliştirmeniz için önceden veya uygulama yazımı sırasında yapılması gereken işlemleri minimize eden bir servistir.
 Kullanımı oldukça kolay olmakla beraber ilk bir kaç adımı gerçekleştirmek bazen can sıkıcı olabilmekte.
 Bunun için ufak bir örnekle bu ilk birkaç adımı beraber atıcaz.

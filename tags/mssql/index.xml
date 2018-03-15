@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mssql on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/mssql/</link>
+    <link>https://yazilim.aykutasil.com/tags/mssql/</link>
     <description>Recent content in Mssql on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 17:20:37 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SQL SCOPE_IDENTITY()</title>
-      <link>http://yazilim.aykutasil.com/post/sql_scope_identity/</link>
+      <link>https://yazilim.aykutasil.com/post/sql_scope_identity/</link>
       <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/sql_scope_identity/</guid>
+      <guid>https://yazilim.aykutasil.com/post/sql_scope_identity/</guid>
       <description>Kısaca özetlemek gerekirse : insert ile kayıt edilen tablo satırının id sini getirir.
 Yapılan son kaydın id sini almak için uzun yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.
 Tüm bunları yapmaktansa:
@@ -25,10 +25,10 @@ DECLARE @son_satir_id INT; INSERT INTO tbQwerty ( Ad , Soyad ) VALUES ( &#39;Ayk
     
     <item>
       <title>Mac OS ile MSSQL Bağlantısı Kurmak</title>
-      <link>http://yazilim.aykutasil.com/post/macos_mssql_connection/</link>
+      <link>https://yazilim.aykutasil.com/post/macos_mssql_connection/</link>
       <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/macos_mssql_connection/</guid>
+      <guid>https://yazilim.aykutasil.com/post/macos_mssql_connection/</guid>
       <description>MSSQL oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.
 Senaryomuz şu şekilde;
 Mac OS yüklü bilgisayarımızdan MSSQL yüklü sunucumuza bağlantı kurmak istiyoruz.
@@ -39,10 +39,10 @@ Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize gö
     
     <item>
       <title>SQL Management Studio Custom Generate Scripts</title>
-      <link>http://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/</link>
+      <link>https://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/</link>
       <pubDate>Wed, 11 Jan 2017 15:39:47 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/</guid>
+      <guid>https://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/</guid>
       <description>SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
 Senaryomuz şu şekilde;
 Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.
@@ -53,10 +53,10 @@ Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler o
     
     <item>
       <title>TSQL NULLIF Fonksiyonu Nedir ve Nasıl Kullanılır</title>
-      <link>http://yazilim.aykutasil.com/post/tsql_nullif_kullanimi/</link>
+      <link>https://yazilim.aykutasil.com/post/tsql_nullif_kullanimi/</link>
       <pubDate>Tue, 10 Jan 2017 23:08:34 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/tsql_nullif_kullanimi/</guid>
+      <guid>https://yazilim.aykutasil.com/post/tsql_nullif_kullanimi/</guid>
       <description>TSQL NULLIF fonksiyonu NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.
 Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.
 Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.

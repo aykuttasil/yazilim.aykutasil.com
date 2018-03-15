@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tcp on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/tcp/</link>
+    <link>https://yazilim.aykutasil.com/tags/tcp/</link>
     <description>Recent content in Tcp on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 18:05:02 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TCP/IP Nasıl Çalışır ?</title>
-      <link>http://yazilim.aykutasil.com/post/tcp_ip/</link>
+      <link>https://yazilim.aykutasil.com/post/tcp_ip/</link>
       <pubDate>Wed, 11 Jan 2017 18:05:02 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/tcp_ip/</guid>
+      <guid>https://yazilim.aykutasil.com/post/tcp_ip/</guid>
       <description>TCP/IP Nasıl Çalışır ? Bilgisayar ağları kullanılarak bilgisayarların birbirileriyle haberleşmeye başladıkları ilk yıllarda iki bilgisayarın birbiriyle haberleşebilmeleri için aynı marka/model cihazları kullanmaları gerekiyordu. Bunun üzerine farklı üreticiler tarafından üretilen cihazların birbiriyle sorunsuz ve belirli bir düzen içinde haberleşebilmesi için çeşitli standartlar geliştirilmiştir.
 Bunlardan en çok kullanılanı Açık Sistem Bağlantıları komitesi tarafından geliştirilen 7 katmanlı OSI referans modeli ve Amerikan Savunma Bakanlığı tarafından geliştirilen TCP/IP referans modelidir. OSI iki bilgisayar arasındaki haberleşme problemini çözmek için 7 katmanlı (aşamalı) bir ağ sistemi önermiştir.</description>
     </item>

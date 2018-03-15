@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Klon on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/klon/</link>
+    <link>https://yazilim.aykutasil.com/tags/klon/</link>
     <description>Recent content in Klon on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 17:22:38 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/klon/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/klon/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mac OS Arduino Uno (Klon) Kurulumu</title>
-      <link>http://yazilim.aykutasil.com/post/macos_arduino_uno_klon_kurulum/</link>
+      <link>https://yazilim.aykutasil.com/post/macos_arduino_uno_klon_kurulum/</link>
       <pubDate>Wed, 11 Jan 2017 17:22:38 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/macos_arduino_uno_klon_kurulum/</guid>
+      <guid>https://yazilim.aykutasil.com/post/macos_arduino_uno_klon_kurulum/</guid>
       <description>Sizde benim gibi klon Arduino Uno kartınızı çalıştıramayıp bozuk zannettiyseniz doğru yerdesiniz.
 Arduino Uno klon kartlarında orijinal Arduino Uno kartına göre farklı bir işlemci kullanılmış ( daha ucuz olanından 😉 ) ve bu yüzden Mac OS kullanıyorsanız ayrı bir driver dosyası indirmeniz gerekmekte.
 Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open source u destekleyen diğer taraf parayı destekleyen insanlardan oluşuyor(muş).

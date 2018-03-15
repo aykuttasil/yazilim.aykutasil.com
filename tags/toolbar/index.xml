@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Toolbar on Software</title>
-    <link>http://yazilim.aykutasil.com/tags/toolbar/</link>
+    <link>https://yazilim.aykutasil.com/tags/toolbar/</link>
     <description>Recent content in Toolbar on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 16:01:33 +0300</lastBuildDate>
     
-	<atom:link href="http://yazilim.aykutasil.com/tags/toolbar/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/toolbar/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Android Custom Toolbar Title</title>
-      <link>http://yazilim.aykutasil.com/post/android_toolbar_custom_title/</link>
+      <link>https://yazilim.aykutasil.com/post/android_toolbar_custom_title/</link>
       <pubDate>Wed, 11 Jan 2017 16:01:33 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/post/android_toolbar_custom_title/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_toolbar_custom_title/</guid>
       <description>Android Toolbar bileşeni çok yönlü bir yapıya sahiptir. Android Design Library kullanarak ve AppBarLayout içerisinde tanımlanarak oldukça farklı şekillere bürünebilir.
 Genel kullanımı aşağıdaki gibidir.
 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt; &amp;lt;android.support.design.widget.CoordinatorLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot; xmlns:app=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot; xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;match_parent&amp;quot; android:background=&amp;quot;@color/primary_dark&amp;quot; tools:context=&amp;quot;.MainActivity&amp;quot;&amp;gt; &amp;lt;FrameLayout android:id=&amp;quot;@+id/container&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt; &amp;lt;/FrameLayout&amp;gt; &amp;lt;android.support.design.widget.FloatingActionButton android:id=&amp;quot;@+id/fab&amp;quot; android:layout_width=&amp;quot;wrap_content&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; android:layout_gravity=&amp;quot;bottom|end&amp;quot; android:layout_margin=&amp;quot;@dimen/fab_margin&amp;quot; android:src=&amp;quot;@android:drawable/ic_dialog_email&amp;quot; /&amp;gt; &amp;lt;android.support.design.widget.AppBarLayout android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; app:elevation=&amp;quot;0dp&amp;quot;&amp;gt; &amp;lt;android.support.v7.widget.Toolbar android:id=&amp;quot;@+id/toolbar&amp;quot; android:layout_width=&amp;quot;match_parent&amp;quot; android:layout_height=&amp;quot;wrap_content&amp;quot; android:background=&amp;quot;@color/primary_dark&amp;quot; android:minHeight=&amp;quot;?attr/actionBarSize&amp;quot; app:popupTheme=&amp;quot;@style/AppTheme.PopupOverlay&amp;quot;/&amp;gt; &amp;lt;/android.support.design.widget.AppBarLayout&amp;gt; &amp;lt;/android.support.design.widget.CoordinatorLayout&amp;gt;  app:elevation=&amp;quot;0dp&amp;quot; // AppBarLayout içerisinde ki bu tanımlama default olarak tanımlanmış gölgeyi kaldırır.</description>
