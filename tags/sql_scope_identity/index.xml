@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/sql_scope_identity/</link>
     <description>Recent content in Sql_scope_identity on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 17:20:37 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/sql_scope_identity/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>SQL SCOPE_IDENTITY()</title>
-      <link>http://yazilim.aykutasil.com/sql_scope_identity/</link>
+      <link>http://yazilim.aykutasil.com/post/sql_scope_identity/</link>
       <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/sql_scope_identity/</guid>
+      <guid>http://yazilim.aykutasil.com/post/sql_scope_identity/</guid>
       <description>Kısaca özetlemek gerekirse : insert ile kayıt edilen tablo satırının id sini getirir.
 Yapılan son kaydın id sini almak için uzun yol olarak insert sorgusunu çalıştırdıktan sonra bir select sorgusu atarak ve order by id desc diyerek ilk sıradaki kaydı okuyabilir ve bu kaydın id sini alabiliriz.
 Tüm bunları yapmaktansa:

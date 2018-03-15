@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/</link>
     <description>Recent content in Tags on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 01:00:19 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -32,9 +32,18 @@
     <item>
       <title>Android</title>
       <link>http://yazilim.aykutasil.com/tags/android/</link>
-      <pubDate>Sun, 09 Jul 2017 00:00:00 +0300</pubDate>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android Architecure</title>
+      <link>http://yazilim.aykutasil.com/tags/android-architecure/</link>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/android-architecure/</guid>
       <description></description>
     </item>
     
@@ -509,7 +518,7 @@
     <item>
       <title>Kotlin</title>
       <link>http://yazilim.aykutasil.com/tags/kotlin/</link>
-      <pubDate>Sun, 09 Jul 2017 00:00:00 +0300</pubDate>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/tags/kotlin/</guid>
       <description></description>
@@ -543,11 +552,29 @@
     </item>
     
     <item>
+      <title>Lifecycle</title>
+      <link>http://yazilim.aykutasil.com/tags/lifecycle/</link>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/lifecycle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Linux</title>
       <link>http://yazilim.aykutasil.com/tags/linux/</link>
       <pubDate>Sun, 25 Dec 2016 03:51:49 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Livedata</title>
+      <link>http://yazilim.aykutasil.com/tags/livedata/</link>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/livedata/</guid>
       <description></description>
     </item>
     
@@ -851,7 +878,7 @@
     <item>
       <title>Software</title>
       <link>http://yazilim.aykutasil.com/tags/software/</link>
-      <pubDate>Sun, 09 Jul 2017 00:00:00 +0300</pubDate>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/tags/software/</guid>
       <description></description>
@@ -998,6 +1025,15 @@
       <pubDate>Wed, 11 Jan 2017 17:22:38 +0300</pubDate>
       
       <guid>http://yazilim.aykutasil.com/tags/uno/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Viewmodel</title>
+      <link>http://yazilim.aykutasil.com/tags/viewmodel/</link>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/tags/viewmodel/</guid>
       <description></description>
     </item>
     

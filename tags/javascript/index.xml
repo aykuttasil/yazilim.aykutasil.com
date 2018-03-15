@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/javascript/</link>
     <description>Recent content in Javascript on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 17:14:22 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Javascript Gariplikleri</title>
-      <link>http://yazilim.aykutasil.com/javascript-gariplikleri/</link>
+      <link>http://yazilim.aykutasil.com/post/javascript_sacmaliklari/</link>
       <pubDate>Wed, 11 Jan 2017 17:14:22 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/javascript-gariplikleri/</guid>
+      <guid>http://yazilim.aykutasil.com/post/javascript_sacmaliklari/</guid>
       <description>Saatlerdir uğraştığım ve javascriptle temel düzeyden biraz daha ileri düzeyde uğraşan kişilerin başına gelebilecek bir saçmalığı belirtmek istiyorum.
 Her dilde var olan Replace fonksiyonu Javascript de saçma sapan bir şekilde yapılandırılmış. Bu kadar basit bir şeyi bu kadar komplike bir vaziyete sokmak gerçekten harika.
 Örneğin elinizde

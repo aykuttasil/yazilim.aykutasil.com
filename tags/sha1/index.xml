@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/sha1/</link>
     <description>Recent content in Sha1 on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Tue, 10 Jan 2017 23:56:35 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/sha1/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android Key Hashes &amp; SHA1</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</link>
+      <link>http://yazilim.aykutasil.com/post/android_keyhashes_sha1/</link>
       <pubDate>Tue, 10 Jan 2017 23:56:35 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-key-hashes--sha1/</guid>
+      <guid>http://yazilim.aykutasil.com/post/android_keyhashes_sha1/</guid>
       <description>Android Key Hashes &amp;amp; SHA1 Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64  openssl hatası alırsanız https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.
 Ortam değişkenlerine ulaşmak için : Denetim Masası &amp;gt; Sistem &amp;gt; Gelişmiş Sİstem Ayarları

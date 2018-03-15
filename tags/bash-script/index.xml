@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/bash-script/</link>
     <description>Recent content in Bash Script on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 19:56:08 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/bash-script/index.xml" rel="self" type="application/rss+xml" />
@@ -13,11 +13,12 @@
     
     <item>
       <title>Docker Komutları</title>
-      <link>http://yazilim.aykutasil.com/docker-komutlari/</link>
+      <link>http://yazilim.aykutasil.com/post/docker_komutlari/</link>
       <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/docker-komutlari/</guid>
-      <description>Docker Komutları ve Açıklamaları &amp;gt; docker images  Docker hostuna yüklü olan image leri gösterir.
+      <guid>http://yazilim.aykutasil.com/post/docker_komutlari/</guid>
+      <description>Docker Komutları ve Açıklamaları
+&amp;gt; docker images  Docker hostuna yüklü olan image leri gösterir.
 &amp;gt; docker ps  Docker hostunda yüklü olan imagelerle inşa edilmiş olan container ları listeler.
 &amp;gt; docker run hello-world  İlk olarak Local de (bilgisayarımızda) hello-world isminde bir image var mı kontrol eder. Eğer varsa direkt olarak çalıştırır.
 Local de verilen isimde bir image bulamaz ise cloud da arama yapar, bulur, local e indirir ve ardından çalıştırır.</description>

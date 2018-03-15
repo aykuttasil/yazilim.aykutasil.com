@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android Spinner Text Güncelleme - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
+Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
+Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.
+Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
+String.xml
+&amp;lt;string name=&amp;quot;pazartesi&amp;quot;&amp;gt;Pazartesi&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;sali&amp;quot;&amp;gt;Salı&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;carsamba&amp;quot;&amp;gt;Çarşamba&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;persembe&amp;quot;&amp;gt;Perşembe&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;cuma&amp;quot;&amp;gt;Cuma&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;cumartesi&amp;quot;&amp;gt;Cumartesi&amp;lt;/string&amp;gt; &amp;lt;string name=&amp;quot;pazar&amp;quot;&amp;gt;Pazar&amp;lt;/string&amp;gt; &amp;lt;string-array name=&amp;quot;array_gonderi_list_haftalik&amp;quot;&amp;gt; &amp;lt;item&amp;gt;@string/pazartesi&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/sali&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/carsamba&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/persembe&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/cuma&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/cumartesi&amp;lt;/item&amp;gt; &amp;lt;item&amp;gt;@string/pazar&amp;lt;/item&amp;gt; &amp;lt;/string-array&amp;gt;  SpinnerHelper." />
+<meta name="keywords" content="yazilim, sofware, android, java, spinner" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<link rel="canonical" href="http://yazilim.aykutasil.com/post/android_spinner_text/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="http://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="http://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="http://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="http://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Android Spinner Text Güncelleme" />
+<meta property="og:description" content="Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
+Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
+Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.
+Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
+String.xml
+&lt;string name=&quot;pazartesi&quot;&gt;Pazartesi&lt;/string&gt; &lt;string name=&quot;sali&quot;&gt;Salı&lt;/string&gt; &lt;string name=&quot;carsamba&quot;&gt;Çarşamba&lt;/string&gt; &lt;string name=&quot;persembe&quot;&gt;Perşembe&lt;/string&gt; &lt;string name=&quot;cuma&quot;&gt;Cuma&lt;/string&gt; &lt;string name=&quot;cumartesi&quot;&gt;Cumartesi&lt;/string&gt; &lt;string name=&quot;pazar&quot;&gt;Pazar&lt;/string&gt; &lt;string-array name=&quot;array_gonderi_list_haftalik&quot;&gt; &lt;item&gt;@string/pazartesi&lt;/item&gt; &lt;item&gt;@string/sali&lt;/item&gt; &lt;item&gt;@string/carsamba&lt;/item&gt; &lt;item&gt;@string/persembe&lt;/item&gt; &lt;item&gt;@string/cuma&lt;/item&gt; &lt;item&gt;@string/cumartesi&lt;/item&gt; &lt;item&gt;@string/pazar&lt;/item&gt; &lt;/string-array&gt;  SpinnerHelper." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yazilim.aykutasil.com/post/android_spinner_text/" />
+
+
+
+<meta property="article:published_time" content="2017-01-10T23:00:03&#43;03:00"/>
+
+<meta property="article:modified_time" content="2017-01-10T23:00:03&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Android Spinner Text Güncelleme">
+<meta itemprop="description" content="Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
+Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
+Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.
+Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
+String.xml
+&lt;string name=&quot;pazartesi&quot;&gt;Pazartesi&lt;/string&gt; &lt;string name=&quot;sali&quot;&gt;Salı&lt;/string&gt; &lt;string name=&quot;carsamba&quot;&gt;Çarşamba&lt;/string&gt; &lt;string name=&quot;persembe&quot;&gt;Perşembe&lt;/string&gt; &lt;string name=&quot;cuma&quot;&gt;Cuma&lt;/string&gt; &lt;string name=&quot;cumartesi&quot;&gt;Cumartesi&lt;/string&gt; &lt;string name=&quot;pazar&quot;&gt;Pazar&lt;/string&gt; &lt;string-array name=&quot;array_gonderi_list_haftalik&quot;&gt; &lt;item&gt;@string/pazartesi&lt;/item&gt; &lt;item&gt;@string/sali&lt;/item&gt; &lt;item&gt;@string/carsamba&lt;/item&gt; &lt;item&gt;@string/persembe&lt;/item&gt; &lt;item&gt;@string/cuma&lt;/item&gt; &lt;item&gt;@string/cumartesi&lt;/item&gt; &lt;item&gt;@string/pazar&lt;/item&gt; &lt;/string-array&gt;  SpinnerHelper.">
+
+
+<meta itemprop="datePublished" content="2017-01-10T23:00:03&#43;03:00" />
+<meta itemprop="dateModified" content="2017-01-10T23:00:03&#43;03:00" />
+<meta itemprop="wordCount" content="345">
+
+
+
+<meta itemprop="keywords" content="software,android,java,spinner," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Android Spinner Text Güncelleme"/>
+<meta name="twitter:description" content="Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
+Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
+Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.
+Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.
+String.xml
+&lt;string name=&quot;pazartesi&quot;&gt;Pazartesi&lt;/string&gt; &lt;string name=&quot;sali&quot;&gt;Salı&lt;/string&gt; &lt;string name=&quot;carsamba&quot;&gt;Çarşamba&lt;/string&gt; &lt;string name=&quot;persembe&quot;&gt;Perşembe&lt;/string&gt; &lt;string name=&quot;cuma&quot;&gt;Cuma&lt;/string&gt; &lt;string name=&quot;cumartesi&quot;&gt;Cumartesi&lt;/string&gt; &lt;string name=&quot;pazar&quot;&gt;Pazar&lt;/string&gt; &lt;string-array name=&quot;array_gonderi_list_haftalik&quot;&gt; &lt;item&gt;@string/pazartesi&lt;/item&gt; &lt;item&gt;@string/sali&lt;/item&gt; &lt;item&gt;@string/carsamba&lt;/item&gt; &lt;item&gt;@string/persembe&lt;/item&gt; &lt;item&gt;@string/cuma&lt;/item&gt; &lt;item&gt;@string/cumartesi&lt;/item&gt; &lt;item&gt;@string/pazar&lt;/item&gt; &lt;/string-array&gt;  SpinnerHelper."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="http://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="http://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="http://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="http://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Android Spinner Text Güncelleme</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-01-10 </span>
+        <div class="post-category">
+            
+              <a href="http://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+            
+              <a href="http://yazilim.aykutasil.com/categories/android/"> android </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#dinamik-olarak-spinner-text-güncelleme">Dinamik Olarak Spinner Text Güncelleme</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h2 id="dinamik-olarak-spinner-text-güncelleme">Dinamik Olarak Spinner Text Güncelleme</h2>
+
+<p>Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.</p>
+
+<p>Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.</p>
+
+<p>Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.</p>
+
+<p>Öncellikle String.xml dosyasına Spinner ımızda göstereceğimiz elemanları tanımlıyoruz.</p>
+
+<p><strong>String.xml</strong></p>
+
+<pre><code class="language-xml">&lt;string name=&quot;pazartesi&quot;&gt;Pazartesi&lt;/string&gt;
+&lt;string name=&quot;sali&quot;&gt;Salı&lt;/string&gt;
+&lt;string name=&quot;carsamba&quot;&gt;Çarşamba&lt;/string&gt;
+&lt;string name=&quot;persembe&quot;&gt;Perşembe&lt;/string&gt;
+&lt;string name=&quot;cuma&quot;&gt;Cuma&lt;/string&gt;
+&lt;string name=&quot;cumartesi&quot;&gt;Cumartesi&lt;/string&gt;
+&lt;string name=&quot;pazar&quot;&gt;Pazar&lt;/string&gt;
+
+
+&lt;string-array name=&quot;array_gonderi_list_haftalik&quot;&gt;
+    &lt;item&gt;@string/pazartesi&lt;/item&gt;
+    &lt;item&gt;@string/sali&lt;/item&gt;
+    &lt;item&gt;@string/carsamba&lt;/item&gt;
+    &lt;item&gt;@string/persembe&lt;/item&gt;
+    &lt;item&gt;@string/cuma&lt;/item&gt;
+    &lt;item&gt;@string/cumartesi&lt;/item&gt;
+    &lt;item&gt;@string/pazar&lt;/item&gt;
+&lt;/string-array&gt;
+</code></pre>
+
+<p><strong>SpinnerHelper.java</strong></p>
+
+<pre><code class="language-java">public static String[] getChangedSpinnerItemText(Context context) {
+    String[] originalList = context.getResources().getStringArray(R.array.array_gonderi_list_haftalik);
+
+    Resources resources = context.getResources();
+    for (int a = 0; a &lt; originalList.length; a++) {
+        int count = 0;
+        if (originalList[a].equals(resources.getString(R.string.pazartesi))) {
+            count = 2;
+            originalList[a] += &quot; ( &quot; + count + &quot; )&quot;;
+        } else if (originalList[a].equals(resources.getString(R.string.sali))) {
+            count = 4;
+            originalList[a] += &quot; ( &quot; + count + &quot; )&quot;;
+        } else if (originalList[a].equals(resources.getString(R.string.carsamba))) {
+            count = 7;
+            originalList[a] += &quot; ( &quot; + count + &quot; )&quot;;
+        } else {
+            count = 8
+            originalList[a] += &quot; ( &quot; + count + &quot; )&quot;;
+        }
+    }
+    return originalList;
+}
+</code></pre>
+
+<p>Daha sonra spinnerımızı tanımladığımız yere giderek spinnerımızı yapılandırıyoruz.</p>
+
+<p><strong>FragmentX.java</strong></p>
+
+<pre><code class="language-java">public void setSpinnerNavToolbar() {
+
+ // Guncelledikten sonra spinner görünümü örneği
+ // Pazartesi ( 2 )
+ // Salı ( 4 )
+ // ... 
+ 
+ // Spinner itemlarının güncellenmiş halini barındıran listeyi getiriyoruz.
+ String[] changedList = getChangedSpinnerItemText(context);
+
+ // Spinner adapterımıza eklemeler yapılmış String Arrayi veriyoruz.
+ ArrayAdapter&lt;CharSequence&gt; adapter = new ArrayAdapter&lt;CharSequence&gt;(mContext, R.layout.spinner_nav_item_layout,changedList);
+ Spinner spinner = (Spinner) findViewById(R.id.spinner_nav);
+ spiner.setAdapter(adapter);
+ spinner.setVisibility(NavigationView.VISIBLE);
+ spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+ @Override
+ public void onItemSelected(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+
+ // Original Liste elemanlarımızı getiriyoruz 
+ String[] originalList = context.getResources().getStringArray(R.array.array_gonderi_list_haftalik);
+ 
+ // Original Liste elemanını baz alarak işlem yapmak 
+ // Bu sayede Pazartesi , Salı gibi değerleri alıyoruz. Değiştirilmiş (güncellenmiş) değerleri sadece görünüm için kullanıyoruz.
+ String secilendeger = originalList[position];
+
+
+ // Pazartesi seçildiğinde yapmak istediğimiz işlemleri burada belirtebiliriz.
+ if (secilendeger.equals(getResources().getString(R.string.pazartesi))) {
+
+ } 
+ // Salı seçildiğinde yapmak istediğimiz işlemleri burada belirtebiliriz.
+ else if(secilendeger.equals(getResources().getString(R.string.pazartesi)))
+ {
+
+ }
+ }
+
+ @DebugLog
+ @Override
+ public void onNothingSelected(AdapterView&lt;?&gt; parent) {
+
+ }
+ });
+}
+</code></pre>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2017-01-10</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="http://yazilim.aykutasil.com/tags/software/">software</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/android/">android</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/java/">java</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/spinner/">spinner</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="http://yazilim.aykutasil.com/post/tsql_nullif_kullanimi/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">TSQL NULLIF Fonksiyonu Nedir ve Nasıl Kullanılır</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="http://yazilim.aykutasil.com/post/pendingintentflags/">
+            <span class="next-text nav-default">PendingIntent Flags</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="http://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="http://yazilim.aykutasil.com/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="http://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

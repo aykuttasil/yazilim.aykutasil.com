@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/categories/iis/</link>
     <description>Recent content in Iis on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Tue, 10 Jan 2017 23:20:12 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/categories/iis/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Local IIS Site Kurulumu</title>
-      <link>http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/</link>
+      <link>http://yazilim.aykutasil.com/post/local_iis_site_kurulumu/</link>
       <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/local-iis-site-kurulumu/</guid>
+      <guid>http://yazilim.aykutasil.com/post/local_iis_site_kurulumu/</guid>
       <description>Local IIS Site Kurulumu Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
 İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
 

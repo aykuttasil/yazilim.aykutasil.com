@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/permission/</link>
     <description>Recent content in Permission on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 17:24:52 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/permission/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android Runtime Permission</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</link>
+      <link>http://yazilim.aykutasil.com/post/android_runtime_permission/</link>
       <pubDate>Wed, 11 Jan 2017 17:24:52 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-runtime-permission/</guid>
+      <guid>http://yazilim.aykutasil.com/post/android_runtime_permission/</guid>
       <description>Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.
 Bunlardan biri de Android M – Marshmallow (23) ile gelen Runtime Permissions olayı.
 Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel.</description>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Firebase Dynamic Links - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="Firebase Dynamic Links Öyle bir link olsun ki;
+ Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &amp;hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz." />
+<meta name="keywords" content="yazilim, sofware, firebase, dynamiclink" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<link rel="canonical" href="http://yazilim.aykutasil.com/post/dynamiclink/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="http://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="http://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="http://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="http://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Firebase Dynamic Links" />
+<meta property="og:description" content="Firebase Dynamic Links Öyle bir link olsun ki;
+ Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yazilim.aykutasil.com/post/dynamiclink/" />
+
+
+
+<meta property="article:published_time" content="2017-04-17T01:53:03&#43;03:00"/>
+
+<meta property="article:modified_time" content="2017-04-17T01:53:03&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Firebase Dynamic Links">
+<meta itemprop="description" content="Firebase Dynamic Links Öyle bir link olsun ki;
+ Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz.">
+
+
+<meta itemprop="datePublished" content="2017-04-17T01:53:03&#43;03:00" />
+<meta itemprop="dateModified" content="2017-04-17T01:53:03&#43;03:00" />
+<meta itemprop="wordCount" content="559">
+
+
+
+<meta itemprop="keywords" content="software,firebase,dynamiclink," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Firebase Dynamic Links"/>
+<meta name="twitter:description" content="Firebase Dynamic Links Öyle bir link olsun ki;
+ Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="http://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="http://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="http://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="http://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Firebase Dynamic Links</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-04-17 </span>
+        <div class="post-category">
+            
+              <a href="http://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#firebase-dynamic-links">Firebase Dynamic Links</a>
+<ul>
+<li><a href="#nasıl-başlarım">Nasıl başlarım?</a></li>
+<li><a href="#dört-şekilde-dynamic-link-oluşturabiliriz">Dört şekilde Dynamic Link oluşturabiliriz</a></li>
+</ul></li>
+<li><a href="#android-uygulamamızı-yapılandıralım">Android Uygulamamızı Yapılandıralım</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h2 id="firebase-dynamic-links">Firebase Dynamic Links</h2>
+
+<p>Öyle bir link olsun ki;</p>
+
+<ul>
+<li>Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın,</li>
+<li>Eğer mobil cihazımda ki browserdan linke tıklarsan;
+
+<ul>
+<li>Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.),</li>
+<li>Uygulama cihazda yüklü değilse Google Play Store veya  App Store açılsın,</li>
+<li>Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın,</li>
+<li>&hellip;</li>
+</ul></li>
+</ul>
+
+<p>gibi sorulara tek bir link ile cevap verebilirsiniz.</p>
+
+<p>Burda açıklayacağım kısım Android uygulaması üzerine olacaktır.</p>
+
+<h3 id="nasıl-başlarım">Nasıl başlarım?</h3>
+
+<p>Öncelikle <a href="https://console.firebase.google.com/">https://console.firebase.google.com/</a> adresinden bir proje oluşturuyoruz.</p>
+
+<p>Dynamic Links tabına tıkladığımızda <a href="https://abcd.app.goo.gl/">https://abcd.app.goo.gl/</a> benzeri bir adres görürüz. Bu adresi daha sonra oluşturucağımız dynamic linkler için kullanıcaz.</p>
+
+<h3 id="dört-şekilde-dynamic-link-oluşturabiliriz">Dört şekilde Dynamic Link oluşturabiliriz</h3>
+
+<ul>
+<li><p><a href="https://console.firebase.google.com/project/_/durablelinks/links/">Firebase Console</a> kullanılarak</p></li>
+
+<li><p><a href="https://firebase.google.com/docs/dynamic-links/ios/create">iOS Builder API</a> kullanılarak</p></li>
+
+<li><p><a href="https://app_code.app.goo.gl/?link=your_deep_link&amp;apn=package_name[&amp;amv=minimum_version][&amp;al=android_link][&amp;afl=fallback_link">https://app_code.app.goo.gl/?link=your_deep_link&amp;apn=package_name[&amp;amv=minimum_version][&amp;al=android_link][&amp;afl=fallback_link</a>]</p></li>
+</ul>
+
+<p>gibi bir linkte gerekli parametreleri uygun şekilde değiştirerek dynamic linkimizi oluşturabiliriz.</p>
+
+<ul>
+<li></li>
+</ul>
+
+<pre><code>POST https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=api_key
+Content-Type: application/json
+
+{
+    &quot;dynamicLinkInfo&quot;: {
+        &quot;dynamicLinkDomain&quot;: &quot;c49ss.app.goo.gl&quot;,
+        &quot;link&quot;: &quot;https://play.google.com/store/apps/details?id=com.coderockets.referandumproject&quot;, // Masaüstü browserlarından bu linke tıkladığımızda gidilecek adres
+        &quot;androidInfo&quot;: {
+            &quot;androidPackageName&quot;: &quot;com.coderockets.referandumproject&quot;, // Android uygulamamızın package name i
+            &quot;androidMinPackageVersionCode&quot;: &quot;21&quot;, // Linki alan kişide uygulamamız yüklü fakat eski versiyon yüklü ise (&lt;21) direk olarak Google Play sayfasına yönlendirilir.
+            &quot;androidLink&quot;: &quot;http://referandum?questionId=xyz&quot; // Android cihazından linke tıklanıldığında bu linke yönlendirilme yapılır. Uygulamamızda gerekli ayarlamaları yaparak direk gerekli sayfaya(Activity) yönlendiririz.
+        },
+        &quot;socialMetaTagInfo&quot;: {
+            &quot;socialTitle&quot;: &quot;Question text&quot;, // Sosyal medyada bu link paylaşıldığında görünecek başlık ayarlaması
+            &quot;socialDescription&quot;: &quot;Hemen Referandum topluluğuna katılarak cevap verebilirsin.&quot;, // Sosyal medya paylaşımında görünecek açıklama
+            &quot;socialImageLink&quot;: &quot;Question Image Url&quot; // Sosyal medya paylaşımında görünecek resim
+        }
+    },
+    &quot;suffix&quot;: {
+        &quot;option&quot;: &quot;SHORT&quot; // shortLink sonundaki id nin daha kısa olmasını sağlar. UNGUESSABLE yaparsak daha uzun karakterli bir unique id ile link oluşturulur. shortLink: https://c49ss.app.goo.gl/5TI3
+    }
+}
+</code></pre>
+
+<p>şeklinde bir REST isteği göndererek dynamic linkimizi aşağıdaki response şeklinde elde edebiliriz.</p>
+
+<pre><code>{
+  &quot;shortLink&quot;: &quot;https://c49ss.app.goo.gl/5TI3&quot;,
+  &quot;previewLink&quot;: &quot;https://c49ss.app.goo.gl/?link=https://play.google.com/store/apps/details?id%3Dcom.coderockets.referandumproject&amp;al=http://referandum?questionId%3Dxyz&amp;apn=com.coderockets.referandumproject&amp;amv=21&amp;st=Question+text&amp;sd=Hemen+Referandum+toplulu%C4%9Funa+kat%C4%B1larak+cevap+verebilirsin.&amp;si=Question+Image+Url&amp;d=1&quot;
+}
+</code></pre>
+
+<p><strong>shortLink</strong> ile <strong>previewLink</strong> aynı görevi üstlenir. Aralarında bir fark yok.</p>
+
+<hr />
+
+<h2 id="android-uygulamamızı-yapılandıralım">Android Uygulamamızı Yapılandıralım</h2>
+
+<ul>
+<li><p>AndroidManifest.xml dosyamızda ilgili Activity tanımı içerisinde aşağıdaki gibi düzenleme yapıyoruz.</p>
+
+<pre><code>    &lt;activity
+        android:name=&quot;.activity.UniqueQuestionActivity&quot;
+        android:parentActivityName=&quot;.activity.MainActivity&quot;&gt;
+
+        &lt;intent-filter&gt;
+            &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+            &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+
+            &lt;data android:host=&quot;referandum&quot; android:scheme=&quot;http&quot; /&gt;
+            &lt;data android:host=&quot;referandum&quot; android:scheme=&quot;https&quot; /&gt;
+        &lt;/intent-filter&gt;
+
+        &lt;meta-data android:name=&quot;android.support.PARENT_ACTIVITY&quot;
+         android:value=&quot;.activity.MainActivity&quot; /&gt;
+    &lt;/activity&gt;
+</code></pre></li>
+
+<li><p>İlgili Activity içerisinde aşağıdaki tanımlamaları yapıyoruz.</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+// ...
+
+// Build GoogleApiClient with AppInvite API for receiving deep links
+mGoogleApiClient = new GoogleApiClient.Builder(this)
+        .enableAutoManage(this, this)
+        .addApi(AppInvite.API)
+        .build();
+
+// Check if this app was launched from a deep link. Setting autoLaunchDeepLink to true
+// would automatically launch the deep link if one is found.
+boolean autoLaunchDeepLink = false;
+AppInvite.AppInviteApi.getInvitation(mGoogleApiClient, this, autoLaunchDeepLink)
+        .setResultCallback(
+                new ResultCallback&lt;AppInviteInvitationResult&gt;() {
+                    @Override
+                    public void onResult(@NonNull AppInviteInvitationResult result) {
+                        if (result.getStatus().isSuccess()) {
+                            // Extract deep link from Intent
+                            Intent intent = result.getInvitationIntent();
+                            String deepLink = AppInviteReferral.getDeepLink(intent);
+
+                            // Handle the deep link. For example, open the linked
+                            // content, or apply promotional credit to the user's
+                            // account.
+
+                            // ...
+                        } else {
+                            Log.d(TAG, &quot;getInvitation: no deep link found.&quot;);
+                        }
+                    }
+                });
+}
+</code></pre></li>
+</ul>
+
+<p>Yukarıda ki kodu dynamic link ile açılabilen her Activity içerisinde tanımlamalısınız.</p>
+
+<p>Aslında aşağıda ki gibi de link ve parametrelere ulaşabilirsiniz.</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+ if (getIntent() != null &amp;&amp; getIntent().getAction() != null) {
+            
+            // Link : http://referandum/?questionId=xxx
+            String questionId = &quot;&quot;;
+            switch (getIntent().getAction()) {
+                case Intent.ACTION_VIEW: {
+                    if (getIntent().getData().getHost().equals(&quot;referandum&quot;)) {
+                        questionId = getIntent().getData().getQueryParameter(&quot;questionId&quot;);
+                    }
+                    break;
+                }
+            }
+        }
+}        
+</code></pre>
+
+<p>Ama ilk durumda ki gibi <strong>getInvitation()</strong> ile dynamic linki işlerseniz Firebase arka tarafta başka işlemlerde yapıyor olacaktır. Mesela Firebase Analytics tanımlamışsanız Firebase Console undan;</p>
+
+<ul>
+<li>dynamic_link_app_open</li>
+<li>dynamic_link_first_open</li>
+<li>dynamic_link_app_update</li>
+</ul>
+
+<p>parametrelerine ait istatistikleri görebilirsiniz.</p>
+
+<hr />
+
+<p>Kaynaklar:</p>
+
+<ul>
+<li><a href="https://firebase.google.com/docs/dynamic-links/">https://firebase.google.com/docs/dynamic-links/</a></li>
+<li><a href="https://firebase.google.com/docs/dynamic-links/rest">https://firebase.google.com/docs/dynamic-links/rest</a></li>
+<li><a href="https://firebase.google.com/docs/dynamic-links/android/receive">https://firebase.google.com/docs/dynamic-links/android/receive</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2017-04-17</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="http://yazilim.aykutasil.com/tags/software/">software</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/firebase/">firebase</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/dynamiclink/">dynamiclink</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="http://yazilim.aykutasil.com/post/oauth_retrofit/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Retrofit Oauth</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="http://yazilim.aykutasil.com/post/arduino_hc06/">
+            <span class="next-text nav-default">Arduino HC-06 Bluetooth Kullanımı</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="http://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="http://yazilim.aykutasil.com/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="http://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

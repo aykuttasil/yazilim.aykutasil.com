@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/soru-isareti/</link>
     <description>Recent content in Soru Isareti on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Mon, 16 Jan 2017 11:13:16 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/soru-isareti/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>CSharp Null Kontrolü</title>
-      <link>http://yazilim.aykutasil.com/csharp-soru-isareti-syntax/</link>
+      <link>http://yazilim.aykutasil.com/post/csharp_soruisareti_operator/</link>
       <pubDate>Mon, 16 Jan 2017 11:13:16 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/csharp-soru-isareti-syntax/</guid>
+      <guid>http://yazilim.aykutasil.com/post/csharp_soruisareti_operator/</guid>
       <description>C# ? ve ?? Operator Kullanımı Kısaca bahsedilecek olursa ? operatörü null kontrolü yapılmasını sağlar.
 Yazılım geliştirme sırasında en çok rastlanan hatanın sebebi null dönen ifadelerdir. Bu bazen bir değişken bazen parametre vs. olabilir. Ama sebep ifadenin null olmasıdır.
 Önceden şu şekilde kontrol ediyorduk.

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android Library &amp; Bintray - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂
+Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi maven ve jcenter repository e deploy etmek olucak.
+Ve başlayabiliriz.
+İlk olarak Android Studio yu açarak File &amp;gt; New &amp;gt; New Project e tıklayıp yeni bir proje oluşturalım." />
+<meta name="keywords" content="yazilim, sofware, android, java, library, bintray, gradle" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<link rel="canonical" href="http://yazilim.aykutasil.com/post/android_library/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="http://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="http://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="http://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="http://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Android Library &amp; Bintray" />
+<meta property="og:description" content="Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂
+Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi maven ve jcenter repository e deploy etmek olucak.
+Ve başlayabiliriz.
+İlk olarak Android Studio yu açarak File &gt; New &gt; New Project e tıklayıp yeni bir proje oluşturalım." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yazilim.aykutasil.com/post/android_library/" />
+
+
+
+<meta property="article:published_time" content="2017-01-11T17:27:29&#43;03:00"/>
+
+<meta property="article:modified_time" content="2017-01-11T17:27:29&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Android Library &amp; Bintray">
+<meta itemprop="description" content="Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂
+Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi maven ve jcenter repository e deploy etmek olucak.
+Ve başlayabiliriz.
+İlk olarak Android Studio yu açarak File &gt; New &gt; New Project e tıklayıp yeni bir proje oluşturalım.">
+
+
+<meta itemprop="datePublished" content="2017-01-11T17:27:29&#43;03:00" />
+<meta itemprop="dateModified" content="2017-01-11T17:27:29&#43;03:00" />
+<meta itemprop="wordCount" content="1314">
+
+
+
+<meta itemprop="keywords" content="software,android,java,library,bintray,gradle," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Android Library &amp; Bintray"/>
+<meta name="twitter:description" content="Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂
+Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi maven ve jcenter repository e deploy etmek olucak.
+Ve başlayabiliriz.
+İlk olarak Android Studio yu açarak File &gt; New &gt; New Project e tıklayıp yeni bir proje oluşturalım."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="http://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="http://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="http://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="http://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Android Library &amp; Bintray</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-01-11 </span>
+        <div class="post-category">
+            
+              <a href="http://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+            
+              <a href="http://yazilim.aykutasil.com/categories/android/"> android </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂</p>
+
+<p>Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi <strong>maven</strong> ve <strong>jcenter</strong> repository e deploy etmek olucak.</p>
+
+<p>Ve başlayabiliriz.</p>
+
+<p>İlk olarak <strong>Android Studio</strong> yu açarak <strong>File &gt; New &gt; New Project</strong> e tıklayıp yeni bir proje oluşturalım.</p>
+
+<p>Daha sonra oluşturmuş olduğunuz app e sağ tıklayıp <strong>New &gt; Module</strong> sekmesinden gerekli yerleri doldurup projemize ekleyelim.</p>
+
+<p><a href="http://imgur.com/PQRghY8"><img src="http://i.imgur.com/PQRghY8.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/IV1YJmw"><img src="http://i.imgur.com/IV1YJmw.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/nQHzaY7"><img src="http://i.imgur.com/nQHzaY7.png" title="source: imgur.com" /></a></p>
+
+<p>Oluşturmuş olduğumuz module içerisine kodlarımızı yazıyoruz. Module ümüzün sanki bir projeymiş gibi kendine ait dosyaları vardır. Yani kendine ait bir AndroidManifest.xml dosyası , kendine ait drawable klasörü vs. vardı. İstediğimiz şekilde özelleştirme yapabilir ve istediğimiz herhangi bir projede bu kodları kullanabiliriz.(Zaten yapılmış olanları bu şekilde kullanıyoruz. Neyin nasıl yapıldığını anlamak her zaman için ufkumuzu genişletecektir…)</p>
+
+<p>Kodlarımızı yazdık. Sıra geldi module ümüzün gradle dosyasını düzenlemeye.</p>
+
+<p>Ama bundan önce Project düzeyindeki gradle dosyasını güncellememiz gerekli.</p>
+
+<pre><code>buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+</code></pre>
+
+<p><a href="http://imgur.com/3uET4kz"><img src="http://i.imgur.com/3uET4kz.png" title="source: imgur.com" /></a></p>
+
+<p>Ve module ümüzün <strong>gradle</strong> dosyasını düzenliyoruz.</p>
+
+<pre><code>apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven' // maven repository e eklememiz için gerekli gradle plugin
+apply plugin: &quot;com.jfrog.bintray&quot; // bintray yapılandırması yapmamız için gerekli gradle plugin
+// Kodların devamında göreceğiniz hazır yazılmış gradle tasklerini getiren yapıda, güncellenmesi gereken yerleri
+// bu şekilde düzenliyoruz.
+ext {
+    PUBLISH_GROUP_ID = 'com.aykuttasil'
+    PUBLISH_ARTIFACT_ID = 'androidbasichelper'
+    PUBLISH_VERSION = '1.0.0'
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion &quot;23.0.3&quot;
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName &quot;1.0.0&quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// Oluşturmuş olduğumuz kütüphane aşağıdaki bağımlılıklara sahip. Sanki bir uygulama geliştiriyormuş gibi 
+// bağımlılık dosyalarını ekliyoruz.
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.afollestad.material-dialogs:core:0.8.5.9'
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.1.1'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+}
+
+// Aşağıda ki linke girip bakarsanız aslında gradle task yazılmış olduğunu görürsünüz. Bu yazılan task ler ile
+// oluşturmuş olduğumuz module dosyalarından gerekli dosyalara dönüşümlerini sağlıyoruz.
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
+
+def siteUrl = 'https://github.com/aykuttasil/AndroidBasicHelper'      // Homepage URL of the library
+def gitUrl = 'https://github.com/aykuttasil/AndroidBasicHelper.git'   // Git repository URL
+group = &quot;com.aykuttasil&quot;
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+
+                name 'com.aykuttasil:androidbasichelper' // TODO
+                description = 'Android Basic Helper' // TODO
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'aykuttasil' // TODO
+                        name 'Aykut Asil' // TODO
+                        email 'aykuttasil@gmail.com' // TODO
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+</code></pre>
+
+<p><a href="http://imgur.com/NPUZYLU"><img src="http://i.imgur.com/NPUZYLU.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/waSW8fe"><img src="http://i.imgur.com/waSW8fe.png" title="source: imgur.com" /></a></p>
+
+<p>Evet gradle dosyalarını düzenledik. Sıra geldi çalıştırmaya.</p>
+
+<p>Bunun için Android Studio içerisinde ki Terminal kısmına giriyoruz ya da mac in kendi Terminal ini açarak projemizin dizinine giriyoruz.</p>
+
+<p>Ve aşağıdaki komutu giriyoruz.</p>
+
+<p><code>./gradlew clean build generateRelease</code></p>
+
+<p><a href="http://imgur.com/qd5tC3N"><img src="http://i.imgur.com/qd5tC3N.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/hIScB2P"><img src="http://i.imgur.com/hIScB2P.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/D48QUqE"><img src="http://i.imgur.com/D48QUqE.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/cgp1Abp"><img src="http://i.imgur.com/cgp1Abp.png" title="source: imgur.com" /></a></p>
+
+<p>Evet işlemimize başarılı bir şekilde tamamladık ve gerekli dosyaların oluşturulmasını sağladık.</p>
+
+<p>Projemizi oluşturduğumuz klasöre gidelim ve <strong>ModuleName &gt; build</strong> içerisine girerek oluşturulan zip dosyasını  görebiliriz. Bu zip dosyasının içini açarak oluşturulan dosyaları görebilirsiniz. Ve maven repository e bu zip dosyasını ekliceğimizi unutmayın.</p>
+
+<p><a href="http://imgur.com/id0McpR"><img src="http://i.imgur.com/id0McpR.png" title="source: imgur.com" /></a></p>
+
+<hr />
+
+<p>Sıra geldi kütüphanemizi maven ve jcenter repository e deploy etmeye.</p>
+
+<p>İlk olarak <a href="https://bintray.com/">https://bintray.com/</a> adresine girerek üyeliğimizi oluşturuyoruz. Ve sırasıyla aşağıdaki işlemleri yapıyoruz.</p>
+
+<p>Hesabımızı oluşturduktan sonra <strong>maven</strong> içerisine girerek <strong>Add New Package</strong> diyoruz.</p>
+
+<p><a href="http://imgur.com/AGY1vSx"><img src="http://i.imgur.com/AGY1vSx.png" title="source: imgur.com" /></a></p>
+
+<p>Aşağıdaki alanlara gerekli bilgileri giriyoruz.</p>
+
+<p><a href="http://imgur.com/82CCD5F"><img src="http://i.imgur.com/82CCD5F.png" title="source: imgur.com" /></a></p>
+
+<p>Daha sonra oluşturmuş olduğumuz package ın içerisine girerek <strong>New Version</strong> a tıklıyoruz ve <strong>1.0.0</strong> şeklinde ya da istediğiniz şekilde Name  i düzenliyoruz.</p>
+
+<p><a href="http://imgur.com/7qNM2aj"><img src="http://i.imgur.com/7qNM2aj.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/1bC8KSi"><img src="http://i.imgur.com/1bC8KSi.png" title="source: imgur.com" /></a></p>
+
+<p>Oluşturmuş olduğumuz versiyon içerisine girerek <strong>Upload Files</strong> diyoruz ve daha önce oluşturduğumuz <strong>zip</strong> dosyasını seçerek upload işlemini tamamlıyoruz.</p>
+
+<p><a href="http://imgur.com/T2oG4DP"><img src="http://i.imgur.com/T2oG4DP.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/w99RPib"><img src="http://i.imgur.com/w99RPib.png" title="source: imgur.com" /></a></p>
+
+<p>Kütüphanemizi <strong>maven</strong> respository yüklemiş bulunmaktayız.</p>
+
+<p>Fakat Android Studio default olarak <strong>jcenter</strong> resository kullanmakta. Biz de bu yüzden birkaç işlem daha yapmalıyız ki geliştiriciler kolayca, tek satır ekleyerek kütüphanemizi kullanmaya başlasınlar.</p>
+
+<p>Aşağıda ki sayfaya gelerek <strong>Add to jCenter</strong> butonuna tıklıyoruz.</p>
+
+<p><a href="http://imgur.com/lMQR4kl"><img src="http://i.imgur.com/lMQR4kl.png" title="source: imgur.com" /></a></p>
+
+<p>Ve aşağıdaki gibi gerekli yerleri doldurarak işlemimizi tamamlıyoruz.</p>
+
+<p><a href="http://imgur.com/GK7Eq9d"><img src="http://i.imgur.com/GK7Eq9d.png" title="source: imgur.com" /></a></p>
+
+<p><strong>Not :</strong> Kütüphanemizin kullanımı için birkaç saat beklememiz gerekmektedir. Olmadı diye telaş yapıp kafayı yemeyin 😉</p>
+
+<p>Bu arada oluşturmuş olduğumuz kütüphanemize aşağıda ki linkten erişip projelerinizde gönül rahatlığıyla kullanabilirsiniz 🙂</p>
+
+<ul>
+<li><p><strong>Gradle :</strong> <code>compile ‘com.aykuttasil:androidbasichelper:1.0.0’</code></p></li>
+
+<li><p><strong>GitHub :</strong> <a href="https://github.com/aykuttasil/AndroidBasicHelper">https://github.com/aykuttasil/AndroidBasicHelper</a></p></li>
+</ul>
+
+<hr />
+
+<p>Yukarıda ki yöntem ile local inizde <strong>aar</strong> dosyası oluşturarak manuel bir şekilde bu aar yi repository lere yükleyebilirsiniz.</p>
+
+<p>Peki bunu sadece birkaç komuta indirgesek ve otomatik yüklemeyi sağlasak nasıl olur ? Bencede güzel olur.</p>
+
+<p>Yukarıda ki yöntemin yine bir benzeri (daha okunabilir ve kolay) ve artı ilaveleri şeklinde devam edelim.</p>
+
+<p>Yeni dosya yapımız ve gradle dosyalarımızı yeri aşağıdaki resimdeki gibi olmalı. Burada 3 adet kendimizin oluşturduğu gradle dosyasını görüyorsunuz gradle klasörünün altında. Diğer gradle lar zaten Android Studio tarafından oluşturuluyor.</p>
+
+<p><a href="http://imgur.com/cQyvhZb"><img src="http://i.imgur.com/cQyvhZb.png" title="source: imgur.com" /></a></p>
+
+<p><strong>build.gradle</strong> dosyalarımızın içeriği aşağıdaki gibidir.</p>
+
+<p><a href="http://imgur.com/0M6faiE"><img src="http://i.imgur.com/0M6faiE.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/fO5aXX8"><img src="http://i.imgur.com/fO5aXX8.png" title="source: imgur.com" /></a></p>
+
+<pre><code>ext {
+    bintrayRepo = 'maven' // maven reposu olduğunu belirtiyoruz
+    bintrayName = 'basic-helper' 
+    orgName = 'aykuttasil'
+
+    publishedGroupId = 'com.aykuttasil'
+    libraryName = 'Android Basic Helper'
+    artifact = 'androidbasichelperlib' // module ile aynı isimde olması gerekiyor !!
+
+    libraryDescription = 'Android Basic Helper'
+
+    siteUrl = 'https://github.com/aykuttasil/AndroidBasicHelper' 
+    gitUrl = 'https://github.com/aykuttasil/AndroidBasicHelper.git'
+
+    libraryVersion = rootProject.ext.libraryVersion
+
+    developerId = 'aykuttasil'
+    developerName = 'Aykut Asil'
+    developerEmail = 'aykuttasil@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = [&quot;Apache-2.0&quot;]
+}
+
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: rootProject.file('gradle/install-v1.gradle')
+    apply from: rootProject.file('gradle/bintray-android-v1.gradle')
+}
+
+
+// ./gradlew clean install bintrayUpload
+</code></pre>
+
+<pre><code>ext {
+    sdk = 24
+    buildTools = &quot;24.0.1&quot;
+    minSdk = 17
+    libraryVersion = &quot;1.0.20&quot;
+    libraryVersionCode = 11
+    supportVersion = &quot;24.2.0&quot;
+}
+</code></pre>
+
+<p>Aşağıda ki resimde gördüğünüz gibi (Android Studio Project görünümüne geçmelisiniz) 3 adet gradle dosyamızı hazırladık. Kod kalabalığı olmasın ve neyin nerede olduğu belli olsun diye bu şekilde yaptık. Yoksa direk build.gradle dosyamızın içine de yazabilirdik.</p>
+
+<p><a href="http://imgur.com/6coc2bg"><img src="http://i.imgur.com/6coc2bg.png" title="source: imgur.com" /></a></p>
+
+<pre><code>apply plugin: 'com.github.dcendents.android-maven'
+
+group = publishedGroupId                               // Maven Group ID for the artifact
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                groupId publishedGroupId
+                artifactId artifact
+
+                // Add your description here
+                name libraryName
+                description libraryDescription
+                url siteUrl
+
+                // Set your license
+                licenses {
+                    license {
+                        name licenseName
+                        url licenseUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id developerId
+                        name developerName
+                        email developerEmail
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+
+                }
+            }
+        }
+    }
+}
+//from https://github.com/workarounds/bundler/blob/master/gradle/install-v1.gradle
+</code></pre>
+
+<pre><code>apply plugin: 'com.jfrog.bintray'
+
+version = libraryVersion
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty(&quot;bintray.user&quot;)
+    key = properties.getProperty(&quot;bintray.apikey&quot;)
+
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        userOrg = orgName
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty(&quot;bintray.gpg.password&quot;)
+                //Optional. The passphrase for GPG signing'
+            }
+        }
+    }
+}
+
+//from https://github.com/workarounds/bundler/blob/master/gradle/bintray-java-v1.gradle
+</code></pre>
+
+<pre><code>apply plugin: 'com.jfrog.bintray'
+
+version = libraryVersion
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError = false
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty(&quot;bintray.user&quot;)
+    key = properties.getProperty(&quot;bintray.apikey&quot;)
+
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        userOrg = orgName
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = allLicenses
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty(&quot;bintray.gpg.password&quot;)
+                //Optional. The passphrase for GPG signing'
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>Tüm bu dosya yapısını hazırladıktan sonra bintray konfigürasyonu için birkaç işlem daha kaldı.</p>
+
+<p><strong>local.properties</strong> dosyamızın içine bintray bilgilerimizi giriyoruz. Bu bilgileri direk build.gradle içerisine girebilirdik fakat bu bilgilere sadece biz sahip olmalıyız 🙂 ve gitignore un içinde local.properties dosyasının ekli olduğuna dikkat edelim !!</p>
+
+<p><a href="http://imgur.com/hSrkkEc"><img src="http://i.imgur.com/hSrkkEc.png" title="source: imgur.com" /></a></p>
+
+<p>Bintray api key almak için bintray sitesine giderek gerekli sayfaya ulaşıyoruz.</p>
+
+<p><a href="http://imgur.com/bmNY7Is"><img src="http://i.imgur.com/bmNY7Is.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/Vot0Fkk"><img src="http://i.imgur.com/Vot0Fkk.png" title="source: imgur.com" /></a></p>
+
+<p>Evet tüm işlemler bu kadar.</p>
+
+<p>Artık terminalden aşağıdaki komutu yazarak otomatik yüklenmeyi sağlayabiliriz.</p>
+
+<p><code>./gradlew clean install bintrayUpload</code></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2017-01-11</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="http://yazilim.aykutasil.com/tags/software/">software</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/android/">android</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/java/">java</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/library/">library</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/bintray/">bintray</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/gradle/">gradle</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="http://yazilim.aykutasil.com/post/tcp_ip/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">TCP/IP Nasıl Çalışır ?</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="http://yazilim.aykutasil.com/post/android_runtime_permission/">
+            <span class="next-text nav-default">Android Runtime Permission</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="http://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="http://yazilim.aykutasil.com/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="http://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

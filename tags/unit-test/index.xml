@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/unit-test/</link>
     <description>Recent content in Unit Test on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 00:27:54 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/unit-test/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Unit Test Nedir ? Niçin ve Nasıl Yapılır ?</title>
-      <link>http://yazilim.aykutasil.com/unittest-nedir/</link>
+      <link>http://yazilim.aykutasil.com/post/unittest_nedir_nicin_kullanilir/</link>
       <pubDate>Wed, 11 Jan 2017 00:27:54 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/unittest-nedir/</guid>
+      <guid>http://yazilim.aykutasil.com/post/unittest_nedir_nicin_kullanilir/</guid>
       <description>Unit Test Nedir ? Niçin ve Nasıl Yapılır ?
 Yıl olmuş 2014 hala birim test makalesi mi yazıyorsun diye düşünüyor olabilirsiniz. Ancak, birim testi uzun zamandır kullanılan bir yöntem olmasına rağmen tam olarak ne işe yaradığı, neden yapıldığı ve nasıl yapılması gerektiği konusunda açıklayıcı bir Türkçe yazı bulmak malesef zor. Bu yüzden, yazılım mühendisi adaylarına ve kariyerine yeni başlayan arkadaşlara faydalı olabilmek adına bu yazıyı yazmak uygun olur diye düşündüm.</description>
     </item>

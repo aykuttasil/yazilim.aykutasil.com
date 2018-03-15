@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Local IIS Site Kurulumu - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="Local IIS Site Kurulumu Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
+İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
+
+Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz." />
+<meta name="keywords" content="yazilim, sofware, iis, site, local iis, hosts" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<link rel="canonical" href="http://yazilim.aykutasil.com/post/local_iis_site_kurulumu/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="http://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="http://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="http://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="http://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Local IIS Site Kurulumu" />
+<meta property="og:description" content="Local IIS Site Kurulumu Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
+İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
+
+Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yazilim.aykutasil.com/post/local_iis_site_kurulumu/" />
+
+
+
+<meta property="article:published_time" content="2017-01-10T23:20:12&#43;03:00"/>
+
+<meta property="article:modified_time" content="2017-01-10T23:20:12&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Local IIS Site Kurulumu">
+<meta itemprop="description" content="Local IIS Site Kurulumu Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
+İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
+
+Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.">
+
+
+<meta itemprop="datePublished" content="2017-01-10T23:20:12&#43;03:00" />
+<meta itemprop="dateModified" content="2017-01-10T23:20:12&#43;03:00" />
+<meta itemprop="wordCount" content="237">
+
+
+
+<meta itemprop="keywords" content="software,iis,site,local iis,hosts," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Local IIS Site Kurulumu"/>
+<meta name="twitter:description" content="Local IIS Site Kurulumu Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
+İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
+
+Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="http://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="http://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="http://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="http://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Local IIS Site Kurulumu</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-01-10 </span>
+        <div class="post-category">
+            
+              <a href="http://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+            
+              <a href="http://yazilim.aykutasil.com/categories/windows/"> windows </a>
+            
+              <a href="http://yazilim.aykutasil.com/categories/iis/"> iis </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#local-iis-site-kurulumu">Local IIS Site Kurulumu</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#visual-studio-net-uygulamamızı-iis-e-tanıtma">Visual Studio .Net Uygulamamızı IIS e Tanıtma</a></li>
+<li><a href="#host-dosyası-yapılandırması">Host dosyası yapılandırması</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="local-iis-site-kurulumu">Local IIS Site Kurulumu</h1>
+
+<p>Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.</p>
+
+<p>İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak  <strong>“Windows özellikleriniz Aç veya Kapat”</strong> yazıp arama yapıyoruz.</p>
+
+<p><a href="http://imgur.com/d5obWDA"><img src="http://i.imgur.com/d5obWDA.png" title="source: imgur.com" /></a></p>
+
+<p>Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.</p>
+
+<h4 id="visual-studio-net-uygulamamızı-iis-e-tanıtma">Visual Studio .Net Uygulamamızı IIS e Tanıtma</h4>
+
+<p>Visual Studio da uygulamızın ayarlar kısmına girerek yukarıdaki gibi yapılandırıyoruz.</p>
+
+<p>Servers ın alt kısmında görmüş olduğunuz Local IIS i seçmeyi unutmayalım. Bu seçenek Local imize IIS kurduktan sonra geldi.</p>
+
+<p>Şimdi sıra IIS yapılandırmasında.</p>
+
+<p>Bunun için yine başlat tuşuna basarak iis yazalım ve Internet Information Services (IIS) Yöneticisi ne girelim.</p>
+
+<p><a href="http://imgur.com/e2lPp4E"><img src="http://i.imgur.com/e2lPp4E.png" title="source: imgur.com" /></a></p>
+
+<p>Siteler e sağ tıklayarak Web Sitesi Ekle diyelim.</p>
+
+<p><a href="http://imgur.com/UuDqEXb"><img src="http://i.imgur.com/UuDqEXb.png" title="source: imgur.com" /></a></p>
+
+<p>Aşağıdaki gibi gerekli yerleri dolduralım.</p>
+
+<p><strong>Site adı :</strong> Herhangi bir isim girebiliriz.</p>
+
+<p><strong>Fiziksel Yol :</strong>  uygulamamızın kodlarının bulunduğu klasörü göstermeliyiz.</p>
+
+<p><strong>Not</strong> : Web.Config dosyasının bulunduğu klasörün adresi gösterilmelidir.</p>
+
+<p><strong>Ana bilgisayar adı :</strong> Visual Studio da girdiğimiz adresin aynısını girmeliyiz.</p>
+
+<p><a href="http://imgur.com/SQwIO0c"><img src="http://i.imgur.com/SQwIO0c.png" title="source: imgur.com" /></a></p>
+
+<h4 id="host-dosyası-yapılandırması">Host dosyası yapılandırması</h4>
+
+<p>IIS e kaydetmiş olduğumuz domain adresini Windows a söylemeliyiz.</p>
+
+<p>Bunun için <strong>Windows/System32/drivers/etc</strong> klasörünün içinde bulunan Host dosyasını  açarak adresimizi eklemeliyiz.</p>
+
+<p><strong>Not :</strong> Host dosyasını masaüstünüze kopyalayın. Gerekli düzenlemeleri yaptıktan sonra dosyayı kopyalayıp tekrar etc klasörünün içine yapıştırın.</p>
+
+<p><a href="http://imgur.com/ABzsBY9"><img src="http://i.imgur.com/ABzsBY9.png" title="source: imgur.com" /></a></p>
+
+<p>Aşağıdaki resimdeki gibi adresimizi ekleyip kaydediyoruz.</p>
+
+<p><a href="http://imgur.com/BGUmzda"><img src="http://i.imgur.com/BGUmzda.png" title="source: imgur.com" /></a></p>
+
+<p>Artık Visual Studio muzda uygulamızı derleyebilir ve belirlediğimiz domainden erişim sağlayabiliriz.</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2017-01-10</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="http://yazilim.aykutasil.com/tags/software/">software</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/iis/">iis</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/site/">site</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/local-iis/">local iis</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/hosts/">hosts</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="http://yazilim.aykutasil.com/post/android_keyhashes_sha1/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Android Key Hashes &amp; SHA1</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="http://yazilim.aykutasil.com/post/tsql_nullif_kullanimi/">
+            <span class="next-text nav-default">TSQL NULLIF Fonksiyonu Nedir ve Nasıl Kullanılır</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="http://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="http://yazilim.aykutasil.com/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="http://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

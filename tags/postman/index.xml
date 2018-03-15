@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/postman/</link>
     <description>Recent content in Postman on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 01:09:39 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/postman/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Postman ile API Test Yazımı</title>
-      <link>http://yazilim.aykutasil.com/postman-api-test/</link>
+      <link>http://yazilim.aykutasil.com/post/postman_api_test/</link>
       <pubDate>Wed, 11 Jan 2017 01:09:39 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/postman-api-test/</guid>
+      <guid>http://yazilim.aykutasil.com/post/postman_api_test/</guid>
       <description>POSTMAN Postman HTTP Request lerinizi istediğiniz şekilde düzenleyip çalıştırabileceğiniz ve test edebileceğiniz bir Chrome eklentisidir.
 Bu linkten Chrome a ekleyebilirsiniz.
 Postman kullanarak API lerinizi test edebilirsiniz..

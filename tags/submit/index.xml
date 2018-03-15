@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/submit/</link>
     <description>Recent content in Submit on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 19:26:49 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/submit/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>ExecutorService submit() – execute()</title>
-      <link>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute/</link>
+      <link>http://yazilim.aykutasil.com/post/executorservice_submit_execute/</link>
       <pubDate>Wed, 11 Jan 2017 19:26:49 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/java-executorservice-submit-and-execute/</guid>
+      <guid>http://yazilim.aykutasil.com/post/executorservice_submit_execute/</guid>
       <description>ExecutorService submit() – execute() Link : http://javarevisited.blogspot.com.tr/2016/04/difference-between-ExecutorServie-submit-vs-Executor-execute-method-in-Java.html</description>
     </item>
     

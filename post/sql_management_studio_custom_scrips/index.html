@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>SQL Management Studio Custom Generate Scripts - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
+Senaryomuz şu şekilde;
+Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.
+Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !
+Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.
+Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay." />
+<meta name="keywords" content="yazilim, sofware, sql, mssqi, sql management studio" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<link rel="canonical" href="http://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="http://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="http://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="http://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="http://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="SQL Management Studio Custom Generate Scripts" />
+<meta property="og:description" content="SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
+Senaryomuz şu şekilde;
+Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.
+Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !
+Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.
+Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/" />
+
+
+
+<meta property="article:published_time" content="2017-01-11T15:39:47&#43;03:00"/>
+
+<meta property="article:modified_time" content="2017-01-11T15:39:47&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="SQL Management Studio Custom Generate Scripts">
+<meta itemprop="description" content="SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
+Senaryomuz şu şekilde;
+Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.
+Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !
+Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.
+Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.">
+
+
+<meta itemprop="datePublished" content="2017-01-11T15:39:47&#43;03:00" />
+<meta itemprop="dateModified" content="2017-01-11T15:39:47&#43;03:00" />
+<meta itemprop="wordCount" content="220">
+
+
+
+<meta itemprop="keywords" content="software,sql,mssql,custom script," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="SQL Management Studio Custom Generate Scripts"/>
+<meta name="twitter:description" content="SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
+Senaryomuz şu şekilde;
+Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.
+Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !
+Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.
+Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="http://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="http://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="http://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="http://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">SQL Management Studio Custom Generate Scripts</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-01-11 </span>
+        <div class="post-category">
+            
+              <a href="http://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+            
+              <a href="http://yazilim.aykutasil.com/categories/sql/"> sql </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.</p>
+
+<p>Senaryomuz şu şekilde;</p>
+
+<p>Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.</p>
+
+<p>Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !</p>
+
+<p>Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.</p>
+
+<p>Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.</p>
+
+<p>Test veritabanında  ki tabloya sağ tıklayarak aşağıdaki gibi seçim yapmak.</p>
+
+<ul>
+<li><strong>File</strong> seçeneği oluşturulan script in bir dosyaya kaydedilmesini</li>
+<li><strong>Clipboard</strong> seçeneği hafızaya alınmasını ( NotDefteri &gt; CTRL + V diyerek yapıştırabiliriz )
+sağlar.</li>
+</ul>
+
+<p><a href="http://imgur.com/phM7Y8A"><img src="http://i.imgur.com/phM7Y8A.png" title="source: imgur.com" /></a></p>
+
+<p>Tüm oluşturmuş olduğumuz yapıyı bu yöntem ile script haline getirebiliriz.</p>
+
+<p>Lakin şöyle bir sıkıntımız olduğunu varsayalım.</p>
+
+<p>Tablomuzu içindeki verilerle beraber taşımak istiyoruz. Yani script in verileride kapsamasını istiyoruz.</p>
+
+<p>Bunun için ilk olarak tablomuzun bulunduğu veritabanına sağ tıklayarak aşağıdaki adımları gerçekleştiriyoruz.</p>
+
+<p><a href="http://imgur.com/TUEWNjo"><img src="http://i.imgur.com/TUEWNjo.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/3pGyapU"><img src="http://i.imgur.com/3pGyapU.png" title="source: imgur.com" /></a></p>
+
+<p><a href="http://imgur.com/6xCVWnQ"><img src="http://i.imgur.com/6xCVWnQ.png" title="source: imgur.com" /></a></p>
+
+<p>Aşağıdaki resimde görmüş olduğunuz Data only seçeneği sadece tabloda kayıtlı olan verilerin scriptini çıkarır.</p>
+
+<p>Schema and data seçeneği hem schema nın hem de verilerin scriptini çıkararı</p>
+
+<p>Schema only sadece tablonun schema sının scriptini çıkarır.</p>
+
+<p><a href="http://imgur.com/dB2gpdH"><img src="http://i.imgur.com/dB2gpdH.png" title="source: imgur.com" /></a></p>
+
+<p>Son ekranda scriptimizin başarılı şekilde oluştuğunu görüyoruz.</p>
+
+<p><a href="http://imgur.com/7Nx3w3O"><img src="http://i.imgur.com/7Nx3w3O.png" title="source: imgur.com" />&lt;/a</p>
+
+<p>Oluşturmuş olduğumuz script i hangi veritabanında kullanmak istiyorsak oraya giderek query penceresine yapıştırmamız ve çalıştırmamız yeterli olacaktır.</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2017-01-11</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="http://yazilim.aykutasil.com/tags/software/">software</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/sql/">sql</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/mssql/">mssql</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/custom-script/">custom script</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="http://yazilim.aykutasil.com/post/macos_mssql_connection/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Mac OS ile MSSQL Bağlantısı Kurmak</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="http://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/">
+            <span class="next-text nav-default">Foreground Service ile FusedLocationApi Kullanımı</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="http://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="http://yazilim.aykutasil.com/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="http://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android Architecure on Software</title>
+    <link>http://yazilim.aykutasil.com/tags/android-architecure/</link>
+    <description>Recent content in Android Architecure on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Sun, 27 Aug 2017 00:00:00 +0300</lastBuildDate>
+    
+	<atom:link href="http://yazilim.aykutasil.com/tags/android-architecure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android Architecture Components</title>
+      <link>http://yazilim.aykutasil.com/post/android_arc_component/</link>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
+      
+      <guid>http://yazilim.aykutasil.com/post/android_arc_component/</guid>
+      <description>Android Architecture Components Öncelikle şu linkleri verelim:
+ https://developer.android.com/topic/libraries/architecture/index.html Lifecycle LiveData ViewModel  LifeCycle Daha önce Android uygulaması geliştirenler çok iyi bilirler ki bir activity veya fragment ın yaşam döngüsünü yönetmek sıkıntılı bir süreçtir. Activity&amp;rsquo;nin arka planda mı yoksa görünür vaziyette mi oluşuna göre düzenlenen akışlar çoğu zaman yoğun dikkat gerektiren süreçlerdir. Yukarıda ki Lifecycle linkine tıklarsanınz çok güzel bir örnek ile durumu açıklamışlar.
+Oluşturduğumuz nesneler eğer activity&amp;rsquo;nin yaşam döngüsüne bağlı ise bunu yönetmek için activity&amp;rsquo;mizin genelde onCreate ve onStop metodları içerisinde bu nesnelere ait fonksiyonları çağırıyorduk.</description>
+    </item>
+    
+  </channel>
+</rss>

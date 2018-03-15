@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/macos-mssql-connection/</link>
     <description>Recent content in Macos Mssql Connection on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 15:50:10 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/macos-mssql-connection/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Mac OS ile MSSQL Bağlantısı Kurmak</title>
-      <link>http://yazilim.aykutasil.com/macos-mssql-connection/</link>
+      <link>http://yazilim.aykutasil.com/post/macos_mssql_connection/</link>
       <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/macos-mssql-connection/</guid>
+      <guid>http://yazilim.aykutasil.com/post/macos_mssql_connection/</guid>
       <description>MSSQL oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.
 Senaryomuz şu şekilde;
 Mac OS yüklü bilgisayarımızdan MSSQL yüklü sunucumuza bağlantı kurmak istiyoruz.

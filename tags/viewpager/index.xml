@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/viewpager/</link>
     <description>Recent content in Viewpager on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 17:07:51 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/viewpager/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android ViewPager</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-viewpager/</link>
+      <link>http://yazilim.aykutasil.com/post/android_viewpager/</link>
       <pubDate>Wed, 11 Jan 2017 17:07:51 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-viewpager/</guid>
+      <guid>http://yazilim.aykutasil.com/post/android_viewpager/</guid>
       <description>Android ViewPager yapısı içerisinde birçok hazır fonksiyonu, animasyonu ve özelleştirilebilir kontrolleri barındırır.
 İhtiyaçlarımız doğrultusunda bu yapıyı özelleştirebilir ve ViewPager ın bize sunmuş olduğu rahatlığı kullanabiliriz.
  </description>

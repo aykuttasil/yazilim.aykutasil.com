@@ -1,249 +1,200 @@
-
-
-  
-    
-  
-
-
-  
-
-
 <!DOCTYPE html>
-<html lang="tr-tr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo 0.24">
-    <title>Android ile WebView Etkileşimi</title>
-    <meta name="author" content="Aykut Asil">
-    <meta name="keywords" content="software, android, java, webview, addJavascriptInterface, WebViewClient, JavascriptInterface">
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android ile WebView Etkileşimi - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-    <link rel="icon" href="http://yazilim.aykutasil.com/favicon.png">
-    
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-    
-    <meta name="description" content="Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
+ Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
+Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs." />
+<meta name="keywords" content="software, android, java, webview, addJavascriptInterface, WebViewClient, JavascriptInterface" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<link rel="canonical" href="http://yazilim.aykutasil.com/android-webview-etkilesimi/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="http://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="http://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="http://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="http://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link href="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+
+
+
+<meta property="og:title" content="Android ile WebView Etkileşimi" />
+<meta property="og:description" content="Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
+ Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
+Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://yazilim.aykutasil.com/android-webview-etkilesimi/" />
+
+
+
+<meta property="article:published_time" content="2017-01-11T19:59:08&#43;03:00"/>
+
+<meta property="article:modified_time" content="2017-01-11T19:59:08&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Android ile WebView Etkileşimi">
+<meta itemprop="description" content="Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
  Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
 Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.">
-    <meta property="og:description" content="Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
+
+
+<meta itemprop="datePublished" content="2017-01-11T19:59:08&#43;03:00" />
+<meta itemprop="dateModified" content="2017-01-11T19:59:08&#43;03:00" />
+<meta itemprop="wordCount" content="502">
+
+
+
+<meta itemprop="keywords" content="sofware,android,java,webview,addJavascriptInterface,WebViewClient,JavascriptInterface," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Android ile WebView Etkileşimi"/>
+<meta name="twitter:description" content="Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
  Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
-Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="Android ile WebView Etkileşimi">
-    <meta property="og:url" content="android-webview-etkilesimi">
-    <meta property="og:site_name" content="Software">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Software">
-    <meta name="twitter:description" content="Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak
- Backend : .Net Client : Android (Java) Ödeme altyapısı : İyzico  Client tarafında rest isteğiyle tüm işlemlerimizi backend tarafında yapıyoruz. Ödeme yapımızı da bu doğrultuda geliştirdik.
-Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs.">
-    
-      <meta name="twitter:creator" content="@aykuttasil">
-    
-    
+Problem : 3DS ile ödeme almaya çalıştığımızda malumunuz işin içerisine bankanın bize telefonumuza gelen şifreyi girmemiz için göndermiş olduğu web sayfası vs."/>
 
-    
-    
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
 
-    
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
 
-    
-    
-      <meta property="og:image" content="https://c8.staticflickr.com/8/7421/9339731831_9ba94f287c_k.jpg">
-    
-    
-
-    
-
-    
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" />
-    
-    
-    <link rel="stylesheet" href="http://yazilim.aykutasil.com/css/style-gwlo24d2hxipxk8bi1sxik0zhlpn9t7ebcmgp9kubmmcjfzlavuyhvbqumhn.min.css" />
-    
-    
-    
-      
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-42457939-6', 'auto');
-ga('send', 'pageview');
-</script>
-
-    
-  </head>
-
-  <body>
-    <div id="blog">
-      <header id="header" data-behavior="6">
-  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
-  <div class="header-title">
-    <a class="header-title-link" href="http://yazilim.aykutasil.com/">Software</a>
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
   </div>
-  
-    
-      <a class="header-right-picture "
-         href="http://yazilim.aykutasil.com/#about">
-    
-    
-    
-      
-    
-    </a>
-  
-</header>
-
-      <nav id="sidebar" data-behavior="6">
-  <div class="sidebar-container">
-    
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/categories">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-      
-      <span class="sidebar-button-desc">Kategoriler</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/tags">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
-      
-      <span class="sidebar-button-desc">Etiketler</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/archives">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
-      
-      <span class="sidebar-button-desc">Arşiv</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/#about">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-      
-      <span class="sidebar-button-desc">Hakkımda</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
-      
-      <span class="sidebar-button-desc">Home</span>
-    </a>
-  </li>
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="http://stackoverflow.com/users/3448461/aykuttasil" target="_blank">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
-      
-      <span class="sidebar-button-desc">Stack Overflow</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://github.com/aykuttasil" target="_blank">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
-      
-      <span class="sidebar-button-desc">GitHub</span>
-    </a>
-  </li>
-
-    </ul>
-    <ul class="sidebar-buttons">
-      
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="http://yazilim.aykutasil.com/index.xml">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-      
-      <span class="sidebar-button-desc">RSS</span>
-    </a>
-  </li>
-
-    </ul>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="http://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="http://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="http://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="http://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
 </nav>
-
-      
-  <div class="post-header-cover
-              text-center
-              "
-       style="background-image:url('https://c8.staticflickr.com/8/7421/9339731831_9ba94f287c_k.jpg')"
-       data-behavior="6">
-    
-      <div class="post-header main-content-wrap text-center">
-  
-    <h1 class="post-title" itemprop="headline">
-      Android ile WebView Etkileşimi
-    </h1>
-  
-  <div class="post-meta">
-  <time itemprop="datePublished" datetime="2017-01-11T19:59:08&#43;03:00">
-    
-  Ocak 11, 2017
-
-  </time>
-  
-  
-  
-    <span>in</span>
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/yazilim">yazilim</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/android">android</a>, 
-    
-      <a class="category-link" href="http://yazilim.aykutasil.com/categories/java">java</a>
-    
-  
-
-
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="http://yazilim.aykutasil.com/" class="logo">Software</a>
 </div>
 
-</div>
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="http://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
     
+    <header class="post-header">
+      <h1 class="post-title">Android ile WebView Etkileşimi</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-01-11 </span>
+        <div class="post-category">
+            
+              <a href="http://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+            
+              <a href="http://yazilim.aykutasil.com/categories/android/"> android </a>
+            
+              <a href="http://yazilim.aykutasil.com/categories/java/"> java </a>
+            
+          </div>
+        
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#layout-xml">Layout.xml</a></li>
+<li><a href="#activity-fragment">Activity – Fragment</a></li>
+<li><a href="#mywebviewclient">MyWebViewClient</a></li>
+<li><a href="#mywebviewjavascriptinterface">MyWebViewJavascriptInterface</a></li>
+<li><a href="#custom-html-content">Custom Html Content</a></li>
+</ul></li>
+</ul>
+</nav>
   </div>
+</div>
 
-
-      <div id="main" data-behavior="6"
-        class="hasCover
-               hasCoverMetaIn
-               ">
-        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
-          
-          
-          <div class="post-content markdown" itemprop="articleBody">
-            <div class="main-content-wrap">
-              
+    
+    <div class="post-content">
+      
 
 <p>Kısa Hikaye : Üstünde çalışmakta olduğum bir projede kredi kartı ile ödeme yapısı kurmam gerekti. Kısaca projenin yapısından bahsedecek olursak</p>
 
@@ -394,499 +345,132 @@ webView.addJavascriptInterface(new MyWebViewJavascriptInterface(mContext, webVie
 
 <p>Kalın sağlıcakla..</p>
 
-              
-            </div>
-          </div>
-          <div id="post-footer" class="post-footer main-content-wrap">
-            
-              
-              
-                <div class="post-footer-tags">
-                  <span class="text-color-light text-small">TAGGED IN</span><br/>
-                  
-  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/sofware/">sofware</a>
+    </div>
 
-  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/android/">android</a>
-
-  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/java/">java</a>
-
-  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/webview/">webview</a>
-
-  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/addjavascriptinterface/">addJavascriptInterface</a>
-
-  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/webviewclient/">WebViewClient</a>
-
-  <a class="tag tag--primary tag--small" href="http://yazilim.aykutasil.com/tags/javascriptinterface/">JavascriptInterface</a>
-
-                </div>
-              
-            
-            <div class="post-actions-wrap">
-  <nav>
-    <ul class="post-actions post-action-nav">
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/csharp-soru-isareti-syntax/" data-tooltip="CSharp Null Kontrolü">
-        
-          <i class="fa fa-angle-left"></i>
-          <span class="hide-xs hide-sm text-small icon-ml">ÖNCEKİ</span>
-        </a>
-      </li>
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/docker-komutlari/" data-tooltip="Docker Komutları">
-        
-          <span class="hide-xs hide-sm text-small icon-mr">SONRAKİ</span>
-          <i class="fa fa-angle-right"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <ul class="post-actions post-action-share">
-    <li class="post-action hide-lg hide-md hide-sm">
-      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-        <i class="fa fa-share-alt"></i>
-      </a>
-    </li>
-    <li class="post-action hide-xs">
-      <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-google-plus"></i>
-      </a>
-    </li>
-    <li class="post-action hide-xs">
-      <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-facebook-official"></i>
-      </a>
-    </li>
-    <li class="post-action hide-xs">
-      <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-twitter"></i>
-      </a>
-    </li>
     
-      <li class="post-action">
-        <a class="post-action-btn btn btn--default" href="#disqus_thread">
-          <i class="fa fa-comment-o"></i>
-        </a>
-      </li>
-    
-    <li class="post-action">
-      
-        <a class="post-action-btn btn btn--default" href="#">
-      
-        <i class="fa fa-list"></i>
-      </a>
-    </li>
-  </ul>
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2017-01-11</span>
+  </p>
+  
+  
 </div>
 
+    
+    
 
-            
-              
-                <div id="disqus_thread">
-  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="http://yazilim.aykutasil.com/tags/sofware/">sofware</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/android/">android</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/java/">java</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/webview/">webview</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/addjavascriptinterface/">addJavascriptInterface</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/webviewclient/">WebViewClient</a>
+          
+          <a href="http://yazilim.aykutasil.com/tags/javascriptinterface/">JavascriptInterface</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="http://yazilim.aykutasil.com/post/csharp_soruisareti_operator/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">CSharp Null Kontrolü</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="http://yazilim.aykutasil.com/post/docker_komutlari/">
+            <span class="next-text nav-default">Docker Komutları</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="http://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
-              
-            
-          </div>
-        </article>
-        <footer id="footer" class="main-content-wrap">
-  <span class="copyrights">
-    &copy; 2017 <a href="https://github.com/aykuttasil">aykuttasil</a>. Tüm Hakları Saklıdır
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
   </span>
-</footer>
-
-      </div>
-      <div id="bottom-bar" class="post-bottom-bar" data-behavior="6">
-        <div class="post-actions-wrap">
-  <nav>
-    <ul class="post-actions post-action-nav">
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/csharp-soru-isareti-syntax/" data-tooltip="CSharp Null Kontrolü">
-        
-          <i class="fa fa-angle-left"></i>
-          <span class="hide-xs hide-sm text-small icon-ml">ÖNCEKİ</span>
-        </a>
-      </li>
-      <li class="post-action">
-        
-          <a class="post-action-btn btn btn--default tooltip--top" href="http://yazilim.aykutasil.com/docker-komutlari/" data-tooltip="Docker Komutları">
-        
-          <span class="hide-xs hide-sm text-small icon-mr">SONRAKİ</span>
-          <i class="fa fa-angle-right"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <ul class="post-actions post-action-share">
-    <li class="post-action hide-lg hide-md hide-sm">
-      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
-        <i class="fa fa-share-alt"></i>
-      </a>
-    </li>
-    <li class="post-action hide-xs">
-      <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-google-plus"></i>
-      </a>
-    </li>
-    <li class="post-action hide-xs">
-      <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-facebook-official"></i>
-      </a>
-    </li>
-    <li class="post-action hide-xs">
-      <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-twitter"></i>
-      </a>
-    </li>
-    
-      <li class="post-action">
-        <a class="post-action-btn btn btn--default" href="#disqus_thread">
-          <i class="fa fa-comment-o"></i>
-        </a>
-      </li>
-    
-    <li class="post-action">
-      
-        <a class="post-action-btn btn btn--default" href="#">
-      
-        <i class="fa fa-list"></i>
-      </a>
-    </li>
-  </ul>
 </div>
+    </footer>
 
-
-      </div>
-      <div id="share-options-bar" class="share-options-bar" data-behavior="6">
-  <ul class="share-options">
-    <li class="share-option">
-      <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-google-plus"></i><span>Share on Google Plus</span>
-      </a>
-    </li>
-    <li class="share-option">
-      <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
-      </a>
-    </li>
-    <li class="share-option">
-      <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3a%2f%2fyazilim.aykutasil.com%2fandroid-webview-etkilesimi%2f">
-        <i class="fa fa-twitter"></i><span>Share on Twitter</span>
-      </a>
-    </li>
-  </ul>
-</div>
-<div id="share-options-mask" class="share-options-mask"></div>
-    </div>
-    <div id="about">
-  <div id="about-card">
-    <div id="about-btn-close">
-      <i class="fa fa-remove"></i>
-    </div>
-    
-    <h4 id="about-card-name">Aykut Asil</h4>
-    
-      <div id="about-card-bio">Continious Innovation</div>
-    
-    
-      <div id="about-card-job">
-        <i class="fa fa-briefcase"></i>
-        <br/>
-        Software Developer
-      </div>
-    
-    
-      <div id="about-card-location">
-        <i class="fa fa-map-marker"></i>
-        <br/>
-        Turkey
-      </div>
-    
-  </div>
-</div>
-
-    <div id="algolia-search-modal" class="modal-container">
-  <div class="modal">
-    <div class="modal-header">
-      <span class="close-button"><i class="fa fa-close"></i></span>
-      <a href="https://algolia.com" target="_blank" class="searchby-algolia text-color-light link-unstyled">
-        <span class="searchby-algolia-text text-color-light text-small">by</span>
-        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
-      </a>
-      <i class="search-icon fa fa-search"></i>
-      <form id="algolia-search-form">
-        <input type="text" id="algolia-search-input" name="search"
-          class="form-control input--large search-input" placeholder="Arama Yap" />
-      </form>
-    </div>
-    <div class="modal-body">
-      <div class="no-result text-color-light text-center">içerik bulunamadı</div>
-      <div class="results">
-        
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/google_cloud_dns/">
-                <h3 class="media-heading">Google Cloud DNS</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Google Cloud Platform Cloud DNS Örnek senaryomuz şu şekilde olsun.
-Google Cloud ortamında hazır olarak bulunan (Cloud Launcher) sanal makinelerden wordpress yüklü olanı seçtik ve hızlıca makinemizi hazır hale getirdik. Google Cloud bize makineye ait bir ip adresi verdi ve bu ip ile worpress sitemize erişim sağlayabiliyoruz. Elimizde başka bir yerden aldığımız bir domain adresi var ve bu adresi wordpress sitemize yönlendirmek istiyoruz.
-Cloud DNS nedir? Google Cloud platformunun dns yapılandırması için vermiş olduğu hizmettir.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_jvmoverloads/">
-                <h3 class="media-heading">Kotlin @JvmOverloads</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Kotlin @JvmOverloads Kotlin ile uygulama geliştirmeyi teşvik eden en büyük etkenlerden biri şüphesiz Java dili uyumlu yapısıdır. Her iki tarafdan da birbirlerine referanslar verilebilir.
-Kotlin dilinin Java&rsquo;dan ayıran özelliklerinden biri Java compiler ından daha zeki olmasıdır. Nitekim java dili yaşlanıyor :). Kotlin ile oluşturulan bazı yapıların Java tarafına uyumlu hale getirilmesi için bazen ufak düzenlemelere gerek duyulabiliyor. Bu düzenlemelerden bir tanesi de @JvmOverloads annotation kullanımı.
-fun ViewGroup.inflate(resId: Int, attachToRoot: Boolean = false): View { return LayoutInflater.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_sealed_class/">
-                <h3 class="media-heading">Kotlin Sealed Class</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jul 7, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Kotlin Sealed Class Enum yapısına benzer bir yapıya sahiptir. Ve benzer görevler için kullanılır. Aradaki fark enum lar sabit değer ifade etmek için kullanılırken sealed yapısı normal sınıf gibi fakat enum mantığıyla kullanılır. Yani belli bir duruma ait fonksiyonları bir arada tutmak ve when() gibi fonksiyonlar ile birlikte kullanımını sağlamak için kullanılır.
-// Sealed class enum yapısına benzer // Bir durum için belli başlı akışları bir arada tutmamızı sağlar ve bu akışların yönetimini kolaylaştırır.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_lambda/">
-                <h3 class="media-heading">Kotlin Lambda</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jun 6, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Kotlin Lambda Kullanımı Kotlin dili ile geliştirme yaparken fonksiyonel programlama nimetlerinden faydalanmamızı sağlayan lambda birçok konuda bize yardımcı olacaktır. Doğru kullanımını öğrendiğimiz ölçüde nimetlerinin farkına varabiliriz.
-Belli başlı lambda kullanımları için aşağıdaki örneği inceleyebilirsiniz.
- override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_kotlin_lambda) // Normal Kullanım ButtonPress.setOnClickListener(object : View.OnClickListener { override fun onClick(view: View?) { toast(&quot;Press Me Click&quot;) } }) // Yukarıda ki yapıyı lambda kullanarak bu şekle çevirebiliriz ButtonPress.setOnClickListener({ v -&gt; toast(&quot;Press Me&quot;) }) // Eğer son parametre lambda fonksiyonu ise bu fonksiyonu parantez '()' dışına çıkarabiliriz.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_apply/">
-                <h3 class="media-heading">Kotlin apply Kullanımı</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jun 6, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">fun &lt;T&gt; T.apply(f: T.() -&gt; Unit): T { f(); return this }  apply() tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.
-var file = File(dir) file.mkdirs()  veya Java ile yazacak olursak
-File makeDir(String path) { File result = new File(path); result.mkdirs(); return result; }  Bu kodu aşağıdaki yapıya çevirebiliriz.
-File(dir).apply { mkdirs() }  </div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_when/">
-                <h3 class="media-heading">Kotlin when kullanımı</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jun 6, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Kotlin&rsquo;de when operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.
-if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.
- val i = 10 when { i &lt; 7 -&gt; println(&quot;first block&quot;) fooString.startsWith(&quot;hello&quot;) -&gt; println(&quot;second block&quot;) else -&gt; println(&quot;else block&quot;) }  Yukarıda ki örnek if-else if-else yapısının aynısıdır.
- when (i) { 0, 21 -&gt; println(&quot;0 or 21&quot;) in 1..20 -&gt; println(&quot;in the range 1 to 20&quot;) else -&gt; println(&quot;none of the above&quot;) }  Yukarıda ki gibi aralıklar tanımlanabilir ve bu aralıklara uyum kontrolü yapılarak ilgili işlemlerin yapılması sağlanılabilir.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/kotlin_let/">
-                <h3 class="media-heading">Kotlin Let Kullanımı</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Jun 6, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Kotlin fun &lt;T, R&gt; T.let(f: (T) -&gt; R): R = f(this)  let() temel olarak, belirli bir kapsam için bir değişken/kod bloğu oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani let() bir sarmalıyıcı fonksiyondur.
-Örneğin:
-private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğu çalıştırılır.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/retrofit_oauth/">
-                <h3 class="media-heading">Retrofit Oauth</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  May 5, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Retrofit Oauth Entegrasyonu Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya buraya bakabilirsiniz.
-Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.
-Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/firebase_dynamiclink/">
-                <h3 class="media-heading">Firebase Dynamic Links</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Apr 4, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">Firebase Dynamic Links Öyle bir link olsun ki;
- Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="http://yazilim.aykutasil.com/arduino_hc06_kullanimi/">
-                <h3 class="media-heading">Arduino HC-06 Bluetooth Kullanımı</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Mar 3, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather">HC-06 Bluetooth  Aşağıdaki kodu Arduino kartınıza yükleyiniz Bluetooth Terminal uygulamasını telefonunuza indirin HC-06 modulünün TX-RX çıkışlarını Arduino kartınızın RX-TX girişlerine entegre edin. (Ters sıralamaya dikkat) Cihazınızdan normal bluetooh bağlantısı kurar gibi HC-06 modülü ile bağlantı kurun ve şifre olarak 1234 girin. Aşağıdaki kodda görebileceğiniz gibi 0,1,2,3,4 için farklı işlemler yapılmasını sağladık. Siz de ihtiyacınıza göre ayarlayın. Ben led parlaklığını düzenledim ya da motor hızı olarak da düşünebiliriz.  const int LED_PIN = 9; char veri; void setup() { Serial.</div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
-      </div>
-    </div>
-    <div class="modal-footer">
-      <p class="results-count text-medium"
-         data-message-zero="içerik bulunamadı"
-         data-message-one="1 içerik bulundu"
-         data-message-other="{n} içerik bulundu">
-         53 posts found
-      </p>
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
     </div>
   </div>
-</div>
-    
   
-    
-    <div id="cover" style="background-image:url('http://yazilim.aykutasil.com/images/cover.jpg');"></div>
-  
+<script src="http://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script><script type="text/javascript" src="http://yazilim.aykutasil.com/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="http://yazilim.aykutasil.com/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="http://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
 
-
-    
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js"></script>
-
-
-<script src="http://yazilim.aykutasil.com/js/script-wl33z0n6ocaypepiqrazthtivfrliqijej4rq8ek8gvrv1awftmgjuv8k4zc.min.js"></script>
 
 <script>
-$(document).ready(function() {
-  hljs.configure({ classPrefix: '', useBR: false });
-  $('pre.code-highlight').each(function(i, block) {
-    var code = "";
-    hljs.highlightAuto(block.innerText).value.split(/\r\n|\r|\n/).forEach(function(line) {
-      code += "<span class=\"line\">" + line + "</span><br>";
-    });
-    if (code.length > 0) {
-      block.innerHTML = code;  
-    }
-  });
-  $('pre > code').each(function(i, block) {
-    $(this).addClass('codeblock');
-    hljs.highlightBlock(block);
-  });
-});
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
 </script>
-
-  
-    
-      <script>
-        var disqus_config = function () {
-          this.page.url = 'http:\/\/yazilim.aykutasil.com\/android-webview-etkilesimi\/';
-          
-            this.page.identifier = '\/android-webview-etkilesimi'
-          
-        };
-        (function() {
-          
-          
-          if (window.location.hostname == "localhost") {
-            return;
-          }
-          var d = document, s = d.createElement('script');
-          var disqus_shortname = 'yazilimaykutasil';
-          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-    
-  
+<script async src='//www.google-analytics.com/analytics.js'></script>
 
 
-  </body>
+
+
+
+
+
+</body>
 </html>

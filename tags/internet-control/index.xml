@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/internet-control/</link>
     <description>Recent content in Internet Control on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 01:42:36 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/internet-control/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android Internet Connection Receiver </title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</link>
+      <link>http://yazilim.aykutasil.com/post/android_internet_connection_receiver/</link>
       <pubDate>Wed, 11 Jan 2017 01:42:36 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-internet-connection-receiver/</guid>
+      <guid>http://yazilim.aykutasil.com/post/android_internet_connection_receiver/</guid>
       <description>Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.
 Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.
 &amp;lt;receiver android:name=&amp;quot;.InternetConnectionReceiver&amp;quot;&amp;gt; &amp;lt;intent-filter&amp;gt; &amp;lt;action android:name=&amp;quot;android.net.conn.CONNECTIVITY_CHANGE&amp;quot; /&amp;gt; &amp;lt;/intent-filter&amp;gt; &amp;lt;/receiver&amp;gt;  InternetConnectionReceiver

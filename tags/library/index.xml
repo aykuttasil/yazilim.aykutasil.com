@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/library/</link>
     <description>Recent content in Library on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 17:27:29 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/library/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android Library &amp; Bintray</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-library--bintray/</link>
+      <link>http://yazilim.aykutasil.com/post/android_library/</link>
       <pubDate>Wed, 11 Jan 2017 17:27:29 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-library--bintray/</guid>
+      <guid>http://yazilim.aykutasil.com/post/android_library/</guid>
       <description>Android uygulaması yazarken bazı oluşturmuş olduğunuz yapıları tekrar tekrar yazmak durumunda kalıyorsanız, sizin de artık kendi kütüphanenizi yazmanızın zamanı gelmiş geçiyor demektir. Böyle bir durum söz konusu olmak zorunda değil tabi library oluşturmak için 🙂
 Bu yazının konusu Android Library oluşturmak, oluşturmuş olduğumuz bu kütüphaneyi maven ve jcenter repository e deploy etmek olucak.
 Ve başlayabiliriz.

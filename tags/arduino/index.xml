@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/arduino/</link>
     <description>Recent content in Arduino on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Sun, 12 Mar 2017 23:40:36 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
@@ -13,19 +13,19 @@
     
     <item>
       <title>Arduino HC-06 Bluetooth Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/arduino_hc06_kullanimi/</link>
+      <link>http://yazilim.aykutasil.com/post/arduino_hc06/</link>
       <pubDate>Sun, 12 Mar 2017 23:40:36 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/arduino_hc06_kullanimi/</guid>
+      <guid>http://yazilim.aykutasil.com/post/arduino_hc06/</guid>
       <description>HC-06 Bluetooth  Aşağıdaki kodu Arduino kartınıza yükleyiniz Bluetooth Terminal uygulamasını telefonunuza indirin HC-06 modulünün TX-RX çıkışlarını Arduino kartınızın RX-TX girişlerine entegre edin. (Ters sıralamaya dikkat) Cihazınızdan normal bluetooh bağlantısı kurar gibi HC-06 modülü ile bağlantı kurun ve şifre olarak 1234 girin. Aşağıdaki kodda görebileceğiniz gibi 0,1,2,3,4 için farklı işlemler yapılmasını sağladık. Siz de ihtiyacınıza göre ayarlayın. Ben led parlaklığını düzenledim ya da motor hızı olarak da düşünebiliriz.  const int LED_PIN = 9; char veri; void setup() { Serial.</description>
     </item>
     
     <item>
       <title>Mac OS Arduino Uno (Klon) Kurulumu</title>
-      <link>http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum/</link>
+      <link>http://yazilim.aykutasil.com/post/macos_arduino_uno_klon_kurulum/</link>
       <pubDate>Wed, 11 Jan 2017 17:22:38 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/macos-arduino-uno-klon-kurulum/</guid>
+      <guid>http://yazilim.aykutasil.com/post/macos_arduino_uno_klon_kurulum/</guid>
       <description>Sizde benim gibi klon Arduino Uno kartınızı çalıştıramayıp bozuk zannettiyseniz doğru yerdesiniz.
 Arduino Uno klon kartlarında orijinal Arduino Uno kartına göre farklı bir işlemci kullanılmış ( daha ucuz olanından 😉 ) ve bu yüzden Mac OS kullanıyorsanız ayrı bir driver dosyası indirmeniz gerekmekte.
 Orijinal Arduino Kartlarının yapımı iki koldan yürüyor. Bir taraf open source u destekleyen diğer taraf parayı destekleyen insanlardan oluşuyor(muş).

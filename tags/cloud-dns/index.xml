@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/cloud-dns/</link>
     <description>Recent content in Cloud Dns on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 12 Jul 2017 00:00:00 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/cloud-dns/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Google Cloud DNS</title>
-      <link>http://yazilim.aykutasil.com/google_cloud_dns/</link>
+      <link>http://yazilim.aykutasil.com/post/gcloud_custom_dns/</link>
       <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/google_cloud_dns/</guid>
+      <guid>http://yazilim.aykutasil.com/post/gcloud_custom_dns/</guid>
       <description>Google Cloud Platform Cloud DNS Örnek senaryomuz şu şekilde olsun.
 Google Cloud ortamında hazır olarak bulunan (Cloud Launcher) sanal makinelerden wordpress yüklü olanı seçtik ve hızlıca makinemizi hazır hale getirdik. Google Cloud bize makineye ait bir ip adresi verdi ve bu ip ile worpress sitemize erişim sağlayabiliyoruz. Elimizde başka bir yerden aldığımız bir domain adresi var ve bu adresi wordpress sitemize yönlendirmek istiyoruz.
 Cloud DNS nedir? Google Cloud platformunun dns yapılandırması için vermiş olduğu hizmettir.</description>

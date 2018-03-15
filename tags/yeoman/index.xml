@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/yeoman/</link>
     <description>Recent content in Yeoman on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 18 Jan 2017 12:09:26 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/yeoman/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Yeoman Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/yeoman-kullanimi/</link>
+      <link>http://yazilim.aykutasil.com/post/yeoman_scaffolding/</link>
       <pubDate>Wed, 18 Jan 2017 12:09:26 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/yeoman-kullanimi/</guid>
+      <guid>http://yazilim.aykutasil.com/post/yeoman_scaffolding/</guid>
       <description>Yeoman Kullanımı Yeoman ile kendi proje yapımızı kurgulayabilir ve opsiyonlar belirleyerek ona göre dosya içeriğimizi vs. düzenleyebiliriz. Ya da oluşturduğumuz projeye önceden belirlediğimiz bir dosyayı ekleyebilir ve gerekli ayarlamaları otomatik olarak yapmasını sağlayabiliriz. (yeni bir Controller eklemek gibi vs.)
 Ve hazırladığımız bu proje yapısını paket yönetim sistemlerine yollayarak diğer kişilerin kullanımına açabilir veyahut kendimizin de istediğimiz yerden erişebilmesini sağlayabiliriz.
 Öncelikle bilgisayarınız da nodejs yüklü olduğunu varsayıyoruz. Eğer yüklü değilse buradan gerekli işlemleri yaparak kurabiliriz.</description>

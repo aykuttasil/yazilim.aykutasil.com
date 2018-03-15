@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/typescript/</link>
     <description>Recent content in Typescript on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 18:14:05 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>VS Code &amp; Express &amp; TypeScript &amp; IntelliSense</title>
-      <link>http://yazilim.aykutasil.com/vscode-intellisense/</link>
+      <link>http://yazilim.aykutasil.com/post/vscode_express_typescript_intellisense/</link>
       <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/vscode-intellisense/</guid>
+      <guid>http://yazilim.aykutasil.com/post/vscode_express_typescript_intellisense/</guid>
       <description>VS Code &amp;amp; Express &amp;amp; TypeScript &amp;amp; IntelliSense VS Code, Atom ile aynı çekirdeği paylaşan, Electron kullanılarak microsoft tarafından özelleştirilmiş ve birçok dil ile uygulama geliştirmeniz için çeşitli eklentileri bulunan bir editördür.
 Günümüzün lider dili malum Javascript ve belki de bunun böyle olmasının en temel sebeplerinden biri NodeJS.
 NodeJS ile çok hızlı bir şekilde ve tamamen javascript kullanarak web siteleri, uygulamaları, api service leri vb. geliştirebiliriz.

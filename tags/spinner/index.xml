@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/spinner/</link>
     <description>Recent content in Spinner on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Tue, 10 Jan 2017 23:00:03 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/spinner/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android Spinner Text Güncelleme</title>
-      <link>http://yazilim.aykutasil.com/android-spinner-dynamic-text/</link>
+      <link>http://yazilim.aykutasil.com/post/android_spinner_text/</link>
       <pubDate>Tue, 10 Jan 2017 23:00:03 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/android-spinner-dynamic-text/</guid>
+      <guid>http://yazilim.aykutasil.com/post/android_spinner_text/</guid>
       <description>Dinamik Olarak Spinner Text Güncelleme Android de Spinner yapısı açılır menü (dropdown) olarak kullanlan kullanışlı bir componenttir.
 Farklı ihtiyaçlarınız doğrultusunda Spinner ınızın elemanlarının değerini değiştirmek isteyebilirsiniz.
 Örneğin bir ListView iniz var.Ve içerisinde aynı kategoriden ama değişik durumlara sahip itemlar var ve siz bu itemları durumuna göre gruplandırıp sayısını Spinner da göstermek istiyorsunuz. Bunun için aşağıda belirtecek olduğum yapıyı kullanabilirsiniz.

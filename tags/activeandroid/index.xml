@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/activeandroid/</link>
     <description>Recent content in Activeandroid on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 01:00:19 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/activeandroid/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android ActiveAndroid Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/activeandroid-kullanimi/</link>
+      <link>http://yazilim.aykutasil.com/post/activeandroid/</link>
       <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/activeandroid-kullanimi/</guid>
+      <guid>http://yazilim.aykutasil.com/post/activeandroid/</guid>
       <description>Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.
 ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.
 Kütüphaneyi buradan indirebilirsiniz.

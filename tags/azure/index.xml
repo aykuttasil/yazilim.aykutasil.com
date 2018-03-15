@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/azure/</link>
     <description>Recent content in Azure on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 00:21:36 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/azure/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Azure Mobile Services ve Notification Hubs Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/azure-notification-hubs-kullanimi/</link>
+      <link>http://yazilim.aykutasil.com/post/azure_notification_hubs_kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 00:21:36 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/azure-notification-hubs-kullanimi/</guid>
+      <guid>http://yazilim.aykutasil.com/post/azure_notification_hubs_kullanimi/</guid>
       <description>Azure Mobile Services çok hızlı ve kolay bir şekilde uygulama geliştirmeniz için önceden veya uygulama yazımı sırasında yapılması gereken işlemleri minimize eden bir servistir.
 Kullanımı oldukça kolay olmakla beraber ilk bir kaç adımı gerçekleştirmek bazen can sıkıcı olabilmekte.
 Bunun için ufak bir örnekle bu ilk birkaç adımı beraber atıcaz.

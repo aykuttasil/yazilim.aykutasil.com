@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/when/</link>
     <description>Recent content in When on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Tue, 06 Jun 2017 04:42:56 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/when/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Kotlin when kullanımı</title>
-      <link>http://yazilim.aykutasil.com/kotlin_when/</link>
+      <link>http://yazilim.aykutasil.com/post/kotlin_when/</link>
       <pubDate>Tue, 06 Jun 2017 04:42:56 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/kotlin_when/</guid>
+      <guid>http://yazilim.aykutasil.com/post/kotlin_when/</guid>
       <description>Kotlin&amp;rsquo;de when operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.
 if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.
  val i = 10 when { i &amp;lt; 7 -&amp;gt; println(&amp;quot;first block&amp;quot;) fooString.startsWith(&amp;quot;hello&amp;quot;) -&amp;gt; println(&amp;quot;second block&amp;quot;) else -&amp;gt; println(&amp;quot;else block&amp;quot;) }  Yukarıda ki örnek if-else if-else yapısının aynısıdır.

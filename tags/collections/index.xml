@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/collections/</link>
     <description>Recent content in Collections on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 16:10:10 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/collections/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android Collections</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-collections/</link>
+      <link>http://yazilim.aykutasil.com/post/android_collections/</link>
       <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-collections/</guid>
+      <guid>http://yazilim.aykutasil.com/post/android_collections/</guid>
       <description>Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.
 Bu sayfa da Collection yapısını ve oldukça önemli fonksiyonlarını göreceğiz.
 Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.

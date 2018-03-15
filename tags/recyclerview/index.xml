@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/recyclerview/</link>
     <description>Recent content in Recyclerview on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 16:39:33 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/recyclerview/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>Android RecyclerView</title>
-      <link>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</link>
+      <link>http://yazilim.aykutasil.com/post/android_recyclerview/</link>
       <pubDate>Wed, 11 Jan 2017 16:39:33 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/2017/01/android-recyclerview/</guid>
+      <guid>http://yazilim.aykutasil.com/post/android_recyclerview/</guid>
       <description>Android RecyclerView yapısı ListView in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂
 Ayrıca RecyclerView, CoordinatorLayout bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.
 ListView in özelleştirilmesi için birçok kütüphane mevcuttur.</description>

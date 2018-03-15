@@ -5,7 +5,7 @@
     <link>http://yazilim.aykutasil.com/tags/recaptcha/</link>
     <description>Recent content in Recaptcha on Software</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>tr-tr</language>
+    <language>tr</language>
     <lastBuildDate>Wed, 11 Jan 2017 00:14:08 +0300</lastBuildDate>
     
 	<atom:link href="http://yazilim.aykutasil.com/tags/recaptcha/index.xml" rel="self" type="application/rss+xml" />
@@ -13,10 +13,10 @@
     
     <item>
       <title>ReCaptcha Kullanımı</title>
-      <link>http://yazilim.aykutasil.com/recaptcha-kullanimi/</link>
+      <link>http://yazilim.aykutasil.com/post/recaptcha_kullanimi/</link>
       <pubDate>Wed, 11 Jan 2017 00:14:08 +0300</pubDate>
       
-      <guid>http://yazilim.aykutasil.com/recaptcha-kullanimi/</guid>
+      <guid>http://yazilim.aykutasil.com/post/recaptcha_kullanimi/</guid>
       <description>ReCaptcha Sitenize gelebilecek saldıralara karşı bir önlem olarak kullanılacak eklentilerden biridir ReCaptcha.
 Kolay bir şekilde entegre edilir ve kolay bir şekilde güvenlik sağlanır.
 Bunun için aşağıdaki adımları uygulamanız yeterli olacaktır.
