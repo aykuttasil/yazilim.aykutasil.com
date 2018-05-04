@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yazilim.aykutasil.com/post/android_backstack_navigate/</loc>
+    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/post/android_arc_component/</loc>
     <lastmod>2017-08-27T00:00:00+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -389,14 +396,14 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/android/</loc>
-    <lastmod>2017-08-27T00:00:00+03:00</lastmod>
+    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/android/</loc>
-    <lastmod>2017-08-27T00:00:00+03:00</lastmod>
+    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -465,6 +472,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/backstack/</loc>
+    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/bash/</loc>
     <lastmod>2017-01-10T23:56:35+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -522,7 +536,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/</loc>
-    <lastmod>2017-08-27T00:00:00+03:00</lastmod>
+    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -934,6 +948,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/navigate/</loc>
+    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/newcachedthreadpool/</loc>
     <lastmod>2017-01-11T18:55:08+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1040,7 +1061,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/post/</loc>
-    <lastmod>2017-08-27T00:00:00+03:00</lastmod>
+    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1145,7 +1166,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/</loc>
-    <lastmod>2017-08-27T00:00:00+03:00</lastmod>
+    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

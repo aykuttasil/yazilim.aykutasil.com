@@ -6,10 +6,20 @@
     <description>Recent content in Android on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Sun, 27 Aug 2017 00:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 04 May 2018 17:38:15 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android Backstack Navigate</title>
+      <link>https://yazilim.aykutasil.com/post/android_backstack_navigate/</link>
+      <pubDate>Fri, 04 May 2018 17:38:15 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_backstack_navigate/</guid>
+      <description>Android Navigate Örnek Senaryo Kullanıcıya bir ürün ile ilgili notification yolladınız. Kullanıcı bu notification a tıkladığında direk olarak Ürün Detay sayfasına yönlendiriliyor. Kullanıcı sayfada işi bittiğinde geri tuşuna basıyor ve siz bu durumda kullanıcıyı uygulamanın Anasayfasına yönlendirmek istiyorsunuz. Ek bir geliştirme yapmadığınız takdirde bu senaryo için geri tuşuna basıldığında uygulama kapanır. Çünkü geri gidecek ekranı yoktur. Direk olarak Detay sayfası açılmıştır.
+Çözüm İlk olarak yapmamız gereken Manifest.xml dosyasında DetailActivity tanımlamasını yaptığımız yerde parentActivityName i belirtmek.</description>
+    </item>
     
     <item>
       <title>Android Architecture Components</title>
