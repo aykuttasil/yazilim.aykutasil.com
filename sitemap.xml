@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yazilim.aykutasil.com/post/iot_step_motor/</loc>
+    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/post/android_backstack_navigate/</loc>
     <lastmod>2018-05-04T17:38:15+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -445,7 +452,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/arduino/</loc>
-    <lastmod>2017-03-12T23:40:36+03:00</lastmod>
+    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -787,6 +794,20 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/iot/</loc>
+    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/categories/iot/</loc>
+    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/ip/</loc>
     <lastmod>2017-01-11T18:05:02+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -915,6 +936,20 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/macos-mssql-connection/</loc>
     <lastmod>2017-01-11T15:50:10+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/motor/</loc>
+    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/categories/motor/</loc>
+    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1061,7 +1096,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/post/</loc>
-    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
+    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1166,7 +1201,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/</loc>
-    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
+    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

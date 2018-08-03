@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Fri, 04 May 2018 17:38:15 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 03 Aug 2018 22:21:48 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>STEP MOTOR NEDİR?</title>
+      <link>https://yazilim.aykutasil.com/post/iot_step_motor/</link>
+      <pubDate>Fri, 03 Aug 2018 22:21:48 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/iot_step_motor/</guid>
+      <description>Step motoru bir diğer adıyla adım motorları; hızlı, Doğrusal ve kademeli hareket istenilen uygulamalarda kullanılan fırçasız DC elektrik motorudur.
+ Kademeli motorlar düşük devirlerde yüksek tork ve düşük titreşim ve hassasiyetle çalışmaktadırlar. Step motorları rotor denilen sabit bir manyetik dönen şafta ve stator olarak adlandırılan motoru çevreleyen sabit kısımdaki elektromıknatıslardan oluşur. step motorlar, yarim adim modunda çalistiklarin da hassasiyetleri daha da artar.
+STEP MOTORUN SÜRÜCÜ İLE ÇALIŞTIRILMASI Step motorlar mikro denetleyici, arduino ve step motor sürücü yardımı yöntemi ile sürülmektedir.</description>
+    </item>
     
     <item>
       <title>Android Backstack Navigate</title>
