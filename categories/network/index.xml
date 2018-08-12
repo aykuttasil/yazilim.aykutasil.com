@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dns on Software</title>
-    <link>https://yazilim.aykutasil.com/tags/dns/</link>
-    <description>Recent content in Dns on Software</description>
+    <title>Network on Software</title>
+    <link>https://yazilim.aykutasil.com/categories/network/</link>
+    <description>Recent content in Network on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Mon, 13 Aug 2018 00:50:25 +0300</lastBuildDate>
     
-	<atom:link href="https://yazilim.aykutasil.com/tags/dns/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/categories/network/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -24,14 +24,13 @@ Bunu engellemek için DNS over TLS kullanılır.
     </item>
     
     <item>
-      <title>Google Cloud DNS</title>
-      <link>https://yazilim.aykutasil.com/post/gcloud_custom_dns/</link>
-      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
+      <title>TLS vs SSL</title>
+      <link>https://yazilim.aykutasil.com/post/general_tls_ssl/</link>
+      <pubDate>Sun, 12 Aug 2018 23:12:07 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/gcloud_custom_dns/</guid>
-      <description>Google Cloud Platform Cloud DNS Örnek senaryomuz şu şekilde olsun.
-Google Cloud ortamında hazır olarak bulunan (Cloud Launcher) sanal makinelerden wordpress yüklü olanı seçtik ve hızlıca makinemizi hazır hale getirdik. Google Cloud bize makineye ait bir ip adresi verdi ve bu ip ile worpress sitemize erişim sağlayabiliyoruz. Elimizde başka bir yerden aldığımız bir domain adresi var ve bu adresi wordpress sitemize yönlendirmek istiyoruz.
-Cloud DNS nedir? Google Cloud platformunun dns yapılandırması için vermiş olduğu hizmettir.</description>
+      <guid>https://yazilim.aykutasil.com/post/general_tls_ssl/</guid>
+      <description>TLS/SSL nedir? TLS (Transport Layer Securtiy) , SSL(Secure Sockets Layer)&amp;lsquo;ın modernize edilmiş halidir diyebiliriz. Yani günümüzde SSL den bahsedildiğinde aslında TLS den bahsediliyor olduğunu söyleyebiliriz.
+TLS protokolü, makinelerin web üzerindeki iletişimini kimlik doğrulama ve şifreleme mekanizmaları ile güvenli hale getirem bir standarttır. Günümüz dijital dünyasında güvenliğin önemi her geçen gün arttığı için iletişim yöntemleri ve güvenliği de beraberinde değişmekte ve gelişmektedir. Bu nedenle web iletişiminin güvenli hale gelmesi zorunluluk ve ihtiyaçtır.</description>
     </item>
     
   </channel>

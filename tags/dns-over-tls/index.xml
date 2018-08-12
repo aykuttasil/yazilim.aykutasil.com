@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dns on Software</title>
-    <link>https://yazilim.aykutasil.com/tags/dns/</link>
-    <description>Recent content in Dns on Software</description>
+    <title>Dns Over Tls on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/dns-over-tls/</link>
+    <description>Recent content in Dns Over Tls on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Mon, 13 Aug 2018 00:50:25 +0300</lastBuildDate>
     
-	<atom:link href="https://yazilim.aykutasil.com/tags/dns/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/dns-over-tls/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,17 +21,6 @@
 TLS/SSL protokolü zaten bunu yapmıyor mu? TLS/SSL protokolüne sahip siteler üzerinden yapılan veri alış verişleri şifreli yapılır fakat hala hangi siteye erişmek istediğimiz açık/şifresiz bir şekilde bellidir ve internet servis sağlayıcıları bunu görebilir.
 Bunu engellemek için DNS over TLS kullanılır.
 Özet  TLS üzerinden DNS, tüm DNS isteklerinin güvenli bir şekilde yapılmasını sağlayan bir protokoldür.</description>
-    </item>
-    
-    <item>
-      <title>Google Cloud DNS</title>
-      <link>https://yazilim.aykutasil.com/post/gcloud_custom_dns/</link>
-      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
-      
-      <guid>https://yazilim.aykutasil.com/post/gcloud_custom_dns/</guid>
-      <description>Google Cloud Platform Cloud DNS Örnek senaryomuz şu şekilde olsun.
-Google Cloud ortamında hazır olarak bulunan (Cloud Launcher) sanal makinelerden wordpress yüklü olanı seçtik ve hızlıca makinemizi hazır hale getirdik. Google Cloud bize makineye ait bir ip adresi verdi ve bu ip ile worpress sitemize erişim sağlayabiliyoruz. Elimizde başka bir yerden aldığımız bir domain adresi var ve bu adresi wordpress sitemize yönlendirmek istiyoruz.
-Cloud DNS nedir? Google Cloud platformunun dns yapılandırması için vermiş olduğu hizmettir.</description>
     </item>
     
   </channel>

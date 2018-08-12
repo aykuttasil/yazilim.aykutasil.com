@@ -248,9 +248,18 @@
     <item>
       <title>Dns</title>
       <link>https://yazilim.aykutasil.com/tags/dns/</link>
-      <pubDate>Wed, 12 Jul 2017 00:00:00 +0300</pubDate>
+      <pubDate>Mon, 13 Aug 2018 00:50:25 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/dns/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dns Over Tls</title>
+      <link>https://yazilim.aykutasil.com/tags/dns-over-tls/</link>
+      <pubDate>Mon, 13 Aug 2018 00:50:25 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/dns-over-tls/</guid>
       <description></description>
     </item>
     
@@ -278,6 +287,15 @@
       <pubDate>Mon, 17 Apr 2017 01:53:03 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/dynamiclink/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Encrypted Data</title>
+      <link>https://yazilim.aykutasil.com/tags/encrypted-data/</link>
+      <pubDate>Sun, 12 Aug 2018 23:12:07 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/encrypted-data/</guid>
       <description></description>
     </item>
     
@@ -669,6 +687,15 @@
     </item>
     
     <item>
+      <title>Network</title>
+      <link>https://yazilim.aykutasil.com/tags/network/</link>
+      <pubDate>Sun, 12 Aug 2018 23:12:07 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Newcachedthreadpool</title>
       <link>https://yazilim.aykutasil.com/tags/newcachedthreadpool/</link>
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
@@ -975,6 +1002,15 @@
     </item>
     
     <item>
+      <title>Ssl</title>
+      <link>https://yazilim.aykutasil.com/tags/ssl/</link>
+      <pubDate>Mon, 13 Aug 2018 00:50:25 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/ssl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Submit</title>
       <link>https://yazilim.aykutasil.com/tags/submit/</link>
       <pubDate>Wed, 11 Jan 2017 19:26:49 +0300</pubDate>
@@ -1016,6 +1052,15 @@
       <pubDate>Wed, 11 Jan 2017 18:55:08 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/thread/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tls</title>
+      <link>https://yazilim.aykutasil.com/tags/tls/</link>
+      <pubDate>Mon, 13 Aug 2018 00:50:25 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/tls/</guid>
       <description></description>
     </item>
     

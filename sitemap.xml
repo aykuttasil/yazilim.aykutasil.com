@@ -3,6 +3,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yazilim.aykutasil.com/post/general_dns_over_tls/</loc>
+    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/post/general_tls_ssl/</loc>
+    <lastmod>2018-08-12T23:12:07+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/post/iot_step_motor/</loc>
     <lastmod>2018-08-03T22:21:48+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -606,7 +620,14 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/dns/</loc>
-    <lastmod>2017-07-12T00:00:00+03:00</lastmod>
+    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/dns-over-tls/</loc>
+    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -635,6 +656,13 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/dynamiclink/</loc>
     <lastmod>2017-04-17T01:53:03+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/encrypted-data/</loc>
+    <lastmod>2018-08-12T23:12:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -725,7 +753,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/genel/</loc>
-    <lastmod>2017-07-12T00:00:00+03:00</lastmod>
+    <lastmod>2018-08-12T23:12:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -990,6 +1018,20 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/network/</loc>
+    <lastmod>2018-08-12T23:12:07+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/categories/network/</loc>
+    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/newcachedthreadpool/</loc>
     <lastmod>2017-01-11T18:55:08+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1096,7 +1138,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/post/</loc>
-    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
+    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1201,7 +1243,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/</loc>
-    <lastmod>2018-08-03T22:21:48+03:00</lastmod>
+    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1263,6 +1305,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/ssl/</loc>
+    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/submit/</loc>
     <lastmod>2017-01-11T19:26:49+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1307,6 +1356,13 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/thread/</loc>
     <lastmod>2017-01-11T18:55:08+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/tls/</loc>
+    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

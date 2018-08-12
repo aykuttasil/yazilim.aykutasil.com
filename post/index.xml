@@ -6,10 +6,32 @@
     <description>Recent content in Posts on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Fri, 03 Aug 2018 22:21:48 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 13 Aug 2018 00:50:25 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DNS over TLS Nedir?</title>
+      <link>https://yazilim.aykutasil.com/post/general_dns_over_tls/</link>
+      <pubDate>Mon, 13 Aug 2018 00:50:25 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/general_dns_over_tls/</guid>
+      <description>DNS over TLS Nedir? Kısaca açıklamak gerekirse, İnternet Servis Sağlayıcılarının, hangi siteye erişmek istediğimizi görmesini engelleme yöntemidir.
+TLS/SSL protokolü zaten bunu yapmıyor mu? TLS/SSL protokolüne sahip siteler üzerinden yapılan veri alış verişleri şifreli yapılır fakat hala hangi siteye erişmek istediğimiz açık/şifresiz bir şekilde bellidir ve internet servis sağlayıcıları bunu görebilir.
+Bunu engellemek için DNS over TLS kullanılır.
+Özet  TLS üzerinden DNS, tüm DNS isteklerinin güvenli bir şekilde yapılmasını sağlayan bir protokoldür.</description>
+    </item>
+    
+    <item>
+      <title>TLS vs SSL</title>
+      <link>https://yazilim.aykutasil.com/post/general_tls_ssl/</link>
+      <pubDate>Sun, 12 Aug 2018 23:12:07 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/general_tls_ssl/</guid>
+      <description>TLS/SSL nedir? TLS (Transport Layer Securtiy) , SSL(Secure Sockets Layer)&amp;lsquo;ın modernize edilmiş halidir diyebiliriz. Yani günümüzde SSL den bahsedildiğinde aslında TLS den bahsediliyor olduğunu söyleyebiliriz.
+TLS protokolü, makinelerin web üzerindeki iletişimini kimlik doğrulama ve şifreleme mekanizmaları ile güvenli hale getirem bir standarttır. Günümüz dijital dünyasında güvenliğin önemi her geçen gün arttığı için iletişim yöntemleri ve güvenliği de beraberinde değişmekte ve gelişmektedir. Bu nedenle web iletişiminin güvenli hale gelmesi zorunluluk ve ihtiyaçtır.</description>
+    </item>
     
     <item>
       <title>Step Motor Nedir?</title>
