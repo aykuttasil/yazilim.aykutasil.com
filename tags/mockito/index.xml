@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mockito on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/mockito/</link>
+    <description>Recent content in Mockito on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Tue, 18 Sep 2018 11:51:07 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/mockito/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android Test</title>
+      <link>https://yazilim.aykutasil.com/post/android_test_1/</link>
+      <pubDate>Tue, 18 Sep 2018 11:51:07 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_test_1/</guid>
+      <description>Not: Bu yazıyı hazırlarken ben de öğrenme sürecinde olucam. Araştırdığım ve öğrendiğim tüm teknik ve yöntemleri, best-practice leri gelişi güzel(karmakarışık değil) bir şekilde yazıcam. Sonrasında zaman bulduğum vakit bir düzenleme yapıcam.
+ Unit Test ve Instrumentation Test Unit Test Unit Test: Android framework ünden bağımsız olan sınıfları/metodları test etmek için kullanılır. Robolectric ve JUnit popüler unit test araçlarıdır.
+ If you run local unit tests, a special version of the android.</description>
+    </item>
+    
+  </channel>
+</rss>

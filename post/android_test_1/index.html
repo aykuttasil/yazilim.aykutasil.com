@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android Test - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" /><meta name="description" content="Android Test" />
+<meta name="keywords" content="android, test, junit, roboloectric, mockito, mock, espresso" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="https://yazilim.aykutasil.com/post/android_test_1/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="https://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="https://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="https://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Android Test" />
+<meta property="og:description" content="Android Test" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yazilim.aykutasil.com/post/android_test_1/" />
+
+
+
+<meta property="article:published_time" content="2018-09-18T11:51:07&#43;03:00"/>
+
+<meta property="article:modified_time" content="2018-09-25T11:51:07&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Android Test">
+<meta itemprop="description" content="Android Test">
+
+
+<meta itemprop="datePublished" content="2018-09-18T11:51:07&#43;03:00" />
+<meta itemprop="dateModified" content="2018-09-18T11:51:07&#43;03:00" />
+<meta itemprop="wordCount" content="1524">
+
+
+
+<meta itemprop="keywords" content="android,test,junit,roboloectric,mockito,mock,espresso," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android Test"/>
+<meta name="twitter:description" content="Android Test"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Android Test</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-18 </span>
+        <div class="post-category">
+            
+              <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+            
+              <a href="https://yazilim.aykutasil.com/categories/test/"> test </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#unit-test-ve-instrumentation-test">Unit Test ve Instrumentation Test</a>
+<ul>
+<li><a href="#unit-test">Unit Test</a></li>
+<li><a href="#instrumentation-test-on-device">Instrumentation Test (on-device)</a></li>
+</ul></li>
+<li><a href="#espresso">Espresso</a></li>
+<li><a href="#roboloctric">Roboloctric</a>
+<ul>
+<li><a href="#robolectric-4">Robolectric 4</a></li>
+</ul></li>
+<li><a href="#mockito">Mockito</a></li>
+<li><a href="#test-piramit">Test Piramit</a></li>
+<li><a href="#small-medium-large-tests">Small - Medium - Large Tests</a></li>
+<li><a href="#mockwebserver">MockWebServer</a>
+<ul>
+<li><a href="#dispatcher">Dispatcher</a></li>
+</ul></li>
+<li><a href="#gradle-yapılandırmaları">Gradle Yapılandırmaları</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<blockquote>
+<p>Not: Bu yazıyı hazırlarken ben de öğrenme sürecinde olucam. Araştırdığım ve öğrendiğim tüm teknik ve yöntemleri, best-practice leri gelişi güzel(karmakarışık değil) bir şekilde yazıcam. Sonrasında zaman bulduğum vakit bir düzenleme yapıcam.</p>
+</blockquote>
+
+<h1 id="unit-test-ve-instrumentation-test">Unit Test ve Instrumentation Test</h1>
+
+<h2 id="unit-test">Unit Test</h2>
+
+<p><strong>Unit Test:</strong> Android framework ünden bağımsız olan sınıfları/metodları test etmek için kullanılır. <strong>Robolectric</strong> ve <strong>JUnit</strong> popüler unit test araçlarıdır.</p>
+
+<blockquote>
+<p>If you run local unit tests, a special version of the android.jar (also known as the Android mockable jar) is created by the tooling. This modified JAR file is provided to the unit test so that all fields, methods and classes are available. Any call to the Android mockable JAR results, by default, in an exception, but you can configure Android to return default values. See Activating default return values for mocked methods in android.jar for details.</p>
+</blockquote>
+
+<h2 id="instrumentation-test-on-device">Instrumentation Test (on-device)</h2>
+
+<p>Android framework ü ile ilişkili olan sınıfların testi için kullanılır. Örneğin bir Activity nin testi yazılacak ise Instrumentation Test yapılacak demektir. <strong>Espresso</strong>,<strong>UIAutomator</strong>,<strong>Robotium</strong> popüler instrumentation test araçlarıdır.</p>
+
+<ul>
+<li>Unit Test lerin yazımı için aşağıdaki resimde görülen <strong>test</strong> package ı kullanılmalıdır.</li>
+<li>Instrumentation Test lerin yazılımı için aşağıdaki resimde görülen <strong>androidTest</strong> package ı kullanılmalıdır.</li>
+<li><strong>app/src/test/java</strong> - for any unit test which can run on the JVM</li>
+<li><strong>app/src/androidTest/java</strong> -&gt; for any test which should run on an Android device</li>
+</ul>
+
+<p><img src="https://yazilim.aykutasil.com/image/unit_vs_instrumential.png" height="400px" /></p>
+
+<blockquote>
+<p>Android bağımlılıklarını mock edemiyorsak Instrumentation Test yazılır. Eğer mock edebileceğimiz bir yapıya sahip ise unit test yazılır. Bu sayede hızlı bir şekilde testler koşturulabilir.</p>
+</blockquote>
+
+<ul>
+<li>Instrumentation test yapılırken sınıf <strong>@AndroidJUnitRunner</strong> annotations ı ile etiketlenmelidir.</li>
+<li>Instrumentation testleri JVM yerine gerçek bir cihazda veya emülatör de koşturulur.</li>
+</ul>
+
+<p>AndroidJunitRunner provides access to the instrumentation API, via the InstrumentationRegistery.**</p>
+
+<ul>
+<li><strong>InstrumentationRegistry.getInstrumentation()</strong>, returns the Instrumentation currently running.</li>
+<li><strong>InstrumentationRegistry.getContext()</strong>, returns the Context of this Instrumentation’s package.</li>
+<li><strong>InstrumentationRegistry.getTargetContext()</strong>, returns the application Context of the target application.</li>
+<li><strong>InstrumentationRegistry.getArguments()</strong>, returns a copy of arguments Bundle that was passed to this Instrumentation.</li>
+</ul>
+
+<p>This is useful when you want to access the command line arguments passed to the instrumentation for your test.
+It also gives access to the life cycle via the ActivityLifecycleMonitorRegistry.</p>
+
+<hr />
+
+<h1 id="espresso">Espresso</h1>
+
+<p>Uygulamanın arayüzü ile ilgli test yazımı için kullanılır.</p>
+
+<hr />
+
+<h1 id="roboloctric">Roboloctric</h1>
+
+<p>Robolectric, kodunuzu yerel JVM&rsquo;de gerçek(sahte olmayan) Android JAR&rsquo;lere karşı çalıştırır. Bu, düşük seviyeli sistem bileşenlerini (UI gibi) simüle etmek için baytkod manipülasyonu kullanılarak yapılabilir.</p>
+
+<p>Sonuç, bir emülatöre ya da cihaza dağıtma yükü olmadan daha gerçekçi bir test tertibatıdır. Gerçek Android çerçevenin çalışan bir sürümünü kullanmak, test yürütmeyi yavaşlatır ve saf birim testleri ile karşılaştırıldığında bir derece kırılganlık ekler.</p>
+
+<p>Roboloctric ile neredeyse her android componentinin shadow hali üretileblir. Ve bu üretilen shadow nesneleri normal componentlerin sahip olmadığı bazı fonksiyonlara sahiptir.</p>
+
+<p>Mockito, Espresso gibi diğer test bileşenleri ile birlikte çalıştırılabilir.</p>
+
+<pre><code class="language-java">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().get();
+</code></pre>
+
+<p>şeklinde test edeceğimiz <strong>Activity</strong> nin oluşturulmasını sağlıyoruz.</p>
+
+<p>Aşağıdaki gibi activity nin lifecycle ına uygun testler yazılabilir. Burada <strong>onResume</strong> sonrası çalışan kod bloğu için test yazımını görebiliriz.</p>
+
+<pre><code class="language-java">ActivityController controller = Robolectric.buildActivity(MyAwesomeActivity.class).create().start();
+Activity activity = controller.get();
+// assert that something hasn't happened
+activityController.resume();
+// assert it happened!
+</code></pre>
+
+<blockquote>
+<p><strong>visible()</strong></p>
+</blockquote>
+
+<p>Gerçek bir Android uygulamasında, bir Etkinliğin görünüm hiyerarşisi, <strong>onCreate()</strong> çağrıldıktan sonraya kadar window&rsquo;a eklenmez. Bu gerçekleşene kadar Activity&rsquo;nin görünümleri görünür olarak bildirilmez. Bu, onları tıklayamayacağınız anlamına gelir. Ne zaman görünür olacağı varsayımları yapmak yerine, Robolectric testleri yazarken gücü geliştiricinin ellerine verir.</p>
+
+<p>Ne zaman ihtiyacımız olacak? Activity içindeki görünümlerle etkileşime girdiğinizde.</p>
+
+<p><strong>Robolectric.clickOn()</strong> gibi yöntemler, işlev görmesi için view&rsquo;in görünür ve düzgün şekilde eklenmesini gerektirir. Bunun için <strong>create()</strong> öğesinden sonra <strong>visible()</strong> öğesini çağırmalıyız.</p>
+
+<h2 id="robolectric-4">Robolectric 4</h2>
+
+<p>gradle.properties</p>
+
+<pre><code class="language-bash">android.enableUnitTestBinaryResources=true
+</code></pre>
+
+<p>build.gradle</p>
+
+<pre><code class="language-bash">android
+{
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependency
+{
+    testImplementation 'com.android.support.test:rules:1.0.2'
+    testImplementation 'com.android.support.test🏃1.0.2'
+    testImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation &quot;org.robolectric:robolectric:4.0-alpha-1&quot;
+}
+</code></pre>
+
+<p>test.kt (test package&rsquo;ı altında)</p>
+
+<pre><code class="language-kotlin">@RunWith(AndroidJUnit4::class)
+class MainActivityTest {
+    @get:Rule
+    val rule = ActivityTestRule(MainActivity::class.java)
+
+    @Test
+    fun testAssertHelloText() {
+        onView(withId(R.id.hello)).check(matches(withText(&quot;Hello World!&quot;)))
+    }
+}
+</code></pre>
+
+<p>Yukarıda <strong>RobolectricRunner</strong> yerine <strong>AndroidJunit4</strong> kullanılmıştır. Ve <strong>Espreesso</strong>&lsquo;nun tüm yetenekleri kullanılabilir. Normalde <strong>Espresso</strong> testi yazılması için <strong>androidTest</strong> package&rsquo;ı altında tanımlama yapmak ve gerçek bir cihazda ya da emülatör de çalıştırmamız gerekecekti.</p>
+
+<hr />
+
+<h1 id="mockito">Mockito</h1>
+
+<pre><code class="language-bash">dependencies {
+    // Required -- JUnit 4 framework
+    testImplementation 'junit:junit:4.12'
+    // Optional -- Mockito framework
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+}
+</code></pre>
+
+<ul>
+<li>Yukarıda ki bağımlılıklar eklenir.</li>
+<li><strong>@RunWith(MockitoJUnitRunner.class)</strong> ile sınıf etiketlenir. Bu sayade mock objelerinin(@Mock) otomatik olarak inject edilmesi sağlanır.</li>
+<li><strong>@Mock</strong> etiketi ile objeler etiketlenir.</li>
+</ul>
+
+<blockquote>
+<p>@Mock ve @Spy arasındaki fark</p>
+</blockquote>
+
+<ul>
+<li><a href="https://www.javainuse.com/java/mockSpy">https://www.javainuse.com/java/mockSpy</a></li>
+<li>Test sürecinde bir objenin tüm alanlarını/metodlarını mocklamamız gerekiyor ise <strong>@Mock</strong> kullanılır.</li>
+<li>Eğer sınıf içerisinde sadece belli metodları mocklamamız gerekiyor(Partial Mocking) ve diğer alanların gerçek değerleri ile işlem yapılacak ise <strong>@Spy</strong> ile etiketlenir.</li>
+<li>Partial mocking can also be achieved using mock thenCallRealMethod()</li>
+</ul>
+
+<hr />
+
+<h1 id="test-piramit">Test Piramit</h1>
+
+<p><img src="https://yazilim.aykutasil.com/image/test_piramid.jpeg" height="400px" /></p>
+
+<blockquote>
+<p>Unit Tests</p>
+</blockquote>
+
+<p>Birim testleri, yazabileceğiniz en hızlı ve en ucuz testlerdir. Uygulamanızın tüm mantığını (ancak bağımlılıklarını değil) çoğunu kapsamaları gerekir. Bağımlılıklar, mock objeler ile değiştirilmelidir. Unit testleri, yazılım geliştirme sürecinin düzenli bir parçası olarak sıkça çalıştırılabilir. <strong>Android JUnit, Mockito</strong> yerel JVM&rsquo;de hızlı birim tarzı testler yapmak için güzel bir araç kombinasyonu sunuyor.</p>
+
+<blockquote>
+<p>Integration Tests</p>
+</blockquote>
+
+<p>Entegrasyon testleri, kodunuzun, sistemin diğer bölümleriyle nasıl etkileşime girdiğini doğrular ancak bir UI çerçevesinin ek karmaşıklığı olmadan. Bu katman için Robolectric kullanılabilir.</p>
+
+<blockquote>
+<p>UI Tests</p>
+</blockquote>
+
+<p>UI testleri, en yavaş ve en pahalı test türüdür. Bunlar yavaştır, çünkü uygulamanızı bir emülatöre veya cihaza dağıtmanız ve kullanıcı arayüzünü kullanarak sürmeniz gerekir. Bunlar pahalıdır çünkü bu genellikle dahili bir cihaz laboratuarını ve CI sunucusunu korumak veya bir bulut test hizmeti için ödeme yapmak anlamına gelir. Bununla birlikte, UI, donanım, ürün yazılımı ve geriye dönük uyumluluk ile ilgili sorunları ortaya çıkarabildiklerinden, otomatik UI testleri herhangi bir test stratejisinin önemli bir bileşeni olabilir. Android&rsquo;de UI testleri için sahip olduğumuz başlıca araçlar <strong>Espresso, Robotium veya UI Automator</strong>&lsquo;dur. UI testleri, piramidin diğer katmanlarındaki çatlaklardan kaymış olabilecek sorunları yakalamak için değerli bir ikinci savunma hattı olabilir.</p>
+
+<hr />
+
+<h1 id="small-medium-large-tests">Small - Medium - Large Tests</h1>
+
+<p>Testler 3 başlık altında kategorilendirilebilir.</p>
+
+<p><strong>Small Test:</strong> Unit testleri bu kategori altına alabiliriz. <em>test</em> package ı altına yazılan ve çalışma süresi kısa olan testler de Android ve UI ile alakalı olmayan sınıfların/metodların testi yazılır. Dökümantasyon,filtreleme vs. için small testlerin çalıştırılacağı sınıf <strong>@SmallTest</strong> olarak etiketlenir.</p>
+
+<p><strong>Medium Test:</strong> Dosya sistemine, database&rsquo;e vs erişimi olan sınıfların testini bu kategoriye koyabiliriz. Dökümantasyon,filtreleme vs. için medium testlerin çalıştırılacağı sınıf <strong>@MediumTest</strong> olarak etiketlenir.</p>
+
+<p><strong>Large Test:</strong> Medium&rsquo;dan farkı ağ erişimi gibi dış kaynaklara erişim gerektiren sınıfları bu kategoriye koyabiliriz. Dökümantasyon,filtreleme vs. için large testlerin çalıştırılacağı sınıf <strong>@LargeTest</strong> olarak etiketlenir.</p>
+
+<hr />
+
+<h1 id="mockwebserver">MockWebServer</h1>
+
+<p>Unit test yazarken api rest isteklerinin simüle edilmesini sağlar.</p>
+
+<pre><code class="language-bash">testImplementation 'com.squareup.okhttp3:mockwebserver:(insert latest version)'
+</code></pre>
+
+<ul>
+<li><a href="https://github.com/square/okhttp/blob/master/mockwebserver/README.md">https://github.com/square/okhttp/blob/master/mockwebserver/README.md</a></li>
+</ul>
+
+<p>Mockito gibi bir kullanım şekli vardır.</p>
+
+<pre><code class="language-kotlin">val mockServer = MockWebServer()
+mockServer.start()
+
+
+val mockedResponse = MockResponse()
+mockedResponse.setResponseCode(200)
+mockedResponse.setBody(&quot;{}&quot;) // sample JSON
+
+mockServer.enqueue(mockedReponse)
+
+
+val recordedRequest = mockServer.takeRequest()
+mockedRequest.path // /blogs
+</code></pre>
+
+<pre><code class="language-kotlin">@RunWith(JUnit4::class)
+class BlogRepositoryUTest {
+  
+    lateinit var blogRepository : BlogRepository
+    lateinit var mockServer : MockWebServer
+    lateinit var blogService : BlogService
+  
+    @Before @Throws fun setUp() {
+        // Initialize mock webserver
+        mockServer = MockWebServer()
+        // Start the local server
+        mockServer.start()
+
+        // Get an okhttp client
+        val okHttpClient = OkHttpClient.Builder()
+                .build()
+
+        // Get an instance of Retrofit
+        val retrofit = Retrofit.Builder()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .baseUrl(&quot;https://api.test.com&quot;)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build()
+
+        // Get an instance of blogService
+        blogService = retrofit.create(BlogService::class.java)
+        // Initialized repository
+        blogRepository = BlogRepository(blogService)
+    }
+
+    @After @Throws fun tearDown() {
+        // We're done with tests, shut it down
+        mockServer.shutdown()
+    }
+
+    @Test fun testBlogsReturnsListOfBlogs() {
+        val testObserver = TestObserver&lt;List&lt;Blog&gt;&gt;()
+        val path = &quot;/blogs&quot;
+
+        // Mock a response with status 200 and sample JSON output
+        val mockReponse = MockReponse()
+                            .setResponseCode(200)
+                            .setBody(getJson(&quot;json/blog/blogs.json&quot;))
+        // Enqueue request
+        mockServer.enqueue(mockResponse)
+
+        // Call the API
+        blogRepository.blogs().subscribe(testObserver)
+        testObserver.awaitTerminalEvent(2, TimeUnit.SECONDS)
+
+        // No errors
+        testObserver.assertNoErrors()
+        // One list emitted
+        testObserver.assertValueCount(1)
+
+        // Get the request that was just made
+        val request = mockServer.takeRequest()
+        // Make sure we made the request to the required path
+        assertEquals(path, request.path)
+    }
+
+    // Network ağ durumu testi
+    @Test fun testBlogsReturnsError() {
+        val testObserver = TestObserver&lt;List&lt;Blog&gt;&gt;()
+        val path = &quot;/blogs&quot;
+
+        // Mock a response with status 200 and sample JSON output
+        val mockReponse = MockReponse()
+                            .setResponseCode(500) // Simulate a 500 HTTP Code
+
+        // Enqueue request
+        mockServer.enqueue(mockResponse)
+
+        // Call the API
+        blogRepository.blogs().subscribe(testObserver)
+        testObserver.awaitTerminalEvent(2, TimeUnit.SECONDS)
+
+        // No values
+        testObserver.assertNoValues()
+        // One error recorded
+        assertEquals(1, testObserver.errorCount())
+
+        // Get the request that was just made
+        val request = mockServer.takeRequest()
+        // Make sure we made the request to the required path
+        assertEquals(path, request.path)
+    }
+
+    // SocketTimeoutException
+    @Test fun testBlogsReturnsError1() {
+        val testObserver = TestObserver&lt;List&lt;Blog&gt;&gt;()
+
+        val path = &quot;/blogs&quot;
+
+        // Mock a response with status 200 and sample JSON output
+        val mockReponse = MockReponse()
+                            .setResponseCode(200)
+                            .throttleBody(1024, 1, TimeUnit.SECONDS) // Simulate SocketTimeout
+                            .setBody(getJson(&quot;json/blog/blogs.json&quot;))
+
+        // Enqueue request
+        mockServer.enqueue(mockResponse)
+
+        // Call the API
+        blogRepository.blogs().subscribe(testObserver)
+        testObserver.awaitTerminalEvent(2, TimeUnit.SECONDS)
+
+        // No values
+        testObserver.assertNoValues()
+        // One error recorded
+        assertEquals(1, testObserver.errorCount())
+
+        // Get the request that was just made
+        val request = mockServer.takeRequest()
+        // Make sure we made the request to the required path
+        assertEquals(path, request.path)
+    }
+
+}
+</code></pre>
+
+<p>SocketTimeoutException testi çalıştırılırken aşağıdaki düzenlemeler de yapılmalıdır:</p>
+
+<ul>
+<li><code>mockResponse.throttleBody(1024, 1, TimeUnit.SECONDS)</code> Her saniye için sadece 1024 bayt göndermesini söylüyoruz.</li>
+<li>Client için okuma/yazma zaman sürelerini düzenliyoruz.</li>
+</ul>
+
+<pre><code class="language-kotlin">val okHttpClient = OkHttpClient.Builder()
+        .connectTimeout(2, TimeUnit.SECONDS) // For testing purposes
+        .readTimeout(2, TimeUnit.SECONDS) // For testing purposes
+        .writeTimeout(2, TimeUnit.SECONDS)
+        .build()
+</code></pre>
+
+<blockquote>
+<p>getJson(path = &ldquo;json/blog/blogs.json&rdquo;) ?</p>
+</blockquote>
+
+<p><img src="https://yazilim.aykutasil.com/image/mockwebserber.png" height="400px" /></p>
+
+<h2 id="dispatcher">Dispatcher</h2>
+
+<p>Her bir response&rsquo;u ayrı ayrı mocklamak yerine aşağıdaki gibi bir yapıda kullanılabilir.</p>
+
+<pre><code class="language-java">final Dispatcher dispatcher = new Dispatcher() {
+
+    @Override
+    public MockResponse dispatch(RecordedRequest request) throws InterruptedException {
+
+        if (request.getPath().equals(&quot;/v1/login/auth/&quot;)){
+            return new MockResponse().setResponseCode(200);
+        } else if (request.getPath().equals(&quot;v1/check/version/&quot;)){
+            return new MockResponse().setResponseCode(200).setBody(&quot;version=9&quot;);
+        } else if (request.getPath().equals(&quot;/v1/profile/info&quot;)) {
+            return new MockResponse().setResponseCode(200).setBody(&quot;{\\\&quot;info\\\&quot;:{\\\&quot;name\&quot;:\&quot;Lucas Albuquerque\&quot;,\&quot;age\&quot;:\&quot;21\&quot;,\&quot;gender\&quot;:\&quot;male\&quot;}}&quot;);
+        }
+        return new MockResponse().setResponseCode(404);
+    }
+};
+server.setDispatcher(dispatcher);
+</code></pre>
+
+<hr />
+
+<h1 id="gradle-yapılandırmaları">Gradle Yapılandırmaları</h1>
+
+<p>Unit testlerin yazımı sırasında mocklanmaya gerek olmayan nesnelerin default değerini dönmesini belirtmek için aşağıdaki şekilde düzenleme yapılmalıdır.</p>
+
+<pre><code class="language-bash">android {
+    // ...
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+</code></pre>
+
+<hr />
+
+<blockquote>
+<p>Kaynaklar</p>
+</blockquote>
+
+<ul>
+<li><a href="http://www.vogella.com/tutorials/AndroidTesting/article.html">http://www.vogella.com/tutorials/AndroidTesting/article.html</a></li>
+<li><a href="https://medium.com/android-testing-daily/the-3-tiers-of-the-android-test-pyramid-c1211b359acd">https://medium.com/android-testing-daily/the-3-tiers-of-the-android-test-pyramid-c1211b359acd</a></li>
+<li><a href="https://github.com/codepath/android_guides/wiki/Unit-Testing-with-Robolectric">https://github.com/codepath/android_guides/wiki/Unit-Testing-with-Robolectric</a></li>
+<li><a href="https://github.com/codepath/android_guides/wiki/Android-Testing-Options">https://github.com/codepath/android_guides/wiki/Android-Testing-Options</a></li>
+<li><a href="https://www.javainuse.com/java/mockSpy">https://www.javainuse.com/java/mockSpy</a></li>
+<li><a href="https://proandroiddev.com/robolectric-testing-with-androidjunitrunner-86292bceef25">https://proandroiddev.com/robolectric-testing-with-androidjunitrunner-86292bceef25</a></li>
+<li><a href="http://robolectric.org/blog/2018/05/09/robolectric-4-0-alpha/">http://robolectric.org/blog/2018/05/09/robolectric-4-0-alpha/</a></li>
+<li><a href="https://github.com/googlesamples/android-testing">https://github.com/googlesamples/android-testing</a></li>
+<li><a href="https://github.com/square/okhttp/blob/master/mockwebserver/">https://github.com/square/okhttp/blob/master/mockwebserver/</a></li>
+<li><a href="https://medium.com/appunite-edu-collection/ui-testing-on-android-with-dagger-espresso-and-mockito-12d37e5f613d">https://medium.com/appunite-edu-collection/ui-testing-on-android-with-dagger-espresso-and-mockito-12d37e5f613d</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2018-09-25</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="https://yazilim.aykutasil.com/tags/android/">android</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/test/">test</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/junit/">junit</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/roboloectric/">roboloectric</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/mockito/">mockito</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/mock/">mock</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/espresso/">espresso</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="https://yazilim.aykutasil.com/post/general_dns_over_tls/">
+            <span class="next-text nav-default">DNS over TLS Nedir?</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="https://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

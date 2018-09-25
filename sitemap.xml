@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yazilim.aykutasil.com/post/android_test_1/</loc>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/post/general_dns_over_tls/</loc>
     <lastmod>2018-08-13T00:50:25+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -417,14 +424,14 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/android/</loc>
-    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/android/</loc>
-    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -557,7 +564,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/</loc>
-    <lastmod>2018-05-04T17:38:15+03:00</lastmod>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -670,6 +677,13 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/enum/</loc>
     <lastmod>2017-07-01T00:00:00+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/espresso/</loc>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -878,6 +892,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/junit/</loc>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/jvmoverloads/</loc>
     <lastmod>2017-07-09T00:00:00+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -964,6 +985,20 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/macos-mssql-connection/</loc>
     <lastmod>2017-01-11T15:50:10+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/mock/</loc>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/mockito/</loc>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1138,7 +1173,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/post/</loc>
-    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1174,6 +1209,13 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/robolectric/</loc>
     <lastmod>2017-01-11T00:31:52+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/roboloectric/</loc>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1243,7 +1285,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/</loc>
-    <lastmod>2018-08-13T00:50:25+03:00</lastmod>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1347,8 +1389,15 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/test/</loc>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/categories/test/</loc>
-    <lastmod>2017-01-11T01:09:39+03:00</lastmod>
+    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

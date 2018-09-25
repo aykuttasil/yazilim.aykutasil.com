@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-01-11T17:22:38&#43;03:00"/>
+<meta property="og:updated_time" content="2017-01-11T17:24:52&#43;03:00"/>
 
 
 
@@ -137,6 +137,38 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_runtime_permission/">Android Runtime Permission</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-11 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/java/"> java </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Yavaş yavaş mevcut android cihazlarının API level düzeyi doğal olarak yükselmekte ve bizlerinde tabi ki buna ayak uydurması gerekmekte.
+Bunlardan biri de Android M – Marshmallow (23) ile gelen Runtime Permissions olayı.
+Kullanıcı açısından bakıldığında oldukça yararlı birşey gibi duruyor ama tabi ki biz kullanıcılar runtime sırasında çıkan permission dialog daki yazıyı ne kadar okuruz ve buna göre onay veririz meçhul. Aslına bakarsanız çok da okunacağını düşünmüyorum ama olsun yine de güzel.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/android_runtime_permission/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -584,39 +616,6 @@ Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önl
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/android_sms_receiver/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_internet_connection_receiver/">Android Internet Connection Receiver </a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-01-11 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/java/"> java </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Uygulamanızın akışını internet kontrolü yaparak yönetmeniz gerekebilir.
-Bunun için ilk olarak AndroidManifest.xml dosyasına receiver tanımı yapmalısınız.
-&lt;receiver android:name=&quot;.InternetConnectionReceiver&quot;&gt; &lt;intent-filter&gt; &lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot; /&gt; &lt;/intent-filter&gt; &lt;/receiver&gt;  InternetConnectionReceiver
-public class InternetConnectionReceiver extends BroadcastReceiver { @Override public void onReceive(Context context, Intent intent) { if (CheckConnection(context)) { } } }  Yukarıda tanımlanmış olan receiver, cihazın ağ yapısında herhangi bir değişiklik olduğunda bunu yakalar. Örneğin wireless açıkken kapattığınız da veya kapalıyken açtığınız da bunu yakayabilirsiniz.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/android_internet_connection_receiver/" class="read-more-link"></a>
     </div>
   </div>
 </article>
