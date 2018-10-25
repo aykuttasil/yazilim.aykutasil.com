@@ -6,15 +6,24 @@
     <description>Recent content in Categories on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Tue, 18 Sep 2018 11:51:07 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 10 Oct 2018 11:57:46 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Amp</title>
+      <link>https://yazilim.aykutasil.com/categories/amp/</link>
+      <pubDate>Wed, 10 Oct 2018 11:57:46 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/amp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Android</title>
       <link>https://yazilim.aykutasil.com/categories/android/</link>
-      <pubDate>Tue, 18 Sep 2018 11:51:07 +0300</pubDate>
+      <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/android/</guid>
       <description></description>
@@ -48,6 +57,15 @@
     </item>
     
     <item>
+      <title>Dependency Injection</title>
+      <link>https://yazilim.aykutasil.com/categories/dependency-injection/</link>
+      <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/dependency-injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>https://yazilim.aykutasil.com/categories/docker/</link>
       <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
@@ -59,7 +77,7 @@
     <item>
       <title>Genel</title>
       <link>https://yazilim.aykutasil.com/categories/genel/</link>
-      <pubDate>Sun, 12 Aug 2018 23:12:07 +0300</pubDate>
+      <pubDate>Fri, 26 Oct 2018 01:04:21 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/genel/</guid>
       <description></description>

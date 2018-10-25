@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Amp on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/amp/</link>
+    <description>Recent content in Amp on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Wed, 10 Oct 2018 11:57:46 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/amp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AMP</title>
+      <link>https://yazilim.aykutasil.com/post/amp_1/</link>
+      <pubDate>Wed, 10 Oct 2018 11:57:46 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/amp_1/</guid>
+      <description>Not: Bu yazı öğrenme sürecinde hazırlanmış olup kısa kısa notlar içerir.
+ Nedir bu AMP Kurallar  &amp;lt;!doctype html&amp;gt; ile başlamalı &amp;lt;html amp&amp;gt; şeklinde düzenlenmeli &amp;lt;head&amp;gt; tagı içerisine ilk sırada &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; şeklinde meta tagı eklenmeli &amp;lt;head&amp;gt; tagı içerisine mümkün olduğunda erken sırada &amp;lt;script async src=&amp;quot;https://cdn.ampproject.org/v0.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; script tagı eklenmeli &amp;lt;head&amp;gt; tagı içerisine sayfanın AMP olmayan halinin linkini ya da sadece AMP li hali var ise kendi url i &amp;lt;link rel=&amp;quot;canonical&amp;quot; href=&amp;quot;$SOME_URL&amp;quot;&amp;gt; şeklinde belirtilmeli &amp;lt;head&amp;gt; tagı içerisine &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,minimum-scale=1&amp;quot;&amp;gt; meta tagı eklenmeli AMP js dosyası yüklenene kadar mevcut içeriği gizlemek için &amp;lt;style amp-boilerplate&amp;gt;body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}&amp;lt;/style&amp;gt;&amp;lt;noscript&amp;gt;&amp;lt;style amp-boilerplate&amp;gt;body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}&amp;lt;/style&amp;gt;&amp;lt;/noscript&amp;gt; tagı eklenmeli   Bir çok HTMl tagı direk olarak AMP HTML içerisinde kullanılabilir fakat bazılarının (img gibi) AMP için özel versiyonları bulunmaktadır.</description>
+    </item>
+    
+  </channel>
+</rss>

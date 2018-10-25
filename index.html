@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-09-18T11:51:07&#43;03:00"/>
+<meta property="og:updated_time" content="2018-10-26T01:04:21&#43;03:00"/>
 
 
 
@@ -137,6 +137,90 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/ssh_1/">SSH Sürekli Parola İstemesi Sorunu</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-26 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/genel/"> genel </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Problem ./ssh klasörünüzde id_rsa ve id_rsa.pub dosyanız var ve Github, Gitlab, DigitalOcean vs. gibi platformlara erişim için bu rsa keyini kullanıyorsunuz. Her biri için ayrı ayrı rsa key oluşturmuşda olabilirsiniz tabi. Fakat git clone git@gitlab.com:aykuttasil/test.git gibi bir komutu çalıştırdığınızda Enter passphrase for key '/Users/aykutasil/.ssh/id_rsa': gibi bir uyarı karşınıza çıkıyor ve rsa keyinizin şifresini girmenizi istiyor. Her git komutunda aynı şey ile karşılaşıyorsunuz.
+Yukarıda ki durum ssh&lsquo;ın kullanım amacına ters düştüğü için ortada bir problem var demektir.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/ssh_1/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/dagger_1/">Android Dagger</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-12 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/dependency-injection/"> dependency-injection </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+       @BindsInstance Bağımlılıklarınızı oluşturma esnasında belirtmeniz gereken bir değişkenininiz var ve bu değişkeni diğer module leriniz içerisinde kullanıcaksınız. Aşağıdaki gibi @BindsInstance kullanarak bu bağımlılığınızı dependency graph içerisine ekleyerek diğer modüller içerisinde kullanımını sağlayabilirsiniz.
+@Component(modules = AppModule.class) interface AppComponent { App app(); @Component.Builder interface Builder { @BindsInstance Builder apiUrl(@ApiUrl String apiUrl); AppComponent build(); } }  Component build edilirken apiUrl değeri bind edilir.
+App app = DaggerAppComponent .builder() .apiUrl(&quot;http://....&quot;) .build()  
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/dagger_1/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/amp_1/">AMP</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-10 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/amp/"> amp </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Not: Bu yazı öğrenme sürecinde hazırlanmış olup kısa kısa notlar içerir.
+ Nedir bu AMP Kurallar  &lt;!doctype html&gt; ile başlamalı &lt;html amp&gt; şeklinde düzenlenmeli &lt;head&gt; tagı içerisine ilk sırada &lt;meta charset=&quot;utf-8&quot;&gt; şeklinde meta tagı eklenmeli &lt;head&gt; tagı içerisine mümkün olduğunda erken sırada &lt;script async src=&quot;https://cdn.ampproject.org/v0.js&quot;&gt;&lt;/script&gt; script tagı eklenmeli &lt;head&gt; tagı içerisine sayfanın AMP olmayan halinin linkini ya da sadece AMP li hali var ise kendi url i &lt;link rel=&quot;canonical&quot; href=&quot;$SOME_URL&quot;&gt; şeklinde belirtilmeli &lt;head&gt; tagı içerisine &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,minimum-scale=1&quot;&gt; meta tagı eklenmeli AMP js dosyası yüklenene kadar mevcut içeriği gizlemek için &lt;style amp-boilerplate&gt;body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}&lt;/style&gt;&lt;noscript&gt;&lt;style amp-boilerplate&gt;body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}&lt;/style&gt;&lt;/noscript&gt; tagı eklenmeli   Bir çok HTMl tagı direk olarak AMP HTML içerisinde kullanılabilir fakat bazılarının (img gibi) AMP için özel versiyonları bulunmaktadır.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/amp_1/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -491,93 +575,6 @@ if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörl
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/kotlin_when/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/kotlin_let/">Kotlin Let Kullanımı</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-06-06 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/kotlin/"> kotlin </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Kotlin fun &lt;T, R&gt; T.let(f: (T) -&gt; R): R = f(this)  let() temel olarak, belirli bir kapsam için bir değişken/kod bloğu oluşturmamızı sağlayan bir kapsamlayıcı işlevdir. Yani let() bir sarmalıyıcı fonksiyondur.
-Örneğin:
-private var mPhotoUrl: String? = null fun uploadClicked() { if (mPhotoUrl != null) { uploadPhoto(mPhotoUrl!!) } }  Yukarıda ki if (mPhotoUrl != null) satırı ile null kontrolü yapılır ve eğer null değilse uploadPhoto(mPhotoUrl!!) kod bloğu çalıştırılır.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/kotlin_let/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/oauth_retrofit/">Retrofit Oauth</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-05-17 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Retrofit Oauth Entegrasyonu Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya buraya bakabilirsiniz.
-Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.
-Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/oauth_retrofit/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/dynamiclink/">Firebase Dynamic Links</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-04-17 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Firebase Dynamic Links Öyle bir link olsun ki;
- Bilgisayarımda ki browserdan linke tıkladığımda kişisel web sitem açılsın, Eğer mobil cihazımda ki browserdan linke tıklarsan;  Uygulama cihazda yüklü ise uygulamam açılsın (Belirtmiş olduğum Activity vs.), Uygulama cihazda yüklü değilse Google Play Store veya App Store açılsın, Uygulama cihazda yüklü olsa bile eğer belirttiğim versiyon kodundan eski bir sürüm varsa yine Google Play Store vs. açılsın, &hellip;   gibi sorulara tek bir link ile cevap verebilirsiniz.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/dynamiclink/" class="read-more-link"></a>
     </div>
   </div>
 </article>

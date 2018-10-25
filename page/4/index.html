@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-01-11T01:42:36&#43;03:00"/>
+<meta property="og:updated_time" content="2017-01-11T01:50:51&#43;03:00"/>
 
 
 
@@ -137,6 +137,101 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/retrofit_multipart/">Retrofit Multipart File Upload</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-11 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Retrofit Multipart File Upload @DebugLog public BelgeResponse BelgeSync(BelgeRequest request, String apiVersion, String appVersion) { try { Map&lt;String, RequestBody&gt; map = new HashMap&lt;&gt;(); String belgeDirPath = SuperHelper.getInternalIztopBelgeDir(mContext, request.getGonderiNo()); File belgeDir = new File(belgeDirPath); boolean isDir = belgeDir.isDirectory(); if (isDir) { File[] files = belgeDir.listFiles(); for (File file : files) { RequestBody requestBody = RequestBody.create(MediaType.parse(&quot;image/jpg&quot;), file); map.put(&quot;file\&quot;; filename=\&quot;&quot; + file.getName(), requestBody); } } //RequestBody requestBodyGonderiNo = RequestBody.create(MediaType.parse(&quot;text/plain&quot;), request.getGonderiNo()); //RequestBody requestBodyMusId = RequestBody.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/retrofit_multipart/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_gcmnetworkmanager/">Android GcmNetworkManager Kullanımı</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-11 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/java/"> java </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      GcmNetworkManager kullanarak Android de network tabanlı işlemlerinizi olabildiğince kontrollü bir şekide yapabilirsiniz.
+GcmNetworkManager ın kullanım alanı daha çok asenkron ve periodic network işlemlerinizi yapılandırmaktır.
+Tek sefer çalışacak veya Periodic olarak çalışacak işlemleriniz için 2 tip belirlenmiştir.
+ OneoffTask PeriodicTask  OneoffTask Kullanımı
+OneoffTask oneoff = new OneoffTask.Builder() // Uygulamanızı kapatsanız bile tekrar açtığınız da network işleminiz işleme konulur. // Yani isteğinizin kalıcı olup olmamasını bu parametre ile ayarlayabilirsiniz. .setPersisted(true) // Belirtilen network işlemlerinin çalışacağı service i belirtir.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/android_gcmnetworkmanager/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_sms_receiver/">Android SMS Receiver</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-11 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/java/"> java </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Android SMS Receiver Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.
+İlk olarak AndroidManifest.xml dosyanızda receiver tanımlamalısınız. Fakat biz bu receiver ı dinamik olarak tanımlıcaz. Bunu yapmamızın sebebi SMS i dinledikten sonra bu receiver ı silmek ve daha sonra gelen SMS lerin dinlenmesini önlemek.
+Siz uygulamınız da sürekli bir SMS dinlemeye ihtiyaç duyarsanız receiver ı AndroidManifest.xml dosyanızda tanımlamalısınız.
+Biz burda SMS dinlemesi yaparken önlem amaçlı olarak CPU nun uyumasını önlüyoruz.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/android_sms_receiver/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -521,37 +616,6 @@ Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif
 </article>
 
     
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/dockerinstallnano/">Docker Container Install nano</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2016-12-25 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/docker/"> docker </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Docker ile ayağa kaldırmış olduğunuz bir container olduğunu varsayalım ve bu docker container a erişerek komut satırı çalıştırmanız gerekiyor.
-https://docs.docker.com/engine/reference/commandline/exec/
-Yukarıdaki linki takip ederek nasıl komut çalıştıracağınızı öğrenebilirsiniz. Ya da Kitematic gibi bir uygulama yüklü ise bu uygulamayı açarak ve çalışan image e tıklayarak exe butonuna basmamız yeterli olucaktır.
-Bu sayfada anlatmak istediğim şey tüm bunları yaptınız ve container ın içindeyken bir dosya oluşturdunuz. Ve bu dosyanın içeriğini düzenlemeniz gerekmekte.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/dockerinstallnano/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
   </section>
   
   <nav class="pagination">
@@ -561,6 +625,10 @@ Bu sayfada anlatmak istediğim şey tüm bunları yaptınız ve container ın i�
         <span class="prev-text"></span>
       </a>
     
+      <a class="next" href="https://yazilim.aykutasil.com/page/5/">
+        <span class="next-text"></span>
+        <i class="iconfont icon-right"></i>
+      </a>
   </nav>
 
         </div>

@@ -30,9 +30,18 @@
     </item>
     
     <item>
+      <title>Amp</title>
+      <link>https://yazilim.aykutasil.com/tags/amp/</link>
+      <pubDate>Wed, 10 Oct 2018 11:57:46 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/amp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Android</title>
       <link>https://yazilim.aykutasil.com/tags/android/</link>
-      <pubDate>Tue, 18 Sep 2018 11:51:07 +0300</pubDate>
+      <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/android/</guid>
       <description></description>
@@ -237,11 +246,38 @@
     </item>
     
     <item>
+      <title>Dagger</title>
+      <link>https://yazilim.aykutasil.com/tags/dagger/</link>
+      <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/dagger/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Dbeaver</title>
       <link>https://yazilim.aykutasil.com/tags/dbeaver/</link>
       <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/dbeaver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dependency Injection</title>
+      <link>https://yazilim.aykutasil.com/tags/dependency-injection/</link>
+      <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/dependency-injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Di</title>
+      <link>https://yazilim.aykutasil.com/tags/di/</link>
+      <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/di/</guid>
       <description></description>
     </item>
     
@@ -1043,6 +1079,15 @@
       <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/sqlite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ssh</title>
+      <link>https://yazilim.aykutasil.com/tags/ssh/</link>
+      <pubDate>Fri, 26 Oct 2018 01:04:21 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/ssh/</guid>
       <description></description>
     </item>
     

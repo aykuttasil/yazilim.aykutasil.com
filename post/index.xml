@@ -6,10 +6,41 @@
     <description>Recent content in Posts on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Tue, 18 Sep 2018 11:51:07 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 26 Oct 2018 01:04:21 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>SSH Sürekli Parola İstemesi Sorunu</title>
+      <link>https://yazilim.aykutasil.com/post/ssh_1/</link>
+      <pubDate>Fri, 26 Oct 2018 01:04:21 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/ssh_1/</guid>
+      <description>Problem ./ssh klasörünüzde id_rsa ve id_rsa.pub dosyanız var ve Github, Gitlab, DigitalOcean vs. gibi platformlara erişim için bu rsa keyini kullanıyorsunuz. Her biri için ayrı ayrı rsa key oluşturmuşda olabilirsiniz tabi. Fakat git clone git@gitlab.com:aykuttasil/test.git gibi bir komutu çalıştırdığınızda Enter passphrase for key &#39;/Users/aykutasil/.ssh/id_rsa&#39;: gibi bir uyarı karşınıza çıkıyor ve rsa keyinizin şifresini girmenizi istiyor. Her git komutunda aynı şey ile karşılaşıyorsunuz.
+Yukarıda ki durum ssh&amp;lsquo;ın kullanım amacına ters düştüğü için ortada bir problem var demektir.</description>
+    </item>
+    
+    <item>
+      <title>Android Dagger</title>
+      <link>https://yazilim.aykutasil.com/post/dagger_1/</link>
+      <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/dagger_1/</guid>
+      <description> @BindsInstance Bağımlılıklarınızı oluşturma esnasında belirtmeniz gereken bir değişkenininiz var ve bu değişkeni diğer module leriniz içerisinde kullanıcaksınız. Aşağıdaki gibi @BindsInstance kullanarak bu bağımlılığınızı dependency graph içerisine ekleyerek diğer modüller içerisinde kullanımını sağlayabilirsiniz.
+@Component(modules = AppModule.class) interface AppComponent { App app(); @Component.Builder interface Builder { @BindsInstance Builder apiUrl(@ApiUrl String apiUrl); AppComponent build(); } }  Component build edilirken apiUrl değeri bind edilir.
+App app = DaggerAppComponent .builder() .apiUrl(&amp;quot;http://....&amp;quot;) .build()  </description>
+    </item>
+    
+    <item>
+      <title>AMP</title>
+      <link>https://yazilim.aykutasil.com/post/amp_1/</link>
+      <pubDate>Wed, 10 Oct 2018 11:57:46 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/amp_1/</guid>
+      <description>Not: Bu yazı öğrenme sürecinde hazırlanmış olup kısa kısa notlar içerir.
+ Nedir bu AMP Kurallar  &amp;lt;!doctype html&amp;gt; ile başlamalı &amp;lt;html amp&amp;gt; şeklinde düzenlenmeli &amp;lt;head&amp;gt; tagı içerisine ilk sırada &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; şeklinde meta tagı eklenmeli &amp;lt;head&amp;gt; tagı içerisine mümkün olduğunda erken sırada &amp;lt;script async src=&amp;quot;https://cdn.ampproject.org/v0.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; script tagı eklenmeli &amp;lt;head&amp;gt; tagı içerisine sayfanın AMP olmayan halinin linkini ya da sadece AMP li hali var ise kendi url i &amp;lt;link rel=&amp;quot;canonical&amp;quot; href=&amp;quot;$SOME_URL&amp;quot;&amp;gt; şeklinde belirtilmeli &amp;lt;head&amp;gt; tagı içerisine &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,minimum-scale=1&amp;quot;&amp;gt; meta tagı eklenmeli AMP js dosyası yüklenene kadar mevcut içeriği gizlemek için &amp;lt;style amp-boilerplate&amp;gt;body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}&amp;lt;/style&amp;gt;&amp;lt;noscript&amp;gt;&amp;lt;style amp-boilerplate&amp;gt;body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}&amp;lt;/style&amp;gt;&amp;lt;/noscript&amp;gt; tagı eklenmeli   Bir çok HTMl tagı direk olarak AMP HTML içerisinde kullanılabilir fakat bazılarının (img gibi) AMP için özel versiyonları bulunmaktadır.</description>
+    </item>
     
     <item>
       <title>Android Test</title>

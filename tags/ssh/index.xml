@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssh on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/ssh/</link>
+    <description>Recent content in Ssh on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Fri, 26 Oct 2018 01:04:21 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SSH Sürekli Parola İstemesi Sorunu</title>
+      <link>https://yazilim.aykutasil.com/post/ssh_1/</link>
+      <pubDate>Fri, 26 Oct 2018 01:04:21 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/ssh_1/</guid>
+      <description>Problem ./ssh klasörünüzde id_rsa ve id_rsa.pub dosyanız var ve Github, Gitlab, DigitalOcean vs. gibi platformlara erişim için bu rsa keyini kullanıyorsunuz. Her biri için ayrı ayrı rsa key oluşturmuşda olabilirsiniz tabi. Fakat git clone git@gitlab.com:aykuttasil/test.git gibi bir komutu çalıştırdığınızda Enter passphrase for key &#39;/Users/aykutasil/.ssh/id_rsa&#39;: gibi bir uyarı karşınıza çıkıyor ve rsa keyinizin şifresini girmenizi istiyor. Her git komutunda aynı şey ile karşılaşıyorsunuz.
+Yukarıda ki durum ssh&amp;lsquo;ın kullanım amacına ters düştüğü için ortada bir problem var demektir.</description>
+    </item>
+    
+  </channel>
+</rss>
