@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-06-06T04:33:06&#43;03:00"/>
+<meta property="og:updated_time" content="2017-06-06T04:42:56&#43;03:00"/>
 
 
 
@@ -137,6 +137,37 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/kotlin_when/">Kotlin when kullanımı</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-06-06 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/kotlin/"> kotlin </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Kotlin&rsquo;de when operatörü oldukça işimizi kolaylaştıran operatörlerden biridir.
+if- else if yapısı yerine kullanılabileceği gibi bazı yardımcı operatörler ile birçok marifet kazanabilir.
+ val i = 10 when { i &lt; 7 -&gt; println(&quot;first block&quot;) fooString.startsWith(&quot;hello&quot;) -&gt; println(&quot;second block&quot;) else -&gt; println(&quot;else block&quot;) }  Yukarıda ki örnek if-else if-else yapısının aynısıdır.
+ when (i) { 0, 21 -&gt; println(&quot;0 or 21&quot;) in 1..20 -&gt; println(&quot;in the range 1 to 20&quot;) else -&gt; println(&quot;none of the above&quot;) }  Yukarıda ki gibi aralıklar tanımlanabilir ve bu aralıklara uyum kontrolü yapılarak ilgili işlemlerin yapılması sağlanılabilir.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/kotlin_when/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -561,38 +592,6 @@ I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActiv
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/android_rxjava_scan/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_rxjava_reduce/">RxJava reduce() Kullanımı</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-01-11 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/rxjava/"> rxjava </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      RxJava reduce() Kullanımı reduce() fonskyionu iki şekilde çalışır;
- 1  .reduce(new BiFunction&lt;Integer, Integer, Integer&gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })   2  .reduce(10,new BiFunction&lt;Integer, Integer, Integer&gt;() { @Override public Integer apply(Integer val1, Integer val2) throws Exception { return null; } })  1 ile 2 nin farkı, 2 de görüldüğü üzere fonksiyona başlangıç değeri atanabilmesidir.
-Aşağıdaki örneklerde daha net görebilirsiniz.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/android_rxjava_reduce/" class="read-more-link"></a>
     </div>
   </div>
 </article>

@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-01-11T01:50:51&#43;03:00"/>
+<meta property="og:updated_time" content="2017-01-11T15:27:59&#43;03:00"/>
 
 
 
@@ -137,6 +137,38 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/">Foreground Service ile FusedLocationApi Kullanımı</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-11 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/java/"> java </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.
+Burada yapacağımız örnekte kısaca şu aşamaları görücez;
+ Service i foreground olarak başlatmak Ongoing(devamlı gözüken) notification oluşturmak GoogleApiClient a bağlanmak Location bilgisini notification da göstermek  İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -585,32 +617,6 @@ String.xml
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/android_spinner_text/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/pendingintentflags/">PendingIntent Flags</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-01-02 </span>
-      
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      PendingIntent resultPendingIntent = PendingIntent.getActivity( getApplicationContext(), 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);  PendingIntent ler Android uygulama geliştirilmesi sırasında birçok yerde karşımıza çıkabilir.
-Özetle PendingIntent kullanılarak asenkron işlem başlatılımı yapılır.
-En genel kullanım alanlarından bir tanesi de Notification lar iledir.
-Kullanıcı, hazırlamış olduğumuz notification a tıkladığında alacak olduğu tepki nasıl olmalı? sorusuna cevap vermek için PendingIntent imizin flag parametresini uygun şekilde düzenlemeliyiz.
-Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif için farklı requestCode verirsek her biri farklı notif gibi davranır.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/pendingintentflags/" class="read-more-link"></a>
     </div>
   </div>
 </article>

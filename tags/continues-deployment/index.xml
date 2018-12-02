@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Continues Deployment on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/continues-deployment/</link>
+    <description>Recent content in Continues Deployment on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Tue, 27 Nov 2018 14:20:45 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/continues-deployment/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CircleCI Configuration</title>
+      <link>https://yazilim.aykutasil.com/post/circleci/</link>
+      <pubDate>Tue, 27 Nov 2018 14:20:45 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/circleci/</guid>
+      <description>CI/CD Uygulamaların build/test/depleyment süreçlerini otomatize etmemizi sağlayan CI/CD kavramları günümüz yazılım dünyasında olmazsa olmaz, bilinmezse ayıp olurlar arasına girmiş bulunmaktadır. Manuel yapılan bu işlemlerin otomatize edilmesi bize ve takım üyelerine çeşitli konularda fayda sağlayacak ve eğer manuel yöntemler ile ilerlendiği takdirde oluşabilecek hataları minimuma indirecektir. Projenizin build/test/deployment adımlarında çeşitli sorunlar yaşamaya başlamışsanız ya da başlamadan bitirmek istiyorsanız bu kavramları öğrenmekte fayda var.
+Çeşitli CI/CD araçları bulunmaktadır. Travis, Bitrise, AppCenter, CircleCI bunlardan bazılarıdır.</description>
+    </item>
+    
+  </channel>
+</rss>
