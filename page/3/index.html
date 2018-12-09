@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-01-11T18:42:04&#43;03:00"/>
+<meta property="og:updated_time" content="2017-01-11T18:49:21&#43;03:00"/>
 
 
 
@@ -137,6 +137,37 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_rxjava_scan/">RxJava scan() Kullanımı</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-11 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/rxjava/"> rxjava </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      RxJava scan() Kullanımı RxJava da scan() kullanımı iki şekilde olur.
+ 1. İlk değer ataması yapılarak  private void scan() { Observable.just(3, 5, 7, 9) .scan(10,(val1, val2) -&gt; { // Log.i(TAG, &quot;val1: &quot; + val1.toString()); Log.i(TAG, &quot;val2: &quot; + val2.toString()); return val1 + val2; }).subscribeOn(Schedulers.io()) .subscribe(success -&gt; { Log.i(TAG, &quot;Sonuc:&quot; + success.toString()); }); }   2. İlk değer ataması yapılmadan  private void scan() { Observable.just(3, 5, 7, 9) .
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/android_rxjava_scan/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -579,39 +610,6 @@ Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize gö
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/macos_mssql_connection/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/">SQL Management Studio Custom Generate Scripts</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-01-11 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/sql/"> sql </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      SQL Management Studio kullanarak MSSQL e erişim yapmanız size birçok fayda sağlayacaktır. Tabi dezavantajları da yok değil !.
-Senaryomuz şu şekilde;
-Test veritabanında çalışarak kendinizi production veritabanında izole ettiniz ve güvenlik konusunda bir adım öne geçtiniz.
-Test veritabanı ile işlemleriniz bittikten sonra artık sıra geldi oluşturmuş olduğumuz tüm yapıları taşımaya !
-Bu kısım biraz sıkıcı olsa da SQL Management Studio nun buna getirmiş olduğu kolaylıklar var.
-Oluşturmuş olduğumuz tabloların sadece şemasını yani içiindeki veriler olmaksızın taşımak istersek, ( ki bu durum default olarak yapılandıırlmış durumdur ) işimiz oldukça kolay.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/sql_management_studio_custom_scrips/" class="read-more-link"></a>
     </div>
   </div>
 </article>

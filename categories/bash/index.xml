@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bash on Software</title>
-    <link>https://yazilim.aykutasil.com/tags/bash/</link>
+    <link>https://yazilim.aykutasil.com/categories/bash/</link>
     <description>Recent content in Bash on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Mon, 10 Dec 2018 00:47:41 +0300</lastBuildDate>
     
-	<atom:link href="https://yazilim.aykutasil.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/categories/bash/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,18 +21,6 @@
 EOF yerine herhangi bir belirteç yazılabilir. Genelde EOF veya STOP yazılır.
 $ sql=$(cat &amp;lt;&amp;lt;EOF SELECT foo, bar FROM db WHERE foo=&#39;baz&#39; EOF )  $ cat &amp;lt;&amp;lt;EOF &amp;gt; print.sh #!/bin/bash echo \$PWD echo $PWD EOF  Yukarıda ki bash çalıştırıldığında print.sh adında ve içeriği
 #!/bin/bash echo $PWD echo /home/user  olan bir dosya oluşur.</description>
-    </item>
-    
-    <item>
-      <title>Android Key Hashes &amp; SHA1</title>
-      <link>https://yazilim.aykutasil.com/post/android_keyhashes_sha1/</link>
-      <pubDate>Tue, 10 Jan 2017 23:56:35 +0300</pubDate>
-      
-      <guid>https://yazilim.aykutasil.com/post/android_keyhashes_sha1/</guid>
-      <description>Android Key Hashes &amp;amp; SHA1 Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.
-keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64  openssl hatası alırsanız https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.
-Ortam değişkenlerine ulaşmak için : Denetim Masası &amp;gt; Sistem &amp;gt; Gelişmiş Sİstem Ayarları
-SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacaktır.</description>
     </item>
     
   </channel>

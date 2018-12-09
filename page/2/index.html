@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-06-06T04:42:56&#43;03:00"/>
+<meta property="og:updated_time" content="2017-06-06T10:47:58&#43;03:00"/>
 
 
 
@@ -137,6 +137,37 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/kotlin_apply/">Kotlin apply Kullanımı</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-06-06 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/kotlin/"> kotlin </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      fun &lt;T&gt; T.apply(f: T.() -&gt; Unit): T { f(); return this }  apply() tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.
+var file = File(dir) file.mkdirs()  veya Java ile yazacak olursak
+File makeDir(String path) { File result = new File(path); result.mkdirs(); return result; }  Bu kodu aşağıdaki yapıya çevirebiliriz.
+File(dir).apply { mkdirs() }  
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/kotlin_apply/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -561,37 +592,6 @@ I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActiv
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/android_rxjava_range/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_rxjava_scan/">RxJava scan() Kullanımı</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-01-11 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/rxjava/"> rxjava </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      RxJava scan() Kullanımı RxJava da scan() kullanımı iki şekilde olur.
- 1. İlk değer ataması yapılarak  private void scan() { Observable.just(3, 5, 7, 9) .scan(10,(val1, val2) -&gt; { // Log.i(TAG, &quot;val1: &quot; + val1.toString()); Log.i(TAG, &quot;val2: &quot; + val2.toString()); return val1 + val2; }).subscribeOn(Schedulers.io()) .subscribe(success -&gt; { Log.i(TAG, &quot;Sonuc:&quot; + success.toString()); }); }   2. İlk değer ataması yapılmadan  private void scan() { Observable.just(3, 5, 7, 9) .
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/android_rxjava_scan/" class="read-more-link"></a>
     </div>
   </div>
 </article>

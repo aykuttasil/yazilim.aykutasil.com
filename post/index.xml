@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Tue, 27 Nov 2018 14:20:45 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 10 Dec 2018 00:47:41 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bash Scripts</title>
+      <link>https://yazilim.aykutasil.com/post/bash/</link>
+      <pubDate>Mon, 10 Dec 2018 00:47:41 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/bash/</guid>
+      <description>cat &amp;lt;&amp;lt;EOF cat &amp;lt;&amp;lt;EOF komutu ile multiline bash script yazabiliriz. Son satır EOF oluncaya kadar satır oluşturulmaya devam eder.
+EOF yerine herhangi bir belirteç yazılabilir. Genelde EOF veya STOP yazılır.
+$ sql=$(cat &amp;lt;&amp;lt;EOF SELECT foo, bar FROM db WHERE foo=&#39;baz&#39; EOF )  $ cat &amp;lt;&amp;lt;EOF &amp;gt; print.sh #!/bin/bash echo \$PWD echo $PWD EOF  Yukarıda ki bash çalıştırıldığında print.sh adında ve içeriği
+#!/bin/bash echo $PWD echo /home/user  olan bir dosya oluşur.</description>
+    </item>
     
     <item>
       <title>CircleCI Configuration</title>

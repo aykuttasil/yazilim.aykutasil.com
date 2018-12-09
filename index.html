@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2018-11-27T14:20:45&#43;03:00"/>
+<meta property="og:updated_time" content="2018-12-10T00:47:41&#43;03:00"/>
 
 
 
@@ -137,6 +137,37 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/bash/">Bash Scripts</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-12-10 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/bash/"> bash </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/script/"> script </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      cat &lt;&lt;EOF cat &lt;&lt;EOF komutu ile multiline bash script yazabiliriz. Son satır EOF oluncaya kadar satır oluşturulmaya devam eder.
+EOF yerine herhangi bir belirteç yazılabilir. Genelde EOF veya STOP yazılır.
+$ sql=$(cat &lt;&lt;EOF SELECT foo, bar FROM db WHERE foo='baz' EOF )  $ cat &lt;&lt;EOF &gt; print.sh #!/bin/bash echo \$PWD echo $PWD EOF  Yukarıda ki bash çalıştırıldığında print.sh adında ve içeriği
+#!/bin/bash echo $PWD echo /home/user  olan bir dosya oluşur.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/bash/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -540,37 +571,6 @@ Belli başlı lambda kullanımları için aşağıdaki örneği inceleyebilirsin
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/kotlin_lambda/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/kotlin_apply/">Kotlin apply Kullanımı</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-06-06 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/kotlin/"> kotlin </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      fun &lt;T&gt; T.apply(f: T.() -&gt; Unit): T { f(); return this }  apply() tüm tipler için belirlenmiş bir extension function dır. apply() fonksiyonu uygulanan nesnenin özelliklerine direk olarak apply kod bloğu içerisinden erişilebilir.
-var file = File(dir) file.mkdirs()  veya Java ile yazacak olursak
-File makeDir(String path) { File result = new File(path); result.mkdirs(); return result; }  Bu kodu aşağıdaki yapıya çevirebiliriz.
-File(dir).apply { mkdirs() }  
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/kotlin_apply/" class="read-more-link"></a>
     </div>
   </div>
 </article>
