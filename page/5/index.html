@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-01-10T23:00:03&#43;03:00"/>
+<meta property="og:updated_time" content="2017-01-10T23:08:34&#43;03:00"/>
 
 
 
@@ -137,6 +137,37 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/tsql_nullif_kullanimi/">TSQL NULLIF Fonksiyonu Nedir ve Nasıl Kullanılır</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-10 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/sql/"> sql </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      TSQL NULLIF fonksiyonu NULLIF fonksiyonu verilen iki parametre birbirine esit ise NULL deger döndürür eger degerleri fakli iki parametre verilirse sonuç olarak birinci parametrenin degerini döndürür.
+Kullanimi ve anlamasi kolay bir fonksiyon oldugu için basit bir örnekle anlatmaya çalisalim.
+Ilk olarak kullanacagimiz geçici tabloyu asagidaki gibi çalistirip içine insert komutu ile veri kaydedelim.
+CREATE TABLE #Urun ( UrunID TINYINT, ListeFiyati DECIMAL NULL); GO INSERT #Urun VALUES(1,100); INSERT #Urun VALUES(2,NULL); INSERT #Urun VALUES(3,0); INSERT #Urun VALUES(7,250); INSERT #Urun VALUES(9,458);  ListeFiyati kolonuna göre count yaparsak sonuç olarak 4 dönecegini görürsünüz, çünkü UrunID’si 2 olan ürünün liste fiyati girilmemistir.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/tsql_nullif_kullanimi/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">

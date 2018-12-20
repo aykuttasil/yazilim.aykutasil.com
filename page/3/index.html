@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-01-11T18:49:21&#43;03:00"/>
+<meta property="og:updated_time" content="2017-01-11T18:52:51&#43;03:00"/>
 
 
 
@@ -137,6 +137,40 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_rxjava_range/">RxJava range() Kullanımı</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-01-11 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/rxjava/"> rxjava </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      RxJava range() Kullanımı **Örnek kod:&ndash;
+private void range() { Observable.range(3, 5).subscribeOn(Schedulers.io()) .subscribe(success -&gt; { Log.i(TAG, &quot;val: &quot; + success.toString()); }); }  Açıklama:
+İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7
+Yukarıda ki kodun çıktısı aşağıdaki gibidir.
+I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActivity: val: 6 I/MainActivity: val: 7  RxJava candır 😉
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/android_rxjava_range/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -577,39 +611,6 @@ Genel kullanımı aşağıdaki gibidir.
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/android_toolbar_custom_title/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/macos_mssql_connection/">Mac OS ile MSSQL Bağlantısı Kurmak</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-01-11 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/sql/"> sql </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      MSSQL oldukça gelişmiş ve birçok firma – kişi tarafından kullanılan bir veritabanın sistemidir. Oldukça büyük miktarda verinizi, doğru şekilde tasarlayarak tatmin edici derecede hızlı bir şekilde kontrol edebilirsiniz.
-Senaryomuz şu şekilde;
-Mac OS yüklü bilgisayarımızdan MSSQL yüklü sunucumuza bağlantı kurmak istiyoruz.
-Not : Aşağıda bahsedecek olduğum uygulamayı Windows yüklü bilgisayarınızda da SQL Management Studio alternatifi olarak kullanabilirsiniz.
-Dbeaver http://dbeaver.jkiss.org/download/
-Tüm işletim sistemleri için sürüm mevcuttur. Kendi işletim sisteminize göre olanı indirip kullanmaya başlayabilirsiniz.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/macos_mssql_connection/" class="read-more-link"></a>
     </div>
   </div>
 </article>

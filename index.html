@@ -171,6 +171,36 @@ $ sql=$(cat &lt;&lt;EOF SELECT foo, bar FROM db WHERE foo='baz' EOF )  $ cat &lt
     
       <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_circleci/">Android CircleCI Configuration</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-12-01 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/ci/cd/"> CI/CD </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/mobile/"> mobile </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      CircleCI Android Yapılandırması .circleci/config.yml version: 2 jobs: build: working_directory: ~/code docker: - image: circleci/android:api-28-alpha environment: JVM_OPTS: -Xmx3200m steps: - checkout - run: name: Initialize Keystore File command: echo $KEYSTORE_BASE64 | base64 --decode &gt; app/aykutasilkeystore - run: name: Initialize Fabric Properties command: | echo &quot;apiKey=$FABRIC_API_KEY&quot; &gt;&gt; app/fabric.properties echo &quot;apiSecret=$FABRIC_API_SECRET&quot; &gt;&gt; app/fabric.properties cat app/fabric.properties - run: name: Initialize Keystore File command: | echo &quot;signingKeyAlias=$KEYSTORE_KEY_ALIAS&quot; &gt;&gt; keystore.properties echo &quot;signingKeyAliasPassword=$KEYSTORE_KEY_ALIAS_PASSWORD&quot; &gt;&gt; keystore.properties echo &quot;signingStoreFile=$KEYSTORE_STORE_FILE&quot; &gt;&gt; keystore.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/android_circleci/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/circleci/">CircleCI Configuration</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2018-11-27 </span>
@@ -541,36 +571,6 @@ fun ViewGroup.inflate(resId: Int, attachToRoot: Boolean = false): View { return 
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/kotlin_sealed_class/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/kotlin_lambda/">Kotlin Lambda</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-06-18 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/kotlin/"> kotlin </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Kotlin Lambda Kullanımı Kotlin dili ile geliştirme yaparken fonksiyonel programlama nimetlerinden faydalanmamızı sağlayan lambda birçok konuda bize yardımcı olacaktır. Doğru kullanımını öğrendiğimiz ölçüde nimetlerinin farkına varabiliriz.
-Belli başlı lambda kullanımları için aşağıdaki örneği inceleyebilirsiniz.
- override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_kotlin_lambda) // Normal Kullanım ButtonPress.setOnClickListener(object : View.OnClickListener { override fun onClick(view: View?) { toast(&quot;Press Me Click&quot;) } }) // Yukarıda ki yapıyı lambda kullanarak bu şekle çevirebiliriz ButtonPress.setOnClickListener({ v -&gt; toast(&quot;Press Me&quot;) }) // Eğer son parametre lambda fonksiyonu ise bu fonksiyonu parantez '()' dışına çıkarabiliriz.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/kotlin_lambda/" class="read-more-link"></a>
     </div>
   </div>
 </article>

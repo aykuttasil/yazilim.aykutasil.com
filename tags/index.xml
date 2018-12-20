@@ -41,7 +41,7 @@
     <item>
       <title>Android</title>
       <link>https://yazilim.aykutasil.com/tags/android/</link>
-      <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/android/</guid>
       <description></description>
@@ -165,6 +165,15 @@
     </item>
     
     <item>
+      <title>Build</title>
+      <link>https://yazilim.aykutasil.com/tags/build/</link>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/build/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>C#</title>
       <link>https://yazilim.aykutasil.com/tags/c#/</link>
       <pubDate>Mon, 16 Jan 2017 11:13:16 +0300</pubDate>
@@ -185,7 +194,7 @@
     <item>
       <title>Cd</title>
       <link>https://yazilim.aykutasil.com/tags/cd/</link>
-      <pubDate>Tue, 27 Nov 2018 14:20:45 +0300</pubDate>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/cd/</guid>
       <description></description>
@@ -194,7 +203,7 @@
     <item>
       <title>Ci</title>
       <link>https://yazilim.aykutasil.com/tags/ci/</link>
-      <pubDate>Tue, 27 Nov 2018 14:20:45 +0300</pubDate>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/ci/</guid>
       <description></description>
@@ -203,7 +212,7 @@
     <item>
       <title>Circleci</title>
       <link>https://yazilim.aykutasil.com/tags/circleci/</link>
-      <pubDate>Tue, 27 Nov 2018 14:20:45 +0300</pubDate>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/circleci/</guid>
       <description></description>
@@ -264,6 +273,24 @@
     </item>
     
     <item>
+      <title>Continuous Deployment</title>
+      <link>https://yazilim.aykutasil.com/tags/continuous-deployment/</link>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/continuous-deployment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration</title>
+      <link>https://yazilim.aykutasil.com/tags/continuous-integration/</link>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/continuous-integration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Csharp</title>
       <link>https://yazilim.aykutasil.com/tags/csharp/</link>
       <pubDate>Mon, 16 Jan 2017 11:13:16 +0300</pubDate>
@@ -314,6 +341,15 @@
       <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/dependency-injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deployment</title>
+      <link>https://yazilim.aykutasil.com/tags/deployment/</link>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/deployment/</guid>
       <description></description>
     </item>
     
@@ -1202,7 +1238,7 @@
     <item>
       <title>Test</title>
       <link>https://yazilim.aykutasil.com/tags/test/</link>
-      <pubDate>Tue, 18 Sep 2018 11:51:07 +0300</pubDate>
+      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/test/</guid>
       <description></description>

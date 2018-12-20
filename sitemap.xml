@@ -10,6 +10,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/post/android_circleci/</loc>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/post/circleci/</loc>
     <lastmod>2018-11-27T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -473,14 +480,14 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/android/</loc>
-    <lastmod>2018-10-12T11:48:08+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/android/</loc>
-    <lastmod>2018-10-12T11:48:08+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -598,6 +605,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/build/</loc>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/c#/</loc>
     <lastmod>2017-01-16T11:13:16+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -627,28 +641,28 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/cd/</loc>
-    <lastmod>2018-11-27T14:20:45+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/ci/</loc>
-    <lastmod>2018-11-27T14:20:45+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/ci/cd/</loc>
-    <lastmod>2018-11-27T14:20:45+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/circleci/</loc>
-    <lastmod>2018-11-27T14:20:45+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -691,6 +705,20 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/continues-integration/</loc>
     <lastmod>2018-11-27T14:20:45+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/continuous-deployment/</loc>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/continuous-integration/</loc>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -740,6 +768,13 @@
   <url>
     <loc>https://yazilim.aykutasil.com/categories/dependency-injection/</loc>
     <lastmod>2018-10-12T11:48:08+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/tags/deployment/</loc>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1111,6 +1146,13 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/macos-mssql-connection/</loc>
     <lastmod>2017-01-11T15:50:10+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yazilim.aykutasil.com/categories/mobile/</loc>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1544,7 +1586,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/test/</loc>
-    <lastmod>2018-09-25T11:51:07+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

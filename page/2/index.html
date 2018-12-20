@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2017-06-06T10:47:58&#43;03:00"/>
+<meta property="og:updated_time" content="2017-06-18T02:24:37&#43;03:00"/>
 
 
 
@@ -137,6 +137,36 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/kotlin_lambda/">Kotlin Lambda</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2017-06-18 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/kotlin/"> kotlin </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Kotlin Lambda Kullanımı Kotlin dili ile geliştirme yaparken fonksiyonel programlama nimetlerinden faydalanmamızı sağlayan lambda birçok konuda bize yardımcı olacaktır. Doğru kullanımını öğrendiğimiz ölçüde nimetlerinin farkına varabiliriz.
+Belli başlı lambda kullanımları için aşağıdaki örneği inceleyebilirsiniz.
+ override fun onCreate(savedInstanceState: Bundle?) { super.onCreate(savedInstanceState) setContentView(R.layout.activity_kotlin_lambda) // Normal Kullanım ButtonPress.setOnClickListener(object : View.OnClickListener { override fun onClick(view: View?) { toast(&quot;Press Me Click&quot;) } }) // Yukarıda ki yapıyı lambda kullanarak bu şekle çevirebiliriz ButtonPress.setOnClickListener({ v -&gt; toast(&quot;Press Me&quot;) }) // Eğer son parametre lambda fonksiyonu ise bu fonksiyonu parantez '()' dışına çıkarabiliriz.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/kotlin_lambda/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -558,40 +588,6 @@ Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sad
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/runnable_callable/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_rxjava_range/">RxJava range() Kullanımı</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2017-01-11 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/rxjava/"> rxjava </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      RxJava range() Kullanımı **Örnek kod:&ndash;
-private void range() { Observable.range(3, 5).subscribeOn(Schedulers.io()) .subscribe(success -&gt; { Log.i(TAG, &quot;val: &quot; + success.toString()); }); }  Açıklama:
-İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7
-Yukarıda ki kodun çıktısı aşağıdaki gibidir.
-I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActivity: val: 6 I/MainActivity: val: 7  RxJava candır 😉
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/android_rxjava_range/" class="read-more-link"></a>
     </div>
   </div>
 </article>
