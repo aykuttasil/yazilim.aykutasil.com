@@ -696,20 +696,6 @@
   </url>
   
   <url>
-    <loc>https://yazilim.aykutasil.com/tags/continues-deployment/</loc>
-    <lastmod>2018-11-27T14:20:45+03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yazilim.aykutasil.com/tags/continues-integration/</loc>
-    <lastmod>2018-11-27T14:20:45+03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yazilim.aykutasil.com/tags/continuous-deployment/</loc>
     <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
