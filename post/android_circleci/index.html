@@ -175,7 +175,8 @@
 <li><a href="#circleci-android-yapılandırması">CircleCI Android Yapılandırması</a>
 <ul>
 <li><a href="#circleci-config-yml">.circleci/config.yml</a></li>
-<li><a href="#app-build-gradle">app/build.gradle</a>
+<li><a href="#app-build-gradle">app/build.gradle</a></li>
+<li><a href="#ne-yaptık">Ne Yaptık ?</a>
 <ul>
 <li><a href="#1-base64-yöntemi">1. Base64 Yöntemi</a></li>
 <li><a href="#2-environment-variable">2. Environment Variable</a></li>
@@ -321,13 +322,13 @@ dependencies {
 }
 </code></pre>
 
-<p>## Ne Yaptık?</p>
+<h2 id="ne-yaptık">Ne Yaptık ?</h2>
 
 <p>Yukarıda ki örnek <strong>gradle</strong> dosyasında log için kullanılan <strong>Crashlytics</strong>&rsquo; apiKey bilgilerini ve <strong>apk</strong> imzalama için gerekli bilgileri başka dosyalardan okuyayarak gizliliği sağladığımızı görüyorsunuz.</p>
 
-<p>Bu bilgileri okuğumuz <strong>keystore.properties</strong> ve <strong>fabric.properties</strong> dosyalarını <strong>vcs</strong> içerisine eklemiyoruz. Yani <strong>.gitignore</strong> dosyamıza ekleyerek <strong>github, bitbucket</strong> gibi vsc platformlarına gönderimini engelliyoruz.</p>
+<p>Bu bilgileri okuğumuz <strong>keystore.properties</strong> ve <strong>fabric.properties</strong> dosyalarını <strong>VCS</strong> içerisine eklemiyoruz. Yani <strong>.gitignore</strong> dosyamıza ekleyerek <strong>github, bitbucket</strong> gibi <strong>VCS</strong> platformlarına gönderimini engelliyoruz.</p>
 
-<p>Peki bu dosyaları <strong>vcs</strong> platformuna göndermemiş isek <strong>CI/CD</strong> platformu projemizi derlemeye çalışırken <strong>gradle</strong> dosyası içerisinde ki bu bilgileri nasıl okuyacak?</p>
+<p>Peki bu dosyaları <strong>VCS</strong> platformuna göndermemiş isek <strong>CI/CD</strong> platformu projemizi derlemeye çalışırken <strong>gradle</strong> dosyası içerisinde ki bu bilgileri nasıl okuyacak?</p>
 
 <p>İşte bunun için farklı yöntemler mevcut. Bunlardan ikisi yukarıda ki örnekte mevcut.</p>
 
