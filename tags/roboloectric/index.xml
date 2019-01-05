@@ -17,7 +17,7 @@
       <pubDate>Tue, 18 Sep 2018 11:51:07 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/post/android_test_1/</guid>
-      <description>Not: Bu yazıyı hazırlarken ben de öğrenme sürecinde olucam. Araştırdığım ve öğrendiğim tüm teknik ve yöntemleri, best-practice leri gelişi güzel(karmakarışık değil) bir şekilde yazıcam. Sonrasında zaman bulduğum vakit bir düzenleme yapıcam.
+      <description>Not: Bu yazıyı hazırlarken ben de öğrenme sürecinde olucam. Araştırdığım ve öğrendiğim tüm teknik bilgileri ve yöntemleri, best-practice leri gelişi güzel(karmakarışık değil) bir şekilde yazıcam. Sonrasında zaman bulduğum vakit bir düzenleme yapıcam.
  Unit Test ve Instrumentation Test Unit Test Unit Test: Android framework ünden bağımsız olan sınıfları/metodları test etmek için kullanılır. Robolectric ve JUnit popüler unit test araçlarıdır.
  If you run local unit tests, a special version of the android.</description>
     </item>

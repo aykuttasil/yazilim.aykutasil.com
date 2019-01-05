@@ -75,7 +75,7 @@
 
 <meta itemprop="datePublished" content="2018-09-18T11:51:07&#43;03:00" />
 <meta itemprop="dateModified" content="2018-09-18T11:51:07&#43;03:00" />
-<meta itemprop="wordCount" content="1525">
+<meta itemprop="wordCount" content="1508">
 
 
 
@@ -198,7 +198,7 @@
       
 
 <blockquote>
-<p>Not: Bu yazıyı hazırlarken ben de öğrenme sürecinde olucam. Araştırdığım ve öğrendiğim tüm teknik ve yöntemleri, best-practice leri gelişi güzel(karmakarışık değil) bir şekilde yazıcam. Sonrasında zaman bulduğum vakit bir düzenleme yapıcam.</p>
+<p><strong>Not:</strong> Bu yazıyı hazırlarken ben de öğrenme sürecinde olucam. Araştırdığım ve öğrendiğim tüm teknik bilgileri ve yöntemleri, best-practice leri gelişi güzel(karmakarışık değil) bir şekilde yazıcam. Sonrasında zaman bulduğum vakit bir düzenleme yapıcam.</p>
 </blockquote>
 
 <h1 id="unit-test-ve-instrumentation-test">Unit Test ve Instrumentation Test</h1>
@@ -213,11 +213,11 @@
 
 <h2 id="instrumentation-test-on-device">Instrumentation Test (on-device)</h2>
 
-<p>Android framework ü ile ilişkili olan sınıfların testi için kullanılır. Örneğin bir Activity nin testi yazılacak ise Instrumentation Test yapılacak demektir. <strong>Espresso</strong>,<strong>UIAutomator</strong>,<strong>Robotium</strong> popüler instrumentation test araçlarıdır.</p>
+<p>Android framework&rsquo;ü ile gerçek anlamda etkileşime girmesi gereken sınıfların testi için <strong>Instrumentation Test</strong> yapılması gerekmektedir. <strong>Espresso</strong>, <strong>UIAutomator</strong>, <strong>Robotium</strong> popüler instrumentation test araçlarıdır.</p>
 
 <ul>
-<li>Unit Test lerin yazımı için aşağıdaki resimde görülen <strong>test</strong> package ı kullanılmalıdır.</li>
-<li>Instrumentation Test lerin yazılımı için aşağıdaki resimde görülen <strong>androidTest</strong> package ı kullanılmalıdır.</li>
+<li><strong>Unit Test</strong> sınıfları aşağıdaki resimde görülen <strong>test</strong> package&rsquo;ı altına eklenir.</li>
+<li><strong>Instrumentation Test</strong> sınıfları resimde görülen <strong>androidTest</strong> package&rsquo;ı altına eklenir.</li>
 <li><strong>app/src/test/java</strong> - for any unit test which can run on the JVM</li>
 <li><strong>app/src/androidTest/java</strong> -&gt; for any test which should run on an Android device</li>
 </ul>
@@ -257,11 +257,11 @@ It also gives access to the life cycle via the ActivityLifecycleMonitorRegistry.
 
 <p>Robolectric, kodunuzu yerel JVM&rsquo;de gerçek(sahte olmayan) Android JAR&rsquo;lere karşı çalıştırır. Bu, düşük seviyeli sistem bileşenlerini (UI gibi) simüle etmek için baytkod manipülasyonu kullanılarak yapılabilir.</p>
 
-<p>Sonuç, bir emülatöre ya da cihaza dağıtma yükü olmadan daha gerçekçi bir test tertibatıdır. Gerçek Android çerçevenin çalışan bir sürümünü kullanmak, test yürütmeyi yavaşlatır ve saf birim testleri ile karşılaştırıldığında bir derece kırılganlık ekler.</p>
+<p>Sonuç, bir emülatöre ya da cihaza dağıtma yükü olmadan daha gerçekçi bir test tertibatıdır. Gerçek Android framework ünün çalışan bir sürümünü kullanmak, test yürütmeyi yavaşlatır ve saf unit testleri ile karşılaştırıldığında bir derece kırılganlık ekler.</p>
 
-<p>Roboloctric ile neredeyse her android componentinin shadow hali üretileblir. Ve bu üretilen shadow nesneleri normal componentlerin sahip olmadığı bazı fonksiyonlara sahiptir.</p>
+<p>Roboloctric ile neredeyse her android componentinin <strong>shadow</strong> hali üretileblir. Ve bu üretilen shadow nesneleri normal componentlerin sahip olmadığı bazı fonksiyonlara sahiptir.</p>
 
-<p>Mockito, Espresso gibi diğer test bileşenleri ile birlikte çalıştırılabilir.</p>
+<p><strong>Mockito, Espresso</strong> gibi diğer test bileşenleri ile birlikte çalıştırılabilir.</p>
 
 <pre><code class="language-java">Activity activity = Robolectric.buildActivity(MyAwesomeActivity.class).create().get();
 </code></pre>
@@ -307,10 +307,10 @@ activityController.resume();
 
 dependency
 {
-    testImplementation 'com.android.support.test:rules:1.0.2'
-    testImplementation 'com.android.support.test🏃1.0.2'
-    testImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    testImplementation &quot;org.robolectric:robolectric:4.0-alpha-1&quot;
+    testImplementation 'com.android.support.test:rules:1.1.1'
+    testImplementation 'com.android.support.test: runner:1.1.1'
+    testImplementation 'com.android.support.test.espresso:espresso-core:3.1.1'
+    testImplementation &quot;org.robolectric:robolectric:4.0.2&quot;
 }
 </code></pre>
 
@@ -335,10 +335,9 @@ class MainActivityTest {
 <h1 id="mockito">Mockito</h1>
 
 <pre><code class="language-bash">dependencies {
-    // Required -- JUnit 4 framework
     testImplementation 'junit:junit:4.12'
-    // Optional -- Mockito framework
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'org.mockito:mockito-core:2.23.4'
+    testImplementation 'org.mockito:mockito-android:2.22.0'
 }
 </code></pre>
 
@@ -401,7 +400,7 @@ class MainActivityTest {
 
 <p>Unit test yazarken api rest isteklerinin simüle edilmesini sağlar.</p>
 
-<pre><code class="language-bash">testImplementation 'com.squareup.okhttp3:mockwebserver:(insert latest version)'
+<pre><code class="language-bash">testImplementation 'com.squareup.okhttp3:mockwebserver:3.8.1'
 </code></pre>
 
 <ul>
@@ -718,7 +717,9 @@ server.setDispatcher(dispatcher);
 
   <span class="copyright-year">
     &copy; 
-    2018
+    
+      2018 - 
+    2019
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
