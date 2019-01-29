@@ -10,13 +10,6 @@
   </url>
   
   <url>
-    <loc>https://yazilim.aykutasil.com/post/android_static_code_analysis/</loc>
-    <lastmod>2019-01-24T23:55:53+03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://yazilim.aykutasil.com/post/server_ip/</loc>
     <lastmod>2019-01-08T23:20:28+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -662,28 +655,21 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/cd/</loc>
-    <lastmod>2019-01-24T23:55:53+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/ci/</loc>
-    <lastmod>2019-01-24T23:55:53+03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yazilim.aykutasil.com/tags/ci/cd/</loc>
-    <lastmod>2019-01-24T23:55:53+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/ci/cd/</loc>
-    <lastmod>2019-01-24T23:55:53+03:00</lastmod>
+    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -705,13 +691,6 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/cloud-dns/</loc>
     <lastmod>2017-07-12T00:00:00+03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yazilim.aykutasil.com/categories/code-quality/</loc>
-    <lastmod>2019-01-24T23:55:53+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1580,20 +1559,6 @@
   <url>
     <loc>https://yazilim.aykutasil.com/tags/ssl/</loc>
     <lastmod>2018-08-13T00:50:25+03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yazilim.aykutasil.com/tags/static-code/</loc>
-    <lastmod>2019-01-24T23:55:53+03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yazilim.aykutasil.com/tags/static-code-analysis/</loc>
-    <lastmod>2019-01-24T23:55:53+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
