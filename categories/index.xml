@@ -23,7 +23,7 @@
     <item>
       <title>Android</title>
       <link>https://yazilim.aykutasil.com/categories/android/</link>
-      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/android/</guid>
       <description></description>
@@ -68,9 +68,18 @@
     <item>
       <title>Ci/Cd</title>
       <link>https://yazilim.aykutasil.com/categories/ci/cd/</link>
-      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/ci/cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code Quality</title>
+      <link>https://yazilim.aykutasil.com/categories/code-quality/</link>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/code-quality/</guid>
       <description></description>
     </item>
     
@@ -89,6 +98,15 @@
       <pubDate>Wed, 11 Jan 2017 19:56:08 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Final Type</title>
+      <link>https://yazilim.aykutasil.com/categories/final-type/</link>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/final-type/</guid>
       <description></description>
     </item>
     
@@ -140,7 +158,7 @@
     <item>
       <title>Kotlin</title>
       <link>https://yazilim.aykutasil.com/categories/kotlin/</link>
-      <pubDate>Sun, 09 Jul 2017 00:00:00 +0300</pubDate>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/kotlin/</guid>
       <description></description>
@@ -152,6 +170,15 @@
       <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/mobile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mock</title>
+      <link>https://yazilim.aykutasil.com/categories/mock/</link>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/mock/</guid>
       <description></description>
     </item>
     
@@ -212,7 +239,7 @@
     <item>
       <title>Test</title>
       <link>https://yazilim.aykutasil.com/categories/test/</link>
-      <pubDate>Tue, 18 Sep 2018 11:51:07 +0300</pubDate>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/test/</guid>
       <description></description>

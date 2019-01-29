@@ -6,10 +6,41 @@
     <description>Recent content in Posts on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Mon, 10 Dec 2018 00:47:41 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 29 Jan 2019 15:38:29 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android Kotlin Test - Final Type Problem</title>
+      <link>https://yazilim.aykutasil.com/post/android_kotlin_final_mock_problem/</link>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_kotlin_final_mock_problem/</guid>
+      <description>Sorun Kotlin dili ile geliştirilen Android projelerinin test yazımı sırasında sınıfların veya metodların mocklanması, Java ile geliştirilen projelere göre bazı farklılıklar göstermektedir. Bu farklılığın sebeplerinden biri Kotlin ile oluşturulan sınıf veya metodların default olarak final olarak işaretlenmiş olmasıdır. Ve final tipindeki sınıfların mocklanması bazı sorunlar çıkarmaktadır.
+Çözüm Final tipindeki sınıfların veya metodların mocklama işlemi sırasında çıkan sorunu çözmenin birkaç farklı yöntemi vardır.
+Çözüm 1 (open ClassName) Test edeceğimiz sınıf ve metodun başına open ifadesini ekleyerek extend edilebilir hale getirmek.</description>
+    </item>
+    
+    <item>
+      <title>Android Static Code Analysis</title>
+      <link>https://yazilim.aykutasil.com/post/android_static_code_analysis/</link>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_static_code_analysis/</guid>
+      <description>Nedir ? Statik kod analizi, uygulama kodlarınızın mevcut standartlara uygunluğu, uygulama kodları içerisindeki değişken isimlerinin ilk harfinin küçük olması, sınıf isimlerinin büyük harfle başlaması gibi genelde kod görünümü ile alakalı sorunların bulunmasını sağlar. Bununla birlikte bazı statik kod analiz araçları uygulama kodlarınızı mantıksal çerçevede değerlendirmesini de sağlayabilir. Veya yazılan platform/dil özelinde çok sık yapılan bazı hatalı kodlamaların farkedilmesini sağlayabilir.
+Bir diğer faydası da uygulama kodlarını kaç kişi geliştiriyor olursa olsun sanki tek bir kişinin elinden çıkmış gibi düzenin korunmasını sağlar.</description>
+    </item>
+    
+    <item>
+      <title>Server Ip</title>
+      <link>https://yazilim.aykutasil.com/post/server_ip/</link>
+      <pubDate>Tue, 08 Jan 2019 23:20:28 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/server_ip/</guid>
+      <description> Problem Domain&amp;rsquo;i barındıran server&amp;rsquo;ın IP&amp;rsquo;sini bulmak istiyoruz.
+Çözüm Linux  Terminali aç host www.aykutasil.com şeklinde istediğin domain&amp;rsquo;i yaz Server IP:  www.aykutasil.com has address 104.24.114.254 www.aykutasil.com has address 104.24.115.254 www.aykutasil.com has IPv6 address 2606:4700:30::6818:73fe www.aykutasil.com has IPv6 address 2606:4700:30::6818:72fe  Windows  Komut penceresini aç. (cmd.exe) nslookup www.aykutasil.com şeklinde istediğin domain&amp;rsquo;i yaz Server IP:  Name: www.aykutasil.com Addresses: 2606:4700:30::6818:73fe 2606:4700:30::6818:72fe 104.24.115.254 104.24.114.254  </description>
+    </item>
     
     <item>
       <title>Bash Scripts</title>

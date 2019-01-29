@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code Quality on Software</title>
+    <link>https://yazilim.aykutasil.com/categories/code-quality/</link>
+    <description>Recent content in Code Quality on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Thu, 24 Jan 2019 23:55:53 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/categories/code-quality/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android Static Code Analysis</title>
+      <link>https://yazilim.aykutasil.com/post/android_static_code_analysis/</link>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_static_code_analysis/</guid>
+      <description>Nedir ? Statik kod analizi, uygulama kodlarınızın mevcut standartlara uygunluğu, uygulama kodları içerisindeki değişken isimlerinin ilk harfinin küçük olması, sınıf isimlerinin büyük harfle başlaması gibi genelde kod görünümü ile alakalı sorunların bulunmasını sağlar. Bununla birlikte bazı statik kod analiz araçları uygulama kodlarınızı mantıksal çerçevede değerlendirmesini de sağlayabilir. Veya yazılan platform/dil özelinde çok sık yapılan bazı hatalı kodlamaların farkedilmesini sağlayabilir.
+Bir diğer faydası da uygulama kodlarını kaç kişi geliştiriyor olursa olsun sanki tek bir kişinin elinden çıkmış gibi düzenin korunmasını sağlar.</description>
+    </item>
+    
+  </channel>
+</rss>

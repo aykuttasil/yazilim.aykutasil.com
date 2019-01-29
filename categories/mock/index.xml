@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mock on Software</title>
+    <link>https://yazilim.aykutasil.com/categories/mock/</link>
+    <description>Recent content in Mock on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Tue, 29 Jan 2019 15:38:29 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/categories/mock/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android Kotlin Test - Final Type Problem</title>
+      <link>https://yazilim.aykutasil.com/post/android_kotlin_final_mock_problem/</link>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_kotlin_final_mock_problem/</guid>
+      <description>Sorun Kotlin dili ile geliştirilen Android projelerinin test yazımı sırasında sınıfların veya metodların mocklanması, Java ile geliştirilen projelere göre bazı farklılıklar göstermektedir. Bu farklılığın sebeplerinden biri Kotlin ile oluşturulan sınıf veya metodların default olarak final olarak işaretlenmiş olmasıdır. Ve final tipindeki sınıfların mocklanması bazı sorunlar çıkarmaktadır.
+Çözüm Final tipindeki sınıfların veya metodların mocklama işlemi sırasında çıkan sorunu çözmenin birkaç farklı yöntemi vardır.
+Çözüm 1 (open ClassName) Test edeceğimiz sınıf ve metodun başına open ifadesini ekleyerek extend edilebilir hale getirmek.</description>
+    </item>
+    
+  </channel>
+</rss>

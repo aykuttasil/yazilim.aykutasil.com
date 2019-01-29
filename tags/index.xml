@@ -41,7 +41,7 @@
     <item>
       <title>Android</title>
       <link>https://yazilim.aykutasil.com/tags/android/</link>
-      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/android/</guid>
       <description></description>
@@ -194,7 +194,7 @@
     <item>
       <title>Cd</title>
       <link>https://yazilim.aykutasil.com/tags/cd/</link>
-      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/cd/</guid>
       <description></description>
@@ -203,9 +203,18 @@
     <item>
       <title>Ci</title>
       <link>https://yazilim.aykutasil.com/tags/ci/</link>
-      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ci/Cd</title>
+      <link>https://yazilim.aykutasil.com/tags/ci/cd/</link>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/ci/cd/</guid>
       <description></description>
     </item>
     
@@ -599,7 +608,7 @@
     <item>
       <title>Ip</title>
       <link>https://yazilim.aykutasil.com/tags/ip/</link>
-      <pubDate>Wed, 11 Jan 2017 18:05:02 +0300</pubDate>
+      <pubDate>Tue, 08 Jan 2019 23:20:28 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/ip/</guid>
       <description></description>
@@ -671,7 +680,7 @@
     <item>
       <title>Kotlin</title>
       <link>https://yazilim.aykutasil.com/tags/kotlin/</link>
-      <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/kotlin/</guid>
       <description></description>
@@ -1182,6 +1191,24 @@
     </item>
     
     <item>
+      <title>Static Code</title>
+      <link>https://yazilim.aykutasil.com/tags/static-code/</link>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/static-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Static Code Analysis</title>
+      <link>https://yazilim.aykutasil.com/tags/static-code-analysis/</link>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/static-code-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Submit</title>
       <link>https://yazilim.aykutasil.com/tags/submit/</link>
       <pubDate>Wed, 11 Jan 2017 19:26:49 +0300</pubDate>
@@ -1220,7 +1247,7 @@
     <item>
       <title>Test</title>
       <link>https://yazilim.aykutasil.com/tags/test/</link>
-      <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/test/</guid>
       <description></description>

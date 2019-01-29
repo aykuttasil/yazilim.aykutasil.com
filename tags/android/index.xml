@@ -6,10 +6,31 @@
     <description>Recent content in Android on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Sat, 01 Dec 2018 14:20:45 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 29 Jan 2019 15:38:29 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android Kotlin Test - Final Type Problem</title>
+      <link>https://yazilim.aykutasil.com/post/android_kotlin_final_mock_problem/</link>
+      <pubDate>Tue, 29 Jan 2019 15:38:29 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_kotlin_final_mock_problem/</guid>
+      <description>Sorun Kotlin dili ile geliştirilen Android projelerinin test yazımı sırasında sınıfların veya metodların mocklanması, Java ile geliştirilen projelere göre bazı farklılıklar göstermektedir. Bu farklılığın sebeplerinden biri Kotlin ile oluşturulan sınıf veya metodların default olarak final olarak işaretlenmiş olmasıdır. Ve final tipindeki sınıfların mocklanması bazı sorunlar çıkarmaktadır.
+Çözüm Final tipindeki sınıfların veya metodların mocklama işlemi sırasında çıkan sorunu çözmenin birkaç farklı yöntemi vardır.
+Çözüm 1 (open ClassName) Test edeceğimiz sınıf ve metodun başına open ifadesini ekleyerek extend edilebilir hale getirmek.</description>
+    </item>
+    
+    <item>
+      <title>Android Static Code Analysis</title>
+      <link>https://yazilim.aykutasil.com/post/android_static_code_analysis/</link>
+      <pubDate>Thu, 24 Jan 2019 23:55:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_static_code_analysis/</guid>
+      <description>Nedir ? Statik kod analizi, uygulama kodlarınızın mevcut standartlara uygunluğu, uygulama kodları içerisindeki değişken isimlerinin ilk harfinin küçük olması, sınıf isimlerinin büyük harfle başlaması gibi genelde kod görünümü ile alakalı sorunların bulunmasını sağlar. Bununla birlikte bazı statik kod analiz araçları uygulama kodlarınızı mantıksal çerçevede değerlendirmesini de sağlayabilir. Veya yazılan platform/dil özelinde çok sık yapılan bazı hatalı kodlamaların farkedilmesini sağlayabilir.
+Bir diğer faydası da uygulama kodlarını kaç kişi geliştiriyor olursa olsun sanki tek bir kişinin elinden çıkmış gibi düzenin korunmasını sağlar.</description>
+    </item>
     
     <item>
       <title>Android CircleCI Configuration</title>

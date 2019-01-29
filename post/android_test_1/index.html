@@ -75,7 +75,7 @@
 
 <meta itemprop="datePublished" content="2018-09-18T11:51:07&#43;03:00" />
 <meta itemprop="dateModified" content="2018-09-18T11:51:07&#43;03:00" />
-<meta itemprop="wordCount" content="1508">
+<meta itemprop="wordCount" content="1593">
 
 
 
@@ -229,7 +229,7 @@
 </blockquote>
 
 <ul>
-<li>Instrumentation test yapılırken sınıf <strong>@AndroidJUnitRunner</strong> annotations ı ile etiketlenmelidir.</li>
+<li>Instrumentation test yapılırken sınıf <strong>@AndroidJUnitRunner</strong> annotations&rsquo;ı ile etiketlenmelidir.</li>
 <li>Instrumentation testleri JVM yerine gerçek bir cihazda veya emülatör de koşturulur.</li>
 </ul>
 
@@ -237,7 +237,7 @@
 
 <ul>
 <li><strong>InstrumentationRegistry.getInstrumentation()</strong>, returns the Instrumentation currently running.</li>
-<li><strong>InstrumentationRegistry.getContext()</strong>, returns the Context of this Instrumentation’s package.</li>
+<li><strong>InstrumentationRegistry.getContext()</strong>, returns the Context of this Instrumentation&rsquo;s package.</li>
 <li><strong>InstrumentationRegistry.getTargetContext()</strong>, returns the application Context of the target application.</li>
 <li><strong>InstrumentationRegistry.getArguments()</strong>, returns a copy of arguments Bundle that was passed to this Instrumentation.</li>
 </ul>
@@ -268,7 +268,7 @@ It also gives access to the life cycle via the ActivityLifecycleMonitorRegistry.
 
 <p>şeklinde test edeceğimiz <strong>Activity</strong> nin oluşturulmasını sağlıyoruz.</p>
 
-<p>Aşağıdaki gibi activity nin lifecycle ına uygun testler yazılabilir. Burada <strong>onResume</strong> sonrası çalışan kod bloğu için test yazımını görebiliriz.</p>
+<p>Aşağıdaki gibi activity nin lifecycle&rsquo;ına uygun testler yazılabilir. Burada <strong>onResume</strong> sonrası çalışan kod bloğu için test yazımını görebiliriz.</p>
 
 <pre><code class="language-java">ActivityController controller = Robolectric.buildActivity(MyAwesomeActivity.class).create().start();
 Activity activity = controller.get();
@@ -285,7 +285,7 @@ activityController.resume();
 
 <p>Ne zaman ihtiyacımız olacak? Activity içindeki görünümlerle etkileşime girdiğinizde.</p>
 
-<p><strong>Robolectric.clickOn()</strong> gibi yöntemler, işlev görmesi için view&rsquo;in görünür ve düzgün şekilde eklenmesini gerektirir. Bunun için <strong>create()</strong> öğesinden sonra <strong>visible()</strong> öğesini çağırmalıyız.</p>
+<p><strong>Robolectric.clickOn()</strong> gibi yöntemler, işlev görmesi için view&rsquo;in görünür olması ve düzgün şekilde eklenmesini gerektirir. Bunun için <strong>create()</strong> öğesinden sonra <strong>visible()</strong> öğesini çağırmalıyız.</p>
 
 <h2 id="robolectric-4">Robolectric 4</h2>
 
@@ -316,7 +316,7 @@ dependency
 
 <p>test.kt (test package&rsquo;ı altında)</p>
 
-<pre><code class="language-kotlin">@RunWith(AndroidJUnit4::class)
+<pre><code class="language-java">@RunWith(AndroidJUnit4::class)
 class MainActivityTest {
     @get:Rule
     val rule = ActivityTestRule(MainActivity::class.java)
@@ -356,6 +356,20 @@ class MainActivityTest {
 <li>Test sürecinde bir objenin tüm alanlarını/metodlarını mocklamamız gerekiyor ise <strong>@Mock</strong> kullanılır.</li>
 <li>Eğer sınıf içerisinde sadece belli metodları mocklamamız gerekiyor(Partial Mocking) ve diğer alanların gerçek değerleri ile işlem yapılacak ise <strong>@Spy</strong> ile etiketlenir.</li>
 <li>Partial mocking can also be achieved using mock thenCallRealMethod()</li>
+</ul>
+
+<p><strong>Kotlin</strong> ile geliştirilen uygulamaların test yazımı sırasında <strong>mock</strong>lanmak istenen sınıflar, alanlar vs. kotlin dilinin yapısı gereği çeşitli hataların üretilmesine neden olur. Bu uyuşmazlığın sebeplerinden biri kotlin ile oluşturulan sınıfların, alanların default olarak <strong>final</strong> olması ve <strong>Mockito</strong>&lsquo;nun <strong>final</strong> sınıf veya alanları mocklayamamasıdır. Çözüm olarak sınıfların, fonksiyonların vs. başına <strong>open</strong> eklenmesi veya mockitoyu eklerken aşağıdaki kütüphanenin kullanılması gerekmektedir.</p>
+
+<ul>
+<li><code>testImplementation &quot;org.mockito:mockito-inline:2.23.16&quot;&quot;</code></li>
+<li><code>testImplementation &quot;org.mockito:mockito-core:2.23.16&quot;</code> bu satırı siliyoruz.</li>
+</ul>
+
+<p>Kotlin dilinin nimetlerinden yararlanarak test yazımı sırasında mockitonun kullanımını kolaylaştırmak için aşağıdaki kütüphaneyi kullanabilriz</p>
+
+<ul>
+<li><a href="https://github.com/nhaarman/mockito-kotlin">https://github.com/nhaarman/mockito-kotlin</a></li>
+<li><code>testImplementation &quot;com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0&quot;</code></li>
 </ul>
 
 <hr />
@@ -409,7 +423,7 @@ class MainActivityTest {
 
 <p>Mockito gibi bir kullanım şekli vardır.</p>
 
-<pre><code class="language-kotlin">val mockServer = MockWebServer()
+<pre><code class="language-java">val mockServer = MockWebServer()
 mockServer.start()
 
 
@@ -424,7 +438,7 @@ val recordedRequest = mockServer.takeRequest()
 mockedRequest.path // /blogs
 </code></pre>
 
-<pre><code class="language-kotlin">@RunWith(JUnit4::class)
+<pre><code class="language-java">@RunWith(JUnit4::class)
 class BlogRepositoryUTest {
   
     lateinit var blogRepository : BlogRepository
@@ -564,7 +578,7 @@ class BlogRepositoryUTest {
 <p>getJson(path = &ldquo;json/blog/blogs.json&rdquo;) ?</p>
 </blockquote>
 
-<p><img src="https://yazilim.aykutasil.com/image/mockwebserber.png" height="400px" /></p>
+<p><img src="https://yazilim.aykutasil.com/image/mockwebserber.png" alt="Mock Web Server" title="Mock Web Server" /></p>
 
 <h2 id="dispatcher">Dispatcher</h2>
 
@@ -621,6 +635,12 @@ server.setDispatcher(dispatcher);
 <li><a href="https://github.com/googlesamples/android-testing">https://github.com/googlesamples/android-testing</a></li>
 <li><a href="https://github.com/square/okhttp/blob/master/mockwebserver/">https://github.com/square/okhttp/blob/master/mockwebserver/</a></li>
 <li><a href="https://medium.com/appunite-edu-collection/ui-testing-on-android-with-dagger-espresso-and-mockito-12d37e5f613d">https://medium.com/appunite-edu-collection/ui-testing-on-android-with-dagger-espresso-and-mockito-12d37e5f613d</a></li>
+<li><a href="https://medium.com/@rafael_toledo/setting-up-an-unified-coverage-report-in-android-with-jacoco-robolectric-and-espresso-ffe239aaf3fa">https://medium.com/@rafael_toledo/setting-up-an-unified-coverage-report-in-android-with-jacoco-robolectric-and-espresso-ffe239aaf3fa</a></li>
+<li><a href="https://github.com/arturdm/jacoco-android-gradle-plugin">https://github.com/arturdm/jacoco-android-gradle-plugin</a></li>
+<li><a href="https://medium.com/@fabioCollini/android-testing-using-dagger-2-mockito-and-a-custom-junit-rule-c8487ed01b56">https://medium.com/@fabioCollini/android-testing-using-dagger-2-mockito-and-a-custom-junit-rule-c8487ed01b56</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-testing/index.html?index=..%2F..index#">https://codelabs.developers.google.com/codelabs/android-testing/index.html?index=..%2F..index#</a></li>
+<li><a href="https://medium.com/androiddevelopers/write-once-run-everywhere-tests-on-android-88adb2ba20c5">https://medium.com/androiddevelopers/write-once-run-everywhere-tests-on-android-88adb2ba20c5</a></li>
+<li><a href="https://github.com/googlesamples/android-testing-templates">https://github.com/googlesamples/android-testing-templates</a></li>
 </ul>
 
     </div>
