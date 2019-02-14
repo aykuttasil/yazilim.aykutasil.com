@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yazilim.aykutasil.com/post/android_service/</loc>
+    <lastmod>2019-02-14T13:10:18+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/post/android_kotlin_final_mock_problem/</loc>
     <lastmod>2019-01-29T15:38:29+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -494,14 +501,14 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/android/</loc>
-    <lastmod>2019-01-29T15:38:29+03:00</lastmod>
+    <lastmod>2019-02-14T13:10:18+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/android/</loc>
-    <lastmod>2019-01-29T15:38:29+03:00</lastmod>
+    <lastmod>2019-02-14T13:10:18+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1159,7 +1166,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/mobile/</loc>
-    <lastmod>2018-12-03T14:20:45+03:00</lastmod>
+    <lastmod>2019-02-14T13:10:18+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1355,7 +1362,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/post/</loc>
-    <lastmod>2019-01-29T15:38:29+03:00</lastmod>
+    <lastmod>2019-02-14T13:10:18+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1452,6 +1459,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/service/</loc>
+    <lastmod>2019-02-14T13:10:18+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/sh/</loc>
     <lastmod>2018-12-10T00:47:41+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1488,7 +1502,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/</loc>
-    <lastmod>2019-01-29T15:38:29+03:00</lastmod>
+    <lastmod>2019-02-14T13:10:18+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

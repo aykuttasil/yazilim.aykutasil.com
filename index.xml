@@ -6,10 +6,21 @@
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Tue, 29 Jan 2019 15:38:29 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 14 Feb 2019 13:10:18 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android Service</title>
+      <link>https://yazilim.aykutasil.com/post/android_service/</link>
+      <pubDate>Thu, 14 Feb 2019 13:10:18 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_service/</guid>
+      <description>Android Service Android&amp;rsquo;in temel bileşenlerinden biri olan Service&amp;lsquo;ler kısaca UI(arayüz) olmayan Activity&amp;lsquo;lere benzetebiliriz. Tabi ki kendine göre ek özellikleri bulunmaktadır. Service tanımlaması AndroidManifest.xml içerisinde tanımlı olmalıdır. Aksi takdirde çalışmaz. &amp;lt;service&amp;gt; elementinin alabileceği özellikler aşağıdaki gibidir.
+Niçin kullanılır? Temel olarak ifade etmek gerekirse Service&amp;lsquo;lerin kullanım amacı uzun süren ve arka planda(background) çalışan taskler oluşturmaktır. Bununla birlikte diğer uygulamalar tarafından çağırılabilen iletişim imkanı sağlar.
+Service tanımlanması &amp;lt;service android:description=&amp;quot;string resource&amp;quot; android:directBootAware=[&amp;quot;true&amp;quot; | &amp;quot;false&amp;quot;] android:enabled=[&amp;quot;true&amp;quot; | &amp;quot;false&amp;quot;] android:exported=[&amp;quot;true&amp;quot; | &amp;quot;false&amp;quot;] android:icon=&amp;quot;drawable resource&amp;quot; android:isolatedProcess=[&amp;quot;true&amp;quot; | &amp;quot;false&amp;quot;] android:label=&amp;quot;string resource&amp;quot; android:name=&amp;quot;string&amp;quot; android:permission=&amp;quot;string&amp;quot; android:process=&amp;quot;string&amp;quot; &amp;gt; .</description>
+    </item>
     
     <item>
       <title>Android Kotlin Test - Final Type Problem</title>

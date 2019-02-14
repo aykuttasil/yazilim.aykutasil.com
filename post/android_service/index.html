@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Android Service - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="Android Service Android&amp;rsquo;in temel bileşenlerinden biri olan Service&amp;lsquo;ler kısaca UI(arayüz) olmayan Activity&amp;lsquo;lere benzetebiliriz. Tabi ki kendine göre ek özellikleri bulunmaktadır. Service tanımlaması AndroidManifest.xml içerisinde tanımlı olmalıdır. Aksi takdirde çalışmaz. &amp;lt;service&amp;gt; elementinin alabileceği özellikler aşağıdaki gibidir.
+Niçin kullanılır? Temel olarak ifade etmek gerekirse Service&amp;lsquo;lerin kullanım amacı uzun süren ve arka planda(background) çalışan taskler oluşturmaktır. Bununla birlikte diğer uygulamalar tarafından çağırılabilen iletişim imkanı sağlar.
+Service tanımlanması &amp;lt;service android:description=&amp;quot;string resource&amp;quot; android:directBootAware=[&amp;quot;true&amp;quot; | &amp;quot;false&amp;quot;] android:enabled=[&amp;quot;true&amp;quot; | &amp;quot;false&amp;quot;] android:exported=[&amp;quot;true&amp;quot; | &amp;quot;false&amp;quot;] android:icon=&amp;quot;drawable resource&amp;quot; android:isolatedProcess=[&amp;quot;true&amp;quot; | &amp;quot;false&amp;quot;] android:label=&amp;quot;string resource&amp;quot; android:name=&amp;quot;string&amp;quot; android:permission=&amp;quot;string&amp;quot; android:process=&amp;quot;string&amp;quot; &amp;gt; ." />
+<meta name="keywords" content="android, service" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="https://yazilim.aykutasil.com/post/android_service/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="https://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="https://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="https://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Android Service" />
+<meta property="og:description" content="Android Service Android&rsquo;in temel bileşenlerinden biri olan Service&lsquo;ler kısaca UI(arayüz) olmayan Activity&lsquo;lere benzetebiliriz. Tabi ki kendine göre ek özellikleri bulunmaktadır. Service tanımlaması AndroidManifest.xml içerisinde tanımlı olmalıdır. Aksi takdirde çalışmaz. &lt;service&gt; elementinin alabileceği özellikler aşağıdaki gibidir.
+Niçin kullanılır? Temel olarak ifade etmek gerekirse Service&lsquo;lerin kullanım amacı uzun süren ve arka planda(background) çalışan taskler oluşturmaktır. Bununla birlikte diğer uygulamalar tarafından çağırılabilen iletişim imkanı sağlar.
+Service tanımlanması &lt;service android:description=&quot;string resource&quot; android:directBootAware=[&quot;true&quot; | &quot;false&quot;] android:enabled=[&quot;true&quot; | &quot;false&quot;] android:exported=[&quot;true&quot; | &quot;false&quot;] android:icon=&quot;drawable resource&quot; android:isolatedProcess=[&quot;true&quot; | &quot;false&quot;] android:label=&quot;string resource&quot; android:name=&quot;string&quot; android:permission=&quot;string&quot; android:process=&quot;string&quot; &gt; ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yazilim.aykutasil.com/post/android_service/" />
+
+
+
+<meta property="article:published_time" content="2019-02-14T13:10:18&#43;03:00"/>
+
+<meta property="article:modified_time" content="2019-02-14T13:10:18&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Android Service">
+<meta itemprop="description" content="Android Service Android&rsquo;in temel bileşenlerinden biri olan Service&lsquo;ler kısaca UI(arayüz) olmayan Activity&lsquo;lere benzetebiliriz. Tabi ki kendine göre ek özellikleri bulunmaktadır. Service tanımlaması AndroidManifest.xml içerisinde tanımlı olmalıdır. Aksi takdirde çalışmaz. &lt;service&gt; elementinin alabileceği özellikler aşağıdaki gibidir.
+Niçin kullanılır? Temel olarak ifade etmek gerekirse Service&lsquo;lerin kullanım amacı uzun süren ve arka planda(background) çalışan taskler oluşturmaktır. Bununla birlikte diğer uygulamalar tarafından çağırılabilen iletişim imkanı sağlar.
+Service tanımlanması &lt;service android:description=&quot;string resource&quot; android:directBootAware=[&quot;true&quot; | &quot;false&quot;] android:enabled=[&quot;true&quot; | &quot;false&quot;] android:exported=[&quot;true&quot; | &quot;false&quot;] android:icon=&quot;drawable resource&quot; android:isolatedProcess=[&quot;true&quot; | &quot;false&quot;] android:label=&quot;string resource&quot; android:name=&quot;string&quot; android:permission=&quot;string&quot; android:process=&quot;string&quot; &gt; .">
+
+
+<meta itemprop="datePublished" content="2019-02-14T13:10:18&#43;03:00" />
+<meta itemprop="dateModified" content="2019-02-14T13:10:18&#43;03:00" />
+<meta itemprop="wordCount" content="436">
+
+
+
+<meta itemprop="keywords" content="android,service," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Android Service"/>
+<meta name="twitter:description" content="Android Service Android&rsquo;in temel bileşenlerinden biri olan Service&lsquo;ler kısaca UI(arayüz) olmayan Activity&lsquo;lere benzetebiliriz. Tabi ki kendine göre ek özellikleri bulunmaktadır. Service tanımlaması AndroidManifest.xml içerisinde tanımlı olmalıdır. Aksi takdirde çalışmaz. &lt;service&gt; elementinin alabileceği özellikler aşağıdaki gibidir.
+Niçin kullanılır? Temel olarak ifade etmek gerekirse Service&lsquo;lerin kullanım amacı uzun süren ve arka planda(background) çalışan taskler oluşturmaktır. Bununla birlikte diğer uygulamalar tarafından çağırılabilen iletişim imkanı sağlar.
+Service tanımlanması &lt;service android:description=&quot;string resource&quot; android:directBootAware=[&quot;true&quot; | &quot;false&quot;] android:enabled=[&quot;true&quot; | &quot;false&quot;] android:exported=[&quot;true&quot; | &quot;false&quot;] android:icon=&quot;drawable resource&quot; android:isolatedProcess=[&quot;true&quot; | &quot;false&quot;] android:label=&quot;string resource&quot; android:name=&quot;string&quot; android:permission=&quot;string&quot; android:process=&quot;string&quot; &gt; ."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Android Service</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-02-14 </span>
+        <div class="post-category">
+            
+              <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+            
+              <a href="https://yazilim.aykutasil.com/categories/mobile/"> mobile </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#android-service">Android Service</a>
+<ul>
+<li><a href="#niçin-kullanılır">Niçin kullanılır?</a></li>
+<li><a href="#service-tanımlanması">Service tanımlanması</a>
+<ul>
+<li><a href="#android-description">android:description</a></li>
+<li><a href="#android-directbootaware">android:directBootAware</a></li>
+<li><a href="#android-enabled">android:enabled</a></li>
+<li><a href="#android-exported">android:exported</a></li>
+<li><a href="#android-icon">android:icon</a></li>
+<li><a href="#android-isolatedprocess">android:isolatedProcess</a></li>
+<li><a href="#android-label">android:label</a></li>
+<li><a href="#android-name">android:name</a></li>
+<li><a href="#android-process">android:process</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#kaynaklar">Kaynaklar</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h1 id="android-service">Android Service</h1>
+
+<p>Android&rsquo;in temel bileşenlerinden biri olan <strong>Service</strong>&lsquo;ler kısaca <strong>UI(arayüz)</strong> olmayan <strong>Activity</strong>&lsquo;lere benzetebiliriz. Tabi ki kendine göre ek özellikleri bulunmaktadır.
+<strong>Service</strong> tanımlaması <strong>AndroidManifest.xml</strong> içerisinde tanımlı olmalıdır. Aksi takdirde çalışmaz. <strong>&lt;service&gt;</strong> elementinin alabileceği özellikler aşağıdaki gibidir.</p>
+
+<h2 id="niçin-kullanılır">Niçin kullanılır?</h2>
+
+<p>Temel olarak ifade etmek gerekirse <strong>Service</strong>&lsquo;lerin kullanım amacı uzun süren ve arka planda(background) çalışan taskler oluşturmaktır. Bununla birlikte diğer uygulamalar tarafından çağırılabilen iletişim imkanı sağlar.</p>
+
+<h2 id="service-tanımlanması">Service tanımlanması</h2>
+
+<pre><code class="language-xml">&lt;service android:description=&quot;string resource&quot;
+         android:directBootAware=[&quot;true&quot; | &quot;false&quot;]
+         android:enabled=[&quot;true&quot; | &quot;false&quot;]
+         android:exported=[&quot;true&quot; | &quot;false&quot;]
+         android:icon=&quot;drawable resource&quot;
+         android:isolatedProcess=[&quot;true&quot; | &quot;false&quot;]
+         android:label=&quot;string resource&quot;
+         android:name=&quot;string&quot;
+         android:permission=&quot;string&quot;
+         android:process=&quot;string&quot; &gt;
+    . . .
+&lt;/service&gt;
+</code></pre>
+
+<h3 id="android-description">android:description</h3>
+
+<p><strong>Service</strong>&lsquo;in amacını kullanıcıya açıklamak için kullanılır.</p>
+
+<h3 id="android-directbootaware">android:directBootAware</h3>
+
+<p>Android 7 ile birlikte gelen <strong>Direct Boot</strong> mode özelliği ile ilgilidir. Android sistemi, güvenlik konusunda çeşitli varsayımlar dahilinde şifreleme seçenekleri sunar. Örneğin, cihaz ekran kilidi aktif iken uygulamanın erişebileceği dosyalar ile ekran kilidi pasif iken erişebileceği dosyalar farklıdır. Bu sınırlamalar ve bu sınırlamaların aşılması gereken durumlar için aşağıdaki linke bakabilirsiniz.</p>
+
+<ul>
+<li><a href="https://developer.android.com/training/articles/direct-boot">https://developer.android.com/training/articles/direct-boot</a></li>
+</ul>
+
+<h3 id="android-enabled">android:enabled</h3>
+
+<p>Belirtilen servisin sistem tarafından çalıştırılabilir olup olmamasını belirler. Varsayılan değeri = true.</p>
+
+<h3 id="android-exported">android:exported</h3>
+
+<p>Diğer uygulamaların belirtilen servisi çalıştırabilir veya etkileşim kurabilir olup olmamasını belirler.
+Eğer <strong>true</strong> olarak belirlenmiş ise başka uygulamalar tarafından erişilebilir demektir. <strong>false</strong> olarak belirtilmesi durumunda başka uygulamalar tarafından erişilemez fakat aynı <strong>user ID</strong> ile imzalanmış uygulamalar tarafından erişebilir demektir.</p>
+
+<p>Default değeri aşağıdaki durumlara göre belirlenir.</p>
+
+<ul>
+<li>Eğer servis tanımı içerisinde <strong>intent-filter</strong> belirlenmiş ise default olarak <strong>true</strong> olacaktır.</li>
+<li>Diğer durumlarda default değer <strong>false</strong> olacaktır.</li>
+</ul>
+
+<h3 id="android-icon">android:icon</h3>
+
+<p>Servisi temsil eden icon belirlemek için kullanılır. Eğer bu özelliğe bir atama yapılmaz ise <strong>application</strong> elementinde belirlenen <strong>icon</strong> özelliği default olarak alınır.</p>
+
+<h3 id="android-isolatedprocess">android:isolatedProcess</h3>
+
+<p>Bu özelliğin <strong>true</strong> olarak belirlenmesi, ilgili servisin diğer uygulama processlerinden tamamen farklı izole bir process&rsquo;de çalışacak olması anlamına gelir.</p>
+
+<h3 id="android-label">android:label</h3>
+
+<p>Kullanıcı tarafından gözükecek olan service adını belirlemek için kullanılır. Eğer atama yapılmaz ise <strong>application</strong> elementi içerisindeki <strong>label</strong> özelliği değeri default olarak atanır.</p>
+
+<h3 id="android-name">android:name</h3>
+
+<p>Service class name&rsquo;i bu etiket altında belirlenir. Örneğin: com.example.project.MyService</p>
+
+<p>### android:permission</p>
+
+<p>Service çağırıldığında uygulama tarafından bu etiket altın belirtilen izinlerin sağlanmış olması gerekmektedir. Aksi takdirde ilgili service çalışmayacaktır.
+Örneğin, service içerisinde location API&rsquo;si kullanılıyor ise <code>android:permission=&quot;android.permission.ACCESS_FINE_LOCATION&quot;</code> şeklinde tanımlama yapılması ilgili servisi koruma altına alacak yani ilgili iznin sağlanması dahilinde çalışacağını garanti etmiş olacaktır.</p>
+
+<h3 id="android-process">android:process</h3>
+
+<p>Normalde uygulamanın tüm bileşenleri, <strong>uygulama.package.name</strong> adında tek bir process&rsquo;de çalışır. Fakat componentler bu default özelliği ezerek kendi process&rsquo;inde koşabilir ve bu sayede uygulama işlemlerinin birden fazla process&rsquo;de çalışmasını sağlayabilir.</p>
+
+<p>Bu özelliğe atama yapılır iken <code>android:process=&quot;:MyServiceProcess&quot;</code> şeklinde <strong>:</strong> ile başlayan bir ifade girilecek olursa, yeni oluşturulacak process sadece kendi uygulamamız tafafından kullanılabilir olacaktır.</p>
+
+<p>Fakat <code>android:process=&quot;myServiceProcess&quot;</code> şeklinde yani <strong>:</strong> olmadan ve küçük harfle başlayan bir değer girilmesi durumunda, yeni oluşturulacak process başka uygulamalar tarafından da kullanılabilir olacaktır. Bu sayede kaynak kullanımı azaltılmış olup ilgili bileşenlerin aynı process&rsquo;i paylaşmaları sağlabilir.</p>
+
+<h1 id="kaynaklar">Kaynaklar</h1>
+
+<ul>
+<li><a href="https://developer.android.com/guide/topics/manifest/service-element">https://developer.android.com/guide/topics/manifest/service-element</a></li>
+</ul>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2019-02-14</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="https://yazilim.aykutasil.com/tags/android/">android</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/service/">service</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="https://yazilim.aykutasil.com/post/android_kotlin_final_mock_problem/">
+            <span class="next-text nav-default">Android Kotlin Test - Final Type Problem</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="https://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
