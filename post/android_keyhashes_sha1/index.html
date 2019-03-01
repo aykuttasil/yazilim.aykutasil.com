@@ -197,7 +197,7 @@ SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacakt
 
 <p>Windows komut satırına aşağıdaki komutu yazarak ulaşabilirsiniz.</p>
 
-<pre><code>keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
+<pre><code class="language-bash">keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 </code></pre>
 
 <p>openssl hatası alırsanız <a href="https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip">https://code.google.com/p/openssl-for-windows/downloads/detail?name=openssl-0.9.8k_X64.zip</a> adresindeki dosyayı indirdikten sonra çıkan dosyadaki bin klasörünü ortam değişkenlerindeki PATH kısmına eklerseniz sorun ortadan kalkacaktır.</p>
@@ -208,7 +208,7 @@ SHA1 ulaşmak için komut satırına aşağıdaki kodu yazmanız yeterli olacakt
 
 <p><strong>your_user_name</strong> yerine kendi kullanıcı adınızı yazmayı unutmayın.</p>
 
-<pre><code>keytool -list -v -keystore c:\users\your_user_name\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
+<pre><code class="language-bash">keytool -list -v -keystore c:\users\your_user_name\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android
 </code></pre>
 
     </div>

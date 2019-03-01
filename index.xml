@@ -6,10 +6,21 @@
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Thu, 14 Feb 2019 13:10:18 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 25 Feb 2019 00:00:27 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android DataBinding</title>
+      <link>https://yazilim.aykutasil.com/post/android_databinding/</link>
+      <pubDate>Mon, 25 Feb 2019 00:00:27 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_databinding/</guid>
+      <description>Android DataBinding Android dünyasında temiz kod(Clean Code) günümüzde çokça konuşulan konular arasında yer almakta ve neden temiz kod yazmalıyız ile alakalı bir çok makale yazılmaktadır.
+Temiz kod yazmak için MVP, MVVM vs. kod tasarım mimarilerinden birini seçerek yazılan kodların ve etkileşimlerinin birbirinden ayrımını sağlamaktayız. Bu kod tasarım kalıpları ile beraber bize çok faydası olacak bir mimari daha bulunmakta:DataBinding
+DataBinding Uygulamamızın arayüzünü oluşturmak için kullandığımız layout xml dosyalarına gerekli datayı doğrudan entegre ederek, arayüz değişikliği ile ilgili tüm akışların harici müdahaleye gerek kalmadan otomatik olarak gerçekleşmesini sağlayabiliriz.</description>
+    </item>
     
     <item>
       <title>Android Service</title>
