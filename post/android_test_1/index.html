@@ -75,7 +75,7 @@
 
 <meta itemprop="datePublished" content="2018-09-18T11:51:07&#43;03:00" />
 <meta itemprop="dateModified" content="2018-09-18T11:51:07&#43;03:00" />
-<meta itemprop="wordCount" content="1593">
+<meta itemprop="wordCount" content="1090">
 
 
 
@@ -270,12 +270,7 @@ It also gives access to the life cycle via the ActivityLifecycleMonitorRegistry.
 
 <p>Aşağıdaki gibi activity nin lifecycle&rsquo;ına uygun testler yazılabilir. Burada <strong>onResume</strong> sonrası çalışan kod bloğu için test yazımını görebiliriz.</p>
 
-<pre><code class="language-java">ActivityController controller = Robolectric.buildActivity(MyAwesomeActivity.class).create().start();
-Activity activity = controller.get();
-// assert that something hasn't happened
-activityController.resume();
-// assert it happened!
-</code></pre>
+<script src="https://gist.github.com/aykuttasil/3bd879a909ba1fe1567e0480833db476.js"></script>
 
 <blockquote>
 <p><strong>visible()</strong></p>
@@ -296,37 +291,11 @@ activityController.resume();
 
 <p>build.gradle</p>
 
-<pre><code class="language-bash">android
-{
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
-}
-
-dependency
-{
-    testImplementation 'com.android.support.test:rules:1.1.1'
-    testImplementation 'com.android.support.test: runner:1.1.1'
-    testImplementation 'com.android.support.test.espresso:espresso-core:3.1.1'
-    testImplementation &quot;org.robolectric:robolectric:4.0.2&quot;
-}
-</code></pre>
+<script src="https://gist.github.com/aykuttasil/a2e40a8dcf6bdc7d0297d8660da56b4b.js"></script>
 
 <p>test.kt (test package&rsquo;ı altında)</p>
 
-<pre><code class="language-java">@RunWith(AndroidJUnit4::class)
-class MainActivityTest {
-    @get:Rule
-    val rule = ActivityTestRule(MainActivity::class.java)
-
-    @Test
-    fun testAssertHelloText() {
-        onView(withId(R.id.hello)).check(matches(withText(&quot;Hello World!&quot;)))
-    }
-}
-</code></pre>
+<script src="https://gist.github.com/aykuttasil/e79486683816af6b2358a5d77bae9a7a.js"></script>
 
 <p>Yukarıda <strong>RobolectricRunner</strong> yerine <strong>AndroidJunit4</strong> kullanılmıştır. Ve <strong>Espreesso</strong>&lsquo;nun tüm yetenekleri kullanılabilir. Normalde <strong>Espresso</strong> testi yazılması için <strong>androidTest</strong> package&rsquo;ı altında tanımlama yapmak ve gerçek bir cihazda ya da emülatör de çalıştırmamız gerekecekti.</p>
 
@@ -334,12 +303,7 @@ class MainActivityTest {
 
 <h1 id="mockito">Mockito</h1>
 
-<pre><code class="language-bash">dependencies {
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.23.4'
-    testImplementation 'org.mockito:mockito-android:2.22.0'
-}
-</code></pre>
+<script src="https://gist.github.com/aykuttasil/73b847750cedb0d63f818706d7165655.js"></script>
 
 <ul>
 <li>Yukarıda ki bağımlılıklar eklenir.</li>
@@ -423,142 +387,9 @@ class MainActivityTest {
 
 <p>Mockito gibi bir kullanım şekli vardır.</p>
 
-<pre><code class="language-java">val mockServer = MockWebServer()
-mockServer.start()
+<script src="https://gist.github.com/aykuttasil/8c4367fa073b6e92b24c34e11fe7e814.js"></script>
 
-
-val mockedResponse = MockResponse()
-mockedResponse.setResponseCode(200)
-mockedResponse.setBody(&quot;{}&quot;) // sample JSON
-
-mockServer.enqueue(mockedReponse)
-
-
-val recordedRequest = mockServer.takeRequest()
-mockedRequest.path // /blogs
-</code></pre>
-
-<pre><code class="language-java">@RunWith(JUnit4::class)
-class BlogRepositoryUTest {
-  
-    lateinit var blogRepository : BlogRepository
-    lateinit var mockServer : MockWebServer
-    lateinit var blogService : BlogService
-  
-    @Before @Throws fun setUp() {
-        // Initialize mock webserver
-        mockServer = MockWebServer()
-        // Start the local server
-        mockServer.start()
-
-        // Get an okhttp client
-        val okHttpClient = OkHttpClient.Builder()
-                .build()
-
-        // Get an instance of Retrofit
-        val retrofit = Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(&quot;https://api.test.com&quot;)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
-                .build()
-
-        // Get an instance of blogService
-        blogService = retrofit.create(BlogService::class.java)
-        // Initialized repository
-        blogRepository = BlogRepository(blogService)
-    }
-
-    @After @Throws fun tearDown() {
-        // We're done with tests, shut it down
-        mockServer.shutdown()
-    }
-
-    @Test fun testBlogsReturnsListOfBlogs() {
-        val testObserver = TestObserver&lt;List&lt;Blog&gt;&gt;()
-        val path = &quot;/blogs&quot;
-
-        // Mock a response with status 200 and sample JSON output
-        val mockReponse = MockReponse()
-                            .setResponseCode(200)
-                            .setBody(getJson(&quot;json/blog/blogs.json&quot;))
-        // Enqueue request
-        mockServer.enqueue(mockResponse)
-
-        // Call the API
-        blogRepository.blogs().subscribe(testObserver)
-        testObserver.awaitTerminalEvent(2, TimeUnit.SECONDS)
-
-        // No errors
-        testObserver.assertNoErrors()
-        // One list emitted
-        testObserver.assertValueCount(1)
-
-        // Get the request that was just made
-        val request = mockServer.takeRequest()
-        // Make sure we made the request to the required path
-        assertEquals(path, request.path)
-    }
-
-    // Network ağ durumu testi
-    @Test fun testBlogsReturnsError() {
-        val testObserver = TestObserver&lt;List&lt;Blog&gt;&gt;()
-        val path = &quot;/blogs&quot;
-
-        // Mock a response with status 200 and sample JSON output
-        val mockReponse = MockReponse()
-                            .setResponseCode(500) // Simulate a 500 HTTP Code
-
-        // Enqueue request
-        mockServer.enqueue(mockResponse)
-
-        // Call the API
-        blogRepository.blogs().subscribe(testObserver)
-        testObserver.awaitTerminalEvent(2, TimeUnit.SECONDS)
-
-        // No values
-        testObserver.assertNoValues()
-        // One error recorded
-        assertEquals(1, testObserver.errorCount())
-
-        // Get the request that was just made
-        val request = mockServer.takeRequest()
-        // Make sure we made the request to the required path
-        assertEquals(path, request.path)
-    }
-
-    // SocketTimeoutException
-    @Test fun testBlogsReturnsError1() {
-        val testObserver = TestObserver&lt;List&lt;Blog&gt;&gt;()
-
-        val path = &quot;/blogs&quot;
-
-        // Mock a response with status 200 and sample JSON output
-        val mockReponse = MockReponse()
-                            .setResponseCode(200)
-                            .throttleBody(1024, 1, TimeUnit.SECONDS) // Simulate SocketTimeout
-                            .setBody(getJson(&quot;json/blog/blogs.json&quot;))
-
-        // Enqueue request
-        mockServer.enqueue(mockResponse)
-
-        // Call the API
-        blogRepository.blogs().subscribe(testObserver)
-        testObserver.awaitTerminalEvent(2, TimeUnit.SECONDS)
-
-        // No values
-        testObserver.assertNoValues()
-        // One error recorded
-        assertEquals(1, testObserver.errorCount())
-
-        // Get the request that was just made
-        val request = mockServer.takeRequest()
-        // Make sure we made the request to the required path
-        assertEquals(path, request.path)
-    }
-
-}
-</code></pre>
+<script src="https://gist.github.com/aykuttasil/7c85a90aed4c0cefe92cc66889f40401.js"></script>
 
 <p>SocketTimeoutException testi çalıştırılırken aşağıdaki düzenlemeler de yapılmalıdır:</p>
 
@@ -567,12 +398,7 @@ class BlogRepositoryUTest {
 <li>Client için okuma/yazma zaman sürelerini düzenliyoruz.</li>
 </ul>
 
-<pre><code class="language-kotlin">val okHttpClient = OkHttpClient.Builder()
-        .connectTimeout(2, TimeUnit.SECONDS) // For testing purposes
-        .readTimeout(2, TimeUnit.SECONDS) // For testing purposes
-        .writeTimeout(2, TimeUnit.SECONDS)
-        .build()
-</code></pre>
+<script src="https://gist.github.com/aykuttasil/dcf702649fdd1f1b97a52fc03d50eae3.js"></script>
 
 <blockquote>
 <p>getJson(path = &ldquo;json/blog/blogs.json&rdquo;) ?</p>
@@ -584,23 +410,7 @@ class BlogRepositoryUTest {
 
 <p>Her bir response&rsquo;u ayrı ayrı mocklamak yerine aşağıdaki gibi bir yapıda kullanılabilir.</p>
 
-<pre><code class="language-java">final Dispatcher dispatcher = new Dispatcher() {
-
-    @Override
-    public MockResponse dispatch(RecordedRequest request) throws InterruptedException {
-
-        if (request.getPath().equals(&quot;/v1/login/auth/&quot;)){
-            return new MockResponse().setResponseCode(200);
-        } else if (request.getPath().equals(&quot;v1/check/version/&quot;)){
-            return new MockResponse().setResponseCode(200).setBody(&quot;version=9&quot;);
-        } else if (request.getPath().equals(&quot;/v1/profile/info&quot;)) {
-            return new MockResponse().setResponseCode(200).setBody(&quot;{\\\&quot;info\\\&quot;:{\\\&quot;name\&quot;:\&quot;Lucas Albuquerque\&quot;,\&quot;age\&quot;:\&quot;21\&quot;,\&quot;gender\&quot;:\&quot;male\&quot;}}&quot;);
-        }
-        return new MockResponse().setResponseCode(404);
-    }
-};
-server.setDispatcher(dispatcher);
-</code></pre>
+<script src="https://gist.github.com/aykuttasil/fc8e49413b7d5cc4e8857102796cea0e.js"></script>
 
 <hr />
 
@@ -608,14 +418,7 @@ server.setDispatcher(dispatcher);
 
 <p>Unit testlerin yazımı sırasında mocklanmaya gerek olmayan nesnelerin default değerini dönmesini belirtmek için aşağıdaki şekilde düzenleme yapılmalıdır.</p>
 
-<pre><code class="language-bash">android {
-    // ...
-
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
-}
-</code></pre>
+<script src="https://gist.github.com/aykuttasil/108d9400fb421101d852c287da2afe01.js"></script>
 
 <hr />
 
