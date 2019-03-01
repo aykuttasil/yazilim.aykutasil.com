@@ -267,7 +267,7 @@ Yani, <strong>EditText</strong>&lsquo;e yazılan değerler aynı anda <strong>Vi
 <p>Çift yönlü binding de ise data akışı <strong>viewmodel &lt;-&gt; layout</strong> şeklinde olacaktır.</p>
 
 <ul>
-<li><code>android:enabled=&quot;@{!TextUtils.isEmpty(viewmodel.liveEmail) &amp;amp;&amp;amp; !TextUtils.isEmpty(viewmodel.livePass)}&quot;</code> satırında layout bileşenimizin, bizim durumumuz için Button, enable olup olmamasını bir koşula bağladık. Ve dinamik değişen değerler neticesinde eğer koşullar sağlanıyor ise <strong>enable</strong>, sağlanmıyor ise <strong>disable</strong> olacaktır. Burada <strong>TextUtils</strong> sınıfından bir fonksiyon kullandık. Bu şekilde harici bir sınıfa erişim sağlamak istiyorsan bunu layout dosyamızda <strong>import</strong> ederek belirtmeliyiz.</li>
+<li><code>android:enabled=&quot;@{!TextUtils.isEmpty(viewmodel.liveEmail) &amp;amp;&amp;amp; !TextUtils.isEmpty(viewmodel.livePass)}&quot;</code> satırında layout bileşenimizin, bizim durumumuz için <strong>Button</strong>, enable olup olmamasını bir koşula bağladık. Ve dinamik değişen değerler neticesinde eğer koşullar sağlanıyor ise <strong>enable</strong>, sağlanmıyor ise <strong>disable</strong> olacaktır. Burada <strong>TextUtils</strong> sınıfından bir fonksiyon kullandık. Bu şekilde harici bir sınıfa erişim sağlamak istiyorsak, bunu layout dosyamızda <strong>import</strong> ederek belirtmeliyiz.</li>
 </ul>
 
 <p><code>&amp;amp;&amp;amp;</code> kısmı aslında <code>&amp;&amp;</code> anlamına geliyor. Yani <strong>Ve</strong> koşulu.</p>
@@ -276,7 +276,7 @@ Yani, <strong>EditText</strong>&lsquo;e yazılan değerler aynı anda <strong>Vi
 <li><code>android:onClick=&quot;@{()-&gt;viewmodel.login(edtEmail.getText().toString(),editParola.getText().toString())}&quot;</code> bu satırda yaptığımız şey <strong>viewmodel</strong> sınıfımızdan bir fonksiyon çağırmak ve bu fonksiyona parametre olarak <strong>edittext</strong>&lsquo;lere (email,parola) yazılan değerleri göndermek. <strong>EditText</strong> nesnesinin değerine ulaşmak için nesnenin <strong>id</strong> sini kullandığımıza dikkat edelim.</li>
 </ul>
 
-<p>Bu fonksiyona parametresin olarak da çağırabilirdik. Çünkü zaten <strong>edittext</strong> lere yazılan değerler otomatik olarak <strong>viewmodel</strong> sınıfındaki ilgili alanları doldurmuş oluyor. Ve biz bu nesnelere <strong>(liveEmail,livePass)</strong>, <strong>login</strong> fonksiyonunun içerisinde direk erişim sağlayarak ilgili işlemleri yapabiliriz.</p>
+<p>Login fonksiyonunu parametre göndermeden de çağırabilirdik. Çünkü zaten <strong>edittext</strong> bileşenlerine yazılan değerler otomatik olarak <strong>viewmodel</strong> sınıfındaki ilgili alanları doldurmuş oluyor. Ve biz bu nesnelere <strong>(liveEmail,livePass)</strong>, <strong>login</strong> fonksiyonunun içerisinden direk erişim sağlayarak ilgili işlemleri yapabiliriz.</p>
 
 <hr />
 
