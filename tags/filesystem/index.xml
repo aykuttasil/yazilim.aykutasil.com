@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Filesystem on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/filesystem/</link>
+    <description>Recent content in Filesystem on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Thu, 27 Jun 2019 14:00:59 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/filesystem/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android File System</title>
+      <link>https://yazilim.aykutasil.com/post/android_filesystem/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_filesystem/</guid>
+      <description>Internal Storage vs External Storage Internal Storage  Her zaman erişilebilir. Sadece uygulamanın kendisi tarafından erişebilir. Buraya kaydedilen dosyalar başka bir uygulama tarafından görünmez. USB ile bilgisayara bağlanıldığında bu dosyalara erişim sağlanamaz. Uygulama silindiğinde internal storage temizlenir.  External Storage  Her zaman erişilebilir durumda olmayabilir. External storage cihaza dahili olarak bulunabileceği gibi USB cihazı olarak sonradan takılmış bir cihaz da olabilir. Bu nedenle erişebilir olup olmadığı kontrol edilmelidir (getExternalStorageState()).</description>
+    </item>
+    
+  </channel>
+</rss>

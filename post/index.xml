@@ -6,10 +6,52 @@
     <description>Recent content in Posts on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Mon, 25 Feb 2019 00:00:27 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jul 2019 01:04:53 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ADB Komutu ile Cihaz IP&#39;sini Öğren</title>
+      <link>https://yazilim.aykutasil.com/post/android_adb_device_ip/</link>
+      <pubDate>Sat, 20 Jul 2019 01:04:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_adb_device_ip/</guid>
+      <description>Aşağıdaki komutu çalıştırarak android cihaz ip&amp;rsquo;sini öğrenebilirsiniz.
+&amp;gt; adb shell ip -f inet addr show wlan0  </description>
+    </item>
+    
+    <item>
+      <title>Android File System</title>
+      <link>https://yazilim.aykutasil.com/post/android_filesystem/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_filesystem/</guid>
+      <description>Internal Storage vs External Storage Internal Storage  Her zaman erişilebilir. Sadece uygulamanın kendisi tarafından erişebilir. Buraya kaydedilen dosyalar başka bir uygulama tarafından görünmez. USB ile bilgisayara bağlanıldığında bu dosyalara erişim sağlanamaz. Uygulama silindiğinde internal storage temizlenir.  External Storage  Her zaman erişilebilir durumda olmayabilir. External storage cihaza dahili olarak bulunabileceği gibi USB cihazı olarak sonradan takılmış bir cihaz da olabilir. Bu nedenle erişebilir olup olmadığı kontrol edilmelidir (getExternalStorageState()).</description>
+    </item>
+    
+    <item>
+      <title>ASP.NET Core Filters</title>
+      <link>https://yazilim.aykutasil.com/post/aspnetcore_filters/</link>
+      <pubDate>Mon, 29 Apr 2019 10:05:05 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/aspnetcore_filters/</guid>
+      <description>Not: Bu makale hazırlanırken kullanılan .net core versiyonu: 2.2
+ ASP.NET Core&amp;lsquo;daki filter yapısı, middleware bileşenine benzer fakat bazı farklılıkları vardır. Filter&amp;lsquo;lar ile sadece request-response süreci arasına girilerek istenilen kod blokları çalıştırılabilir. Filter tipine göre request-response sürecinin hangi aşamasında çalıştırılacağı belirlenebilir. Oldukça özelleştirebilir bir yapı sunar bize Filter&amp;lsquo;lar.
+Filter Tipleri Authorization Filters İlk çalışan filter&amp;lsquo;dır. İlgili mvc action metoduna erişmek için user&amp;lsquo;ın yetkisi olup olmadığını kontrol eder. Eğer koşullar sağlanıyor ise ilgili mvc action metodu çalışır.</description>
+    </item>
+    
+    <item>
+      <title>ASP.Net Core app.Run() Middleware</title>
+      <link>https://yazilim.aykutasil.com/post/aspnetcore_run/</link>
+      <pubDate>Mon, 15 Apr 2019 22:08:14 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/aspnetcore_run/</guid>
+      <description>ASP.NET Core Run Method ASP.NET Core ile birlikte gelen middleware konsepti sayesinde request-response süreçleri arasına girerek kendi mantıksal devremizi yazmamız çok kolay hale gelmiştir.
+ Yukarıda ki gibi Startup.cs sınıfı içerisindeki Configure fonksiyonuna app.Run() diyerek middleware&amp;lsquo;ımızı ekleyebiliriz.
+Peki tam olarak app.Run() metodu nasıl çalışıyor? app.Run() middlaware&amp;rsquo;ı ile istenilen bir kod bloğunu çalıştırabilir ve uygulamamıza kısa devre yaptırabiliriz. Yani pipeline akışı eğer Run() içerisine girerse, sonraki kod blokları çalışmayacaktır.
+ Yukarıda ki kodun çıktısı sadece Response 1 olacak ve sonraki kod bloğu çalışmayacaktır.</description>
+    </item>
     
     <item>
       <title>Android DataBinding</title>
@@ -18,8 +60,8 @@
       
       <guid>https://yazilim.aykutasil.com/post/android_databinding/</guid>
       <description>Android DataBinding Android dünyasında temiz kod(Clean Code) günümüzde çokça konuşulan konular arasında yer almakta ve neden temiz kod yazmalıyız ile alakalı bir çok makale yazılmaktadır.
-Temiz kod yazmak için MVP, MVVM vs. kod tasarım mimarilerinden birini seçerek yazılan kodların ve etkileşimlerinin birbirinden ayrımını sağlamaktayız. Bu kod tasarım kalıpları ile beraber bize çok faydası olacak bir mimari daha bulunmakta:DataBinding
-DataBinding Uygulamamızın arayüzünü oluşturmak için kullandığımız layout xml dosyalarına gerekli datayı doğrudan entegre ederek, arayüz değişikliği ile ilgili tüm akışların harici müdahaleye gerek kalmadan otomatik olarak gerçekleşmesini sağlayabiliriz.</description>
+Temiz kod yazmak için MVP, MVVM vs. kod tasarım mimarilerinden birini seçerek yazılan kodların ve etkileşimlerinin birbirinden ayrımını sağlamaktayız. Bu kod tasarım kalıpları ile beraber bize çok faydası olacak bir mimari daha bulunmakta: DataBinding
+DataBinding Uygulamanın arayüzünü tasarlamak için kullandığımız layout dosyamızın içerisine Uygulamamızın arayüzünü oluşturmak için kullandığımız layout xml dosyalarına gerekli datayı doğrudan entegre ederek, arayüz değişikliği ile ilgili tüm akışların harici müdahaleye gerek kalmadan otomatik olarak gerçekleşmesini sağlayabiliriz.</description>
     </item>
     
     <item>
@@ -395,7 +437,7 @@ Aynı anda 1000 den fazla kullanıcıya cevap verme gereksinimiz var artık. Sad
 private void range() { Observable.range(3, 5).subscribeOn(Schedulers.io()) .subscribe(success -&amp;gt; { Log.i(TAG, &amp;quot;val: &amp;quot; + success.toString()); }); }  Açıklama:
 İlk değer 3 kabul edilerek sonraki 5 sayı için teker teker onNext() çağırılır. Yani 3 , 4, 5, 6, 7
 Yukarıda ki kodun çıktısı aşağıdaki gibidir.
-I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActivity: val: 6 I/MainActivity: val: 7  RxJava candır 😉</description>
+I/MainActivity: val: 3 I/MainActivity: val: 4 I/MainActivity: val: 5 I/MainActivity: val: 6 I/MainActivity: val: 7  RxJava candır. 😉</description>
     </item>
     
     <item>
@@ -798,6 +840,15 @@ Not: PendingIntent düzenlenirken requestCode aynı olmalıdır. Eğer her notif
 https://docs.docker.com/engine/reference/commandline/exec/
 Yukarıdaki linki takip ederek nasıl komut çalıştıracağınızı öğrenebilirsiniz. Ya da Kitematic gibi bir uygulama yüklü ise bu uygulamayı açarak ve çalışan image e tıklayarak exe butonuna basmamız yeterli olucaktır.
 Bu sayfada anlatmak istediğim şey tüm bunları yaptınız ve container ın içindeyken bir dosya oluşturdunuz. Ve bu dosyanın içeriğini düzenlemeniz gerekmekte.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://yazilim.aykutasil.com/post/kotlin_coroutine/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/kotlin_coroutine/</guid>
+      <description>94  Posts   53  Following   3,454  Followers   238  Likes      Winnie Brewer  Boulder, CO  Coffee roasting poet in the vein of Emerson and Blake.   FOLLOW   OPTION D</description>
     </item>
     
   </channel>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Webapi on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/webapi/</link>
+    <description>Recent content in Webapi on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Mon, 15 Apr 2019 22:08:14 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/webapi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ASP.Net Core app.Run() Middleware</title>
+      <link>https://yazilim.aykutasil.com/post/aspnetcore_run/</link>
+      <pubDate>Mon, 15 Apr 2019 22:08:14 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/aspnetcore_run/</guid>
+      <description>ASP.NET Core Run Method ASP.NET Core ile birlikte gelen middleware konsepti sayesinde request-response süreçleri arasına girerek kendi mantıksal devremizi yazmamız çok kolay hale gelmiştir.
+ Yukarıda ki gibi Startup.cs sınıfı içerisindeki Configure fonksiyonuna app.Run() diyerek middleware&amp;lsquo;ımızı ekleyebiliriz.
+Peki tam olarak app.Run() metodu nasıl çalışıyor? app.Run() middlaware&amp;rsquo;ı ile istenilen bir kod bloğunu çalıştırabilir ve uygulamamıza kısa devre yaptırabiliriz. Yani pipeline akışı eğer Run() içerisine girerse, sonraki kod blokları çalışmayacaktır.
+ Yukarıda ki kodun çıktısı sadece Response 1 olacak ve sonraki kod bloğu çalışmayacaktır.</description>
+    </item>
+    
+  </channel>
+</rss>

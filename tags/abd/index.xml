@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abd on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/abd/</link>
+    <description>Recent content in Abd on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Sat, 20 Jul 2019 01:04:53 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/abd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ADB Komutu ile Cihaz IP&#39;sini Öğren</title>
+      <link>https://yazilim.aykutasil.com/post/android_adb_device_ip/</link>
+      <pubDate>Sat, 20 Jul 2019 01:04:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_adb_device_ip/</guid>
+      <description>Aşağıdaki komutu çalıştırarak android cihaz ip&amp;rsquo;sini öğrenebilirsiniz.
+&amp;gt; adb shell ip -f inet addr show wlan0  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -23,7 +23,7 @@
     <item>
       <title>Android</title>
       <link>https://yazilim.aykutasil.com/categories/android/</link>
-      <pubDate>Mon, 25 Feb 2019 00:00:27 +0300</pubDate>
+      <pubDate>Sat, 20 Jul 2019 01:04:53 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/android/</guid>
       <description></description>
@@ -35,6 +35,15 @@
       <pubDate>Sun, 12 Mar 2017 23:40:36 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aspnetcore</title>
+      <link>https://yazilim.aykutasil.com/categories/aspnetcore/</link>
+      <pubDate>Mon, 29 Apr 2019 10:05:05 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/aspnetcore/</guid>
       <description></description>
     </item>
     
@@ -71,6 +80,15 @@
       <pubDate>Sat, 01 Dec 2018 14:20:45 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/ci/cd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Csharp</title>
+      <link>https://yazilim.aykutasil.com/categories/csharp/</link>
+      <pubDate>Mon, 15 Apr 2019 22:08:14 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/csharp/</guid>
       <description></description>
     </item>
     
@@ -183,6 +201,15 @@
     </item>
     
     <item>
+      <title>Netcore</title>
+      <link>https://yazilim.aykutasil.com/categories/netcore/</link>
+      <pubDate>Mon, 29 Apr 2019 10:05:05 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/netcore/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Network</title>
       <link>https://yazilim.aykutasil.com/categories/network/</link>
       <pubDate>Mon, 13 Aug 2018 00:50:25 +0300</pubDate>
@@ -219,6 +246,15 @@
     </item>
     
     <item>
+      <title>Security</title>
+      <link>https://yazilim.aykutasil.com/categories/security/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Sql</title>
       <link>https://yazilim.aykutasil.com/categories/sql/</link>
       <pubDate>Wed, 11 Jan 2017 17:20:37 +0300</pubDate>
@@ -242,6 +278,15 @@
       <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webapi</title>
+      <link>https://yazilim.aykutasil.com/categories/webapi/</link>
+      <pubDate>Mon, 15 Apr 2019 22:08:14 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/webapi/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Filters on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/filters/</link>
+    <description>Recent content in Filters on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Mon, 29 Apr 2019 10:05:05 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/filters/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ASP.NET Core Filters</title>
+      <link>https://yazilim.aykutasil.com/post/aspnetcore_filters/</link>
+      <pubDate>Mon, 29 Apr 2019 10:05:05 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/aspnetcore_filters/</guid>
+      <description>Not: Bu makale hazırlanırken kullanılan .net core versiyonu: 2.2
+ ASP.NET Core&amp;lsquo;daki filter yapısı, middleware bileşenine benzer fakat bazı farklılıkları vardır. Filter&amp;lsquo;lar ile sadece request-response süreci arasına girilerek istenilen kod blokları çalıştırılabilir. Filter tipine göre request-response sürecinin hangi aşamasında çalıştırılacağı belirlenebilir. Oldukça özelleştirebilir bir yapı sunar bize Filter&amp;lsquo;lar.
+Filter Tipleri Authorization Filters İlk çalışan filter&amp;lsquo;dır. İlgili mvc action metoduna erişmek için user&amp;lsquo;ın yetkisi olup olmadığını kontrol eder. Eğer koşullar sağlanıyor ise ilgili mvc action metodu çalışır.</description>
+    </item>
+    
+  </channel>
+</rss>

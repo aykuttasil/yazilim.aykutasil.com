@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Wed, 11 Jan 2017 01:00:19 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jul 2019 01:04:53 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Abd</title>
+      <link>https://yazilim.aykutasil.com/tags/abd/</link>
+      <pubDate>Sat, 20 Jul 2019 01:04:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/abd/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Activeandroid</title>
@@ -41,7 +50,7 @@
     <item>
       <title>Android</title>
       <link>https://yazilim.aykutasil.com/tags/android/</link>
-      <pubDate>Mon, 25 Feb 2019 00:00:27 +0300</pubDate>
+      <pubDate>Sat, 20 Jul 2019 01:04:53 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/android/</guid>
       <description></description>
@@ -75,6 +84,15 @@
     </item>
     
     <item>
+      <title>Api</title>
+      <link>https://yazilim.aykutasil.com/tags/api/</link>
+      <pubDate>Mon, 15 Apr 2019 22:08:14 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Api Test</title>
       <link>https://yazilim.aykutasil.com/tags/api-test/</link>
       <pubDate>Wed, 11 Jan 2017 01:09:39 +0300</pubDate>
@@ -98,6 +116,15 @@
       <pubDate>Fri, 03 Aug 2018 22:21:48 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aspnetcore</title>
+      <link>https://yazilim.aykutasil.com/tags/aspnetcore/</link>
+      <pubDate>Mon, 29 Apr 2019 10:05:05 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/aspnetcore/</guid>
       <description></description>
     </item>
     
@@ -275,7 +302,7 @@
     <item>
       <title>Csharp</title>
       <link>https://yazilim.aykutasil.com/tags/csharp/</link>
-      <pubDate>Mon, 16 Jan 2017 11:13:16 +0300</pubDate>
+      <pubDate>Mon, 15 Apr 2019 22:08:14 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/csharp/</guid>
       <description></description>
@@ -480,6 +507,33 @@
     </item>
     
     <item>
+      <title>Fileprovider</title>
+      <link>https://yazilim.aykutasil.com/tags/fileprovider/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/fileprovider/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Filesystem</title>
+      <link>https://yazilim.aykutasil.com/tags/filesystem/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/filesystem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Filters</title>
+      <link>https://yazilim.aykutasil.com/tags/filters/</link>
+      <pubDate>Mon, 29 Apr 2019 10:05:05 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/filters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Firebase</title>
       <link>https://yazilim.aykutasil.com/tags/firebase/</link>
       <pubDate>Mon, 17 Apr 2017 01:53:03 +0300</pubDate>
@@ -608,7 +662,7 @@
     <item>
       <title>Ip</title>
       <link>https://yazilim.aykutasil.com/tags/ip/</link>
-      <pubDate>Tue, 08 Jan 2019 23:20:28 +0300</pubDate>
+      <pubDate>Sat, 20 Jul 2019 01:04:53 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/ip/</guid>
       <description></description>
@@ -840,6 +894,15 @@
     </item>
     
     <item>
+      <title>Netcore</title>
+      <link>https://yazilim.aykutasil.com/tags/netcore/</link>
+      <pubDate>Mon, 29 Apr 2019 10:05:05 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/netcore/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Network</title>
       <link>https://yazilim.aykutasil.com/tags/network/</link>
       <pubDate>Sun, 12 Aug 2018 23:12:07 +0300</pubDate>
@@ -959,7 +1022,7 @@
     <item>
       <title>Permission</title>
       <link>https://yazilim.aykutasil.com/tags/permission/</link>
-      <pubDate>Wed, 11 Jan 2017 17:24:52 +0300</pubDate>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/permission/</guid>
       <description></description>
@@ -1074,6 +1137,15 @@
     </item>
     
     <item>
+      <title>Security</title>
+      <link>https://yazilim.aykutasil.com/tags/security/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Service</title>
       <link>https://yazilim.aykutasil.com/tags/service/</link>
       <pubDate>Thu, 14 Feb 2019 13:10:18 +0300</pubDate>
@@ -1097,6 +1169,24 @@
       <pubDate>Tue, 10 Jan 2017 23:56:35 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/sha1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Share Data</title>
+      <link>https://yazilim.aykutasil.com/tags/share-data/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/share-data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shell</title>
+      <link>https://yazilim.aykutasil.com/tags/shell/</link>
+      <pubDate>Sat, 20 Jul 2019 01:04:53 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/shell/</guid>
       <description></description>
     </item>
     
@@ -1317,6 +1407,15 @@
     </item>
     
     <item>
+      <title>Uri</title>
+      <link>https://yazilim.aykutasil.com/tags/uri/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/uri/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Viewmodel</title>
       <link>https://yazilim.aykutasil.com/tags/viewmodel/</link>
       <pubDate>Sun, 27 Aug 2017 00:00:00 +0300</pubDate>
@@ -1340,6 +1439,15 @@
       <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webapi</title>
+      <link>https://yazilim.aykutasil.com/tags/webapi/</link>
+      <pubDate>Mon, 15 Apr 2019 22:08:14 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/webapi/</guid>
       <description></description>
     </item>
     

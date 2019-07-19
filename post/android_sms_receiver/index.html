@@ -172,11 +172,14 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
+<li>
+<ul>
 <li><a href="#android-sms-receiver">Android SMS Receiver</a>
 <ul>
 <li><a href="#loginactivity">LoginActivity</a></li>
 <li><a href="#smsreceiver">SmsReceiver</a></li>
 <li><a href="#smsreceiverservice">SmsReceiverService</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -187,7 +190,7 @@
     <div class="post-content">
       
 
-<h1 id="android-sms-receiver">Android SMS Receiver</h1>
+<h2 id="android-sms-receiver">Android SMS Receiver</h2>
 
 <p>Android de gelen sms leri dinlemek ve uygulamanızın akışını gelen sms lere göre şekillendirmek için aşağıdaki yapıyı kullanabilirsiniz.</p>
 
@@ -199,7 +202,7 @@
 
 <p>Aşağıdaki fonksiyonu Activity miz içerisinde ihtiyacımız olan yerde çağırır ve SMS receiver ı çalıştırmıış oluruz.</p>
 
-<h2 id="loginactivity">LoginActivity</h2>
+<h3 id="loginactivity">LoginActivity</h3>
 
 <pre><code class="language-java">public void RegisterSmsReceiver() {
     SmsReceiver smsReceiver = new SmsReceiver();
@@ -209,7 +212,7 @@
 }
 </code></pre>
 
-<h2 id="smsreceiver">SmsReceiver</h2>
+<h3 id="smsreceiver">SmsReceiver</h3>
 
 <pre><code class="language-java">public class SmsReceiver extends WakefulBroadcastReceiver {
 
@@ -241,7 +244,7 @@
 
 <p><code>exported=&quot;false&quot;</code> tanımı servisin cihazda ki diğer uygulamalar tarafından çalıştırılamayacağını belirtir.</p>
 
-<h2 id="smsreceiverservice">SmsReceiverService</h2>
+<h3 id="smsreceiverservice">SmsReceiverService</h3>
 
 <pre><code class="language-java">public class SmsReceiverService extends IntentService {
 

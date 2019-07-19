@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2019-02-25T00:00:27&#43;03:00"/>
+<meta property="og:updated_time" content="2019-07-20T01:04:53&#43;03:00"/>
 
 
 
@@ -140,6 +140,126 @@
     
       <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_adb_device_ip/">ADB Komutu ile Cihaz IP&#39;sini Öğren</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-07-20 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Aşağıdaki komutu çalıştırarak android cihaz ip&rsquo;sini öğrenebilirsiniz.
+&gt; adb shell ip -f inet addr show wlan0  
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/android_adb_device_ip/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_filesystem/">Android File System</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-06-27 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/security/"> security </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Internal Storage vs External Storage Internal Storage  Her zaman erişilebilir. Sadece uygulamanın kendisi tarafından erişebilir. Buraya kaydedilen dosyalar başka bir uygulama tarafından görünmez. USB ile bilgisayara bağlanıldığında bu dosyalara erişim sağlanamaz. Uygulama silindiğinde internal storage temizlenir.  External Storage  Her zaman erişilebilir durumda olmayabilir. External storage cihaza dahili olarak bulunabileceği gibi USB cihazı olarak sonradan takılmış bir cihaz da olabilir. Bu nedenle erişebilir olup olmadığı kontrol edilmelidir (getExternalStorageState()).
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/android_filesystem/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/aspnetcore_filters/">ASP.NET Core Filters</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-04-29 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/aspnetcore/"> aspnetcore </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/netcore/"> netcore </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Not: Bu makale hazırlanırken kullanılan .net core versiyonu: 2.2
+ ASP.NET Core&lsquo;daki filter yapısı, middleware bileşenine benzer fakat bazı farklılıkları vardır. Filter&lsquo;lar ile sadece request-response süreci arasına girilerek istenilen kod blokları çalıştırılabilir. Filter tipine göre request-response sürecinin hangi aşamasında çalıştırılacağı belirlenebilir. Oldukça özelleştirebilir bir yapı sunar bize Filter&lsquo;lar.
+Filter Tipleri Authorization Filters İlk çalışan filter&lsquo;dır. İlgili mvc action metoduna erişmek için user&lsquo;ın yetkisi olup olmadığını kontrol eder. Eğer koşullar sağlanıyor ise ilgili mvc action metodu çalışır.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/aspnetcore_filters/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/aspnetcore_run/">ASP.Net Core app.Run() Middleware</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-04-15 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/netcore/"> netcore </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/csharp/"> csharp </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/aspnetcore/"> aspnetcore </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/webapi/"> webapi </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      ASP.NET Core Run Method ASP.NET Core ile birlikte gelen middleware konsepti sayesinde request-response süreçleri arasına girerek kendi mantıksal devremizi yazmamız çok kolay hale gelmiştir.
+ Yukarıda ki gibi Startup.cs sınıfı içerisindeki Configure fonksiyonuna app.Run() diyerek middleware&lsquo;ımızı ekleyebiliriz.
+Peki tam olarak app.Run() metodu nasıl çalışıyor? app.Run() middlaware&rsquo;ı ile istenilen bir kod bloğunu çalıştırabilir ve uygulamamıza kısa devre yaptırabiliriz. Yani pipeline akışı eğer Run() içerisine girerse, sonraki kod blokları çalışmayacaktır.
+ Yukarıda ki kodun çıktısı sadece Response 1 olacak ve sonraki kod bloğu çalışmayacaktır.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/aspnetcore_run/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_databinding/">Android DataBinding</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2019-02-25 </span>
@@ -158,8 +278,8 @@
   <div class="post-content">
     <div class="post-summary">
       Android DataBinding Android dünyasında temiz kod(Clean Code) günümüzde çokça konuşulan konular arasında yer almakta ve neden temiz kod yazmalıyız ile alakalı bir çok makale yazılmaktadır.
-Temiz kod yazmak için MVP, MVVM vs. kod tasarım mimarilerinden birini seçerek yazılan kodların ve etkileşimlerinin birbirinden ayrımını sağlamaktayız. Bu kod tasarım kalıpları ile beraber bize çok faydası olacak bir mimari daha bulunmakta:DataBinding
-DataBinding Uygulamamızın arayüzünü oluşturmak için kullandığımız layout xml dosyalarına gerekli datayı doğrudan entegre ederek, arayüz değişikliği ile ilgili tüm akışların harici müdahaleye gerek kalmadan otomatik olarak gerçekleşmesini sağlayabiliriz.
+Temiz kod yazmak için MVP, MVVM vs. kod tasarım mimarilerinden birini seçerek yazılan kodların ve etkileşimlerinin birbirinden ayrımını sağlamaktayız. Bu kod tasarım kalıpları ile beraber bize çok faydası olacak bir mimari daha bulunmakta: DataBinding
+DataBinding Uygulamanın arayüzünü tasarlamak için kullandığımız layout dosyamızın içerisine Uygulamamızın arayüzünü oluşturmak için kullandığımız layout xml dosyalarına gerekli datayı doğrudan entegre ederek, arayüz değişikliği ile ilgili tüm akışların harici müdahaleye gerek kalmadan otomatik olarak gerçekleşmesini sağlayabiliriz.
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/android_databinding/" class="read-more-link"></a>
@@ -456,121 +576,6 @@ App app = DaggerAppComponent .builder() .apiUrl(&quot;http://....&quot;) .build(
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/android_test_1/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/general_dns_over_tls/">DNS over TLS Nedir?</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-08-13 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/network/"> network </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      DNS over TLS Nedir? Kısaca açıklamak gerekirse, İnternet Servis Sağlayıcılarının, hangi siteye erişmek istediğimizi görmesini engelleme yöntemidir.
-TLS/SSL protokolü zaten bunu yapmıyor mu? TLS/SSL protokolüne sahip siteler üzerinden yapılan veri alış verişleri şifreli yapılır fakat hala hangi siteye erişmek istediğimiz açık/şifresiz bir şekilde bellidir ve internet servis sağlayıcıları bunu görebilir.
-Bunu engellemek için DNS over TLS kullanılır.
-Özet  TLS üzerinden DNS, tüm DNS isteklerinin güvenli bir şekilde yapılmasını sağlayan bir protokoldür.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/general_dns_over_tls/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/general_tls_ssl/">TLS vs SSL</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-08-12 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/genel/"> genel </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/network/"> network </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      TLS/SSL nedir? TLS (Transport Layer Securtiy) , SSL(Secure Sockets Layer)&lsquo;ın modernize edilmiş halidir diyebiliriz. Yani günümüzde SSL den bahsedildiğinde aslında TLS den bahsediliyor olduğunu söyleyebiliriz.
-TLS protokolü, makinelerin web üzerindeki iletişimini kimlik doğrulama ve şifreleme mekanizmaları ile güvenli hale getirem bir standarttır. Günümüz dijital dünyasında güvenliğin önemi her geçen gün arttığı için iletişim yöntemleri ve güvenliği de beraberinde değişmekte ve gelişmektedir. Bu nedenle web iletişiminin güvenli hale gelmesi zorunluluk ve ihtiyaçtır.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/general_tls_ssl/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/iot_step_motor/">Step Motor Nedir?</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-08-03 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/iot/"> iot </a>
-          
-            <a href="https://yazilim.aykutasil.com/categories/motor/"> motor </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Step motoru bir diğer adıyla adım motorları; hızlı, Doğrusal ve kademeli hareket istenilen uygulamalarda kullanılan fırçasız DC elektrik motorudur.
- Kademeli motorlar düşük devirlerde yüksek tork ve düşük titreşim ve hassasiyetle çalışmaktadırlar. Step motorları rotor denilen sabit bir manyetik dönen şafta ve stator olarak adlandırılan motoru çevreleyen sabit kısımdaki elektromıknatıslardan oluşur. step motorlar, yarim adim modunda çalistiklarin da hassasiyetleri daha da artar.
-STEP MOTORUN SÜRÜCÜ İLE ÇALIŞTIRILMASI Step motorlar mikro denetleyici, arduino ve step motor sürücü yardımı yöntemi ile sürülmektedir.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/iot_step_motor/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/android_backstack_navigate/">Android Backstack Navigate</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-05-04 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Android Navigate Örnek Senaryo Kullanıcıya bir ürün ile ilgili notification yolladınız. Kullanıcı bu notification a tıkladığında direk olarak Ürün Detay sayfasına yönlendiriliyor. Kullanıcı sayfada işi bittiğinde geri tuşuna basıyor ve siz bu durumda kullanıcıyı uygulamanın Anasayfasına yönlendirmek istiyorsunuz. Ek bir geliştirme yapmadığınız takdirde bu senaryo için geri tuşuna basıldığında uygulama kapanır. Çünkü geri gidecek ekranı yoktur. Direk olarak Detay sayfası açılmıştır.
-Çözüm İlk olarak yapmamız gereken Manifest.xml dosyasında DetailActivity tanımlamasını yaptığımız yerde parentActivityName i belirtmek.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/android_backstack_navigate/" class="read-more-link"></a>
     </div>
   </div>
 </article>

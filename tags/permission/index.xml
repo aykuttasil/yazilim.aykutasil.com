@@ -6,10 +6,19 @@
     <description>Recent content in Permission on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Wed, 11 Jan 2017 17:24:52 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2019 14:00:59 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/tags/permission/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android File System</title>
+      <link>https://yazilim.aykutasil.com/post/android_filesystem/</link>
+      <pubDate>Thu, 27 Jun 2019 14:00:59 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_filesystem/</guid>
+      <description>Internal Storage vs External Storage Internal Storage  Her zaman erişilebilir. Sadece uygulamanın kendisi tarafından erişebilir. Buraya kaydedilen dosyalar başka bir uygulama tarafından görünmez. USB ile bilgisayara bağlanıldığında bu dosyalara erişim sağlanamaz. Uygulama silindiğinde internal storage temizlenir.  External Storage  Her zaman erişilebilir durumda olmayabilir. External storage cihaza dahili olarak bulunabileceği gibi USB cihazı olarak sonradan takılmış bir cihaz da olabilir. Bu nedenle erişebilir olup olmadığı kontrol edilmelidir (getExternalStorageState()).</description>
+    </item>
     
     <item>
       <title>Android Runtime Permission</title>
