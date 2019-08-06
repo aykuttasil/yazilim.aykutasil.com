@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Localwebserver on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/localwebserver/</link>
+    <description>Recent content in Localwebserver on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Tue, 10 Jan 2017 23:20:12 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/tags/localwebserver/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Local IIS Site Kurulumu</title>
+      <link>https://yazilim.aykutasil.com/post/local_iis_site_kurulumu/</link>
+      <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/local_iis_site_kurulumu/</guid>
+      <description>Uygulamanızı geliştirme sırasında Local IIS e sitenizi tanımlamanız gerekebilir. Sanki uzak sunucuda sitenizi custom domain ile host eder gibi (yani site kodlarınızı uzaktaki hostunuzda çalıştırır gibi) çalıştırabilirsiniz. İstediğiniz domain adresini belirtebilir, işlemlerinizi bu domaini kullanarak gerçekleştirebilirsiniz. Eğer bu yazıyı okuyor iseniz muhtemelen bunu yapmaya gerek duymuşsunuzdur.
+İlk olarak windows yüklü bilgisayarımızın başlat menüsüne tıklayarak “Windows özellikleriniz Aç veya Kapat” yazıp arama yapıyoruz.
+
+Yukarıda ki resimde görmüş olduğunuz gibi gerekli kutucukları işaretleyip kurulumu sağıyoruz.</description>
+    </item>
+    
+  </channel>
+</rss>

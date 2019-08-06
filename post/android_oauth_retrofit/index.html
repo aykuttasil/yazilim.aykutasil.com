@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Retrofit Oauth - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="Retrofit Oauth Entegrasyonu Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya buraya bakabilirsiniz.
+Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.
+Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz." />
+<meta name="keywords" content="yazilim, sofware, oauth, retrofit, okhttp, android, oauth2" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="https://yazilim.aykutasil.com/post/android_oauth_retrofit/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="https://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="https://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="https://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Retrofit Oauth" />
+<meta property="og:description" content="Retrofit Oauth Entegrasyonu Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya buraya bakabilirsiniz.
+Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.
+Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yazilim.aykutasil.com/post/android_oauth_retrofit/" />
+
+
+
+<meta property="article:published_time" content="2017-05-17T11:58:43&#43;03:00"/>
+
+<meta property="article:modified_time" content="2017-05-17T11:58:43&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Retrofit Oauth">
+<meta itemprop="description" content="Retrofit Oauth Entegrasyonu Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya buraya bakabilirsiniz.
+Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.
+Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz.">
+
+
+<meta itemprop="datePublished" content="2017-05-17T11:58:43&#43;03:00" />
+<meta itemprop="dateModified" content="2017-05-17T11:58:43&#43;03:00" />
+<meta itemprop="wordCount" content="642">
+
+
+
+<meta itemprop="keywords" content="software,oauth,retrofit,okhttp," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Retrofit Oauth"/>
+<meta name="twitter:description" content="Retrofit Oauth Entegrasyonu Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya buraya bakabilirsiniz.
+Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.
+Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Retrofit Oauth</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-05-17 </span>
+        <div class="post-category">
+            
+              <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+            
+              <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#retrofit-oauth-entegrasyonu">Retrofit Oauth Entegrasyonu</a>
+<ul>
+<li>
+<ul>
+<li><a href="#nasıl-çalışıyor">Nasıl Çalışıyor?</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      
+
+<h2 id="retrofit-oauth-entegrasyonu">Retrofit Oauth Entegrasyonu</h2>
+
+<p>Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya <a href="https://oauth.net/">buraya</a> bakabilirsiniz.</p>
+
+<p>Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.</p>
+
+<h4 id="nasıl-çalışıyor">Nasıl Çalışıyor?</h4>
+
+<p><a href="http://bahadir.almaci.com/2010/02/oauth-nedir-nasil-calisir/">Kısaca</a> anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz. Bu tokenın işlevsellik ömürleri vardır. Yani 10 dakika süre ile bu tokenı yetkilendir deriz. Çünkü sonuçta asıl amacımız güvenlik. Kullanıcı ad ve şifre bilgisi birilerinin eline geçmesi ile token bilgisinin birilerinin eline geçmesi aynı anlama gelir. Tabi eğer tokena bir ömür biçmezsek.</p>
+
+<p><strong>Peki elimizde ki token ın bir ömrünün olması uygulamamıza nasıl bir akış olmasını gerektiriyor ?</strong></p>
+
+<ul>
+<li><p>Zorunlu olmamakla beraber bazen elimizde token ile beraber birde refresh token bilgisi olur. Eğer token süresi dolmuşsa refresh token kullanılarak yeni taze bir token isteği yapılır ve yeni isteklerde bu yeni token kullanılır.</p></li>
+
+<li><p>Refresh token yok ise ilk başta tokenımızı nasıl elde ediyor isek(tüm header bilgileri tekrar girilecek; cliend_id,secret_id vs.) o şekilde süreci baştan başlatmamız gerekecek ve elde ettiğimiz tokenı yeni isteklerimizde kullanmamız gerekecek.</p></li>
+</ul>
+
+<p>Biz ikinci kısım için <a href="http://square.github.io/retrofit/">Retrofit</a> yapılandırmasını anlatıcaz.</p>
+
+<p><strong>RestClient</strong></p>
+
+<pre><code class="language-java">public class RestClient {
+
+    private static RestClient _instance;
+    private OkHttpClient client;
+    private ApiService apiService;
+
+    @DebugLog
+    private RestClient(Context context) {
+
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+
+        clientBuilder.addInterceptor(chain -&gt; {
+            Request original = chain.request();
+
+            Request request = original.newBuilder()
+                    .addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;)
+                    .addHeader(&quot;X-App-Name&quot;, &quot;Dokar&quot;) // Optional
+                    .addHeader(&quot;X-api-version&quot;, &quot;1.0&quot;) // Optional
+                    .method(original.method(), original.body())
+                    .build();
+
+            return chain.proceed(request);
+        });
+
+        clientBuilder.addInterceptor(chain -&gt; {
+            Request original = chain.request();
+
+            Request.Builder builder = original.newBuilder();
+
+            String tokenType = &quot;Bearer&quot;;
+            String authToken = AppDataHelper.getInstance(context).getAccessToken(); // Veritabanından ya da SharedPreference vs. den tokenımızı çekiyoruz
+
+            // Eğer token bilgisi var ise request imizin header ına &quot;Authorization: Bearer tokenanahtari&quot; şeklinde ekleme yapıyoruz.
+            if (authToken != null) {
+                builder.header(&quot;Authorization&quot;, tokenType + &quot; &quot; + authToken);
+            }
+
+            Request request = builder
+                    .method(original.method(), original.body())
+                    .build();
+
+            return chain.proceed(request);
+        });
+
+        // Yapılan istekleri loglamak için interceptor
+        clientBuilder.addInterceptor(httpLoggingInterceptor);
+
+        // *****************************
+        // ÖNEMLİ
+        // Otomatize ettiğimiz kısım burası
+        clientBuilder.authenticator(new TokenAuthenticator(context));
+
+        clientBuilder.connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS);
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat(&quot;yyyy-MM-dd'T'HH:mm:ss&quot;)
+                .excludeFieldsWithoutExposeAnnotation() // Android 23 için düzenleme
+                .create();
+
+        client = clientBuilder.build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .baseUrl(BuildConfig.BACKEND_URL)
+                .client(client)
+                .build();
+
+        apiService = retrofit.create(ApiService.class);
+    }
+
+    @DebugLog
+    public static RestClient getInstance(Context context) {
+        if (_instance == null) {
+            _instance = new RestClient(context);
+        }
+        return _instance;
+    }
+
+    @DebugLog
+    public ApiService getApiService() {
+        return apiService;
+    }
+
+    @DebugLog
+    public OkHttpClient getOkHttpClient() {
+        return client;
+    }
+}
+</code></pre>
+
+<p>Yukarıda <strong>ÖNEMLİ</strong> yazan alanda <code>clientBuilder.authenticator(new TokenAuthenticator(context))</code> şeklinde bir authenticator işlevi ekledik.</p>
+
+<p>Bu sınıfın şunu yapıyor:</p>
+
+<ul>
+<li>Belirttiğimiz header ve body bilgileri doğrultusunda istek yaptık ve sonuç olarak <strong>401</strong> response code döndü. Yani kimlik doğrulanamadı. Eğer  <strong>401</strong> döner ise <code>TokenAuthenticator(context</code> sınıfı devreye girecek ve bizim requestimizin istediğimiz alanlarını düzenleyerek yine aynı isteği otomatik olarak yapıcak.</li>
+</ul>
+
+<p><strong>TokenAuthenticator</strong></p>
+
+<pre><code class="language-java">public class TokenAuthenticator implements Authenticator {
+
+    private Context mContext;
+
+    public TokenAuthenticator(Context context) {
+        this.mContext = context;
+    }
+
+    @DebugLog
+    @Override
+    public Request authenticate(Route route, Response response)
+            throws IOException {
+
+        // İlk başta tokenımızı nasıl elde ettiysek yine aynı şekilde ama senkron şekilde elde ediyoruz.
+        AccessTokenResponse accessTokenResponse = RestClient.getInstance(mContext)
+                .getApiService()
+                .getAccessTokenImmediate(AccessTokenRequest.buildParams())
+                .execute()
+                .body();
+
+        String accessToken = accessTokenResponse.getAccessToken();
+
+        // Veritabanımızda ki token bilgisi güncelliyoruz
+        AppDataHelper.getInstance(mContext).saveAccessToken(accessToken);
+
+        String tokenType = &quot;Bearer&quot;;
+
+        Request original = response.request();
+        Request.Builder newRequestBuilder = original.newBuilder();
+
+        // Eski isteğimizde ki Authorization header alanını siliyoruz. Eğer silmezsek birden fazla aynı keye sahip header alanımız olur.
+        if (original.headers().get(&quot;Authorization&quot;) != null) {
+            Logger.i(&quot;Authorization Header is: &quot; + original.headers().get(&quot;Authorization&quot;));
+            newRequestBuilder.removeHeader(&quot;Authorization&quot;);
+        }
+
+        // Ve yeni token değeri ile tekrar Authorization headerı ekliyoruz.
+        Request newRequest = newRequestBuilder
+                .addHeader(&quot;Authorization&quot;, tokenType + &quot; &quot; + accessToken)
+                .method(original.method(), original.body())
+                .build();
+
+        return newRequest;
+    }
+}
+
+</code></pre>
+
+<ul>
+<li><strong>401</strong> response kod döndü</li>
+<li>Yukarıda ki kod çalıştı</li>
+<li>Yeni token elde edildi</li>
+<li>Yapılan request header bilgileri güncellendi</li>
+<li>İsteğimiz aynı parametreler ile(<strong>body</strong> alanı vs.) tekrar yapıldı</li>
+</ul>
+
+<p>Ve gülen surat..
+:)</p>
+
+<p>Sorunuz varsa sorabilirsiniz.</p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2017-05-17</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="https://yazilim.aykutasil.com/tags/software/">software</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/oauth/">oauth</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/retrofit/">retrofit</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/okhttp/">okhttp</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="https://yazilim.aykutasil.com/post/kotlin_let/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Kotlin Let Kullanımı</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="https://yazilim.aykutasil.com/post/firebase_dynamiclink/">
+            <span class="next-text nav-default">Firebase Dynamic Links</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="https://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

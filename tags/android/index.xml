@@ -6,10 +6,21 @@
     <description>Recent content in Android on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Sat, 20 Jul 2019 01:04:53 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 03 Aug 2019 03:14:28 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android Debugging With Local Web Server</title>
+      <link>https://yazilim.aykutasil.com/post/android_remote_device_debugging/</link>
+      <pubDate>Sat, 03 Aug 2019 03:14:28 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_remote_device_debugging/</guid>
+      <description>Fiziksel Android cihazımızla localimizde çalışan web server&amp;rsquo;a erişmek, development aşamasında eminim ihtiyaç duyduğunuz veya duyacağınız gereksinimlerden biridir. Bununla beraber local makinenizde bulunan VM üzerinde koşan web server&amp;rsquo;a erişmek.. Ah harika..
+Canlı bir örnek verirsem sanıyorum daha iyi olacak.
+ Geliştirme yaptığınız makinenizinde MacOS işletim sistemi var. Bununla beraber çeşitli ihtiyaçlarınızdan ötürü windows kurmanız gerekti ve Virtual Machine kurarak içine windows yüklediniz. Windows üzerinde Visual Studio ile bir WebApi ayağa kaldırdınız ve bu api&amp;lsquo;ye fiziksel Android cihazınızdan erişmek istiyorsunuz.</description>
+    </item>
     
     <item>
       <title>ADB Komutu ile Cihaz IP&#39;sini Öğren</title>
@@ -74,10 +85,10 @@ Service tanımlanması &amp;lt;service android:description=&amp;quot;string reso
     
     <item>
       <title>Android Dagger</title>
-      <link>https://yazilim.aykutasil.com/post/dagger_1/</link>
+      <link>https://yazilim.aykutasil.com/post/android_dagger_1/</link>
       <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/dagger_1/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_dagger_1/</guid>
       <description> @BindsInstance Bağımlılıklarınızı oluşturma esnasında belirtmeniz gereken bir değişkenininiz var ve bu değişkeni diğer module leriniz içerisinde kullanıcaksınız. Aşağıdaki gibi @BindsInstance kullanarak bu bağımlılığınızı dependency graph içerisine ekleyerek diğer modüller içerisinde kullanımını sağlayabilirsiniz.
 @Component(modules = AppModule.class) interface AppComponent { App app(); @Component.Builder interface Builder { @BindsInstance Builder apiUrl(@ApiUrl String apiUrl); AppComponent build(); } }  Component build edilirken apiUrl değeri bind edilir.
 App app = DaggerAppComponent .builder() .apiUrl(&amp;quot;http://....&amp;quot;) .build()  </description>
@@ -252,27 +263,13 @@ Sizde projenizde resimlerle ilgili herhangi bir işlem yapıyorsanız bu kütüp
     </item>
     
     <item>
-      <title>Android RecyclerView</title>
-      <link>https://yazilim.aykutasil.com/post/android_recyclerview/</link>
-      <pubDate>Wed, 11 Jan 2017 16:39:33 +0300</pubDate>
-      
-      <guid>https://yazilim.aykutasil.com/post/android_recyclerview/</guid>
-      <description>Android RecyclerView yapısı ListView in oldukça özelleşmiş bir halidir. ListView kullanarak yaptığınız işlemleri bu yapı ile çok daha kaliteli ve kolay yapabilirsiniz. ListView kullanırken karşılaşmış olduğumuz sorunları, ( ViewHolder yapısının kullanılmasının çoğu durumda zorunlu olması , Scroll durumunda liste elemanlarının birbirine karışması gibi… ) kendi iç yapısı ile ve çalışma mantığı ile çözmüştür. ViewHolder yapısını kullanmak zorunludur 🙂
-Ayrıca RecyclerView, CoordinatorLayout bileşeni ile koordine şekilde çalışır.Ek kodlamaya ihtiyaç duymaz.
-ListView in özelleştirilmesi için birçok kütüphane mevcuttur.</description>
-    </item>
-    
-    <item>
-      <title>Android Collections</title>
-      <link>https://yazilim.aykutasil.com/post/android_collections/</link>
+      <title>Java Collections</title>
+      <link>https://yazilim.aykutasil.com/post/java_collections/</link>
       <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/android_collections/</guid>
-      <description>Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.
-Bu sayfa da Collection yapısını ve oldukça önemli fonksiyonlarını göreceğiz.
-Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.
-Collections.swap
-Swap kelime anlamı ile takas anlamına gelmektedir.</description>
+      <guid>https://yazilim.aykutasil.com/post/java_collections/</guid>
+      <description> Collections.swap Swap kelime anlamı ile takas anlamına gelmektedir. Mevcut dizimiz içerisinde elemanların yerlerini değiştirmeye yarar.
+private static final String[] STRINGS = new String[]{ &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot; }; private final List mItems = new ArrayList&amp;lt;&amp;gt;(); public void setArray() { mItems.addAll(Arrays.asList(STRINGS)); } mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır. // 1,2,3,4,5 private void elemanYerDegistir() { Collections.swap(mItems, 0, 4); } mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır. // 5,2,3,4,1  </description>
     </item>
     
     <item>
@@ -288,10 +285,10 @@ Genel kullanımı aşağıdaki gibidir.
     
     <item>
       <title>Foreground Service ile FusedLocationApi Kullanımı</title>
-      <link>https://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/</link>
+      <link>https://yazilim.aykutasil.com/post/android_foregroundservice_fusedlocationapi/</link>
       <pubDate>Wed, 11 Jan 2017 15:27:59 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/foregroundservice_fusedlocationapi/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_foregroundservice_fusedlocationapi/</guid>
       <description>Android service yapısı, Android’in temel bileşenlerinden olup genel kullanım amacı yan iş parçacığı oluşturmaktır. Uzun süren işlemler (download vb.) için olmazsa olmaz bileşendir. Android in service bileşenini kendi ihtiyaçlarınız doğrultusunda özelleştirebilir ve uygulamanızı modern bir yapıya kavuşturabilirsiniz.
 Burada yapacağımız örnekte kısaca şu aşamaları görücez;
  Service i foreground olarak başlatmak Ongoing(devamlı gözüken) notification oluşturmak GoogleApiClient a bağlanmak Location bilgisini notification da göstermek  İlk olarak Service imiz kodlarını yazalım. Gerekli açıklamalar kodların arasında mevcuttur.</description>
@@ -336,10 +333,10 @@ public class InternetConnectionReceiver extends BroadcastReceiver { @Override pu
     
     <item>
       <title>Android ActiveAndroid Kullanımı</title>
-      <link>https://yazilim.aykutasil.com/post/activeandroid/</link>
+      <link>https://yazilim.aykutasil.com/post/android_activeandroid/</link>
       <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/activeandroid/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_activeandroid/</guid>
       <description>Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.
 ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.
 Kütüphaneyi buradan indirebilirsiniz.

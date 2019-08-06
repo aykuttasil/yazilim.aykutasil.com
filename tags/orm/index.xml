@@ -13,10 +13,10 @@
     
     <item>
       <title>Android ActiveAndroid Kullanımı</title>
-      <link>https://yazilim.aykutasil.com/post/activeandroid/</link>
+      <link>https://yazilim.aykutasil.com/post/android_activeandroid/</link>
       <pubDate>Wed, 11 Jan 2017 01:00:19 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/activeandroid/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_activeandroid/</guid>
       <description>Anroid ile ORM (Object Relational Mapping) kullanarak veritabanı işlemlerinizi oldukça kolay yapabilirsiniz.
 ActiveAndroid kütüphanesi ORM kütüphanelerinden biridir.
 Kütüphaneyi buradan indirebilirsiniz.

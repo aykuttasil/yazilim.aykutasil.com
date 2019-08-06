@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Robolectric ile UnitTest Yazımı - Software</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Aykut Asil" />
+  <meta name="description" content="Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.
+Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.
+Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.
+Android Studio da Robolectric kullanarak Unit Test Yazımı
+Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz." />
+<meta name="keywords" content="yazilim, sofware, robolectric, test" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="https://yazilim.aykutasil.com/post/android_robolectric/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://yazilim.aykutasil.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://yazilim.aykutasil.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://yazilim.aykutasil.com/favicon-16x16.png">
+<link rel="manifest" href="https://yazilim.aykutasil.com/manifest.json">
+<link rel="mask-icon" href="https://yazilim.aykutasil.com/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="https://yazilim.aykutasil.com/dist/even.min.css?v=3.1.1" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+
+
+<meta property="og:title" content="Robolectric ile UnitTest Yazımı" />
+<meta property="og:description" content="Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.
+Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.
+Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.
+Android Studio da Robolectric kullanarak Unit Test Yazımı
+Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yazilim.aykutasil.com/post/android_robolectric/" />
+
+
+
+<meta property="article:published_time" content="2017-01-11T00:31:52&#43;03:00"/>
+
+<meta property="article:modified_time" content="2017-01-11T00:31:52&#43;03:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Robolectric ile UnitTest Yazımı">
+<meta itemprop="description" content="Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.
+Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.
+Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.
+Android Studio da Robolectric kullanarak Unit Test Yazımı
+Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.">
+
+
+<meta itemprop="datePublished" content="2017-01-11T00:31:52&#43;03:00" />
+<meta itemprop="dateModified" content="2017-01-11T00:31:52&#43;03:00" />
+<meta itemprop="wordCount" content="456">
+
+
+
+<meta itemprop="keywords" content="software,robolectric,android test," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Robolectric ile UnitTest Yazımı"/>
+<meta name="twitter:description" content="Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.
+Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.
+Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.
+Android Studio da Robolectric kullanarak Unit Test Yazımı
+Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="https://yazilim.aykutasil.com/" class="logo">Software</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="https://yazilim.aykutasil.com/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="https://yazilim.aykutasil.com/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="https://yazilim.aykutasil.com/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="https://yazilim.aykutasil.com/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="https://yazilim.aykutasil.com/" class="logo">Software</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="https://yazilim.aykutasil.com/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Robolectric ile UnitTest Yazımı</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-01-11 </span>
+        <div class="post-category">
+            
+              <a href="https://yazilim.aykutasil.com/categories/yazilim/"> yazilim </a>
+            
+              <a href="https://yazilim.aykutasil.com/categories/test/"> test </a>
+            
+              <a href="https://yazilim.aykutasil.com/categories/android/"> android </a>
+            
+              <a href="https://yazilim.aykutasil.com/categories/java/"> java </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>Unit Test birçok yazıılımcı tarafından es geçillen ama bir o kadar da önemli ve yapılması gerekli olan bir durumdur.</p>
+
+<p>Proje büyüdükçe ve ilerledikçe teste duyulan ihtiyaç ta doğru orantılı olarak artmaktadır.</p>
+
+<p>Unit Test neden yapılır sorusunun daha ayrıntılı cevabı için unit test nedir nicin ve nasil yapilir bu yazıyı okuyabilirsiniz.</p>
+
+<p>Android Studio da Robolectric kullanarak Unit Test Yazımı</p>
+
+<p>Aşağıdaki adımları sırası ile ve düzgün bir şekilde uygularsanız herhangi bir sorun çıkmadan testi çalıştırabileceksiniz.(Ben gerektiğinden uzun bi zaman harcadım, siz harcamayın !)</p>
+
+<p><strong>build.gradle</strong></p>
+
+<pre><code class="language-gradle">apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion &quot;23.0.0&quot;
+
+    defaultConfig {
+        applicationId &quot;com.a.aykut.tryrobolectric1&quot;
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1
+        versionName &quot;1.0&quot;
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.squareup.assertj:assertj-android:1.1.0'
+    testCompile 'org.robolectric:robolectric:3.0'
+}
+</code></pre>
+
+<p><strong>MainActivity</strong></p>
+
+<pre><code class="language-java">@Bind(R.id.button)
+Button button;
+
+@Bind(R.id.textView)
+TextView textView;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  ButterKnife.bind(this);
+}
+
+@OnClick(R.id.button)
+public void buttonClick(View vi) {
+  textView.setText(&quot;tiklandi&quot;);
+}
+</code></pre>
+
+<p>AndroidManifest.xml  dosyasında herhangi bir değişiklik yapmanıza gerek yok.</p>
+
+<p>Test sınıfımızı yazmaya başlayalım.</p>
+
+<p>İlk olarak Android Studio nun sol tarafında yer alan <strong>Build Variant</strong> tabından <strong>Test Artifact</strong> kısmını <strong>Unit Tests</strong> olarak değiştirin.</p>
+
+<p><a href="http://imgur.com/rEPljpe"><img src="http://i.imgur.com/rEPljpe.jpg" title="source: imgur.com" /></a></p>
+
+<p>Unit Test yazmak için <strong>src</strong> klasörüne test isminde bir klasör ve test klasörünün içine de <strong>java</strong> isimli bir klasör oluşturmanız gerekmektedir.</p>
+
+<p>yani <strong>src/test</strong> ve <strong>src/test/java</strong> klasörlerini oluşturmalısınız.</p>
+
+<p><a href="http://imgur.com/gztY5gr"><img src="http://i.imgur.com/gztY5gr.jpg" title="source: imgur.com" /></a></p>
+
+<p>Oluşturmuş olduğunuz java klasörüne sağ tıklayarak new &gt; Package diyin ve normal Package isminizle aynı isimde bir Package oluşturun.Burda biz com.a.aykut.tryrobolectric1 ismini kullandık.</p>
+
+<p>Oluşturmuş olduğunuz Package sağ tıklayarak new &gt; Java Class diyin ve test sınıfını oluşturun. Anlaşılabilirlik açısından Test*(Test Edilecek Sınıf ismi) olarak isimlendirebilirsiniz.</p>
+
+<p><strong>TestMainActivity</strong></p>
+
+<pre><code class="language-java">import android.app.Activity;
+
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
+
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
+
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class,sdk = 21)
+public class TestMainActivity {
+
+  Activity activity;
+  TextView textView;
+  Button button;
+
+  @Before
+  public void setUp() {
+    activity = Robolectric.setupActivity(MainActivity.class);
+    textView = (TextView) activity.findViewById(R.id.textView);
+    button = (Button) activity.findViewById(R.id.button);
+  }
+
+  @Test
+  public void shouldMainActivityNotBeNull() throws Exception {
+    Robolectric.buildActivity(MainActivity.class).create().pause().resume().get();
+    assertTrue(Robolectric.buildActivity(MainActivity.class).create().get() != null);
+    String hello = new MainActivity().getResources().getString(R.string.hello_world);
+    assertEquals(hello, &quot;Hello world!&quot;);
+
+
+  }
+
+  @Test
+  public void buttonClickChangeTextView() throws Exception {
+    String text = textView.getText().toString();
+    assertEquals(text, &quot;Hello world!&quot;);
+    button.performClick();
+    text = textView.getText().toString();
+    assertEquals(text, &quot;tiklandi&quot;);
+
+  }
+}
+</code></pre>
+
+<p>Evet.Test sınıfımızı da yazdık.Artık çalıştırabiliriz.</p>
+
+<p>Testimizi çalıştırmak için yazmış olduğumuz Test Sınıfına sağ tıklayarak Run diyoruz.</p>
+
+<p><a href="http://imgur.com/7STeLHy"><img src="http://i.imgur.com/7STeLHy.jpg" title="source: imgur.com" /></a></p>
+
+<p>Run dediğiniz de Test çalışacaktır. Fakat aşağıdaki hataya benzer bir hata alırsanız endişelenmeyin.</p>
+
+<pre><code>java.lang.RuntimeException: build\intermediates\bundles\debug\AndroidManifest.xml not found or not a file; it should point to your project's AndroidManifest.xml
+
+at org.robolectric.manifest.AndroidManifest.validate(AndroidManifest.java:121)
+
+at org.robolectric.manifest.AndroidManifest.getResourcePath(AndroidManifest.java:469)
+
+at org.robolectric.manifest.AndroidManifest.getIncludedResourcePaths(AndroidManifest.java:475)
+
+at org.robolectric.RobolectricTestRunner.createAppResourceLoader(RobolectricTestRunner.java:491)
+
+at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+.
+
+.
+
+.
+</code></pre>
+
+<p><a href="http://imgur.com/1TpiUpG"><img src="http://i.imgur.com/1TpiUpG.jpg" title="source: imgur.com" /></a></p>
+
+<p>Resim de görüldüğü gibi <strong>Edit Configurations</strong> a tıklayın.</p>
+
+<p><a href="http://imgur.com/pFGTznR"><img src="http://i.imgur.com/pFGTznR.jpg" title="source: imgur.com" /></a></p>
+
+<p>Resim deki gibi <strong>Working directory</strong> yolunun sonuna <strong>\app</strong> ekleyin.</p>
+
+<p>Ve şimdi tekrar Test Sınıfına sağ tıklayarak Run diyin.</p>
+
+<p>Ve sonuç aşağıdaki gibi olmalıdır.</p>
+
+<p><a href="http://imgur.com/zIgjUDT"><img src="http://i.imgur.com/zIgjUDT.jpg" title="source: imgur.com" /></a></p>
+
+<p>Kaynak kodlarını aşağıdkai linkten indirebilirsiniz.</p>
+
+<p><a href="https://github.com/aykuttasil/RobolectricUnitTest">https://github.com/aykuttasil/RobolectricUnitTest</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">Aykut Asil</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title"></span>
+    <span class="item-content">2017-01-11</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="https://yazilim.aykutasil.com/tags/software/">software</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/robolectric/">robolectric</a>
+          
+          <a href="https://yazilim.aykutasil.com/tags/android-test/">android test</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="https://yazilim.aykutasil.com/post/android_activeandroid/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Android ActiveAndroid Kullanımı</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="https://yazilim.aykutasil.com/post/unittest_nedir_nicin_kullanilir/">
+            <span class="next-text nav-default">Unit Test Nedir ? Niçin ve Nasıl Yapılır ?</span>
+            <span class="prev-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'yazilimaykutasil';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:aykuttasil@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://stackoverflow.com/users/3448461/aykuttasil" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/aykuttasil" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/aykuttasil" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/aykuttasil/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://plus.google.com/&#43;AykutAsil" class="iconfont icon-google" title="google"></a>
+      <a href="https://www.github.com/aykuttasil" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.instagram.com/aykuttasil/" class="iconfont icon-instagram" title="instagram"></a>
+  <a href="https://yazilim.aykutasil.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2018 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Aykut Asil</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="https://yazilim.aykutasil.com/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://yazilim.aykutasil.com/dist/even.min.js?v=3.1.1"></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-42457939-6', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

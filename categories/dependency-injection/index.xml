@@ -13,10 +13,10 @@
     
     <item>
       <title>Android Dagger</title>
-      <link>https://yazilim.aykutasil.com/post/dagger_1/</link>
+      <link>https://yazilim.aykutasil.com/post/android_dagger_1/</link>
       <pubDate>Fri, 12 Oct 2018 11:48:08 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/dagger_1/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_dagger_1/</guid>
       <description> @BindsInstance Bağımlılıklarınızı oluşturma esnasında belirtmeniz gereken bir değişkenininiz var ve bu değişkeni diğer module leriniz içerisinde kullanıcaksınız. Aşağıdaki gibi @BindsInstance kullanarak bu bağımlılığınızı dependency graph içerisine ekleyerek diğer modüller içerisinde kullanımını sağlayabilirsiniz.
 @Component(modules = AppModule.class) interface AppComponent { App app(); @Component.Builder interface Builder { @BindsInstance Builder apiUrl(@ApiUrl String apiUrl); AppComponent build(); } }  Component build edilirken apiUrl değeri bind edilir.
 App app = DaggerAppComponent .builder() .apiUrl(&amp;quot;http://....&amp;quot;) .build()  </description>

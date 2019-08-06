@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debugging on Software</title>
+    <link>https://yazilim.aykutasil.com/categories/debugging/</link>
+    <description>Recent content in Debugging on Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>tr</language>
+    <lastBuildDate>Sat, 03 Aug 2019 03:14:28 +0300</lastBuildDate>
+    
+	<atom:link href="https://yazilim.aykutasil.com/categories/debugging/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android Debugging With Local Web Server</title>
+      <link>https://yazilim.aykutasil.com/post/android_remote_device_debugging/</link>
+      <pubDate>Sat, 03 Aug 2019 03:14:28 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/android_remote_device_debugging/</guid>
+      <description>Fiziksel Android cihazımızla localimizde çalışan web server&amp;rsquo;a erişmek, development aşamasında eminim ihtiyaç duyduğunuz veya duyacağınız gereksinimlerden biridir. Bununla beraber local makinenizde bulunan VM üzerinde koşan web server&amp;rsquo;a erişmek.. Ah harika..
+Canlı bir örnek verirsem sanıyorum daha iyi olacak.
+ Geliştirme yaptığınız makinenizinde MacOS işletim sistemi var. Bununla beraber çeşitli ihtiyaçlarınızdan ötürü windows kurmanız gerekti ve Virtual Machine kurarak içine windows yüklediniz. Windows üzerinde Visual Studio ile bir WebApi ayağa kaldırdınız ve bu api&amp;lsquo;ye fiziksel Android cihazınızdan erişmek istiyorsunuz.</description>
+    </item>
+    
+  </channel>
+</rss>

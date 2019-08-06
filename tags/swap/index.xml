@@ -12,16 +12,13 @@
     
     
     <item>
-      <title>Android Collections</title>
-      <link>https://yazilim.aykutasil.com/post/android_collections/</link>
+      <title>Java Collections</title>
+      <link>https://yazilim.aykutasil.com/post/java_collections/</link>
       <pubDate>Wed, 11 Jan 2017 16:10:10 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/android_collections/</guid>
-      <description>Tüm dillerde olduğu gibi Java’da da (Android) Collections yapısı oldukça önemli ve her daim kullanılabilitesi fazladır. Bazen farkına varmasakta tam olarak ihtiyacımız olan fonksiyon zaten orda duruyordur ve kullanılmayı bekliyordur. Bu nedenle Collection yapılarını iyi bilmekte fayda var diye düşünüyorum.
-Bu sayfa da Collection yapısını ve oldukça önemli fonksiyonlarını göreceğiz.
-Not: Sayfa sürekli olarak güncellenmeye çalışılacaktır. Eğer siz de katkıda bulunmak isterseniz yorum bırakabilirsiniz.
-Collections.swap
-Swap kelime anlamı ile takas anlamına gelmektedir.</description>
+      <guid>https://yazilim.aykutasil.com/post/java_collections/</guid>
+      <description> Collections.swap Swap kelime anlamı ile takas anlamına gelmektedir. Mevcut dizimiz içerisinde elemanların yerlerini değiştirmeye yarar.
+private static final String[] STRINGS = new String[]{ &amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot; }; private final List mItems = new ArrayList&amp;lt;&amp;gt;(); public void setArray() { mItems.addAll(Arrays.asList(STRINGS)); } mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır. // 1,2,3,4,5 private void elemanYerDegistir() { Collections.swap(mItems, 0, 4); } mItems listemizi yazdırdığımızda sonuç şu şekilde olacaktır. // 5,2,3,4,1  </description>
     </item>
     
   </channel>

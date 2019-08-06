@@ -50,7 +50,7 @@
     <item>
       <title>Android</title>
       <link>https://yazilim.aykutasil.com/tags/android/</link>
-      <pubDate>Sat, 20 Jul 2019 01:04:53 +0300</pubDate>
+      <pubDate>Sat, 03 Aug 2019 03:14:28 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/android/</guid>
       <description></description>
@@ -350,6 +350,15 @@
       <pubDate>Wed, 11 Jan 2017 15:50:10 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/dbeaver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debugging</title>
+      <link>https://yazilim.aykutasil.com/tags/debugging/</link>
+      <pubDate>Sat, 03 Aug 2019 03:14:28 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/debugging/</guid>
       <description></description>
     </item>
     
@@ -795,11 +804,20 @@
     </item>
     
     <item>
-      <title>Local Iis</title>
-      <link>https://yazilim.aykutasil.com/tags/local-iis/</link>
+      <title>Local Web Server</title>
+      <link>https://yazilim.aykutasil.com/tags/local-web-server/</link>
+      <pubDate>Sat, 03 Aug 2019 03:14:28 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/local-web-server/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Localwebserver</title>
+      <link>https://yazilim.aykutasil.com/tags/localwebserver/</link>
       <pubDate>Tue, 10 Jan 2017 23:20:12 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/tags/local-iis/</guid>
+      <guid>https://yazilim.aykutasil.com/tags/localwebserver/</guid>
       <description></description>
     </item>
     
@@ -1043,15 +1061,6 @@
       <pubDate>Wed, 11 Jan 2017 00:14:08 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/recaptcha/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Recyclerview</title>
-      <link>https://yazilim.aykutasil.com/tags/recyclerview/</link>
-      <pubDate>Wed, 11 Jan 2017 16:39:33 +0300</pubDate>
-      
-      <guid>https://yazilim.aykutasil.com/tags/recyclerview/</guid>
       <description></description>
     </item>
     
@@ -1475,6 +1484,15 @@
       <pubDate>Tue, 06 Jun 2017 04:42:56 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/tags/when/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://yazilim.aykutasil.com/tags/windows/</link>
+      <pubDate>Sat, 03 Aug 2019 03:14:28 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/tags/windows/</guid>
       <description></description>
     </item>
     

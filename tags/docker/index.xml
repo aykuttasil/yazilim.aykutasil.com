@@ -43,10 +43,10 @@ Başlıyoruz..
     
     <item>
       <title>Docker Container Install nano</title>
-      <link>https://yazilim.aykutasil.com/post/dockerinstallnano/</link>
+      <link>https://yazilim.aykutasil.com/post/docker_installnano/</link>
       <pubDate>Sun, 25 Dec 2016 03:51:49 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/dockerinstallnano/</guid>
+      <guid>https://yazilim.aykutasil.com/post/docker_installnano/</guid>
       <description>Docker ile ayağa kaldırmış olduğunuz bir container olduğunu varsayalım ve bu docker container a erişerek komut satırı çalıştırmanız gerekiyor.
 https://docs.docker.com/engine/reference/commandline/exec/
 Yukarıdaki linki takip ederek nasıl komut çalıştıracağınızı öğrenebilirsiniz. Ya da Kitematic gibi bir uygulama yüklü ise bu uygulamayı açarak ve çalışan image e tıklayarak exe butonuna basmamız yeterli olucaktır.

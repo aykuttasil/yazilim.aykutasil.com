@@ -13,10 +13,10 @@
     
     <item>
       <title>Retrofit Oauth</title>
-      <link>https://yazilim.aykutasil.com/post/oauth_retrofit/</link>
+      <link>https://yazilim.aykutasil.com/post/android_oauth_retrofit/</link>
       <pubDate>Wed, 17 May 2017 11:58:43 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/oauth_retrofit/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_oauth_retrofit/</guid>
       <description>Retrofit Oauth Entegrasyonu Oauth, kısaca anlatmak gerekirse; Kullanıcı ile ilgili her türlü (izin,yetki,güvenlik vs.) etkileşimi standartlaştıran bir yapı diyebiliriz. Google amcaya sorarsanız neler yapabileceğiniz ile ilgili birçok kaynak bulabilirsiniz. Veya buraya bakabilirsiniz.
 Burada bahsedecek olduğumuz şey Android mobil uygulamanızdan bir istek yaptığınızda tüm bu oauth işlemlerinizi otomatize etmek üzerine olacak.
 Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonunda elimizde bir token olduğunu ve bu tokenı request headerımıza ekleyerek backend kısmında kontrolünü sağladığımızı ve duruma göre cevap döndüğümüzü göreceksiniz.</description>
@@ -24,10 +24,10 @@ Nasıl Çalışıyor? Kısaca anlatılan bu yazıyı okuduğunuzda günün sonun
     
     <item>
       <title>Retrofit Multipart File Upload</title>
-      <link>https://yazilim.aykutasil.com/post/retrofit_multipart/</link>
+      <link>https://yazilim.aykutasil.com/post/android_retrofit_multipart/</link>
       <pubDate>Wed, 11 Jan 2017 01:50:51 +0300</pubDate>
       
-      <guid>https://yazilim.aykutasil.com/post/retrofit_multipart/</guid>
+      <guid>https://yazilim.aykutasil.com/post/android_retrofit_multipart/</guid>
       <description>Retrofit Multipart File Upload @DebugLog public BelgeResponse BelgeSync(BelgeRequest request, String apiVersion, String appVersion) { try { Map&amp;lt;String, RequestBody&amp;gt; map = new HashMap&amp;lt;&amp;gt;(); String belgeDirPath = SuperHelper.getInternalIztopBelgeDir(mContext, request.getGonderiNo()); File belgeDir = new File(belgeDirPath); boolean isDir = belgeDir.isDirectory(); if (isDir) { File[] files = belgeDir.listFiles(); for (File file : files) { RequestBody requestBody = RequestBody.create(MediaType.parse(&amp;quot;image/jpg&amp;quot;), file); map.put(&amp;quot;file\&amp;quot;; filename=\&amp;quot;&amp;quot; + file.getName(), requestBody); } } //RequestBody requestBodyGonderiNo = RequestBody.create(MediaType.parse(&amp;quot;text/plain&amp;quot;), request.getGonderiNo()); //RequestBody requestBodyMusId = RequestBody.</description>
     </item>
     
