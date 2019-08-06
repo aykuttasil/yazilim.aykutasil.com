@@ -75,7 +75,7 @@
 
 <meta itemprop="datePublished" content="2019-08-03T03:14:28&#43;03:00" />
 <meta itemprop="dateModified" content="2019-08-03T03:14:28&#43;03:00" />
-<meta itemprop="wordCount" content="363">
+<meta itemprop="wordCount" content="362">
 
 
 
@@ -172,9 +172,9 @@
 <ul>
 <li>
 <ul>
-<li>
+<li><a href="#kurulum">Kurulum</a>
 <ul>
-<li><a href="#ilk-olarak-windows-tarafını-ele-alalım">İlk olarak <strong>Windows</strong> tarafını ele alalım</a></li>
+<li><a href="#windows-için-gerekli-düzenlemeler"><strong>Windows</strong> için gerekli düzenlemeler</a></li>
 <li><a href="#mac-için-gerekli-düzenlemeler">Mac için gerekli düzenlemeler</a></li>
 <li><a href="#chrome-için-düzenlemeler">Chrome için düzenlemeler</a></li>
 <li><a href="#android-cihazımız-için-düzenlemeler">Android Cihazımız için düzenlemeler</a></li>
@@ -198,9 +198,11 @@
 <p>Geliştirme yaptığınız makinenizinde <strong>MacOS</strong> işletim sistemi var. Bununla beraber çeşitli ihtiyaçlarınızdan ötürü windows kurmanız gerekti ve <strong>Virtual Machine</strong> kurarak içine windows yüklediniz. <strong>Windows</strong> üzerinde Visual Studio ile bir <strong>WebApi</strong> ayağa kaldırdınız ve bu <strong>api</strong>&lsquo;ye fiziksel <strong>Android</strong> cihazınızdan erişmek istiyorsunuz. Üstüne üstlük normal <strong>web adresi</strong> girer gibi yani <strong>myrestapi.local</strong> gibi bir adres üzerinden erişim sağlamak istiyorsunuz.</p>
 </blockquote>
 
+<h2 id="kurulum">Kurulum</h2>
+
 <p>Artık kuruluma geçebiliriz.</p>
 
-<h3 id="ilk-olarak-windows-tarafını-ele-alalım">İlk olarak <strong>Windows</strong> tarafını ele alalım</h3>
+<h3 id="windows-için-gerekli-düzenlemeler"><strong>Windows</strong> için gerekli düzenlemeler</h3>
 
 <p>Eğer kurulu değilse ilk olarak <strong>IIS</strong>&lsquo;i etkinleştirmemiz gerekmektedir. Bunun için arama çubuğuna <strong>Turn Windows features on or off</strong> yazarak ilgili pencereyi açıyoruz. Ve aşağıda seçili olan kutucukları seçerek kurulumu tamamlıyoruz.</p>
 
@@ -239,6 +241,10 @@
 <p><strong>Android</strong> cihazlarının farklılığından dolayı aşağıdaki ayarları yapma şekli farklılık gösterebilir ama muhtemelen benzer şekillerde olacaktır.</p>
 
 <p>Android cihazımız üzerinden <strong>Wi-Fi Settings</strong> sayfasını açıyoruz. Ve <strong>Proxy</strong> ayarlama kısmından <strong>Manuel</strong> seçerek aşağıdaki gibi giriş yapıyoruz. <strong>Chrome</strong> yapılandırma kısmında girmiş olduğumuz <strong>8080</strong> port numarasının buradaki ile aynı olmasına dikkat ediyoruz.</p>
+
+<p><img src="https://yazilim.aykutasil.com/image/android_proxy.jpeg" alt="android proxy" /></p>
+
+<p><img src="https://yazilim.aykutasil.com/image/android_proxy1.jpeg" alt="android proxy" /></p>
 
 <hr />
 
