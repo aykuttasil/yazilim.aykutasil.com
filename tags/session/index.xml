@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Webapi on Software</title>
-    <link>https://yazilim.aykutasil.com/tags/webapi/</link>
-    <description>Recent content in Webapi on Software</description>
+    <title>Session on Software</title>
+    <link>https://yazilim.aykutasil.com/tags/session/</link>
+    <description>Recent content in Session on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
     <lastBuildDate>Tue, 12 Nov 2019 10:17:17 +0300</lastBuildDate>
     
-	<atom:link href="https://yazilim.aykutasil.com/tags/webapi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yazilim.aykutasil.com/tags/session/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,18 +19,6 @@
       <guid>https://yazilim.aykutasil.com/post/aspnetcore_session/</guid>
       <description>Asp.Net Core Session Kullanımı Asp.Net Core 2.1 ve üstü sürüme sahip projelerinizde Session kullanmak için Startup.cs dosyanızı aşağıdaki yöntemlerden birini seçerek güncellemeniz gerekmektedir.
 Yöntem 1 public void ConfigureServices(IServiceCollection services) { services.Configure&amp;lt;CookiePolicyOptions&amp;gt;(options =&amp;gt; { // This lambda determines whether user consent for non-essential cookies is needed for a given request. options.CheckConsentNeeded = context =&amp;gt; true; options.MinimumSameSitePolicy = SameSiteMode.None; }); services.AddAntiforgery(o =&amp;gt; o.SuppressXFrameOptionsHeader = true); services.AddDistributedMemoryCache(); services.AddSession(options =&amp;gt; // &amp;lt;-------- { // Set a short timeout for easy testing.</description>
-    </item>
-    
-    <item>
-      <title>ASP.Net Core app.Run() Middleware</title>
-      <link>https://yazilim.aykutasil.com/post/aspnetcore_run/</link>
-      <pubDate>Mon, 15 Apr 2019 22:08:14 +0300</pubDate>
-      
-      <guid>https://yazilim.aykutasil.com/post/aspnetcore_run/</guid>
-      <description>ASP.NET Core Run Method ASP.NET Core ile birlikte gelen middleware konsepti sayesinde request-response süreçleri arasına girerek kendi mantıksal devremizi yazmamız çok kolay hale gelmiştir.
- Yukarıda ki gibi Startup.cs sınıfı içerisindeki Configure fonksiyonuna app.Run() diyerek middleware&amp;lsquo;ımızı ekleyebiliriz.
-Peki tam olarak app.Run() metodu nasıl çalışıyor? app.Run() middlaware&amp;rsquo;ı ile istenilen bir kod bloğunu çalıştırabilir ve uygulamamıza kısa devre yaptırabiliriz. Yani pipeline akışı eğer Run() içerisine girerse, sonraki kod blokları çalışmayacaktır.
- Yukarıda ki kodun çıktısı sadece Response 1 olacak ve sonraki kod bloğu çalışmayacaktır.</description>
     </item>
     
   </channel>

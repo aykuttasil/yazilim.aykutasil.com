@@ -6,10 +6,20 @@
     <description>Recent content on Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>tr</language>
-    <lastBuildDate>Sat, 03 Aug 2019 03:14:28 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 12 Nov 2019 10:17:17 +0300</lastBuildDate>
     
 	<atom:link href="https://yazilim.aykutasil.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Asp.Net Core Session</title>
+      <link>https://yazilim.aykutasil.com/post/aspnetcore_session/</link>
+      <pubDate>Tue, 12 Nov 2019 10:17:17 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/post/aspnetcore_session/</guid>
+      <description>Asp.Net Core Session Kullanımı Asp.Net Core 2.1 ve üstü sürüme sahip projelerinizde Session kullanmak için Startup.cs dosyanızı aşağıdaki yöntemlerden birini seçerek güncellemeniz gerekmektedir.
+Yöntem 1 public void ConfigureServices(IServiceCollection services) { services.Configure&amp;lt;CookiePolicyOptions&amp;gt;(options =&amp;gt; { // This lambda determines whether user consent for non-essential cookies is needed for a given request. options.CheckConsentNeeded = context =&amp;gt; true; options.MinimumSameSitePolicy = SameSiteMode.None; }); services.AddAntiforgery(o =&amp;gt; o.SuppressXFrameOptionsHeader = true); services.AddDistributedMemoryCache(); services.AddSession(options =&amp;gt; // &amp;lt;-------- { // Set a short timeout for easy testing.</description>
+    </item>
     
     <item>
       <title>Android Debugging With Local Web Server</title>

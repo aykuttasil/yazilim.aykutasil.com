@@ -57,7 +57,7 @@
 
 
 
-<meta property="og:updated_time" content="2019-08-03T03:14:28&#43;03:00"/>
+<meta property="og:updated_time" content="2019-11-12T10:17:17&#43;03:00"/>
 
 
 
@@ -137,6 +137,37 @@
   <section id="posts" class="posts">
     
     
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/aspnetcore_session/">Asp.Net Core Session</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2019-11-12 </span>
+      <div class="post-category">
+          
+            <a href="https://yazilim.aykutasil.com/categories/aspnetcore/"> aspnetcore </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/web/"> web </a>
+          
+            <a href="https://yazilim.aykutasil.com/categories/api/"> api </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Asp.Net Core Session Kullanımı Asp.Net Core 2.1 ve üstü sürüme sahip projelerinizde Session kullanmak için Startup.cs dosyanızı aşağıdaki yöntemlerden birini seçerek güncellemeniz gerekmektedir.
+Yöntem 1 public void ConfigureServices(IServiceCollection services) { services.Configure&lt;CookiePolicyOptions&gt;(options =&gt; { // This lambda determines whether user consent for non-essential cookies is needed for a given request. options.CheckConsentNeeded = context =&gt; true; options.MinimumSameSitePolicy = SameSiteMode.None; }); services.AddAntiforgery(o =&gt; o.SuppressXFrameOptionsHeader = true); services.AddDistributedMemoryCache(); services.AddSession(options =&gt; // &lt;-------- { // Set a short timeout for easy testing.
+    </div>
+    <div class="read-more">
+      <a href="https://yazilim.aykutasil.com/post/aspnetcore_session/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
     
       <article class="post">
   <header class="post-header">
@@ -549,33 +580,6 @@ App app = DaggerAppComponent .builder() .apiUrl(&quot;http://....&quot;) .build(
     </div>
     <div class="read-more">
       <a href="https://yazilim.aykutasil.com/post/android_dagger_1/" class="read-more-link"></a>
-    </div>
-  </div>
-</article>
-
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="https://yazilim.aykutasil.com/post/amp_1/">AMP</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2018-10-10 </span>
-      <div class="post-category">
-          
-            <a href="https://yazilim.aykutasil.com/categories/amp/"> amp </a>
-          
-        </div>
-      <span class="more-meta">  </span>
-      <span class="more-meta">  </span>
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Not: Bu yazı öğrenme sürecinde hazırlanmış olup kısa kısa notlar içerir.
- Nedir bu AMP Kurallar  &lt;!doctype html&gt; ile başlamalı &lt;html amp&gt; şeklinde düzenlenmeli &lt;head&gt; tagı içerisine ilk sırada &lt;meta charset=&quot;utf-8&quot;&gt; şeklinde meta tagı eklenmeli &lt;head&gt; tagı içerisine mümkün olduğunda erken sırada &lt;script async src=&quot;https://cdn.ampproject.org/v0.js&quot;&gt;&lt;/script&gt; script tagı eklenmeli &lt;head&gt; tagı içerisine sayfanın AMP olmayan halinin linkini ya da sadece AMP li hali var ise kendi url i &lt;link rel=&quot;canonical&quot; href=&quot;$SOME_URL&quot;&gt; şeklinde belirtilmeli &lt;head&gt; tagı içerisine &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,minimum-scale=1&quot;&gt; meta tagı eklenmeli AMP js dosyası yüklenene kadar mevcut içeriği gizlemek için &lt;style amp-boilerplate&gt;body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}&lt;/style&gt;&lt;noscript&gt;&lt;style amp-boilerplate&gt;body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}&lt;/style&gt;&lt;/noscript&gt; tagı eklenmeli   Bir çok HTMl tagı direk olarak AMP HTML içerisinde kullanılabilir fakat bazılarının (img gibi) AMP için özel versiyonları bulunmaktadır.
-    </div>
-    <div class="read-more">
-      <a href="https://yazilim.aykutasil.com/post/amp_1/" class="read-more-link"></a>
     </div>
   </div>
 </article>

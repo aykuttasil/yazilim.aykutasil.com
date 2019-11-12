@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Api</title>
+      <link>https://yazilim.aykutasil.com/categories/api/</link>
+      <pubDate>Tue, 12 Nov 2019 10:17:17 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Arduino</title>
       <link>https://yazilim.aykutasil.com/categories/arduino/</link>
       <pubDate>Sun, 12 Mar 2017 23:40:36 +0300</pubDate>
@@ -41,7 +50,7 @@
     <item>
       <title>Aspnetcore</title>
       <link>https://yazilim.aykutasil.com/categories/aspnetcore/</link>
-      <pubDate>Mon, 29 Apr 2019 10:05:05 +0300</pubDate>
+      <pubDate>Tue, 12 Nov 2019 10:17:17 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/aspnetcore/</guid>
       <description></description>
@@ -287,6 +296,15 @@
       <pubDate>Wed, 11 Jan 2017 18:14:05 +0300</pubDate>
       
       <guid>https://yazilim.aykutasil.com/categories/vscode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://yazilim.aykutasil.com/categories/web/</link>
+      <pubDate>Tue, 12 Nov 2019 10:17:17 +0300</pubDate>
+      
+      <guid>https://yazilim.aykutasil.com/categories/web/</guid>
       <description></description>
     </item>
     

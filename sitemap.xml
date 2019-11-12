@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yazilim.aykutasil.com/post/aspnetcore_session/</loc>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/post/android_remote_device_debugging/</loc>
     <lastmod>2019-08-03T03:14:28+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -590,6 +597,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/categories/api/</loc>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/api-test/</loc>
     <lastmod>2017-01-11T01:09:39+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -619,14 +633,14 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/tags/aspnetcore/</loc>
-    <lastmod>2019-04-29T10:05:05+03:00</lastmod>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yazilim.aykutasil.com/categories/aspnetcore/</loc>
-    <lastmod>2019-04-29T10:05:05+03:00</lastmod>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1508,7 +1522,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/post/</loc>
-    <lastmod>2019-08-03T03:14:28+03:00</lastmod>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1619,6 +1633,13 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/tags/session/</loc>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/sh/</loc>
     <lastmod>2018-12-10T00:47:41+03:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -1669,7 +1690,7 @@
   
   <url>
     <loc>https://yazilim.aykutasil.com/</loc>
-    <lastmod>2019-08-03T03:14:28+03:00</lastmod>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -1878,8 +1899,15 @@
   </url>
   
   <url>
+    <loc>https://yazilim.aykutasil.com/categories/web/</loc>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yazilim.aykutasil.com/tags/webapi/</loc>
-    <lastmod>2019-04-15T22:08:14+03:00</lastmod>
+    <lastmod>2019-11-12T10:17:17+03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
